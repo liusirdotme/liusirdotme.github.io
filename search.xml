@@ -8160,25 +8160,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象三大特性</title>
-    <url>/2019/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>有个笑话，说男生怎么才能脱单？去当程序员吧，需要的时候就new一个对象出来。。。今天咱们来说说面向对象的三大特性！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h2 id="二、继承"><a href="#二、继承" class="headerlink" title="二、继承"></a>二、继承</h2><h2 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h2>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>封装</tag>
-        <tag>继承</tag>
-        <tag>多态</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面向对象五大原则</title>
     <url>/2019/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -8204,6 +8185,25 @@
         <tag>ISP</tag>
         <tag>迪米特法则</tag>
         <tag>Law of Demeter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象三大特性</title>
+    <url>/2019/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>有个笑话，说男生怎么才能脱单？去当程序员吧，需要的时候就new一个对象出来。。。今天咱们来说说面向对象的三大特性！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h2 id="二、继承"><a href="#二、继承" class="headerlink" title="二、继承"></a>二、继承</h2><h2 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h2>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>封装</tag>
+        <tag>继承</tag>
+        <tag>多态</tag>
       </tags>
   </entry>
   <entry>
@@ -11933,9 +11933,9 @@
       </categories>
       <tags>
         <tag>Lua</tag>
-        <tag>入门</tag>
         <tag>Mac</tag>
         <tag>Linux</tag>
+        <tag>入门</tag>
       </tags>
   </entry>
   <entry>
@@ -13624,40 +13624,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-git回滚之reset</title>
-    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<blockquote>
-<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
-</li>
-<li><p>实现</p>
-<ul>
-<li>git reset –hard commit-id</li>
-<li>git push -f</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href=""></a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>reset</tag>
-        <tag>回滚</tag>
-        <tag>李银河</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git回滚之revert</title>
     <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Brevert/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13692,6 +13658,40 @@
         <tag>Git</tag>
         <tag>回滚</tag>
         <tag>revert</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-git回滚之reset</title>
+    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<blockquote>
+<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
+</li>
+<li><p>实现</p>
+<ul>
+<li>git reset –hard commit-id</li>
+<li>git push -f</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href=""></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>回滚</tag>
+        <tag>reset</tag>
+        <tag>李银河</tag>
       </tags>
   </entry>
   <entry>
@@ -18363,9 +18363,9 @@
         <tag>TCP</tag>
         <tag>http</tag>
         <tag>https</tag>
-        <tag>会话机制</tag>
         <tag>UDP</tag>
         <tag>websocket</tag>
+        <tag>会话机制</tag>
         <tag>http1.0</tag>
         <tag>http1.1</tag>
         <tag>http2.0</tag>
@@ -19954,8 +19954,8 @@
       </categories>
       <tags>
         <tag>PHP</tag>
-        <tag>workman</tag>
         <tag>swoole</tag>
+        <tag>workman</tag>
       </tags>
   </entry>
   <entry>
@@ -20007,8 +20007,8 @@
         <tag>make</tag>
         <tag>PHP</tag>
         <tag>phpize</tag>
-        <tag>workman</tag>
         <tag>swoole</tag>
+        <tag>workman</tag>
       </tags>
   </entry>
   <entry>
@@ -20618,8 +20618,8 @@
         <tag>NoSQL</tag>
         <tag>redis</tag>
         <tag>数据结构</tag>
-        <tag>ZIPLIST</tag>
         <tag>LINKEDLIST</tag>
+        <tag>ZIPLIST</tag>
         <tag>快表</tag>
         <tag>QUICKLIST</tag>
       </tags>
@@ -22898,8 +22898,8 @@
       </categories>
       <tags>
         <tag>NoSQL</tag>
-        <tag>memcached</tag>
         <tag>redis</tag>
+        <tag>memcached</tag>
       </tags>
   </entry>
   <entry>
@@ -25910,6 +25910,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Go语言之信道channel</title>
+    <url>/2017/07/22/go-%E4%BF%A1%E9%81%93channel/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>信道是goroutine之间通信的一种方式，可以在信道两端进行操作。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/12402" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>信道</tag>
+        <tag>channel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql之聚合函数count</title>
     <url>/2017/07/21/mysql-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0count/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -27919,8 +27941,8 @@
       <tags>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
-        <tag>memcached</tag>
         <tag>redis</tag>
+        <tag>memcached</tag>
       </tags>
   </entry>
   <entry>
@@ -35607,8 +35629,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>show</tag>
         <tag>push</tag>
+        <tag>show</tag>
         <tag>reset</tag>
         <tag>diff</tag>
         <tag>log</tag>
@@ -38786,9 +38808,9 @@ read_xlsx(name, sheet)
       <tags>
         <tag>NoSQL</tag>
         <tag>redis</tag>
-        <tag>ziplist</tag>
         <tag>hash</tag>
         <tag>hashtable</tag>
+        <tag>ziplist</tag>
       </tags>
   </entry>
   <entry>
@@ -38982,8 +39004,8 @@ read_xlsx(name, sheet)
       <tags>
         <tag>NoSQL</tag>
         <tag>redis</tag>
-        <tag>list</tag>
         <tag>ziplist</tag>
+        <tag>list</tag>
         <tag>linkedlist</tag>
         <tag>quicklist</tag>
       </tags>
@@ -39237,10 +39259,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>C</tag>
-        <tag>道德经</tag>
-        <tag>老子</tag>
         <tag>struct</tag>
         <tag>union</tag>
+        <tag>道德经</tag>
+        <tag>老子</tag>
       </tags>
   </entry>
   <entry>
@@ -41505,6 +41527,23 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>shell脚本sleep和wait</title>
+    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>未来的你，一定会感谢现在拼命努力的自己。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell特殊变量和运算符</title>
     <url>/2015/03/19/linux-shell%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -41631,23 +41670,6 @@ read_xlsx(name, sheet)
         <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本sleep和wait</title>
-    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>未来的你，一定会感谢现在拼命努力的自己。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
