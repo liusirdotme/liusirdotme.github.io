@@ -1655,8 +1655,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>热更新</tag>
+        <tag>技术</tag>
         <tag>Android</tag>
         <tag>APK</tag>
         <tag>iOS</tag>
@@ -1984,64 +1984,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mongodb备份还原</title>
-    <url>/2020/04/12/nosql-mongodb%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。最好将重要数据制作三个，或三个以上的备份，并且放置在不同的场所异地备援，以利日后回存之用。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>备份<code>mongodump</code></p>
-<ul>
-<li>所有库备份<code>mongodump --out ~/Desktop/mongo</code></li>
-<li>指定库备份<code>mongodump --db db_name --out ~/Desktop/mongo</code></li>
-<li>指定集合<code>mongodump --db db_name --collection coll_name --out ~/Desktop/mongo</code><ul>
-<li><code>--db</code>可简写为<code>-d</code></li>
-<li><code>--collections</code>可简写为<code>-c</code></li>
-<li><code>--out</code>可简写为<code>-o</code></li>
-</ul>
-</li>
-<li>删除数据库<ul>
-<li><code>show dbs</code></li>
-<li><code>use study</code></li>
-<li><code>db.dropDatabase()</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>还原<code>mongorestore</code></p>
-<ul>
-<li>恢复整个库<code>mongorestore ~/Desktop/mongo</code></li>
-<li>恢复指定库<code>mongorestore --db user ~/Desktop/mongo/your_db</code></li>
-<li>恢复集合<code>mongorestore -d db_name -c coll_name ~/Desktop/mongo</code></li>
-</ul>
-</li>
-<li><p>导出与导入(可具体到字段)</p>
-<ul>
-<li><code>mongoexport -d study -c user -q &#39;{&quot;name&quot;:&quot;张三&quot;}&#39; -f name,age --csv -o ~/Desktop/user.csv</code></li>
-<li><code>mongoimport -d study -c user --upsert --upsertFields name,age --type csv ~/Desktop/user.json</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://mongoing.com" target="_blank" rel="noopener">MongoDB中文社区</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>NoSQL</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>NoSQL</tag>
-        <tag>mongodump</tag>
-        <tag>mongorestore</tag>
-        <tag>mongoexport</tag>
-        <tag>mongoimport</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mongodb分片集群</title>
     <url>/2020/04/12/nosql-mongodb%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -2138,6 +2080,64 @@
         <tag>NoSQL</tag>
         <tag>Sharding</tag>
         <tag>分片</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mongodb备份还原</title>
+    <url>/2020/04/12/nosql-mongodb%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。最好将重要数据制作三个，或三个以上的备份，并且放置在不同的场所异地备援，以利日后回存之用。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>备份<code>mongodump</code></p>
+<ul>
+<li>所有库备份<code>mongodump --out ~/Desktop/mongo</code></li>
+<li>指定库备份<code>mongodump --db db_name --out ~/Desktop/mongo</code></li>
+<li>指定集合<code>mongodump --db db_name --collection coll_name --out ~/Desktop/mongo</code><ul>
+<li><code>--db</code>可简写为<code>-d</code></li>
+<li><code>--collections</code>可简写为<code>-c</code></li>
+<li><code>--out</code>可简写为<code>-o</code></li>
+</ul>
+</li>
+<li>删除数据库<ul>
+<li><code>show dbs</code></li>
+<li><code>use study</code></li>
+<li><code>db.dropDatabase()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>还原<code>mongorestore</code></p>
+<ul>
+<li>恢复整个库<code>mongorestore ~/Desktop/mongo</code></li>
+<li>恢复指定库<code>mongorestore --db user ~/Desktop/mongo/your_db</code></li>
+<li>恢复集合<code>mongorestore -d db_name -c coll_name ~/Desktop/mongo</code></li>
+</ul>
+</li>
+<li><p>导出与导入(可具体到字段)</p>
+<ul>
+<li><code>mongoexport -d study -c user -q &#39;{&quot;name&quot;:&quot;张三&quot;}&#39; -f name,age --csv -o ~/Desktop/user.csv</code></li>
+<li><code>mongoimport -d study -c user --upsert --upsertFields name,age --type csv ~/Desktop/user.json</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://mongoing.com" target="_blank" rel="noopener">MongoDB中文社区</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>NoSQL</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
+        <tag>mongodump</tag>
+        <tag>mongorestore</tag>
+        <tag>mongoexport</tag>
+        <tag>mongoimport</tag>
       </tags>
   </entry>
   <entry>
@@ -7826,6 +7826,23 @@
       </tags>
   </entry>
   <entry>
+    <title>分布式-集群-微服务初探</title>
+    <url>/2019/07/30/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F-%E9%9B%86%E7%BE%A4-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%9D%E6%8E%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>当下web系统开发，分布式可谓大行其道，导致的结果就是甭管公司大小用户量多少，上来就给你整一堆名词，什么CAP原则，分布式事务等，今天咱们就来看看分布式之CAP！</p>
+</blockquote>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>集群</tag>
+        <tag>分布式</tag>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>分布式之CAP原则</title>
     <url>/2019/07/30/%E5%88%86%E5%B8%83%E5%BC%8F-CAP%E5%8E%9F%E5%88%99/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -8032,23 +8049,6 @@
       </tags>
   </entry>
   <entry>
-    <title>分布式-集群-微服务初探</title>
-    <url>/2019/07/30/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F-%E9%9B%86%E7%BE%A4-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%9D%E6%8E%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>当下web系统开发，分布式可谓大行其道，导致的结果就是甭管公司大小用户量多少，上来就给你整一堆名词，什么CAP原则，分布式事务等，今天咱们就来看看分布式之CAP！</p>
-</blockquote>
-<a id="more"></a>
-]]></content>
-      <categories>
-        <category>分布式</category>
-      </categories>
-      <tags>
-        <tag>集群</tag>
-        <tag>分布式</tag>
-        <tag>微服务</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL之优先队列排序算法</title>
     <url>/2019/07/25/mysql-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -8160,6 +8160,25 @@
       </tags>
   </entry>
   <entry>
+    <title>面向对象三大特性</title>
+    <url>/2019/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>有个笑话，说男生怎么才能脱单？去当程序员吧，需要的时候就new一个对象出来。。。今天咱们来说说面向对象的三大特性！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h2 id="二、继承"><a href="#二、继承" class="headerlink" title="二、继承"></a>二、继承</h2><h2 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h2>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>封装</tag>
+        <tag>继承</tag>
+        <tag>多态</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面向对象五大原则</title>
     <url>/2019/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -8185,25 +8204,6 @@
         <tag>ISP</tag>
         <tag>迪米特法则</tag>
         <tag>Law of Demeter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象三大特性</title>
-    <url>/2019/07/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>有个笑话，说男生怎么才能脱单？去当程序员吧，需要的时候就new一个对象出来。。。今天咱们来说说面向对象的三大特性！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h2><h2 id="二、继承"><a href="#二、继承" class="headerlink" title="二、继承"></a>二、继承</h2><h2 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h2>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>封装</tag>
-        <tag>继承</tag>
-        <tag>多态</tag>
       </tags>
   </entry>
   <entry>
@@ -8300,9 +8300,9 @@
       <tags>
         <tag>Mac</tag>
         <tag>分布式</tag>
+        <tag>Kibana</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
-        <tag>Kibana</tag>
       </tags>
   </entry>
   <entry>
@@ -8733,10 +8733,10 @@
         <tag>Mac</tag>
         <tag>brew</tag>
         <tag>分布式</tag>
-        <tag>Elasticsearch</tag>
-        <tag>tap</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
+        <tag>Elasticsearch</tag>
+        <tag>tap</tag>
       </tags>
   </entry>
   <entry>
@@ -9086,8 +9086,8 @@
       </categories>
       <tags>
         <tag>MQ</tag>
-        <tag>RabbitMQ</tag>
         <tag>Erlang</tag>
+        <tag>RabbitMQ</tag>
         <tag>当年明月</tag>
         <tag>明朝那些事儿</tag>
       </tags>
@@ -11933,39 +11933,9 @@
       </categories>
       <tags>
         <tag>Lua</tag>
+        <tag>入门</tag>
         <tag>Mac</tag>
         <tag>Linux</tag>
-        <tag>入门</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RabbitMQ幂等性</title>
-    <url>/2019/04/12/MQ-RabbitMQ%E5%B9%82%E7%AD%89%E6%80%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>心理补偿机制即观众在观影过程中，会不自觉的根据自己的日常生活经验，对影片画面之间的断裂作出心理补偿，从而最终实现对电影、电视的观赏。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>由于各种原因(网络延迟、脚本异常终止)，消费者出现异常或者消费者延迟消费，会造成进行MQ重试。在重试过程中，可能会造成消息重复消费，即出现非幂等性。保证消息消费时的幂等性，即保证消息不被重复消费。</li>
-</ol>
-<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
-<li>基于全局MsgId或业务Id</li>
-<li>基于redis缓存实现</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/niceyoo/p/11462611.html#h2" target="_blank" rel="noopener">参考一</a></li>
-<li><a href="https://www.cnblogs.com/huigelaile/p/10917859.html" target="_blank" rel="noopener">参考二</a></li>
-<li><a href="https://blog.csdn.net/weixin_38608626/article/details/99642530" target="_blank" rel="noopener">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>MQ</category>
-      </categories>
-      <tags>
-        <tag>MQ</tag>
-        <tag>RabbitMQ</tag>
-        <tag>幂等性</tag>
       </tags>
   </entry>
   <entry>
@@ -12027,6 +11997,36 @@
         <tag>MQ</tag>
         <tag>RabbitMQ</tag>
         <tag>时序性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RabbitMQ幂等性</title>
+    <url>/2019/04/12/MQ-RabbitMQ%E5%B9%82%E7%AD%89%E6%80%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>心理补偿机制即观众在观影过程中，会不自觉的根据自己的日常生活经验，对影片画面之间的断裂作出心理补偿，从而最终实现对电影、电视的观赏。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>由于各种原因(网络延迟、脚本异常终止)，消费者出现异常或者消费者延迟消费，会造成进行MQ重试。在重试过程中，可能会造成消息重复消费，即出现非幂等性。保证消息消费时的幂等性，即保证消息不被重复消费。</li>
+</ol>
+<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
+<li>基于全局MsgId或业务Id</li>
+<li>基于redis缓存实现</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/niceyoo/p/11462611.html#h2" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://www.cnblogs.com/huigelaile/p/10917859.html" target="_blank" rel="noopener">参考二</a></li>
+<li><a href="https://blog.csdn.net/weixin_38608626/article/details/99642530" target="_blank" rel="noopener">参考三</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>MQ</category>
+      </categories>
+      <tags>
+        <tag>MQ</tag>
+        <tag>RabbitMQ</tag>
+        <tag>幂等性</tag>
       </tags>
   </entry>
   <entry>
@@ -13624,6 +13624,40 @@
       </tags>
   </entry>
   <entry>
+    <title>git-git回滚之reset</title>
+    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<blockquote>
+<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
+</li>
+<li><p>实现</p>
+<ul>
+<li>git reset –hard commit-id</li>
+<li>git push -f</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href=""></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>reset</tag>
+        <tag>回滚</tag>
+        <tag>李银河</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git回滚之revert</title>
     <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Brevert/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13661,40 +13695,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-git回滚之reset</title>
-    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<blockquote>
-<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
-</li>
-<li><p>实现</p>
-<ul>
-<li>git reset –hard commit-id</li>
-<li>git push -f</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href=""></a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>回滚</tag>
-        <tag>reset</tag>
-        <tag>李银河</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git合并之merge</title>
     <url>/2019/03/08/git-git%E5%90%88%E5%B9%B6%E4%B9%8Bmerge/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13715,8 +13715,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>王小波</tag>
         <tag>合并</tag>
+        <tag>王小波</tag>
         <tag>merge</tag>
       </tags>
   </entry>
@@ -16553,6 +16553,23 @@
       </tags>
   </entry>
   <entry>
+    <title>设计模式之职责链模式</title>
+    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>责任链模式(Chain of Responsibility Pattern)为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
+</blockquote>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>设计模式</tag>
+        <tag>行为型模式</tag>
+        <tag>职责链模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>设计模式之策略模式</title>
     <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -16602,23 +16619,6 @@
         <tag>设计模式</tag>
         <tag>行为型模式</tag>
         <tag>策略模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之职责链模式</title>
-    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>责任链模式(Chain of Responsibility Pattern)为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
-</blockquote>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>行为型模式</tag>
-        <tag>职责链模式</tag>
       </tags>
   </entry>
   <entry>
@@ -18363,9 +18363,9 @@
         <tag>TCP</tag>
         <tag>http</tag>
         <tag>https</tag>
+        <tag>会话机制</tag>
         <tag>UDP</tag>
         <tag>websocket</tag>
-        <tag>会话机制</tag>
         <tag>http1.0</tag>
         <tag>http1.1</tag>
         <tag>http2.0</tag>
@@ -20553,6 +20553,31 @@
       </tags>
   </entry>
   <entry>
+    <title>DLang简介</title>
+    <url>/2018/04/04/DLang-D%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>D语言是一门语法相当优雅的编译型语言，自1999年发布至今已发展了20多年，它既拥有Java那样强大的表现力，又具有C++相当的性能，本来是一门未来相当明朗的语言，但是当年因为2.x版本破坏性升级导致社区大量核心开发者将其放弃。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D语言是一门语法相当优雅的编译型语言，自1999年发布至今已发展了20多年，它既拥有Java那样强大的表现力，又具有C++相当的性能，本来是一门未来相当明朗的语言，但是当年因为2.x版本破坏性升级导致社区大量核心开发者将其放弃。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://dlang.org/" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="http://www.suoniao.com/article/5e0046e64b0a1d06c5718db7" target="_blank" rel="noopener">参考二</a></li>
+<li><a href="https://www.yuque.com/lanceadd/nb5tvo/acx8ko" target="_blank" rel="noopener">参考三</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>DLang</category>
+      </categories>
+      <tags>
+        <tag>DLang</tag>
+        <tag>D语言</tag>
+        <tag>dmd</tag>
+        <tag>rdmd</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>redis底层之快表QUICKLIST</title>
     <url>/2018/04/01/nosql-redis%E5%BA%95%E5%B1%82%E4%B9%8B%E5%BF%AB%E8%A1%A8QUICKLIST/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -20618,8 +20643,8 @@
         <tag>NoSQL</tag>
         <tag>redis</tag>
         <tag>数据结构</tag>
-        <tag>LINKEDLIST</tag>
         <tag>ZIPLIST</tag>
+        <tag>LINKEDLIST</tag>
         <tag>快表</tag>
         <tag>QUICKLIST</tag>
       </tags>
@@ -21170,8 +21195,8 @@
       </categories>
       <tags>
         <tag>PHP</tag>
-        <tag>魔术常量</tag>
         <tag>魔术方法</tag>
+        <tag>魔术常量</tag>
         <tag>超全局变量</tag>
         <tag>预定义变量</tag>
       </tags>
@@ -22762,8 +22787,76 @@
       </categories>
       <tags>
         <tag>技术</tag>
-        <tag>倒排索引</tag>
         <tag>搜索引擎</tag>
+        <tag>倒排索引</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac下安装使用rust</title>
+    <url>/2018/01/23/rust-Mac%E4%B8%8B%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8rust/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>安装Rust的主要方式是通过Rustup这一工具，它既是一个Rust安装器又是一个版本管理工具，Cargo则既是构建工具又是包管理器的最新稳定版。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装Rust的主要方式是通过Rustup这一工具，它既是一个Rust安装器又是一个版本管理工具，Cargo则既是构建工具又是包管理器的最新稳定版。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><code>curl --proto &#39;=https&#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh</code><ul>
+<li>选择默认安装<code>1</code>即可</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1) Proceed with installation (default)</span><br><span class="line">2) Customize installation</span><br><span class="line">3) Cancel installation</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在安装Rustup时也会安装Rust构建工具和包管理器的最新稳定版，即Cargo，它可以做很多事情：</p>
+<blockquote>
+<p>cargo build 可以构建项目</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>cargo run 可以运行项目</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>cargo test 可以测试项目</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>cargo doc 可以为项目构建文档</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>cargo publish 可以将库发布到 crates.io。</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li><p>安装完成后执行<code>source $HOME/.cargo/env</code></p>
+</li>
+<li><p>demo</p>
+<ul>
+<li>cargo new hello-rust</li>
+<li>cargo run</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.rust-lang.org/zh-CN/learn/get-started" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://crates.io/" target="_blank" rel="noopener">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Rust</tag>
+        <tag>Rustup</tag>
+        <tag>Cargo</tag>
       </tags>
   </entry>
   <entry>
@@ -22874,6 +22967,40 @@
         <tag>索引</tag>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rust简介</title>
+    <url>/2018/01/15/rust-%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Rust是一门系统编程语言，专注于安全，尤其是并发安全，支持函数式和命令式以及泛型等编程范式的多范式语言。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rust是一门系统编程语言，专注于安全，尤其是并发安全，支持函数式和命令式以及泛型等编程范式的多范式语言。Rust在语法上和<code>C++</code>类似，但是设计者想要在保证性能的同时提供更好的内存安全。 Rust最初是由Mozilla研究院的Graydon Hoare设计创造，然后在Dave Herman, Brendan Eich以及很多其他人的贡献下逐步完善的。Rust的设计者们通过在研发Servo网站浏览器布局引擎过程中积累的经验优化了Rust语言和Rust编译器。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>安装<code>curl --proto &#39;=https&#39; --tlsv1.2 https://sh.rustup.rs -sSf | sh</code></li>
+<li>查看版本<code>rustc --version</code></li>
+<li>升级<code>rustup update</code></li>
+<li>卸载<code>rustup self uninstall</code></li>
+<li>查看cargo版本<code>cargo --version</code></li>
+<li>新建项目<code>cargo new project_name</code></li>
+<li>构建项目<code>cargo build</code><ul>
+<li><code>cargo build --release</code> //打包生产环境</li>
+</ul>
+</li>
+<li>运行项目<code>cargo run</code></li>
+<li>检查项目代码<code>cargo check</code></li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.rust-lang.org/" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
       </tags>
   </entry>
   <entry>
@@ -25993,9 +26120,9 @@
       </categories>
       <tags>
         <tag>分布式</tag>
-        <tag>Elasticsearch</tag>
-        <tag>Kibana</tag>
         <tag>Logstash</tag>
+        <tag>Kibana</tag>
+        <tag>Elasticsearch</tag>
         <tag>日志系统</tag>
         <tag>ELK</tag>
       </tags>
@@ -29405,7 +29532,15 @@
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defer是Go语言中的延迟执行语句，用来添加函数结束时执行的代码，常用于释放某些已分配的资源、关闭数据库连接、断开socket连接、解锁一个加锁的资源等。Go语言机制能够保证一定会执行defer语句中的代码，有点类似于Java、C#语言里的finally语句，C++语言里的析构函数等。</p>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defer是Go语言中的延迟执行语句，用来添加函数结束时执行的代码，常用于释放某些已分配的资源、关闭数据库连接、断开socket连接、解锁一个加锁的资源等。Go语言机制能够保证一定会执行<code>defer</code>语句中的代码，有点类似于<code>Java</code>、<code>C#</code>语言里的<code>finally</code>语句，<code>C++</code>、<code>PHP</code>语言里的析构函数等。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>demo</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func testFunc() &#123;</span><br><span class="line">	fmt.Println(&quot;执行结束...&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	defer testFunc()</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;开始执行...&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/12719" target="_blank" rel="noopener">参考一</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Go</category>
@@ -32976,6 +33111,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Ruby简介</title>
+    <url>/2016/05/05/Ruby-Ruby%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Ruby是一种纯粹的面向对象编程语言。它由日本的松本行弘创建于1993年。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ruby是一种简单快捷的面向对象脚本语言，在20世纪90年代由日本人松本行弘开发，遵守GPL协议和Ruby License。它的灵感与特性来自于Perl、Smalltalk、Eiffel、Ada以及Lisp语言。由Ruby语言本身还发展出了JRuby(Java平台)、IronRuby(.NET平台)等其他平台的Ruby语言替代品。Ruby的作者于1993年2月24日开始编写Ruby，直至1995年12月才正式公开发布于fj(新闻组)。因为Perl发音与6月诞生石pearl(珍珠)相同，因此Ruby以7月诞生石ruby（红宝石）命名。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="http://www.ruby-lang.org/zh_cn/" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ruby</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WAL</title>
     <url>/2016/05/05/mysql-WAL/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -35744,8 +35899,8 @@
       <tags>
         <tag>面向对象</tag>
         <tag>设计模式</tag>
-        <tag>单例模式</tag>
         <tag>创建型模式</tag>
+        <tag>单例模式</tag>
       </tags>
   </entry>
   <entry>
@@ -36379,8 +36534,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>变量</tag>
         <tag>数组</tag>
+        <tag>变量</tag>
         <tag>shell</tag>
         <tag>bash</tag>
         <tag>sed</tag>
@@ -37195,8 +37350,8 @@
       <tags>
         <tag>Git</tag>
         <tag>合并</tag>
-        <tag>merge</tag>
         <tag>reset</tag>
+        <tag>merge</tag>
       </tags>
   </entry>
   <entry>
@@ -38193,13 +38348,13 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>摘抄</tag>
-        <tag>WHAT</tag>
-        <tag>WHY</tag>
-        <tag>HOW</tag>
         <tag>5W1H</tag>
+        <tag>WHAT</tag>
         <tag>WHERE</tag>
         <tag>WHEN</tag>
         <tag>WHO</tag>
+        <tag>WHY</tag>
+        <tag>HOW</tag>
       </tags>
   </entry>
   <entry>
@@ -38225,10 +38380,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>摘抄</tag>
-        <tag>3W</tag>
         <tag>WHAT</tag>
         <tag>WHY</tag>
         <tag>HOW</tag>
+        <tag>3W</tag>
       </tags>
   </entry>
   <entry>
@@ -38808,9 +38963,9 @@ read_xlsx(name, sheet)
       <tags>
         <tag>NoSQL</tag>
         <tag>redis</tag>
+        <tag>ziplist</tag>
         <tag>hash</tag>
         <tag>hashtable</tag>
-        <tag>ziplist</tag>
       </tags>
   </entry>
   <entry>
@@ -39004,8 +39159,8 @@ read_xlsx(name, sheet)
       <tags>
         <tag>NoSQL</tag>
         <tag>redis</tag>
-        <tag>ziplist</tag>
         <tag>list</tag>
+        <tag>ziplist</tag>
         <tag>linkedlist</tag>
         <tag>quicklist</tag>
       </tags>
@@ -44856,6 +45011,81 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>shell基础</title>
+    <url>/2014/07/17/linux-shell%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>有的花开得比较早，有的花开得比较晚，但都有绽放的那一天。人也是一样，每个人都有属于自己的节奏，在自己的节奏上走好，便是最好！</p>
+</blockquote>
+<a id="more"></a>
+
+<ol>
+<li><p>declare</p>
+</li>
+<li><p>while</p>
+</li>
+<li><p>shell中自增实现</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">i&#x3D;1</span><br><span class="line"></span><br><span class="line">i&#x3D;&#96;expr $i + 1&#96;</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">let i+&#x3D;1 或 let &quot;i++&quot;</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">((i++))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i&#x3D;$[$i+1]</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i&#x3D;$(($i+1))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">还有一种写法：</span><br><span class="line">for i in $(seq 1 5)</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>if分支结构</p>
+<ul>
+<li>单if结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>if else结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">else</span><br><span class="line">    command2</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>if else-if else结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition1</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">elif condition2 </span><br><span class="line">then </span><br><span class="line">    command2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">elif #可多个elif</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">    commandN</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>case分支结构</p>
+<ul>
+<li>语法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">case 值 in</span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"> ...)</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>demo</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo 请输入数字</span><br><span class="line">read num</span><br><span class="line">case $num in</span><br><span class="line">    1)</span><br><span class="line">    echo &quot;你输入了1&quot;</span><br><span class="line">    ;;</span><br><span class="line">    2)</span><br><span class="line">    echo &quot;你输入了2&quot;</span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">    echo &quot;无法识别的数字$num&quot;</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ol start="6">
+<li>chsh命令<ul>
+<li>查看系统支持的shell<code>chsh -l</code>或<code>cat /etc/shells</code></li>
+<li>查看当前使用的shell<code>echo $SHELL</code></li>
+<li>修改默认shell<code>chsh -s /bin/zsh</code><ul>
+<li>需要重新登录才生效</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>declare</tag>
+        <tag>shell</tag>
+        <tag>while</tag>
+        <tag>自增</tag>
+        <tag>if</tag>
+        <tag>case</tag>
+        <tag>chsh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell变量</title>
     <url>/2014/07/17/linux-shell%E5%8F%98%E9%87%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -45001,81 +45231,6 @@ read_xlsx(name, sheet)
         <tag>export</tag>
         <tag>source</tag>
         <tag>local</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell基础</title>
-    <url>/2014/07/17/linux-shell%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>有的花开得比较早，有的花开得比较晚，但都有绽放的那一天。人也是一样，每个人都有属于自己的节奏，在自己的节奏上走好，便是最好！</p>
-</blockquote>
-<a id="more"></a>
-
-<ol>
-<li><p>declare</p>
-</li>
-<li><p>while</p>
-</li>
-<li><p>shell中自增实现</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">i&#x3D;1</span><br><span class="line"></span><br><span class="line">i&#x3D;&#96;expr $i + 1&#96;</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">let i+&#x3D;1 或 let &quot;i++&quot;</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">((i++))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i&#x3D;$[$i+1]</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i&#x3D;$(($i+1))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">还有一种写法：</span><br><span class="line">for i in $(seq 1 5)</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><p>if分支结构</p>
-<ul>
-<li>单if结构</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>if else结构</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">else</span><br><span class="line">    command2</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>if else-if else结构</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition1</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">elif condition2 </span><br><span class="line">then </span><br><span class="line">    command2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">elif #可多个elif</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">    commandN</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>case分支结构</p>
-<ul>
-<li>语法</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">case 值 in</span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"> ...)</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>demo</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo 请输入数字</span><br><span class="line">read num</span><br><span class="line">case $num in</span><br><span class="line">    1)</span><br><span class="line">    echo &quot;你输入了1&quot;</span><br><span class="line">    ;;</span><br><span class="line">    2)</span><br><span class="line">    echo &quot;你输入了2&quot;</span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">    echo &quot;无法识别的数字$num&quot;</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ol start="6">
-<li>chsh命令<ul>
-<li>查看系统支持的shell<code>chsh -l</code>或<code>cat /etc/shells</code></li>
-<li>查看当前使用的shell<code>echo $SHELL</code></li>
-<li>修改默认shell<code>chsh -s /bin/zsh</code><ul>
-<li>需要重新登录才生效</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>declare</tag>
-        <tag>shell</tag>
-        <tag>while</tag>
-        <tag>自增</tag>
-        <tag>if</tag>
-        <tag>case</tag>
-        <tag>chsh</tag>
       </tags>
   </entry>
   <entry>
