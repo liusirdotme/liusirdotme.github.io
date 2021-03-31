@@ -725,10 +725,10 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>二叉树</tag>
-        <tag>红黑树</tag>
         <tag>二叉排序树</tag>
         <tag>AVL树</tag>
+        <tag>红黑树</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -3954,9 +3954,9 @@
       <tags>
         <tag>Git</tag>
         <tag>push</tag>
-        <tag>王小波</tag>
         <tag>Github</tag>
         <tag>pull</tag>
+        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -4373,8 +4373,8 @@
       <tags>
         <tag>工具</tag>
         <tag>抓包</tag>
-        <tag>Charles</tag>
         <tag>Fiddler</tag>
+        <tag>Charles</tag>
         <tag>Wireshark</tag>
       </tags>
   </entry>
@@ -4593,10 +4593,10 @@
       </categories>
       <tags>
         <tag>PHP</tag>
-        <tag>扩展</tag>
         <tag>后期静态绑定</tag>
         <tag>内核</tag>
         <tag>引擎</tag>
+        <tag>扩展</tag>
         <tag>编译器</tag>
         <tag>执行器</tag>
         <tag>ZEND</tag>
@@ -7334,10 +7334,10 @@
       <tags>
         <tag>Docker</tag>
         <tag>容器</tag>
-        <tag>镜像</tag>
         <tag>run</tag>
         <tag>exec</tag>
         <tag>attach</tag>
+        <tag>镜像</tag>
       </tags>
   </entry>
   <entry>
@@ -8305,9 +8305,9 @@
       <tags>
         <tag>Mac</tag>
         <tag>分布式</tag>
+        <tag>Kibana</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
-        <tag>Kibana</tag>
       </tags>
   </entry>
   <entry>
@@ -8739,9 +8739,9 @@
         <tag>brew</tag>
         <tag>分布式</tag>
         <tag>Elasticsearch</tag>
-        <tag>tap</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
+        <tag>tap</tag>
       </tags>
   </entry>
   <entry>
@@ -9648,6 +9648,35 @@
       </tags>
   </entry>
   <entry>
+    <title>分布式事务</title>
+    <url>/2019/05/16/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>伫倚危楼风细细，望极春愁，黯黯生天际。草色烟光残照里，无言谁会凭栏意。拟把疏狂图一醉，对酒当歌，强乐还无味。衣带渐宽终不悔，为伊消得人憔悴。 —— 北宋.柳永 《蝶恋花·伫倚危楼风细细》 </p>
+</blockquote>
+<a id="more"></a>
+
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。简单来说就是一个大的操作由两个或者更多的小的操作共同完成，而这些小的操作又分布在不同的网络主机上。这些小的操作要么全部成功执行，要么全部不执行，以保证数据的一致性。</li>
+</ol>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
+<li>基于两阶段提交(2PC)</li>
+<li>补偿事务(TCC)</li>
+<li>本地消息表(异步确保)</li>
+<li>基于RocketMQ事务消息</li>
+<li>Sagas事务模型</li>
+</ol>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>事务</tag>
+        <tag>分布式</tag>
+        <tag>分布式事务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>分布式锁</title>
     <url>/2019/05/16/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -9788,35 +9817,6 @@
         <tag>锁</tag>
         <tag>分布式锁</tag>
         <tag>分布式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分布式事务</title>
-    <url>/2019/05/16/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>伫倚危楼风细细，望极春愁，黯黯生天际。草色烟光残照里，无言谁会凭栏意。拟把疏狂图一醉，对酒当歌，强乐还无味。衣带渐宽终不悔，为伊消得人憔悴。 —— 北宋.柳永 《蝶恋花·伫倚危楼风细细》 </p>
-</blockquote>
-<a id="more"></a>
-
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。简单来说就是一个大的操作由两个或者更多的小的操作共同完成，而这些小的操作又分布在不同的网络主机上。这些小的操作要么全部成功执行，要么全部不执行，以保证数据的一致性。</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
-<li>基于两阶段提交(2PC)</li>
-<li>补偿事务(TCC)</li>
-<li>本地消息表(异步确保)</li>
-<li>基于RocketMQ事务消息</li>
-<li>Sagas事务模型</li>
-</ol>
-]]></content>
-      <categories>
-        <category>分布式</category>
-      </categories>
-      <tags>
-        <tag>事务</tag>
-        <tag>分布式</tag>
-        <tag>分布式事务</tag>
       </tags>
   </entry>
   <entry>
@@ -10370,27 +10370,6 @@
       </tags>
   </entry>
   <entry>
-    <title>完全二叉树</title>
-    <url>/2019/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>树这种数据结构在算法题中是最常见的，而且在实际应用中也比较多，但树的分类太多了，今天咱们就来看看完全二叉树这种结构。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>完全二叉树要求，除了最后一层，其他层的节点个数都是满的，最后一层的节点都靠左排列。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据结构和算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>完全二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二叉查找树及其变种SBT-AVL树-红黑树</title>
     <url>/2019/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91%E5%8F%8A%E5%85%B6%E5%8F%98%E7%A7%8DSBT-AVL%E6%A0%91-%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -10454,12 +10433,33 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>红黑树</tag>
-        <tag>二叉排序树</tag>
-        <tag>AVL树</tag>
         <tag>二叉查找树</tag>
+        <tag>二叉排序树</tag>
         <tag>二叉搜索树</tag>
         <tag>SBT</tag>
+        <tag>AVL树</tag>
+        <tag>红黑树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>完全二叉树</title>
+    <url>/2019/05/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>树这种数据结构在算法题中是最常见的，而且在实际应用中也比较多，但树的分类太多了，今天咱们就来看看完全二叉树这种结构。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>完全二叉树要求，除了最后一层，其他层的节点个数都是满的，最后一层的节点都靠左排列。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>完全二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -11840,9 +11840,9 @@
       </categories>
       <tags>
         <tag>Lua</tag>
+        <tag>入门</tag>
         <tag>Mac</tag>
         <tag>Linux</tag>
-        <tag>入门</tag>
       </tags>
   </entry>
   <entry>
@@ -12190,9 +12190,9 @@
         <category>NoSQL</category>
       </categories>
       <tags>
+        <tag>PHP</tag>
         <tag>NoSQL</tag>
         <tag>Redis</tag>
-        <tag>php</tag>
         <tag>分布式锁</tag>
       </tags>
   </entry>
@@ -13622,9 +13622,9 @@
       </categories>
       <tags>
         <tag>Git</tag>
+        <tag>王小波</tag>
         <tag>合并</tag>
         <tag>merge</tag>
-        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -13811,6 +13811,30 @@
       </tags>
   </entry>
   <entry>
+    <title>快速排序</title>
+    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>同样的，快速排序也是基于分治思想！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>快速排序思想：从数列中挑出一个元素，称为基准（pivot），依次取所有元素和基准对比，所有比基准小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面。然后基于递归(recursively)算法把小于基准值元素的子数列和大于基准值元素的子数列排序，最终得到结果。</li>
+</ol>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function quickSort($data)</span><br><span class="line">&#123;</span><br><span class="line">    $len &#x3D; count($data);</span><br><span class="line">    if ($len &lt;&#x3D; 1) &#123;</span><br><span class="line">        return $data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $base  &#x3D; $data[0];</span><br><span class="line">    $left  &#x3D; [];</span><br><span class="line">    $right &#x3D; [];</span><br><span class="line">    for($i&#x3D;1; $i&lt;$len; $i++) &#123;</span><br><span class="line">        if ($data[$i] &gt; $base) &#123;</span><br><span class="line">            $left[] &#x3D; $data[$i];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $right[] &#x3D; $data[$i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    $left  &#x3D; quickSort($left);</span><br><span class="line">    $right &#x3D; quickSort($right);</span><br><span class="line"></span><br><span class="line">    return array_merge($left, (array)$base, $right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>快速排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>插入排序</title>
     <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13895,30 +13919,6 @@
         <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>计数排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速排序</title>
-    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>同样的，快速排序也是基于分治思想！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>快速排序思想：从数列中挑出一个元素，称为基准（pivot），依次取所有元素和基准对比，所有比基准小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面。然后基于递归(recursively)算法把小于基准值元素的子数列和大于基准值元素的子数列排序，最终得到结果。</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function quickSort($data)</span><br><span class="line">&#123;</span><br><span class="line">    $len &#x3D; count($data);</span><br><span class="line">    if ($len &lt;&#x3D; 1) &#123;</span><br><span class="line">        return $data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $base  &#x3D; $data[0];</span><br><span class="line">    $left  &#x3D; [];</span><br><span class="line">    $right &#x3D; [];</span><br><span class="line">    for($i&#x3D;1; $i&lt;$len; $i++) &#123;</span><br><span class="line">        if ($data[$i] &gt; $base) &#123;</span><br><span class="line">            $left[] &#x3D; $data[$i];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $right[] &#x3D; $data[$i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    $left  &#x3D; quickSort($left);</span><br><span class="line">    $right &#x3D; quickSort($right);</span><br><span class="line"></span><br><span class="line">    return array_merge($left, (array)$base, $right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据结构和算法</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>快速排序</tag>
       </tags>
   </entry>
   <entry>
@@ -16433,6 +16433,23 @@
       </tags>
   </entry>
   <entry>
+    <title>设计模式之职责链模式</title>
+    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>责任链模式(Chain of Responsibility Pattern)为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
+</blockquote>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>设计模式</tag>
+        <tag>行为型模式</tag>
+        <tag>职责链模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>设计模式之策略模式</title>
     <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -16482,23 +16499,6 @@
         <tag>设计模式</tag>
         <tag>行为型模式</tag>
         <tag>策略模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之职责链模式</title>
-    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>责任链模式(Chain of Responsibility Pattern)为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
-</blockquote>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>行为型模式</tag>
-        <tag>职责链模式</tag>
       </tags>
   </entry>
   <entry>
@@ -17182,8 +17182,8 @@
         <category>面向对象</category>
       </categories>
       <tags>
-        <tag>面向对象</tag>
         <tag>孟子</tag>
+        <tag>面向对象</tag>
         <tag>设计模式</tag>
         <tag>结构型模式</tag>
         <tag>外观模式</tag>
@@ -18294,9 +18294,9 @@
         <tag>TCP</tag>
         <tag>http</tag>
         <tag>https</tag>
+        <tag>会话机制</tag>
         <tag>UDP</tag>
         <tag>websocket</tag>
-        <tag>会话机制</tag>
         <tag>http1.0</tag>
         <tag>http1.1</tag>
         <tag>http2.0</tag>
@@ -18808,8 +18808,8 @@
         <tag>GitHub</tag>
         <tag>PHP</tag>
         <tag>composer</tag>
-        <tag>packagist</tag>
         <tag>psr</tag>
+        <tag>packagist</tag>
       </tags>
   </entry>
   <entry>
@@ -20461,8 +20461,8 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>压缩列表</tag>
         <tag>ZIPLIST</tag>
+        <tag>压缩列表</tag>
         <tag>大端模式</tag>
         <tag>小端模式</tag>
       </tags>
@@ -20558,10 +20558,10 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>ZIPLIST</tag>
-        <tag>LINKEDLIST</tag>
         <tag>快表</tag>
         <tag>QUICKLIST</tag>
+        <tag>LINKEDLIST</tag>
+        <tag>ZIPLIST</tag>
       </tags>
   </entry>
   <entry>
@@ -22223,8 +22223,8 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>双端链表</tag>
         <tag>LINKEDLIST</tag>
+        <tag>双端链表</tag>
       </tags>
   </entry>
   <entry>
@@ -22940,8 +22940,8 @@
       </categories>
       <tags>
         <tag>NoSQL</tag>
-        <tag>Redis</tag>
         <tag>memcached</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -23441,10 +23441,10 @@
         <category>工具</category>
       </categories>
       <tags>
+        <tag>Mac</tag>
         <tag>工具</tag>
         <tag>IDE</tag>
         <tag>json</tag>
-        <tag>mac</tag>
         <tag>sublime</tag>
       </tags>
   </entry>
@@ -24075,9 +24075,9 @@
         <category>工具</category>
       </categories>
       <tags>
+        <tag>Mac</tag>
         <tag>工具</tag>
         <tag>IDE</tag>
-        <tag>mac</tag>
         <tag>汉化</tag>
         <tag>制表符</tag>
       </tags>
@@ -26204,7 +26204,10 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>PHP - 垃圾回收机制 - 引用计数 - 深度优先遍历</tag>
+        <tag>PHP</tag>
+        <tag>垃圾回收机制</tag>
+        <tag>引用计数</tag>
+        <tag>深度优先遍历</tag>
       </tags>
   </entry>
   <entry>
@@ -26254,9 +26257,9 @@
       </categories>
       <tags>
         <tag>Mac</tag>
+        <tag>hostname</tag>
         <tag>ifconfig</tag>
         <tag>traceroute</tag>
-        <tag>hostname</tag>
         <tag>nslookup</tag>
         <tag>arp</tag>
       </tags>
@@ -26822,8 +26825,8 @@
       <tags>
         <tag>Mac</tag>
         <tag>PHP</tag>
-        <tag>ln</tag>
         <tag>phpize</tag>
+        <tag>ln</tag>
         <tag>MongoDB</tag>
       </tags>
   </entry>
@@ -28081,8 +28084,8 @@
       <tags>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
-        <tag>Redis</tag>
         <tag>memcached</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -29054,9 +29057,9 @@
         <category>NoSQL</category>
       </categories>
       <tags>
+        <tag>数据类型</tag>
         <tag>NoSQL</tag>
         <tag>Redis</tag>
-        <tag>Redis数据类型</tag>
       </tags>
   </entry>
   <entry>
@@ -30004,7 +30007,7 @@
     <title>$_POST、php://input 、$_GLOBALS['HTTP_RAW_POST_DATA']对比</title>
     <url>/2016/12/24/php-$_POST-php_input-$_GLOBALS/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>只有Centent-Type的值为application/x-<a href="http://www.form-urlencoded和multipart/form-data两种类型时，$_POST才能获取到数据" target="_blank" rel="noopener">www.form-urlencoded和multipart/form-data两种类型时，$_POST才能获取到数据</a></p>
+<p>只有Centent-Type的值为application/x-<a href="http://www.form-urlencoded和multipart/form-data两种类型时，$_POST才能获取到数据。" target="_blank" rel="noopener">www.form-urlencoded和multipart/form-data两种类型时，$_POST才能获取到数据。</a></p>
 </blockquote>
 <a id="more"></a>
 
@@ -30021,7 +30024,10 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>PHP - $_POST - php://input - $_GLOBALS</tag>
+        <tag>PHP</tag>
+        <tag>$_POST</tag>
+        <tag>php://input</tag>
+        <tag>$_GLOBALS</tag>
       </tags>
   </entry>
   <entry>
@@ -34046,6 +34052,49 @@
       </tags>
   </entry>
   <entry>
+    <title>Mac下通过brew安装使用MySQL</title>
+    <url>/2016/03/22/mysql-Mac%E4%B8%8B%E9%80%9A%E8%BF%87brew%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8MySQL/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
+<li>查看可安装的包<code>brew search mysql</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;&#x3D;&gt; Formulae</span><br><span class="line">automysqlbackup            mysql-client@5.7           mysql@5.6</span><br><span class="line">mysql                      mysql-connector-c++        mysql@5.7 ✔</span><br><span class="line">mysql++                    mysql-sandbox              mysqltuner</span><br><span class="line">mysql-client               mysql-search-replace       qt-mysql</span><br><span class="line">&#x3D;&#x3D;&gt; Casks</span><br><span class="line">mysql-connector-python     mysql-utilities            navicat-for-mysql</span><br><span class="line">mysql-shell                mysqlworkbench             sqlpro-for-mysql</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装对应的包<code>brew install mysql@5.7</code></li>
+</ol>
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>通过brew安装的MySQL配置文件在哪儿<code>cd /usr/local/Cellar/mysql@5.7/5.7.32/bin/ &amp;&amp; ./mysqld --help --verbose | less</code><ul>
+<li>修改datadir，<code>vim /usr/local/etc/my.cnf</code>，在<code>[mysqld]</code>下加入</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">datadir &#x3D; &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装后启动与关闭<ul>
+<li><code>mysql.server start</code></li>
+<li><code>mysql.server stop</code></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2021-03-31T10:38:55.6NZ mysqld_safe Logging to &#39;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;playcrabdeMacBook-Air-5.local.err&#39;.</span><br><span class="line">2021-03-31T10:38:55.6NZ mysqld_safe Starting mysqld daemon with databases from &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data</span><br><span class="line">2021-03-31T10:38:55.586806Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).</span><br><span class="line">2021-03-31T10:38:55.587174Z 0 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled</span><br><span class="line">2021-03-31T10:38:55.587229Z 0 [Note] &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;mysql@5.7&#x2F;5.7.32&#x2F;bin&#x2F;mysqld (mysqld 5.7.32) starting as process 53974 ...</span><br><span class="line">2021-03-31T10:38:55.592524Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins</span><br><span class="line">2021-03-31T10:38:55.592566Z 0 [Note] InnoDB: Uses event mutexes</span><br><span class="line">2021-03-31T10:38:55.592577Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier</span><br><span class="line">2021-03-31T10:38:55.592587Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.11</span><br><span class="line">2021-03-31T10:38:55.592913Z 0 [Note] InnoDB: Number of pools: 1</span><br><span class="line">2021-03-31T10:38:55.593055Z 0 [Note] InnoDB: Using CPU crc32 instructions</span><br><span class="line">2021-03-31T10:38:55.594398Z 0 [Note] InnoDB: Initializing buffer pool, total size &#x3D; 128M, instances &#x3D; 1, chunk size &#x3D; 128M</span><br><span class="line">2021-03-31T10:38:55.605039Z 0 [Note] InnoDB: Completed initialization of buffer pool</span><br><span class="line">2021-03-31T10:38:55.620905Z 0 [Note] InnoDB: Highest supported file format is Barracuda.</span><br><span class="line">2021-03-31T10:38:55.636870Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables</span><br><span class="line">2021-03-31T10:38:55.637241Z 0 [Note] InnoDB: Setting file &#39;.&#x2F;ibtmp1&#39; size to 12 MB. Physically writing the file full; Please wait ...</span><br><span class="line">2021-03-31T10:38:55.673043Z 0 [Note] InnoDB: File &#39;.&#x2F;ibtmp1&#39; size is now 12 MB.</span><br><span class="line">2021-03-31T10:38:55.674434Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.</span><br><span class="line">2021-03-31T10:38:55.674492Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.</span><br><span class="line">2021-03-31T10:38:55.675189Z 0 [Note] InnoDB: 5.7.32 started; log sequence number 1209999</span><br><span class="line">2021-03-31T10:38:55.675571Z 0 [Note] Plugin &#39;FEDERATED&#39; is disabled.</span><br><span class="line">mysqld: Table &#39;mysql.plugin&#39; doesn&#39;t exist</span><br><span class="line">2021-03-31T10:38:55.676191Z 0 [ERROR] Can&#39;t open the mysql.plugin table. Please run mysql_upgrade to create it.</span><br><span class="line">2021-03-31T10:38:55.676276Z 0 [Note] InnoDB: Loading buffer pool(s) from &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;ib_buffer_pool</span><br><span class="line">2021-03-31T10:38:55.676590Z 0 [ERROR] unknown variable &#39;mysqlx-bind-address&#x3D;127.0.0.1&#39;</span><br><span class="line">2021-03-31T10:38:55.676634Z 0 [ERROR] Aborting</span><br><span class="line"></span><br><span class="line">2021-03-31T10:38:55.676696Z 0 [Note] Binlog end</span><br><span class="line">2021-03-31T10:38:55.676749Z 0 [Note] InnoDB: Buffer pool(s) load completed at 210331 18:38:55</span><br><span class="line">2021-03-31T10:38:55.676793Z 0 [Note] Shutting down plugin &#39;ngram&#39;</span><br><span class="line">2021-03-31T10:38:55.676860Z 0 [Note] Shutting down plugin &#39;partition&#39;</span><br><span class="line">2021-03-31T10:38:55.676897Z 0 [Note] Shutting down plugin &#39;BLACKHOLE&#39;</span><br><span class="line">2021-03-31T10:38:55.676921Z 0 [Note] Shutting down plugin &#39;ARCHIVE&#39;</span><br><span class="line">2021-03-31T10:38:55.676945Z 0 [Note] Shutting down plugin &#39;PERFORMANCE_SCHEMA&#39;</span><br><span class="line">2021-03-31T10:38:55.677037Z 0 [Note] Shutting down plugin &#39;MRG_MYISAM&#39;</span><br><span class="line">2021-03-31T10:38:55.677075Z 0 [Note] Shutting down plugin &#39;MyISAM&#39;</span><br><span class="line">2021-03-31T10:38:55.677206Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_VIRTUAL&#39;</span><br><span class="line">2021-03-31T10:38:55.677247Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_DATAFILES&#39;</span><br><span class="line">2021-03-31T10:38:55.677269Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_TABLESPACES&#39;</span><br><span class="line">2021-03-31T10:38:55.677286Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_FOREIGN_COLS&#39;</span><br><span class="line">2021-03-31T10:38:55.677302Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_FOREIGN&#39;</span><br><span class="line">2021-03-31T10:38:55.677316Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_FIELDS&#39;</span><br><span class="line">2021-03-31T10:38:55.677330Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_COLUMNS&#39;</span><br><span class="line">2021-03-31T10:38:55.677343Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_INDEXES&#39;</span><br><span class="line">2021-03-31T10:38:55.677357Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_TABLESTATS&#39;</span><br><span class="line">2021-03-31T10:38:55.677371Z 0 [Note] Shutting down plugin &#39;INNODB_SYS_TABLES&#39;</span><br><span class="line">2021-03-31T10:38:55.677386Z 0 [Note] Shutting down plugin &#39;INNODB_FT_INDEX_TABLE&#39;</span><br><span class="line">2021-03-31T10:38:55.677402Z 0 [Note] Shutting down plugin &#39;INNODB_FT_INDEX_CACHE&#39;</span><br><span class="line">2021-03-31T10:38:55.677429Z 0 [Note] Shutting down plugin &#39;INNODB_FT_CONFIG&#39;</span><br><span class="line">2021-03-31T10:38:55.677442Z 0 [Note] Shutting down plugin &#39;INNODB_FT_BEING_DELETED&#39;</span><br><span class="line">2021-03-31T10:38:55.677454Z 0 [Note] Shutting down plugin &#39;INNODB_FT_DELETED&#39;</span><br><span class="line">2021-03-31T10:38:55.677467Z 0 [Note] Shutting down plugin &#39;INNODB_FT_DEFAULT_STOPWORD&#39;</span><br><span class="line">2021-03-31T10:38:55.677479Z 0 [Note] Shutting down plugin &#39;INNODB_METRICS&#39;</span><br><span class="line">2021-03-31T10:38:55.677492Z 0 [Note] Shutting down plugin &#39;INNODB_TEMP_TABLE_INFO&#39;</span><br><span class="line">2021-03-31T10:38:55.677505Z 0 [Note] Shutting down plugin &#39;INNODB_BUFFER_POOL_STATS&#39;</span><br><span class="line">2021-03-31T10:38:55.677517Z 0 [Note] Shutting down plugin &#39;INNODB_BUFFER_PAGE_LRU&#39;</span><br><span class="line">2021-03-31T10:38:55.677529Z 0 [Note] Shutting down plugin &#39;INNODB_BUFFER_PAGE&#39;</span><br><span class="line">2021-03-31T10:38:55.677541Z 0 [Note] Shutting down plugin &#39;INNODB_CMP_PER_INDEX_RESET&#39;</span><br><span class="line">2021-03-31T10:38:55.677554Z 0 [Note] Shutting down plugin &#39;INNODB_CMP_PER_INDEX&#39;</span><br><span class="line">2021-03-31T10:38:55.677566Z 0 [Note] Shutting down plugin &#39;INNODB_CMPMEM_RESET&#39;</span><br><span class="line">2021-03-31T10:38:55.677578Z 0 [Note] Shutting down plugin &#39;INNODB_CMPMEM&#39;</span><br><span class="line">2021-03-31T10:38:55.677590Z 0 [Note] Shutting down plugin &#39;INNODB_CMP_RESET&#39;</span><br><span class="line">2021-03-31T10:38:55.677656Z 0 [Note] Shutting down plugin &#39;INNODB_CMP&#39;</span><br><span class="line">2021-03-31T10:38:55.677675Z 0 [Note] Shutting down plugin &#39;INNODB_LOCK_WAITS&#39;</span><br><span class="line">2021-03-31T10:38:55.677683Z 0 [Note] Shutting down plugin &#39;INNODB_LOCKS&#39;</span><br><span class="line">2021-03-31T10:38:55.677691Z 0 [Note] Shutting down plugin &#39;INNODB_TRX&#39;</span><br><span class="line">2021-03-31T10:38:55.677702Z 0 [Note] Shutting down plugin &#39;InnoDB&#39;</span><br><span class="line">2021-03-31T10:38:55.677808Z 0 [Note] InnoDB: FTS optimize thread exiting.</span><br><span class="line">2021-03-31T10:38:55.677941Z 0 [Note] InnoDB: Starting shutdown...</span><br><span class="line">2021-03-31T10:38:55.781304Z 0 [Note] InnoDB: Dumping buffer pool(s) to &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;ib_buffer_pool</span><br><span class="line">2021-03-31T10:38:55.789756Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 210331 18:38:55</span><br><span class="line">2021-03-31T10:38:57.141615Z 0 [Note] InnoDB: Shutdown completed; log sequence number 1210018</span><br><span class="line">2021-03-31T10:38:57.145029Z 0 [Note] InnoDB: Removed temporary tablespace data file: &quot;ibtmp1&quot;</span><br><span class="line">2021-03-31T10:38:57.145167Z 0 [Note] Shutting down plugin &#39;MEMORY&#39;</span><br><span class="line">2021-03-31T10:38:57.145206Z 0 [Note] Shutting down plugin &#39;CSV&#39;</span><br><span class="line">2021-03-31T10:38:57.145255Z 0 [Note] Shutting down plugin &#39;sha256_password&#39;</span><br><span class="line">2021-03-31T10:38:57.145295Z 0 [Note] Shutting down plugin &#39;mysql_native_password&#39;</span><br><span class="line">2021-03-31T10:38:57.145700Z 0 [Note] Shutting down plugin &#39;binlog&#39;</span><br><span class="line">2021-03-31T10:38:57.146078Z 0 [Note] &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;mysql@5.7&#x2F;5.7.32&#x2F;bin&#x2F;mysqld: Shutdown complete</span><br><span class="line">2021-03-31T10:38:57.6NZ mysqld_safe mysqld from pid file &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;playcrabdeMacBook-Air-5.local.pid ended</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>MySQL</tag>
+        <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>查看某个端口的服务</title>
     <url>/2016/03/19/linux-%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E7%AB%AF%E5%8F%A3%E7%9A%84%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -35679,8 +35728,8 @@
         <category>Node</category>
       </categories>
       <tags>
-        <tag>JS</tag>
         <tag>Node</tag>
+        <tag>JS</tag>
       </tags>
   </entry>
   <entry>
@@ -35940,8 +35989,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>show</tag>
         <tag>push</tag>
+        <tag>show</tag>
         <tag>reset</tag>
         <tag>diff</tag>
         <tag>log</tag>
@@ -36897,8 +36946,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>grep</tag>
         <tag>awk</tag>
+        <tag>grep</tag>
         <tag>sed</tag>
       </tags>
   </entry>
@@ -37506,8 +37555,8 @@
       <tags>
         <tag>Git</tag>
         <tag>合并</tag>
-        <tag>reset</tag>
         <tag>merge</tag>
+        <tag>reset</tag>
       </tags>
   </entry>
   <entry>
@@ -38464,8 +38513,8 @@ read_xlsx(name, sheet)
         <category>操作系统</category>
       </categories>
       <tags>
-        <tag>gcc</tag>
         <tag>预处理</tag>
+        <tag>gcc</tag>
         <tag>操作系统</tag>
         <tag>程序</tag>
         <tag>编译</tag>
@@ -40617,8 +40666,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>cat</tag>
         <tag>grep</tag>
+        <tag>cat</tag>
         <tag>xargs</tag>
         <tag>printf</tag>
         <tag>strings</tag>
@@ -41866,6 +41915,23 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>shell脚本sleep和wait</title>
+    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>未来的你，一定会感谢现在拼命努力的自己。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell特殊变量和运算符</title>
     <url>/2015/03/19/linux-shell%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -41992,23 +42058,6 @@ read_xlsx(name, sheet)
         <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本sleep和wait</title>
-    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>未来的你，一定会感谢现在拼命努力的自己。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -46382,8 +46431,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>grep</tag>
         <tag>ls</tag>
+        <tag>grep</tag>
         <tag>wc</tag>
       </tags>
   </entry>
@@ -46877,8 +46926,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>人物</tag>
-        <tag>电影</tag>
         <tag>苏菲玛索</tag>
+        <tag>电影</tag>
         <tag>初吻</tag>
       </tags>
   </entry>
