@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Go语言常见web框架</title>
+    <url>/2021/03/27/go-%E5%B8%B8%E8%A7%81web%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>软件框架(software framework)，通常指的是为了实现某个业界标准或完成特定基本任务的软件组件规范，也指为了实现某个软件组件规范时，提供规范所要求之基础功能的软件产品。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件框架(software framework)，通常指的是为了实现某个业界标准或完成特定基本任务的软件组件规范，也指为了实现某个软件组件规范时，提供规范所要求之基础功能的软件产品。Web框架，全称web应用框架(Web application framework)是一种开发框架，用来支持动态网站、网络应用程序及网络服务的开发。</p>
+<h2 id="二、常见"><a href="#二、常见" class="headerlink" title="二、常见"></a>二、常见</h2><ol>
+<li><a href="https://beego.me/" target="_blank" rel="noopener">Beego</a></li>
+<li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">Gin</a></li>
+<li><a href="https://www.iris-go.com/" target="_blank" rel="noopener">Iris</a></li>
+<li><a href="https://echo.labstack.com/" target="_blank" rel="noopener">Echo</a></li>
+<li><a href="https://gobuffalo.io/en/" target="_blank" rel="noopener">Buffalo</a></li>
+<li><a href="https://github.com/revel/revel" target="_blank" rel="noopener">Revel</a></li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.zhihu.com/question/27370112" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://blog.csdn.net/bluehawksky/article/details/90447467" target="_blank" rel="noopener">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>web</tag>
+        <tag>Beego</tag>
+        <tag>Gin</tag>
+        <tag>Iris</tag>
+        <tag>Echo</tag>
+        <tag>Buffalo</tag>
+        <tag>Revel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>主从复制</title>
+    <url>/2021/03/20/%E6%8A%80%E6%9C%AF-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>主从复制一般是为了实现数据的容灾备份或读写分离，一般会有N(<code>N&gt;=1</code>)台主DB和M(<code>M&gt;=1</code>)台从DB，其大致过程将主DB的数据复制到从DB，不同的DB实现原理不同。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主从复制一般是为了实现数据的容灾备份或读写分离，一般会有N(<code>N&gt;=1</code>)台主DB和M(<code>M&gt;=1</code>)台从DB，其大致过程将主DB的数据复制到从DB，不同的DB实现原理不同。以博主的工作经历来说，目前只用过MySQL、Redis、MongoDB这三种比较典型的DB，其他如基于列式存储的Hbase和基于倒排索引的全文搜索引擎Elasticsearch只是简单的使用过，此处不再深入。</p>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<li>MySQL</li>
+<li>Redis</li>
+<li>MongoDB</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/replication.html" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://redis.io/topics/replication" target="_blank" rel="noopener">参考二</a></li>
+<li><a href="https://docs.mongodb.com/manual/replication/" target="_blank" rel="noopener">参考三</a></li>
+<li><a href="http://xiaorui.cc/" target="_blank" rel="noopener">参考四</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>MySQL</tag>
+        <tag>MongoDB</tag>
+        <tag>主从复制</tag>
+        <tag>Elasticsearch</tag>
+        <tag>Redis</tag>
+        <tag>Hbase</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于一次线上事故的反思</title>
     <url>/2021/03/14/%E6%8A%80%E6%9C%AF-%E5%85%B3%E4%BA%8E%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E7%9A%84%E5%8F%8D%E6%80%9D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -7553,40 +7623,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mac之docker安装</title>
-    <url>/2019/08/09/mac-docker%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>技术这条路没有尽头，真是活到老学到老，今天咱们就来看看docker。最基本的，先从安装开始，特此记录！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、下载dmg安装"><a href="#一、下载dmg安装" class="headerlink" title="一、下载dmg安装"></a>一、下载dmg安装</h2><ol>
-<li><a href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener">Install Docker Desktop for Mac</a></li>
-<li><a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac" target="_blank" rel="noopener">Download from Docker Hub</a></li>
-<li><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Get Docker</a><ul>
-<li>需要登录docker账号，自己根据提示注册下就行了</li>
-</ul>
-</li>
-<li>接下来正常安装就行了</li>
-<li>卸载时直接用的AppCleaner，然后还要删除<code>/usr/local/bin/</code>目录下的docker相关的可执行文件</li>
-</ol>
-<h2 id="二、使用brew安装"><a href="#二、使用brew安装" class="headerlink" title="二、使用brew安装"></a>二、使用brew安装</h2><ol>
-<li>安装时使用<code>brew cask install docker</code>一条命令即可，安装成功后会提示<code>🍺  docker was successfully installed!</code></li>
-<li>正常启动docker，则会在<code>/usr/local/bin</code>目录下生成可执行文件</li>
-<li>卸载<code>brew cask uninstall docker</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Mac</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Docker</tag>
-        <tag>brew</tag>
-        <tag>AppCleaner</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mac下mongodb安装</title>
     <url>/2019/08/08/nosql-mac%E4%B8%8Bmongodb%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -7641,37 +7677,6 @@
         <tag>Mac</tag>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>鉴权</title>
-    <url>/2019/08/06/%E6%8A%80%E6%9C%AF-%E9%89%B4%E6%9D%83/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>唯物主义承认世界是可知的，但是否认有全知者(神)存在。唯物主义认识到上述论断包含矛盾，但是不试图解决这个矛盾，而是把它承认下来，认为万事万物都是包含矛盾的，越矛盾就越真实。唯物论有两大核心：一个是物质，一个是意识；两大规律：唯物主义一元论(世界物质统一性原理)，物质和意识的辩证关系的原理。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>鉴权(authentication)是指验证用户是否拥有访问系统的权利。<ul>
-<li>传统的鉴权是通过密码来验证的，这种方式的前提是，每个获得密码的用户都已经被授权。在建立用户时，就为此用户分配一个密码，用户的密码可以由管理员指定，也可以由用户自行申请。这种方式的弱点十分明显：一旦密码被偷或用户遗失密码，情况就会十分麻烦，需要管理员对用户密码进行重新修改，而修改密码之前还要人工验证用户的合法身份。</li>
-<li>目前的主流鉴权方式是利用认证授权来验证数字签名的正确与否。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
-<li>HTTP Basic Authentication</li>
-<li>session-cookie</li>
-<li>Token验证</li>
-<li>OAuth(开放授权)</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>鉴权</tag>
-        <tag>唯物主义</tag>
       </tags>
   </entry>
   <entry>
@@ -8942,44 +8947,6 @@
       </tags>
   </entry>
   <entry>
-    <title>mac下运行C语言程序</title>
-    <url>/2019/06/26/mac-%E8%BF%90%E8%A1%8CC%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>C是一种通用的编程语言，广泛用于系统软件与应用软件的开发。于1969年至1973年间，为了移植与开发UNIX操作系统，由丹尼斯·里奇与肯·汤普逊，以B语言为基础，在贝尔实验室设计、开发出来。目前C语言编译器普遍存在于各种不同的操作系统中，例如Microsoft Windows、macOS、Linux、Unix等。C语言的设计影响了众多后来的编程语言，例如C++、Objective-C、Java、C#等。</p>
-</blockquote>
-<a id="more"></a>
-
-<ol>
-<li>若要在Mac的终端中编译并运行C源代码，你首先需要安装Command Line Tools，里面包含有GCC编译器。</li>
-<li>安装GCC编译器方法：<ul>
-<li>打开终端，输入<code>gcc</code>。</li>
-<li>如果没有安装 Command Line Tools，会弹出一个窗口提示安装，点击安装即可。</li>
-<li>如果出现提示“no input files”，说明你已经安装了 gcc 编译器，可以直接开始编译程序。</li>
-</ul>
-</li>
-<li>使用编译器将源文件中的代码转换为二进制代码，这个过程叫做编译。<ul>
-<li>将终端的工作路径切换到源文件所在的路径。</li>
-<li>执行命令：gcc -c 源文件的名称，如：gcc -c test.c</li>
-<li>如果没有意外的话，就会在当前工作路径下生成一个test.o文件，这个文件叫做目标文件，目标文件存储的是test.c文件中代码对应的二进制指令。</li>
-</ul>
-</li>
-<li>一个程序如果想要交给CPU执行，只是有二进制指令是不行的，还必须为这个目标文件添加一些启动代码，添加启动代码的过程叫做链接。<ul>
-<li>执行命令：gcc 目标文件名称，如：gcc test.o</li>
-<li>如果一切正常的情况下，就会生成一个a.out文件，这个文件就是最终可以执行的程序了。</li>
-</ul>
-</li>
-<li>执行这个a.out程序，就可以看到程序的执行结果了，如：<code>./a.out</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Mac</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>酒干倘卖无</title>
     <url>/2019/06/24/%E9%9F%B3%E4%B9%90-%E9%85%92%E5%B9%B2%E5%80%98%E5%8D%96%E6%97%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -9641,66 +9608,6 @@
         <tag>Mac</tag>
         <tag>Nginx</tag>
         <tag>vagrant</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>接口幂等性</title>
-    <url>/2019/05/17/%E6%8A%80%E6%9C%AF-%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>接口幂等性就是用户对于同一操作发起的一次请求或者多次请求的结果是一致的，不会因为多次点击而产生了副作用。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、什么是幂等性"><a href="#一、什么是幂等性" class="headerlink" title="一、什么是幂等性"></a>一、什么是幂等性</h2><ol>
-<li>HTTP/1.1中对幂等性的定义是：一次和多次请求某一个资源对于资源本身应该具有同样的结果（网络超时等问题除外）。也就是说，其任意多次执行对资源本身所产生的影响均与一次执行的影响相同。<ul>
-<li>幂等是一次或多次请求对资源没有副作用</li>
-<li>幂等还包括第一次请求的时候对资源产生了副作用，但是以后的多次请求都不会再对资源产生副作用</li>
-<li>幂等关注的是以后的多次请求是否对资源产生的副作用，而不关注结果</li>
-<li>网络超时等问题，不是幂等的讨论范围</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>幂等性是系统服务对外的一种承诺（而不是实现），承诺只要调用接口成功，外部多次调用对系统的影响是一致的。</p>
-</blockquote>
-<blockquote>
-<p>声明为幂等的服务会认为外部调用失败是常态，并且失败之后必然会有重试。</p>
-</blockquote>
-<h2 id="二、接口幂等性"><a href="#二、接口幂等性" class="headerlink" title="二、接口幂等性"></a>二、接口幂等性</h2><ol>
-<li>所谓幂等性，指的是系统A对系统B的接口进行多次调用所产生的结果和调用一次所产生的结果是一致的。举个栗子，比如我们正在开发一个网上下单系统，当用户使用我们的系统下单时，我们就需要对该订单进行发货处理，我们的网上下单系统会调用发货系统进行发货，假如下单系统调用发货系统时网络延迟造成前端没响应，用户又点了几次，这样就会造成重复下单的问题。</li>
-</ol>
-<h2 id="三、HOW"><a href="#三、HOW" class="headerlink" title="三、HOW"></a>三、HOW</h2><ol>
-<li><p>什么情况下需要保证接口的幂等性：在增删改查4个操作中，尤为注意就是增加或者修改，</p>
-<ul>
-<li>查询操作：查询对于结果是不会有改变的，查询一次和查询多次，在数据不变的情况下，查询结果是一样的。select是天然的幂等操作</li>
-<li>删除操作：删除一次和多次删除都是把数据删除。(注意可能返回结果不一样，删除的数据不存在，返回0，删除的数据多条，返回结果多个,在不考虑返回结果的情况下,删除操作也是具有幂等性的)</li>
-<li>更新操作：修改在大多场景下结果一样,但是如果是增量修改是需要保证幂等性的,如下例子:<ul>
-<li>把表中id为XXX的记录的A字段值设置为1,这种操作不管执行多少次都是幂等的</li>
-<li>把表中id为XXX的记录的A字段值增加1,这种操作就不是幂等的</li>
-</ul>
-</li>
-<li>新增操作：增加在重复提交的场景下会出现幂等性问题,如以上的支付问题</li>
-</ul>
-</li>
-<li><p>如何保证接口幂等？</p>
-<ul>
-<li>通过代码逻辑判断实现</li>
-<li>使用token机制实现</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/huaixiaonian/p/9577567.html" target="_blank" rel="noopener">参考一</a></li>
-<li><a href="https://www.jianshu.com/p/629f0f3481bf" target="_blank" rel="noopener">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>幂等性</tag>
-        <tag>接口</tag>
       </tags>
   </entry>
   <entry>
@@ -14821,37 +14728,6 @@
       </tags>
   </entry>
   <entry>
-    <title>埋点</title>
-    <url>/2019/02/17/%E6%8A%80%E6%9C%AF-%E5%9F%8B%E7%82%B9/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>最近跟同事聊起来关于用户行为的一些东东，平时都没怎么注意过这些东西，今天咱们来聊聊数据埋点，特此记录！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、WHAT"><a href="#一、WHAT" class="headerlink" title="一、WHAT"></a>一、WHAT</h2><ol>
-<li>埋点分析，是网站分析的一种常用的数据采集方法，是数据采集领域(尤其是用户行为数据采集领域)的术语，指的是针对特定用户行为或事件进行捕获、处理和发送的相关技术及其实施过程，如用户某个icon点击次数、观看某个视频的时长等。<ul>
-<li>数据埋点分为初级、中级、高级三种方式。</li>
-<li>数据埋点是一种良好的私有化部署数据采集方式。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、WHY"><a href="#二、WHY" class="headerlink" title="二、WHY"></a>二、WHY</h2><ol>
-<li>埋点的作用就是用来做用户动作行为分析的，即时有效的埋点可以为产品的下一步推广、实施、改进等做导向。</li>
-</ol>
-<h2 id="三、HOW"><a href="#三、HOW" class="headerlink" title="三、HOW"></a>三、HOW</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://ark.analysys.cn/blog/1223" target="_blank" rel="noopener">如何理解埋点</a></li>
-<li><a href="https://www.zhihu.com/question/36411025/answer/654557035" target="_blank" rel="noopener">数据埋点意义</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>埋点</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C10K</title>
     <url>/2019/02/16/%E6%8A%80%E6%9C%AF-C10K/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -15180,29 +15056,6 @@
       </categories>
       <tags>
         <tag>MySQL - 索引 - B+</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>加密</title>
-    <url>/2019/02/14/%E6%8A%80%E6%9C%AF-%E5%8A%A0%E5%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>抄袭其实不叫抄袭，语文上说是借鉴，数学上叫类比，英语上叫copy，地理上是迁移，生物上是转录，物理上是参考系，化学上叫同分异构体，政治上叫求同存异，历史上就是文化大统一。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p style="text-indent:2em">加密，是以某种特殊的算法改变原有的信息数据，使得未授权的用户即使获得了已加密的信息，但因不知解密的方法，仍然无法了解信息的内容。</p>
-
-<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
-<li>对称加密：双方采用共同密钥(对外保密的)</li>
-<li>非对称加密：存在两个密钥，一种是公共密钥(可以公开)，一种是私人密钥(对外保密)。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>加密</tag>
       </tags>
   </entry>
   <entry>
@@ -16536,23 +16389,6 @@
       </tags>
   </entry>
   <entry>
-    <title>设计模式之命令模式</title>
-    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>命令模式(Command Pattern)是一种数据驱动的设计模式，它属于行为型模式。请求以命令的形式包裹在对象中，并传给调用对象。调用对象寻找可以处理该命令的合适的对象，并把该命令传给相应的对象，该对象执行命令。</p>
-</blockquote>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>行为型模式</tag>
-        <tag>命令模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>设计模式之职责链模式</title>
     <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -17861,6 +17697,37 @@
       </tags>
   </entry>
   <entry>
+    <title>设计模式之适配器模式</title>
+    <url>/2018/09/23/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>适配器是一个接口转换器，它可以是一个独立的硬件接口设备，允许硬件或电子接口与其它硬件或电子接口相连，也可以是信息接口。比如：电源适配器、三角架基座转接部件、USB与串口的转接设备等。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>适配器模式，作为两个不兼容的接口之间的桥梁，是指将一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够在一起工作。</li>
+</ol>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
+<li>定义类</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface MediaPlayer </span><br><span class="line">&#123;</span><br><span class="line">    public function play($type, $name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface AdvancedMediaPlayer</span><br><span class="line">&#123; </span><br><span class="line">    public function playVlc($name);</span><br><span class="line">    public function playMp4($name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class VlcPlayer implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;播放VLC文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;none</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Mp4Player implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;none</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">       echo &quot;播放MP4文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MediaAdapter implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $advanced;</span><br><span class="line">  </span><br><span class="line">    public function __construct ($type) </span><br><span class="line">    &#123;</span><br><span class="line">        if ($type &#x3D;&#x3D; &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced &#x3D; new VlcPlayer();       </span><br><span class="line">        &#125; else if ($type &#x3D;&#x3D; &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced &#x3D; new Mp4Player();</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($type &#x3D;&#x3D; &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playVlc($name);</span><br><span class="line">        &#125; else if ($type &#x3D;&#x3D; &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playMp4($name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudioPlayer implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $adapter; </span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;    </span><br><span class="line">        if ($type &#x3D;&#x3D; &quot;mp3&quot;) &#123;</span><br><span class="line">            echo &quot;播放MP3文件: &quot; . $name, PHP_EOL;         </span><br><span class="line">        &#125; else if (in_array($type, [&quot;vlc&quot;, &quot;mp4&quot;])) &#123;</span><br><span class="line">           $this-&gt;adapter &#x3D; new MediaAdapter($type);</span><br><span class="line">           $this-&gt;adapter-&gt;play($type, $name);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">           echo &quot;不支持&quot;.$type.&quot;格式&quot;, PHP_EOL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$audioPlayer &#x3D; new AudioPlayer();</span><br><span class="line"></span><br><span class="line">$audioPlayer-&gt;play(&quot;mp3&quot;, &quot;1.mp3&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;mp4&quot;, &quot;2.mp4&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;vlc&quot;, &quot;3.vlc&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;avi&quot;, &quot;4.avi&quot;);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>设计模式</tag>
+        <tag>结构型模式</tag>
+        <tag>适配器模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go语言之env说明</title>
     <url>/2018/09/19/go-env%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -17951,6 +17818,23 @@
       </tags>
   </entry>
   <entry>
+    <title>设计模式之桥接模式</title>
+    <url>/2018/09/15/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>桥接(Bridge)是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。</p>
+</blockquote>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>设计模式</tag>
+        <tag>结构型模式</tag>
+        <tag>桥接模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RabbitMQ一些概念</title>
     <url>/2018/09/10/MQ-PHP-RabbitMQ%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -17997,6 +17881,23 @@
       <tags>
         <tag>MQ</tag>
         <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式之命令模式</title>
+    <url>/2018/09/09/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>命令模式(Command Pattern)是一种数据驱动的设计模式，它属于行为型模式。请求以命令的形式包裹在对象中，并传给调用对象。调用对象寻找可以处理该命令的合适的对象，并把该命令传给相应的对象，该对象执行命令。</p>
+</blockquote>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>设计模式</tag>
+        <tag>行为型模式</tag>
+        <tag>命令模式</tag>
       </tags>
   </entry>
   <entry>
@@ -18049,51 +17950,37 @@
       </tags>
   </entry>
   <entry>
-    <title>设计模式之适配器模式</title>
-    <url>/2018/09/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+    <title>mac之docker安装</title>
+    <url>/2018/08/19/mac-docker%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>适配器是一个接口转换器，它可以是一个独立的硬件接口设备，允许硬件或电子接口与其它硬件或电子接口相连，也可以是信息接口。比如：电源适配器、三角架基座转接部件、USB与串口的转接设备等。</p>
+<p>技术这条路没有尽头，真是活到老学到老，今天咱们就来看看docker。最基本的，先从安装开始，特此记录！</p>
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>适配器模式，作为两个不兼容的接口之间的桥梁，是指将一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够在一起工作。</li>
+<h2 id="一、下载dmg安装"><a href="#一、下载dmg安装" class="headerlink" title="一、下载dmg安装"></a>一、下载dmg安装</h2><ol>
+<li><a href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener">Install Docker Desktop for Mac</a></li>
+<li><a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac" target="_blank" rel="noopener">Download from Docker Hub</a></li>
+<li><a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Get Docker</a><ul>
+<li>需要登录docker账号，自己根据提示注册下就行了</li>
+</ul>
+</li>
+<li>接下来正常安装就行了</li>
+<li>卸载时直接用的AppCleaner，然后还要删除<code>/usr/local/bin/</code>目录下的docker相关的可执行文件</li>
 </ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
-<li>定义类</li>
+<h2 id="二、使用brew安装"><a href="#二、使用brew安装" class="headerlink" title="二、使用brew安装"></a>二、使用brew安装</h2><ol>
+<li>安装时使用<code>brew cask install docker</code>一条命令即可，安装成功后会提示<code>🍺  docker was successfully installed!</code></li>
+<li>正常启动docker，则会在<code>/usr/local/bin</code>目录下生成可执行文件</li>
+<li>卸载<code>brew cask uninstall docker</code></li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface MediaPlayer </span><br><span class="line">&#123;</span><br><span class="line">    public function play($type, $name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface AdvancedMediaPlayer</span><br><span class="line">&#123; </span><br><span class="line">    public function playVlc($name);</span><br><span class="line">    public function playMp4($name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class VlcPlayer implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;播放VLC文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;none</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Mp4Player implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;none</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">       echo &quot;播放MP4文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MediaAdapter implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $advanced;</span><br><span class="line">  </span><br><span class="line">    public function __construct ($type) </span><br><span class="line">    &#123;</span><br><span class="line">        if ($type &#x3D;&#x3D; &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced &#x3D; new VlcPlayer();       </span><br><span class="line">        &#125; else if ($type &#x3D;&#x3D; &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced &#x3D; new Mp4Player();</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($type &#x3D;&#x3D; &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playVlc($name);</span><br><span class="line">        &#125; else if ($type &#x3D;&#x3D; &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playMp4($name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudioPlayer implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $adapter; </span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;    </span><br><span class="line">        if ($type &#x3D;&#x3D; &quot;mp3&quot;) &#123;</span><br><span class="line">            echo &quot;播放MP3文件: &quot; . $name, PHP_EOL;         </span><br><span class="line">        &#125; else if (in_array($type, [&quot;vlc&quot;, &quot;mp4&quot;])) &#123;</span><br><span class="line">           $this-&gt;adapter &#x3D; new MediaAdapter($type);</span><br><span class="line">           $this-&gt;adapter-&gt;play($type, $name);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">           echo &quot;不支持&quot;.$type.&quot;格式&quot;, PHP_EOL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>调用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$audioPlayer &#x3D; new AudioPlayer();</span><br><span class="line"></span><br><span class="line">$audioPlayer-&gt;play(&quot;mp3&quot;, &quot;1.mp3&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;mp4&quot;, &quot;2.mp4&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;vlc&quot;, &quot;3.vlc&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;avi&quot;, &quot;4.avi&quot;);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>面向对象</category>
+        <category>Mac</category>
       </categories>
       <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>结构型模式</tag>
-        <tag>适配器模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之桥接模式</title>
-    <url>/2018/09/06/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>桥接(Bridge)是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。</p>
-</blockquote>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>结构型模式</tag>
-        <tag>桥接模式</tag>
+        <tag>Mac</tag>
+        <tag>Docker</tag>
+        <tag>brew</tag>
+        <tag>AppCleaner</tag>
       </tags>
   </entry>
   <entry>
@@ -20182,22 +20069,6 @@
       <tags>
         <tag>技术</tag>
         <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试之简历</title>
-    <url>/2018/04/13/%E6%8A%80%E6%9C%AF-%E7%AE%80%E5%8E%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>简历(英语：resume)，顾名思义，就是对个人学历、经历、特长、爱好及其它有关情况所作的简明扼要的书面介绍。简历是有针对性的自我介绍的一种规范化、逻辑化的书面表达。对应聘者来说，简历是求职的“敲门砖”。</p>
-</blockquote>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>面试</tag>
-        <tag>简历</tag>
       </tags>
   </entry>
   <entry>
@@ -26566,6 +26437,44 @@
       </tags>
   </entry>
   <entry>
+    <title>mac下运行C语言程序</title>
+    <url>/2017/06/26/mac-%E8%BF%90%E8%A1%8CC%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>C是一种通用的编程语言，广泛用于系统软件与应用软件的开发。于1969年至1973年间，为了移植与开发UNIX操作系统，由丹尼斯·里奇与肯·汤普逊，以B语言为基础，在贝尔实验室设计、开发出来。目前C语言编译器普遍存在于各种不同的操作系统中，例如Microsoft Windows、macOS、Linux、Unix等。C语言的设计影响了众多后来的编程语言，例如C++、Objective-C、Java、C#等。</p>
+</blockquote>
+<a id="more"></a>
+
+<ol>
+<li>若要在Mac的终端中编译并运行C源代码，你首先需要安装Command Line Tools，里面包含有GCC编译器。</li>
+<li>安装GCC编译器方法：<ul>
+<li>打开终端，输入<code>gcc</code>。</li>
+<li>如果没有安装`Command Line Tools1，会弹出一个窗口提示安装，点击安装即可。</li>
+<li>如果出现提示“no input files”，说明你已经安装了gcc编译器，可以直接开始编译程序。</li>
+</ul>
+</li>
+<li>使用编译器将源文件中的代码转换为二进制代码，这个过程叫做编译。<ul>
+<li>将终端的工作路径切换到源文件所在的路径。</li>
+<li>执行命令：<code>gcc -c 源文件的名称</code>，如：<code>gcc -c test.c</code></li>
+<li>如果没有意外的话，就会在当前工作路径下生成一个test.o文件，这个文件叫做目标文件，目标文件存储的是test.c文件中代码对应的二进制指令。</li>
+</ul>
+</li>
+<li>一个程序如果想要交给CPU执行，只是有二进制指令是不行的，还必须为这个目标文件添加一些启动代码，添加启动代码的过程叫做链接。<ul>
+<li>执行命令：<code>gcc 目标文件名称</code>，如：<code>gcc test.o</code></li>
+<li>如果一切正常的情况下，就会生成一个a.out文件，这个文件就是最终可以执行的程序了。</li>
+</ul>
+</li>
+<li>执行这个a.out程序，就可以看到程序的执行结果了，如：<code>./a.out</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac常用免费软件</title>
     <url>/2017/06/22/mac-%E5%B8%B8%E7%94%A8%E5%85%8D%E8%B4%B9%E8%BD%AF%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -27129,6 +27038,66 @@
         <tag>Python</tag>
         <tag>YAML</tag>
         <tag>PyYAML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接口幂等性</title>
+    <url>/2017/05/19/%E6%8A%80%E6%9C%AF-%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>接口幂等性就是用户对于同一操作发起的一次请求或者多次请求的结果是一致的，不会因为多次点击而产生了副作用。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、什么是幂等性"><a href="#一、什么是幂等性" class="headerlink" title="一、什么是幂等性"></a>一、什么是幂等性</h2><ol>
+<li>HTTP/1.1中对幂等性的定义是：一次和多次请求某一个资源对于资源本身应该具有同样的结果（网络超时等问题除外）。也就是说，其任意多次执行对资源本身所产生的影响均与一次执行的影响相同。<ul>
+<li>幂等是一次或多次请求对资源没有副作用</li>
+<li>幂等还包括第一次请求的时候对资源产生了副作用，但是以后的多次请求都不会再对资源产生副作用</li>
+<li>幂等关注的是以后的多次请求是否对资源产生的副作用，而不关注结果</li>
+<li>网络超时等问题，不是幂等的讨论范围</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>幂等性是系统服务对外的一种承诺（而不是实现），承诺只要调用接口成功，外部多次调用对系统的影响是一致的。</p>
+</blockquote>
+<blockquote>
+<p>声明为幂等的服务会认为外部调用失败是常态，并且失败之后必然会有重试。</p>
+</blockquote>
+<h2 id="二、接口幂等性"><a href="#二、接口幂等性" class="headerlink" title="二、接口幂等性"></a>二、接口幂等性</h2><ol>
+<li>所谓幂等性，指的是系统A对系统B的接口进行多次调用所产生的结果和调用一次所产生的结果是一致的。举个栗子，比如我们正在开发一个网上下单系统，当用户使用我们的系统下单时，我们就需要对该订单进行发货处理，我们的网上下单系统会调用发货系统进行发货，假如下单系统调用发货系统时网络延迟造成前端没响应，用户又点了几次，这样就会造成重复下单的问题。</li>
+</ol>
+<h2 id="三、HOW"><a href="#三、HOW" class="headerlink" title="三、HOW"></a>三、HOW</h2><ol>
+<li><p>什么情况下需要保证接口的幂等性：在增删改查4个操作中，尤为注意就是增加或者修改，</p>
+<ul>
+<li>查询操作：查询对于结果是不会有改变的，查询一次和查询多次，在数据不变的情况下，查询结果是一样的。select是天然的幂等操作</li>
+<li>删除操作：删除一次和多次删除都是把数据删除。(注意可能返回结果不一样，删除的数据不存在，返回0，删除的数据多条，返回结果多个,在不考虑返回结果的情况下,删除操作也是具有幂等性的)</li>
+<li>更新操作：修改在大多场景下结果一样,但是如果是增量修改是需要保证幂等性的,如下例子:<ul>
+<li>把表中id为XXX的记录的A字段值设置为1,这种操作不管执行多少次都是幂等的</li>
+<li>把表中id为XXX的记录的A字段值增加1,这种操作就不是幂等的</li>
+</ul>
+</li>
+<li>新增操作：增加在重复提交的场景下会出现幂等性问题,如以上的支付问题</li>
+</ul>
+</li>
+<li><p>如何保证接口幂等？</p>
+<ul>
+<li>通过代码逻辑判断实现</li>
+<li>使用token机制实现</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/huaixiaonian/p/9577567.html" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://www.jianshu.com/p/629f0f3481bf" target="_blank" rel="noopener">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>幂等性</tag>
+        <tag>接口</tag>
       </tags>
   </entry>
   <entry>
@@ -29341,6 +29310,37 @@
       </tags>
   </entry>
   <entry>
+    <title>埋点</title>
+    <url>/2017/02/17/%E6%8A%80%E6%9C%AF-%E5%9F%8B%E7%82%B9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>最近跟同事聊起来关于用户行为的一些东东，平时都没怎么注意过这些东西，今天咱们来聊聊数据埋点，特此记录！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、WHAT"><a href="#一、WHAT" class="headerlink" title="一、WHAT"></a>一、WHAT</h2><ol>
+<li>埋点分析，是网站分析的一种常用的数据采集方法，是数据采集领域(尤其是用户行为数据采集领域)的术语，指的是针对特定用户行为或事件进行捕获、处理和发送的相关技术及其实施过程，如用户某个icon点击次数、观看某个视频的时长等。<ul>
+<li>数据埋点分为初级、中级、高级三种方式。</li>
+<li>数据埋点是一种良好的私有化部署数据采集方式。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、WHY"><a href="#二、WHY" class="headerlink" title="二、WHY"></a>二、WHY</h2><ol>
+<li>埋点的作用就是用来做用户动作行为分析的，即时有效的埋点可以为产品的下一步推广、实施、改进等做导向。</li>
+</ol>
+<h2 id="三、HOW"><a href="#三、HOW" class="headerlink" title="三、HOW"></a>三、HOW</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://ark.analysys.cn/blog/1223" target="_blank" rel="noopener">如何理解埋点</a></li>
+<li><a href="https://www.zhihu.com/question/36411025/answer/654557035" target="_blank" rel="noopener">数据埋点意义</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>埋点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue入门</title>
     <url>/2017/02/15/vue-%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -29768,6 +29768,29 @@
         <tag>操作系统</tag>
         <tag>I/O</tag>
         <tag>poll</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>加密</title>
+    <url>/2017/02/01/%E6%8A%80%E6%9C%AF-%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>抄袭其实不叫抄袭，语文上说是借鉴，数学上叫类比，英语上叫copy，地理上是迁移，生物上是转录，物理上是参考系，化学上叫同分异构体，政治上叫求同存异，历史上就是文化大统一。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p style="text-indent:2em">加密，是以某种特殊的算法改变原有的信息数据，使得未授权的用户即使获得了已加密的信息，但因不知解密的方法，仍然无法了解信息的内容。</p>
+
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<li>对称加密：双方采用共同密钥(对外保密的)</li>
+<li>非对称加密：存在两个密钥，一种是公共密钥(可以公开)，一种是私人密钥(对外保密)。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>加密</tag>
       </tags>
   </entry>
   <entry>
@@ -31199,6 +31222,37 @@
       </tags>
   </entry>
   <entry>
+    <title>鉴权</title>
+    <url>/2016/08/06/%E6%8A%80%E6%9C%AF-%E9%89%B4%E6%9D%83/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>唯物主义承认世界是可知的，但是否认有全知者(神)存在。唯物主义认识到上述论断包含矛盾，但是不试图解决这个矛盾，而是把它承认下来，认为万事万物都是包含矛盾的，越矛盾就越真实。唯物论有两大核心：一个是物质，一个是意识；两大规律：唯物主义一元论(世界物质统一性原理)，物质和意识的辩证关系的原理。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>鉴权(authentication)是指验证用户是否拥有访问系统的权利。<ul>
+<li>传统的鉴权是通过密码来验证的，这种方式的前提是，每个获得密码的用户都已经被授权。在建立用户时，就为此用户分配一个密码，用户的密码可以由管理员指定，也可以由用户自行申请。这种方式的弱点十分明显：一旦密码被偷或用户遗失密码，情况就会十分麻烦，需要管理员对用户密码进行重新修改，而修改密码之前还要人工验证用户的合法身份。</li>
+<li>目前的主流鉴权方式是利用认证授权来验证数字签名的正确与否。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
+<li>HTTP Basic Authentication</li>
+<li>session-cookie</li>
+<li>Token验证</li>
+<li>OAuth(开放授权)</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>鉴权</tag>
+        <tag>唯物主义</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>maven</title>
     <url>/2016/08/01/java-maven/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -32350,6 +32404,27 @@
       </tags>
   </entry>
   <entry>
+    <title>java关键字volatile</title>
+    <url>/2016/06/10/java-%E5%85%B3%E9%94%AE%E5%AD%97volatile/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>反射(Reflection)是Java的特征之一，它允许运行中的Java程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射(Reflection)是Java的特征之一，它允许运行中的Java程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.oracle.com/technical-resources/articles/java/javareflection.html" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数组json转换</title>
     <url>/2016/06/01/php-%E6%95%B0%E7%BB%84json%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -33174,6 +33249,24 @@
       <tags>
         <tag>MySQL</tag>
         <tag>WAL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java关键字synchronized</title>
+    <url>/2016/05/01/java-%E5%85%B3%E9%94%AE%E5%AD%97synchronized/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>synchronized是Java的一种同步锁，可用在代码块、方法、静态方法、类中，用于保证多线程操作时的原子性。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;synchronized是Java的一种同步锁，可用在代码块、方法、静态方法、类中，用于保证多线程操作时的原子性。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -41127,6 +41220,22 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>面试之简历</title>
+    <url>/2015/04/04/%E6%8A%80%E6%9C%AF-%E7%AE%80%E5%8E%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>简历(英语：resume)，顾名思义，就是对个人学历、经历、特长、爱好及其它有关情况所作的简明扼要的书面介绍。简历是有针对性的自我介绍的一种规范化、逻辑化的书面表达。对应聘者来说，简历是求职的“敲门砖”。</p>
+</blockquote>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>面试</tag>
+        <tag>简历</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MVC之Service</title>
     <url>/2015/04/04/%E6%8A%80%E6%9C%AF-MVC%E4%B9%8BService/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -45493,6 +45602,57 @@ read_xlsx(name, sheet)
       <tags>
         <tag>PHP</tag>
         <tag>array_combine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac下安装php报错</title>
+    <url>/2014/04/12/mac-%E5%AE%89%E8%A3%85php%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>由于历史原因，国际化的文字常常由于语言或者国家的原因使用不同的编码。为了解决这种混乱，Unicode的编码方式被建立。Unicode是一种超级编码包含了所有这些编码的字符集，因此一些新的文本格式像XML的默认编码方式就是Unicode。</p>
+</blockquote>
+<a id="more"></a>
+
+<ol>
+<li><p>报错：<code>The pkg-config script could not be found or is too old. Make sure it is in your PATH or set the PKG_CONFIG environment variable to the full path to pkg-config.</code></p>
+<ul>
+<li>解决：<code>brew install pkg-config</code><ul>
+<li>pkg-config能够列出系统已经安装的库的相关信息，如库的路径和头文件路径，特别是在预处理和编译的时候，能够告诉gcc等编译器程序依赖的库和头文件的位置。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>报错：<code>Please specify the install prefix of iconv with --with-iconv=&lt;DIR&gt;</code></p>
+<ul>
+<li>解决：<code>brew install libiconv</code><ul>
+<li>libiconv库为需要做转换的应用提供了一个iconv()的函数，以实现一个字符编码到另一个字符编码的转换。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>报错：<code>fatal error:&#39;libxml/parser.h&#39; file not found</code></p>
+<ul>
+<li><p>解决1：<code>brew install libxml2</code></p>
+<ul>
+<li>报错，brew安装失败</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp: &#x2F;private&#x2F;tmp&#x2F;d20210324-55179-1pe5j38&#x2F;libxml2&#x2F;.&#x2F;2.9.10_2: unable to copy ACL to &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2&#x2F;2.9.10_2: No such file or directory</span><br><span class="line">cp: utimes: &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br><span class="line">cp: chown: &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br><span class="line">cp: chmod: &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br><span class="line">cp: chflags: &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br><span class="line">cp: &#x2F;private&#x2F;tmp&#x2F;d20210324-55179-1pe5j38&#x2F;libxml2&#x2F;.: unable to copy ACL to &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br><span class="line">Error: Failure while executing; &#96;cp -pR &#x2F;private&#x2F;tmp&#x2F;d20210324-55179-1pe5j38&#x2F;libxml2&#x2F;. &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2&#96; exited with 1. Here&#39;s the output:</span><br><span class="line">cp: &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br><span class="line">cp: &#x2F;private&#x2F;tmp&#x2F;d20210324-55179-1pe5j38&#x2F;libxml2&#x2F;.: unable to copy extended attributes to &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;libxml2: No such file or directory</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决2：<a href="http://www.xmlsoft.org/downloads.html" target="_blank" rel="noopener">去官网</a>下载源码安装</p>
+<ul>
+<li>libxml是一个用来解析XML文档的函数库，它用C语言写成，并且能为多种语言所调用，例如C/C++/C#/Python/Ruby/PHP等。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>PHP</tag>
+        <tag>PKG_CONFIG</tag>
       </tags>
   </entry>
   <entry>
