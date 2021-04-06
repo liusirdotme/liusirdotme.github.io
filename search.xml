@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DevOps杂谈</title>
+    <url>/2021/04/03/DevOps-%E6%9D%82%E8%B0%88/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>DevOps(Development和Operations的组合词)是一组过程、方法与系统的统称，用于促进开发(应用程序/软件工程)、技术运营和质量保障(QA)部门之间的沟通、协作与整合。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DevOps(Development和Operations的组合词)是一组过程、方法与系统的统称，用于促进开发(应用程序/软件工程)、技术运营和质量保障(QA)部门之间的沟通、协作与整合。它是一种重视“软件开发人员(Dev)”和“IT运维技术人员(Ops)”之间沟通合作的文化、运动或惯例，透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运维工作必须紧密合作。</p>
+<h2 id="二、扩展"><a href="#二、扩展" class="headerlink" title="二、扩展"></a>二、扩展</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.zhihu.com/question/58702398" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/95309012" target="_blank" rel="noopener">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>DevOps</tag>
+        <tag>瀑布模型</tag>
+        <tag>敏捷开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go语言常见web框架</title>
     <url>/2021/03/27/go-%E5%B8%B8%E8%A7%81web%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -863,10 +886,10 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
+        <tag>二叉树</tag>
         <tag>二叉排序树</tag>
         <tag>AVL树</tag>
         <tag>红黑树</tag>
-        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -6809,98 +6832,6 @@
       </tags>
   </entry>
   <entry>
-    <title>持续集成持续交付持续部署</title>
-    <url>/2019/09/07/%E6%8A%80%E6%9C%AF-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建(包括编译、发布、自动化测试)来验证，从而尽早地发现集成错误。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、持续集成-Continuous-Integration"><a href="#一、持续集成-Continuous-Integration" class="headerlink" title="一、持续集成(Continuous Integration)"></a>一、持续集成(Continuous Integration)</h2><ol>
-<li>定义：一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建(包括编译、发布、自动化测试)来验证，从而尽早地发现集成错误。</li>
-<li>目标：让产品可以快速迭代，同时还能保持高质量。</li>
-<li>措施：代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</li>
-<li>条件<ul>
-<li>全面的自动化测试，这是实践持续集成&amp;持续部署的基础，同时，选择合适的自动化测试工具也极其重要</li>
-<li>灵活的基础设施，如使用容器，虚拟机的存在让开发人员和QA人员不必再大费周折</li>
-<li>版本控制工具，如 Git，CVS，SVN 等</li>
-<li>自动化的构建和软件发布流程的工具，如Jenkins，flow.ci等</li>
-<li>反馈机制，如构建/测试的失败，可以快速地反馈到相关负责人，以尽快解决达到一个更稳定的版本。</li>
-</ul>
-</li>
-<li>优点<ul>
-<li>“快速失败”，在对产品没有风险的情况下进行测试，并快速响应</li>
-<li>最大限度地减少风险，降低修复错误代码的成本</li>
-<li>将重复性的手工流程自动化，让工程师更加专注于代码</li>
-<li>保持频繁部署，快速生成可部署的软件</li>
-<li>提高项目的能见度，方便团队成员了解项目的进度和成熟度</li>
-<li>增强开发人员对软件产品的信心，帮助建立更好的工程师文化</li>
-</ul>
-</li>
-<li>两个好处<ul>
-<li>快速发现错误。每完成一点更新就集成到主干，可以快速发现错误，定位错误也比较容易。</li>
-<li>防止分支大幅偏离主干。如果不是经常集成，主干又在不断更新，会导致以后集成的难度变大，甚至难以集成。</li>
-</ul>
-</li>
-<li>如何选持续集成系统<ul>
-<li>私有型：Self Hosted CI 指的是将软件部署在公司的机房或内网中，需要提供多台服务器来完成 CI 系统的运转，同时需要对不同机器之间进行环境配置。比如Maven 或 Gradle 或 Jenkins ，他们的特点是自由开源，且文档支持广泛。优点在于对构建环境有完全的控制权，能够实现完全定制。但需要搭建环境和配置、维护成本高，需要买专门的机器，花费较多人力物力且更新迁移风险高；</li>
-<li>托管型：Hosted CI 指的是由 SaaS 型的 CI 服务，全程在线进行构建配置，不需要考虑装机器，装软件，环境搭建等成本。常见的有 CircleCI，Codeship 和TravisCI 等，还有国内最新的持续集成服务——flow.ci 。SaaS 型的 CI 的特点在于无需额外机器，几分钟就可以用起来。可以根据你的需要动态调度资源。省时，省心，省力。</li>
-</ul>
-</li>
-<li>流程<ul>
-<li>提交：流程的第一步，是开发者向代码仓库提交代码。所有后面的步骤都始于本地代码的一次提交(commit)。</li>
-<li>第一轮测试：代码仓库对commit操作配置了钩子(hook)，只要提交代码或者合并进主干，就会跑自动化测试。测试分为多种，如：<ul>
-<li>单元测试：针对函数或模块的测试</li>
-<li>集成测试：针对整体产品的某个功能的测试，又称功能测试</li>
-<li>端对端测试：从用户界面直达数据库的全链路测试</li>
-</ul>
-</li>
-<li>构建：通过第一轮测试，代码就可以合并进主干，就算可以交付了。交付后，就先进行构建(build)，再进入第二轮测试。<ul>
-<li>构建指的是将源码转换为可以运行的实际代码，比如安装依赖，配置各种资源(样式表、JS 脚本、图片)等等。常见工具：Jenkins、Travis、Codeship、Strider等</li>
-</ul>
-</li>
-<li>第二轮测试：构建完成，就要进行第二轮测试。(如果第一轮已经涵盖了所有测试内容，第二轮可以省略，当然这时构建步骤也要移到第一轮测试前面)第二轮是全面测试，单元测试和集成测试都会跑，有条件的话，也要做端对端测试。所有测试以自动化为主，少数无法自动化的测试用例，就要人工跑。需要强调的是，新版本的每一个更新点都必须测试到。如果测试的覆盖率不高，进入后面的部署阶段后，很可能会出现严重的问题。</li>
-<li>部署：通过了第二轮测试，当前代码就是一个可以直接部署的版本。将这个版本的所有文件打包存档，发到生产服务器。生产服务器将打包文件解包成本地的一个目录，再将运行路径的符号链接指向这个目录，然后重新启动应用。这方面的部署工具有 Ansible，Chef，Puppet等。</li>
-<li>回滚：一旦当前版本发生问题，就要回滚到上一个版本的构建结果。最简单的做法就是修改一下符号链接，指向上一个版本的目录。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、持续交付-Continuous-Delivery"><a href="#二、持续交付-Continuous-Delivery" class="headerlink" title="二、持续交付(Continuous Delivery)"></a>二、持续交付(Continuous Delivery)</h2><ol>
-<li>定义：在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的<code>类生产环境</code>中。给测试人员或者用户，以供评审。如果评审通过代码没有问题，可以继续手动部署到生产环境中。<ul>
-<li>持续交付优先于整个产品生命周期的软件部署，建立在高水平自动化持续集成之上。</li>
-</ul>
-</li>
-<li>目标：持续交付用来确保让代码能够快速、安全的部署到生产环境中，它通过将每一次改动都提交到一个模拟生产环境中，使用严格的自动化测试，确保业务应用和服务能符合预期。</li>
-<li>好处<ul>
-<li>快速发布，能够应对业务需求，并更快地实现软件价值</li>
-<li>编码-&gt;测试-&gt;上线-&gt;交付的频繁迭代周期缩短，同时获得迅速反馈</li>
-<li>高质量的软件发布标准。整个交付过程标准化、可重复、可靠</li>
-<li>整个交付过程进度可视化，方便团队人员了解项目成熟度</li>
-<li>更先进的团队协作方式，从需求分析、产品的用户体验到交互设计、开发、测试、运维等角色密切协作，相比于传统的瀑布式软件团队，更少浪费</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、持续部署-Continuous-Deployment"><a href="#三、持续部署-Continuous-Deployment" class="headerlink" title="三、持续部署(Continuous Deployment)"></a>三、持续部署(Continuous Deployment)</h2><ol>
-<li>定义：在持续交付的基础上，代码通过评审以后(或者是通过自动化测试以后)，自动部署到生产环境。<ul>
-<li>持续部署是持续交付的最高阶段</li>
-</ul>
-</li>
-<li>目标：代码在任何时刻都是可部署的，可以进入生产阶段。</li>
-<li>好处：可以相对独立地部署新的功能，并能快速地收集真实用户的反馈。</li>
-<li>工具：jenkins+fastlane</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>持续集成</tag>
-        <tag>持续交付</tag>
-        <tag>持续部署</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>继承</title>
     <url>/2019/09/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -7022,29 +6953,6 @@
       </tags>
   </entry>
   <entry>
-    <title>netty</title>
-    <url>/2019/08/26/java-netty/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。</p>
-</li>
-<li><p>简单来说，有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</p>
-</li>
-</ol>
-<h2 id="二、待补充"><a href="#二、待补充" class="headerlink" title="二、待补充"></a>二、待补充</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>netty</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tomcat</title>
     <url>/2019/08/26/java-tomcat/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -7072,6 +6980,29 @@
       <tags>
         <tag>Java</tag>
         <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>netty</title>
+    <url>/2019/08/26/java-netty/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。</p>
+</li>
+<li><p>简单来说，有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</p>
+</li>
+</ol>
+<h2 id="二、待补充"><a href="#二、待补充" class="headerlink" title="二、待补充"></a>二、待补充</h2>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>netty</tag>
       </tags>
   </entry>
   <entry>
@@ -7341,6 +7272,59 @@
       </tags>
   </entry>
   <entry>
+    <title>docker之镜像容器操作</title>
+    <url>/2019/08/15/docker-%E9%95%9C%E5%83%8F%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>镜像(Image)和容器(Container)的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、镜像"><a href="#一、镜像" class="headerlink" title="一、镜像"></a>一、镜像</h2><ol>
+<li>查看镜像仓库<code>docker search ubuntu</code></li>
+<li>拉取仓库镜像<code>docker pull ubuntu</code></li>
+<li>查看本地镜像<code>docker images</code></li>
+<li>删除本地镜像<code>docker rmi ubuntu</code></li>
+</ol>
+<h2 id="二、容器"><a href="#二、容器" class="headerlink" title="二、容器"></a>二、容器</h2><ol>
+<li>创建并启动容器<code>docker run -it --name ubuntu  ubuntu /bin/bash</code></li>
+<li>查看运行的容器<code>docker ps</code><ul>
+<li>查看所有的容器<code>docker ps -a</code></li>
+</ul>
+</li>
+<li>(在容器中)退出并保持运行状态<code>control + p &amp;&amp; control + q</code>，同<code>exit</code><ul>
+<li>(在容器中)退出并退出运行状态<code>exit</code>(exec进入的容器是个特例)</li>
+</ul>
+</li>
+<li>停止运行的容器<code>docker stop ubuntu</code></li>
+<li>启动并运行容器<code>docker start -ia ubuntu</code></li>
+<li>进入容器<code>docker attach ubuntu</code><ul>
+<li>退出并终止运行<code>exit</code></li>
+</ul>
+</li>
+<li>开启容器<code>docker start ubuntu</code></li>
+<li>进入容器<code>docker exec -it ubuntu /bin/bash</code><ul>
+<li>退出并保持运行<code>exit</code>，同<code>control + p &amp;&amp; control + q</code></li>
+</ul>
+</li>
+<li>移除容器<code>docker rm ubuntu</code></li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://docs.docker.com/" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>容器</tag>
+        <tag>镜像</tag>
+        <tag>run</tag>
+        <tag>exec</tag>
+        <tag>attach</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker之网络</title>
     <url>/2019/08/15/docker-%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -7423,59 +7407,6 @@
         <tag>attach</tag>
         <tag>超文本</tag>
         <tag>Hypertext</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker之镜像容器操作</title>
-    <url>/2019/08/15/docker-%E9%95%9C%E5%83%8F%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>镜像(Image)和容器(Container)的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、镜像"><a href="#一、镜像" class="headerlink" title="一、镜像"></a>一、镜像</h2><ol>
-<li>查看镜像仓库<code>docker search ubuntu</code></li>
-<li>拉取仓库镜像<code>docker pull ubuntu</code></li>
-<li>查看本地镜像<code>docker images</code></li>
-<li>删除本地镜像<code>docker rmi ubuntu</code></li>
-</ol>
-<h2 id="二、容器"><a href="#二、容器" class="headerlink" title="二、容器"></a>二、容器</h2><ol>
-<li>创建并启动容器<code>docker run -it --name ubuntu  ubuntu /bin/bash</code></li>
-<li>查看运行的容器<code>docker ps</code><ul>
-<li>查看所有的容器<code>docker ps -a</code></li>
-</ul>
-</li>
-<li>(在容器中)退出并保持运行状态<code>control + p &amp;&amp; control + q</code>，同<code>exit</code><ul>
-<li>(在容器中)退出并退出运行状态<code>exit</code>(exec进入的容器是个特例)</li>
-</ul>
-</li>
-<li>停止运行的容器<code>docker stop ubuntu</code></li>
-<li>启动并运行容器<code>docker start -ia ubuntu</code></li>
-<li>进入容器<code>docker attach ubuntu</code><ul>
-<li>退出并终止运行<code>exit</code></li>
-</ul>
-</li>
-<li>开启容器<code>docker start ubuntu</code></li>
-<li>进入容器<code>docker exec -it ubuntu /bin/bash</code><ul>
-<li>退出并保持运行<code>exit</code>，同<code>control + p &amp;&amp; control + q</code></li>
-</ul>
-</li>
-<li>移除容器<code>docker rm ubuntu</code></li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://docs.docker.com/" target="_blank" rel="noopener">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>容器</tag>
-        <tag>镜像</tag>
-        <tag>run</tag>
-        <tag>exec</tag>
-        <tag>attach</tag>
       </tags>
   </entry>
   <entry>
@@ -8443,9 +8374,9 @@
       <tags>
         <tag>Mac</tag>
         <tag>分布式</tag>
+        <tag>Kibana</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
-        <tag>Kibana</tag>
       </tags>
   </entry>
   <entry>
@@ -8877,9 +8808,9 @@
         <tag>brew</tag>
         <tag>分布式</tag>
         <tag>Elasticsearch</tag>
-        <tag>tap</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
+        <tag>tap</tag>
       </tags>
   </entry>
   <entry>
@@ -10667,8 +10598,8 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>FIFO</tag>
         <tag>LRU</tag>
+        <tag>FIFO</tag>
         <tag>LFU</tag>
       </tags>
   </entry>
@@ -12014,33 +11945,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RabbitMQ时序性</title>
-    <url>/2019/04/12/MQ-RabbitMQ%E6%97%B6%E5%BA%8F%E6%80%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>我在朦胧中，眼前展开一片海边碧绿的沙地来，上面深蓝的天空中挂着一轮金黄的圆月。我想：希望是本无所谓有，无所谓无的。这正如地上的路；其实地上本没有路，走的人多了，也便成了路。 —— 鲁迅 《故乡》。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MQ(Message Queue)，即消息队列，其存在的意义之一就是在高并发场景下，将所有请求加入队列。请求按排队顺序依次进行处理，第一步没有问题。接下来进入到业务层(如订单处理)，生产者会产生多条异步处理消息，如修改订单状态：待支付-&gt;已支付-&gt;已取消，然后消息通过exchange会分发到不同的队列中(这种情况可以在代码里面进行控制，即把对消费顺序有要求的消息投放到同一个队列中)，只要有多个消费者处理队列，都有可能会产生不同的消费顺序，从而导致业务上的漏洞。</p>
-<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
-<li>一个Queue对应一下Consumer</li>
-<li>消费者进行业务判断，前提是生产者有记录</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/huigelaile/p/10928984.html" target="_blank" rel="noopener">参考一</a></li>
-<li><a href="https://www.cnblogs.com/mengchunchen/p/10020997.html" target="_blank" rel="noopener">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>MQ</category>
-      </categories>
-      <tags>
-        <tag>MQ</tag>
-        <tag>RabbitMQ</tag>
-        <tag>时序性</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RabbitMQ断线重连</title>
     <url>/2019/04/12/MQ-RabbitMQ%E6%96%AD%E7%BA%BF%E9%87%8D%E8%BF%9E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -12072,6 +11976,33 @@
         <tag>MQ</tag>
         <tag>RabbitMQ</tag>
         <tag>断线重连</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RabbitMQ时序性</title>
+    <url>/2019/04/12/MQ-RabbitMQ%E6%97%B6%E5%BA%8F%E6%80%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>我在朦胧中，眼前展开一片海边碧绿的沙地来，上面深蓝的天空中挂着一轮金黄的圆月。我想：希望是本无所谓有，无所谓无的。这正如地上的路；其实地上本没有路，走的人多了，也便成了路。 —— 鲁迅 《故乡》。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MQ(Message Queue)，即消息队列，其存在的意义之一就是在高并发场景下，将所有请求加入队列。请求按排队顺序依次进行处理，第一步没有问题。接下来进入到业务层(如订单处理)，生产者会产生多条异步处理消息，如修改订单状态：待支付-&gt;已支付-&gt;已取消，然后消息通过exchange会分发到不同的队列中(这种情况可以在代码里面进行控制，即把对消费顺序有要求的消息投放到同一个队列中)，只要有多个消费者处理队列，都有可能会产生不同的消费顺序，从而导致业务上的漏洞。</p>
+<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
+<li>一个Queue对应一下Consumer</li>
+<li>消费者进行业务判断，前提是生产者有记录</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/huigelaile/p/10928984.html" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://www.cnblogs.com/mengchunchen/p/10020997.html" target="_blank" rel="noopener">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>MQ</category>
+      </categories>
+      <tags>
+        <tag>MQ</tag>
+        <tag>RabbitMQ</tag>
+        <tag>时序性</tag>
       </tags>
   </entry>
   <entry>
@@ -13669,40 +13600,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-git回滚之reset</title>
-    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<blockquote>
-<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
-</li>
-<li><p>实现</p>
-<ul>
-<li>git reset –hard commit-id</li>
-<li>git push -f</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href=""></a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>reset</tag>
-        <tag>回滚</tag>
-        <tag>李银河</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git回滚之revert</title>
     <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Brevert/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13737,6 +13634,40 @@
         <tag>Git</tag>
         <tag>回滚</tag>
         <tag>revert</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-git回滚之reset</title>
+    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<blockquote>
+<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
+</li>
+<li><p>实现</p>
+<ul>
+<li>git reset –hard commit-id</li>
+<li>git push -f</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href=""></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>回滚</tag>
+        <tag>reset</tag>
+        <tag>李银河</tag>
       </tags>
   </entry>
   <entry>
@@ -13997,6 +13928,33 @@
       </tags>
   </entry>
   <entry>
+    <title>计数排序</title>
+    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>桶排序、计数排序、基数排序是经常听到但很少能写出来的排序算法，今天来说说计数排序！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>算法原理<ul>
+<li>计数其实就是桶排序的一种特殊情况</li>
+<li>当要排序的n个数据所处范围并不大时，比如最大值为k，则分成k个桶</li>
+<li>每个桶内的数据值都是相同的，就省掉了桶内排序的时间</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>计数排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>桶排序</title>
     <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E6%A1%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -14030,33 +13988,6 @@
         <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>桶排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计数排序</title>
-    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>桶排序、计数排序、基数排序是经常听到但很少能写出来的排序算法，今天来说说计数排序！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>算法原理<ul>
-<li>计数其实就是桶排序的一种特殊情况</li>
-<li>当要排序的n个数据所处范围并不大时，比如最大值为k，则分成k个桶</li>
-<li>每个桶内的数据值都是相同的，就省掉了桶内排序的时间</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据结构和算法</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>计数排序</tag>
       </tags>
   </entry>
   <entry>
@@ -16489,6 +16420,23 @@
       </tags>
   </entry>
   <entry>
+    <title>设计模式之职责链模式</title>
+    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>责任链模式(Chain of Responsibility Pattern)为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
+</blockquote>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>面向对象</category>
+      </categories>
+      <tags>
+        <tag>面向对象</tag>
+        <tag>设计模式</tag>
+        <tag>行为型模式</tag>
+        <tag>职责链模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>设计模式之策略模式</title>
     <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -16538,23 +16486,6 @@
         <tag>设计模式</tag>
         <tag>行为型模式</tag>
         <tag>策略模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之职责链模式</title>
-    <url>/2018/11/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>责任链模式(Chain of Responsibility Pattern)为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。</p>
-</blockquote>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>面向对象</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>行为型模式</tag>
-        <tag>职责链模式</tag>
       </tags>
   </entry>
   <entry>
@@ -18195,6 +18126,98 @@
         <tag>技术</tag>
         <tag>快照</tag>
         <tag>snapshot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>持续集成持续交付持续部署</title>
+    <url>/2018/08/08/DevOps-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建(包括编译、发布、自动化测试)来验证，从而尽早地发现集成错误。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、持续集成-Continuous-Integration"><a href="#一、持续集成-Continuous-Integration" class="headerlink" title="一、持续集成(Continuous Integration)"></a>一、持续集成(Continuous Integration)</h2><ol>
+<li>定义：一种软件开发实践，即团队开发成员经常集成他们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建(包括编译、发布、自动化测试)来验证，从而尽早地发现集成错误。</li>
+<li>目标：让产品可以快速迭代，同时还能保持高质量。</li>
+<li>措施：代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</li>
+<li>条件<ul>
+<li>全面的自动化测试，这是实践持续集成&amp;持续部署的基础，同时，选择合适的自动化测试工具也极其重要</li>
+<li>灵活的基础设施，如使用容器，虚拟机的存在让开发人员和QA人员不必再大费周折</li>
+<li>版本控制工具，如 Git，CVS，SVN 等</li>
+<li>自动化的构建和软件发布流程的工具，如Jenkins，flow.ci等</li>
+<li>反馈机制，如构建/测试的失败，可以快速地反馈到相关负责人，以尽快解决达到一个更稳定的版本。</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>“快速失败”，在对产品没有风险的情况下进行测试，并快速响应</li>
+<li>最大限度地减少风险，降低修复错误代码的成本</li>
+<li>将重复性的手工流程自动化，让工程师更加专注于代码</li>
+<li>保持频繁部署，快速生成可部署的软件</li>
+<li>提高项目的能见度，方便团队成员了解项目的进度和成熟度</li>
+<li>增强开发人员对软件产品的信心，帮助建立更好的工程师文化</li>
+</ul>
+</li>
+<li>两个好处<ul>
+<li>快速发现错误。每完成一点更新就集成到主干，可以快速发现错误，定位错误也比较容易。</li>
+<li>防止分支大幅偏离主干。如果不是经常集成，主干又在不断更新，会导致以后集成的难度变大，甚至难以集成。</li>
+</ul>
+</li>
+<li>如何选持续集成系统<ul>
+<li>私有型：Self Hosted CI 指的是将软件部署在公司的机房或内网中，需要提供多台服务器来完成 CI 系统的运转，同时需要对不同机器之间进行环境配置。比如Maven 或 Gradle 或 Jenkins ，他们的特点是自由开源，且文档支持广泛。优点在于对构建环境有完全的控制权，能够实现完全定制。但需要搭建环境和配置、维护成本高，需要买专门的机器，花费较多人力物力且更新迁移风险高；</li>
+<li>托管型：Hosted CI 指的是由 SaaS 型的 CI 服务，全程在线进行构建配置，不需要考虑装机器，装软件，环境搭建等成本。常见的有 CircleCI，Codeship 和TravisCI 等，还有国内最新的持续集成服务——flow.ci 。SaaS 型的 CI 的特点在于无需额外机器，几分钟就可以用起来。可以根据你的需要动态调度资源。省时，省心，省力。</li>
+</ul>
+</li>
+<li>流程<ul>
+<li>提交：流程的第一步，是开发者向代码仓库提交代码。所有后面的步骤都始于本地代码的一次提交(commit)。</li>
+<li>第一轮测试：代码仓库对commit操作配置了钩子(hook)，只要提交代码或者合并进主干，就会跑自动化测试。测试分为多种，如：<ul>
+<li>单元测试：针对函数或模块的测试</li>
+<li>集成测试：针对整体产品的某个功能的测试，又称功能测试</li>
+<li>端对端测试：从用户界面直达数据库的全链路测试</li>
+</ul>
+</li>
+<li>构建：通过第一轮测试，代码就可以合并进主干，就算可以交付了。交付后，就先进行构建(build)，再进入第二轮测试。<ul>
+<li>构建指的是将源码转换为可以运行的实际代码，比如安装依赖，配置各种资源(样式表、JS 脚本、图片)等等。常见工具：Jenkins、Travis、Codeship、Strider等</li>
+</ul>
+</li>
+<li>第二轮测试：构建完成，就要进行第二轮测试。(如果第一轮已经涵盖了所有测试内容，第二轮可以省略，当然这时构建步骤也要移到第一轮测试前面)第二轮是全面测试，单元测试和集成测试都会跑，有条件的话，也要做端对端测试。所有测试以自动化为主，少数无法自动化的测试用例，就要人工跑。需要强调的是，新版本的每一个更新点都必须测试到。如果测试的覆盖率不高，进入后面的部署阶段后，很可能会出现严重的问题。</li>
+<li>部署：通过了第二轮测试，当前代码就是一个可以直接部署的版本。将这个版本的所有文件打包存档，发到生产服务器。生产服务器将打包文件解包成本地的一个目录，再将运行路径的符号链接指向这个目录，然后重新启动应用。这方面的部署工具有 Ansible，Chef，Puppet等。</li>
+<li>回滚：一旦当前版本发生问题，就要回滚到上一个版本的构建结果。最简单的做法就是修改一下符号链接，指向上一个版本的目录。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、持续交付-Continuous-Delivery"><a href="#二、持续交付-Continuous-Delivery" class="headerlink" title="二、持续交付(Continuous Delivery)"></a>二、持续交付(Continuous Delivery)</h2><ol>
+<li>定义：在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的<code>类生产环境</code>中。给测试人员或者用户，以供评审。如果评审通过代码没有问题，可以继续手动部署到生产环境中。<ul>
+<li>持续交付优先于整个产品生命周期的软件部署，建立在高水平自动化持续集成之上。</li>
+</ul>
+</li>
+<li>目标：持续交付用来确保让代码能够快速、安全的部署到生产环境中，它通过将每一次改动都提交到一个模拟生产环境中，使用严格的自动化测试，确保业务应用和服务能符合预期。</li>
+<li>好处<ul>
+<li>快速发布，能够应对业务需求，并更快地实现软件价值</li>
+<li>编码-&gt;测试-&gt;上线-&gt;交付的频繁迭代周期缩短，同时获得迅速反馈</li>
+<li>高质量的软件发布标准。整个交付过程标准化、可重复、可靠</li>
+<li>整个交付过程进度可视化，方便团队人员了解项目成熟度</li>
+<li>更先进的团队协作方式，从需求分析、产品的用户体验到交互设计、开发、测试、运维等角色密切协作，相比于传统的瀑布式软件团队，更少浪费</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、持续部署-Continuous-Deployment"><a href="#三、持续部署-Continuous-Deployment" class="headerlink" title="三、持续部署(Continuous Deployment)"></a>三、持续部署(Continuous Deployment)</h2><ol>
+<li>定义：在持续交付的基础上，代码通过评审以后(或者是通过自动化测试以后)，自动部署到生产环境。<ul>
+<li>持续部署是持续交付的最高阶段</li>
+</ul>
+</li>
+<li>目标：代码在任何时刻都是可部署的，可以进入生产阶段。</li>
+<li>好处：可以相对独立地部署新的功能，并能快速地收集真实用户的反馈。</li>
+<li>工具：jenkins+fastlane</li>
+</ol>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>DevOps</tag>
+        <tag>持续集成</tag>
+        <tag>持续交付</tag>
+        <tag>持续部署</tag>
       </tags>
   </entry>
   <entry>
@@ -20517,8 +20540,8 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>压缩列表</tag>
         <tag>ZIPLIST</tag>
+        <tag>压缩列表</tag>
         <tag>大端模式</tag>
         <tag>小端模式</tag>
       </tags>
@@ -20614,10 +20637,10 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>LINKEDLIST</tag>
-        <tag>ZIPLIST</tag>
         <tag>快表</tag>
         <tag>QUICKLIST</tag>
+        <tag>LINKEDLIST</tag>
+        <tag>ZIPLIST</tag>
       </tags>
   </entry>
   <entry>
@@ -21166,8 +21189,8 @@
       </categories>
       <tags>
         <tag>PHP</tag>
-        <tag>魔术常量</tag>
         <tag>魔术方法</tag>
+        <tag>魔术常量</tag>
         <tag>超全局变量</tag>
         <tag>预定义变量</tag>
       </tags>
@@ -22279,8 +22302,8 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>双端链表</tag>
         <tag>LINKEDLIST</tag>
+        <tag>双端链表</tag>
       </tags>
   </entry>
   <entry>
@@ -22996,8 +23019,8 @@
       </categories>
       <tags>
         <tag>NoSQL</tag>
-        <tag>Redis</tag>
         <tag>memcached</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -24233,7 +24256,7 @@
     <title>基于TravisCI实现hexo博客持续继承</title>
     <url>/2017/09/21/hexo-%E5%9F%BA%E4%BA%8ETravisCI%E5%AE%9E%E7%8E%B0hexo%E5%8D%9A%E5%AE%A2%E6%8C%81%E7%BB%AD%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>每个行业都一样，都需要进行不断的学习，IT就更不用说了–IT一入深似海，从此XX是路人。不知不觉中博文已经几百篇了，每次通过<code>hexo g -d</code>发布都要几分钟才行，而且cpu爆转，真怕有一天mac君顶不住，想到了持续集成，特此记录！</p>
+<p>Travis CI是在线托管的CI服务，用Travis来进行持续集成，不需要自己搭服务器，在网页上点几下就好，用起来更方便。它对开源项目是免费的，并且与Github实现了无缝衔接。</p>
 </blockquote>
 <a id="more"></a>
 
@@ -24302,9 +24325,9 @@
         <category>Hexo</category>
       </categories>
       <tags>
+        <tag>持续集成</tag>
         <tag>Hexo</tag>
         <tag>Travis CI</tag>
-        <tag>持续集成</tag>
       </tags>
   </entry>
   <entry>
@@ -26313,9 +26336,9 @@
       </categories>
       <tags>
         <tag>Mac</tag>
-        <tag>hostname</tag>
         <tag>ifconfig</tag>
         <tag>traceroute</tag>
+        <tag>hostname</tag>
         <tag>nslookup</tag>
         <tag>arp</tag>
       </tags>
@@ -26881,8 +26904,8 @@
       <tags>
         <tag>Mac</tag>
         <tag>PHP</tag>
-        <tag>ln</tag>
         <tag>phpize</tag>
+        <tag>ln</tag>
         <tag>MongoDB</tag>
       </tags>
   </entry>
@@ -28141,8 +28164,8 @@
       <tags>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
-        <tag>Redis</tag>
         <tag>memcached</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -36193,8 +36216,8 @@
       <tags>
         <tag>面向对象</tag>
         <tag>设计模式</tag>
-        <tag>单例模式</tag>
         <tag>创建型模式</tag>
+        <tag>单例模式</tag>
       </tags>
   </entry>
   <entry>
@@ -37035,8 +37058,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>grep</tag>
         <tag>awk</tag>
+        <tag>grep</tag>
         <tag>sed</tag>
       </tags>
   </entry>
@@ -37266,7 +37289,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Appcleaner</title>
+    <title>AppCleaner</title>
     <url>/2016/01/11/%E5%B7%A5%E5%85%B7-Appcleaner/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>AppCleaner is a small application which allows you to thoroughly uninstall unwanted apps.Installing an application distributes many files throughout your System using space of your Hard Drive unnecessarily.AppCleaner finds all these small files and safely deletes them.</p>
@@ -37279,7 +37302,7 @@
       </categories>
       <tags>
         <tag>工具</tag>
-        <tag>Appcleaner</tag>
+        <tag>AppCleaner</tag>
       </tags>
   </entry>
   <entry>
@@ -38642,13 +38665,13 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>摘抄</tag>
-        <tag>5W1H</tag>
         <tag>WHAT</tag>
+        <tag>WHY</tag>
+        <tag>HOW</tag>
+        <tag>5W1H</tag>
         <tag>WHERE</tag>
         <tag>WHEN</tag>
         <tag>WHO</tag>
-        <tag>WHY</tag>
-        <tag>HOW</tag>
       </tags>
   </entry>
   <entry>
@@ -38674,10 +38697,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>摘抄</tag>
+        <tag>3W</tag>
         <tag>WHAT</tag>
         <tag>WHY</tag>
         <tag>HOW</tag>
-        <tag>3W</tag>
       </tags>
   </entry>
   <entry>
@@ -39456,9 +39479,9 @@ read_xlsx(name, sheet)
       <tags>
         <tag>NoSQL</tag>
         <tag>Redis</tag>
+        <tag>ziplist</tag>
         <tag>hash</tag>
         <tag>hashtable</tag>
-        <tag>ziplist</tag>
       </tags>
   </entry>
   <entry>
@@ -39652,8 +39675,8 @@ read_xlsx(name, sheet)
       <tags>
         <tag>NoSQL</tag>
         <tag>Redis</tag>
-        <tag>ziplist</tag>
         <tag>list</tag>
+        <tag>ziplist</tag>
         <tag>linkedlist</tag>
         <tag>quicklist</tag>
       </tags>
@@ -39908,9 +39931,9 @@ read_xlsx(name, sheet)
       <tags>
         <tag>C</tag>
         <tag>struct</tag>
+        <tag>union</tag>
         <tag>道德经</tag>
         <tag>老子</tag>
-        <tag>union</tag>
       </tags>
   </entry>
   <entry>
@@ -40954,9 +40977,9 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>cat</tag>
         <tag>grep</tag>
         <tag>xargs</tag>
+        <tag>cat</tag>
         <tag>printf</tag>
         <tag>strings</tag>
       </tags>
@@ -42203,23 +42226,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>shell脚本sleep和wait</title>
-    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>未来的你，一定会感谢现在拼命努力的自己。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell特殊变量和运算符</title>
     <url>/2015/03/19/linux-shell%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -42346,6 +42352,23 @@ read_xlsx(name, sheet)
         <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本sleep和wait</title>
+    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>未来的你，一定会感谢现在拼命努力的自己。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -44142,8 +44165,8 @@ read_xlsx(name, sheet)
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>MATLAB</tag>
+        <tag>Mac</tag>
         <tag>Python</tag>
         <tag>TIOBE</tag>
       </tags>
@@ -46719,8 +46742,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>grep</tag>
         <tag>ls</tag>
+        <tag>grep</tag>
         <tag>wc</tag>
       </tags>
   </entry>
