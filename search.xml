@@ -4217,9 +4217,9 @@
       <tags>
         <tag>Git</tag>
         <tag>push</tag>
+        <tag>王小波</tag>
         <tag>Github</tag>
         <tag>pull</tag>
-        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -7374,59 +7374,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker之镜像容器操作</title>
-    <url>/2019/08/15/docker-%E9%95%9C%E5%83%8F%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>镜像(Image)和容器(Container)的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、镜像"><a href="#一、镜像" class="headerlink" title="一、镜像"></a>一、镜像</h2><ol>
-<li>查看镜像仓库<code>docker search ubuntu</code></li>
-<li>拉取仓库镜像<code>docker pull ubuntu</code></li>
-<li>查看本地镜像<code>docker images</code></li>
-<li>删除本地镜像<code>docker rmi ubuntu</code></li>
-</ol>
-<h2 id="二、容器"><a href="#二、容器" class="headerlink" title="二、容器"></a>二、容器</h2><ol>
-<li>创建并启动容器<code>docker run -it --name ubuntu  ubuntu /bin/bash</code></li>
-<li>查看运行的容器<code>docker ps</code><ul>
-<li>查看所有的容器<code>docker ps -a</code></li>
-</ul>
-</li>
-<li>(在容器中)退出并保持运行状态<code>control + p &amp;&amp; control + q</code>，同<code>exit</code><ul>
-<li>(在容器中)退出并退出运行状态<code>exit</code>(exec进入的容器是个特例)</li>
-</ul>
-</li>
-<li>停止运行的容器<code>docker stop ubuntu</code></li>
-<li>启动并运行容器<code>docker start -ia ubuntu</code></li>
-<li>进入容器<code>docker attach ubuntu</code><ul>
-<li>退出并终止运行<code>exit</code></li>
-</ul>
-</li>
-<li>开启容器<code>docker start ubuntu</code></li>
-<li>进入容器<code>docker exec -it ubuntu /bin/bash</code><ul>
-<li>退出并保持运行<code>exit</code>，同<code>control + p &amp;&amp; control + q</code></li>
-</ul>
-</li>
-<li>移除容器<code>docker rm ubuntu</code></li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://docs.docker.com/" target="_blank" rel="noopener">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>容器</tag>
-        <tag>镜像</tag>
-        <tag>run</tag>
-        <tag>exec</tag>
-        <tag>attach</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker之网络</title>
     <url>/2019/08/15/docker-%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -7509,6 +7456,59 @@
         <tag>attach</tag>
         <tag>超文本</tag>
         <tag>Hypertext</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker之镜像容器操作</title>
+    <url>/2019/08/15/docker-%E9%95%9C%E5%83%8F%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>镜像(Image)和容器(Container)的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、镜像"><a href="#一、镜像" class="headerlink" title="一、镜像"></a>一、镜像</h2><ol>
+<li>查看镜像仓库<code>docker search ubuntu</code></li>
+<li>拉取仓库镜像<code>docker pull ubuntu</code></li>
+<li>查看本地镜像<code>docker images</code></li>
+<li>删除本地镜像<code>docker rmi ubuntu</code></li>
+</ol>
+<h2 id="二、容器"><a href="#二、容器" class="headerlink" title="二、容器"></a>二、容器</h2><ol>
+<li>创建并启动容器<code>docker run -it --name ubuntu  ubuntu /bin/bash</code></li>
+<li>查看运行的容器<code>docker ps</code><ul>
+<li>查看所有的容器<code>docker ps -a</code></li>
+</ul>
+</li>
+<li>(在容器中)退出并保持运行状态<code>control + p &amp;&amp; control + q</code>，同<code>exit</code><ul>
+<li>(在容器中)退出并退出运行状态<code>exit</code>(exec进入的容器是个特例)</li>
+</ul>
+</li>
+<li>停止运行的容器<code>docker stop ubuntu</code></li>
+<li>启动并运行容器<code>docker start -ia ubuntu</code></li>
+<li>进入容器<code>docker attach ubuntu</code><ul>
+<li>退出并终止运行<code>exit</code></li>
+</ul>
+</li>
+<li>开启容器<code>docker start ubuntu</code></li>
+<li>进入容器<code>docker exec -it ubuntu /bin/bash</code><ul>
+<li>退出并保持运行<code>exit</code>，同<code>control + p &amp;&amp; control + q</code></li>
+</ul>
+</li>
+<li>移除容器<code>docker rm ubuntu</code></li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://docs.docker.com/" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>容器</tag>
+        <tag>镜像</tag>
+        <tag>run</tag>
+        <tag>exec</tag>
+        <tag>attach</tag>
       </tags>
   </entry>
   <entry>
@@ -8476,9 +8476,9 @@
       <tags>
         <tag>Mac</tag>
         <tag>分布式</tag>
-        <tag>Kibana</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
+        <tag>Kibana</tag>
       </tags>
   </entry>
   <entry>
@@ -8909,10 +8909,10 @@
         <tag>Mac</tag>
         <tag>brew</tag>
         <tag>分布式</tag>
-        <tag>大仲马</tag>
-        <tag>基督山伯爵</tag>
         <tag>Elasticsearch</tag>
         <tag>tap</tag>
+        <tag>大仲马</tag>
+        <tag>基督山伯爵</tag>
       </tags>
   </entry>
   <entry>
@@ -13629,40 +13629,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-git回滚之reset</title>
-    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<blockquote>
-<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
-</li>
-<li><p>实现</p>
-<ul>
-<li>git reset –hard commit-id</li>
-<li>git push -f</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href=""></a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>reset</tag>
-        <tag>回滚</tag>
-        <tag>李银河</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git回滚之revert</title>
     <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Brevert/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13700,6 +13666,40 @@
       </tags>
   </entry>
   <entry>
+    <title>git-git回滚之reset</title>
+    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<blockquote>
+<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
+</li>
+<li><p>实现</p>
+<ul>
+<li>git reset –hard commit-id</li>
+<li>git push -f</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href=""></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>回滚</tag>
+        <tag>reset</tag>
+        <tag>李银河</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git合并之merge</title>
     <url>/2019/03/08/git-git%E5%90%88%E5%B9%B6%E4%B9%8Bmerge/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13720,9 +13720,9 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>王小波</tag>
         <tag>合并</tag>
         <tag>merge</tag>
+        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -13909,30 +13909,6 @@
       </tags>
   </entry>
   <entry>
-    <title>插入排序</title>
-    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>上几年班，做几年业务开发，大学学的数据结构和算法基本都快忘完了。查找和排序算法，作为高频问答题，面试的时候遇到过好几次。插入排序又是排序算法中必须掌握的一种，操作的时候有点像平时打扑克牌的意思，特此记录！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>将数组中的数据分为两个区间，已排序区间和未排序区间。初始已排序区间只有一个元素，就是数组的第一个元素。插入算法的核心思想是依次取未排序区间中的元素，在已排序区间中找到合适的插入位置将其插入，并保证已排序区间数据一直有序。重复这个过程，直到未排序区间中元素为空，算法结束。</li>
-<li>插入排序是一种基于比较的排序算法。</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function insertionSort($data)</span><br><span class="line">&#123;</span><br><span class="line">    $n &#x3D; count($data);</span><br><span class="line">    if ($n &lt;&#x3D; 1) &#123;</span><br><span class="line">        return $data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for ($i &#x3D; 1; $i &lt; $n; ++$i) &#123;</span><br><span class="line">        $value &#x3D; $data[$i];&#x2F;&#x2F; 从下标为1开始，依次取后面的数和前面已排好序的数进行比较</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 查找插入的位置</span><br><span class="line">        $j &#x3D; $i - 1;</span><br><span class="line">        for ($j; $j &gt;&#x3D; 0; --$j) &#123;</span><br><span class="line">            if ($data[$j] &gt; $value) &#123;</span><br><span class="line">                $data[$j + 1] &#x3D; $data[$j];&#x2F;&#x2F; 数据移动</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $data[$j + 1] &#x3D; $value;&#x2F;&#x2F; 插入数据</span><br><span class="line">    &#125;</span><br><span class="line">    return $data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据结构和算法</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>插入排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>快速排序</title>
     <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13954,6 +13930,30 @@
         <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>快速排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>插入排序</title>
+    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>上几年班，做几年业务开发，大学学的数据结构和算法基本都快忘完了。查找和排序算法，作为高频问答题，面试的时候遇到过好几次。插入排序又是排序算法中必须掌握的一种，操作的时候有点像平时打扑克牌的意思，特此记录！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>将数组中的数据分为两个区间，已排序区间和未排序区间。初始已排序区间只有一个元素，就是数组的第一个元素。插入算法的核心思想是依次取未排序区间中的元素，在已排序区间中找到合适的插入位置将其插入，并保证已排序区间数据一直有序。重复这个过程，直到未排序区间中元素为空，算法结束。</li>
+<li>插入排序是一种基于比较的排序算法。</li>
+</ol>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function insertionSort($data)</span><br><span class="line">&#123;</span><br><span class="line">    $n &#x3D; count($data);</span><br><span class="line">    if ($n &lt;&#x3D; 1) &#123;</span><br><span class="line">        return $data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for ($i &#x3D; 1; $i &lt; $n; ++$i) &#123;</span><br><span class="line">        $value &#x3D; $data[$i];&#x2F;&#x2F; 从下标为1开始，依次取后面的数和前面已排好序的数进行比较</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 查找插入的位置</span><br><span class="line">        $j &#x3D; $i - 1;</span><br><span class="line">        for ($j; $j &gt;&#x3D; 0; --$j) &#123;</span><br><span class="line">            if ($data[$j] &gt; $value) &#123;</span><br><span class="line">                $data[$j + 1] &#x3D; $data[$j];&#x2F;&#x2F; 数据移动</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $data[$j + 1] &#x3D; $value;&#x2F;&#x2F; 插入数据</span><br><span class="line">    &#125;</span><br><span class="line">    return $data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>插入排序</tag>
       </tags>
   </entry>
   <entry>
@@ -18427,9 +18427,9 @@
         <tag>TCP</tag>
         <tag>http</tag>
         <tag>https</tag>
+        <tag>会话机制</tag>
         <tag>UDP</tag>
         <tag>websocket</tag>
-        <tag>会话机制</tag>
         <tag>http1.0</tag>
         <tag>http1.1</tag>
         <tag>http2.0</tag>
@@ -25384,6 +25384,88 @@
       </tags>
   </entry>
   <entry>
+    <title>Makefile中条件判断</title>
+    <url>/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>使用条件判断可以让make根据运行时的不同情况选择不同的执行分支。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
+<ol>
+<li>语法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>条件常用格式</p>
+<ul>
+<li><code>ifxxx (arg1,arg2)</code></li>
+<li><code>ifxxx “arg1” “arg2”</code></li>
+<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
+<li><code>ifxxx “arg1” ‘arg2’</code></li>
+<li><code>ifxxx ‘arg1’ “arg2”</code></li>
+</ul>
+</li>
+<li><p>分类</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">判断</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ifeq</td>
+<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifneq</td>
+<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifdef</td>
+<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifndef</td>
+<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>定义makefile文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 :&#x3D; 123</span><br><span class="line">var2 :&#x3D; $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
+</li>
+<li><p><font color=red>注意：</font></p>
+<ul>
+<li><code>ifxxx</code> 后面有个空格</li>
+<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
+<li>意思就是ifxxx前不用加tab</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://seisman.github.io/" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Makefile</category>
+      </categories>
+      <tags>
+        <tag>Makefile</tag>
+        <tag>ifeq</tag>
+        <tag>条件判断</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile入门</title>
     <url>/2017/08/09/Makefile-%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -25481,91 +25563,9 @@
       </categories>
       <tags>
         <tag>Makefile</tag>
+        <tag>ifeq</tag>
         <tag>make</tag>
-        <tag>ifeq</tag>
         <tag>phony</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile中条件判断</title>
-    <url>/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>使用条件判断可以让make根据运行时的不同情况选择不同的执行分支。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
-<ol>
-<li>语法</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>条件常用格式</p>
-<ul>
-<li><code>ifxxx (arg1,arg2)</code></li>
-<li><code>ifxxx “arg1” “arg2”</code></li>
-<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
-<li><code>ifxxx “arg1” ‘arg2’</code></li>
-<li><code>ifxxx ‘arg1’ “arg2”</code></li>
-</ul>
-</li>
-<li><p>分类</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">判断</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">ifeq</td>
-<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifneq</td>
-<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifdef</td>
-<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifndef</td>
-<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
-</tr>
-</tbody></table>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>定义makefile文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 :&#x3D; 123</span><br><span class="line">var2 :&#x3D; $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
-</li>
-<li><p><font color=red>注意：</font></p>
-<ul>
-<li><code>ifxxx</code> 后面有个空格</li>
-<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
-<li>意思就是ifxxx前不用加tab</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://seisman.github.io/" target="_blank" rel="noopener">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Makefile</category>
-      </categories>
-      <tags>
-        <tag>Makefile</tag>
-        <tag>ifeq</tag>
-        <tag>条件判断</tag>
       </tags>
   </entry>
   <entry>
@@ -26203,8 +26203,8 @@
       </categories>
       <tags>
         <tag>分布式</tag>
-        <tag>Kibana</tag>
         <tag>Elasticsearch</tag>
+        <tag>Kibana</tag>
         <tag>Logstash</tag>
         <tag>日志系统</tag>
         <tag>ELK</tag>
@@ -26425,9 +26425,9 @@
       </categories>
       <tags>
         <tag>Mac</tag>
+        <tag>hostname</tag>
         <tag>ifconfig</tag>
         <tag>traceroute</tag>
-        <tag>hostname</tag>
         <tag>nslookup</tag>
         <tag>arp</tag>
       </tags>
@@ -37278,8 +37278,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>grep</tag>
         <tag>awk</tag>
+        <tag>grep</tag>
         <tag>sed</tag>
       </tags>
   </entry>
@@ -40150,9 +40150,9 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>C</tag>
-        <tag>struct</tag>
         <tag>道德经</tag>
         <tag>老子</tag>
+        <tag>struct</tag>
         <tag>union</tag>
       </tags>
   </entry>

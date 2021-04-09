@@ -218,7 +218,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liusir.me/2017/08/11/linux-shell%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/">
+    <link itemprop="mainEntityOfPage" href="https://liusir.me/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kid.jpg">
@@ -232,7 +232,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2017/08/11/linux-shell%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E6%8B%AC%E5%8F%B7/" class="post-title-link" itemprop="url">shell中的各种括号</a>
+            <a href="/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/" class="post-title-link" itemprop="url">Makefile中条件判断</a>
         </h1>
 
         <div class="post-meta">
@@ -244,7 +244,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2017-08-11 11:02:23" itemprop="dateCreated datePublished" datetime="2017-08-11T11:02:23+08:00">2017-08-11</time>
+              <time title="创建时间：2017-08-09 16:49:10" itemprop="dateCreated datePublished" datetime="2017-08-09T16:49:10+08:00">2017-08-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +252,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Makefile/" itemprop="url" rel="index">
+                    <span itemprop="name">Makefile</span>
                   </a>
                 </span>
             </span>
@@ -263,13 +263,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>4.4k</span>
+              <span>677</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>4 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -282,166 +282,16 @@
 
       
           <blockquote>
-<p>循环(程序设计)：是一种计算机科学运算领域的用语，也是一种常见的控制流程。</p>
+<p>使用条件判断可以让make根据运行时的不同情况选择不同的执行分支。</p>
 </blockquote>
-<h2 id="一、"><a href="#一、" class="headerlink" title="一、$()"></a>一、$()</h2><ol>
-<li>在<code>bash shell</code>中，<code>$()</code>与反引号都可用做命令替换，用户可像在终端中输入命令一样，<code>bash shell</code>会自动进行替换。</li>
-<li>demo</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">version1&#x3D;$(uname -r)</span><br><span class="line">version2&#x3D;&#96;uname -r&#96;</span><br><span class="line"></span><br><span class="line">echo $version1</span><br><span class="line">echo $version2</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>反引号比$()通用，有的版本不支持$()写法</p>
-</blockquote>
-<h2 id="二、"><a href="#二、" class="headerlink" title="二、${}"></a>二、${}</h2><ol>
-<li><p><code>${}</code>常用于变量替换(提取)，一般情况下<code>$var</code>与<code>${var}</code>并没有什么不一样，但是用<code>${}</code>会比较精确的界定变量名称的范围。</p>
-</li>
-<li><p>使用场景</p>
-<ul>
-<li><p>字符串提取</p>
-<ul>
-<li>使用通配符<ul>
-<li><code>#</code>是去掉左边的字符串(<em>从前往后</em>)，默认是最小匹配，<code>##</code>是最大匹配</li>
-<li><code>%</code>是去掉右边的字符串(<em>从后往前</em>)，默认是最小匹配，<code>%%</code>是最大匹配</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">var&#x3D;&#x2F;dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var#*&#x2F;&#125;   #去掉第一个&#x2F;及其左边的内容：dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var##*&#x2F;&#125;  #去掉最后一个&#x2F;及其左边的内容：a.b.txt</span><br><span class="line"></span><br><span class="line">echo $&#123;var%.*&#125;   #去掉最后一个.及其右边的内容：&#x2F;dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b</span><br><span class="line">echo $&#123;var%%.*&#125;  #去掉第一个.及其右边的内容：&#x2F;dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用下标</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">var&#x3D;&#x2F;dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var:0:5&#125;  #从下标0开始，取字符长度为5，得到:&#x2F;dir1</span><br><span class="line">echo $&#123;var:5:5&#125;  #从下标5开始，取字符长度为5，得到:&#x2F;dir2</span><br><span class="line">echo $&#123;var:5&#125;    #从下表5开始，取到字符串末尾，得到:&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var: -5&#125;  #从下表-5开始，取到字符串末尾，得到:&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var:(-5)&#125; #从下表-5开始，取到字符串末尾，得到:&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串替换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">var&#x3D;&#x2F;dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var&#x2F;dir&#x2F;directory&#125;   #将第一个dir替换为directory，得到:&#x2F;directory1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line">echo $&#123;var&#x2F;&#x2F;dir&#x2F;directory&#125;  #将所有的dir替换为directory，得到:&#x2F;directory1&#x2F;directory2&#x2F;directory3&#x2F;directory4&#x2F;a.b.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对变量不同状态赋值(没设定、空值、非空值)</p>
-<ul>
-<li><p><code>${var:-string}</code>:若变量<code>var</code>为空则用<code>string</code>来替换$<code>{var:-string}</code>，否则变量<code>var</code>不为空时，则用变量var的值来替换$<code>{var:-string}</code>。</p>
-</li>
-<li><p><code>${var:=string}</code>:若<code>var</code>为空时则用<code>string</code>替换<code>${var:=string}</code>的同时，把<code>string</code>赋给变量<code>var</code>。</p>
-<ul>
-<li><code>${var:=string}</code>很常用的一种用法是判断某个变量是否赋值，没有的话则给它赋上一个默认值。</li>
-</ul>
-</li>
-<li><p><code>${var:+string}</code>的替换规则和上面的相反，即只有当<code>var</code>不是空的时候才替换成<code>string</code>，若<code>var</code>为空时则不替换或者说是替换成变量<code>var</code>的值，即空值。</p>
-</li>
-<li><p><code>${var:?string}</code>替换规则为：若变量<code>var</code>不为空则用变量<code>var</code>的值来替换<code>${var:?string}</code>；若变量<code>var</code>为空则把<code>string</code>输出到标准错误中，并从脚本中退出。</p>
-<ul>
-<li>可利用此特性来检查是否设置了变量的值。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">var&#x3D;&#x2F;dir1&#x2F;dir2&#x2F;dir3&#x2F;dir4&#x2F;a.b.txt</span><br><span class="line"></span><br><span class="line">echo $&#123;var-test.txt&#125;</span><br><span class="line">echo $&#123;file1-test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var:-test.txt&#125;</span><br><span class="line">echo $&#123;file2:-test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var+test.txt&#125;</span><br><span class="line">echo $&#123;file3+test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var:+test.txt&#125;</span><br><span class="line">echo $&#123;file4:+test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var&#x3D;test.txt&#125;</span><br><span class="line">echo $&#123;file5&#x3D;test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var:&#x3D;test.txt&#125;</span><br><span class="line">echo $&#123;file6:&#x3D;test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var?test.txt&#125;</span><br><span class="line">echo $&#123;file7?test.txt&#125;</span><br><span class="line"></span><br><span class="line">echo $&#123;var:?test.txt&#125;</span><br><span class="line">echo $&#123;file8:?test.txt&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>取变量长度</p>
-<ul>
-<li>取字符串长度</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">str&#x3D;123456</span><br><span class="line">echo $&#123;#str&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>取数组元素个数</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">arr&#x3D;(a b c)</span><br><span class="line">echo $&#123;#arr[@]&#125;</span><br><span class="line">echo $&#123;#arr[*]&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、-和"><a href="#三、-和" class="headerlink" title="三、[]和[[]]"></a>三、[]和[[]]</h2><ol>
-<li><p>[]完全等价于命令<code>test</code>，可用于测试表达式，常见如字符串比较，算术比较，文件等。</p>
-<ul>
-<li>文件检测<ul>
-<li>文件类检测<ul>
-<li><code>-e file</code>：文件是否存在(exist)</li>
-<li><code>-f file</code>：文件是否存在且为普通文件(file)</li>
-<li><code>-d file</code>：文件是否存在且为目录(directory)</li>
-<li><code>-b file</code>：文件是否存在且为块设备(block device)</li>
-<li><code>-c file</code>：文件是否存在且为字符设备(character device)</li>
-<li><code>-S file</code>：文件是否存在且为套接字文件(Socket)</li>
-<li><code>-p file</code>：文件是否存在且为命名管道文件FIFO(pipe)</li>
-<li><code>-L file</code>：文件是否存在且是一个链接文件(Link)</li>
-</ul>
-</li>
-<li>文件属性检测<ul>
-<li><code>-r file</code>：文件是否存在且当前用户可读</li>
-<li><code>-w file</code>：文件是否存在且当前用户可写</li>
-<li><code>-x file</code>：文件是否存在且当前用户可执行</li>
-<li><code>-u file</code>：文件是否存在且设置了SUID</li>
-<li><code>-g file</code>：文件是否存在且设置了SGID</li>
-<li><code>-k file</code>：文件是否存在且设置了sbit(sticky bit)</li>
-<li><code>-s file</code>：文件是否存在且大小大于0字节，即用于检测文件是否为非空白文件</li>
-<li><code>-N file</code>：文件是否存在，且自上次read后是否被modify</li>
-</ul>
-</li>
-<li>两个文件之间的比较<ul>
-<li><code>file1 -nt file2</code>：判断file1是否比file2新，即<code>newer than</code>。</li>
-<li><code>file1 -ot file2</code>：判断file1是否比file2旧，即<code>older than</code></li>
-<li><code>file1 -ef file2</code>：判断file2与file2是否为同一文件，可用在判断hard link的判定上。主要意义在判定，两个文件是否均指向同一个分区上的同一个inode，即<code>equal file</code>。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数值检测(支持正负整数，不支持浮点数)<ul>
-<li><code>int1 -eq int2</code>：两数值相等(equal)</li>
-<li><code>int1 -ne int2</code>：两数值不等(not equal)</li>
-<li><code>int1 -gt int2</code>：int1大于int2(greater than)</li>
-<li><code>int1 -lt int2</code>：int1小于int2(less than)</li>
-<li><code>int1 -ge int2</code>：int1大于等于int2(greater than or equal)</li>
-<li><code>int1 -le int2</code>：int1小于等于int2(less than or equal)</li>
-</ul>
-</li>
-<li>字符串检测<ul>
-<li><code>-z string</code>：判定字符串是否为空(zero)，为空则返回true。</li>
-<li><code>string</code>或<code>-n string</code>：判定字符串是否非空，为空则false。<ul>
-<li>注：-n可省略</li>
-</ul>
-</li>
-<li><code>string1 = string2</code>或<code>string1 == string2</code>：string1和string2是否相同，相同则返回true。<ul>
-<li><code>==</code>和<code>=</code>等价，但<code>=</code>可移植性更好</li>
-</ul>
-</li>
-<li><code>str1 != str2</code>：str1是否不等于str2，不等则返回true。</li>
-<li><code>str1 &gt; str2</code>：str1字母顺序是否大于str2，大于则返回true。</li>
-<li><code>str1 &lt; str2</code>：str1字母顺序是否小于str2，小于则返回true。</li>
-</ul>
-</li>
-<li>逻辑检测<ul>
-<li><code>-a</code>或<code>&amp;&amp;</code>：两表达式同时为true时才为true。<ul>
-<li><code>-a</code>只能在<code>test</code>或<code>[]</code>中使用，<code>&amp;&amp;</code>只能在<code>[[]]</code>中使用</li>
-</ul>
-</li>
-<li><code>-o</code>或<code>||</code>：两表达式任何一个true则为true。<ul>
-<li><code>-o</code>只能在<code>test</code>或<code>[]</code>中使用，<code>||</code>只能在<code>[[]]</code>中使用</li>
-</ul>
-</li>
-<li><code>!</code>：对表达式取反</li>
-<li><code>()</code>：用于改变表达式的优先级，为了防止被shell解析，应该加上反斜线转义<code>\( \)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>知识点</p>
-<ul>
-<li>使用<code>[]</code>和<code>[[]]</code>时必须有空格，这是强制要求的格式。</li>
-<li>test命令使用标准的数学比较符号来表示字符串的比较，而用文本符号来表示数值的比较。</li>
-<li>大于符号或小于符号必须要转义，否则会被理解成重定向。</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、-及"><a href="#四、-及" class="headerlink" title="四、(())及[[]]"></a>四、(())及[[]]</h2><ol>
-<li><code>(())</code>及<code>[[]]</code>分别是<code>[]</code>的针对数学比较表达式和字符串表达式的加强版。<ul>
-<li><code>[[]]</code>中增加模式匹配特性。</li>
-<li><code>(())</code>不需要再将表达式里面的大小于符号转义，另新增了++、–、~、&amp;、|、**、&lt;&lt;、&gt;&gt;、！、&amp;&amp;、||等运算。</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/iamdevops/p/5602885.html" target="_blank" rel="noopener">参考一</a></li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -529,98 +379,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/08/09/Makefile-%E5%85%A5%E9%97%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liusir.me/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/kid.jpg">
-      <meta itemprop="name" content="刘三儿">
-      <meta itemprop="description" content="天道酬勤 自强不息">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liusir.me">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/" class="post-title-link" itemprop="url">Makefile中条件判断</a>
-        </h1>
-
-        <div class="post-meta">
-
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-08-09 16:49:10" itemprop="dateCreated datePublished" datetime="2017-08-09T16:49:10+08:00">2017-08-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Makefile/" itemprop="url" rel="index">
-                    <span itemprop="name">Makefile</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              <span>677</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>使用条件判断可以让make根据运行时的不同情况选择不同的执行分支。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -805,6 +563,98 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/08/08/docker-mysql%E4%B8%BB%E4%BB%8E/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.me/2017/08/06/mac-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4dscl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.me">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/08/06/mac-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4dscl/" class="post-title-link" itemprop="url">mac之用户管理命令dscl</a>
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-08-06 15:29:47" itemprop="dateCreated datePublished" datetime="2017-08-06T15:29:47+08:00">2017-08-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>51</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>最近需要对系统的用户和用户组进行操作，才发现mac系统下的用户操作跟常见的Linux系统有很大的不同。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/08/06/mac-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4dscl/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
