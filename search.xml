@@ -204,8 +204,43 @@
 </ul>
 <ol start="2">
 <li><p>Redis</p>
+<ul>
+<li>启动方式：3种，配置文件(推荐)、redis-server启动指定(会暴露主节点密码)、redis-cli建立连接后指定(主节点设置密码则无法通过此方式启动)</li>
+<li>作用<ul>
+<li>数据冗余</li>
+<li>故障恢复</li>
+<li>负载均衡</li>
+<li>高可用基石(哨兵、集群)</li>
+</ul>
 </li>
-<li><p>MongoDB</p>
+<li>实现原理：master节点的写操作会产生快照rdb文件(对比MySQL的binlog文件)，通过主从节点建立的连接进行传输，传输期间主节点产生的写命令会写入缓冲区，rdb传输完成后会将缓冲区的命令传递给从节点，从而实现主从复制。此过程会经历以下3个阶段：<ul>
+<li>连接建立阶段</li>
+<li>数据同步阶段</li>
+<li>命令传播阶段</li>
+</ul>
+</li>
+<li>复制过程<ul>
+<li>2.8版本以前(sync)</li>
+<li>2.8版本以后(psync)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>MongoDB(从4.0版本后已不支持主从复制，此处只做实验用)</p>
+<ul>
+<li><p>主从复制</p>
+<ul>
+<li><p><code>Master/slave replication is no longer supported</code>，4.0版本后不再支持主从复制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#master节点</span><br><span class="line">dbpath &#x3D; &#x2F;usr&#x2F;local&#x2F;mongodb-3.6.23&#x2F;data&#x2F;27017</span><br><span class="line">logpath &#x3D; &#x2F;usr&#x2F;local&#x2F;mongodb-3.6.23&#x2F;data&#x2F;27017&#x2F;mongo-27017.log</span><br><span class="line">port &#x3D; 27017 ## 指定端口</span><br><span class="line">#fork &#x3D; true  ## 一后台进程方式启动</span><br><span class="line">logappend&#x3D;true ## 以追加方式记录日志</span><br><span class="line">storageEngine&#x3D;wiredTiger</span><br><span class="line">#security:</span><br><span class="line">#    authorization: enabled</span><br><span class="line">#auth &#x3D; true</span><br><span class="line">bind_ip&#x3D;127.0.0.1</span><br><span class="line">master&#x3D;true</span><br><span class="line"></span><br><span class="line">#slave节点</span><br><span class="line">dbpath &#x3D; &#x2F;usr&#x2F;local&#x2F;mongodb-3.6.23&#x2F;data&#x2F;27018</span><br><span class="line">logpath &#x3D; &#x2F;usr&#x2F;local&#x2F;mongodb-3.6.23&#x2F;data&#x2F;27018&#x2F;mongo-27018.log</span><br><span class="line">port &#x3D; 27018 ## 指定端口</span><br><span class="line">#fork &#x3D; true  ## 一后台进程方式启动</span><br><span class="line">logappend&#x3D;true ## 以追加方式记录日志</span><br><span class="line">storageEngine&#x3D;wiredTiger</span><br><span class="line">#security:</span><br><span class="line">#    authorization: enabled</span><br><span class="line">#auth &#x3D; true</span><br><span class="line">bind_id&#x3D;127.0.0.1</span><br><span class="line">source&#x3D;127.0.0.1</span><br><span class="line">slave&#x3D;true</span><br><span class="line"></span><br><span class="line">&gt;cd &#x2F;usr&#x2F;local&#x2F;mongodb-3.6.23 &amp;&amp; .&#x2F;bin&#x2F;mongo --port 27017&#x2F;27018</span><br><span class="line">&gt;db.isMaster()</span><br><span class="line">&#123;</span><br><span class="line">	&quot;ismaster&quot; : true,</span><br><span class="line">	&quot;maxBsonObjectSize&quot; : 16777216,</span><br><span class="line">	&quot;maxMessageSizeBytes&quot; : 48000000,</span><br><span class="line">	&quot;maxWriteBatchSize&quot; : 100000,</span><br><span class="line">	&quot;localTime&quot; : ISODate(&quot;2021-04-08T12:25:49.534Z&quot;),</span><br><span class="line">	&quot;logicalSessionTimeoutMinutes&quot; : 30,</span><br><span class="line">	&quot;minWireVersion&quot; : 0,</span><br><span class="line">	&quot;maxWireVersion&quot; : 6,</span><br><span class="line">	&quot;readOnly&quot; : false,</span><br><span class="line">	&quot;ok&quot; : 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>副本集模式</p>
+<ul>
+<li>实现原理：Primary节点写入数据，Secondary通过读取Primary的oplog得到复制信息，开始复制数据并且将复制信息写入到自己的oplog。其中，oplog是local库下的一个固定集合</li>
+</ul>
+</li>
+</ul>
 </li>
 </ol>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
@@ -216,6 +251,9 @@
 <li><a href="https://www.cnblogs.com/rickiyang/p/13856388.html" target="_blank" rel="noopener">参考五</a></li>
 <li><a href="https://segmentfault.com/a/1190000038967218" target="_blank" rel="noopener">参考六</a></li>
 <li><a href="http://mysql.taobao.org/monthly/" target="_blank" rel="noopener">参考七</a></li>
+<li><a href="https://www.cnblogs.com/kismetv/p/9236731.html" target="_blank" rel="noopener">参考八</a></li>
+<li><a href="https://www.cnblogs.com/daofaziran/p/10978628.html" target="_blank" rel="noopener">参考九</a></li>
+<li><a href="https://www.docs4dev.com/docs/zh/mongodb/v3.6/reference/tutorial-getting-started.html" target="_blank" rel="noopener">参考十</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -227,8 +265,8 @@
         <tag>MongoDB</tag>
         <tag>Redis</tag>
         <tag>主从复制</tag>
-        <tag>Elasticsearch</tag>
         <tag>Hbase</tag>
+        <tag>Elasticsearch - 副本集</tag>
       </tags>
   </entry>
   <entry>
@@ -408,8 +446,8 @@
       </tags>
   </entry>
   <entry>
-    <title>自动化运维工具ansible</title>
-    <url>/2021/02/20/%E5%B7%A5%E5%85%B7-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7ansible/</url>
+    <title>DevOps之ansible</title>
+    <url>/2021/02/20/DevOps-ansible/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>ansible是一种自动化运维工具，基于Python开发，集合了众多运维工具(puppet、chef、func、fabric)的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。</p>
 </blockquote>
@@ -421,10 +459,10 @@
 </ol>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>DevOps</category>
       </categories>
       <tags>
-        <tag>工具</tag>
+        <tag>DevOps</tag>
         <tag>自动化运维</tag>
         <tag>ansible</tag>
       </tags>
@@ -886,10 +924,10 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>二叉树</tag>
         <tag>二叉排序树</tag>
         <tag>AVL树</tag>
         <tag>红黑树</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -1329,8 +1367,8 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>技术</tag>
+        <tag>Mac</tag>
         <tag>Node</tag>
         <tag>ab</tag>
         <tag>apache</tag>
@@ -2039,7 +2077,10 @@
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、应用"><a href="#二、应用" class="headerlink" title="二、应用"></a>二、应用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、应用"><a href="#二、应用" class="headerlink" title="二、应用"></a>二、应用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.jianshu.com/p/7863667d5fa7" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
@@ -2215,6 +2256,64 @@
       </tags>
   </entry>
   <entry>
+    <title>mongodb备份还原</title>
+    <url>/2020/04/12/nosql-mongodb%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。最好将重要数据制作三个，或三个以上的备份，并且放置在不同的场所异地备援，以利日后回存之用。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>备份<code>mongodump</code></p>
+<ul>
+<li>所有库备份<code>mongodump --out ~/Desktop/mongo</code></li>
+<li>指定库备份<code>mongodump --db db_name --out ~/Desktop/mongo</code></li>
+<li>指定集合<code>mongodump --db db_name --collection coll_name --out ~/Desktop/mongo</code><ul>
+<li><code>--db</code>可简写为<code>-d</code></li>
+<li><code>--collections</code>可简写为<code>-c</code></li>
+<li><code>--out</code>可简写为<code>-o</code></li>
+</ul>
+</li>
+<li>删除数据库<ul>
+<li><code>show dbs</code></li>
+<li><code>use study</code></li>
+<li><code>db.dropDatabase()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>还原<code>mongorestore</code></p>
+<ul>
+<li>恢复整个库<code>mongorestore ~/Desktop/mongo</code></li>
+<li>恢复指定库<code>mongorestore --db user ~/Desktop/mongo/your_db</code></li>
+<li>恢复集合<code>mongorestore -d db_name -c coll_name ~/Desktop/mongo</code></li>
+</ul>
+</li>
+<li><p>导出与导入(可具体到字段)</p>
+<ul>
+<li><code>mongoexport -d study -c user -q &#39;{&quot;name&quot;:&quot;张三&quot;}&#39; -f name,age --csv -o ~/Desktop/user.csv</code></li>
+<li><code>mongoimport -d study -c user --upsert --upsertFields name,age --type csv ~/Desktop/user.json</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://mongoing.com" target="_blank" rel="noopener">MongoDB中文社区</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>NoSQL</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
+        <tag>mongodump</tag>
+        <tag>mongorestore</tag>
+        <tag>mongoexport</tag>
+        <tag>mongoimport</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mongodb分片集群</title>
     <url>/2020/04/12/nosql-mongodb%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -2311,64 +2410,6 @@
         <tag>NoSQL</tag>
         <tag>Sharding</tag>
         <tag>分片</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mongodb备份还原</title>
-    <url>/2020/04/12/nosql-mongodb%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在信息技术与数据管理领域，备份(英语：backup)指将文件系统或数据库系统中的数据加以复制，一旦发生灾难或错误操作时，可以方便而及时地恢复系统的有效数据和正常运作。最好将重要数据制作三个，或三个以上的备份，并且放置在不同的场所异地备援，以利日后回存之用。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>备份<code>mongodump</code></p>
-<ul>
-<li>所有库备份<code>mongodump --out ~/Desktop/mongo</code></li>
-<li>指定库备份<code>mongodump --db db_name --out ~/Desktop/mongo</code></li>
-<li>指定集合<code>mongodump --db db_name --collection coll_name --out ~/Desktop/mongo</code><ul>
-<li><code>--db</code>可简写为<code>-d</code></li>
-<li><code>--collections</code>可简写为<code>-c</code></li>
-<li><code>--out</code>可简写为<code>-o</code></li>
-</ul>
-</li>
-<li>删除数据库<ul>
-<li><code>show dbs</code></li>
-<li><code>use study</code></li>
-<li><code>db.dropDatabase()</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>还原<code>mongorestore</code></p>
-<ul>
-<li>恢复整个库<code>mongorestore ~/Desktop/mongo</code></li>
-<li>恢复指定库<code>mongorestore --db user ~/Desktop/mongo/your_db</code></li>
-<li>恢复集合<code>mongorestore -d db_name -c coll_name ~/Desktop/mongo</code></li>
-</ul>
-</li>
-<li><p>导出与导入(可具体到字段)</p>
-<ul>
-<li><code>mongoexport -d study -c user -q &#39;{&quot;name&quot;:&quot;张三&quot;}&#39; -f name,age --csv -o ~/Desktop/user.csv</code></li>
-<li><code>mongoimport -d study -c user --upsert --upsertFields name,age --type csv ~/Desktop/user.json</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://mongoing.com" target="_blank" rel="noopener">MongoDB中文社区</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>NoSQL</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>NoSQL</tag>
-        <tag>mongodump</tag>
-        <tag>mongorestore</tag>
-        <tag>mongoexport</tag>
-        <tag>mongoimport</tag>
       </tags>
   </entry>
   <entry>
@@ -2521,6 +2562,45 @@
         <tag>NoSQL</tag>
         <tag>Replication</tag>
         <tag>复制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redis之IO多路复用实现</title>
+    <url>/2020/04/10/nosql-IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>IO多路复用实现意为单个线程通过记录跟踪多个I/O流的状态来同时管理多个I/O流。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h2 id="二、Redis源码剖析-基于6-0-7"><a href="#二、Redis源码剖析-基于6-0-7" class="headerlink" title="二、Redis源码剖析(基于6.0.7)"></a>二、Redis源码剖析(基于6.0.7)</h2><ol>
+<li><code>redis6.0.7/src/ae.c</code><ul>
+<li><code>ae_evport</code>为<a href="https://zh.wikipedia.org/wiki/Solaris" target="_blank" rel="noopener"><code>Solaris 10</code></a>系统(Unix)下的多路复用的实现，也是最早的实现，Kernel提供了一个特殊的设备文件<code>/dev/poll</code>来实现。</li>
+<li><code>ae_epoll</code>为Linux系统下多路复用的实现。</li>
+<li><code>kqueue</code>为<code>OS X</code>、<code>FreeBSD</code>系统下多路复用的实现。</li>
+<li><code>select</code>则是所有平台下的实现。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifdef HAVE_EVPORT</span><br><span class="line">#include &quot;ae_evport.c&quot;</span><br><span class="line">#else</span><br><span class="line">    #ifdef HAVE_EPOLL</span><br><span class="line">    #include &quot;ae_epoll.c&quot;</span><br><span class="line">    #else</span><br><span class="line">        #ifdef HAVE_KQUEUE</span><br><span class="line">        #include &quot;ae_kqueue.c&quot;</span><br><span class="line">        #else</span><br><span class="line">        #include &quot;ae_select.c&quot;</span><br><span class="line">        #endif</span><br><span class="line">    #endif</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://blog.csdn.net/tiantao2012/article/details/79442152" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://www.cnblogs.com/binarylei/p/11130079.html" target="_blank" rel="noopener">参考二</a></li>
+<li><a href="https://segmentfault.com/a/1190000003063859" target="_blank" rel="noopener">参考三</a></li>
+<li><a href="https://xie.infoq.cn/article/b3816e9fe3ac77684b4f29348" target="_blank" rel="noopener">参考四</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>NoSQL</category>
+      </categories>
+      <tags>
+        <tag>select</tag>
+        <tag>epoll</tag>
+        <tag>NoSQL</tag>
+        <tag>IO多路复用实现</tag>
+        <tag>Redis</tag>
+        <tag>kqueue</tag>
+        <tag>evport</tag>
       </tags>
   </entry>
   <entry>
@@ -4115,9 +4195,9 @@
       <tags>
         <tag>Git</tag>
         <tag>push</tag>
-        <tag>王小波</tag>
         <tag>Github</tag>
         <tag>pull</tag>
+        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -4691,8 +4771,8 @@
       </categories>
       <tags>
         <tag>技术</tag>
-        <tag>HAProxy</tag>
         <tag>负载均衡</tag>
+        <tag>HAProxy</tag>
         <tag>OSI</tag>
       </tags>
   </entry>
@@ -5598,7 +5678,7 @@
         <tag>Redis</tag>
         <tag>数据结构</tag>
         <tag>整数集合</tag>
-        <tag>INTSET</tag>
+        <tag>intset</tag>
       </tags>
   </entry>
   <entry>
@@ -6953,6 +7033,29 @@
       </tags>
   </entry>
   <entry>
+    <title>netty</title>
+    <url>/2019/08/26/java-netty/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。</p>
+</li>
+<li><p>简单来说，有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</p>
+</li>
+</ol>
+<h2 id="二、待补充"><a href="#二、待补充" class="headerlink" title="二、待补充"></a>二、待补充</h2>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>netty</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tomcat</title>
     <url>/2019/08/26/java-tomcat/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -6980,29 +7083,6 @@
       <tags>
         <tag>Java</tag>
         <tag>tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>netty</title>
-    <url>/2019/08/26/java-netty/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。</p>
-</li>
-<li><p>简单来说，有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</p>
-</li>
-</ol>
-<h2 id="二、待补充"><a href="#二、待补充" class="headerlink" title="二、待补充"></a>二、待补充</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>netty</tag>
       </tags>
   </entry>
   <entry>
@@ -8807,9 +8887,9 @@
         <tag>Mac</tag>
         <tag>brew</tag>
         <tag>分布式</tag>
-        <tag>Elasticsearch</tag>
         <tag>大仲马</tag>
         <tag>基督山伯爵</tag>
+        <tag>Elasticsearch</tag>
         <tag>tap</tag>
       </tags>
   </entry>
@@ -9450,8 +9530,8 @@
       </categories>
       <tags>
         <tag>技术</tag>
+        <tag>Elasticsearch</tag>
         <tag>搜索引擎</tag>
-        <tag>ElasticSearch</tag>
         <tag>Solr</tag>
         <tag>Sphinx</tag>
         <tag>Xapian</tag>
@@ -9717,6 +9797,35 @@
       </tags>
   </entry>
   <entry>
+    <title>分布式事务</title>
+    <url>/2019/05/16/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>伫倚危楼风细细，望极春愁，黯黯生天际。草色烟光残照里，无言谁会凭栏意。拟把疏狂图一醉，对酒当歌，强乐还无味。衣带渐宽终不悔，为伊消得人憔悴。 —— 北宋.柳永 《蝶恋花·伫倚危楼风细细》 </p>
+</blockquote>
+<a id="more"></a>
+
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。简单来说就是一个大的操作由两个或者更多的小的操作共同完成，而这些小的操作又分布在不同的网络主机上。这些小的操作要么全部成功执行，要么全部不执行，以保证数据的一致性。</li>
+</ol>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
+<li>基于两阶段提交(2PC)</li>
+<li>补偿事务(TCC)</li>
+<li>本地消息表(异步确保)</li>
+<li>基于RocketMQ事务消息</li>
+<li>Sagas事务模型</li>
+</ol>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>事务</tag>
+        <tag>分布式</tag>
+        <tag>分布式事务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>分布式锁</title>
     <url>/2019/05/16/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -9857,35 +9966,6 @@
         <tag>锁</tag>
         <tag>分布式锁</tag>
         <tag>分布式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分布式事务</title>
-    <url>/2019/05/16/%E5%88%86%E5%B8%83%E5%BC%8F-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>伫倚危楼风细细，望极春愁，黯黯生天际。草色烟光残照里，无言谁会凭栏意。拟把疏狂图一醉，对酒当歌，强乐还无味。衣带渐宽终不悔，为伊消得人憔悴。 —— 北宋.柳永 《蝶恋花·伫倚危楼风细细》 </p>
-</blockquote>
-<a id="more"></a>
-
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。简单来说就是一个大的操作由两个或者更多的小的操作共同完成，而这些小的操作又分布在不同的网络主机上。这些小的操作要么全部成功执行，要么全部不执行，以保证数据的一致性。</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
-<li>基于两阶段提交(2PC)</li>
-<li>补偿事务(TCC)</li>
-<li>本地消息表(异步确保)</li>
-<li>基于RocketMQ事务消息</li>
-<li>Sagas事务模型</li>
-</ol>
-]]></content>
-      <categories>
-        <category>分布式</category>
-      </categories>
-      <tags>
-        <tag>事务</tag>
-        <tag>分布式</tag>
-        <tag>分布式事务</tag>
       </tags>
   </entry>
   <entry>
@@ -10432,9 +10512,9 @@
       </categories>
       <tags>
         <tag>epoll</tag>
+        <tag>kqueue</tag>
         <tag>操作系统</tag>
         <tag>多路复用</tag>
-        <tag>kqueue</tag>
         <tag>iocp</tag>
       </tags>
   </entry>
@@ -10598,8 +10678,8 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>LRU</tag>
         <tag>FIFO</tag>
+        <tag>LRU</tag>
         <tag>LFU</tag>
       </tags>
   </entry>
@@ -11174,79 +11254,6 @@
       <tags>
         <tag>Linux</tag>
         <tag>scp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mongodb命令行操作</title>
-    <url>/2019/04/19/nosql-mongodb%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>MongoDB优点：面向文档存储(类JSON数据模式简单而强大)；动态查询；全索引支持，扩展到内部对象和内嵌数组；查询记录分析；快速，就地更新；高效存储二进制大对象(比如照片和视频)；复制和故障切换支持；Auto- Sharding自动分片支持云级扩展性；MapReduce 支持复杂聚合；商业支持，培训和咨询。MongoDB缺点：不支持事务；MongoDB占用空间过大；MongoDB没有如MySQL那样成熟的维护工具。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、客户端连接"><a href="#一、客户端连接" class="headerlink" title="一、客户端连接"></a>一、客户端连接</h2><ol>
-<li>使用navicat连接mongodb时报错：重新启动服务，添加<code>--bind_ip_all</code>参数</li>
-</ol>
-<p><code>mongod --dbpath=/usr/local/mongodb-4.0.9/data --logpath=/usr/local/mongodb-4.0.9/log/mongo.log --logappend --fork --bind_ip_all</code></p>
-<ol start="2">
-<li>使用<code>Robo 3T</code>连接，<a href="https://download-test.robomongo.org/mac/robo3t-1.3.1-darwin-x86_64-7419c40.dmg" target="_blank" rel="noopener">下载</a></li>
-</ol>
-<h2 id="二、库和集合"><a href="#二、库和集合" class="headerlink" title="二、库和集合"></a>二、库和集合</h2><table>
-<thead>
-<tr>
-<th align="center">MongoDB</th>
-<th align="center">关系数据库</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">数据库(database)</td>
-<td align="center">数据库(database)</td>
-</tr>
-<tr>
-<td align="center">集合(collection)</td>
-<td align="center">表(table)</td>
-</tr>
-<tr>
-<td align="center">文档(document)</td>
-<td align="center">行(row)</td>
-</tr>
-</tbody></table>
-<ol>
-<li>查看库<code>show dbs</code>或<code>show databases</code></li>
-<li>使用库<code>use db</code></li>
-<li>当前所在库<code>db</code></li>
-<li>查看表(集合)<code>show collections</code>或<code>show tables</code></li>
-<li>查看内存使用<code>db.serverStatus().mem</code></li>
-<li>查看存储引擎<code>db.serverStatus().storageEngine</code></li>
-<li>查看当前版本<code>db.version()</code></li>
-</ol>
-<h2 id="三、增删改查"><a href="#三、增删改查" class="headerlink" title="三、增删改查"></a>三、增删改查</h2><ol>
-<li>插入</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.insertOne(</span><br><span class="line">    &#123;name:&quot;张三&quot;&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db.collections.insertMany(</span><br><span class="line">    [</span><br><span class="line">        &#123; item: &quot;journal&quot;, qty: 25, tags: [&quot;blank&quot;, &quot;red&quot;], size: &#123; h: 14, w: 21, uom: &quot;cm&quot; &#125; &#125;,</span><br><span class="line">        &#123; item: &quot;mat&quot;, qty: 85, tags: [&quot;gray&quot;], size: &#123; h: 27.9, w: 35.5, uom: &quot;cm&quot; &#125; &#125;,</span><br><span class="line">        &#123; item: &quot;mousepad&quot;, qty: 25, tags: [&quot;gel&quot;, &quot;blue&quot;], size: &#123; h: 19, w: 22.85, uom: &quot;cm&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>删除</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.remove(</span><br><span class="line">    &#123; &#39;name&#39; : &#39;小娜&#39; &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>更新</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.update(</span><br><span class="line">    &#x2F;&#x2F; query </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot; : &quot;liuyulong&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; update </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;小娜&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; options </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;multi&quot; : false,  &#x2F;&#x2F; update only one document </span><br><span class="line">        &quot;upsert&quot; : false  &#x2F;&#x2F; insert a new document, if no existing document match the query </span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">db.users.update(</span><br><span class="line">    &#123;</span><br><span class="line">        _id : &quot;8001&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $set: &#123;</span><br><span class="line">            &quot;a.b&quot;: 105</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;multi&quot; : false, </span><br><span class="line">        &quot;upsert&quot; : false</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>查找</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.find(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">db.collections.find(&#123;&quot;name&quot;:&quot;刘&quot;&#125;)</span><br><span class="line"></span><br><span class="line">db.collections.find(&#123;&quot;age&quot;:&#123;$gt:10&#125;&#125;);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>NoSQL</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>NoSQL</tag>
-        <tag>命令行</tag>
       </tags>
   </entry>
   <entry>
@@ -11915,36 +11922,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RabbitMQ幂等性</title>
-    <url>/2019/04/12/MQ-RabbitMQ%E5%B9%82%E7%AD%89%E6%80%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>心理补偿机制即观众在观影过程中，会不自觉的根据自己的日常生活经验，对影片画面之间的断裂作出心理补偿，从而最终实现对电影、电视的观赏。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>由于各种原因(网络延迟、脚本异常终止)，消费者出现异常或者消费者延迟消费，会造成进行MQ重试。在重试过程中，可能会造成消息重复消费，即出现非幂等性。保证消息消费时的幂等性，即保证消息不被重复消费。</li>
-</ol>
-<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
-<li>基于全局MsgId或业务Id</li>
-<li>基于redis缓存实现</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/niceyoo/p/11462611.html#h2" target="_blank" rel="noopener">参考一</a></li>
-<li><a href="https://www.cnblogs.com/huigelaile/p/10917859.html" target="_blank" rel="noopener">参考二</a></li>
-<li><a href="https://blog.csdn.net/weixin_38608626/article/details/99642530" target="_blank" rel="noopener">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>MQ</category>
-      </categories>
-      <tags>
-        <tag>MQ</tag>
-        <tag>RabbitMQ</tag>
-        <tag>幂等性</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RabbitMQ断线重连</title>
     <url>/2019/04/12/MQ-RabbitMQ%E6%96%AD%E7%BA%BF%E9%87%8D%E8%BF%9E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -11979,21 +11956,24 @@
       </tags>
   </entry>
   <entry>
-    <title>RabbitMQ时序性</title>
-    <url>/2019/04/12/MQ-RabbitMQ%E6%97%B6%E5%BA%8F%E6%80%A7/</url>
+    <title>RabbitMQ幂等性</title>
+    <url>/2019/04/12/MQ-RabbitMQ%E5%B9%82%E7%AD%89%E6%80%A7/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>我在朦胧中，眼前展开一片海边碧绿的沙地来，上面深蓝的天空中挂着一轮金黄的圆月。我想：希望是本无所谓有，无所谓无的。这正如地上的路；其实地上本没有路，走的人多了，也便成了路。 —— 鲁迅 《故乡》。</p>
+<p>心理补偿机制即观众在观影过程中，会不自觉的根据自己的日常生活经验，对影片画面之间的断裂作出心理补偿，从而最终实现对电影、电视的观赏。</p>
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MQ(Message Queue)，即消息队列，其存在的意义之一就是在高并发场景下，将所有请求加入队列。请求按排队顺序依次进行处理，第一步没有问题。接下来进入到业务层(如订单处理)，生产者会产生多条异步处理消息，如修改订单状态：待支付-&gt;已支付-&gt;已取消，然后消息通过exchange会分发到不同的队列中(这种情况可以在代码里面进行控制，即把对消费顺序有要求的消息投放到同一个队列中)，只要有多个消费者处理队列，都有可能会产生不同的消费顺序，从而导致业务上的漏洞。</p>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>由于各种原因(网络延迟、脚本异常终止)，消费者出现异常或者消费者延迟消费，会造成进行MQ重试。在重试过程中，可能会造成消息重复消费，即出现非幂等性。保证消息消费时的幂等性，即保证消息不被重复消费。</li>
+</ol>
 <h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
-<li>一个Queue对应一下Consumer</li>
-<li>消费者进行业务判断，前提是生产者有记录</li>
+<li>基于全局MsgId或业务Id</li>
+<li>基于redis缓存实现</li>
 </ol>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/huigelaile/p/10928984.html" target="_blank" rel="noopener">参考一</a></li>
-<li><a href="https://www.cnblogs.com/mengchunchen/p/10020997.html" target="_blank" rel="noopener">参考二</a></li>
+<li><a href="https://www.cnblogs.com/niceyoo/p/11462611.html#h2" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://www.cnblogs.com/huigelaile/p/10917859.html" target="_blank" rel="noopener">参考二</a></li>
+<li><a href="https://blog.csdn.net/weixin_38608626/article/details/99642530" target="_blank" rel="noopener">参考三</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -12002,7 +11982,7 @@
       <tags>
         <tag>MQ</tag>
         <tag>RabbitMQ</tag>
-        <tag>时序性</tag>
+        <tag>幂等性</tag>
       </tags>
   </entry>
   <entry>
@@ -12038,6 +12018,33 @@
         <tag>重试机制</tag>
         <tag>确认机制</tag>
         <tag>不可抗力因素</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RabbitMQ时序性</title>
+    <url>/2019/04/12/MQ-RabbitMQ%E6%97%B6%E5%BA%8F%E6%80%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>我在朦胧中，眼前展开一片海边碧绿的沙地来，上面深蓝的天空中挂着一轮金黄的圆月。我想：希望是本无所谓有，无所谓无的。这正如地上的路；其实地上本没有路，走的人多了，也便成了路。 —— 鲁迅 《故乡》。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MQ(Message Queue)，即消息队列，其存在的意义之一就是在高并发场景下，将所有请求加入队列。请求按排队顺序依次进行处理，第一步没有问题。接下来进入到业务层(如订单处理)，生产者会产生多条异步处理消息，如修改订单状态：待支付-&gt;已支付-&gt;已取消，然后消息通过exchange会分发到不同的队列中(这种情况可以在代码里面进行控制，即把对消费顺序有要求的消息投放到同一个队列中)，只要有多个消费者处理队列，都有可能会产生不同的消费顺序，从而导致业务上的漏洞。</p>
+<h2 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h2><ol>
+<li>一个Queue对应一下Consumer</li>
+<li>消费者进行业务判断，前提是生产者有记录</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/huigelaile/p/10928984.html" target="_blank" rel="noopener">参考一</a></li>
+<li><a href="https://www.cnblogs.com/mengchunchen/p/10020997.html" target="_blank" rel="noopener">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>MQ</category>
+      </categories>
+      <tags>
+        <tag>MQ</tag>
+        <tag>RabbitMQ</tag>
+        <tag>时序性</tag>
       </tags>
   </entry>
   <entry>
@@ -13600,6 +13607,40 @@
       </tags>
   </entry>
   <entry>
+    <title>git-git回滚之reset</title>
+    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<blockquote>
+<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
+</blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
+</li>
+<li><p>实现</p>
+<ul>
+<li>git reset –hard commit-id</li>
+<li>git push -f</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href=""></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>reset</tag>
+        <tag>回滚</tag>
+        <tag>李银河</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git回滚之revert</title>
     <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Brevert/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13637,40 +13678,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-git回滚之reset</title>
-    <url>/2019/03/08/git-git%E5%9B%9E%E6%BB%9A%E4%B9%8Breset/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<blockquote>
-<p>李银河，中国社会科学院社会学所研究员、教授、博士生导师。中国第一位研究性的女社会学家，自由主义女性主义者。师从于中国社会学奠基人费孝通。1952年生于北京。美国匹兹堡大学社会学博士。1999年被《亚洲周刊》评为中国50位最具影响的人物之一。</p>
-</blockquote>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</p>
-</li>
-<li><p>实现</p>
-<ul>
-<li>git reset –hard commit-id</li>
-<li>git push -f</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href=""></a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>回滚</tag>
-        <tag>reset</tag>
-        <tag>李银河</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git合并之merge</title>
     <url>/2019/03/08/git-git%E5%90%88%E5%B9%B6%E4%B9%8Bmerge/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13692,8 +13699,8 @@
       <tags>
         <tag>Git</tag>
         <tag>合并</tag>
-        <tag>merge</tag>
         <tag>王小波</tag>
+        <tag>merge</tag>
       </tags>
   </entry>
   <entry>
@@ -13928,33 +13935,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计数排序</title>
-    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>桶排序、计数排序、基数排序是经常听到但很少能写出来的排序算法，今天来说说计数排序！</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>算法原理<ul>
-<li>计数其实就是桶排序的一种特殊情况</li>
-<li>当要排序的n个数据所处范围并不大时，比如最大值为k，则分成k个桶</li>
-<li>每个桶内的数据值都是相同的，就省掉了桶内排序的时间</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据结构和算法</category>
-      </categories>
-      <tags>
-        <tag>排序</tag>
-        <tag>算法</tag>
-        <tag>数据结构</tag>
-        <tag>计数排序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>桶排序</title>
     <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E6%A1%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -13988,6 +13968,33 @@
         <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>桶排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计数排序</title>
+    <url>/2019/03/04/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95-%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>桶排序、计数排序、基数排序是经常听到但很少能写出来的排序算法，今天来说说计数排序！</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>算法原理<ul>
+<li>计数其实就是桶排序的一种特殊情况</li>
+<li>当要排序的n个数据所处范围并不大时，比如最大值为k，则分成k个桶</li>
+<li>每个桶内的数据值都是相同的，就省掉了桶内排序的时间</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>计数排序</tag>
       </tags>
   </entry>
   <entry>
@@ -16768,8 +16775,8 @@
       <tags>
         <tag>MySQL</tag>
         <tag>优化</tag>
-        <tag>存储过程</tag>
         <tag>联合索引</tag>
+        <tag>存储过程</tag>
         <tag>key_len</tag>
         <tag>恶向胆边生</tag>
         <tag>怒从心头起</tag>
@@ -17981,6 +17988,31 @@
       </tags>
   </entry>
   <entry>
+    <title>mongodb之journal和oplog</title>
+    <url>/2018/09/01/nosql-journal%E5%92%8Coplog/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和MySQL类似，MongoDB所有的数据写入、读取最终都是调用存储引擎(如WiredTiger、MMAPv1、In-Memory、Mongorocks等)的接口来实现，journal是存储引擎存储数据时的一种辅助机制，除In-Memory引擎外，其他引擎都已支持journal。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以wiredtiger为例，如果不配置journal，写入wiredtiger的数据并不会立即持久化存储，而是每分钟会做一次全量的checkpoint(storage.syncPeriodSecs配置项，默认为1分钟)将所有的数据持久化。如果中间出现宕机，那么数据只能恢复到最近的一次 checkpoint，这样最多可能丢掉1分钟的数据。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以建议<font color=red>「一定要开启journal」</font>，开启journal后每次写入会记录一条操作日志(通过journal可以重新构造出写入的数据)。这样即使出现宕机，启动时wiredtiger会先将数据恢复到最近的一次checkpoint的点，然后重放后续的<code>journal</code>操作日志来恢复数据。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MongoDB里的journal行为主要由2个参数控制，<code>storage.journal.enabled</code>决定是否开启journal，storage.journal.commitInternal(单位ms)决定journal刷盘的间隔，默认为100，用户也可以通过写入时指定<code>writeConcern</code>为<code>{j: ture}</code>来每次写入时都确保<code>journal</code>刷盘。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://mongoing.com/archives/3988" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>NoSQL</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
+        <tag>journal</tag>
+        <tag>oplog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mac之docker安装</title>
     <url>/2018/08/19/mac-docker%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -18546,8 +18578,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>自动化运维</tag>
+        <tag>工具</tag>
         <tag>zabbix</tag>
         <tag>nagios</tag>
       </tags>
@@ -20133,11 +20165,11 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>lsof</tag>
         <tag>rm</tag>
         <tag>大文件</tag>
         <tag>df</tag>
         <tag>du</tag>
+        <tag>lsof</tag>
       </tags>
   </entry>
   <entry>
@@ -20540,8 +20572,8 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>ZIPLIST</tag>
         <tag>压缩列表</tag>
+        <tag>ZIPLIST</tag>
         <tag>大端模式</tag>
         <tag>小端模式</tag>
       </tags>
@@ -20636,11 +20668,11 @@
       <tags>
         <tag>NoSQL</tag>
         <tag>Redis</tag>
+        <tag>ziplist</tag>
+        <tag>linkedlist</tag>
+        <tag>quicklist</tag>
         <tag>数据结构</tag>
         <tag>快表</tag>
-        <tag>QUICKLIST</tag>
-        <tag>LINKEDLIST</tag>
-        <tag>ZIPLIST</tag>
       </tags>
   </entry>
   <entry>
@@ -21189,8 +21221,8 @@
       </categories>
       <tags>
         <tag>PHP</tag>
-        <tag>魔术方法</tag>
         <tag>魔术常量</tag>
+        <tag>魔术方法</tag>
         <tag>超全局变量</tag>
         <tag>预定义变量</tag>
       </tags>
@@ -22302,8 +22334,8 @@
         <tag>NoSQL</tag>
         <tag>Redis</tag>
         <tag>数据结构</tag>
-        <tag>LINKEDLIST</tag>
         <tag>双端链表</tag>
+        <tag>LINKEDLIST</tag>
       </tags>
   </entry>
   <entry>
@@ -22329,16 +22361,17 @@
 <p>假设已经安装了<code>redis-server</code>,安装目录<code>/usr/local/redis-5.0.4</code>，本文通过同一台服务器不同端口实现<code>redis</code>主从，<code>master</code>节点<code>bind 127.0.0.1</code></p>
 </blockquote>
 <a id="more"></a>
-
-<ol>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h2 id="二、开干"><a href="#二、开干" class="headerlink" title="二、开干"></a>二、开干</h2><ol>
 <li><p>切换到安装目录<br><code>cd /usr/local/redis-5.0.4</code></p>
 </li>
 <li><p>复制<code>redis.conf</code>为<code>6380.conf</code>和<code>6381.conf</code><br><code>cp redis.conf 6380.conf</code><br><code>cp redis.conf 6381.conf</code></p>
 </li>
 <li><p>分别修改<code>6380.conf</code>和<code>6381.conf</code>如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">port 6380|6381</span><br><span class="line">slaveof 127.0.0.1 6379</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile &#x2F;var&#x2F;run&#x2F;redis_6380|6381.pid</span><br><span class="line">logfile &quot;6380|6381.log&quot;</span><br><span class="line">dbfilename dump6380|6381.rdb</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">port 6380|6381</span><br><span class="line">slaveof 127.0.0.1 6379</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile &#x2F;var&#x2F;run&#x2F;redis_6380|6381.pid</span><br><span class="line">logfile &quot;6380|6381.log&quot;</span><br><span class="line">dbfilename dump6380|6381.rdb</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>分别启动三个节点</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">redis-server 6379.conf</span><br><span class="line">redis-server 6380.conf</span><br><span class="line">redis-server 6381.conf</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">redis-server 6379.conf</span><br><span class="line">redis-server 6380.conf</span><br><span class="line">redis-server 6381.conf</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看主从节点信息</p>
 <ul>
 <li>6379</li>
@@ -22357,6 +22390,40 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">## 在master节点设置name</span><br><span class="line">redis-cli</span><br><span class="line">set name master-node-name</span><br><span class="line"></span><br><span class="line">## 在6380节点获取name</span><br><span class="line">redis-cli -p 6380</span><br><span class="line">get name</span><br><span class="line"></span><br><span class="line">## 在6381节点获取name</span><br><span class="line">redis-cli -p 6381</span><br><span class="line">get name</span><br></pre></td></tr></table></figure>
 
 </li>
+</ol>
+<blockquote>
+<p>开启主从有三种方式，一般推荐配置文件方式</p>
+</blockquote>
+<ul>
+<li><p>配置文件方式，即上面的那种</p>
+</li>
+<li><p>启动server时指定</p>
+<ul>
+<li><code>./redis-server 6380.conf --replicaof 127.0.0.1 6379</code><ul>
+<li>如果主节点设置了requirepass则须指定 <code>--masterauth 123456</code></li>
+<li><code>--replicaof</code>(<code>5.0.0+</code>)和<code>--slaveof</code>(<code>&lt;5.0.0</code>)一样，不同版本的产物</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>启动server后通过客户端命令slaveof指定</p>
+<ul>
+<li><p><code>./redis-server 6380.conf</code></p>
+</li>
+<li><p><code>./redis-cli -p 6380</code></p>
+<ul>
+<li><p><code>slaveof 127.0.0.1 6379</code>，此命令无法输入主节点的password，执行后查看从节点复制状态<code>info replication</code>，可看到<code>master_link_status:down</code>是down状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Replication</span><br><span class="line">role:slave</span><br><span class="line">master_host:127.0.0.1</span><br><span class="line">master_port:6379</span><br><span class="line">master_link_status:down</span><br><span class="line">master_last_io_seconds_ago:-1</span><br><span class="line">master_sync_in_progress:0</span><br><span class="line">slave_repl_offset:1</span><br><span class="line">master_link_down_since_seconds:1617335714</span><br><span class="line">slave_priority:100</span><br><span class="line">slave_read_only:1</span><br><span class="line">connected_slaves:0</span><br><span class="line">master_replid:243a71fda37bb8d32ed300368a73305c78984c39</span><br><span class="line">master_replid2:0000000000000000000000000000000000000000</span><br><span class="line">master_repl_offset:0</span><br><span class="line">second_repl_offset:-1</span><br><span class="line">repl_backlog_active:0</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:0</span><br><span class="line">repl_backlog_histlen:0</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://blog.csdn.net/weixin_30697239/article/details/95011585" target="_blank" rel="noopener">参考一</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -22781,8 +22848,8 @@
       </categories>
       <tags>
         <tag>技术</tag>
-        <tag>倒排索引</tag>
         <tag>搜索引擎</tag>
+        <tag>倒排索引</tag>
       </tags>
   </entry>
   <entry>
@@ -23019,8 +23086,8 @@
       </categories>
       <tags>
         <tag>NoSQL</tag>
-        <tag>memcached</tag>
         <tag>Redis</tag>
+        <tag>memcached</tag>
       </tags>
   </entry>
   <entry>
@@ -23122,9 +23189,9 @@
         <category>技术</category>
       </categories>
       <tags>
+        <tag>技术</tag>
         <tag>Mac</tag>
         <tag>Linux</tag>
-        <tag>技术</tag>
         <tag>seq</tag>
         <tag>tar</tag>
         <tag>日志</tag>
@@ -23132,8 +23199,8 @@
       </tags>
   </entry>
   <entry>
-    <title>MySQL 8</title>
-    <url>/2018/01/01/mysql-mysql%208/</url>
+    <title>MySQL8</title>
+    <url>/2018/01/01/mysql-MySQL8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>公司做移动端项目时，数据库mysql需要存储emoji表情，查了下需要使用utf8mb4编码，后来听说<a href="https://www.mysql.com/" target="_blank" rel="noopener">mysql</a> 8默认编码已经是utf8mb4了，查询了下其新增的特性，特此记录。</p>
 </blockquote>
@@ -23158,7 +23225,7 @@
       </categories>
       <tags>
         <tag>MySQL</tag>
-        <tag>MySQL 8</tag>
+        <tag>MySQL8</tag>
       </tags>
   </entry>
   <entry>
@@ -25295,6 +25362,88 @@
       </tags>
   </entry>
   <entry>
+    <title>Makefile中条件判断</title>
+    <url>/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>使用条件判断可以让make根据运行时的不同情况选择不同的执行分支。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
+<ol>
+<li>语法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>条件常用格式</p>
+<ul>
+<li><code>ifxxx (arg1,arg2)</code></li>
+<li><code>ifxxx “arg1” “arg2”</code></li>
+<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
+<li><code>ifxxx “arg1” ‘arg2’</code></li>
+<li><code>ifxxx ‘arg1’ “arg2”</code></li>
+</ul>
+</li>
+<li><p>分类</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">判断</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ifeq</td>
+<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifneq</td>
+<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifdef</td>
+<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifndef</td>
+<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>定义makefile文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 :&#x3D; 123</span><br><span class="line">var2 :&#x3D; $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
+</li>
+<li><p><font color=red>注意：</font></p>
+<ul>
+<li><code>ifxxx</code> 后面有个空格</li>
+<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
+<li>意思就是ifxxx前不用加tab</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://seisman.github.io/" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Makefile</category>
+      </categories>
+      <tags>
+        <tag>Makefile</tag>
+        <tag>ifeq</tag>
+        <tag>条件判断</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Makefile入门</title>
     <url>/2017/08/09/Makefile-%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -25392,91 +25541,9 @@
       </categories>
       <tags>
         <tag>Makefile</tag>
+        <tag>ifeq</tag>
         <tag>make</tag>
-        <tag>ifeq</tag>
         <tag>phony</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile中条件判断</title>
-    <url>/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>使用条件判断可以让make根据运行时的不同情况选择不同的执行分支。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
-<ol>
-<li>语法</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>条件常用格式</p>
-<ul>
-<li><code>ifxxx (arg1,arg2)</code></li>
-<li><code>ifxxx “arg1” “arg2”</code></li>
-<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
-<li><code>ifxxx “arg1” ‘arg2’</code></li>
-<li><code>ifxxx ‘arg1’ “arg2”</code></li>
-</ul>
-</li>
-<li><p>分类</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">判断</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">ifeq</td>
-<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifneq</td>
-<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifdef</td>
-<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifndef</td>
-<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
-</tr>
-</tbody></table>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>定义makefile文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 :&#x3D; 123</span><br><span class="line">var2 :&#x3D; $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
-</li>
-<li><p><font color=red>注意：</font></p>
-<ul>
-<li><code>ifxxx</code> 后面有个空格</li>
-<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
-<li>意思就是ifxxx前不用加tab</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://seisman.github.io/" target="_blank" rel="noopener">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Makefile</category>
-      </categories>
-      <tags>
-        <tag>Makefile</tag>
-        <tag>ifeq</tag>
-        <tag>条件判断</tag>
       </tags>
   </entry>
   <entry>
@@ -26114,9 +26181,9 @@
       </categories>
       <tags>
         <tag>分布式</tag>
-        <tag>Elasticsearch</tag>
         <tag>Kibana</tag>
         <tag>Logstash</tag>
+        <tag>Elasticsearch</tag>
         <tag>日志系统</tag>
         <tag>ELK</tag>
       </tags>
@@ -26904,8 +26971,8 @@
       <tags>
         <tag>Mac</tag>
         <tag>PHP</tag>
-        <tag>phpize</tag>
         <tag>ln</tag>
+        <tag>phpize</tag>
         <tag>MongoDB</tag>
       </tags>
   </entry>
@@ -27416,9 +27483,9 @@
       </categories>
       <tags>
         <tag>MySQL</tag>
+        <tag>MySQL8</tag>
         <tag>MySQL5.7</tag>
         <tag>MySQL5.6</tag>
-        <tag>MySQL8</tag>
       </tags>
   </entry>
   <entry>
@@ -27701,6 +27768,41 @@
       <tags>
         <tag>Linux</tag>
         <tag>uniq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mongodb特殊命令</title>
+    <url>/2017/04/19/nosql-mongodb%E7%89%B9%E6%AE%8A%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>journal是MongoDB存储引擎层的概念，目前MongoDB主要支持mmapv1、wiredtiger、mongorocks等存储引擎都支持配置journal。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、常用"><a href="#一、常用" class="headerlink" title="一、常用"></a>一、常用</h2><ol>
+<li>查看所有参数值<code>use admin;db.adminCommand({getParameter:&quot;*&quot;})</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;AlwaysRecordTraffic&quot; : &quot;&quot;,</span><br><span class="line">	&quot;KeysRotationIntervalSec&quot; : 7776000,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolHostTimeoutMS&quot; : 300000,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolMaxConnecting&quot; : 2,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolMaxSize&quot; : 32767,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolMinSize&quot; : 1,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolRefreshRequirementMS&quot; : 60000,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolRefreshTimeoutMS&quot; : 20000,</span><br><span class="line">	&quot;ShardingTaskExecutorPoolReplicaSetMatching&quot; : &quot;matchPrimaryNode&quot;,</span><br><span class="line">	&quot;TransactionRecordMinimumLifetimeMinutes&quot; : 30,</span><br><span class="line">	&quot;adaptiveServiceExecutorIdlePctThreshold&quot; : 60,</span><br><span class="line">	&quot;adaptiveServiceExecutorMaxQueueLatencyMicros&quot; : 500,</span><br><span class="line">	&quot;adaptiveServiceExecutorRecursionLimit&quot; : 8,</span><br><span class="line">	&quot;adaptiveServiceExecutorReservedThreads&quot; : -1,</span><br><span class="line">	&quot;adaptiveServiceExecutorRunTimeJitterMillis&quot; : 500,</span><br><span class="line">	&quot;adaptiveServiceExecutorRunTimeMillis&quot; : 5000,</span><br><span class="line">	&quot;adaptiveServiceExecutorStuckThreadTimeoutMillis&quot; : 250,</span><br><span class="line">	&quot;allowRolesFromX509Certificates&quot; : true,</span><br><span class="line">	&quot;allowSecondaryReadsDuringBatchApplication&quot; : true,</span><br><span class="line">	&quot;authSchemaVersion&quot; : 5,</span><br><span class="line">	&quot;authenticationMechanisms&quot; : [</span><br><span class="line">		&quot;MONGODB-X509&quot;,</span><br><span class="line">		&quot;SCRAM-SHA-1&quot;,</span><br><span class="line">		&quot;SCRAM-SHA-256&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;authorizationManagerCacheSize&quot; : 100,</span><br><span class="line">	&quot;authorizationManagerPinnedUsers&quot; : [ ],</span><br><span class="line">	&quot;authorizationManagerPinnedUsersRefreshIntervalMillis&quot; : NumberLong(1000),</span><br><span class="line">	&quot;bgSyncOplogFetcherBatchSize&quot; : 13981010,</span><br><span class="line">	&quot;cachePressureThreshold&quot; : 95,</span><br><span class="line">	&quot;checkCachePressurePeriodSeconds&quot; : 5,</span><br><span class="line">	&quot;clientCursorMonitorFrequencySecs&quot; : 4,</span><br><span class="line">	&quot;cloudFreeMonitoringEndpointURL&quot; : &quot;https:&#x2F;&#x2F;cloud.mongodb.com&#x2F;freemonitoring&#x2F;mongo&quot;,</span><br><span class="line">	&quot;clusterAuthMode&quot; : &quot;undefined&quot;,</span><br><span class="line">	&quot;collectionClonerBatchSize&quot; : 0,</span><br><span class="line">	&quot;collectionClonerUsesExhaust&quot; : true,</span><br><span class="line">	&quot;connPoolMaxConnsPerHost&quot; : 200,</span><br><span class="line">	&quot;connPoolMaxInUseConnsPerHost&quot; : 2147483647,</span><br><span class="line">	&quot;connPoolMaxShardedConnsPerHost&quot; : 200,</span><br><span class="line">	&quot;connPoolMaxShardedInUseConnsPerHost&quot; : 2147483647,</span><br><span class="line">	&quot;createRollbackDataFiles&quot; : true,</span><br><span class="line">	&quot;cursorTimeoutMillis&quot; : NumberLong(600000),</span><br><span class="line">	&quot;diagnosticDataCollectionDirectoryPath&quot; : &quot;&#x2F;usr&#x2F;local&#x2F;mongodb-4.2.5&#x2F;data&#x2F;27017&#x2F;diagnostic.data&quot;,</span><br><span class="line">	&quot;diagnosticDataCollectionDirectorySizeMB&quot; : 200,</span><br><span class="line">	&quot;diagnosticDataCollectionEnabled&quot; : true,</span><br><span class="line">	&quot;diagnosticDataCollectionFileSizeMB&quot; : 10,</span><br><span class="line">	&quot;diagnosticDataCollectionPeriodMillis&quot; : 1000,</span><br><span class="line">	&quot;diagnosticDataCollectionSamplesPerChunk&quot; : 300,</span><br><span class="line">	&quot;diagnosticDataCollectionSamplesPerInterimUpdate&quot; : 10,</span><br><span class="line">	&quot;disableIndexSpecNamespaceGeneration&quot; : false,</span><br><span class="line">	&quot;disableJavaScriptJIT&quot; : true,</span><br><span class="line">	&quot;disableLogicalSessionCacheRefresh&quot; : false,</span><br><span class="line">	&quot;disableNonSSLConnectionLogging&quot; : false,</span><br><span class="line">	&quot;disableNonTLSConnectionLogging&quot; : false,</span><br><span class="line">	&quot;disabledSecureAllocatorDomains&quot; : [ ],</span><br><span class="line">	&quot;enableElectionHandoff&quot; : true,</span><br><span class="line">	&quot;enableFlowControl&quot; : true,</span><br><span class="line">	&quot;enableHybridIndexBuilds&quot; : true,</span><br><span class="line">	&quot;enableIndexBuildsCoordinatorForCreateIndexesCommand&quot; : false,</span><br><span class="line">	&quot;enableLocalhostAuthBypass&quot; : true,</span><br><span class="line">	&quot;enableTestCommands&quot; : false,</span><br><span class="line">	&quot;failIndexKeyTooLong&quot; : true,</span><br><span class="line">	&quot;featureCompatibilityVersion&quot; : &#123;</span><br><span class="line">		&quot;version&quot; : &quot;4.2&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;flowControlDecayConstant&quot; : 0.5,</span><br><span class="line">	&quot;flowControlFudgeFactor&quot; : 0.95,</span><br><span class="line">	&quot;flowControlMaxSamples&quot; : 1000000,</span><br><span class="line">	&quot;flowControlMinTicketsPerSecond&quot; : 100,</span><br><span class="line">	&quot;flowControlSamplePeriod&quot; : 1000,</span><br><span class="line">	&quot;flowControlTargetLagSeconds&quot; : 10,</span><br><span class="line">	&quot;flowControlThresholdLagPercentage&quot; : 0.5,</span><br><span class="line">	&quot;flowControlTicketAdderConstant&quot; : 1000,</span><br><span class="line">	&quot;flowControlTicketMultiplierConstant&quot; : 1.05,</span><br><span class="line">	&quot;flowControlWarnThresholdSeconds&quot; : 10,</span><br><span class="line">	&quot;forceRollbackViaRefetch&quot; : false,</span><br><span class="line">	&quot;globalConnPoolIdleTimeoutMinutes&quot; : 2147483647,</span><br><span class="line">	&quot;honorSystemUmask&quot; : false,</span><br><span class="line">	&quot;initialSyncOplogBuffer&quot; : &quot;collection&quot;,</span><br><span class="line">	&quot;initialSyncOplogBufferPeekCacheSize&quot; : 10000,</span><br><span class="line">	&quot;initialSyncOplogFetcherBatchSize&quot; : 13981010,</span><br><span class="line">	&quot;internalDocumentSourceCursorBatchSizeBytes&quot; : 4194304,</span><br><span class="line">	&quot;internalDocumentSourceGroupMaxMemoryBytes&quot; : NumberLong(104857600),</span><br><span class="line">	&quot;internalDocumentSourceLookupCacheSizeBytes&quot; : 104857600,</span><br><span class="line">	&quot;internalDocumentSourceSortMaxBlockingSortBytes&quot; : NumberLong(104857600),</span><br><span class="line">	&quot;internalGeoNearQuery2DMaxCoveringCells&quot; : 16,</span><br><span class="line">	&quot;internalGeoPredicateQuery2DMaxCoveringCells&quot; : 16,</span><br><span class="line">	&quot;internalInsertMaxBatchSize&quot; : 64,</span><br><span class="line">	&quot;internalLookupStageIntermediateDocumentMaxSizeBytes&quot; : NumberLong(104857600),</span><br><span class="line">	&quot;internalProhibitShardOperationRetry&quot; : false,</span><br><span class="line">	&quot;internalQueryAllowShardedLookup&quot; : false,</span><br><span class="line">	&quot;internalQueryAlwaysMergeOnPrimaryShard&quot; : false,</span><br><span class="line">	&quot;internalQueryCacheDisableInactiveEntries&quot; : false,</span><br><span class="line">	&quot;internalQueryCacheEvictionRatio&quot; : 10,</span><br><span class="line">	&quot;internalQueryCacheFeedbacksStored&quot; : 20,</span><br><span class="line">	&quot;internalQueryCacheListPlansNewOutput&quot; : false,</span><br><span class="line">	&quot;internalQueryCacheSize&quot; : 5000,</span><br><span class="line">	&quot;internalQueryCacheWorksGrowthCoefficient&quot; : 2,</span><br><span class="line">	&quot;internalQueryDisableExchange&quot; : false,</span><br><span class="line">	&quot;internalQueryEnumerationMaxIntersectPerAnd&quot; : 3,</span><br><span class="line">	&quot;internalQueryEnumerationMaxOrSolutions&quot; : 10,</span><br><span class="line">	&quot;internalQueryExecMaxBlockingSortBytes&quot; : 33554432,</span><br><span class="line">	&quot;internalQueryExecYieldIterations&quot; : 128,</span><br><span class="line">	&quot;internalQueryExecYieldPeriodMS&quot; : 10,</span><br><span class="line">	&quot;internalQueryFacetBufferSizeBytes&quot; : 104857600,</span><br><span class="line">	&quot;internalQueryForceIntersectionPlans&quot; : false,</span><br><span class="line">	&quot;internalQueryIgnoreUnknownJSONSchemaKeywords&quot; : false,</span><br><span class="line">	&quot;internalQueryMaxAddToSetBytes&quot; : 104857600,</span><br><span class="line">	&quot;internalQueryMaxPushBytes&quot; : 104857600,</span><br><span class="line">	&quot;internalQueryMaxScansToExplode&quot; : 200,</span><br><span class="line">	&quot;internalQueryPlanEvaluationCollFraction&quot; : 0.3,</span><br><span class="line">	&quot;internalQueryPlanEvaluationMaxResults&quot; : 101,</span><br><span class="line">	&quot;internalQueryPlanEvaluationWorks&quot; : 10000,</span><br><span class="line">	&quot;internalQueryPlanOrChildrenIndependently&quot; : true,</span><br><span class="line">	&quot;internalQueryPlannerEnableHashIntersection&quot; : false,</span><br><span class="line">	&quot;internalQueryPlannerEnableIndexIntersection&quot; : true,</span><br><span class="line">	&quot;internalQueryPlannerGenerateCoveredWholeIndexScans&quot; : false,</span><br><span class="line">	&quot;internalQueryPlannerMaxIndexedSolutions&quot; : 64,</span><br><span class="line">	&quot;internalQueryProhibitBlockingMergeOnMongoS&quot; : false,</span><br><span class="line">	&quot;internalQueryProhibitMergingOnMongoS&quot; : false,</span><br><span class="line">	&quot;internalQueryS2GeoCoarsestLevel&quot; : 0,</span><br><span class="line">	&quot;internalQueryS2GeoFinestLevel&quot; : 23,</span><br><span class="line">	&quot;internalQueryS2GeoMaxCells&quot; : 20,</span><br><span class="line">	&quot;internalValidateFeaturesAsMaster&quot; : true,</span><br><span class="line">	&quot;javascriptProtection&quot; : false,</span><br><span class="line">	&quot;journalCommitInterval&quot; : 100,</span><br><span class="line">	&quot;jsHeapLimitMB&quot; : 1100,</span><br><span class="line">	&quot;localLogicalSessionTimeoutMinutes&quot; : 30,</span><br><span class="line">	&quot;logComponentVerbosity&quot; : &#123;</span><br><span class="line">		&quot;verbosity&quot; : 0,</span><br><span class="line">		&quot;accessControl&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;command&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;control&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;executor&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;geo&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;index&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;network&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1,</span><br><span class="line">			&quot;asio&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;bridge&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;connectionPool&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;query&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;replication&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1,</span><br><span class="line">			&quot;election&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;heartbeats&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;initialSync&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;rollback&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;sharding&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1,</span><br><span class="line">			&quot;shardingCatalogRefresh&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;storage&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1,</span><br><span class="line">			&quot;recovery&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;,</span><br><span class="line">			&quot;journal&quot; : &#123;</span><br><span class="line">				&quot;verbosity&quot; : -1</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;write&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;ftdc&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;tracking&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;transaction&quot; : &#123;</span><br><span class="line">			&quot;verbosity&quot; : -1</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;logLevel&quot; : 0,</span><br><span class="line">	&quot;logicalSessionRefreshMillis&quot; : 300000,</span><br><span class="line">	&quot;maxAcceptableLogicalClockDriftSecs&quot; : NumberLong(31536000),</span><br><span class="line">	&quot;maxBSONDepth&quot; : 200,</span><br><span class="line">	&quot;maxIndexBuildDrainBatchSize&quot; : 1000,</span><br><span class="line">	&quot;maxIndexBuildDrainMemoryUsageMegabytes&quot; : 16,</span><br><span class="line">	&quot;maxIndexBuildMemoryUsageMegabytes&quot; : 200,</span><br><span class="line">	&quot;maxLogSizeKB&quot; : 10,</span><br><span class="line">	&quot;maxNumberOfTransactionOperationsInSingleOplogEntry&quot; : 2147483647,</span><br><span class="line">	&quot;maxOplogTruncationPointsAfterStartup&quot; : NumberLong(100),</span><br><span class="line">	&quot;maxOplogTruncationPointsDuringStartup&quot; : NumberLong(100),</span><br><span class="line">	&quot;maxSessions&quot; : 1000000,</span><br><span class="line">	&quot;maxSyncSourceLagSecs&quot; : 30,</span><br><span class="line">	&quot;maxTargetSnapshotHistoryWindowInSeconds&quot; : 5,</span><br><span class="line">	&quot;maxTransactionLockRequestTimeoutMillis&quot; : 5,</span><br><span class="line">	&quot;migrateCloneInsertionBatchDelayMS&quot; : 0,</span><br><span class="line">	&quot;migrateCloneInsertionBatchSize&quot; : 0,</span><br><span class="line">	&quot;migrationLockAcquisitionMaxWaitMS&quot; : 500,</span><br><span class="line">	&quot;minMillisBetweenSnapshotWindowDec&quot; : 500,</span><br><span class="line">	&quot;minMillisBetweenSnapshotWindowInc&quot; : 500,</span><br><span class="line">	&quot;minOplogTruncationPoints&quot; : NumberLong(10),</span><br><span class="line">	&quot;notablescan&quot; : false,</span><br><span class="line">	&quot;numInitialSyncAttempts&quot; : 10,</span><br><span class="line">	&quot;numInitialSyncCollectionCountAttempts&quot; : 3,</span><br><span class="line">	&quot;numInitialSyncCollectionFindAttempts&quot; : 3,</span><br><span class="line">	&quot;numInitialSyncConnectAttempts&quot; : 10,</span><br><span class="line">	&quot;numInitialSyncListCollectionsAttempts&quot; : 3,</span><br><span class="line">	&quot;numInitialSyncListDatabasesAttempts&quot; : 3,</span><br><span class="line">	&quot;numInitialSyncListIndexesAttempts&quot; : 3,</span><br><span class="line">	&quot;numInitialSyncOplogFindAttempts&quot; : 3,</span><br><span class="line">	&quot;opensslCipherConfig&quot; : &quot;&quot;,</span><br><span class="line">	&quot;opensslDiffieHellmanParameters&quot; : &quot;&quot;,</span><br><span class="line">	&quot;oplogFetcherInitialSyncMaxFetcherRestarts&quot; : 10,</span><br><span class="line">	&quot;oplogFetcherSteadyStateMaxFetcherRestarts&quot; : 1,</span><br><span class="line">	&quot;oplogInitialFindMaxSeconds&quot; : 60,</span><br><span class="line">	&quot;oplogRetriedFindMaxSeconds&quot; : 2,</span><br><span class="line">	&quot;oplogTruncationPointSizeMB&quot; : 0,</span><br><span class="line">	&quot;orphanCleanupDelaySecs&quot; : 900,</span><br><span class="line">	&quot;periodicNoopIntervalSecs&quot; : 10,</span><br><span class="line">	&quot;priorityTakeoverFreshnessWindowSeconds&quot; : 2,</span><br><span class="line">	&quot;quiet&quot; : false,</span><br><span class="line">	&quot;rangeDeleterBatchDelayMS&quot; : 20,</span><br><span class="line">	&quot;rangeDeleterBatchSize&quot; : 0,</span><br><span class="line">	&quot;recoverFromOplogAsStandalone&quot; : false,</span><br><span class="line">	&quot;recoverToOplogTimestamp&quot; : &quot;&quot;,</span><br><span class="line">	&quot;replBatchLimitBytes&quot; : 104857600,</span><br><span class="line">	&quot;replBatchLimitOperations&quot; : 5000,</span><br><span class="line">	&quot;replElectionTimeoutOffsetLimitFraction&quot; : 0.15,</span><br><span class="line">	&quot;replWriterThreadCount&quot; : 16,</span><br><span class="line">	&quot;reportOpWriteConcernCountersInServerStatus&quot; : false,</span><br><span class="line">	&quot;reservedServiceExecutorRecursionLimit&quot; : 8,</span><br><span class="line">	&quot;roleGraphInvalidationIsFatal&quot; : false,</span><br><span class="line">	&quot;rollbackRemoteOplogQueryBatchSize&quot; : 2000,</span><br><span class="line">	&quot;rollbackTimeLimitSecs&quot; : 86400,</span><br><span class="line">	&quot;saslHostName&quot; : &quot;liuyulongdeMacBook-Pro.local&quot;,</span><br><span class="line">	&quot;saslServiceName&quot; : &quot;mongodb&quot;,</span><br><span class="line">	&quot;saslauthdPath&quot; : &quot;&quot;,</span><br><span class="line">	&quot;scramIterationCount&quot; : 10000,</span><br><span class="line">	&quot;scramSHA256IterationCount&quot; : 15000,</span><br><span class="line">	&quot;scriptingEngineInterruptIntervalMS&quot; : 1000,</span><br><span class="line">	&quot;shardedConnPoolIdleTimeoutMinutes&quot; : 2147483647,</span><br><span class="line">	&quot;skipCorruptDocumentsWhenCloning&quot; : false,</span><br><span class="line">	&quot;skipShardingConfigurationChecks&quot; : false,</span><br><span class="line">	&quot;skipShellCursorFinalize&quot; : false,</span><br><span class="line">	&quot;snapshotWindowAdditiveIncreaseSeconds&quot; : 2,</span><br><span class="line">	&quot;snapshotWindowMultiplicativeDecrease&quot; : 0.75,</span><br><span class="line">	&quot;sslMode&quot; : &quot;disabled&quot;,</span><br><span class="line">	&quot;sslWithholdClientCertificate&quot; : false,</span><br><span class="line">	&quot;startupAuthSchemaValidation&quot; : true,</span><br><span class="line">	&quot;suppressNoTLSPeerCertificateWarning&quot; : false,</span><br><span class="line">	&quot;syncdelay&quot; : 60,</span><br><span class="line">	&quot;synchronousServiceExecutorRecursionLimit&quot; : 8,</span><br><span class="line">	&quot;takeUnstableCheckpointOnShutdown&quot; : false,</span><br><span class="line">	&quot;taskExecutorPoolSize&quot; : 1,</span><br><span class="line">	&quot;testingSnapshotBehaviorInIsolation&quot; : false,</span><br><span class="line">	&quot;tlsMode&quot; : &quot;disabled&quot;,</span><br><span class="line">	&quot;tlsWithholdClientCertificate&quot; : false,</span><br><span class="line">	&quot;traceExceptions&quot; : false,</span><br><span class="line">	&quot;traceWriteConflictExceptions&quot; : false,</span><br><span class="line">	&quot;trafficRecordingDirectory&quot; : &quot;&quot;,</span><br><span class="line">	&quot;transactionLifetimeLimitSeconds&quot; : 60,</span><br><span class="line">	&quot;transactionSizeLimitBytes&quot; : NumberLong(&quot;9223372036854775807&quot;),</span><br><span class="line">	&quot;ttlMonitorEnabled&quot; : true,</span><br><span class="line">	&quot;ttlMonitorSleepSecs&quot; : 60,</span><br><span class="line">	&quot;useReadOnceCursorsForIndexBuilds&quot; : true,</span><br><span class="line">	&quot;waitForSecondaryBeforeNoopWriteMS&quot; : 10,</span><br><span class="line">	&quot;waitForStepDownOnNonCommandShutdown&quot; : true,</span><br><span class="line">	&quot;watchdogPeriodSeconds&quot; : -1,</span><br><span class="line">	&quot;wiredTigerConcurrentReadTransactions&quot; : 128,</span><br><span class="line">	&quot;wiredTigerConcurrentWriteTransactions&quot; : 128,</span><br><span class="line">	&quot;wiredTigerCursorCacheSize&quot; : -100,</span><br><span class="line">	&quot;wiredTigerEngineRuntimeConfig&quot; : &quot;&quot;,</span><br><span class="line">	&quot;wiredTigerFileHandleCloseIdleTime&quot; : 100000,</span><br><span class="line">	&quot;wiredTigerFileHandleCloseMinimum&quot; : 250,</span><br><span class="line">	&quot;wiredTigerFileHandleCloseScanInterval&quot; : 10,</span><br><span class="line">	&quot;wiredTigerMaxCacheOverflowSizeGB&quot; : 0,</span><br><span class="line">	&quot;wiredTigerSessionCloseIdleTimeSecs&quot; : 300,</span><br><span class="line">	&quot;writePeriodicNoops&quot; : true,</span><br><span class="line">	&quot;ok&quot; : 1,</span><br><span class="line">	&quot;$clusterTime&quot; : &#123;</span><br><span class="line">		&quot;clusterTime&quot; : Timestamp(1617895873, 1),</span><br><span class="line">		&quot;signature&quot; : &#123;</span><br><span class="line">			&quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA&#x3D;&quot;),</span><br><span class="line">			&quot;keyId&quot; : NumberLong(0)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;operationTime&quot; : Timestamp(1617895873, 1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查看数据文件和日志文件路径<code>db.runCommand(&quot;getCmdLineOpts&quot;)</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;argv&quot; : [</span><br><span class="line">		&quot;.&#x2F;bin&#x2F;mongod&quot;,</span><br><span class="line">		&quot;-f&quot;,</span><br><span class="line">		&quot;27017.conf&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;parsed&quot; : &#123;</span><br><span class="line">		&quot;config&quot; : &quot;27017.conf&quot;,</span><br><span class="line">		&quot;net&quot; : &#123;</span><br><span class="line">			&quot;port&quot; : 27017</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;processManagement&quot; : &#123;</span><br><span class="line">			&quot;fork&quot; : true</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;replication&quot; : &#123;</span><br><span class="line">			&quot;replSet&quot; : &quot;my_replset&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;storage&quot; : &#123;</span><br><span class="line">			&quot;dbPath&quot; : &quot;&#x2F;usr&#x2F;local&#x2F;mongodb-4.2.5&#x2F;data&#x2F;27017&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;systemLog&quot; : &#123;</span><br><span class="line">			&quot;destination&quot; : &quot;file&quot;,</span><br><span class="line">			&quot;logAppend&quot; : true,</span><br><span class="line">			&quot;path&quot; : &quot;&#x2F;usr&#x2F;local&#x2F;mongodb-4.2.5&#x2F;logs&#x2F;27017&#x2F;mongo.log&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;ok&quot; : 1,</span><br><span class="line">	&quot;$clusterTime&quot; : &#123;</span><br><span class="line">		&quot;clusterTime&quot; : Timestamp(1617896023, 1),</span><br><span class="line">		&quot;signature&quot; : &#123;</span><br><span class="line">			&quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA&#x3D;&quot;),</span><br><span class="line">			&quot;keyId&quot; : NumberLong(0)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;operationTime&quot; : Timestamp(1617896023, 1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>设置从库可读(4.0版本以前)<code>db.getMongo().setSecondaryOk();</code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;show dbs</span><br><span class="line"></span><br><span class="line">2021-04-09T16:36:03.197+0800 E QUERY    [thread1] Error: listDatabases failed:&#123;</span><br><span class="line">	&quot;ok&quot; : 0,</span><br><span class="line">	&quot;errmsg&quot; : &quot;not master and slaveOk&#x3D;false&quot;,</span><br><span class="line">	&quot;code&quot; : 13435,</span><br><span class="line">	&quot;codeName&quot; : &quot;NotMasterNoSlaveOk&quot;</span><br><span class="line">&#125; :</span><br><span class="line">_getErrorWithCode@src&#x2F;mongo&#x2F;shell&#x2F;utils.js:25:13</span><br><span class="line">Mongo.prototype.getDBs@src&#x2F;mongo&#x2F;shell&#x2F;mongo.js:79:1</span><br><span class="line">shellHelper.show@src&#x2F;mongo&#x2F;shell&#x2F;utils.js:860:19</span><br><span class="line">shellHelper@src&#x2F;mongo&#x2F;shell&#x2F;utils.js:750:15</span><br><span class="line">@(shellhelp2):1:1</span><br><span class="line"></span><br><span class="line">&gt;db.isMaster()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	&quot;ismaster&quot; : false,</span><br><span class="line">	&quot;maxBsonObjectSize&quot; : 16777216,</span><br><span class="line">	&quot;maxMessageSizeBytes&quot; : 48000000,</span><br><span class="line">	&quot;maxWriteBatchSize&quot; : 100000,</span><br><span class="line">	&quot;localTime&quot; : ISODate(&quot;2021-04-09T08:36:32.598Z&quot;),</span><br><span class="line">	&quot;logicalSessionTimeoutMinutes&quot; : 30,</span><br><span class="line">	&quot;minWireVersion&quot; : 0,</span><br><span class="line">	&quot;maxWireVersion&quot; : 6,</span><br><span class="line">	&quot;readOnly&quot; : false,</span><br><span class="line">	&quot;ok&quot; : 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;db.getMongo().setSlaveOk();</span><br><span class="line">WARNING: setSlaveOk() is deprecated and may be removed in the next major release. Please use setSecondaryOk() instead.</span><br><span class="line"></span><br><span class="line">&gt;db.getMongo().setSecondaryOk();</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href="https://docs.mongodb.com/manual/reference/method/#std-label-js-administrative-methods" target="_blank" rel="noopener">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>NoSQL</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -28164,8 +28266,8 @@
       <tags>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
-        <tag>memcached</tag>
         <tag>Redis</tag>
+        <tag>memcached</tag>
       </tags>
   </entry>
   <entry>
@@ -29679,6 +29781,79 @@
       </tags>
   </entry>
   <entry>
+    <title>mongodb命令行操作</title>
+    <url>/2017/02/11/nosql-mongodb%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>MongoDB优点：面向文档存储(类JSON数据模式简单而强大)；动态查询；全索引支持，扩展到内部对象和内嵌数组；查询记录分析；快速，就地更新；高效存储二进制大对象(比如照片和视频)；复制和故障切换支持；Auto- Sharding自动分片支持云级扩展性；MapReduce 支持复杂聚合；商业支持，培训和咨询。MongoDB缺点：不支持事务；MongoDB占用空间过大；MongoDB没有如MySQL那样成熟的维护工具。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、客户端连接"><a href="#一、客户端连接" class="headerlink" title="一、客户端连接"></a>一、客户端连接</h2><ol>
+<li>使用navicat连接mongodb时报错：重新启动服务，添加<code>--bind_ip_all</code>参数</li>
+</ol>
+<p><code>mongod --dbpath=/usr/local/mongodb-4.0.9/data --logpath=/usr/local/mongodb-4.0.9/log/mongo.log --logappend --fork --bind_ip_all</code></p>
+<ol start="2">
+<li>使用<code>Robo 3T</code>连接，<a href="https://download-test.robomongo.org/mac/robo3t-1.3.1-darwin-x86_64-7419c40.dmg" target="_blank" rel="noopener">下载</a></li>
+</ol>
+<h2 id="二、库和集合"><a href="#二、库和集合" class="headerlink" title="二、库和集合"></a>二、库和集合</h2><table>
+<thead>
+<tr>
+<th align="center">MongoDB</th>
+<th align="center">关系数据库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">数据库(database)</td>
+<td align="center">数据库(database)</td>
+</tr>
+<tr>
+<td align="center">集合(collection)</td>
+<td align="center">表(table)</td>
+</tr>
+<tr>
+<td align="center">文档(document)</td>
+<td align="center">行(row)</td>
+</tr>
+</tbody></table>
+<ol>
+<li>查看库<code>show dbs</code>或<code>show databases</code></li>
+<li>使用库<code>use db</code></li>
+<li>当前所在库<code>db</code></li>
+<li>查看表(集合)<code>show collections</code>或<code>show tables</code></li>
+<li>查看内存使用<code>db.serverStatus().mem</code></li>
+<li>查看存储引擎<code>db.serverStatus().storageEngine</code></li>
+<li>查看当前版本<code>db.version()</code></li>
+</ol>
+<h2 id="三、增删改查"><a href="#三、增删改查" class="headerlink" title="三、增删改查"></a>三、增删改查</h2><ol>
+<li>插入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.insertOne(</span><br><span class="line">    &#123;name:&quot;张三&quot;&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">db.collections.insertMany(</span><br><span class="line">    [</span><br><span class="line">        &#123; item: &quot;journal&quot;, qty: 25, tags: [&quot;blank&quot;, &quot;red&quot;], size: &#123; h: 14, w: 21, uom: &quot;cm&quot; &#125; &#125;,</span><br><span class="line">        &#123; item: &quot;mat&quot;, qty: 85, tags: [&quot;gray&quot;], size: &#123; h: 27.9, w: 35.5, uom: &quot;cm&quot; &#125; &#125;,</span><br><span class="line">        &#123; item: &quot;mousepad&quot;, qty: 25, tags: [&quot;gel&quot;, &quot;blue&quot;], size: &#123; h: 19, w: 22.85, uom: &quot;cm&quot; &#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>删除</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.remove(</span><br><span class="line">    &#123; &#39;name&#39; : &#39;小娜&#39; &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>更新</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.update(</span><br><span class="line">    &#x2F;&#x2F; query </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot; : &quot;liuyulong&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; update </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;小娜&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; options </span><br><span class="line">    &#123;</span><br><span class="line">        &quot;multi&quot; : false,  &#x2F;&#x2F; update only one document </span><br><span class="line">        &quot;upsert&quot; : false  &#x2F;&#x2F; insert a new document, if no existing document match the query </span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">db.users.update(</span><br><span class="line">    &#123;</span><br><span class="line">        _id : &quot;8001&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $set: &#123;</span><br><span class="line">            &quot;a.b&quot;: 105</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;multi&quot; : false, </span><br><span class="line">        &quot;upsert&quot; : false</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>查找</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">db.collections.find(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">db.collections.find(&#123;&quot;name&quot;:&quot;刘&quot;&#125;)</span><br><span class="line"></span><br><span class="line">db.collections.find(&#123;&quot;age&quot;:&#123;$gt:10&#125;&#125;);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>NoSQL</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
+        <tag>命令行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>grunt/gulp/webpack</title>
     <url>/2017/02/10/%E6%8A%80%E6%9C%AF-%E5%8C%85%E7%AE%A1%E7%90%86grunt-gulp-webpack/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -30783,8 +30958,8 @@
         <category>操作系统</category>
       </categories>
       <tags>
-        <tag>进程</tag>
         <tag>管道</tag>
+        <tag>进程</tag>
         <tag>操作系统</tag>
         <tag>通信</tag>
         <tag>IPC</tag>
@@ -32934,7 +33109,8 @@
         <category>Vim</category>
       </categories>
       <tags>
-        <tag>Vim - 缩进</tag>
+        <tag>Vim</tag>
+        <tag>缩进</tag>
       </tags>
   </entry>
   <entry>
@@ -36070,28 +36246,50 @@
 <a id="more"></a>
 
 <ol>
-<li>查看某个文件修改记录<code>git log -- filename</code>或<code>git log --pretty=oneline filename</code></li>
-<li>查看某个作者修改记录<code>git log --author=author</code>或<code>git log --author=author --pretty=oneline</code></li>
-<li>查看每次修改的文件列表及文件修改的统计<code>git log --stat</code>或<code>git whatchanged --stat</code></li>
-<li>每次修改的文件列表并显示状态<code>git log --name-status</code></li>
-<li>每次修改的文件列表<code>git log --name-only</code></li>
-<li>查看某次提交<code>git show commit_id</code></li>
-<li>删除本地分支<code>git branch -d branch_name</code></li>
-<li>查看远程分支<code>git branch -r</code></li>
-<li>删除远程分支<code>git push origin --delete branch_name</code></li>
-<li>撤销add文件<code>git reset HEAD filename</code>或<code>git reset HEAD .</code></li>
-<li>对比两个分支的差异<ul>
+<li><p>查看某个文件修改记录<code>git log -- filename</code>或<code>git log --pretty=oneline filename</code></p>
+</li>
+<li><p>查看某个作者修改记录<code>git log --author=author</code>或<code>git log --author=author --pretty=oneline</code></p>
+</li>
+<li><p>查看每次修改的文件列表及文件修改的统计<code>git log --stat</code>或<code>git whatchanged --stat</code></p>
+</li>
+<li><p>每次修改的文件列表并显示状态<code>git log --name-status</code></p>
+</li>
+<li><p>每次修改的文件列表<code>git log --name-only</code></p>
+</li>
+<li><p>查看某次提交<code>git show commit_id</code></p>
+</li>
+<li><p>删除本地分支<code>git branch -d branch_name</code></p>
+</li>
+<li><p>查看远程分支<code>git branch -r</code></p>
+</li>
+<li><p>删除远程分支<code>git push origin --delete branch_name</code></p>
+</li>
+<li><p>撤销add文件<code>git reset HEAD filename</code>或<code>git reset HEAD .</code></p>
+</li>
+<li><p>对比两个分支的差异</p>
+<ul>
 <li>git diff branch1 branch2 –stat       //显示出所有有差异的文件列表</li>
 <li>git diff branch1 branch2 文件名(带路径) //显示指定文件的详细差异</li>
 <li>git diff branch1 branch2              //显示出所有有差异的文件的详细差异</li>
 </ul>
 </li>
-<li><code>git log</code>中文文件名乱码，<code>git config --global core.quotepath false</code></li>
-<li>git push时不用每次都输入用户名和密码：<code>git config --global credential.helper store</code></li>
-<li><code>git config --unset user.name</code>或全局<code>git config --global --unset user.name</code></li>
-<li><code>Your account has been blocked</code>，导致这个问题的原因有很多，接解决方案也就不同，我是第二种情况：<ul>
+<li><p><code>git log</code>中文文件名乱码，<code>git config --global core.quotepath false</code></p>
+</li>
+<li><p>git push时不用每次都输入用户名和密码：<code>git config --global credential.helper store</code></p>
+</li>
+<li><p><code>git config --unset user.name</code>或全局<code>git config --global --unset user.name</code></p>
+</li>
+<li><p><code>Your account has been blocked</code>，导致这个问题的原因有很多，接解决方案也就不同，我是第二种情况：</p>
+<ul>
 <li>方案一：重新设置远程仓库<code>git remote set-url origin 远程仓库地址</code></li>
 <li>方案二：ssh模式下重新生成<code>ssh-keygen -t rsa</code>，并将<code>id_rsa.pub</code>生成的内容粘贴到gitlab后台</li>
+</ul>
+</li>
+<li><p>清除untracked files</p>
+<ul>
+<li>文件：<code>git clean -nf</code></li>
+<li>目录：<code>git clean -nfd</code></li>
+<li><code>-n</code>参数可用来查看删掉哪些文件</li>
 </ul>
 </li>
 </ol>
@@ -36101,8 +36299,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>show</tag>
         <tag>push</tag>
+        <tag>show</tag>
         <tag>reset</tag>
         <tag>diff</tag>
         <tag>log</tag>
@@ -37059,8 +37257,8 @@
       <tags>
         <tag>Linux</tag>
         <tag>awk</tag>
-        <tag>grep</tag>
         <tag>sed</tag>
+        <tag>grep</tag>
       </tags>
   </entry>
   <entry>
@@ -40977,9 +41175,9 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
+        <tag>cat</tag>
         <tag>grep</tag>
         <tag>xargs</tag>
-        <tag>cat</tag>
         <tag>printf</tag>
         <tag>strings</tag>
       </tags>
@@ -42226,6 +42424,23 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>shell脚本sleep和wait</title>
+    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>未来的你，一定会感谢现在拼命努力的自己。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell特殊变量和运算符</title>
     <url>/2015/03/19/linux-shell%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -42352,23 +42567,6 @@ read_xlsx(name, sheet)
         <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本sleep和wait</title>
-    <url>/2015/03/19/linux-shell%E8%84%9A%E6%9C%ACsleep%E5%92%8Cwait/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>未来的你，一定会感谢现在拼命努力的自己。</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="一、sleep"><a href="#一、sleep" class="headerlink" title="一、sleep"></a>一、<code>sleep</code></h2><h2 id="二、wait"><a href="#二、wait" class="headerlink" title="二、wait"></a>二、<code>wait</code></h2>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -44165,8 +44363,8 @@ read_xlsx(name, sheet)
         <category>Python</category>
       </categories>
       <tags>
-        <tag>MATLAB</tag>
         <tag>Mac</tag>
+        <tag>MATLAB</tag>
         <tag>Python</tag>
         <tag>TIOBE</tag>
       </tags>
@@ -46742,8 +46940,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>ls</tag>
         <tag>grep</tag>
+        <tag>ls</tag>
         <tag>wc</tag>
       </tags>
   </entry>
