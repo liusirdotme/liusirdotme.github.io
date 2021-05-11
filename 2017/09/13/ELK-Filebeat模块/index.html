@@ -58,7 +58,7 @@
 <meta property="og:description" content="Filebeat提供了一套预构建的模块，可以快速实施和部署日志监视解决方案，并附带示例仪表板和数据可视化。这些模块支持常见的日志格式，如Nginx、Apache2、MySQL等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-13T02:36:01.000Z">
-<meta property="article:modified_time" content="2021-05-11T06:43:42.500Z">
+<meta property="article:modified_time" content="2021-05-11T10:51:52.146Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Elasticsearch">
 <meta property="article:tag" content="Logstash">
@@ -274,7 +274,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.9k</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -343,7 +343,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- module: nginx</span><br><span class="line">  access:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths:[&quot;&#x2F;usr&#x2F;local&#x2F;nginx1.17.9&#x2F;logs&#x2F;access.log&quot;]</span><br><span class="line">  error:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths:[&quot;&#x2F;usr&#x2F;local&#x2F;nginx1.17.9&#x2F;logs&#x2F;error.log&quot;]</span><br></pre></td></tr></table></figure>
 
 <ol start="6">
-<li>启动服务<code>./filebeat -e -c filebeat.yml</code></li>
+<li><p>启动服务<code>./filebeat -e</code></p>
+<ul>
+<li>默认<code>filebeat.yml</code>，只需要改两项</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setup.kibana:</span><br><span class="line">  host: &quot;localhost:5601&quot;</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;localhost:9200&quot;]</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html" target="_blank" rel="noopener">参考一</a></li>
@@ -529,7 +535,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20:51</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
 
         

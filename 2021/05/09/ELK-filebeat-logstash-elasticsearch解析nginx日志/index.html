@@ -58,7 +58,7 @@
 <meta property="og:description" content="Nginx日志对于统计、系统服务排错很有用，主要分为两种：访问日志access_log和错误日志error_log。通过访问日志我们可以得到用户的IP地址、浏览器的信息、请求的处理时间等信息，错误日志则记录了访问出错的信息。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-09T02:36:01.000Z">
-<meta property="article:modified_time" content="2021-05-11T06:44:34.962Z">
+<meta property="article:modified_time" content="2021-05-11T10:51:52.151Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="ELK">
 <meta property="article:tag" content="Elasticsearch">
@@ -279,13 +279,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>11k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>10 分钟</span>
+              <span>12 分钟</span>
             </span>
 
         </div>
@@ -404,7 +404,47 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;took&quot; : 2,</span><br><span class="line">  &quot;timed_out&quot; : false,</span><br><span class="line">  &quot;_shards&quot; : &#123;</span><br><span class="line">    &quot;total&quot; : 1,</span><br><span class="line">    &quot;successful&quot; : 1,</span><br><span class="line">    &quot;skipped&quot; : 0,</span><br><span class="line">    &quot;failed&quot; : 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;hits&quot; : &#123;</span><br><span class="line">    &quot;total&quot; : &#123;</span><br><span class="line">      &quot;value&quot; : 6,</span><br><span class="line">      &quot;relation&quot; : &quot;eq&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;max_score&quot; : 1.0,</span><br><span class="line">    &quot;hits&quot; : [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;_index&quot; : &quot;filebeat-nginx-2021.05.07&quot;,</span><br><span class="line">        &quot;_type&quot; : &quot;_doc&quot;,</span><br><span class="line">        &quot;_id&quot; : &quot;jKqORXkBlQNTrkx8g-db&quot;,</span><br><span class="line">        &quot;_score&quot; : 1.0,</span><br><span class="line">        &quot;_source&quot; : &#123;</span><br><span class="line">          &quot;@timestamp&quot; : &quot;2021-05-07T06:40:23.000Z&quot;,</span><br><span class="line">          &quot;body_bytes_sent&quot; : &quot;21&quot;,</span><br><span class="line">          &quot;request_time&quot; : &quot;0.018&quot;,</span><br><span class="line">          &quot;request&quot; : &quot;GET &#x2F;main.php HTTP&#x2F;1.1&quot;,</span><br><span class="line">          &quot;ecs&quot; : &#123;</span><br><span class="line">            &quot;version&quot; : &quot;1.8.0&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;log&quot; : &#123;</span><br><span class="line">            &quot;offset&quot; : 2608,</span><br><span class="line">            &quot;file&quot; : &#123;</span><br><span class="line">              &quot;path&quot; : &quot;&#x2F;usr&#x2F;local&#x2F;nginx1.17.9&#x2F;logs&#x2F;phpweb_access.log&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;http_x_forwarded_for&quot; : &quot;-&quot;,</span><br><span class="line">          &quot;time&quot; : &quot;2021-05-07T14:40:23+08:00&quot;,</span><br><span class="line">          &quot;remote_addr&quot; : &quot;127.0.0.1&quot;,</span><br><span class="line">          &quot;input&quot; : &#123;</span><br><span class="line">            &quot;type&quot; : &quot;log&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;agent&quot; : &#123;</span><br><span class="line">            &quot;version&quot; : &quot;7.12.0&quot;,</span><br><span class="line">            &quot;hostname&quot; : &quot;xxxdeMacBook-Air-5.local&quot;,</span><br><span class="line">            &quot;ephemeral_id&quot; : &quot;99f15770-df47-4235-a766-7dfbd6e6718c&quot;,</span><br><span class="line">            &quot;id&quot; : &quot;fb31744d-e497-45c7-a173-bd8c15b4652e&quot;,</span><br><span class="line">            &quot;name&quot; : &quot;xxxdeMacBook-Air-5.local&quot;,</span><br><span class="line">            &quot;type&quot; : &quot;filebeat&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;host&quot; : &#123;</span><br><span class="line">            &quot;name&quot; : &quot;xxxdeMacBook-Air-5.local&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;http_user_agent&quot; : &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot;,</span><br><span class="line">          &quot;http_referrer&quot; : &quot;-&quot;,</span><br><span class="line">          &quot;status&quot; : &quot;200&quot;,</span><br><span class="line">          &quot;uri&quot; : &quot;&#x2F;main.php&quot;,</span><br><span class="line">          &quot;request_method&quot; : &quot;GET&quot;,</span><br><span class="line">          &quot;remote_user&quot; : &quot;-&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用Filebeat模块(module)分析Nginx日志</p>
+<li><p>使用Filebeat模块(module)分析Nginx日志，<a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html" target="_blank" rel="noopener">传送门</a></p>
+<ul>
+<li>启动Elasticsearch和Kibana服务</li>
+<li>修改默认<code>filebeat.yml</code>，<b>只需要改两项，无需改input相关设置</b></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setup.kibana:</span><br><span class="line">  host: &quot;localhost:5601&quot;</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;localhost:9200&quot;]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装nginx模块<code>./filebeat modules enable nginx</code></li>
+<li>查看已安装模块<code>./filebeat modules list</code></li>
+<li>修改<code>modules.d/nginx.yml</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Module: nginx</span><br><span class="line"># Docs: https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;beats&#x2F;filebeat&#x2F;7.x&#x2F;filebeat-module-nginx.html</span><br><span class="line">- module: nginx</span><br><span class="line">  # Access logs</span><br><span class="line">  access:</span><br><span class="line">    enabled: true</span><br><span class="line"></span><br><span class="line">    # Set custom paths for the log files. If left empty,</span><br><span class="line">    # Filebeat will choose the paths depending on your OS.</span><br><span class="line">    var.paths: [&quot;&#x2F;usr&#x2F;local&#x2F;nginx1.17.9&#x2F;logs&#x2F;backend_access.log&quot;]</span><br><span class="line"></span><br><span class="line">  # Error logs</span><br><span class="line">  error:</span><br><span class="line">    enabled: true</span><br><span class="line"></span><br><span class="line">    # Set custom paths for the log files. If left empty,</span><br><span class="line">    # Filebeat will choose the paths depending on your OS.</span><br><span class="line">    var.paths: [&quot;&#x2F;usr&#x2F;local&#x2F;nginx1.17.9&#x2F;logs&#x2F;error.log&quot;]</span><br><span class="line"></span><br><span class="line">  # Ingress-nginx controller logs. This is disabled by default. It could be used in Kubernetes environments to parse  ingress-nginx logs</span><br><span class="line">  ingress_controller:</span><br><span class="line">    enabled: false</span><br><span class="line"></span><br><span class="line">    # Set custom paths for the log files. If left empty,</span><br><span class="line">    # Filebeat will choose the paths depending on your OS.</span><br><span class="line">    #var.paths:</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>保存应用设置<code>./filebeat setup</code>，使nginx模块能够正确地被Kibana显示</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Overwriting ILM policy is disabled. Set &#96;setup.ilm.overwrite: true&#96; for enabling.</span><br><span class="line"></span><br><span class="line">Index setup finished.</span><br><span class="line">Loading dashboards (Kibana must be running and reachable)</span><br><span class="line">Loaded dashboards</span><br><span class="line">Setting up ML using setup --machine-learning is going to be removed in 8.0.0. Please use the ML app instead.</span><br><span class="line">See more: https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;machine-learning&#x2F;current&#x2F;index.html</span><br><span class="line">Loaded machine learning job configurations</span><br><span class="line">Loaded Ingest pipelines</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动服务<code>./filebeat -e</code></li>
+<li>访问<code>http://localhost</code>以生成access.log</li>
+<li>访问<code>http://localhost:9200/_cat/indices?v</code>查看现有的索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">health status index                            uuid                   pri rep docs.count docs.deleted store.size pri.store.size</span><br><span class="line">yellow open   filebeat-7.12.0-2021.05.11-000001 C8AcE2pTTkOV9isV3X0BDw   1   1         22            0     71.5kb         71.5kb</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>访问<code>http://localhost:5601</code>进入Kibana后台</li>
+<li>点击开发工具，运行脚本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET filebeat-7.12.0-2021.05.11-000001&#x2F;_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Kibana查看分析日志(手动选择导入)</p>
+<ul>
+<li>进入kibana后台<code>http://localhost:5601</code></li>
+<li>点击上传文件</li>
+<li>选择或拖放文件，选择对应的日志文件</li>
+<li>点击导入</li>
+<li>设置索引名称</li>
+<li>点击导入，完成</li>
+</ul>
 </li>
 </ol>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
@@ -413,6 +453,8 @@
 <li><a href="http://nginx.org/en/docs/varindex.html" target="_blank" rel="noopener">参考三</a></li>
 <li><a href="https://segmentfault.com/a/1190000013377493" target="_blank" rel="noopener">参考四</a></li>
 <li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/configuring-howto-filebeat.html" target="_blank" rel="noopener">参考五</a></li>
+<li><a href="https://www.kancloud.cn/noahs/linux/1397310" target="_blank" rel="noopener">参考六</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1662220" target="_blank" rel="noopener">参考七</a></li>
 </ol>
 
     </div>
@@ -597,7 +639,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20:51</span>
+    <span title="站点阅读时长">20:53</span>
 </div>
 
         
