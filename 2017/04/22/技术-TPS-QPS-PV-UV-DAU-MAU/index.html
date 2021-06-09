@@ -59,7 +59,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.me/2017/04/22/%E6%8A%80%E6%9C%AF-TPS-QPS-PV-UV-DAU-MAU/c.jpg">
 <meta property="article:published_time" content="2017-04-22T10:57:30.000Z">
-<meta property="article:modified_time" content="2021-06-09T07:54:26.526Z">
+<meta property="article:modified_time" content="2021-06-09T09:10:19.472Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="TPS">
@@ -278,13 +278,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.4k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -306,10 +306,21 @@
 </li>
 <li><p>QPS(Query Per Second)：每秒请求数，QPS其实是衡量吞吐量的一个常用指标，就是说服务器在一秒的时间内处理了多少个请求。</p>
 <ul>
-<li>峰值QPS<ul>
+<li><p>方式一：二八定律</p>
+<ul>
 <li>原理：每天80%的访问集中在20%的时间里，这20%时间叫做峰值时间</li>
 <li>公式：( 总PV数 * 80% ) / ( 每天秒数 * 20% ) = 峰值时间每秒请求数(QPS)</li>
 </ul>
+</li>
+<li><p>方式二：统计访问日志access.log <code>cat access.log| grep &#39;GET /&#39;|cut -d &#39; &#39; -f4 |uniq -c |sort -n -r</code></p>
+<ul>
+<li>假设日志内容如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [08&#x2F;May&#x2F;2017:10:03:30 +0800] &quot;GET &#x2F;server.php HTTP&#x2F;1.1&quot; 200 1835 &quot;http:&#x2F;&#x2F;localhost&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08&#x2F;May&#x2F;2017:10:03:30 +0800] &quot;GET &#x2F;index.php HTTP&#x2F;1.1&quot; 200 1835 &quot;http:&#x2F;&#x2F;localhost&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08&#x2F;May&#x2F;2017:10:05:30 +0800] &quot;GET &#x2F;run.php HTTP&#x2F;1.1&quot; 200 1835 &quot;http:&#x2F;&#x2F;localhost&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08&#x2F;May&#x2F;2017:10:07:30 +0800] &quot;GET &#x2F;server.php HTTP&#x2F;1.1&quot; 200 1835 &quot;http:&#x2F;&#x2F;localhost&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08&#x2F;May&#x2F;2017:11:07:30 +0800] &quot;GET &#x2F;main.php HTTP&#x2F;1.1&quot; 200 1835 &quot;http:&#x2F;&#x2F;localhost&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [07&#x2F;May&#x2F;2017:11:09:31 +0800] &quot;GET &#x2F;public&#x2F;index.php HTTP&#x2F;1.1&quot; 200 2298784 &quot;-&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [07&#x2F;May&#x2F;2017:11:09:31 +0800] &quot;GET &#x2F;public&#x2F;index.php HTTP&#x2F;1.1&quot; 200 2298784 &quot;-&quot; &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;90.0.4430.93 Safari&#x2F;537.36&quot; &quot;-&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式三：产品和运营统计，通过日活、在线、总用户等估算</p>
+</li>
+<li><p>方式四：完全凭个人经验，常用且已知的经验型数据如日志QPS在6-10w，RPC的QPS在10W，Redis的QPS是8-10w，MySQL大致6k-1W。</p>
 </li>
 </ul>
 </li>
@@ -557,7 +568,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">21:15</span>
+    <span title="站点阅读时长">21:17</span>
 </div>
 
         
