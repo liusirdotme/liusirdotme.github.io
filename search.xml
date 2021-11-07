@@ -14279,59 +14279,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>设计模式之装饰者模式</title>
-    <url>/2018/12/29/OOP-%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>故天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。 ——《孟子·告子下》之《生于忧患，死于安乐》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>装饰者模式(Decorator Pattern)，指的是在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。</p>
-<ul>
-<li>它是通过创建一个包装对象，也就是装饰来包裹真实的对象</li>
-</ul>
-</li>
-<li><p>优点</p>
-<ul>
-<li>该模式与继承关系的目的都是要扩展对象的功能，但是Decorator可以提供比继承更多的灵活性</li>
-<li>通过使用不同的具体装饰类以及这些装饰类的排列组合，设计师可以创造出很多不同行为的组合</li>
-</ul>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>这种比继承更加灵活机动的特性，也同时意味着更加多的复杂性</li>
-<li>装饰模式会导致设计中出现许多小类，如果过度使用会使程序变得很复杂</li>
-<li>装饰模式是针对抽象组件(Component)类型编程</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>扩展一个类的功能</li>
-<li>动态增加功能，动态撤销</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、demo"><a href="#二、demo" class="headerlink" title="二、demo"></a>二、demo</h2><ol>
-<li>定义</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Shape</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Rectangle implements Shape </span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;矩形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Circle implements Shape </span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;圆形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class ShapeDecorator implements Shape </span><br><span class="line">&#123;</span><br><span class="line">    protected  $decoratedShape;</span><br><span class="line">  </span><br><span class="line">    public function __construct($decoratedShape)&#123;</span><br><span class="line">        $this-&gt;decoratedShape = $decoratedShape;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;decoratedShape-&gt;draw();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class RedShapeDecorator extends ShapeDecorator &#123;</span><br><span class="line"> </span><br><span class="line">    public function __construct($decoratedShape)</span><br><span class="line">    &#123;</span><br><span class="line">        parent::__construct($decoratedShape);     </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;decoratedShape-&gt;draw();         </span><br><span class="line">        $this-&gt;setRedBorder($this-&gt;decoratedShape);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    private function setRedBorder()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Border Color: Red&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DecoratorPatternDemo </span><br><span class="line">&#123;</span><br><span class="line">    public static function main() &#123;</span><br><span class="line">  </span><br><span class="line">        $circle = new Circle();</span><br><span class="line">        $rectangle = new Rectangle();</span><br><span class="line"></span><br><span class="line">        $redCircle = new RedShapeDecorator(new Circle());</span><br><span class="line">        $redRectangle = new RedShapeDecorator(new Rectangle());</span><br><span class="line"></span><br><span class="line">        $circle-&gt;draw();</span><br><span class="line">        echo PHP_EOL;</span><br><span class="line">        </span><br><span class="line">        $rectangle-&gt;draw();</span><br><span class="line">        echo PHP_EOL;</span><br><span class="line"></span><br><span class="line">        $redCircle-&gt;draw();</span><br><span class="line">        echo PHP_EOL;</span><br><span class="line"></span><br><span class="line">        $redRectangle-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>调用</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DecoratorPatternDemo::main();</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>结构型模式</tag>
-        <tag>装饰者模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php安装lua扩展</title>
     <url>/2018/12/18/PHP-%E6%89%A9%E5%B1%95%E4%B9%8Blua/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -14961,64 +14908,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>设计模式之外观模式</title>
-    <url>/2018/10/19/OOP-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>穷则独善其身，达则兼济天下。 —— 《孟子》之《尽心章句上》（第九）</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>外观模式(Facade Pattern)，一种通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式。</p>
-<ul>
-<li>该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体的细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</li>
-<li>该模式涉及到一个单一的类，该类提供了客户端请求的简化方法和对现有系统类方法的委托调用。</li>
-</ul>
-</li>
-<li><p>优点</p>
-<ul>
-<li>减少系统相互依赖</li>
-<li>提高灵活性</li>
-<li>提高了安全性。</li>
-</ul>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>不符合开闭原则，如果要改东西很麻烦，继承重写都不合适。</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>为复杂的模块或子系统提供外界访问的模块</li>
-<li>子系统相对独立</li>
-<li>预防低水平人员带来的风险</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、demo"><a href="#二、demo" class="headerlink" title="二、demo"></a>二、demo</h2><ol>
-<li>定义类</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Circle implements Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;圆形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Square implements Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;正方形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Triangle implements Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;三角形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ShapeFacade</span><br><span class="line">&#123;</span><br><span class="line">    private $circle;</span><br><span class="line">    private $triangle;</span><br><span class="line">    private $square;</span><br><span class="line"></span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;circle = new Circle();</span><br><span class="line">        $this-&gt;triangle = new Triangle();</span><br><span class="line">        $this-&gt;square = new Square();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function drawCircle()&#123;</span><br><span class="line">        $this-&gt;circle-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function drawSquare()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;square-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function drawTriangle()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;triangle-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>调用</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$shape = new ShapeFacade();</span><br><span class="line">$shape-&gt;drawCircle();</span><br><span class="line">$shape-&gt;drawSquare();</span><br><span class="line">$shape-&gt;drawTriangle();</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>结构型模式</tag>
-        <tag>外观模式</tag>
-        <tag>Facade</tag>
-        <tag>孟子</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>原码反码补码</title>
     <url>/2018/10/11/OS-%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -15134,70 +15023,6 @@ read_xlsx(name, sheet)
         <tag>原码</tag>
         <tag>反码</tag>
         <tag>补码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之观察者模式</title>
-    <url>/2018/10/11/OOP-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>认知，是指人们获得知识或应用知识的过程，或信息加工的过程，这是人的最基本的心理过程。它包括感觉、知觉、记忆、思维、想像和语言等。人脑接受外界输入的信息，经过头脑的加工处理，转换成内在的心理活动，进而支配人的行为，这个过程就是信息加工的过程，也就是认知过程。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>观察者模式，又被称为模型-视图模式、源-收听者模式、从属者模式，是软件设计模式的一种。在此模式中，一个目标物件管理所有相依于它的观察者物件，并且在它本身的状态改变时主动发出通知。</p>
-<ul>
-<li>通常通过呼叫各观察者所提供的方法来实现。</li>
-<li>通常被用来实现事件处理系统。</li>
-<li>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</li>
-</ul>
-</li>
-<li><p>实现要点</p>
-<ul>
-<li>Subject类：包含绑定和移除观察者及通知方法</li>
-<li>Observer类：抽象类，定义抽象方法及subject实例</li>
-<li>Client类：继承抽象类Observer，重写父类方法</li>
-</ul>
-</li>
-<li><p>优点</p>
-<ul>
-<li>观察者和被观察者是抽象耦合的</li>
-<li>建立一套触发机制</li>
-</ul>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>如果一个被观察者对象有很多的直接和间接的观察者的话，将所有的观察者都通知到会花费很多时间</li>
-<li>如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃</li>
-<li>观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>一个抽象模型有两个方面，其中一个方面依赖于另一个方面，将这些方面封装在独立的对象中使它们可以各自独立地改变和复用。</li>
-<li>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变，可以降低对象之间的耦合度。</li>
-<li>一个对象必须通知其他对象，而并不知道这些对象是谁。</li>
-<li>需要在系统中创建一个触发链，A对象的行为将影响B对象，B对象的行为将影响C对象……，可以使用观察者模式创建一种链式触发机制。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、demo"><a href="#二、demo" class="headerlink" title="二、demo"></a>二、demo</h2><ol>
-<li>定义类</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Subject</span><br><span class="line">&#123;</span><br><span class="line">    public $state = &#x27;&#x27;;</span><br><span class="line">    public $observers = [];</span><br><span class="line"></span><br><span class="line">    public function getState()</span><br><span class="line">    &#123;</span><br><span class="line">        return $this-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function setState($state)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;state = $state;</span><br><span class="line">        $this-&gt;notifyAllClient();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function bind(Observer $observer)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;observers[] = $observer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function unbind(Observer $observer)</span><br><span class="line">    &#123;</span><br><span class="line">        foreach ($this-&gt;observers as $key =&gt; $val) &#123;</span><br><span class="line">            if ($val == $observer) &#123;</span><br><span class="line">                unset($this-&gt;observers[$key]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function notifyAllClient()</span><br><span class="line">    &#123;</span><br><span class="line">        foreach ($this-&gt;observers as $item) &#123;</span><br><span class="line">            $item-&gt;update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Observer</span><br><span class="line">&#123;</span><br><span class="line">    public $subject;</span><br><span class="line">    public abstract function update();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ClientA extends Observer</span><br><span class="line">&#123;</span><br><span class="line">    public $state = &#x27;初始状态A&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct(Subject $subject)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;subject = $subject;</span><br><span class="line">        $this-&gt;subject-&gt;bind($this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function update()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;state = $this-&gt;subject-&gt;getState();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function getState()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;ClientA状态：&quot;.$this-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ClientB extends Observer</span><br><span class="line">&#123;</span><br><span class="line">    public $state = &#x27;初始状态B&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct(Subject $subject)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;subject = $subject;</span><br><span class="line">        $this-&gt;subject-&gt;bind($this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function update()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;state = $this-&gt;subject-&gt;getState();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function getState()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;ClientB状态：&quot;.$this-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>调用</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$subject = new Subject();</span><br><span class="line">$a = new ClientA($subject);</span><br><span class="line">$b = new ClientB($subject);</span><br><span class="line">// print_r($subject-&gt;observers);</span><br><span class="line"></span><br><span class="line">echo $a-&gt;getState(),PHP_EOL;</span><br><span class="line">echo $b-&gt;getState(),PHP_EOL;</span><br><span class="line"></span><br><span class="line">$subject-&gt;setState(&quot;123&quot;);</span><br><span class="line">echo $a-&gt;getState(),PHP_EOL;</span><br><span class="line">echo $b-&gt;getState(),PHP_EOL;</span><br><span class="line"></span><br><span class="line">// $subject-&gt;unbind($a);</span><br><span class="line">// print_r($subject-&gt;observers);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>行为型模式</tag>
-        <tag>观察者模式</tag>
       </tags>
   </entry>
   <entry>
@@ -15453,37 +15278,6 @@ read_xlsx(name, sheet)
       <tags>
         <tag>Mac</tag>
         <tag>Erlang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之适配器模式</title>
-    <url>/2018/09/23/OOP-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>适配器是一个接口转换器，它可以是一个独立的硬件接口设备，允许硬件或电子接口与其它硬件或电子接口相连，也可以是信息接口。比如：电源适配器、三角架基座转接部件、USB与串口的转接设备等。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>适配器模式，作为两个不兼容的接口之间的桥梁，是指将一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够在一起工作。</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
-<li>定义类</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface MediaPlayer </span><br><span class="line">&#123;</span><br><span class="line">    public function play($type, $name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface AdvancedMediaPlayer</span><br><span class="line">&#123; </span><br><span class="line">    public function playVlc($name);</span><br><span class="line">    public function playMp4($name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class VlcPlayer implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;播放VLC文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        //none</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Mp4Player implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        //none</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">       echo &quot;播放MP4文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MediaAdapter implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $advanced;</span><br><span class="line">  </span><br><span class="line">    public function __construct ($type) </span><br><span class="line">    &#123;</span><br><span class="line">        if ($type == &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced = new VlcPlayer();       </span><br><span class="line">        &#125; else if ($type == &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced = new Mp4Player();</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($type == &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playVlc($name);</span><br><span class="line">        &#125; else if ($type == &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playMp4($name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudioPlayer implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $adapter; </span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;    </span><br><span class="line">        if ($type == &quot;mp3&quot;) &#123;</span><br><span class="line">            echo &quot;播放MP3文件: &quot; . $name, PHP_EOL;         </span><br><span class="line">        &#125; else if (in_array($type, [&quot;vlc&quot;, &quot;mp4&quot;])) &#123;</span><br><span class="line">           $this-&gt;adapter = new MediaAdapter($type);</span><br><span class="line">           $this-&gt;adapter-&gt;play($type, $name);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">           echo &quot;不支持&quot;.$type.&quot;格式&quot;, PHP_EOL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>调用</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$audioPlayer = new AudioPlayer();</span><br><span class="line"></span><br><span class="line">$audioPlayer-&gt;play(&quot;mp3&quot;, &quot;1.mp3&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;mp4&quot;, &quot;2.mp4&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;vlc&quot;, &quot;3.vlc&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;avi&quot;, &quot;4.avi&quot;);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>结构型模式</tag>
-        <tag>适配器模式</tag>
       </tags>
   </entry>
   <entry>
@@ -19699,133 +19493,6 @@ read_xlsx(name, sheet)
       <tags>
         <tag>技术</tag>
         <tag>Doxyfile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之抽象工厂模式</title>
-    <url>/2018/02/21/OOP-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>抽象工厂模式(Abstract Factory Pattern)是围绕一个超级工厂创建其他工厂。该超级工厂又称为其他工厂的工厂。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="零、引入"><a href="#零、引入" class="headerlink" title="零、引入"></a>零、引入</h2><ol>
-<li><p>工厂模式是一种类，具有创建对象的某些方法。使用工厂类创建对象而不直接使用new，这样如果更改所创建的对象类型只需更改该工厂即可，使用该工厂的所有代码会自动更改。</p>
-</li>
-<li><p>根据抽象程度不同，工厂模式分为：简单工厂模式、工厂方法模式和抽象工厂模式。</p>
-</li>
-</ol>
-<h2 id="一、简单工厂"><a href="#一、简单工厂" class="headerlink" title="一、简单工厂"></a>一、简单工厂</h2><ol>
-<li><p>简单工厂模式，又叫静态工厂方法模式(Static FactoryMethod Pattern)，是通过专门定义一个Factory类来负责创建其他类的实例，可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。</p>
-<ul>
-<li>实质是由一个工厂类Factory根据传入的参数，动态决定应该创建哪一个产品类实例</li>
-<li>实际使用过程中，违背了【开放-关闭】原则，因此不属于23中设计模式之一</li>
-</ul>
-</li>
-<li><p>实现</p>
-<ul>
-<li>定义一个抽象类</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class Car</span><br><span class="line">&#123;</span><br><span class="line">    public abstract function carName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>不同的类实现抽象类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCar extends Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is BenzCar&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar extends Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is AudiCar&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义简单工厂类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar($car)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($car == &#x27;benz&#x27;) &#123;</span><br><span class="line">            return new BenzCar();</span><br><span class="line">        &#125; else if ($car == &#x27;audi&#x27;) &#123;</span><br><span class="line">            return new AudiCar();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实例化简单工厂类，并通过传递不同参数实例化不同的类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$cf = new CarFactory;</span><br><span class="line"></span><br><span class="line">$co = $cf-&gt;createCar(&#x27;audi&#x27;);</span><br><span class="line">$co-&gt;carName();</span><br><span class="line"></span><br><span class="line">$co = $cf-&gt;createCar(&#x27;benz&#x27;);</span><br><span class="line">$co-&gt;carName();</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、工厂方法"><a href="#二、工厂方法" class="headerlink" title="二、工厂方法"></a>二、工厂方法</h2><ol>
-<li><p>工厂方法模式，又称工厂模式，通过定义工厂父类负责定义创建对象的公共接口，而子类则负责生成具体的对象。将类的实例化延迟到工厂子类中完成，即由子类来决定应该实例化哪一个类。</p>
-<ul>
-<li>主要解决了简单工厂模式的缺点，即工厂一旦需要生产新产品就需要修改工厂类的方法逻辑，违背了【开放-关闭】原则</li>
-</ul>
-</li>
-<li><p>实现</p>
-<ul>
-<li>定义父类工厂接口</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface CarFactory //也可用抽象类</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>子类工厂实现父类工厂接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCarFactory implements CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BenzCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCarFactory implements CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new AudiCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义父类产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Car //也可用抽象类</span><br><span class="line">&#123;</span><br><span class="line">    public function carName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>子类产品实现父类产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCar implements Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is Benz Car&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar implements Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Audi Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调用工厂方法，实例化不同产品类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$benzF = new BenzCarFactory;</span><br><span class="line">$benzC = $benzF-&gt;createCar();</span><br><span class="line">$benzC-&gt;carName();</span><br><span class="line"></span><br><span class="line">$audiF = new AudiCarFactory;</span><br><span class="line">$audiC = $audiF-&gt;createCar();</span><br><span class="line">$audiC-&gt;carName();</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、抽象工厂"><a href="#三、抽象工厂" class="headerlink" title="三、抽象工厂"></a>三、抽象工厂</h2><ol>
-<li><p>抽象工厂模式是围绕一个超级工厂创建其他工厂，该超级工厂又称为其他工厂的工厂。</p>
-<ul>
-<li>它与工厂模式最大的区别在于：工厂模式中一个工厂只能生产一种产品，而抽象工厂可以生产多个。</li>
-</ul>
-</li>
-<li><p>实现</p>
-<ul>
-<li>定义抽象工厂接口</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface AbstractCarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createBenzCar();</span><br><span class="line"></span><br><span class="line">    public function createAudiCar();</span><br><span class="line"></span><br><span class="line">    public function createBmwCar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现工厂接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class CarFactory implements AbstractCarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createBenzCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BenzCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function createAudiCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new AudiCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function createBmwCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BmwCar;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义抽象产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现抽象产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Benz Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Audi Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BmwCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Bmw Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调用抽象工厂，实例化不同产品类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$car  = new CarFactory;</span><br><span class="line"></span><br><span class="line">$benz = $car-&gt;createBenzCar();</span><br><span class="line">$benz-&gt;carName();</span><br><span class="line"></span><br><span class="line">$audi = $car-&gt;createAudiCar();</span><br><span class="line">$audi-&gt;carName();</span><br><span class="line"></span><br><span class="line">$bmw = $car-&gt;createBmwCar();</span><br><span class="line">$bmw-&gt;carName();</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>创建型模式</tag>
-        <tag>工厂模式</tag>
-        <tag>简单工厂</tag>
-        <tag>工厂方法</tag>
-        <tag>抽象工厂</tag>
       </tags>
   </entry>
   <entry>
@@ -30591,203 +30258,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>设计模式之工厂模式</title>
-    <url>/2016/03/11/OOP-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>工厂模式(Factory Pattern)是最常用的设计模式之一，属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="零、引入"><a href="#零、引入" class="headerlink" title="零、引入"></a>零、引入</h2><ol>
-<li><p>工厂模式是一种类，具有创建对象的某些方法。使用工厂类创建对象而不直接使用new，这样如果更改所创建的对象类型只需更改该工厂即可，使用该工厂的所有代码会自动更改。</p>
-</li>
-<li><p>根据抽象程度不同，工厂模式分为：简单工厂模式、工厂方法模式和抽象工厂模式。</p>
-</li>
-</ol>
-<h2 id="一、简单工厂"><a href="#一、简单工厂" class="headerlink" title="一、简单工厂"></a>一、简单工厂</h2><ol>
-<li><p>简单工厂模式，又叫静态工厂方法模式(Static FactoryMethod Pattern)，是通过专门定义一个Factory类来负责创建其他类的实例，可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。</p>
-<ul>
-<li>实质是由一个工厂类Factory根据传入的参数，动态决定应该创建哪一个产品类实例</li>
-<li>实际使用过程中，违背了【开放-关闭】原则，因此不属于23中设计模式之一</li>
-</ul>
-</li>
-<li><p>实现</p>
-<ul>
-<li>定义一个抽象类</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class Car</span><br><span class="line">&#123;</span><br><span class="line">    public abstract function carName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>不同的类实现抽象类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCar extends Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is BenzCar&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar extends Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is AudiCar&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义简单工厂类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar($car)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($car == &#x27;benz&#x27;) &#123;</span><br><span class="line">            return new BenzCar();</span><br><span class="line">        &#125; else if ($car == &#x27;audi&#x27;) &#123;</span><br><span class="line">            return new AudiCar();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实例化简单工厂类，并通过传递不同参数实例化不同的类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$cf = new CarFactory;</span><br><span class="line"></span><br><span class="line">$co = $cf-&gt;createCar(&#x27;audi&#x27;);</span><br><span class="line">$co-&gt;carName();</span><br><span class="line"></span><br><span class="line">$co = $cf-&gt;createCar(&#x27;benz&#x27;);</span><br><span class="line">$co-&gt;carName();</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、工厂方法"><a href="#二、工厂方法" class="headerlink" title="二、工厂方法"></a>二、工厂方法</h2><ol>
-<li><p>工厂方法模式，又称工厂模式，通过定义工厂父类负责定义创建对象的公共接口，而子类则负责生成具体的对象。将类的实例化延迟到工厂子类中完成，即由子类来决定应该实例化哪一个类。</p>
-<ul>
-<li>主要解决了简单工厂模式的缺点，即工厂一旦需要生产新产品就需要修改工厂类的方法逻辑，违背了【开放-关闭】原则</li>
-</ul>
-</li>
-<li><p>实现</p>
-<ul>
-<li>定义父类工厂接口</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface CarFactory //也可用抽象类</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>子类工厂实现父类工厂接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCarFactory implements CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BenzCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCarFactory implements CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new AudiCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义父类产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Car //也可用抽象类</span><br><span class="line">&#123;</span><br><span class="line">    public function carName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>子类产品实现父类产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCar implements Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is Benz Car&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar implements Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Audi Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调用工厂方法，实例化不同产品类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$benzF = new BenzCarFactory;</span><br><span class="line">$benzC = $benzF-&gt;createCar();</span><br><span class="line">$benzC-&gt;carName();</span><br><span class="line"></span><br><span class="line">$audiF = new AudiCarFactory;</span><br><span class="line">$audiC = $audiF-&gt;createCar();</span><br><span class="line">$audiC-&gt;carName();</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、抽象工厂"><a href="#三、抽象工厂" class="headerlink" title="三、抽象工厂"></a>三、抽象工厂</h2><ol>
-<li><p>抽象工厂模式是围绕一个超级工厂创建其他工厂，该超级工厂又称为其他工厂的工厂。</p>
-<ul>
-<li>它与工厂模式最大的区别在于：工厂模式中一个工厂只能生产一种产品，而抽象工厂可以生产多个。</li>
-</ul>
-</li>
-<li><p>实现</p>
-<ul>
-<li>定义抽象工厂接口</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface AbstractCarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createBenzCar();</span><br><span class="line"></span><br><span class="line">    public function createAudiCar();</span><br><span class="line"></span><br><span class="line">    public function createBmwCar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现工厂接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class CarFactory implements AbstractCarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createBenzCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BenzCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function createAudiCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new AudiCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function createBmwCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BmwCar;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义抽象产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实现抽象产品接口</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class BenzCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Benz Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Audi Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BmwCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Bmw Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调用抽象工厂，实例化不同产品类</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$car  = new CarFactory;</span><br><span class="line"></span><br><span class="line">$benz = $car-&gt;createBenzCar();</span><br><span class="line">$benz-&gt;carName();</span><br><span class="line"></span><br><span class="line">$audi = $car-&gt;createAudiCar();</span><br><span class="line">$audi-&gt;carName();</span><br><span class="line"></span><br><span class="line">$bmw = $car-&gt;createBmwCar();</span><br><span class="line">$bmw-&gt;carName();</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>创建型模式</tag>
-        <tag>工厂模式</tag>
-        <tag>简单工厂</tag>
-        <tag>工厂方法</tag>
-        <tag>抽象工厂</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式之单例模式</title>
-    <url>/2016/03/01/OOP-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>单例模式(Singleton Pattern)是最简单的设计模式之一，属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>单例模式(Singleton Pattern)是最简单的设计模式之一，属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。另外，该类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
-<ul>
-<li>单例，即一个类只有一个实例，并提供一个全局访问点。</li>
-</ul>
-</li>
-<li><p>单例模式需要满足以下四个条件：</p>
-<ul>
-<li>私有化构造函数</li>
-<li>私有化克隆函数</li>
-<li>私有化静态成员变量</li>
-<li>公有化获取静态实例方法</li>
-</ul>
-</li>
-<li><p>优点</p>
-<ul>
-<li>在单例模式中，活动的单例只有一个实例，对单例类的所有实例化得到的都是相同的一个实例。这样就防止其它对象对自己的实例化，确保所有的对象都访问一个实例</li>
-<li>单例模式具有一定的伸缩性，类自己来控制实例化进程，类就在改变实例化进程上有相应的伸缩性</li>
-<li>提供了对唯一实例的受控访问</li>
-<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，当需要频繁创建和销毁的对象时单例模式无疑可以提高系统的性能</li>
-<li>允许可变数目的实例</li>
-<li>避免对共享资源的多重占用</li>
-</ul>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>不适用于变化的对象，如果同一类型的对象总是要在不同的用例场景发生变化，单例就会引起数据的错误，不能保存彼此的状态</li>
-<li>由于单利模式中没有抽象层，因此单例类的扩展有很大的困难</li>
-<li>单例类的职责过重，在一定程度上违背了“单一职责原则”</li>
-<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为的单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；如果实例化的对象长时间不被利用，系统会认为是垃圾而被回收，这将导致对象状态的丢失</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>外部资源：每台计算机有若干个打印机，但只能有一个PrinterSpooler，以避免两个打印作业同时输出到打印机。<ul>
-<li>内部资源：大多数软件都有个(或多个)属性文件存放系统配置，这样的系统应该有一个对象管理这些属性文件 </li>
-</ul>
-</li>
-<li>Windows系统的任务管理器</li>
-<li>windows系统的的回收站</li>
-<li>网站的计数器</li>
-<li>应用程序的日志应用</li>
-<li>Web应用的配置对象的读取</li>
-<li>数据库连接池的设计</li>
-<li>多线程的线程池的设计</li>
-<li>操作系统的文件系统</li>
-<li>HttpApplication</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、demo"><a href="#二、demo" class="headerlink" title="二、demo"></a>二、demo</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Singleton</span><br><span class="line">&#123;</span><br><span class="line">    //私有静态属性，存放该类的实例</span><br><span class="line">    private static $instance = null; </span><br><span class="line"> </span><br><span class="line">    //私有构造方法，防止在类的外部实例化</span><br><span class="line">    private function __construct() &#123; </span><br><span class="line"></span><br><span class="line">        //TO DO</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    //私有克隆方法，防止克隆</span><br><span class="line">    private function __clone() &#123;</span><br><span class="line">    </span><br><span class="line">        //TO DO</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    //公共的静态方法，实例化该类本身，只实例化一次</span><br><span class="line">    public static function getInstance() &#123; </span><br><span class="line">        </span><br><span class="line">        if (!self::$instance instanceof self) &#123;</span><br><span class="line">            self::$instance = new self;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return self::$instance;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>OOP</category>
-      </categories>
-      <tags>
-        <tag>面向对象</tag>
-        <tag>设计模式</tag>
-        <tag>单例模式</tag>
-        <tag>创建型模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Redis之问题收集</title>
     <url>/2016/02/27/Redis%E4%B9%8B%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -31900,32 +31370,152 @@ read_xlsx(name, sheet)
 <h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
 <li><p>创建型</p>
 <ul>
-<li>Singleton，单例模式：保证一个类只有一个实例，并提供一个访问它的全局访问点 </li>
-<li>Abstract Factory，抽象工厂：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们的具体类。 </li>
-<li>Factory Method，工厂方法：定义一个用于创建对象的接口，让子类决定实例化哪一个类，Factory Method使一个类的实例化延迟到了子类。 </li>
-<li>Builder，建造者模式：将一个复杂对象的构建与他的表示相分离，使得同样的构建过程可以创建不同的表示。 </li>
-<li>Prototype，原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型来创建新的对象。 </li>
+<li><p>Singleton，单例模式：保证一个类只有一个实例，并提供一个访问它的全局访问点 </p>
+<ul>
+<li><p>单例模式(Singleton Pattern)是最简单的设计模式之一，属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。另外，该类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
+</li>
+<li><p>单例，即一个类只有一个实例，并提供一个全局访问点。</p>
+</li>
+<li><p>单例模式需要满足以下四个条件：</p>
+<ul>
+<li>私有化构造函数</li>
+<li>私有化克隆函数</li>
+<li>私有化静态成员变量</li>
+<li>公有化获取静态实例方法</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>在单例模式中，活动的单例只有一个实例，对单例类的所有实例化得到的都是相同的一个实例。这样就防止其它对象对自己的实例化，确保所有的对象都访问一个实例</li>
+<li>单例模式具有一定的伸缩性，类自己来控制实例化进程，类就在改变实例化进程上有相应的伸缩性</li>
+<li>提供了对唯一实例的受控访问</li>
+<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，当需要频繁创建和销毁的对象时单例模式无疑可以提高系统的性能</li>
+<li>允许可变数目的实例</li>
+<li>避免对共享资源的多重占用</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>不适用于变化的对象，如果同一类型的对象总是要在不同的用例场景发生变化，单例就会引起数据的错误，不能保存彼此的状态</li>
+<li>由于单利模式中没有抽象层，因此单例类的扩展有很大的困难</li>
+<li>单例类的职责过重，在一定程度上违背了“单一职责原则”</li>
+<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为的单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；如果实例化的对象长时间不被利用，系统会认为是垃圾而被回收，这将导致对象状态的丢失</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>外部资源：每台计算机有若干个打印机，但只能有一个PrinterSpooler，以避免两个打印作业同时输出到打印机。<ul>
+<li>内部资源：大多数软件都有个(或多个)属性文件存放系统配置，这样的系统应该有一个对象管理这些属性文件 </li>
+</ul>
+</li>
+<li>Windows系统的任务管理器</li>
+<li>windows系统的的回收站</li>
+<li>网站的计数器</li>
+<li>应用程序的日志应用</li>
+<li>Web应用的配置对象的读取</li>
+<li>数据库连接池的设计</li>
+<li>多线程的线程池的设计</li>
+<li>操作系统的文件系统</li>
+<li>HttpApplication</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Abstract Factory，抽象工厂：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们的具体类。 </p>
+</li>
+<li><p>Factory Method，工厂方法：定义一个用于创建对象的接口，让子类决定实例化哪一个类，Factory Method使一个类的实例化延迟到了子类。 </p>
+</li>
+<li><p>Builder，建造者模式：将一个复杂对象的构建与他的表示相分离，使得同样的构建过程可以创建不同的表示。 </p>
+</li>
+<li><p>Prototype，原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型来创建新的对象。 </p>
+</li>
 </ul>
 </li>
 <li><p>结构型</p>
 <ul>
 <li>Composite，组合模式：将对象组合成树形结构以表示部分整体的关系，Composite使得用户对单个对象和组合对象的使用具有一致性。 </li>
-<li>Facade，外观模式：为子系统中的一组接口提供一致的界面，fa?ade提供了一高层接口，这个接口使得子系统更容易使用。 </li>
-<li>Proxy，代理模式：为其他对象提供一种代理以控制对这个对象的访问 </li>
-<li>Adapter，适配器模式：将一类的接口转换成客户希望的另外一个接口，Adapter模式使得原本由于接口不兼容而不能一起工作那些类可以一起工作。</li>
-<li>Decrator，装饰者模式：动态地给一个对象增加一些额外的职责，就增加的功能来说，Decorator模式相比生成子类更加灵活。 </li>
-<li>Bridge，桥接模式：将抽象部分与它的实现部分相分离，使他们可以独立的变化。 </li>
-<li>Flyweight，享元模式：尝试重用现有的同类对象，如果未找到匹配的对象，则创建新对象。主要用于减少创建对象的数量，以减少内存占用和提高性能。</li>
+<li>Facade，外观模式：为子系统中的一组接口提供一致的界面，fa?ade提供了一高层接口，这个接口使得子系统更容易使用。 <ul>
+<li>一种通过为多个复杂的子系统提供一个一致的接口，而使这些子系统更加容易被访问的模式。</li>
+<li>该模式对外有一个统一接口，外部应用程序不用关心内部子系统的具体的细节，这样会大大降低应用程序的复杂度，提高了程序的可维护性。</li>
+<li>该模式涉及到一个单一的类，该类提供了客户端请求的简化方法和对现有系统类方法的委托调用。 </li>
+<li>优点<ul>
+<li>减少系统相互依赖</li>
+<li>提高灵活性</li>
+<li>提高了安全性。</li>
 </ul>
 </li>
-</ol>
-<blockquote>
-<p>菜鸟教程里还有一种过滤器模式(Filter)，也叫标准模式(Criteria)，允许开发人员使用不同的标准来过滤一组对象，通过逻辑运算以解耦的方式把它们连接起来。</p>
-</blockquote>
-<ol start="3">
-<li>行为型<ul>
+<li>缺点<ul>
+<li>不符合开闭原则，如果要改东西很麻烦，继承重写都不合适。</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>为复杂的模块或子系统提供外界访问的模块</li>
+<li>子系统相对独立</li>
+<li>预防低水平人员带来的风险</li>
+<li>Proxy，代理模式：为其他对象提供一种代理以控制对这个对象的访问 </li>
+<li>Adapter，适配器模式：将一类的接口转换成客户希望的另外一个接口，Adapter模式使得原本由于接口不兼容而不能一起工作那些类可以一起工作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Decrator，装饰者模式：动态地给一个对象增加一些额外的职责，就增加的功能来说，Decorator模式相比生成子类更加灵活。 <ul>
+<li>装饰者模式(Decorator Pattern)，指的是在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。</li>
+<li>它是通过创建一个包装对象，也就是装饰来包裹真实的对象</li>
+<li>优点<ul>
+<li>该模式与继承关系的目的都是要扩展对象的功能，但是Decorator可以提供比继承更多的灵活性</li>
+<li>通过使用不同的具体装饰类以及这些装饰类的排列组合，设计师可以创造出很多不同行为的组合</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>这种比继承更加灵活机动的特性，也同时意味着更加多的复杂性</li>
+<li>装饰模式会导致设计中出现许多小类，如果过度使用会使程序变得很复杂</li>
+<li>装饰模式是针对抽象组件(Component)类型编程</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>扩展一个类的功能</li>
+<li>动态增加功能，动态撤销<pre><code>* Bridge，桥接模式：将抽象部分与它的实现部分相分离，使他们可以独立的变化。 
+* Flyweight，享元模式：尝试重用现有的同类对象，如果未找到匹配的对象，则创建新对象。主要用于减少创建对象的数量，以减少内存占用和提高性能。</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>行为型</p>
+<ul>
 <li>Iterator，迭代器模式：提供一个方法顺序访问一个聚合对象的各个元素，而又不需要暴露该对象的内部表示。 </li>
-<li>Observer，观察者模式：定义对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知自动更新。 </li>
+<li>Observer，观察者模式：定义对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知自动更新。 <ul>
+<li>观察者模式，又被称为模型-视图模式、源-收听者模式、从属者模式，是软件设计模式的一种。在此模式中，一个目标物件管理所有相依于它的观察者物件，并且在它本身的状态改变时主动发出通知。</li>
+<li>通常通过呼叫各观察者所提供的方法来实现。</li>
+<li>通常被用来实现事件处理系统。</li>
+<li>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</li>
+<li>实现要点<ul>
+<li>Subject类：包含绑定和移除观察者及通知方法</li>
+<li>Observer类：抽象类，定义抽象方法及subject实例</li>
+<li>Client类：继承抽象类Observer，重写父类方法</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>观察者和被观察者是抽象耦合的</li>
+<li>建立一套触发机制</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>如果一个被观察者对象有很多的直接和间接的观察者的话，将所有的观察者都通知到会花费很多时间</li>
+<li>如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃</li>
+<li>观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>一个抽象模型有两个方面，其中一个方面依赖于另一个方面，将这些方面封装在独立的对象中使它们可以各自独立地改变和复用。</li>
+<li>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变，可以降低对象之间的耦合度。</li>
+<li>一个对象必须通知其他对象，而并不知道这些对象是谁。</li>
+<li>需要在系统中创建一个触发链，A对象的行为将影响B对象，B对象的行为将影响C对象……，可以使用观察者模式创建一种链式触发机制。</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Template Method，模板方法：定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，TemplateMethod使得子类可以不改变一个算法的结构即可以重定义该算法得某些特定步骤。 </li>
 <li>Command，命令模式：将一个请求封装为一个对象，从而使你可以用不同的请求对客户进行参数化，对请求排队和记录请求日志，以及支持可撤销的操作。 </li>
 <li>State，状态模式：允许对象在其内部状态改变时改变他的行为。对象看起来似乎改变了他的类。 </li>
@@ -31957,14 +31547,50 @@ read_xlsx(name, sheet)
 </ul>
 </li>
 </ol>
-<blockquote>
-<p>菜鸟教程里还有一种空对象模式(Null Object)：创建一个指定各种要执行的操作的抽象类和扩展该类的实体类，还创建一个未对该类做任何实现的空对象类，该空对象类将无缝地使用在需要检查空值的地方。</p>
-</blockquote>
 <h2 id="三、实现"><a href="#三、实现" class="headerlink" title="三、实现"></a>三、实现</h2><ol>
 <li>策略模式</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Strategy </span><br><span class="line">&#123;</span><br><span class="line">    public function algorithmInterface();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ConcreteStrategyA implements Strategy </span><br><span class="line">&#123;</span><br><span class="line">    public function algorithmInterface()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;算法A&#x27;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">class ConcreteStrategyB implements Strategy</span><br><span class="line">&#123;</span><br><span class="line">    public function algorithmInterface()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;算法B&#x27;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">class Context</span><br><span class="line">&#123;</span><br><span class="line">    private $_strategy;</span><br><span class="line">  </span><br><span class="line">    public function __construct(Strategy $strategy)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;_strategy = $strategy;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function contextInterface()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;_strategy-&gt;algorithmInterface();</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Client </span><br><span class="line">&#123;</span><br><span class="line">    public static function main() </span><br><span class="line">    &#123;</span><br><span class="line">        $strategyA = new ConcreteStrategyA();</span><br><span class="line">        $context = new Context($strategyA);</span><br><span class="line">        $context-&gt;contextInterface();</span><br><span class="line">    </span><br><span class="line">        $strategyB = new ConcreteStrategyB();</span><br><span class="line">        $context = new Context($strategyB);</span><br><span class="line">        $context-&gt;contextInterface();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<ol start="2">
+<li><p>外观模式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Circle implements Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;圆形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Square implements Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;正方形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Triangle implements Shape</span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;三角形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ShapeFacade</span><br><span class="line">&#123;</span><br><span class="line">    private $circle;</span><br><span class="line">    private $triangle;</span><br><span class="line">    private $square;</span><br><span class="line"></span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;circle = new Circle();</span><br><span class="line">        $this-&gt;triangle = new Triangle();</span><br><span class="line">        $this-&gt;square = new Square();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function drawCircle()&#123;</span><br><span class="line">        $this-&gt;circle-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function drawSquare()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;square-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function drawTriangle()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;triangle-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$shape = new ShapeFacade();</span><br><span class="line">$shape-&gt;drawCircle();</span><br><span class="line">$shape-&gt;drawSquare();</span><br><span class="line">$shape-&gt;drawTriangle();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>适配器模式</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface MediaPlayer </span><br><span class="line">&#123;</span><br><span class="line">    public function play($type, $name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface AdvancedMediaPlayer</span><br><span class="line">&#123; </span><br><span class="line">    public function playVlc($name);</span><br><span class="line">    public function playMp4($name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class VlcPlayer implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;播放VLC文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        //none</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Mp4Player implements AdvancedMediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public function playVlc ($name)</span><br><span class="line">    &#123;</span><br><span class="line">        //none</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function playMp4 ($name)</span><br><span class="line">    &#123;</span><br><span class="line">       echo &quot;播放MP4文件: &quot; . $name, PHP_EOL;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MediaAdapter implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $advanced;</span><br><span class="line">  </span><br><span class="line">    public function __construct ($type) </span><br><span class="line">    &#123;</span><br><span class="line">        if ($type == &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced = new VlcPlayer();       </span><br><span class="line">        &#125; else if ($type == &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced = new Mp4Player();</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($type == &quot;vlc&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playVlc($name);</span><br><span class="line">        &#125; else if ($type == &quot;mp4&quot;) &#123;</span><br><span class="line">            $this-&gt;advanced-&gt;playMp4($name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudioPlayer implements MediaPlayer</span><br><span class="line">&#123;</span><br><span class="line">    public $adapter; </span><br><span class="line">  </span><br><span class="line">    public function play ($type, $name)</span><br><span class="line">    &#123;    </span><br><span class="line">        if ($type == &quot;mp3&quot;) &#123;</span><br><span class="line">            echo &quot;播放MP3文件: &quot; . $name, PHP_EOL;         </span><br><span class="line">        &#125; else if (in_array($type, [&quot;vlc&quot;, &quot;mp4&quot;])) &#123;</span><br><span class="line">           $this-&gt;adapter = new MediaAdapter($type);</span><br><span class="line">           $this-&gt;adapter-&gt;play($type, $name);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">           echo &quot;不支持&quot;.$type.&quot;格式&quot;, PHP_EOL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$audioPlayer = new AudioPlayer();</span><br><span class="line"></span><br><span class="line">$audioPlayer-&gt;play(&quot;mp3&quot;, &quot;1.mp3&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;mp4&quot;, &quot;2.mp4&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;vlc&quot;, &quot;3.vlc&quot;);</span><br><span class="line">$audioPlayer-&gt;play(&quot;avi&quot;, &quot;4.avi&quot;);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>简单工厂</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class Car</span><br><span class="line">&#123;</span><br><span class="line">    public abstract function carName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BenzCar extends Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is BenzCar&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar extends Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is AudiCar&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar($car)</span><br><span class="line">    &#123;</span><br><span class="line">        if ($car == &#x27;benz&#x27;) &#123;</span><br><span class="line">            return new BenzCar();</span><br><span class="line">        &#125; else if ($car == &#x27;audi&#x27;) &#123;</span><br><span class="line">            return new AudiCar();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">$cf = new CarFactory;</span><br><span class="line"></span><br><span class="line">$co = $cf-&gt;createCar(&#x27;audi&#x27;);</span><br><span class="line">$co-&gt;carName();</span><br><span class="line"></span><br><span class="line">$co = $cf-&gt;createCar(&#x27;benz&#x27;);</span><br><span class="line">$co-&gt;carName();</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>工厂方法</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface CarFactory //也可用抽象类</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BenzCarFactory implements CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BenzCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCarFactory implements CarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new AudiCar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Car //也可用抽象类</span><br><span class="line">&#123;</span><br><span class="line">    public function carName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BenzCar implements Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;This is Benz Car&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar implements Car</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Audi Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$benzF = new BenzCarFactory;</span><br><span class="line">$benzC = $benzF-&gt;createCar();</span><br><span class="line">$benzC-&gt;carName();</span><br><span class="line"></span><br><span class="line">$audiF = new AudiCarFactory;</span><br><span class="line">$audiC = $audiF-&gt;createCar();</span><br><span class="line">$audiC-&gt;carName();</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>抽象工厂</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface AbstractCarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createBenzCar();</span><br><span class="line"></span><br><span class="line">    public function createAudiCar();</span><br><span class="line"></span><br><span class="line">    public function createBmwCar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CarFactory implements AbstractCarFactory</span><br><span class="line">&#123;</span><br><span class="line">    public function createBenzCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BenzCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function createAudiCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new AudiCar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function createBmwCar()</span><br><span class="line">    &#123;</span><br><span class="line">        return new BmwCar;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BenzCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Benz Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class AudiCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Audi Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BmwCar implements AbstractCar</span><br><span class="line">&#123;</span><br><span class="line">    public function carName()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;This is Bmw Car&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$car  = new CarFactory;</span><br><span class="line"></span><br><span class="line">$benz = $car-&gt;createBenzCar();</span><br><span class="line">$benz-&gt;carName();</span><br><span class="line"></span><br><span class="line">$audi = $car-&gt;createAudiCar();</span><br><span class="line">$audi-&gt;carName();</span><br><span class="line"></span><br><span class="line">$bmw = $car-&gt;createBmwCar();</span><br><span class="line">$bmw-&gt;carName();</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>单例模式</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Singleton</span><br><span class="line">&#123;</span><br><span class="line">    //私有静态属性，存放该类的实例</span><br><span class="line">    private static $instance = null; </span><br><span class="line"> </span><br><span class="line">    //私有构造方法，防止在类的外部实例化</span><br><span class="line">    private function __construct() &#123; </span><br><span class="line"></span><br><span class="line">        //TO DO</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    //私有克隆方法，防止克隆</span><br><span class="line">    private function __clone() &#123;</span><br><span class="line">    </span><br><span class="line">        //TO DO</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    //公共的静态方法，实例化该类本身，只实例化一次</span><br><span class="line">    public static function getInstance() &#123; </span><br><span class="line">        </span><br><span class="line">        if (!self::$instance instanceof self) &#123;</span><br><span class="line">            self::$instance = new self;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return self::$instance;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>装饰者</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface Shape</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Rectangle implements Shape </span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;矩形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Circle implements Shape </span><br><span class="line">&#123;</span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;圆形&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class ShapeDecorator implements Shape </span><br><span class="line">&#123;</span><br><span class="line">    protected  $decoratedShape;</span><br><span class="line">  </span><br><span class="line">    public function __construct($decoratedShape)&#123;</span><br><span class="line">        $this-&gt;decoratedShape = $decoratedShape;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;decoratedShape-&gt;draw();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class RedShapeDecorator extends ShapeDecorator &#123;</span><br><span class="line"> </span><br><span class="line">    public function __construct($decoratedShape)</span><br><span class="line">    &#123;</span><br><span class="line">        parent::__construct($decoratedShape);     </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    public function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;decoratedShape-&gt;draw();         </span><br><span class="line">        $this-&gt;setRedBorder($this-&gt;decoratedShape);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    private function setRedBorder()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;Border Color: Red&quot;, PHP_EOL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DecoratorPatternDemo </span><br><span class="line">&#123;</span><br><span class="line">    public static function main() &#123;</span><br><span class="line">  </span><br><span class="line">        $circle = new Circle();</span><br><span class="line">        $rectangle = new Rectangle();</span><br><span class="line"></span><br><span class="line">        $redCircle = new RedShapeDecorator(new Circle());</span><br><span class="line">        $redRectangle = new RedShapeDecorator(new Rectangle());</span><br><span class="line"></span><br><span class="line">        $circle-&gt;draw();</span><br><span class="line">        echo PHP_EOL;</span><br><span class="line">        </span><br><span class="line">        $rectangle-&gt;draw();</span><br><span class="line">        echo PHP_EOL;</span><br><span class="line"></span><br><span class="line">        $redCircle-&gt;draw();</span><br><span class="line">        echo PHP_EOL;</span><br><span class="line"></span><br><span class="line">        $redRectangle-&gt;draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DecoratorPatternDemo::main();</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>观察者模式<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Subject</span><br><span class="line">&#123;</span><br><span class="line">    public $state = &#x27;&#x27;;</span><br><span class="line">    public $observers = [];</span><br><span class="line"></span><br><span class="line">    public function getState()</span><br><span class="line">    &#123;</span><br><span class="line">        return $this-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function setState($state)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;state = $state;</span><br><span class="line">        $this-&gt;notifyAllClient();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function bind(Observer $observer)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;observers[] = $observer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function unbind(Observer $observer)</span><br><span class="line">    &#123;</span><br><span class="line">        foreach ($this-&gt;observers as $key =&gt; $val) &#123;</span><br><span class="line">            if ($val == $observer) &#123;</span><br><span class="line">                unset($this-&gt;observers[$key]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function notifyAllClient()</span><br><span class="line">    &#123;</span><br><span class="line">        foreach ($this-&gt;observers as $item) &#123;</span><br><span class="line">            $item-&gt;update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Observer</span><br><span class="line">&#123;</span><br><span class="line">    public $subject;</span><br><span class="line">    public abstract function update();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ClientA extends Observer</span><br><span class="line">&#123;</span><br><span class="line">    public $state = &#x27;初始状态A&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct(Subject $subject)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;subject = $subject;</span><br><span class="line">        $this-&gt;subject-&gt;bind($this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function update()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;state = $this-&gt;subject-&gt;getState();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function getState()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;ClientA状态：&quot;.$this-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class ClientB extends Observer</span><br><span class="line">&#123;</span><br><span class="line">    public $state = &#x27;初始状态B&#x27;;</span><br><span class="line"></span><br><span class="line">    public function __construct(Subject $subject)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;subject = $subject;</span><br><span class="line">        $this-&gt;subject-&gt;bind($this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function update()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;state = $this-&gt;subject-&gt;getState();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function getState()</span><br><span class="line">    &#123;</span><br><span class="line">        return &quot;ClientB状态：&quot;.$this-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$subject = new Subject();</span><br><span class="line">$a = new ClientA($subject);</span><br><span class="line">$b = new ClientB($subject);</span><br><span class="line">// print_r($subject-&gt;observers);</span><br><span class="line"></span><br><span class="line">echo $a-&gt;getState(),PHP_EOL;</span><br><span class="line">echo $b-&gt;getState(),PHP_EOL;</span><br><span class="line"></span><br><span class="line">$subject-&gt;setState(&quot;123&quot;);</span><br><span class="line">echo $a-&gt;getState(),PHP_EOL;</span><br><span class="line">echo $b-&gt;getState(),PHP_EOL;</span><br><span class="line"></span><br><span class="line">// $subject-&gt;unbind($a);</span><br><span class="line">// print_r($subject-&gt;observers);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 <h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a href="https://blog.csdn.net/ShuSheng0007/article/details/115980889">参考一</a></li>
 </ol>
