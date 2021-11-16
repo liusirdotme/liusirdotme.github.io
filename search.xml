@@ -18979,343 +18979,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MySQL分库分区分表</title>
-    <url>/2018/03/21/MySQL-%E5%88%86%E5%BA%93%E5%88%86%E5%8C%BA%E5%88%86%E8%A1%A8/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>MySQL删除语句delete凡是带有where条件的都不是真删除，只是MySQL给记录加了个删除标识，这样操作后表数据占有空间也不会变小。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、分库"><a href="#一、分库" class="headerlink" title="一、分库"></a>一、分库</h2><ol>
-<li><p>概念：把原本存储于一个库的数据分块存储到多个库(不同主机)上。</p>
-</li>
-<li><p>分类</p>
-<ul>
-<li>垂直拆分<ul>
-<li>将系统中不存在关联关系的表拆出来</li>
-<li>根据业务拆分，如日志库、业务库等</li>
-</ul>
-</li>
-<li>水平分库分表：将单张表的数据切分到多个服务器上去，每个服务器具有相应的库与表，只是表中数据集合不同。<ul>
-<li>能够有效的缓解单机和单库的性能瓶颈和压力，突破IO、连接数、硬件资源等的瓶颈。</li>
-</ul>
-</li>
-<li>读写分离</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>单台DB的存储空间不够</li>
-<li>随着查询量的增加单台数据库服务器已经没办法支撑</li>
-</ul>
-</li>
-<li><p>作用：突破单节点数据库服务器的I/O能力限制，解决数据库扩展性问题。 </p>
-</li>
-</ol>
-<h2 id="二、分表"><a href="#二、分表" class="headerlink" title="二、分表"></a>二、分表</h2><ol>
-<li><p>概念：把一张表按一定的规则分解成N个具有独立存储空间的实体表。系统读写时需要根据定义好的规则得到对应的字表明，然后操作它。</p>
-</li>
-<li><p>分类</p>
-<ul>
-<li>垂直拆分：基于列字段进行<ul>
-<li>一般是表中的字段较多，将不常用、数据较大、长度较长的列拆分到扩展表</li>
-<li>一般是针对那种几百列的大表，也避免查询时，数据量太大造成的跨页问题</li>
-</ul>
-</li>
-<li>水平分表：基于全表进行<ul>
-<li>水平分表可以大大减少单表数据量，提升查询效率</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>一张表的查询速度已经慢到影响使用的时候</li>
-<li>sql经过优化</li>
-<li>数据量大</li>
-<li>当频繁插入或者联合查询时，速度变慢</li>
-</ul>
-</li>
-<li><p>作用</p>
-<ul>
-<li>分表后可以提高单表的并发能力、磁盘I/O性能和写操作效率</li>
-<li>查询一次的时间短了</li>
-<li>数据分布在不同的文件，磁盘I/O性能提高</li>
-<li>读写锁影响的数据量变小</li>
-<li>插入数据库需要重新建立索引的数据减少</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>分库分表存在的问题：跨库事务、连接查询、横向扩容、结果集合并、排序问题等</p>
-</blockquote>
-<h2 id="三、分区"><a href="#三、分区" class="headerlink" title="三、分区"></a>三、分区</h2><ol>
-<li><p>概念：把一张表的数据按一定的逻辑规则分成N个区块，在逻辑上看最终只是一张表，但底层是由N个物理区块组成的。</p>
-</li>
-<li><p>分类</p>
-<ul>
-<li>range:分区字段在给定的连续区间范围</li>
-<li>list:分区字段必须为int型</li>
-<li>columns<ul>
-<li>range columns</li>
-<li>list columns：分区字段的数据类型除了数字类型外，还可以使用字符串类型，date和datetime</li>
-</ul>
-</li>
-<li>hash</li>
-<li>key</li>
-<li>sub子分区</li>
-</ul>
-</li>
-<li><p>适用场景</p>
-<ul>
-<li>一张表的查询速度已经慢到影响使用的时候</li>
-<li>sql经过优化</li>
-<li>数据量大</li>
-<li>表中的数据是分段的</li>
-<li>对数据的操作往往只涉及一部分数据，而不是所有的数据</li>
-</ul>
-</li>
-<li><p>作用：提升查询效率</p>
-</li>
-<li><p>优点</p>
-<ul>
-<li>分区可以分在多个磁盘，存储更大一点</li>
-<li>根据where条件，只查找相应的分区而不用全部查找</li>
-<li>进行大数据搜索时可以进行并行处理</li>
-<li>跨多个磁盘来分散数据查询，来获得更大的查询吞吐量</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>分区和分表的区别和联系</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">•分区和分表的目的都是减少数据库的负担，提高增删改查效率。</span><br><span class="line">•分区只是一张表中的数据的存储位置发生改变，对用户来说感知不到；分表是将一张表分成多张表，用户能直接看到。</span><br><span class="line">•当访问量大且数据量都比较大时，两种方式可以互相配合使用。</span><br><span class="line">•当访问量不大但数据量较大时，可以只进行分区。</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>分库</tag>
-        <tag>分区</tag>
-        <tag>分表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL各种锁</title>
-    <url>/2018/03/20/MySQL-%E5%90%84%E7%A7%8D%E9%94%81/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在数据库的锁机制中介绍过，数据库管理系统(DBMS)中并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的原有特性，乐观并发控制(乐观锁)和悲观并发控制(悲观锁)是并发控制主要采用的技术手段。无论是悲观锁还是乐观锁，都是人们定义出来的概念，是宏观的概念，可以认为是一种思想。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、悲观锁-Pessimistic-Lock"><a href="#一、悲观锁-Pessimistic-Lock" class="headerlink" title="一、悲观锁(Pessimistic Lock)"></a>一、悲观锁(Pessimistic Lock)</h2><ol>
-<li>先获取锁，再进行业务操作，即“悲观”的认为获取锁是非常有可能失败的，因此要先确保获取锁成功再进行业务操作。<ul>
-<li>常所说的“一锁二查三更新”即指的是使用悲观锁。</li>
-<li>数据库上的悲观锁需要数据库本身提供支持，即通过常用的<code>select ... for update</code>操作来实现悲观锁。</li>
-<li>当数据库执行<code>select ... for update</code>时会获取被<code>select</code>中的数据行的行锁，其他并发执行的<code>select ... for update</code>如果试图选中同一行则会发生排斥以此达到锁的效果。</li>
-<li><code>select ... for update</code>获取的行锁会在当前事务结束时自动释放，因此必须在事务中使用。</li>
-</ul>
-</li>
-<li>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</li>
-<li>悲观锁的实现<ul>
-<li>在对任意记录进行修改前，先尝试为该记录加上排他锁(exclusive locking)</li>
-<li>如果加锁失败，说明该记录正在被修改，那么当前查询可能要等待或者抛出异常(具体响应方式由开发者根据实际需要决定)</li>
-<li>如果成功加锁，那么就可以对记录做修改，事务完成后就会解锁了</li>
-<li>其间如果有其他对该记录做修改或加排他锁的操作，都会等待我们解锁或直接抛出异常</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、乐观锁-Optimistic-Lock"><a href="#二、乐观锁-Optimistic-Lock" class="headerlink" title="二、乐观锁(Optimistic Lock)"></a>二、乐观锁(Optimistic Lock)</h2><ol>
-<li>先进行业务操作而不主动去拿锁，即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好</li>
-<li>乐观锁的实现完全是逻辑的，不需要数据库提供特殊的支持，一般的实现乐观锁的方式就是记录数据版本(实现数据版本有两种方式:1.使用版本号 2.使用时间戳)<ul>
-<li>当读取数据时，将版本标识的值一同读出，数据每更新一次，同时对版本标识进行更新。</li>
-<li>当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的版本标识进行比对，如果数据库表当前版本号与第一次取出来的版本标识值相等，则予以更新，否则认为是过期数据。</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>数据库锁定机制简单来说就是数据库为了保证数据的一致性而使各种共享资源在被并发访问访问变得有序所设计的一种规则。MySQL数据库由于其自身架构的特点，存在多种数据存储引擎，每种存储引擎所针对的应用场景特点都不太一样，为了满足各自特定应用场景的需求，每种存储引擎的锁定机制都是为各自所面对的特定场景而优化设计，所以各存储引擎的锁定机制也有较大区别。</p>
-</blockquote>
-<blockquote>
-<p>总的来说，MySQL各存储引擎使用了三种类型(级别)的锁定机制：行级锁定，页级锁定和表级锁定。</p>
-</blockquote>
-<h2 id="三、表级锁-table-level-locking"><a href="#三、表级锁-table-level-locking" class="headerlink" title="三、表级锁 table-level locking"></a>三、表级锁 table-level locking</h2><ol>
-<li>表锁，给整个表加锁，又分为表共享读锁(Table Read Lock)和表独占写锁(Table Write Lock)</li>
-<li>MySIAM和Memory默认采用表级锁</li>
-<li>阻塞装状态<ul>
-<li>对MyISAM表的读操作，不会阻塞其他用户对同一表的读请求，但会阻塞对同一表的写请求</li>
-<li>对MyISAM表的写操作，则会阻塞其他用户对同一表的读和写操作</li>
-<li>MyISAM表的读操作与写操作之间，以及写操作之间是串行的</li>
-<li>当一个线程获得对一个表的写锁后，只有持有锁的线程可以对表进行更新操作，其他线程的读、写操作都会等待，直到锁被释放为止</li>
-</ul>
-</li>
-<li>加锁<ul>
-<li>MyISAM在执行查询语句(SELECT)前，会自动给涉及的所有表加读锁</li>
-<li>在执行更新操作(UPDATE、DELETE、INSERT等)前会自动给涉及的表加写锁，这个过程并不需要用户干预，因此用户一般不需要直接用LOCK TABLE命令给MyISAM表显式加锁。</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、行级锁-row-level-locking"><a href="#四、行级锁-row-level-locking" class="headerlink" title="四、行级锁 row-level locking"></a>四、行级锁 row-level locking</h2><ol>
-<li>行锁,就是给某一条记录加锁，又分共享锁和排他锁。</li>
-<li>InnoDB支持行级锁和表级锁，默认行级锁</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">锁名称</th>
-<th align="left">特性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">共享锁，又称读锁，S锁</td>
-<td align="left">1.若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。<br/>2.这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改<br/>3.通过使用select … lock in share mode加共享锁</td>
-</tr>
-<tr>
-<td align="center">排他锁，又称写锁，X锁</td>
-<td align="left">1.若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁(共享锁/排他锁)，直到T释放A上的锁。<br/>2.这保证了其他事务在T释放A上的锁之前不能再读取和修改A<br/>3.InnoDB引擎默认的修改数据语句，update,delete,insert都会自动给涉及到的数据加上排他锁<br/>4.select语句默认不会加任何锁类型，通过select …for update加排它锁</td>
-</tr>
-<tr>
-<td align="center">2. 行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁。</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="五、页级锁-page-level-locking"><a href="#五、页级锁-page-level-locking" class="headerlink" title="五、页级锁 page-level locking"></a>五、页级锁 page-level locking</h2><ol>
-<li>页级锁,就是给某一页加锁</li>
-<li>BDB采用页级锁或表级锁，默认页级锁</li>
-</ol>
-<h2 id="六、共享锁-Shared"><a href="#六、共享锁-Shared" class="headerlink" title="六、共享锁(Shared)"></a>六、共享锁(Shared)</h2><ol>
-<li>又称为S锁，读锁。</li>
-<li>一个事务对数据对象O加了S锁，可以对O进行读取操作，但是不能进行更新操作。</li>
-<li>加锁期间其它事务能对O加S锁，但是不能加X锁。</li>
-</ol>
-<h2 id="七、排它锁-Exclusive"><a href="#七、排它锁-Exclusive" class="headerlink" title="七、排它锁(Exclusive)"></a>七、排它锁(Exclusive)</h2><ol>
-<li>又称为X锁，写锁。</li>
-<li>一个事务对数据对象O加了X锁，就可以对O进行读取和更新。</li>
-<li>加锁期间其它事务不能对O加任何锁。</li>
-</ol>
-<h2 id="七、死锁"><a href="#七、死锁" class="headerlink" title="七、死锁"></a>七、死锁</h2><ol>
-<li>死锁是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用,它们都将无法推进下去，此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</li>
-<li>表级锁不会产生死锁，所以解决死锁主要还是针对于最常用的InnoDB。</li>
-<li>如何防死锁<ul>
-<li>尽量避免并发的执行涉及到修改数据的语句。</li>
-<li>要求每一个事务一次就将所有要使用到的数据全部加锁，否则就不允许执行。</li>
-<li>预先规定一个加锁顺序，所有的事务都必须按照这个顺序对数据执行封锁。如不同的过程在事务内部对对象的更新执行顺序应尽量保证一致。</li>
-<li>每个事务的执行时间不可太长，对程序段的事务可考虑将其分割为几个事务。在事务中不要求输入，应该在事务之前得到输入，然后快速执行事务。</li>
-<li>使用尽可能低的隔离级别。</li>
-<li>数据存储空间离散法。该方法是指采用各种手段，将逻辑上在一个表中的数据分散的若干离散的空间上去，以便改善对表的访问性能。主要通过将大表按行或者列分解为若干小表，或者按照不同的用户群两种方法实现。</li>
-<li>编写应用程序，让进程持有锁的时间尽可能短，这样其它进程就不必花太长的时间等待锁被释放。</li>
-</ul>
-</li>
-</ol>
-<h2 id="八、锁时间"><a href="#八、锁时间" class="headerlink" title="八、锁时间"></a>八、锁时间</h2><ol>
-<li>查看锁时间 <code>show status like &#39;innodb_row_lock%&#39;</code></li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="left">项</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Innodb_row_lock_current_waits</td>
-<td align="left">当前正在等待锁定的数量</td>
-</tr>
-<tr>
-<td align="left">Innodb_row_lock_time</td>
-<td align="left">从系统启动到现在锁定的总时间长度，单位ms</td>
-</tr>
-<tr>
-<td align="left">nnodb_row_lock_time_avg</td>
-<td align="left">每次等待所花平均时间</td>
-</tr>
-<tr>
-<td align="left">Innodb_row_lock_time_max</td>
-<td align="left">从系统启动到现在等待最长的一次所花的时间</td>
-</tr>
-<tr>
-<td align="left">Innodb_row_lock_waits</td>
-<td align="left">从系统启动到现在总共等待的次数</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li>事务和锁相关的表<ul>
-<li>INNODB_LOCKS</li>
-<li>INNODB_LOCK_WAITS</li>
-<li>INNODB_TRX</li>
-</ul>
-</li>
-</ol>
-<h2 id="九、间隙锁"><a href="#九、间隙锁" class="headerlink" title="九、间隙锁"></a>九、间隙锁</h2><ol>
-<li><p>使用范围条件而不是相等条件检索数据并请求共享或排他锁时，InnoDB会给符合条件的已有数据记录的索引项加锁。对于键值在条件范围内但并不存在的记录，叫做”间隙(GAP)”，InnoDB也会对这个“间隙”加锁，这种锁机制就是所谓的间隙锁(Next-Key锁)。举例来说，假如user表中只有101条记录，其empid的值分别是 1,2,…,100,101，下面的SQL：<code>select * from  user where user_id &gt; 100 for update;</code>是一个范围条件的检索，InnoDB不仅会对符合条件的user_id值为101的记录加锁，也会对user_id大于101（这些记录并不存在）的“间隙”加锁。</p>
-<ul>
-<li>间隙锁和行锁合称 next-key lock，每个 next-key lock 是前开后闭区间。</li>
-</ul>
-</li>
-<li><p>InnoDB使用间隙锁的目的，一方面是为了防止幻读，以满足相关隔离级别的要求，对于上面的例子，要是不使用间隙锁，如果其他事务插入了user_id大于100的任何记录，那么本事务如果再次执行上述语句，就会发生幻读；另外一方面，是为了满足其恢复和复制的需要。</p>
-</li>
-<li><p>间隙锁和行锁合称next-key lock，每个next-key lock是前开后闭区间。</p>
-<ul>
-<li>间隙锁是开区间</li>
-</ul>
-</li>
-<li><p>间隙锁在InnoDB的唯一作用就是防止其它事务的插入操作，以此来达到防止幻读的发生，所以间隙锁不分什么共享锁与排它锁。如果InnoDB扫描的是一个主键、或是一个唯一索引的话，那InnoDB只会采用行锁方式来加锁，而不会使用Next-Key Lock的方式，也就是说不会对索引之间的间隙加锁，仔细想想的话，这个并不难理解，大家也可以自己测试一下。</p>
-</li>
-</ol>
-<blockquote>
-<p>实战</p>
-</blockquote>
-<ol>
-<li>初始化表</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE TABLE `table_gap` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `name` varchar(50) DEFAULT NULL,</span><br><span class="line">  `age` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `name` (`name`)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>初始化记录</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into table_gap(id,name,age) values(1,1,1),(5,5,5),(10,10,10),(15,15,15),(19,19,10);</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><p>session A：<code>begin;select * from table_gap where age=10 for update;</code>，此语句会在(1,5],(5,10]加锁</p>
-</li>
-<li><p>session B：<code>insert into table_gap(id,name,age) values(2,2,2);</code>，此插入语句会被阻塞直至超时</p>
-</li>
-</ol>
-<h2 id="十、Waiting-for-table-metadata-lock"><a href="#十、Waiting-for-table-metadata-lock" class="headerlink" title="十、Waiting for table metadata lock"></a>十、Waiting for table metadata lock</h2><blockquote>
-<p>在操作某个事务时，操作到一半没有提交就直接exit了，结果导致后来每次操作这张表都会卡住，通过<code>show processlist</code>可看到处于<code>Waiting for table metadata lock</code>状态的进程ID。</p>
-</blockquote>
-<h2 id="十一、全局锁-FTWRL"><a href="#十一、全局锁-FTWRL" class="headerlink" title="十一、全局锁 FTWRL"></a>十一、全局锁 <code>FTWRL</code></h2><ol>
-<li>顾名思义，全局锁就是对整个数据库实例加锁。<code>MySQL</code>提供了一个加全局读锁的方法，命令是<code>Flush tables with read lock(FTWRL)</code>。当你需要让整个库处于只读状态的时候，可以使用这个命令，之后其他线程的以下语句会被阻塞：<ul>
-<li>数据更新语句(数据的增/删/改)</li>
-<li>数据定义语句DDL(包括建表、修改表结构等)</li>
-<li>更新类事务(增/删/改)的提交语句</li>
-</ul>
-</li>
-<li>全局锁的典型使用场景是，做全库逻辑备份<ul>
-<li>也就是把整库每个表都<code>select</code>出来存成文本</li>
-<li>FTWRL确保不会有其他线程对数据库做更新，然后对整个库做备份</li>
-<li>注意，在备份过程中整个库完全处于只读状态</li>
-</ul>
-</li>
-<li>全库进入只读状态 <code>set global readonly=true</code><ul>
-<li>在有些系统中，readonly 的值会被用来做其他逻辑，比如用来判断一个库是主库还是备库。因此，修改 global 变量的方式影响面更大。</li>
-<li>如果执行 FTWRL 命令之后由于客户端发生异常断开，那么 MySQL 会自动释放这个全局锁，整个库回到可以正常更新的状态。而将整个库设置为 readonly 之后，如果客户端发生异常，则数据库就会一直保持 readonly 状态，这样会导致整个库长时间处于不可写状态，风险较高。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>锁</tag>
-        <tag>间隙锁</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python之OOP</title>
     <url>/2018/03/19/Python-OOP/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -21033,6 +20696,219 @@
         <tag>ACID</tag>
         <tag>Write Concern</tag>
         <tag>Read Concern</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL各种锁</title>
+    <url>/2017/11/20/MySQL-%E5%90%84%E7%A7%8D%E9%94%81/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>在数据库的锁机制中介绍过，数据库管理系统(DBMS)中并发控制的任务是确保在多个事务同时存取数据库中同一数据时不破坏事务的原有特性，乐观并发控制(乐观锁)和悲观并发控制(悲观锁)是并发控制主要采用的技术手段。无论是悲观锁还是乐观锁，都是人们定义出来的概念，是宏观的概念，可以认为是一种思想。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、悲观锁-Pessimistic-Lock"><a href="#一、悲观锁-Pessimistic-Lock" class="headerlink" title="一、悲观锁(Pessimistic Lock)"></a>一、悲观锁(Pessimistic Lock)</h2><ol>
+<li>先获取锁，再进行业务操作，即“悲观”的认为获取锁是非常有可能失败的，因此要先确保获取锁成功再进行业务操作。<ul>
+<li>常所说的“一锁二查三更新”即指的是使用悲观锁。</li>
+<li>数据库上的悲观锁需要数据库本身提供支持，即通过常用的<code>select ... for update</code>操作来实现悲观锁。</li>
+<li>当数据库执行<code>select ... for update</code>时会获取被<code>select</code>中的数据行的行锁，其他并发执行的<code>select ... for update</code>如果试图选中同一行则会发生排斥以此达到锁的效果。</li>
+<li><code>select ... for update</code>获取的行锁会在当前事务结束时自动释放，因此必须在事务中使用。</li>
+</ul>
+</li>
+<li>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</li>
+<li>悲观锁的实现<ul>
+<li>在对任意记录进行修改前，先尝试为该记录加上排他锁(exclusive locking)</li>
+<li>如果加锁失败，说明该记录正在被修改，那么当前查询可能要等待或者抛出异常(具体响应方式由开发者根据实际需要决定)</li>
+<li>如果成功加锁，那么就可以对记录做修改，事务完成后就会解锁了</li>
+<li>其间如果有其他对该记录做修改或加排他锁的操作，都会等待我们解锁或直接抛出异常</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、乐观锁-Optimistic-Lock"><a href="#二、乐观锁-Optimistic-Lock" class="headerlink" title="二、乐观锁(Optimistic Lock)"></a>二、乐观锁(Optimistic Lock)</h2><ol>
+<li>先进行业务操作而不主动去拿锁，即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好</li>
+<li>乐观锁的实现完全是逻辑的，不需要数据库提供特殊的支持，一般的实现乐观锁的方式就是记录数据版本(实现数据版本有两种方式:1.使用版本号 2.使用时间戳)<ul>
+<li>当读取数据时，将版本标识的值一同读出，数据每更新一次，同时对版本标识进行更新。</li>
+<li>当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的版本标识进行比对，如果数据库表当前版本号与第一次取出来的版本标识值相等，则予以更新，否则认为是过期数据。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>数据库锁定机制简单来说就是数据库为了保证数据的一致性而使各种共享资源在被并发访问访问变得有序所设计的一种规则。MySQL数据库由于其自身架构的特点，存在多种数据存储引擎，每种存储引擎所针对的应用场景特点都不太一样，为了满足各自特定应用场景的需求，每种存储引擎的锁定机制都是为各自所面对的特定场景而优化设计，所以各存储引擎的锁定机制也有较大区别。</p>
+</blockquote>
+<blockquote>
+<p>总的来说，MySQL各存储引擎使用了三种类型(级别)的锁定机制：行级锁定，页级锁定和表级锁定。</p>
+</blockquote>
+<h2 id="三、表级锁-table-level-locking"><a href="#三、表级锁-table-level-locking" class="headerlink" title="三、表级锁 table-level locking"></a>三、表级锁 table-level locking</h2><ol>
+<li>表锁，给整个表加锁，又分为表共享读锁(Table Read Lock)和表独占写锁(Table Write Lock)</li>
+<li>MySIAM和Memory默认采用表级锁</li>
+<li>阻塞装状态<ul>
+<li>对MyISAM表的读操作，不会阻塞其他用户对同一表的读请求，但会阻塞对同一表的写请求</li>
+<li>对MyISAM表的写操作，则会阻塞其他用户对同一表的读和写操作</li>
+<li>MyISAM表的读操作与写操作之间，以及写操作之间是串行的</li>
+<li>当一个线程获得对一个表的写锁后，只有持有锁的线程可以对表进行更新操作，其他线程的读、写操作都会等待，直到锁被释放为止</li>
+</ul>
+</li>
+<li>加锁<ul>
+<li>MyISAM在执行查询语句(SELECT)前，会自动给涉及的所有表加读锁</li>
+<li>在执行更新操作(UPDATE、DELETE、INSERT等)前会自动给涉及的表加写锁，这个过程并不需要用户干预，因此用户一般不需要直接用LOCK TABLE命令给MyISAM表显式加锁。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、行级锁-row-level-locking"><a href="#四、行级锁-row-level-locking" class="headerlink" title="四、行级锁 row-level locking"></a>四、行级锁 row-level locking</h2><ol>
+<li>行锁,就是给某一条记录加锁，又分共享锁和排他锁。</li>
+<li>InnoDB支持行级锁和表级锁，默认行级锁</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">锁名称</th>
+<th align="left">特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">共享锁，又称读锁，S锁</td>
+<td align="left">1.若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。<br/>2.这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改<br/>3.通过使用select … lock in share mode加共享锁</td>
+</tr>
+<tr>
+<td align="center">排他锁，又称写锁，X锁</td>
+<td align="left">1.若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁(共享锁/排他锁)，直到T释放A上的锁。<br/>2.这保证了其他事务在T释放A上的锁之前不能再读取和修改A<br/>3.InnoDB引擎默认的修改数据语句，update,delete,insert都会自动给涉及到的数据加上排他锁<br/>4.select语句默认不会加任何锁类型，通过select …for update加排它锁</td>
+</tr>
+<tr>
+<td align="center">2. 行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁。</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="五、页级锁-page-level-locking"><a href="#五、页级锁-page-level-locking" class="headerlink" title="五、页级锁 page-level locking"></a>五、页级锁 page-level locking</h2><ol>
+<li>页级锁,就是给某一页加锁</li>
+<li>BDB采用页级锁或表级锁，默认页级锁</li>
+</ol>
+<h2 id="六、共享锁-Shared"><a href="#六、共享锁-Shared" class="headerlink" title="六、共享锁(Shared)"></a>六、共享锁(Shared)</h2><ol>
+<li>又称为S锁，读锁。</li>
+<li>一个事务对数据对象O加了S锁，可以对O进行读取操作，但是不能进行更新操作。</li>
+<li>加锁期间其它事务能对O加S锁，但是不能加X锁。</li>
+</ol>
+<h2 id="七、排它锁-Exclusive"><a href="#七、排它锁-Exclusive" class="headerlink" title="七、排它锁(Exclusive)"></a>七、排它锁(Exclusive)</h2><ol>
+<li>又称为X锁，写锁。</li>
+<li>一个事务对数据对象O加了X锁，就可以对O进行读取和更新。</li>
+<li>加锁期间其它事务不能对O加任何锁。</li>
+</ol>
+<h2 id="七、死锁"><a href="#七、死锁" class="headerlink" title="七、死锁"></a>七、死锁</h2><ol>
+<li>死锁是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用,它们都将无法推进下去，此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</li>
+<li>表级锁不会产生死锁，所以解决死锁主要还是针对于最常用的InnoDB。</li>
+<li>如何防死锁<ul>
+<li>尽量避免并发的执行涉及到修改数据的语句。</li>
+<li>要求每一个事务一次就将所有要使用到的数据全部加锁，否则就不允许执行。</li>
+<li>预先规定一个加锁顺序，所有的事务都必须按照这个顺序对数据执行封锁。如不同的过程在事务内部对对象的更新执行顺序应尽量保证一致。</li>
+<li>每个事务的执行时间不可太长，对程序段的事务可考虑将其分割为几个事务。在事务中不要求输入，应该在事务之前得到输入，然后快速执行事务。</li>
+<li>使用尽可能低的隔离级别。</li>
+<li>数据存储空间离散法。该方法是指采用各种手段，将逻辑上在一个表中的数据分散的若干离散的空间上去，以便改善对表的访问性能。主要通过将大表按行或者列分解为若干小表，或者按照不同的用户群两种方法实现。</li>
+<li>编写应用程序，让进程持有锁的时间尽可能短，这样其它进程就不必花太长的时间等待锁被释放。</li>
+</ul>
+</li>
+</ol>
+<h2 id="八、锁时间"><a href="#八、锁时间" class="headerlink" title="八、锁时间"></a>八、锁时间</h2><ol>
+<li>查看锁时间 <code>show status like &#39;innodb_row_lock%&#39;</code></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Innodb_row_lock_current_waits</td>
+<td align="left">当前正在等待锁定的数量</td>
+</tr>
+<tr>
+<td align="left">Innodb_row_lock_time</td>
+<td align="left">从系统启动到现在锁定的总时间长度，单位ms</td>
+</tr>
+<tr>
+<td align="left">nnodb_row_lock_time_avg</td>
+<td align="left">每次等待所花平均时间</td>
+</tr>
+<tr>
+<td align="left">Innodb_row_lock_time_max</td>
+<td align="left">从系统启动到现在等待最长的一次所花的时间</td>
+</tr>
+<tr>
+<td align="left">Innodb_row_lock_waits</td>
+<td align="left">从系统启动到现在总共等待的次数</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>事务和锁相关的表<ul>
+<li>INNODB_LOCKS</li>
+<li>INNODB_LOCK_WAITS</li>
+<li>INNODB_TRX</li>
+</ul>
+</li>
+</ol>
+<h2 id="九、间隙锁"><a href="#九、间隙锁" class="headerlink" title="九、间隙锁"></a>九、间隙锁</h2><ol>
+<li><p>使用范围条件而不是相等条件检索数据并请求共享或排他锁时，InnoDB会给符合条件的已有数据记录的索引项加锁。对于键值在条件范围内但并不存在的记录，叫做”间隙(GAP)”，InnoDB也会对这个“间隙”加锁，这种锁机制就是所谓的间隙锁(Next-Key锁)。举例来说，假如user表中只有101条记录，其empid的值分别是 1,2,…,100,101，下面的SQL：<code>select * from  user where user_id &gt; 100 for update;</code>是一个范围条件的检索，InnoDB不仅会对符合条件的user_id值为101的记录加锁，也会对user_id大于101（这些记录并不存在）的“间隙”加锁。</p>
+<ul>
+<li>间隙锁和行锁合称 next-key lock，每个 next-key lock 是前开后闭区间。</li>
+</ul>
+</li>
+<li><p>InnoDB使用间隙锁的目的，一方面是为了防止幻读，以满足相关隔离级别的要求，对于上面的例子，要是不使用间隙锁，如果其他事务插入了user_id大于100的任何记录，那么本事务如果再次执行上述语句，就会发生幻读；另外一方面，是为了满足其恢复和复制的需要。</p>
+</li>
+<li><p>间隙锁和行锁合称next-key lock，每个next-key lock是前开后闭区间。</p>
+<ul>
+<li>间隙锁是开区间</li>
+</ul>
+</li>
+<li><p>间隙锁在InnoDB的唯一作用就是防止其它事务的插入操作，以此来达到防止幻读的发生，所以间隙锁不分什么共享锁与排它锁。如果InnoDB扫描的是一个主键、或是一个唯一索引的话，那InnoDB只会采用行锁方式来加锁，而不会使用Next-Key Lock的方式，也就是说不会对索引之间的间隙加锁，仔细想想的话，这个并不难理解，大家也可以自己测试一下。</p>
+</li>
+</ol>
+<blockquote>
+<p>实战</p>
+</blockquote>
+<ol>
+<li>初始化表</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE TABLE `table_gap` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `name` varchar(50) DEFAULT NULL,</span><br><span class="line">  `age` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `name` (`name`)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>初始化记录</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into table_gap(id,name,age) values(1,1,1),(5,5,5),(10,10,10),(15,15,15),(19,19,10);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>session A：<code>begin;select * from table_gap where age=10 for update;</code>，此语句会在(1,5],(5,10]加锁</p>
+</li>
+<li><p>session B：<code>insert into table_gap(id,name,age) values(2,2,2);</code>，此插入语句会被阻塞直至超时</p>
+</li>
+</ol>
+<h2 id="十、Waiting-for-table-metadata-lock"><a href="#十、Waiting-for-table-metadata-lock" class="headerlink" title="十、Waiting for table metadata lock"></a>十、Waiting for table metadata lock</h2><blockquote>
+<p>在操作某个事务时，操作到一半没有提交就直接exit了，结果导致后来每次操作这张表都会卡住，通过<code>show processlist</code>可看到处于<code>Waiting for table metadata lock</code>状态的进程ID。</p>
+</blockquote>
+<h2 id="十一、全局锁-FTWRL"><a href="#十一、全局锁-FTWRL" class="headerlink" title="十一、全局锁 FTWRL"></a>十一、全局锁 <code>FTWRL</code></h2><ol>
+<li>顾名思义，全局锁就是对整个数据库实例加锁。<code>MySQL</code>提供了一个加全局读锁的方法，命令是<code>Flush tables with read lock(FTWRL)</code>。当你需要让整个库处于只读状态的时候，可以使用这个命令，之后其他线程的以下语句会被阻塞：<ul>
+<li>数据更新语句(数据的增/删/改)</li>
+<li>数据定义语句DDL(包括建表、修改表结构等)</li>
+<li>更新类事务(增/删/改)的提交语句</li>
+</ul>
+</li>
+<li>全局锁的典型使用场景是，做全库逻辑备份<ul>
+<li>也就是把整库每个表都<code>select</code>出来存成文本</li>
+<li>FTWRL确保不会有其他线程对数据库做更新，然后对整个库做备份</li>
+<li>注意，在备份过程中整个库完全处于只读状态</li>
+</ul>
+</li>
+<li>全库进入只读状态 <code>set global readonly=true</code><ul>
+<li>在有些系统中，readonly 的值会被用来做其他逻辑，比如用来判断一个库是主库还是备库。因此，修改 global 变量的方式影响面更大。</li>
+<li>如果执行 FTWRL 命令之后由于客户端发生异常断开，那么 MySQL 会自动释放这个全局锁，整个库回到可以正常更新的状态。而将整个库设置为 readonly 之后，如果客户端发生异常，则数据库就会一直保持 readonly 状态，这样会导致整个库长时间处于不可写状态，风险较高。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>锁</tag>
+        <tag>间隙锁</tag>
       </tags>
   </entry>
   <entry>
@@ -24212,6 +24088,130 @@ read_xlsx(name, sheet)
         <tag>合并</tag>
         <tag>merge</tag>
         <tag>王小波</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL分库分区分表</title>
+    <url>/2017/03/21/MySQL-%E5%88%86%E5%BA%93%E5%88%86%E5%8C%BA%E5%88%86%E8%A1%A8/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>MySQL删除语句delete凡是带有where条件的都不是真删除，只是MySQL给记录加了个删除标识，这样操作后表数据占有空间也不会变小。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、分库"><a href="#一、分库" class="headerlink" title="一、分库"></a>一、分库</h2><ol>
+<li><p>概念：把原本存储于一个库的数据分块存储到多个库(不同主机)上。</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li>垂直拆分<ul>
+<li>将系统中不存在关联关系的表拆出来</li>
+<li>根据业务拆分，如日志库、业务库等</li>
+</ul>
+</li>
+<li>水平分库分表：将单张表的数据切分到多个服务器上去，每个服务器具有相应的库与表，只是表中数据集合不同。<ul>
+<li>能够有效的缓解单机和单库的性能瓶颈和压力，突破IO、连接数、硬件资源等的瓶颈。</li>
+</ul>
+</li>
+<li>读写分离</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>单台DB的存储空间不够</li>
+<li>随着查询量的增加单台数据库服务器已经没办法支撑</li>
+</ul>
+</li>
+<li><p>作用：突破单节点数据库服务器的I/O能力限制，解决数据库扩展性问题。 </p>
+</li>
+</ol>
+<h2 id="二、分表"><a href="#二、分表" class="headerlink" title="二、分表"></a>二、分表</h2><ol>
+<li><p>概念：把一张表按一定的规则分解成N个具有独立存储空间的实体表。系统读写时需要根据定义好的规则得到对应的字表明，然后操作它。</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li>垂直拆分：基于列字段进行<ul>
+<li>一般是表中的字段较多，将不常用、数据较大、长度较长的列拆分到扩展表</li>
+<li>一般是针对那种几百列的大表，也避免查询时，数据量太大造成的跨页问题</li>
+</ul>
+</li>
+<li>水平分表：基于全表进行<ul>
+<li>水平分表可以大大减少单表数据量，提升查询效率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>一张表的查询速度已经慢到影响使用的时候</li>
+<li>sql经过优化</li>
+<li>数据量大</li>
+<li>当频繁插入或者联合查询时，速度变慢</li>
+</ul>
+</li>
+<li><p>作用</p>
+<ul>
+<li>分表后可以提高单表的并发能力、磁盘I/O性能和写操作效率</li>
+<li>查询一次的时间短了</li>
+<li>数据分布在不同的文件，磁盘I/O性能提高</li>
+<li>读写锁影响的数据量变小</li>
+<li>插入数据库需要重新建立索引的数据减少</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>分库分表存在的问题：跨库事务、连接查询、横向扩容、结果集合并、排序问题等</p>
+</blockquote>
+<h2 id="三、分区"><a href="#三、分区" class="headerlink" title="三、分区"></a>三、分区</h2><ol>
+<li><p>概念：把一张表的数据按一定的逻辑规则分成N个区块，在逻辑上看最终只是一张表，但底层是由N个物理区块组成的。</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li>range:分区字段在给定的连续区间范围</li>
+<li>list:分区字段必须为int型</li>
+<li>columns<ul>
+<li>range columns</li>
+<li>list columns：分区字段的数据类型除了数字类型外，还可以使用字符串类型，date和datetime</li>
+</ul>
+</li>
+<li>hash</li>
+<li>key</li>
+<li>sub子分区</li>
+</ul>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>一张表的查询速度已经慢到影响使用的时候</li>
+<li>sql经过优化</li>
+<li>数据量大</li>
+<li>表中的数据是分段的</li>
+<li>对数据的操作往往只涉及一部分数据，而不是所有的数据</li>
+</ul>
+</li>
+<li><p>作用：提升查询效率</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>分区可以分在多个磁盘，存储更大一点</li>
+<li>根据where条件，只查找相应的分区而不用全部查找</li>
+<li>进行大数据搜索时可以进行并行处理</li>
+<li>跨多个磁盘来分散数据查询，来获得更大的查询吞吐量</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>分区和分表的区别和联系</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">•分区和分表的目的都是减少数据库的负担，提高增删改查效率。</span><br><span class="line">•分区只是一张表中的数据的存储位置发生改变，对用户来说感知不到；分表是将一张表分成多张表，用户能直接看到。</span><br><span class="line">•当访问量大且数据量都比较大时，两种方式可以互相配合使用。</span><br><span class="line">•当访问量不大但数据量较大时，可以只进行分区。</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>分库</tag>
+        <tag>分区</tag>
+        <tag>分表</tag>
       </tags>
   </entry>
   <entry>
