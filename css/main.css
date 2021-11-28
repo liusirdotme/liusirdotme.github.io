@@ -1046,6 +1046,9 @@ pre .javascript .function {
     border-bottom-color: transparent !important;
   }
 }
+.menu-item a::after {
+  background-color: #56ea26 !important;
+}
 .menu-item .fa {
   margin-right: 8px;
 }
@@ -1148,7 +1151,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffff28;
+  background: #ff82be;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
