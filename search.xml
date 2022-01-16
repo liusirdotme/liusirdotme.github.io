@@ -505,6 +505,40 @@
       </tags>
   </entry>
   <entry>
+    <title>游戏公司</title>
+    <url>/2022/01/16/Game-%E6%B8%B8%E6%88%8F%E5%85%AC%E5%8F%B8/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>业精于勤，荒于嬉；行成于思，毁于随。 —— 唐·韩愈《进学解》</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、排名"><a href="#一、排名" class="headerlink" title="一、排名"></a>一、排名</h2>]]></content>
+      <categories>
+        <category>Game</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+        <tag>游戏公司</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL工作原理</title>
+    <url>/2022/01/09/MySQL-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>格物致知，出自《礼记·大学》：”致知在格物，物格而后知至”，意思是探究事物原理而从中获得智慧或从中感悟到某种心得。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p><a href="mysql.png">mysql</a></p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>工作原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>集群扩容缩容</title>
     <url>/2021/12/25/DevOps-%E9%9B%86%E7%BE%A4%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -5727,6 +5761,7 @@
 <li><a href="https://zhuanlan.zhihu.com/p/341855913">某百万DAU游戏的服务端优化工作</a></li>
 <li><a href="https://mp.weixin.qq.com/s/IRYtf5fNartwUXhwYE7DeA">如何解决技术难题</a></li>
 <li><a href="https://netflix.github.io/chaosmonkey/">chaosmonkey</a></li>
+<li><a href="https://www.gameres.com/304530.html">手游计费点优化指南</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -7549,6 +7584,7 @@
 <li><a href="https://www.runoob.com/go/go-tutorial.html">菜鸟教程</a></li>
 <li><a href="https://github.com/Guan-Ren/GitHub-Chinese-Top-Charts">GitHub-Chinese-Top-Charts</a></li>
 <li><a href="https://go.dev/blog/declaration-syntax">Go’s Declaration Syntax</a></li>
+<li><a href="https://github.com/holdno/snowFlakeByGo">雪花算法</a></li>
 </ol>
 <h2 id="二、面试相关"><a href="#二、面试相关" class="headerlink" title="二、面试相关"></a>二、面试相关</h2><ol>
 <li><a href="https://github.com/DinghaoLI/Coding-Interviews-Golang">剑指Offer - Golang实现</a></li>
@@ -14774,16 +14810,21 @@
 <li><p>修改已commit未push最近的提交</p>
 <ul>
 <li>git commit –amend</li>
+<li>仅修改message：<code>git commit --amend --message=&quot;new message&quot;</code></li>
+<li>仅修改author：<code>git commit --amend --author=&quot;new author@sm.com&quot;</code></li>
 </ul>
 </li>
 <li><p>修改已commit已push最近的提交</p>
 <ul>
 <li>git commit –amend</li>
-<li>git push –force-with-lease<h2 id="十一、CI"><a href="#十一、CI" class="headerlink" title="十一、CI"></a>十一、CI</h2></li>
+<li>git push –force-with-lease</li>
 </ul>
 </li>
-<li><p><a href="https://juejin.cn/post/6844904045581172744">gitlab的ci</a></p>
+<li><p><a href="https://cloud.tencent.com/developer/article/1730774">修改历史提交commit的信息</a></p>
 </li>
+</ol>
+<h2 id="十一、CI"><a href="#十一、CI" class="headerlink" title="十一、CI"></a>十一、CI</h2><ol>
+<li><a href="https://juejin.cn/post/6844904045581172744">gitlab的ci</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -20426,6 +20467,7 @@
 </li>
 <li><a href="https://blog.51cto.com/u_12796481/2791138">查看Linux的CPU个数、核数</a></li>
 <li><a href="https://fasterdata.es.net/performance-testing/network-troubleshooting-tools/throughput-tool-comparision/">iperf2/3</a></li>
+<li><a href="https://www.cnblogs.com/xiaolincoding/p/13719610.html">8张图搞懂零拷贝</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -20878,7 +20920,10 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><ol>
+<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><blockquote>
+<p>正则表达式(<code>Regular Expression</code>，简写为<code>regex</code>、<code>regexp</code>或<code>RE</code>)，又称规则表达式，是计算机科学的一个概念，它通常被用来检索、替换那些符合某个模式(规则)的文本。</p>
+</blockquote>
+<ol>
 <li>正则表达式是用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。</li>
 <li>正则表达式的三个作用：匹配、用新文本代替匹配文本、将一个字符串拆分为一组更小的信息块。</li>
 <li>在PHP中，正则表达式一般是由正规字符和一些特殊字符（类似于通配符）联合构成的一个文本模式的程序性描述。其有两套正则表达式函数库，两者功能相似，只是执行效率略有差异：<ul>
@@ -26528,6 +26573,8 @@ read_xlsx(name, sheet)
 <li><a href="https://docs.docker.com/">参考一</a></li>
 <li><a href="https://zh.wikipedia.org/wiki/Docker">参考二</a></li>
 <li><a href="https://github.com/rdammkoehler/DockerKata/blob/master/README.md">参考三</a></li>
+<li><a href="https://github.com/aylei/kubectl-debug/blob/master/docs/zh-cn.md">Kubectl debug</a></li>
+<li><a href="https://github.com/zeromake/docker-debug/blob/master/README-zh-Hans.md">Docker-debug</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -33464,6 +33511,10 @@ read_xlsx(name, sheet)
 </li>
 <li><p><a href="https://juejin.cn/post/7012016858379321358">MySQL深分页问题</a></p>
 </li>
+<li><p><a href="https://help.aliyun.com/document_detail/172749.html">Binlog in Redo</a></p>
+</li>
+<li><p><a href="https://github.com/radondb/radondb-mysql-kubernetes">RadonDB MySQL</a></p>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -33895,6 +33946,7 @@ read_xlsx(name, sheet)
 </ul>
 <h2 id="三、资料"><a href="#三、资料" class="headerlink" title="三、资料"></a>三、资料</h2><ol>
 <li><a href="https://github.com/Guan-Ren/GitHub-Chinese-Top-Charts">GitHub-Chinese-Top-Charts</a></li>
+<li><a href="https://javaguide.cn/">JavaGuide</a></li>
 </ol>
 <h2 id="四、面试"><a href="#四、面试" class="headerlink" title="四、面试"></a>四、面试</h2><ol>
 <li><p>Java 基础</p>
@@ -34880,7 +34932,11 @@ read_xlsx(name, sheet)
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; hello()</span><br></pre></td></tr></table></figure>
 
 <ol start="8">
+<li>参考<ul>
 <li><a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions">参考</a></li>
+<li><a href="https://www.cnblogs.com/shockerli/p/python3-data-type-convert.html">类型转换</a></li>
+</ul>
+</li>
 </ol>
 <h2 id="四、模块包库"><a href="#四、模块包库" class="headerlink" title="四、模块包库"></a>四、模块包库</h2><ol>
 <li>模块：在Python中一个.py文件就可以称为一个模块，其表达的含义是实现了某个功能</li>
@@ -39344,6 +39400,7 @@ read_xlsx(name, sheet)
 <li><a href="https://blog.51cto.com/peterxu/1795036">参考四</a></li>
 <li><a href="https://www.kancloud.cn/study_team/php_array/482879">php删除数组中指定值的元素的几种方法</a></li>
 <li><a href="https://blog.csdn.net/u011132987/article/details/47398995">压缩编码哪种最好</a></li>
+<li><a href="https://github.com/shuchkin/simplexlsx">上传xlsx</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -43725,116 +43782,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>MySQL工作原理</title>
-    <url>/2013/01/22/MySQL-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>正则表达式(<code>Regular Expression</code>，简写为<code>regex</code>、<code>regexp</code>或<code>RE</code>)，又称规则表达式，是计算机科学的一个概念，它通常被用来检索、替换那些符合某个模式(规则)的文本。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p><img src="logic.png" alt="mysql"></p>
-<p><img src="mysql.png" alt="mysql"></p>
-<ol>
-<li><p>Connectors：不同语言中与SQL的交互。</p>
-<blockquote>
-<p>MySQL provides standards-based drivers for JDBC, ODBC, and .Net enabling developers to build database applications in their language of choice. In addition, a native C library allows developers to embed MySQL directly into their applications.</p>
-</blockquote>
-<ul>
-<li>Developed by MySQL</li>
-<li>ADO.NET Driver for MySQL (Connector/NET)    </li>
-<li>ODBC Driver for MySQL (Connector/ODBC)    </li>
-<li>JDBC Driver for MySQL (Connector/J)    </li>
-<li>Node.js Driver for MySQL (Connector/Node.js)    </li>
-<li>Python Driver for MySQL (Connector/Python)    </li>
-<li>C++ Driver for MySQL (Connector/C++)    </li>
-<li>C Driver for MySQL (Connector/C)    </li>
-<li>C API for MySQL (mysqlclient)    </li>
-</ul>
-<blockquote>
-<p>These drivers are developed and maintained by the MySQL Community.</p>
-</blockquote>
-<ul>
-<li>Developed by Community</li>
-<li>PHP Drivers for MySQL                        </li>
-<li>(mysqli, ext/mysqli, PDO_MYSQL, PHP_MYSQLND)    </li>
-<li>Perl Driver for MySQL (DBD::mysql)            </li>
-<li>Ruby Driver for MySQL (ruby-mysql)            </li>
-<li>C++ Wrapper for MySQL C API (MySQL++)        </li>
-</ul>
-</li>
-<li><p>Management Serveices &amp; Utilities：系统管理和控制工具，如bin目录下的mysql,mysqldump,cluster 等</p>
-</li>
-<li><p>Connection Pool：管理缓冲用户连接，线程处理等需要缓存的需求,他提供如下用能:</p>
-<ul>
-<li>负责监听对 MySQL Server 的各种请求，接收连接请求，转发所有连接请求到线程管理模块</li>
-<li>每一个连接上 MySQL Server 的客户端请求都会被分配（或创建）一个连接线程为其单独服务</li>
-<li>连接线程的主要工作就是负责 MySQL Server 与客户端的通信，接受客户端的命令请求，传递 Server 端的结果信息等</li>
-<li>线程管理模块则负责管理维护这些连接线程。包括线程的创建，线程的 cache 等</li>
-<li>Authentication 验证机制,验证用户名,密码,Ip,权限</li>
-<li>Thread Reuse 分配线程</li>
-<li>Connection Limits 链接限制(池子大小)</li>
-<li>Check Memory 检查连接池内存空间大小,如用了多少还剩多少,有多少个连接正在运行之类的检查</li>
-<li>Caches 线程缓存池</li>
-</ul>
-</li>
-<li><p>SQL Interface：接受用户的SQL命令，并且返回用户需要查询的结果</p>
-</li>
-<li><p>Parser：SQL命令传递到解析器的时候会被解析器验证和解析</p>
-<ul>
-<li>解析器是由Lex和YACC实现的，是一个很长的脚本</li>
-<li>在<code>MySQL</code>中习惯将所有客户端发送给服务端的命令都称为<code>query</code></li>
-<li>连接线程接收到客户端的一个<code>query</code>后，会直接将其传递给专门负责将各种<code>query</code>进行分类然后转发给各个对应的处理模块</li>
-</ul>
-<p>Parser主要功能：</p>
-<ul>
-<li>将SQL语句分解成数据结构，并将这个结构传递到后续步骤，后面SQL语句的传递和处理就是基于这个结构的</li>
-<li>如果在分解构成中遇到错误，那么就说明这个sql语句是不合理的，语句将不会继续执行下去</li>
-</ul>
-</li>
-<li><p>Optimizer：SQL语句在查询之前会使用查询优化器对查询进行优化</p>
-<ul>
-<li>产生多种执行计划,最终数据库会选择最优化的方案去执行,尽快返会结果，使用的是“选取-投影-联接”策略进行查询</li>
-<li>用一个例子就可以理解： select uid,name from user where gender = 1;</li>
-<li>这个select 查询先根据where 语句进行选取，而不是先将表全部查询出来以后再进行gender过滤</li>
-<li>这个select查询先根据uid和name进行属性投影，而不是将属性全部取出以后再进行过滤</li>
-<li>将这两个查询条件联接起来生成最终查询结果.</li>
-</ul>
-</li>
-<li><p>Cache和Buffer：将客户端提交给<code>MySQL</code>的<code>select</code>类<code>query</code>请求的返回结果集<code>cache</code>到内存中</p>
-<ul>
-<li>在第一次查询后，mysql便将查询语句以及查询结果进行hash处理并保留在缓存中；SQL查询到达之后，对其进行同样的hash处理后，将两个hash值进行对照，如果一样，则命中，从缓存中返回查询结果；否则，需要整个流程走一遍</li>
-<li>这个缓存机制是由一系列小缓存组成的，比如表缓存，记录缓存，key缓存，权限缓存等</li>
-<li>如果查询数据的基表发生任何数据的变化之后，<code>MySQL</code>会自动使该<code>query</code>的<code>cache</code>失效</li>
-<li>buffer是写缓存，cache是读缓存</li>
-</ul>
-</li>
-<li><p>Engine：存储引擎是MySQL中具体的与文件打交道的子系统，也是Mysql最具有特色的一个地方</p>
-<ul>
-<li>Mysql的存储引擎是插件式的，它根据MySQL AB公司提供的文件访问层的一个抽象接口来定制一种文件访问机制（这种访问机制就叫存储引擎）</li>
-<li>现在有很多种存储引擎，各个存储引擎的优势各不一样，最常用的MyISAM,InnoDB,Memory等</li>
-</ul>
-</li>
-<li><p>文件系统和日志系统</p>
-</li>
-</ol>
-<h2 id="二、SQL语句执行过程"><a href="#二、SQL语句执行过程" class="headerlink" title="二、SQL语句执行过程"></a>二、SQL语句执行过程</h2><blockquote>
-<p>数据库通常不会被直接使用，而是由其他编程语言通过SQL语句调用MySQL，由MySQL处理并返回执行结果</p>
-</blockquote>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;首先程序的请求会通过MySQL的<code>Connector</code>与其进行交互，请求到达后会暂时存放在连接<code>Connection Pool</code>中并由<code>Management Serveices &amp; Utilities</code>管理。当该请求从等待队列进入到处理队列后，管理器会将该请求丢给<code>SQL Interface</code>。SQL接口接收到请求后，它会将请求进行hash处理并与缓存中的结果进行对比，如果完全匹配则通过缓存直接返回处理结果；否则就需要完整的走一趟流程：</p>
-<ul>
-<li>由SQL接口丢给后面的<code>Parser</code>，解释器会判断SQL语句正确与否，若正确则将其转化为数据结构</li>
-<li>解释器处理完，便来到后面的<code>Optimizer</code>，它会产生多种执行计划,最终数据库会选择最优化的方案去执行,尽快返会结果</li>
-<li>确定最优执行计划后，SQL语句此时便可以交由<code>Engine</code>处理，存储引擎将会到后端的存储设备中取得相应的数据，并原路返回给程序</li>
-</ul>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>工作原理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java数据类型</title>
     <url>/2013/01/15/Java-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -44082,6 +44029,7 @@ read_xlsx(name, sheet)
 <li><a href="https://wkcom.gitee.io/redis/">王坤个人博客</a></li>
 <li><a href="https://zhutaorun.win/">zhutaorun</a></li>
 <li><a href="https://segon.cn/">segon</a></li>
+<li><a href="https://www.zhihu.com/people/pengweiyang/posts">水风</a></li>
 </ol>
 <hr>
 <ol>
