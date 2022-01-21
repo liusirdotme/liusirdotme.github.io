@@ -505,23 +505,6 @@
       </tags>
   </entry>
   <entry>
-    <title>游戏公司</title>
-    <url>/2022/01/16/Game-%E6%B8%B8%E6%88%8F%E5%85%AC%E5%8F%B8/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>业精于勤，荒于嬉；行成于思，毁于随。 —— 唐·韩愈《进学解》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、排名"><a href="#一、排名" class="headerlink" title="一、排名"></a>一、排名</h2>]]></content>
-      <categories>
-        <category>Game</category>
-      </categories>
-      <tags>
-        <tag>游戏</tag>
-        <tag>游戏公司</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL工作原理</title>
     <url>/2022/01/09/MySQL-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -536,6 +519,28 @@
       <tags>
         <tag>MySQL</tag>
         <tag>工作原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时区</title>
+    <url>/2022/01/01/Technology-%E6%97%B6%E5%8C%BA/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>由于历史原因，国际化的文字常常由于语言或者国家的原因使用不同的编码。为了解决这种混乱，Unicode的编码方式被建立。Unicode是一种超级编码包含了所有这些编码的字符集，因此一些新的文本格式像XML的默认编码方式就是Unicode。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、延伸"><a href="#二、延伸" class="headerlink" title="二、延伸"></a>二、延伸</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/softidea/p/8612287.html">参考一</a></li>
+<li><a href="https://www.ibm.com/docs/en/cloudpakw3700/2.3.0.0?topic=SS6PD2_2.3.0/doc/psapsys_restapi/time_zone_list.html">参考二</a></li>
+<li><a href="https://www.php.net/manual/zh/function.date-default-timezone-set.php">参考三</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>时区</tag>
       </tags>
   </entry>
   <entry>
@@ -903,11 +908,8 @@
 
 <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://pkg.go.dev/testing">参考一</a></li>
-<li><a href="https://geektutu.com/post/hpg-pprof.html"></a></li>
-<li><a href="https://learnku.com/articles/41728"></a></li>
-<li><a href="https://geektutu.com/post/hpg-pprof.html"></a></li>
-<li><a href="https://geektutu.com/post/hpg-pprof.html"></a></li>
-<li><a href="https://geektutu.com/post/hpg-pprof.html"></a></li>
+<li><a href="https://geektutu.com/post/hpg-pprof.html">参考二</a></li>
+<li><a href="https://learnku.com/articles/41728">参考三</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -985,26 +987,6 @@
       <tags>
         <tag>Go</tag>
         <tag>协程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言select语句</title>
-    <url>/2021/10/23/Go-select%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>淮海战役，国民党称“徐蚌会战”，是解放战争时期中国人民解放军中原野战军、中国人民解放军华东野战军在以徐州为中心，东起海州(连云港)，西至商丘，北起临城(今枣庄市薛城)，南达淮河的广大地区，对国民党军队进行的战略性进攻战役。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h2><h2 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://www.jianshu.com/p/66edceabd5f6">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>select</tag>
       </tags>
   </entry>
   <entry>
@@ -1477,76 +1459,6 @@
         <tag>基金</tag>
         <tag>现货</tag>
         <tag>期货</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言OOP实现</title>
-    <url>/2021/09/11/Go-Go%E8%AF%AD%E8%A8%80OOP%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Golang是支持面向对象编程特性的语言，不过在Golang中没有类的概念，而是通过一些别的方式来实现。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Golang是支持面向对象编程特性的语言，不过在Golang中没有类的概念，而是一些别的方式来实现。</p>
-<ol>
-<li><p>struct：通过给结构体类型定义方法实现传统OOP中的方法，具体做法是在方法当中定义接收者(类型接收者或指针接收者)，位于func关键字和方法名之间。</p>
-<ul>
-<li>当接收者是指针类型时，调用时和类型接收者一样，Golang内部会自动转化</li>
-<li>结构体是值类型</li>
-<li>结构体的所有字段在内存中是连续的</li>
-<li>结构体是用户单独定义的类型，和其它类型进行转换时需要有完全相同的属性(名字、个数、类型)</li>
-<li>结构体进行type重新定义(相当于取别名)，Golang认为是新的数据类型，但是相互间可以强转</li>
-<li>结构体的每个字段上可以写上一个tag，该tag可以通过反射机制获取，常见的使用场景就是序列化和反序列化</li>
-</ul>
-</li>
-<li><p>interface</p>
-<ul>
-<li>interface是方法的集合，要实现一个接口，必须实现该接口里面的所有方法</li>
-<li>如果一个interface没有任何方法，则称该接口为空接口，任何类型都实现了空接口，空接口可以作为任何类型数据的容器</li>
-<li>interface是Golang中实现多态的一种形式</li>
-<li>interface可以嵌套，可以简单理解为继承<ul>
-<li>子接口拥有父接口的所有方法，想要使用该子接口的话，则必须将父接口和子接口的所有方法都实现</li>
-</ul>
-</li>
-<li>interface也可以进行类型转换</li>
-<li>interface只有方法声明，没有实现，没有数据字段</li>
-</ul>
-</li>
-<li><p>map</p>
-</li>
-<li><p>reflection</p>
-</li>
-</ol>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
-<li><p>封装</p>
-</li>
-<li><p>继承</p>
-</li>
-<li><p>多态</p>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/zisefeizhu/p/12634276.html">参考一</a></li>
-<li><a href="https://juejin.cn/post/6844903869382656014">参考二</a></li>
-<li><a href="https://www.cnblogs.com/wdliu/p/9222283.html">参考三</a></li>
-<li><a href="https://juejin.cn/post/7002000748011585572">参考四</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>OOP</tag>
-        <tag>结构体</tag>
-        <tag>struct</tag>
-        <tag>Go</tag>
-        <tag>面向对象</tag>
-        <tag>封装</tag>
-        <tag>继承</tag>
-        <tag>多态</tag>
-        <tag>interface</tag>
-        <tag>接口</tag>
-        <tag>map</tag>
       </tags>
   </entry>
   <entry>
@@ -4972,6 +4884,9 @@
 <li>使用原生bitmap</li>
 <li>使用bloom-filter模块</li>
 </ol>
+<blockquote>
+<p>全置为1的问题</p>
+</blockquote>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://blog.csdn.net/qq_38923792/article/details/96829877">参考一</a></li>
 <li><a href="https://segmentfault.com/a/1190000015482091">参考二</a></li>
@@ -5188,6 +5103,94 @@
       </tags>
   </entry>
   <entry>
+    <title>Go语言内存模型</title>
+    <url>/2020/09/11/Go-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>在Go语言中，变量、结构体、成员、函数、接口等第一个字母的大小写决定了其访问权限，大写字母开头表示公共的，可供外部调用；小写字母开头表示私有的，外部不能调用。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go内存模型明确指出，一个goroutine如何才能观察到其他goroutine对同一变量的写操作。当多个goroutine并发同时读写同一个数据时必须把并发的存取操作序列化，在Go中保证读写的序列化可以通过channel通信或者其他同步原语实现(例如sync包中的互斥锁、读写锁和sync/atomic中的原子操作)。</p>
+<blockquote>
+<p>解决多goroutine下共享数据可见性问题的方法是在访问共享数据时候施加一定的同步措施</p>
+</blockquote>
+<h2 id="二、延伸"><a href="#二、延伸" class="headerlink" title="二、延伸"></a>二、延伸</h2><ol>
+<li><p>happens-before</p>
+<ul>
+<li>条件一：如果对于一个变量v的读操作r和写操作w满足下述两个条件，r才允许观察到w：<ul>
+<li>r没有发生在w之前</li>
+<li>没有其他写操作发生在w之后和r之前</li>
+</ul>
+</li>
+<li>条件二：为了保证变量v的一个读操作r能够观察到一个特定的写操作w，需要确保w是唯一允许被r观察的写操作。那么如果 r、w都满足以下条件，r就能确保观察到w：<ul>
+<li>w发生在r之前</li>
+<li>其他写操作发生在w之前后者r之后</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Go中happens-before的保证</p>
+<ul>
+<li><p>单线程</p>
+</li>
+<li><p>Init函数</p>
+<ul>
+<li>如果包P1中导入了包P2，则P2中的init函数Happens Before 所有P1中的操作</li>
+<li>main函数Happens After 所有的init函数</li>
+</ul>
+</li>
+<li><p>Goroutine</p>
+<ul>
+<li>Goroutine的创建Happens Before所有此Goroutine中的操作</li>
+<li>Goroutine的销毁Happens After所有此Goroutine中的操作</li>
+</ul>
+</li>
+<li><p>Channel</p>
+<ul>
+<li>对一个元素的send操作Happens Before对应的receive完成操作——[先发后接]</li>
+<li>对channel的close操作Happens Before receive端的收到关闭通知操作——[先关后接 接到零值]</li>
+<li>对于无缓冲信道，对一个元素的receive操作Happens Before对应的send完成操作——[先接后发]</li>
+<li>对于有缓冲信道，假设Channel的buffer大小为C，那么对第k个元素的receive操作Happens Before第k+C个send完成操作。<blockquote>
+<p>可以看出上一条Unbuffered Channel规则就是这条规则C=0时的特例  [先接后发]</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Lock</p>
+<ul>
+<li>Go里面有Mutex和RWMutex两种锁，RWMutex除了支持互斥的Lock/Unlock，还支持共享的RLock/RUnlock。</li>
+<li>对于一个Mutex/RWMutex，设n &lt; m，则第n个Unlock操作Happens Before第m个Lock操作。</li>
+<li>对于一个RWMutex，存在数值n，RLock操作Happens After 第n个UnLock，其对应的RUnLock Happens Before 第n+1个Lock操作。<blockquote>
+<p>简单理解就是这一次的Lock总是Happens After上一次的Unlock，读写锁的RLock HappensAfter上一次的UnLock，其对应的RUnlock Happens Before 下一次的Lock。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Once：sync包的Once为多个goroutine提供了安全的初始化机制。能在多个线程中执行once.Do(f)，但只有一个f()会执行，其他调用会一直阻塞直到f()返回。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://golang.org/ref/mem">参考一</a></li>
+<li><a href="https://segmentfault.com/a/1190000039333342">参考二</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/76802887">参考三</a></li>
+<li><a href="https://studygolang.com/articles/22523">参考四</a></li>
+<li><a href="https://www.jianshu.com/p/5e44168f47a3">参考五</a></li>
+<li><a href="https://www.jdon.com/concurrent/golang-memory.html">参考六</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>内存模型</tag>
+        <tag>指令重排</tag>
+        <tag>happens-before</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>游戏后端开发</title>
     <url>/2020/09/11/Game-%E6%B8%B8%E6%88%8F%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -5306,7 +5309,7 @@
   </entry>
   <entry>
     <title>Paxos-Raft-ZAB-Gossip</title>
-    <url>/2020/08/28/Algorithm-Paxos-Raft-ZAB-Gossip/</url>
+    <url>/2020/08/15/Algorithm-Paxos-Raft-ZAB-Gossip/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>一致性就是数据保持一致，在分布式系统中可以理解为多个节点中数据的值是一致的。</p>
 </blockquote>
@@ -5328,8 +5331,46 @@
       </tags>
   </entry>
   <entry>
+    <title>手游PVP同步算法</title>
+    <url>/2020/08/08/Game-%E6%89%8B%E6%B8%B8PVP%E5%90%8C%E6%AD%A5%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>胜，不妄喜；败，不遑馁；胸有激雷而面如平湖者，可拜上将军。 —— 春秋战国·孙武 《孙子兵法》</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓同步，就是要多个客户端表现效果是一致的，是一个网络游戏概念，只有网络游戏才需要同步。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帧同步是一种客户端与服务器的同步方式，是为了实现高实时性，高同步性的应用而产生的。一般流程是每个客户端接受到操作以后，通过运算可以达到一致的状态(通过随机种子保证所有客户端随机序列一致)，这样的情况下就算单位再多，他的同步量也不会随之增加。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态同步，它同步的是游戏中的各种状态，一般的流程是客户端上传操作到服务器，服务器收到后计算游戏行为的结果，然后以广播的方式下发游戏中各种状态，客户端收到状态后再根据状态显示内容。</p>
+<blockquote>
+<p>状态同步最广泛的应用应该是在回合制游戏中。</p>
+</blockquote>
+<h2 id="二、方案"><a href="#二、方案" class="headerlink" title="二、方案"></a>二、方案</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/36884005">参考一</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/33898014">参考二</a></li>
+<li><a href="https://gameinstitute.qq.com/community/detail/100119">参考三</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/381445790">参考四</a></li>
+<li><a href="https://www.zhihu.com/question/364190318/answer/1667495364">参考五</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25437288">参考六</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/372516412">参考七</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/148269170">参考八</a></li>
+<li><a href="https://www.zhihu.com/question/27765214">参考九</a></li>
+<li><a href="https://www.zhihu.com/question/24556195">参考十</a></li>
+<li><a href="https://www.zhihu.com/question/30553462">参考十一</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/42375298">参考十二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Game</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+        <tag>状态同步</tag>
+        <tag>帧同步</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Elasticsearch集群</title>
-    <url>/2020/08/28/ELK-Elasticsearch%E9%9B%86%E7%BE%A4/</url>
+    <url>/2020/08/08/ELK-Elasticsearch%E9%9B%86%E7%BE%A4/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>待到秋来九月八，我花开后百花杀。冲天香阵透长安，满城尽带黄金甲。 —— 唐·黄巢 《不第后赋菊》</p>
 </blockquote>
@@ -5414,44 +5455,6 @@
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
         <tag>cerebro</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>手游PVP同步算法</title>
-    <url>/2020/08/08/Game-%E6%89%8B%E6%B8%B8PVP%E5%90%8C%E6%AD%A5%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>胜，不妄喜；败，不遑馁；胸有激雷而面如平湖者，可拜上将军。 —— 春秋战国·孙武 《孙子兵法》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓同步，就是要多个客户端表现效果是一致的，是一个网络游戏概念，只有网络游戏才需要同步。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帧同步是一种客户端与服务器的同步方式，是为了实现高实时性，高同步性的应用而产生的。一般流程是每个客户端接受到操作以后，通过运算可以达到一致的状态(通过随机种子保证所有客户端随机序列一致)，这样的情况下就算单位再多，他的同步量也不会随之增加。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态同步，它同步的是游戏中的各种状态，一般的流程是客户端上传操作到服务器，服务器收到后计算游戏行为的结果，然后以广播的方式下发游戏中各种状态，客户端收到状态后再根据状态显示内容。</p>
-<blockquote>
-<p>状态同步最广泛的应用应该是在回合制游戏中。</p>
-</blockquote>
-<h2 id="二、方案"><a href="#二、方案" class="headerlink" title="二、方案"></a>二、方案</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://zhuanlan.zhihu.com/p/36884005">参考一</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/33898014">参考二</a></li>
-<li><a href="https://gameinstitute.qq.com/community/detail/100119">参考三</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/381445790">参考四</a></li>
-<li><a href="https://www.zhihu.com/question/364190318/answer/1667495364">参考五</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/25437288">参考六</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/372516412">参考七</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/148269170">参考八</a></li>
-<li><a href="https://www.zhihu.com/question/27765214">参考九</a></li>
-<li><a href="https://www.zhihu.com/question/24556195">参考十</a></li>
-<li><a href="https://www.zhihu.com/question/30553462">参考十一</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/42375298">参考十二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Game</category>
-      </categories>
-      <tags>
-        <tag>游戏</tag>
-        <tag>状态同步</tag>
-        <tag>帧同步</tag>
       </tags>
   </entry>
   <entry>
@@ -5725,20 +5728,22 @@
       </tags>
   </entry>
   <entry>
-    <title>使用Markdown制作简历</title>
-    <url>/2020/07/05/Markdown-%E7%AE%80%E5%8E%86/</url>
+    <title>Markdown</title>
+    <url>/2020/07/05/PL-Markdown/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>抄袭其实不叫抄袭，语文上说是借鉴，数学上叫类比，英语上叫copy，地理上是迁移，生物上是转录，物理上是参考系，化学上叫同分异构体，政治上叫求同存异，历史上就是文化大统一。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Markdown基础语法"><a href="#Markdown基础语法" class="headerlink" title="Markdown基础语法"></a><center><font color=red>Markdown基础语法</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯(John Gruber)。它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的HTML文档。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、常用工具"><a href="#三、常用工具" class="headerlink" title="三、常用工具"></a>三、常用工具</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><hr>
+<h1 id="二、做事方式"><a href="#二、做事方式" class="headerlink" title="二、做事方式"></a><center><font color=red>二、做事方式</font></center></h1><h2 id="一、介绍-1"><a href="#一、介绍-1" class="headerlink" title="一、介绍"></a>一、介绍</h2><h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://cv.ftqq.com/">冷熊简历</a></li>
 <li><a href="https://jishuin.proginn.com/p/763bfbd24162">参考二</a></li>
 </ol>
 ]]></content>
       <categories>
-        <category>Markdown</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Markdown</tag>
@@ -5762,6 +5767,7 @@
 <li><a href="https://mp.weixin.qq.com/s/IRYtf5fNartwUXhwYE7DeA">如何解决技术难题</a></li>
 <li><a href="https://netflix.github.io/chaosmonkey/">chaosmonkey</a></li>
 <li><a href="https://www.gameres.com/304530.html">手游计费点优化指南</a></li>
+<li><a href="https://mp.weixin.qq.com/s/NTG-hWHHTmLy-rukzt7iVQ">我们怎么避免上线即炸服？</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -7571,44 +7577,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Go语言收集</title>
-    <url>/2020/02/04/Go-%E6%94%B6%E9%9B%86/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>go env命令用于打印Go语言的环境变量信息，也可进行设置环境变量信息。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、学习资料"><a href="#一、学习资料" class="headerlink" title="一、学习资料"></a>一、学习资料</h2><ol>
-<li><a href="https://golang.org/">The Go Programming Language</a></li>
-<li><a href="https://studygolang.com/">Go语言中文网</a></li>
-<li><a href="https://www.runoob.com/go/go-tutorial.html">菜鸟教程</a></li>
-<li><a href="https://github.com/Guan-Ren/GitHub-Chinese-Top-Charts">GitHub-Chinese-Top-Charts</a></li>
-<li><a href="https://go.dev/blog/declaration-syntax">Go’s Declaration Syntax</a></li>
-<li><a href="https://github.com/holdno/snowFlakeByGo">雪花算法</a></li>
-</ol>
-<h2 id="二、面试相关"><a href="#二、面试相关" class="headerlink" title="二、面试相关"></a>二、面试相关</h2><ol>
-<li><a href="https://github.com/DinghaoLI/Coding-Interviews-Golang">剑指Offer - Golang实现</a></li>
-<li><a href="https://github.com/lifei6671/interview-go">Golang面试题搜集</a></li>
-<li><a href="https://github.com/shomali11/go-interview">go-interview</a></li>
-<li><a href="https://github.com/xiaobaiTech/golangFamily">超全golang面试题合集</a></li>
-</ol>
-<h2 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h2><ol>
-<li><a href="https://www.cnblogs.com/13579net/p/14139812.html">为什么Golang中不用this和self</a><ul>
-<li><a href="https://dave.cheney.net/2017/04/29/there-is-no-pass-by-reference-in-go">there-is-no-pass-by-reference-in-go</a></li>
-<li><a href="https://github.com/golang/go/wiki/CodeReviewComments">CodeReviewComments</a></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>收集</tag>
-        <tag>Go</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Redis各种实战</title>
     <url>/2020/01/23/Redis-%E5%90%84%E7%A7%8D%E5%AE%9E%E6%88%98/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -9125,26 +9093,85 @@
       </tags>
   </entry>
   <entry>
-    <title>游戏分类</title>
-    <url>/2019/12/21/Game-%E6%B8%B8%E6%88%8F%E5%88%86%E7%B1%BB/</url>
+    <title>游戏基础</title>
+    <url>/2019/12/21/Game-%E6%B8%B8%E6%88%8F%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;游戏类型通常用于分类电子游戏，是一种分辨游戏之间区别的方法。世界上并没有统一的分类方法，主要分为6类：动作、冒险、模拟、角色扮演、休闲和其他</p>
-<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><h2 id="三、卡牌游戏"><a href="#三、卡牌游戏" class="headerlink" title="三、卡牌游戏"></a>三、卡牌游戏</h2><ol>
+<h2 id="一、游戏分类"><a href="#一、游戏分类" class="headerlink" title="一、游戏分类"></a>一、游戏分类</h2><blockquote>
+<p>游戏类型通常用于分类电子游戏，是一种分辨游戏之间区别的方法。世界上并没有统一的分类方法，主要分为6类：动作、冒险、模拟、角色扮演、休闲和其他以下只从大的方面进行了分类，他们也不是相互独立的，恰恰有时是相互包含的。</p>
+</blockquote>
+<ol>
+<li><p>ACT游戏，全称Action Game，意为动作游戏。只要以“动作”为游戏主要表现形式的游戏，都可以算作是ACT游戏。所以它包含了射击游戏和格斗游戏、动作冒险游戏、体育游戏等等，十分宽泛。</p>
+</li>
+<li><p>FPS游戏，全称First-person Shooting Game，意为第一人称射击类游戏。严格来说FPS游戏属于ACT游戏的一个分支，但是由于FPS游戏在全球市场的火爆，使之成为一个单独的游戏类型。</p>
+</li>
+<li><p>FTG游戏，全称Fighting Game，意为格斗类游戏，就是指两个角色一对一决斗的游戏形式。FTG游戏和FPS游戏一样，都是从ACT游戏(动作类游戏)脱胎分化出来的。后来FTG又分化出2D格斗类游戏与3D格斗类游戏。</p>
+</li>
+<li><p>RPG游戏，全称Role-playing game，意为角色扮演类游戏。在游戏中，玩家负责扮演这个角色在一个写实或虚拟世界中活动。它的概念也十分宽泛，根据玩法不同，RPG类游戏又分为角色扮演模拟游戏(RPSG)、策略角色扮演游戏(SRPG)、动作角色扮演游戏(ARPG)、大型多人在线角色扮演游戏(MMO)等几大类。</p>
+</li>
+<li><p>SLG游戏，意为策略类游戏，是一种以取得各种形式胜利为主题的游戏。策略游戏本身的含义非常广泛，只要玩家运用大脑完成游戏所给的目标获得胜利，都可算作策略游戏。</p>
+</li>
+<li><p>MOBA游戏，全称为Multiplayer Online Battle Arena，意为多人在线战术竞技游戏。</p>
+</li>
+<li><p>MUG游戏，全称Music Game，即音乐游戏。</p>
+</li>
+<li><p>PUZ游戏，全称Puzzle Game，即益智游戏。</p>
+</li>
+<li><p>RAC游戏，全称Race Game，即竞速游戏。</p>
+</li>
+<li><p>SPG游戏，全称Sports Game，即体育游戏。</p>
+</li>
+<li><p>SIM游戏，即模拟经营类游戏。</p>
+</li>
+<li><p>其他</p>
+</li>
+<li><p>卡牌游戏</p>
+<ul>
 <li>卡牌游戏，游戏统称，又被称为纸牌游戏或卡片游戏，属于桌面游戏的一种。关于卡牌游戏的起源有多种说法，普遍接受的是现代卡牌游戏起源于我国唐代一种名叫“叶子戏”的游戏纸牌。</li>
-<li>分类<ul>
+<li>分类</li>
 <li>非集换式卡牌游戏(playing cards)，它的牌很少更新，或者不更新，常见的有：扑克牌游戏(桥牌、21点、梭哈、斗地主、干瞪眼等)，《塔罗牌》《UNO牌》《三国杀》</li>
 <li>集换式卡牌游戏，简称CCG(Collectible card game)或TCG(Trading card game)，顾名思义，此类游戏是以收集卡牌为基础的，游戏者需要通过购买随机包装的补充包，收集卡牌，然后根据自己的策略，灵活使用不同的卡牌去构组符合规则的套牌，进行游戏。由于各人的套牌都不同，每一局抓到卡牌的次序也有不同，无穷无尽的变化由此而起。无论是准备还是进行游戏的过程中，都需要玩家不断开动脑筋去思考。一般的说，这些卡牌都有一定的价值，玩家之间可以交易交换自己的卡牌。集换式卡牌游戏始于1993年8月，其中威世智公司所出品的以西方的神话传说为背景的纸牌游戏”万智牌”(Magic the Gathering，MtG)，KONAMI的游戏王卡(YU-GI-OH! Trading Card Game)，欧美许多知名的角色扮演游戏如《龙与地下城》都有自己的纸牌系统。</li>
+<li><a href="https://baike.baidu.com/item/%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/5039094">参考</a></li>
 </ul>
 </li>
-<li><a href="https://baike.baidu.com/item/%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/5039094">参考</a></li>
 </ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<h2 id="二、游戏公司"><a href="#二、游戏公司" class="headerlink" title="二、游戏公司"></a>二、游戏公司</h2><ol>
+<li>腾讯<ul>
+<li>天美工作室：《王者荣耀》、《QQ飞车》、《天天酷跑》、《绝地求生：全军出击》</li>
+<li>光子工作室：《绝地求生：刺激战场》、《欢乐斗地主》、《节奏大师》、《最强NBA》</li>
+<li>魔方工作室：《洛克王国》、《火影忍者ONLINE》</li>
+<li>北极光工作室：《天涯明月刀》</li>
+<li>波士顿工作室：位于美国波士顿，比较神秘</li>
+</ul>
+</li>
+<li>网易：网易游戏主要由互娱和雷火两大事业群组成</li>
+<li>米哈游</li>
+<li>祖龙</li>
+<li>掌趣</li>
+<li>完美</li>
+<li>乐元素</li>
+<li>FunPlus</li>
+<li>IGG</li>
+<li>三七互娱</li>
+<li>字节</li>
+<li>游族</li>
+<li>巨人</li>
+<li>Garena</li>
+<li>金山</li>
+<li>莉莉丝</li>
+<li>江娱</li>
+<li>搜狐</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://baike.baidu.com/item/%E6%B8%B8%E6%88%8F%E7%B1%BB%E5%9E%8B/360147">参考一</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/101401948">参考二</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/408756465">参考三</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/392610223">参考四</a></li>
+<li><a href="https://www.zhihu.com/question/481939312/answer/2079476367">参考五</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/368728932">参考六</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -9152,33 +9179,6 @@
       </categories>
       <tags>
         <tag>游戏</tag>
-        <tag>分类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>热更框架xLua</title>
-    <url>/2019/12/14/Lua-%E7%83%AD%E6%9B%B4%E6%A1%86%E6%9E%B6XLua/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>热更新是一种各大手游App常用的更新方式，简单来说就是在用户通下载安装APP之后，打开App时遇到的即时更新。热更新就是动态下发代码，它可以使开发者在不发布新版本的情况下修复BUG和发布功能，让开发者得以绕开苹果的审核机制，避免长时间的审核等待以及多次被拒造成的成本。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>xLua</code>是当下最流行的<code>unity</code>热更方案之一，作者是腾讯的车雄生前辈。自2016年初推出以来，已经在腾讯的多款游戏项目上应用，目前xLua已经开源到了GitHub。xLua最大的特色是不仅支持纯lua脚本热更，更是可以做<code>C#</code>代码的<code>bug hotfix</code>，即平时开发时使用<code>C#</code>，项目上线后如果突然发现有<code>bug</code>，可以直接用<code>lua</code>去修复出<code>bug</code>的地方，原理就是通过<code>[Hotfix]</code>特性标记然后在IL逻辑层判断修改逻辑，使程序去执行更新后的<code>lua</code>逻辑代码而不是走之前的C#逻辑。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
-<p>待补充</p>
-</blockquote>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://github.com/Tencent/xLua">参考一</a></li>
-<li><a href="https://www.sohu.com/a/123334175_355140">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Lua</category>
-      </categories>
-      <tags>
-        <tag>热更新</tag>
-        <tag>Lua</tag>
-        <tag>xLua</tag>
       </tags>
   </entry>
   <entry>
@@ -10603,33 +10603,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Go语言反射reflection</title>
-    <url>/2019/07/09/Go-%E5%8F%8D%E5%B0%84reflection/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Golang中提供了一种机制在运行时更新和检查变量的值、调用变量的方法和变量支持的内在操作，但是在编译时并不知道这些变量的具体类型，这种机制被称为反射。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编写好的程序在编译时，变量会被转换为内存地址，变量名不会被编译器写入到可执行部分，所以在运行程序时程序无法获取自身的信息。支持反射的语言可以在程序编译期将变量的反射信息，如字段名称、类型信息、结构体信息等整合到可执行文件中，并给程序提供接口访问反射信息，这样就可以在程序运行期获取类型的反射信息，并且有能力修改它们。简而言之，反射就是指在程序运行期对程序本身进行访问和修改的能力。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="http://c.biancheng.net/view/4407.html">参考一</a></li>
-<li><a href="https://juejin.cn/post/6844903559335526407">参考二</a></li>
-<li><a href="https://go.dev/blog/laws-of-reflection">参考三</a></li>
-<li><a href="https://segmentfault.com/a/1190000011451232">参考四</a></li>
-<li><a href="https://draveness.me/golang/">参考五</a></li>
-<li><a href="https://www.cnblogs.com/itbsl/p/10551880.html">参考六</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>反射</tag>
-        <tag>reflection</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Code Review</title>
     <url>/2019/06/24/Technology-Code%20Review/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -10749,26 +10722,6 @@
       <tags>
         <tag>技术</tag>
         <tag>Code Review</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言断言</title>
-    <url>/2019/06/11/Go-%E6%96%AD%E8%A8%80/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Golang中的所有程序都实现了<code>interface&#123;&#125;</code>的接口，这意味着所有的类型如<code>string,int,int64</code>甚至是自定义的<code>struct</code>类型都就此拥有了<code>interface&#123;&#125;</code>的接口，这种做法和Java中的Object类型比较类似。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://studygolang.com/articles/3314">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>断言</tag>
       </tags>
   </entry>
   <entry>
@@ -11193,91 +11146,109 @@
       </tags>
   </entry>
   <entry>
-    <title>Go语言内存模型</title>
-    <url>/2019/05/13/Go-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</url>
+    <title>Go语言代码片段</title>
+    <url>/2019/05/13/Go-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在Go语言中，变量、结构体、成员、函数、接口等第一个字母的大小写决定了其访问权限，大写字母开头表示公共的，可供外部调用；小写字母开头表示私有的，外部不能调用。</p>
+<p>客观是指不依赖于人的意识而存在的一切事物，经过研究推算得出的结论。主观与客观相反。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go内存模型明确指出，一个goroutine如何才能观察到其他goroutine对同一变量的写操作。当多个goroutine并发同时读写同一个数据时必须把并发的存取操作序列化，在Go中保证读写的序列化可以通过channel通信或者其他同步原语实现(例如sync包中的互斥锁、读写锁和sync/atomic中的原子操作)。</p>
-<blockquote>
-<p>解决多goroutine下共享数据可见性问题的方法是在访问共享数据时候施加一定的同步措施</p>
-</blockquote>
-<h2 id="二、延伸"><a href="#二、延伸" class="headerlink" title="二、延伸"></a>二、延伸</h2><ol>
-<li><p>happens-before</p>
-<ul>
-<li>条件一：如果对于一个变量v的读操作r和写操作w满足下述两个条件，r才允许观察到w：<ul>
-<li>r没有发生在w之前</li>
-<li>没有其他写操作发生在w之后和r之前</li>
-</ul>
-</li>
-<li>条件二：为了保证变量v的一个读操作r能够观察到一个特定的写操作w，需要确保w是唯一允许被r观察的写操作。那么如果 r、w都满足以下条件，r就能确保观察到w：<ul>
-<li>w发生在r之前</li>
-<li>其他写操作发生在w之前后者r之后</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Go中happens-before的保证</p>
-<ul>
-<li><p>单线程</p>
-</li>
-<li><p>Init函数</p>
-<ul>
-<li>如果包P1中导入了包P2，则P2中的init函数Happens Before 所有P1中的操作</li>
-<li>main函数Happens After 所有的init函数</li>
-</ul>
-</li>
-<li><p>Goroutine</p>
-<ul>
-<li>Goroutine的创建Happens Before所有此Goroutine中的操作</li>
-<li>Goroutine的销毁Happens After所有此Goroutine中的操作</li>
-</ul>
-</li>
-<li><p>Channel</p>
-<ul>
-<li>对一个元素的send操作Happens Before对应的receive完成操作——[先发后接]</li>
-<li>对channel的close操作Happens Before receive端的收到关闭通知操作——[先关后接 接到零值]</li>
-<li>对于无缓冲信道，对一个元素的receive操作Happens Before对应的send完成操作——[先接后发]</li>
-<li>对于有缓冲信道，假设Channel的buffer大小为C，那么对第k个元素的receive操作Happens Before第k+C个send完成操作。<blockquote>
-<p>可以看出上一条Unbuffered Channel规则就是这条规则C=0时的特例  [先接后发]</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>Lock</p>
-<ul>
-<li>Go里面有Mutex和RWMutex两种锁，RWMutex除了支持互斥的Lock/Unlock，还支持共享的RLock/RUnlock。</li>
-<li>对于一个Mutex/RWMutex，设n &lt; m，则第n个Unlock操作Happens Before第m个Lock操作。</li>
-<li>对于一个RWMutex，存在数值n，RLock操作Happens After 第n个UnLock，其对应的RUnLock Happens Before 第n+1个Lock操作。<blockquote>
-<p>简单理解就是这一次的Lock总是Happens After上一次的Unlock，读写锁的RLock HappensAfter上一次的UnLock，其对应的RUnlock Happens Before 下一次的Lock。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>Once：sync包的Once为多个goroutine提供了安全的初始化机制。能在多个线程中执行once.Do(f)，但只有一个f()会执行，其他调用会一直阻塞直到f()返回。</p>
-</li>
-</ul>
-</li>
+
+<h1 id="Nginx反向代理Go"><a href="#Nginx反向代理Go" class="headerlink" title="Nginx反向代理Go"></a><center><font color=red>Nginx反向代理Go</font></center></h1><h2 id="一、安装nginx"><a href="#一、安装nginx" class="headerlink" title="一、安装nginx"></a>一、安装nginx</h2><h2 id="二、安装go"><a href="#二、安装go" class="headerlink" title="二、安装go"></a>二、安装go</h2><h2 id="三、代码"><a href="#三、代码" class="headerlink" title="三、代码"></a>三、代码</h2><ol>
+<li>cd ~/go/src &amp;&amp; mkdir web</li>
+<li>vim test.go</li>
 </ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://golang.org/ref/mem">参考一</a></li>
-<li><a href="https://segmentfault.com/a/1190000039333342">参考二</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/76802887">参考三</a></li>
-<li><a href="https://studygolang.com/articles/22523">参考四</a></li>
-<li><a href="https://www.jianshu.com/p/5e44168f47a3">参考五</a></li>
-<li><a href="https://www.jdon.com/concurrent/golang-memory.html">参考六</a></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;log&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;strings&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func printRequest(r *http.Request) &#123;</span><br><span class="line">	fmt.Println(&quot;r.Form=&quot;, r.Form)</span><br><span class="line">	fmt.Println(&quot;r.PostForm=&quot;, r.PostForm)</span><br><span class="line">	fmt.Println(&quot;path=&quot;, r.URL.Path)</span><br><span class="line">	fmt.Println(&quot;scheme=&quot;, r.URL.Scheme)</span><br><span class="line">	fmt.Println(&quot;method=&quot;, r.Method)</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Get参数列表&quot;)</span><br><span class="line">	for k, v := range r.Form &#123;</span><br><span class="line">		fmt.Println(&quot;Http Get[&quot;+k+&quot;]=&quot;, strings.Join(v, &quot; ; &quot;))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Post参数列表&quot;)</span><br><span class="line">	for k, v := range r.PostForm &#123;</span><br><span class="line">		fmt.Println(&quot;Http Post[&quot;+k+&quot;]=&quot;, strings.Join(v, &quot; ; &quot;))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;表单参数列表&quot;)</span><br><span class="line">	arraA := r.Form[&quot;a&quot;]</span><br><span class="line">	fmt.Println(&quot;r.Form[&#x27;a&#x27;]=&quot;, arraA)</span><br><span class="line">	if len(arraA) &gt; 0 &#123;</span><br><span class="line">		fmt.Println(&quot;r.Form[&#x27;a&#x27;][0]=&quot;, arraA[0])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func defaultFunc(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	r.ParseForm() //解析参数</span><br><span class="line">	fmt.Println(&quot;This is func default&quot;)</span><br><span class="line">	printRequest(r)</span><br><span class="line"></span><br><span class="line">	fmt.Fprintf(w, &quot;This is a default method&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func testFunc(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	r.ParseForm() //解析参数</span><br><span class="line">	fmt.Println(&quot;This is func test&quot;)</span><br><span class="line">	printRequest(r)</span><br><span class="line"></span><br><span class="line">	fmt.Fprintf(w, &quot;Func Test&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func anotherFunc(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	r.ParseForm() //解析参数</span><br><span class="line">	fmt.Println(&quot;This is func another&quot;)</span><br><span class="line">	printRequest(r)</span><br><span class="line"></span><br><span class="line">	fmt.Fprintf(w, &quot;Another Func&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	http.HandleFunc(&quot;/&quot;, defaultFunc)</span><br><span class="line">	http.HandleFunc(&quot;/test&quot;, testFunc)</span><br><span class="line">	http.HandleFunc(&quot;/another&quot;, anotherFunc)</span><br><span class="line"></span><br><span class="line">	err := http.ListenAndServe(&quot;:9090&quot;, nil)</span><br><span class="line"></span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		log.Fatal(&quot;Error:&quot;, err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>运行<code>go run test.go</code>，浏览器打开<code>localhost:9090</code>，可看到终端输出</li>
 </ol>
-]]></content>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">This is func another</span><br><span class="line">r.Form= map[a:[b] id:[1]]</span><br><span class="line">r.PostForm= map[]</span><br><span class="line">path= /another</span><br><span class="line">scheme=</span><br><span class="line">method= GET</span><br><span class="line"></span><br><span class="line">Get参数列表</span><br><span class="line">Http Get[id]= 1</span><br><span class="line">Http Get[a]= b</span><br><span class="line"></span><br><span class="line">Post参数列表</span><br><span class="line"></span><br><span class="line">表单参数列表</span><br><span class="line">r.Form[&#x27;a&#x27;]= [b]</span><br><span class="line">r.Form[&#x27;a&#x27;][0]= b</span><br><span class="line">This is func default</span><br><span class="line">r.Form= map[]</span><br><span class="line">r.PostForm= map[]</span><br><span class="line">path= /favicon.ico</span><br><span class="line">scheme=</span><br><span class="line">method= GET</span><br><span class="line"></span><br><span class="line">Get参数列表</span><br><span class="line"></span><br><span class="line">Post参数列表</span><br><span class="line"></span><br><span class="line">表单参数列表</span><br><span class="line">r.Form[&#x27;a&#x27;]= []</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、设置反向代理"><a href="#四、设置反向代理" class="headerlink" title="四、设置反向代理"></a>四、设置反向代理</h2><ol>
+<li>进入nginx配置目录<code>cd /path/nginx/conf/vhost</code></li>
+<li>vim go.conf</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8081;</span><br><span class="line">    #server_name  go.cn;</span><br><span class="line"></span><br><span class="line">    access_log  logs/go.access.log;</span><br><span class="line">    error_log  logs/go.error.log;</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass  http://localhost:9090;#go 服务器可以指定到其他的机器上，这里设定本机服务器</span><br><span class="line">        </span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host             $host;</span><br><span class="line">        proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>运行<code>go run index.go</code>，浏览器打开<code>localhost:8081</code>，可看到对应输出</li>
+</ol>
+<hr>
+<h1 id="Go语言文件读取的几种方式"><a href="#Go语言文件读取的几种方式" class="headerlink" title="Go语言文件读取的几种方式"></a><center><font color=red>Go语言文件读取的几种方式</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><blockquote>
+<p>读取文件有三种方式：将文件整个读入内存、按字节数读取、按行读取。</p>
+</blockquote>
+<ol>
+<li>将文件整个读入内存</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">2. 按字节读取</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">3. 按行读取</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>
+## 二、参考
+1. [参考一](http://c.biancheng.net/view/5729.html)
+2. [参考三](https://segmentfault.com/a/1190000017918542)
+
+
+
+-----
+
+# &lt;center&gt;&lt;font color=red&gt;Go语言实现OOP&lt;/font&gt;&lt;/center&gt;
+
+## 一、基础
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Golang是支持面向对象编程特性的语言，不过在Golang中没有类的概念，而是一些别的方式来实现。
+
+1. struct：通过给结构体类型定义方法实现传统OOP中的方法，具体做法是在方法当中定义接收者(类型接收者或指针接收者)，位于func关键字和方法名之间。
+ * 当接收者是指针类型时，调用时和类型接收者一样，Golang内部会自动转化
+ * 结构体是值类型
+ * 结构体的所有字段在内存中是连续的
+ * 结构体是用户单独定义的类型，和其它类型进行转换时需要有完全相同的属性(名字、个数、类型)
+ * 结构体进行type重新定义(相当于取别名)，Golang认为是新的数据类型，但是相互间可以强转
+ * 结构体的每个字段上可以写上一个tag，该tag可以通过反射机制获取，常见的使用场景就是序列化和反序列化
+
+2. interface
+ * interface是方法的集合，要实现一个接口，必须实现该接口里面的所有方法
+ * 如果一个interface没有任何方法，则称该接口为空接口，任何类型都实现了空接口，空接口可以作为任何类型数据的容器
+ * interface是Golang中实现多态的一种形式
+ * interface可以嵌套，可以简单理解为继承
+    * 子接口拥有父接口的所有方法，想要使用该子接口的话，则必须将父接口和子接口的所有方法都实现
+ * interface也可以进行类型转换
+ * interface只有方法声明，没有实现，没有数据字段
+
+3. map
+
+4. reflection
+
+## 二、实现
+
+1. 封装
+
+2. 继承
+
+3. 多态
+
+## 三、参考
+1. [参考一](https://www.cnblogs.com/zisefeizhu/p/12634276.html)
+2. [参考二](https://juejin.cn/post/6844903869382656014)
+3. [参考三](https://www.cnblogs.com/wdliu/p/9222283.html)
+4. [参考四](https://juejin.cn/post/7002000748011585572)</code></pre>]]></content>
       <categories>
         <category>Go</category>
       </categories>
       <tags>
+        <tag>OOP</tag>
+        <tag>结构体</tag>
+        <tag>struct</tag>
         <tag>Go</tag>
-        <tag>内存模型</tag>
-        <tag>指令重排</tag>
-        <tag>happens-before</tag>
+        <tag>面向对象</tag>
+        <tag>封装</tag>
+        <tag>继承</tag>
+        <tag>多态</tag>
+        <tag>interface</tag>
+        <tag>接口</tag>
+        <tag>map</tag>
+        <tag>Nginx</tag>
+        <tag>反向代理</tag>
       </tags>
   </entry>
   <entry>
@@ -12043,14 +12014,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Lua入门</title>
-    <url>/2019/04/13/Lua-%E5%85%A5%E9%97%A8/</url>
+    <title>Lua</title>
+    <url>/2019/04/13/PL-Lua/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>JSON(JavaScript Object Notation,JS对象简谱)是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得JSON成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua是一个小巧的脚本语言。它是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo三人所组成的研究小组于1993年开发的。 其设计目的是为了通过灵活嵌入应用程序中从而为应用程序提供灵活的扩展和定制功能。Lua由标准C编写而成，几乎在所有操作系统和平台上都可以编译，运行。Lua并没有提供强大的库，这是由它的定位决定的。所以Lua不适合作为开发独立应用程序的语言。Lua 有一个同时进行的JIT项目，提供在特定平台上的即时编译功能。</p>
+<hr>
+<h1 id="二、做事方式"><a href="#二、做事方式" class="headerlink" title="二、做事方式"></a><center><font color=red>二、做事方式</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua是一个小巧的脚本语言。它是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo三人所组成的研究小组于1993年开发的。 其设计目的是为了通过灵活嵌入应用程序中从而为应用程序提供灵活的扩展和定制功能。Lua由标准C编写而成，几乎在所有操作系统和平台上都可以编译，运行。Lua并没有提供强大的库，这是由它的定位决定的。所以Lua不适合作为开发独立应用程序的语言。Lua 有一个同时进行的JIT项目，提供在特定平台上的即时编译功能。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua脚本可以很容易的被C/C++ 代码调用，也可以反过来调用C/C++的函数，这使得Lua在应用程序中可以被广泛应用。不仅仅作为扩展脚本，也可以作为普通的配置文件，代替XML,ini等文件格式，并且更容易理解和维护。Lua由标准C编写而成，代码简洁优美，几乎在所有操作系统和平台上都可以编译，运行。一个完整的Lua解释器不过200k，在目前所有脚本引擎中，Lua的速度是最快的。这一切都决定了Lua是作为嵌入式脚本的最佳选择。</p>
 <h2 id="二、介绍"><a href="#二、介绍" class="headerlink" title="二、介绍"></a>二、介绍</h2><ol>
 <li>数据类型</li>
@@ -12159,18 +12131,29 @@
 </ul>
 </li>
 </ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ol>
 <li><a href="https://www.lua.org/">参考一</a></li>
+</ol>
+<hr>
+<h1 id="热更框架xLua"><a href="#热更框架xLua" class="headerlink" title="热更框架xLua"></a><center><font color=red>热更框架xLua</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热更新是一种各大手游App常用的更新方式，简单来说就是在用户通下载安装APP之后，打开App时遇到的即时更新。热更新就是动态下发代码，它可以使开发者在不发布新版本的情况下修复BUG和发布功能，让开发者得以绕开苹果的审核机制，避免长时间的审核等待以及多次被拒造成的成本。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>xLua</code>是当下最流行的<code>unity</code>热更方案之一，作者是腾讯的车雄生前辈。自2016年初推出以来，已经在腾讯的多款游戏项目上应用，目前xLua已经开源到了GitHub。xLua最大的特色是不仅支持纯lua脚本热更，更是可以做<code>C#</code>代码的<code>bug hotfix</code>，即平时开发时使用<code>C#</code>，项目上线后如果突然发现有<code>bug</code>，可以直接用<code>lua</code>去修复出<code>bug</code>的地方，原理就是通过<code>[Hotfix]</code>特性标记然后在IL逻辑层判断修改逻辑，使程序去执行更新后的<code>lua</code>逻辑代码而不是走之前的C#逻辑。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
+<p>待补充</p>
+</blockquote>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://github.com/Tencent/xLua">参考一</a></li>
+<li><a href="https://www.sohu.com/a/123334175_355140">参考二</a></li>
 </ol>
 ]]></content>
       <categories>
-        <category>Lua</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Mac</tag>
+        <tag>热更新</tag>
         <tag>Linux</tag>
         <tag>Lua</tag>
-        <tag>入门</tag>
+        <tag>xLua</tag>
       </tags>
   </entry>
   <entry>
@@ -12478,6 +12461,26 @@
         <tag>引用计数</tag>
         <tag>对象</tag>
         <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言select语句</title>
+    <url>/2019/03/23/Go-select%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>淮海战役，国民党称“徐蚌会战”，是解放战争时期中国人民解放军中原野战军、中国人民解放军华东野战军在以徐州为中心，东起海州(连云港)，西至商丘，北起临城(今枣庄市薛城)，南达淮河的广大地区，对国民党军队进行的战略性进攻战役。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h2><h2 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://www.jianshu.com/p/66edceabd5f6">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>select</tag>
       </tags>
   </entry>
   <entry>
@@ -15880,14 +15883,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Erlang入门</title>
-    <url>/2018/09/24/Erlang-Erlang%E5%85%A5%E9%97%A8/</url>
+    <title>Erlang</title>
+    <url>/2018/09/24/PL-Erlang/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>优胜劣汰的本质就是有些坎有些人迈不过去，有些人迈得过去。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Erlang在1991年由爱立信公司向用户推出了第一个版本，经过不断的改进完善和发展，在1996年爱立信又为所有的Erlang用户提供了一个非常实用且稳定的OTP软件库并在1998年发布了第一个开源版本。目前Erlang同时支持的操作系统有linux,windows,unix等，可以说适用于主流的操作系统上，尤其是它支持多核的特性非常适合现在的多核CPU，而分布式特性也可以很好融合目前的各种分布式集群。</p>
+<hr>
+<h1 id="二、做事方式"><a href="#二、做事方式" class="headerlink" title="二、做事方式"></a><center><font color=red>二、做事方式</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Erlang在1991年由爱立信公司向用户推出了第一个版本，经过不断的改进完善和发展，在1996年爱立信又为所有的Erlang用户提供了一个非常实用且稳定的OTP软件库并在1998年发布了第一个开源版本。目前Erlang同时支持的操作系统有linux,windows,unix等，可以说适用于主流的操作系统上，尤其是它支持多核的特性非常适合现在的多核CPU，而分布式特性也可以很好融合目前的各种分布式集群。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Erlang是一种通用的并行程序设计语言，它由乔·阿姆斯特朗在瑞典电信设备制造商爱立信所辖的计算机科学研究室开发，目的是创造一种可以应付大规模开发活动的程序设计语言和运行环境。Erlang于1987年发布正式版本，最早是爱立信拥有的私有软件，经过十年的发展，于1998年发表开放源代码版本。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Erlang是运作于虚拟机的解释型语言，但是现在也包含有乌普萨拉大学高性能Erlang计划(HiPE)开发的原生代码编译器，自R11B-4版本开始，Erlang也支持脚本方式执行。在程序设计范型上，Erlang属于多重范型编程语言，涵盖函数式、并行及分布式。循序运行的Erlang是一个及早求值, 单次赋值和动态类型的函数式编程语言。</p>
 <blockquote>
@@ -15913,13 +15917,14 @@
 <li><a href="https://www.erlang.org/">参考一</a></li>
 <li><a href="https://github.com/erlang/otp/blob/maint/HOWTO/INSTALL.md">参考二</a></li>
 </ol>
-]]></content>
+<hr>
+<h1 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a><center><font color=red>垃圾回收机制</font></center></h1>]]></content>
       <categories>
-        <category>Erlang</category>
+        <category>PL</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>Erlang</tag>
+        <tag>Mac - 垃圾回收</tag>
       </tags>
   </entry>
   <entry>
@@ -16756,6 +16761,559 @@
       </tags>
   </entry>
   <entry>
+    <title>Go语言基础</title>
+    <url>/2018/06/17/Go-%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。 —— 宋.陆游 《冬夜读书示子聿》</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h1 id="Mac下go环境搭建"><a href="#Mac下go环境搭建" class="headerlink" title="Mac下go环境搭建"></a><center><font color=red>Mac下go环境搭建</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
+<li><p>通过安装包</p>
+<ul>
+<li><a href="https://golang.google.cn/doc/install?download=go1.13.3.darwin-amd64.pkg">下载</a>安装文件</li>
+<li>一路双击安装就行了</li>
+<li>配置环境变量<code>vim ~/.bash_profile</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#注意不要和GOROOT相同，否则会报warning: GOPATH set to GOROOT (/usr/local/go) has no effect</span><br><span class="line">export GOPATH=~/go  #GOPATH是自定义的工作空间，它是日常开发的根目录。</span><br><span class="line">export GOBIN=/usr/local/go/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过Homebrew安装</p>
+<ul>
+<li><code>brew install go</code></li>
+</ul>
+</li>
+<li><p>相关命令</p>
+<ul>
+<li>查看版本<code>go version</code></li>
+<li>查看环境变量<code>go env</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="二、测试"><a href="#二、测试" class="headerlink" title="二、测试"></a>二、测试</h2><ol>
+<li><p><code>vim main.go</code></p>
+</li>
+<li><p>写入以下脚本</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line">import(&quot;fmt&quot;)</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">    fmt.Println(&quot;It works!&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>生成可执行文件 <code>go build main.go</code></li>
+<li>运行可执行文件 <code>./main</code></li>
+</ol>
+<h2 id="三、vs-code开发配置"><a href="#三、vs-code开发配置" class="headerlink" title="三、vs code开发配置"></a>三、vs code开发配置</h2><ol>
+<li><p>vs code开发时自动导入包</p>
+<ul>
+<li>command+shift+P</li>
+<li>go:install/update tools</li>
+<li>将所有16个插件都勾选上安装</li>
+</ul>
+</li>
+<li><p>vs code安装tools超时失败</p>
+<ul>
+<li>自动下载：<code>go env -w GO111MODULE=on</code></li>
+<li>设置代理：<code>go env -w GOPROXY=https://goproxy.cn,direct</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="package和import"><a href="#package和import" class="headerlink" title="package和import"></a><center><font color=red>package和import</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>Go语言使用包<code>package</code>来管理定义模块，使用<code>import</code>导入模块。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://chai2010.cn/">参考一</a></li>
+<li><a href="https://studygolang.com/articles/18395">参考二</a></li>
+</ol>
+<hr>
+<h1 id="Go语言结构体struct"><a href="#Go语言结构体struct" class="headerlink" title="Go语言结构体struct"></a><center><font color=red>Go语言结构体struct</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和C语言类似，结构体是一种用户自定义的可用的数据类型，它允许存储不同类型的数据项。同时结构体是一种值类型，在不包含引用类型的情况下可以进行等值<code>==</code>比较。</p>
+<ol>
+<li><p>分类</p>
+<ul>
+<li>命名结构体</li>
+<li>匿名结构体</li>
+</ul>
+</li>
+<li><p>访问控制</p>
+<ul>
+<li>结构体内部变量的首字母大写是公开变量，无访问限制。</li>
+<li>结构体内部变量的首字母小写是内部变量，只有属于同一个package的代码才能直接访问。</li>
+</ul>
+</li>
+<li><p>结构体类型定义方法，表明该方法的适用对象是当前结构体，具体做法是在func关键字和方法名之间加入接收者</p>
+<ul>
+<li>值类型</li>
+<li>指针类型</li>
+</ul>
+</li>
+<li><p>进阶</p>
+<ul>
+<li>空结构体及其应用</li>
+<li>结构体匿名字段</li>
+<li>嵌套结构体<ul>
+<li>方法和字段提升</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>声明结构体</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type 结构体名 struct &#123;</span><br><span class="line">    属性名1 类型 `tag`</span><br><span class="line">    属性名2 类型 `tag`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如：</span><br><span class="line">type Person struct &#123;</span><br><span class="line">    Name string</span><br><span class="line">    age int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>创建结构体变量</p>
+<ul>
+<li>直接声明：<code>var p1 Person</code></li>
+<li>用大括号：<code>p2 := Person&#123;&#125;</code></li>
+<li><code>new</code>方式：<code>var p3Point = new(Person)</code></li>
+<li><code>&amp;</code>方式：<code>var p4Point = &amp;Person&#123;&quot;王5&quot;, 22&#125;</code></li>
+</ul>
+</li>
+<li><p>定义方法</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">    Name string</span><br><span class="line">    age int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p Person) say() float64 &#123;</span><br><span class="line">    fmt.Println(&quot;hello&quot;)</span><br><span class="line">    return 1.1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/12263">参考一</a></li>
+<li><a href="https://geektutu.com/post/hpg-empty-struct.html">参考二</a></li>
+<li><a href="https://juejin.cn/post/6844903814168838151">参考三</a></li>
+<li><a href="https://juejin.cn/post/6844904196781637640">参考四</a></li>
+</ol>
+<hr>
+<h1 id="Go语言接口interface"><a href="#Go语言接口interface" class="headerlink" title="Go语言接口interface"></a><center><font color=red>Go语言接口interface</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在面向对象编程领域里，接口一般这样定义：接口定义一个对象的行为。接口只指定了对象应该做什么，至于如何实现这个行为则由对象本身去确定。由于Go不支持类class和面向对象编程(可以以别的方式实现类似的功能)，所以在Go语言中，接口就是方法签名的集合。接口指定了一个类型应该具有的方法，并由该类型决定如何实现这些方法。</p>
+<h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/12266">参考一</a></li>
+<li><a href="https://segmentfault.com/a/1190000011451232">参考二</a></li>
+</ol>
+<hr>
+<h1 id="Go语言信道channel"><a href="#Go语言信道channel" class="headerlink" title="Go语言信道channel"></a><center><font color=red>Go语言信道channel</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信道是goroutine之间通信的一种方式，可以在信道两端进行操作。</p>
+<h2 id="二、使用-3"><a href="#二、使用-3" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/12402">参考一</a></li>
+</ol>
+<hr>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a><center><font color=red>基本数据类型</font></center></h1><h2 id="一、概念-4"><a href="#一、概念-4" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>在Go编程语言中，数据类型用于声明函数和变量，它的出现是为了合理分配利用内存，根据需求把数据分成不同的内存大小，避免不必要的内存浪费。</p>
+</li>
+<li><p>Go语言数据类型包含基本类型和复合类型两大类。</p>
+<ul>
+<li>基本数据类型包括：布尔型、字符串型、数值型(整型、浮点型、复数型)、错误类型。</li>
+<li>复合数据类型包括：数组、结构体、指针、切片、字典(也称map)、通道、函数、接口。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、使用-4"><a href="#二、使用-4" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.runoob.com/go/go-tutorial.html">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Go语言多切片和数组"><a href="#Go语言多切片和数组" class="headerlink" title="Go语言多切片和数组"></a><center><font color=red>Go语言多切片和数组</font></center></h1><h2 id="一、概念-5"><a href="#一、概念-5" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>数组：是同一类型元素的集合，Go语言中不允许混合不同类型的元素(interface{}类型数组可以包含任意类型)。</p>
+<ul>
+<li>数组是值类型，意为当把数组a赋值给一个新的变量b时，变量b得到的只是一个原始数组a的副本，如果对新变量b进行更改则不会影响原始数组a。</li>
+<li>数组的下标从<code>0</code>开始.</li>
+</ul>
+</li>
+<li><p>切片：是由数组建立的一种方便、灵活且功能强大的包装，它本身不拥有任何数据，只是对现有数组的引用。</p>
+<ul>
+<li>切片是引用类型，同值类型刚好相反。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、使用-5"><a href="#二、使用-5" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>数组</p>
+<ul>
+<li><p>声明方式</p>
+<ul>
+<li>只声明不初始化<code>var a [3]int</code>，此时a的所有元素都被赋值为整型<code>0</code></li>
+<li>声明并初始化(必须初始化所有元素)<ul>
+<li>简略模式声明：<code>a := [3]int&#123;1, 2, 3&#125;</code>，也可初始化部分元素：<code>a := [3]int&#123;1&#125;</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var a [3]int </span><br><span class="line">a[0] = 12 // array index starts at 0</span><br><span class="line">a[1] = 78</span><br><span class="line">a[2] = 50`</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>简略模式声明时不指定长度<code>a := [...]int&#123;12, 78, 50&#125;</code>，编译器会自动计算</li>
+</ul>
+</li>
+<li><p>数组长度<code>len(a)</code></p>
+</li>
+<li><p>遍历数组</p>
+<ul>
+<li>使用for循环</li>
+<li>使用range返回<code>key,value</code>，key可省略</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">func main() &#123;</span><br><span class="line">   c := [...]int&#123;1, 2&#125;</span><br><span class="line">for i := 0; i &lt; len(c); i++ &#123;</span><br><span class="line">	fmt.Printf(&quot;第 %d 个元素为：%d\n&quot;, i, c[i])</span><br><span class="line">&#125;</span><br><span class="line">   for i, v := range c &#123;</span><br><span class="line">       fmt.Printf(&quot;第 %d 个元素为：%d\n&quot;, i, v)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切片</p>
+<ul>
+<li><p>声明方式</p>
+<ul>
+<li>基于数组arr创建<ul>
+<li><code>arr[:]</code></li>
+</ul>
+</li>
+<li>简略模式创建</li>
+<li>使用make创建</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line"> b := [5]int&#123;76, 77, 78, 79, 80&#125;</span><br><span class="line">    var c []int = b[:]</span><br><span class="line"> var d []int = b[1:4]</span><br><span class="line">    fmt.Println(c)</span><br><span class="line"> fmt.Println(d)</span><br><span class="line"></span><br><span class="line"> e := []int&#123;6, 7, 8&#125; // creates and array and returns a slice reference</span><br><span class="line"> fmt.Println(e)</span><br><span class="line"></span><br><span class="line"> f := make([]int, 5, 5)</span><br><span class="line"> fmt.Println(f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>追加元素<code>append(slice, element)</code></p>
+<ul>
+<li><code>...</code>运算符</li>
+</ul>
+</li>
+<li><p>切片长度<code>len(slice)</code></p>
+</li>
+<li><p>切片容量<code>cap(slice)</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考-5"><a href="#三、参考-5" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://golang.google.cn/">参考一</a></li>
+<li><a href="https://studygolang.com/articles/12121">参考二</a></li>
+</ol>
+<hr>
+<h1 id="env说明"><a href="#env说明" class="headerlink" title="env说明"></a><center><font color=red>env说明</font></center></h1><h2 id="一、概念-6"><a href="#一、概念-6" class="headerlink" title="一、概念"></a>一、概念</h2><blockquote>
+<p>go env命令用于打印Go语言的环境变量信息，也可进行设置环境变量信息。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GO111MODULE=&quot;&quot; </span><br><span class="line">GOARCH=&quot;amd64&quot;</span><br><span class="line">GOBIN=&quot;&quot;</span><br><span class="line">GOCACHE=&quot;***&quot;</span><br><span class="line">GOENV=&quot;***&quot;</span><br><span class="line">GOEXE=&quot;&quot;</span><br><span class="line">GOFLAGS=&quot;&quot;</span><br><span class="line">GOHOSTARCH=&quot;amd64&quot;</span><br><span class="line">GOHOSTOS=&quot;darwin&quot;</span><br><span class="line">GONOPROXY=&quot;&quot;</span><br><span class="line">GONOSUMDB=&quot;&quot;</span><br><span class="line">GOOS=&quot;darwin&quot;</span><br><span class="line">GOPATH=&quot;***&quot;</span><br><span class="line">GOPRIVATE=&quot;&quot;</span><br><span class="line">GOPROXY=&quot;https://proxy.golang.org,direct&quot;</span><br><span class="line">GOROOT=&quot;/usr/local/go&quot;</span><br><span class="line">GOSUMDB=&quot;sum.golang.org&quot;</span><br><span class="line">GOTMPDIR=&quot;&quot;</span><br><span class="line">GOTOOLDIR=&quot;/usr/local/go/pkg/tool/darwin_amd64&quot;</span><br><span class="line">GCCGO=&quot;gccgo&quot;</span><br><span class="line">AR=&quot;ar&quot;</span><br><span class="line">CC=&quot;clang&quot;</span><br><span class="line">CXX=&quot;clang++&quot;</span><br><span class="line">CGO_ENABLED=&quot;1&quot;</span><br><span class="line">GOMOD=&quot;&quot;</span><br><span class="line">CGO_CFLAGS=&quot;-g -O2&quot;</span><br><span class="line">CGO_CPPFLAGS=&quot;&quot;</span><br><span class="line">CGO_CXXFLAGS=&quot;-g -O2&quot;</span><br><span class="line">CGO_FFLAGS=&quot;-g -O2&quot;</span><br><span class="line">CGO_LDFLAGS=&quot;-g -O2&quot;</span><br><span class="line">PKG_CONFIG=&quot;pkg-config&quot;</span><br><span class="line">GOGCCFLAGS=&quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/14/kx973qc93bn0kpgymsb01xbh0000gn/T/go-build470845532=/tmp/go-build -gno-record-gcc-switches -fno-common&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、常用"><a href="#二、常用" class="headerlink" title="二、常用"></a>二、常用</h2><table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">GCCGO</td>
+<td align="left">构建时时候所用编译器</td>
+</tr>
+<tr>
+<td align="center">GOARCH</td>
+<td align="left">计算机处理器的架构(常见如amd64、arm等)</td>
+</tr>
+<tr>
+<td align="center">GOBIN</td>
+<td align="left">存放可执行文件的绝对路径</td>
+</tr>
+<tr>
+<td align="center">GOCACHE</td>
+<td align="left">存储编译后信息的缓存目录</td>
+</tr>
+<tr>
+<td align="center">GOFLAGS</td>
+<td align="left">go命令能够识别的标记(可以是多个，中间用空格隔开)</td>
+</tr>
+<tr>
+<td align="center">GOOS</td>
+<td align="left">编译代码的操作系统名称(如linux、windows、darwin等)，用于交叉编译</td>
+</tr>
+<tr>
+<td align="center">GOPATH</td>
+<td align="left">工作区所在的绝对目录</td>
+</tr>
+<tr>
+<td align="center">GOPROXY</td>
+<td align="left">go module目录所在的地址</td>
+</tr>
+<tr>
+<td align="center">GOROOT</td>
+<td align="left">Go语言的安装目录的绝对路径</td>
+</tr>
+<tr>
+<td align="center">GOTOOLDIR</td>
+<td align="left">Go工具目录的绝对路径</td>
+</tr>
+<tr>
+<td align="center">CGO_ENABLED</td>
+<td align="left">指明cgo工具是否可用的标识</td>
+</tr>
+<tr>
+<td align="center">GOEXE</td>
+<td align="left">可执行文件的后缀</td>
+</tr>
+<tr>
+<td align="center">GOHOSTARCH</td>
+<td align="left">程序运行环境的目标计算架构</td>
+</tr>
+<tr>
+<td align="center">GOHOSTOS</td>
+<td align="left">程序运行环境的目标操作系统</td>
+</tr>
+</tbody></table>
+<h2 id="三、参考-6"><a href="#三、参考-6" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.zhangbj.com/p/256.html">参考一</a></li>
+<li><a href="https://studygolang.com/">参考二</a></li>
+</ol>
+<hr>
+<h1 id="多返回值"><a href="#多返回值" class="headerlink" title="多返回值"></a><center><font color=red>多返回值</font></center></h1><h2 id="一、概念-7"><a href="#一、概念-7" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数的函数名即是该函数的代表，也是一个变量。由于函数名变量通常用来把函数的处理结果数据返回给调用函数，即递归调用，所以一般把函数名变量称为返回值，函数的返回值类型是在定义函数时指定的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go一个非常特别的特性(对于编译语言而言)是函数和方法可以返回多个值(Python和Perl同样也可以)。这可以用于改进一大堆在C程序中糟糕的惯例用法：修改参数的方式，返回一个错误(例如遇到EOF则返回-1)。Go函数的返回值或者结果参数可以指定一个名字(名字不是强制的，但是它们可以使得代码更加健壮和清晰)，并且像原始的变量那样使用，就像输入参数那样。如果对其命名，在函数开始时，它们会用其类型的零值初始化。如果函数在不加参数的情况下执行了return语句，结果参数会返回。用这个特性，允许(再一次的)用较少的代码做更多的事。</p>
+<h2 id="二、使用-6"><a href="#二、使用-6" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>普通例子</p>
+<ul>
+<li>代码(test.go)</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func multiReturn() (a int, b int, c int) &#123;</span><br><span class="line">	a, b, c = 111, 222, 333</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	a, b, c := multiReturn()</span><br><span class="line">	fmt.Printf(&quot;a = %d, b = %d, c = %d\n&quot;, a, b, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行<ul>
+<li>方式一：<code>go run test.go</code></li>
+<li>方式二：<code>go build test.go &amp;&amp; ./test</code></li>
+<li>方式三：<a href="https://play.golang.org">在线运行</a></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>错误处理</li>
+</ol>
+<h2 id="三、参考-7"><a href="#三、参考-7" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://golang.google.cn/">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Go语言断言"><a href="#Go语言断言" class="headerlink" title="Go语言断言"></a><center><font color=red>Go语言断言</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Golang中的所有程序都实现了<code>interface&#123;&#125;</code>的接口，这意味着所有的类型如<code>string,int,int64</code>甚至是自定义的<code>struct</code>类型都就此拥有了<code>interface&#123;&#125;</code>的接口，这种做法和Java中的Object类型比较类似。</p>
+<h2 id="二、使用-7"><a href="#二、使用-7" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-8"><a href="#三、参考-8" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/3314">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Go语言反射"><a href="#Go语言反射" class="headerlink" title="Go语言反射"></a><center><font color=red>Go语言反射</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编写好的程序在编译时，变量会被转换为内存地址，变量名不会被编译器写入到可执行部分，所以在运行程序时程序无法获取自身的信息。支持反射的语言可以在程序编译期将变量的反射信息，如字段名称、类型信息、结构体信息等整合到可执行文件中，并给程序提供接口访问反射信息，这样就可以在程序运行期获取类型的反射信息，并且有能力修改它们。简而言之，反射就是指在程序运行期对程序本身进行访问和修改的能力。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Golang中提供了一种机制在运行时更新和检查变量的值、调用变量的方法和变量支持的内在操作，但是在编译时并不知道这些变量的具体类型，这种机制被称为反射。</p>
+<h2 id="二、使用-8"><a href="#二、使用-8" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-9"><a href="#三、参考-9" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="http://c.biancheng.net/view/4407.html">参考一</a></li>
+<li><a href="https://juejin.cn/post/6844903559335526407">参考二</a></li>
+<li><a href="https://go.dev/blog/laws-of-reflection">参考三</a></li>
+<li><a href="https://segmentfault.com/a/1190000011451232">参考四</a></li>
+<li><a href="https://draveness.me/golang/">参考五</a></li>
+<li><a href="https://www.cnblogs.com/itbsl/p/10551880.html">参考六</a></li>
+</ol>
+<hr>
+<h1 id="Go语言延迟调用defer"><a href="#Go语言延迟调用defer" class="headerlink" title="Go语言延迟调用defer"></a><center><font color=red>Go语言延迟调用defer</font></center></h1><h2 id="一、概念-8"><a href="#一、概念-8" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defer是Go语言中的延迟执行语句，用来添加函数结束时执行的代码，常用于释放某些已分配的资源、关闭数据库连接、断开socket连接、解锁一个加锁的资源等。Go语言机制能够保证一定会执行<code>defer</code>语句中的代码，有点类似于<code>Java</code>、<code>C#</code>语言里的<code>finally</code>语句，<code>C++</code>、<code>PHP</code>语言里的析构函数等。</p>
+<blockquote>
+<p>defer后面必须是函数调用语句，其后面的函数会当前函数执行结束后被调用。</p>
+</blockquote>
+<h2 id="二、使用-9"><a href="#二、使用-9" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>demo</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func testFunc() &#123;</span><br><span class="line">	fmt.Println(&quot;执行结束...&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	defer testFunc()</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;开始执行...&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考-10"><a href="#三、参考-10" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://studygolang.com/articles/12719">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Go语言异常处理panic"><a href="#Go语言异常处理panic" class="headerlink" title="Go语言异常处理panic"></a><center><font color=red>Go语言异常处理panic</font></center></h1><h2 id="一、概念-9"><a href="#一、概念-9" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panic是Go语言中用于终止程序的一种函数，一般出现在程序出现了很大的故障，如不能在提供服务了，或程序在运行阶段碰到了内存异常的操作，如空指针的取值，改写只读内存等。</p>
+<hr>
+<h1 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a><center><font color=red>交叉编译</font></center></h1><h2 id="一、概念-10"><a href="#一、概念-10" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很多时候会有这样的场景出现，使用Mac开发或使用Windows开发，需要编译成Linux系统的执行文件，此时就需要用到交叉编译。在<code>1.5+</code>版本后(通过自举)，Go程序编译时可通过设置环境变量实现交叉编译，从而大大提高了开发效率。</p>
+<blockquote>
+<p>编程语言的自举就是完全依靠自身语言(如go)写出自己的编译器、解释器来编译自身。</p>
+</blockquote>
+<h2 id="二、使用-10"><a href="#二、使用-10" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>可通过<code>go tool dist list</code>查看当前版本支持的系统和架构</li>
+</ol>
+<blockquote>
+<p>常见如下：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">GOOS</th>
+<th align="center">GOARCH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">darwin</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">darwin</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">darwin</td>
+<td align="center">arm</td>
+</tr>
+<tr>
+<td align="center">darwin</td>
+<td align="center">arm64</td>
+</tr>
+<tr>
+<td align="center">dragonfly</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">freebsd</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">freebsd</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">freebsd</td>
+<td align="center">arm</td>
+</tr>
+<tr>
+<td align="center">linux</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">linux</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">linux</td>
+<td align="center">arm</td>
+</tr>
+<tr>
+<td align="center">linux</td>
+<td align="center">arm64</td>
+</tr>
+<tr>
+<td align="center">linux</td>
+<td align="center">ppc64</td>
+</tr>
+<tr>
+<td align="center">linux</td>
+<td align="center">ppc64le</td>
+</tr>
+<tr>
+<td align="center">netbsd</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">netbsd</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">netbsd</td>
+<td align="center">arm</td>
+</tr>
+<tr>
+<td align="center">openbsd</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">openbsd</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">openbsd</td>
+<td align="center">arm</td>
+</tr>
+<tr>
+<td align="center">plan9</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">plan9</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">solaris</td>
+<td align="center">amd64</td>
+</tr>
+<tr>
+<td align="center">windows</td>
+<td align="center">386</td>
+</tr>
+<tr>
+<td align="center">windows</td>
+<td align="center">amd64</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>使用<ul>
+<li>main.go</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;runtime&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	fmt.Printf(&quot;OS: %s\nArchitecture: %s\n&quot;, runtime.GOOS, runtime.GOARCH)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>windows/linux/mac<ul>
+<li>CGO_ENABLED=0 GOOS=window GOARCH=amd64 go build main.go</li>
+<li>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go</li>
+<li>CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build main.go</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>默认情况下Go环境变量<code>CGO_ENABLED=1</code>(可通过<code>go env</code>查看)，即默认开启cgo，意为允许在Go代码中调用C代码。<ul>
+<li>要使用CGO特性，需要安装<code>C/C++</code>构建工具链，在MacOS和Linux下是要安装GCC，在windows下是需要安装MinGW工具，同时需要保证环境变量CGO_ENABLED被设置为1，这表示CGO是被启用的状态。</li>
+<li>交叉编译时CGO默认是禁止的，亦可在编译时指定CGO_ENABLED=0。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;runtime&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void sayHello()&#123;</span><br><span class="line">	int a;</span><br><span class="line">	printf(&quot;请输入数字：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">    printf(&quot;a的值为：%d&quot;, a);</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">import &quot;C&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	fmt.Printf(&quot;OS: %s\nArchitecture: %s\n&quot;, runtime.GOOS, runtime.GOARCH)</span><br><span class="line">	C.sayHello()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p>CGO_ENABLED=1 go run main.go</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>CGO_ENABLED=0 go run main.go</p>
+</blockquote>
+</blockquote>
+<h2 id="三、参考-11"><a href="#三、参考-11" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63">参考一</a></li>
+</ol>
+<hr>
+<h1 id="常见web框架"><a href="#常见web框架" class="headerlink" title="常见web框架"></a><center><font color=red>常见web框架</font></center></h1><h2 id="一、概念-11"><a href="#一、概念-11" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件框架(software framework)，通常指的是为了实现某个业界标准或完成特定基本任务的软件组件规范，也指为了实现某个软件组件规范时，提供规范所要求之基础功能的软件产品。Web框架，全称web应用框架(Web application framework)是一种开发框架，用来支持动态网站、网络应用程序及网络服务的开发。</p>
+<h2 id="二、常见"><a href="#二、常见" class="headerlink" title="二、常见"></a>二、常见</h2><ol>
+<li><a href="https://beego.me/">Beego</a></li>
+<li><a href="https://github.com/gin-gonic/gin">Gin</a></li>
+<li><a href="https://www.iris-go.com/">Iris</a></li>
+<li><a href="https://echo.labstack.com/">Echo</a></li>
+<li><a href="https://gobuffalo.io/en/">Buffalo</a></li>
+<li><a href="https://github.com/revel/revel">Revel</a></li>
+</ol>
+<h2 id="三、参考-12"><a href="#三、参考-12" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.zhihu.com/question/27370112">参考一</a></li>
+<li><a href="https://blog.csdn.net/bluehawksky/article/details/90447467">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>结构体</tag>
+        <tag>struct</tag>
+        <tag>数组</tag>
+        <tag>Go</tag>
+        <tag>interface</tag>
+        <tag>接口</tag>
+        <tag>信道</tag>
+        <tag>channel</tag>
+        <tag>切片</tag>
+        <tag>反射</tag>
+        <tag>reflection</tag>
+        <tag>多返回值</tag>
+        <tag>env</tag>
+        <tag>web</tag>
+        <tag>Beego</tag>
+        <tag>Gin</tag>
+        <tag>Iris</tag>
+        <tag>Echo</tag>
+        <tag>Buffalo</tag>
+        <tag>Revel</tag>
+        <tag>交叉编译</tag>
+        <tag>自举</tag>
+        <tag>CGO</tag>
+        <tag>defer</tag>
+        <tag>延迟调用</tag>
+        <tag>异常处理</tag>
+        <tag>panic</tag>
+        <tag>断言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>elasticsearch-head插件</title>
     <url>/2018/06/10/ELK-elasticsearch-head%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -17328,8 +17886,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Mock学习</title>
-    <url>/2018/04/27/Front-Mock%E5%AD%A6%E4%B9%A0/</url>
+    <title>Mock</title>
+    <url>/2018/04/27/PL-Mock/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>挂载(mounting)是指由操作系统使一个存储设备(如硬盘/CD-ROM/共享资源等)上的计算机文件和目录可供用户通计算机的文件系统访问一个过程。</p>
 </blockquote>
@@ -17342,7 +17900,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Front</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Mock</tag>
@@ -17964,8 +18522,8 @@
       </tags>
   </entry>
   <entry>
-    <title>DLang简介</title>
-    <url>/2018/04/04/DLang-D%E7%AE%80%E4%BB%8B/</url>
+    <title>DLang</title>
+    <url>/2018/04/04/PL-DLang/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>巴甫洛夫的狗：用来形容一个人反应不经大脑思考，如意识形态的先入为主、对逻辑思辨的抗拒。著名的心理学家巴甫洛夫发现并开辟了一条通往认知学的道路，让研究人员研究动物如何学习时有一个最基本的认识，所有这些都要归功于流口水的狗狗。巴甫洛夫用狗做了这样一个实验：每次给狗送食物以前打开红灯、响起铃声，这样经过一段时间以后，铃声一响或红灯一亮狗就开始分泌唾液。</p>
 </blockquote>
@@ -17979,7 +18537,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>DLang</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>DLang</tag>
@@ -18776,6 +19334,44 @@
       <tags>
         <tag>收集</tag>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言收集</title>
+    <url>/2018/02/04/Go-%E6%94%B6%E9%9B%86/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>go env命令用于打印Go语言的环境变量信息，也可进行设置环境变量信息。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、学习资料"><a href="#一、学习资料" class="headerlink" title="一、学习资料"></a>一、学习资料</h2><ol>
+<li><a href="https://golang.org/">The Go Programming Language</a></li>
+<li><a href="https://studygolang.com/">Go语言中文网</a></li>
+<li><a href="https://www.runoob.com/go/go-tutorial.html">菜鸟教程</a></li>
+<li><a href="https://github.com/Guan-Ren/GitHub-Chinese-Top-Charts">GitHub-Chinese-Top-Charts</a></li>
+<li><a href="https://go.dev/blog/declaration-syntax">Go’s Declaration Syntax</a></li>
+<li><a href="https://github.com/holdno/snowFlakeByGo">雪花算法</a></li>
+</ol>
+<h2 id="二、面试相关"><a href="#二、面试相关" class="headerlink" title="二、面试相关"></a>二、面试相关</h2><ol>
+<li><a href="https://github.com/DinghaoLI/Coding-Interviews-Golang">剑指Offer-Golang实现</a></li>
+<li><a href="https://github.com/lifei6671/interview-go">Golang面试题搜集</a></li>
+<li><a href="https://github.com/shomali11/go-interview">go-interview</a></li>
+<li><a href="https://github.com/xiaobaiTech/golangFamily">超全golang面试题合集</a></li>
+</ol>
+<h2 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h2><ol>
+<li><a href="https://www.cnblogs.com/13579net/p/14139812.html">为什么Golang中不用this和self</a><ul>
+<li><a href="https://dave.cheney.net/2017/04/29/there-is-no-pass-by-reference-in-go">there-is-no-pass-by-reference-in-go</a></li>
+<li><a href="https://github.com/golang/go/wiki/CodeReviewComments">CodeReviewComments</a></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>收集</tag>
+        <tag>Go</tag>
       </tags>
   </entry>
   <entry>
@@ -21159,8 +21755,90 @@
       </tags>
   </entry>
   <entry>
-    <title>Makefile入门</title>
-    <url>/2017/08/09/Makefile-%E5%85%A5%E9%97%A8/</url>
+    <title>Makefile中条件判断</title>
+    <url>/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>货比货得扔，人比人得死，指人应安于本分，不能盲目攀比。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
+<ol>
+<li>语法</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>条件常用格式</p>
+<ul>
+<li><code>ifxxx (arg1,arg2)</code></li>
+<li><code>ifxxx “arg1” “arg2”</code></li>
+<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
+<li><code>ifxxx “arg1” ‘arg2’</code></li>
+<li><code>ifxxx ‘arg1’ “arg2”</code></li>
+</ul>
+</li>
+<li><p>分类</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">判断</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ifeq</td>
+<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifneq</td>
+<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifdef</td>
+<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifndef</td>
+<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>定义makefile文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 := 123</span><br><span class="line">var2 := $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
+</li>
+<li><p><font color=red>注意：</font></p>
+<ul>
+<li><code>ifxxx</code> 后面有个空格</li>
+<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
+<li>意思就是ifxxx前不用加tab</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://seisman.github.io/">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Makefile</category>
+      </categories>
+      <tags>
+        <tag>Makefile</tag>
+        <tag>ifeq</tag>
+        <tag>条件判断</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile</title>
+    <url>/2017/08/09/PL-Makefile/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>make是一个根据指定的<code>shell</code>命令进行构建的工具，规则很简单，规定要构建哪个文件、它依赖哪些源文件，当那些文件有变动时，如何重新构建它。</p>
 </blockquote>
@@ -21252,95 +21930,13 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Makefile</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Makefile</tag>
         <tag>make</tag>
         <tag>ifeq</tag>
         <tag>phony</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Makefile中条件判断</title>
-    <url>/2017/08/09/Makefile-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>货比货得扔，人比人得死，指人应安于本分，不能盲目攀比。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
-<ol>
-<li>语法</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>条件常用格式</p>
-<ul>
-<li><code>ifxxx (arg1,arg2)</code></li>
-<li><code>ifxxx “arg1” “arg2”</code></li>
-<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
-<li><code>ifxxx “arg1” ‘arg2’</code></li>
-<li><code>ifxxx ‘arg1’ “arg2”</code></li>
-</ul>
-</li>
-<li><p>分类</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">判断</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">ifeq</td>
-<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifneq</td>
-<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifdef</td>
-<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
-</tr>
-<tr>
-<td align="center">ifndef</td>
-<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
-</tr>
-</tbody></table>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>定义makefile文件</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 := 123</span><br><span class="line">var2 := $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
-</li>
-<li><p><font color=red>注意：</font></p>
-<ul>
-<li><code>ifxxx</code> 后面有个空格</li>
-<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
-<li>意思就是ifxxx前不用加tab</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://seisman.github.io/">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Makefile</category>
-      </categories>
-      <tags>
-        <tag>Makefile</tag>
-        <tag>ifeq</tag>
-        <tag>条件判断</tag>
       </tags>
   </entry>
   <entry>
@@ -21425,28 +22021,6 @@
         <tag>PHP</tag>
         <tag>PHPUnit</tag>
         <tag>单元测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言信道channel</title>
-    <url>/2017/07/22/Go-%E4%BF%A1%E9%81%93channel/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>信道是goroutine之间通信的一种方式，可以在信道两端进行操作。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://studygolang.com/articles/12402">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>信道</tag>
-        <tag>channel</tag>
       </tags>
   </entry>
   <entry>
@@ -21723,29 +22297,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Go语言接口interface</title>
-    <url>/2017/07/17/Go-%E6%8E%A5%E5%8F%A3interface/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在面向对象编程领域里，接口一般这样定义：接口定义一个对象的行为。接口只指定了对象应该做什么，至于如何实现这个行为则由对象本身去确定。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在面向对象编程领域里，接口一般这样定义：接口定义一个对象的行为。接口只指定了对象应该做什么，至于如何实现这个行为则由对象本身去确定。由于Go不支持类class和面向对象编程(可以以别的方式实现类似的功能)，所以在Go语言中，接口就是方法签名的集合。接口指定了一个类型应该具有的方法，并由该类型决定如何实现这些方法。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://studygolang.com/articles/12266">参考一</a></li>
-<li><a href="https://segmentfault.com/a/1190000011451232">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>interface</tag>
-        <tag>接口</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>底层之异常处理</title>
     <url>/2017/07/13/PHP-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -21858,13 +22409,15 @@
       </tags>
   </entry>
   <entry>
-    <title>JS杂谈</title>
-    <url>/2017/06/20/Front-JS%E6%9D%82%E8%B0%88/</url>
+    <title>JS</title>
+    <url>/2017/06/20/PL-JS/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>炎黄虞夏商，周到战国亡，秦朝并六国，赢政称始皇。楚汉鸿沟界，最后属刘邦，西汉孕新莽，东汉迁洛阳。末年黄巾出，三国各称王，西晋变东晋，迁都到建康，拓跋入中原，国分南北方，北朝十六国，南朝宋齐梁，南陈被隋灭，杨广输李唐，大唐曾改周，武后则天皇，残皇有五代，伶官舞后庄，华歆分十国，北宋火南唐，金国俘二帝，南宋到苏杭，蒙主称大汗，最后被明亡，明到崇帧帝，大顺立闯王，金田太平国，时适清道光，九传至光绪，维新有康梁，换位至宣统，民国废末皇，五四风雨骤，建国存新纲，抗日反内战，五星红旗扬。</p>
 </blockquote>
 <span id="more"></span>
 
+<h1 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a><center><font color=red>JS基础</font></center></h1><p>JavaScript是一种多范式的动态语言，它包含类型、运算符、标准内置(built-in)对象和方法。</p>
+<hr>
 <h1 id="函数防抖和节流"><a href="#函数防抖和节流" class="headerlink" title="函数防抖和节流"></a><center><font color=red>函数防抖和节流</font></center></h1><h2 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h2><p>在前端开发的过程中，我们经常会需要绑定一些持续触发的事件，如 resize、scroll、mousemove 等等，但有些时候我们并不希望在事件持续触发的过程中那么频繁地去执行函数。通常通过防抖和节流来解决这种情况。</p>
 <h2 id="二、防抖-debounce"><a href="#二、防抖-debounce" class="headerlink" title="二、防抖 debounce"></a>二、防抖 debounce</h2><ol>
 <li><p>定义</p>
@@ -22186,7 +22739,7 @@
 <hr>
 <h1 id="哈希槽"><a href="#哈希槽" class="headerlink" title="哈希槽"></a><center><font color=red>哈希槽</font></center></h1>]]></content>
       <categories>
-        <category>Front</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>前端</tag>
@@ -22199,52 +22752,6 @@
         <tag>let</tag>
         <tag>var</tag>
         <tag>this</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python解析YAML</title>
-    <url>/2017/05/22/YAML-python%E8%A7%A3%E6%9E%90YAML/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>编程免不了要写配置文件，怎么写配置也是一门学问。YAML是专门用来写配置文件的语言，非常简洁和强大，远比JSON格式方便。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><ol>
-<li>安装YAML解析依赖包<code>pip install PyYAML</code></li>
-<li>准备YAML文件(和test.py同目录)，语法自行脑补</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name: 张翠山</span><br><span class="line">age: 40</span><br><span class="line">son:</span><br><span class="line"> - name: 张无忌</span><br><span class="line">   age: 20</span><br><span class="line">   sex: 男</span><br><span class="line">   GF:</span><br><span class="line">    - name: 赵敏</span><br><span class="line">      age: 20</span><br><span class="line">      parent:</span><br><span class="line">        mother: 群演</span><br><span class="line">        father: 汝阳王</span><br><span class="line">    - name: 小昭</span><br><span class="line">      age: 20</span><br><span class="line">      parent:</span><br><span class="line">        mother: 黛绮丝</span><br><span class="line">        father: 韩千叶</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、开始"><a href="#二、开始" class="headerlink" title="二、开始"></a>二、开始</h2><ol>
-<li>查看安装的扩展包<code>pip list</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Package           Version</span><br><span class="line">----------------- ----------</span><br><span class="line">astroid           2.3.3</span><br><span class="line">certifi           2019.11.28</span><br><span class="line">chardet           3.0.4</span><br><span class="line">click             7.1.1</span><br><span class="line">idna              2.9</span><br><span class="line">isort             4.3.21</span><br><span class="line">lazy-object-proxy 1.4.3</span><br><span class="line">mccabe            0.6.1</span><br><span class="line">pip               20.0.2</span><br><span class="line">pylint            2.4.4</span><br><span class="line">PyYAML            5.3</span><br><span class="line">requests          2.23.0</span><br><span class="line">setuptools        41.2.0</span><br><span class="line">sh                1.12.14</span><br><span class="line">six               1.14.0</span><br><span class="line">urllib3           1.25.8</span><br><span class="line">wrapt             1.11.2</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>代码(<code>test.py</code>)</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import yaml</span><br><span class="line"></span><br><span class="line"># 获取文件所在目录</span><br><span class="line">base_dir = os.path.dirname(os.path.realpath(&#x27;__file__&#x27;))</span><br><span class="line"># 另一种获取目录的方法</span><br><span class="line">#base_dir = os.getcwd()</span><br><span class="line">#print(base_dir)</span><br><span class="line"></span><br><span class="line">file = open(os.path.join(base_dir, &#x27;config.yaml&#x27;))</span><br><span class="line">content = yaml.load(file, Loader=yaml.FullLoader)</span><br><span class="line">print(content)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>跑一下代码<code>python3 test.py</code>，结果如下(已格式化)</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;张翠山&quot;,</span><br><span class="line">  &quot;age&quot;: 40,</span><br><span class="line">  &quot;son&quot;: </span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;张无忌&quot;,</span><br><span class="line">      &quot;age&quot;: 20,</span><br><span class="line">      &quot;sex&quot;: &quot;男&quot;,</span><br><span class="line">      &quot;GF&quot;: </span><br><span class="line">      [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;赵敏&quot;,</span><br><span class="line">          &quot;age&quot;: 20,</span><br><span class="line">          &quot;parent&quot;: </span><br><span class="line">          &#123;</span><br><span class="line">            &quot;mother&quot;: &quot;群演&quot;,</span><br><span class="line">            &quot;father&quot;: &quot;汝阳王&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;小昭&quot;,</span><br><span class="line">          &quot;age&quot;: 20,</span><br><span class="line">          &quot;parent&quot;: </span><br><span class="line">          &#123;</span><br><span class="line">            &quot;mother&quot;: &quot;黛绮丝&quot;,</span><br><span class="line">            &quot;father&quot;: &quot;韩千叶&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://pypi.org/project/pip/">pip</a></li>
-<li><a href="https://pypi.org/">扩展包</a></li>
-<li><a href="https://www.ruanyifeng.com/blog/2016/07/yaml.html">YAML教程</a></li>
-<li><a href="https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation">yaml.load</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>YAML</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>pip</tag>
-        <tag>YAML</tag>
-        <tag>PyYAML</tag>
       </tags>
   </entry>
   <entry>
@@ -22634,8 +23141,8 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Julia介绍</title>
-    <url>/2017/03/27/Julia-%E4%BB%8B%E7%BB%8D/</url>
+    <title>Julia</title>
+    <url>/2017/03/27/PL-Julia/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Julia是一种高级通用动态编程语言，它最初是为了满足高性能数值分析和计算科学的需要而设计的，不需要解释器，速度快，也可用于客户端和服务器的Web用途、低级系统编程或用作规约语言。</p>
 </blockquote>
@@ -22665,7 +23172,7 @@ read_xlsx(name, sheet)
 </ol>
 ]]></content>
       <categories>
-        <category>Julia</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Julia</tag>
@@ -22830,25 +23337,6 @@ read_xlsx(name, sheet)
         <tag>分库</tag>
         <tag>分区</tag>
         <tag>分表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go异常处理panic</title>
-    <url>/2017/03/19/Go-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86panic/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>panic是Go语言中用于终止程序的一种函数。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panic是Go语言中用于终止程序的一种函数，一般出现在程序出现了很大的故障，如不能在提供服务了，或程序在运行阶段碰到了内存异常的操作，如空指针的取值，改写只读内存等。</p>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>异常处理</tag>
-        <tag>panic</tag>
       </tags>
   </entry>
   <entry>
@@ -23066,8 +23554,8 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Vue学习</title>
-    <url>/2017/02/15/Front-Vue%E5%AD%A6%E4%B9%A0/</url>
+    <title>Vue</title>
+    <url>/2017/02/15/PL-Vue/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>主观能动性是一个哲学概念，亦称“自觉能动性”，它指人的主观意识和实践活动对于客观世界的能动作用。主观能动性有两方面的含义： 一是人们能动地认识客观世界；二是在认识的指导下能动地改造客观世界。在实践的基础上使二者统一起来，即表现出人区别于物的主观能动性。能动性是指对外界或内部的刺激或影响作出积极的、有选择的反应或回答。人的能动性与无机物、有机生命体、高等动物的能动性有别，称为主观能动性，其特点是通过思维与实践的结合，自觉地、有目的地、有计划地反作用于客观世界。</p>
 </blockquote>
@@ -23157,7 +23645,7 @@ read_xlsx(name, sheet)
 </ol>
 ]]></content>
       <categories>
-        <category>Front</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Vue</tag>
@@ -23264,33 +23752,6 @@ read_xlsx(name, sheet)
         <tag>内网</tag>
         <tag>公网</tag>
         <tag>私网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言延迟调用defer</title>
-    <url>/2017/02/11/Go-%E5%BB%B6%E8%BF%9F%E8%B0%83%E7%94%A8defer/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>defer后面必须是函数调用语句，其后面的函数会当前函数执行结束后被调用。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defer是Go语言中的延迟执行语句，用来添加函数结束时执行的代码，常用于释放某些已分配的资源、关闭数据库连接、断开socket连接、解锁一个加锁的资源等。Go语言机制能够保证一定会执行<code>defer</code>语句中的代码，有点类似于<code>Java</code>、<code>C#</code>语言里的<code>finally</code>语句，<code>C++</code>、<code>PHP</code>语言里的析构函数等。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>demo</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func testFunc() &#123;</span><br><span class="line">	fmt.Println(&quot;执行结束...&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	defer testFunc()</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;开始执行...&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://studygolang.com/articles/12719">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>defer</tag>
-        <tag>延迟调用</tag>
       </tags>
   </entry>
   <entry>
@@ -23934,13 +24395,14 @@ read_xlsx(name, sheet)
   </entry>
   <entry>
     <title>YAML入门</title>
-    <url>/2017/01/08/YAML-YAML%E5%85%A5%E9%97%A8/</url>
+    <url>/2017/01/08/PL-YAML/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>九子夺嫡，是指清朝康熙皇帝的儿子们争夺皇位的历史事件。当时康熙皇帝序齿的儿子有24个，其中有9个参与了皇位的争夺。九个儿子分别是：大阿哥爱新觉罗·胤禔、二阿哥爱新觉罗·胤礽、三阿哥爱新觉罗·胤祉、四阿哥爱新觉罗·胤禛、八阿哥爱新觉罗·胤禩、九阿哥爱新觉罗.胤禟、十阿哥爱新觉罗·胤䄉、十三阿哥爱新觉罗·胤祥、十四阿哥爱新觉罗·胤禵。最后四阿哥胤禛胜出，在康熙帝去世后继承皇位，成为雍正帝。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YAML(/ˈjæməl/，尾音类似camel骆驼)是一个可读性高，用来表达数据序列化的格式。在开发的这种语言时，YAML的本意其实是：”Yet Another Markup Language”(仍是一种标记语言)，但为了强调这种语言以数据做为中心，而不是以标记语言为重点，而用反向缩略语重命名，”YAML Ain’t a Markup Language”的递归缩写。YAML参考了其他多种语言，包括：XML、C语言、Python、Perl以及电子邮件格式RFC2822等，目前已有多种编程支持或者说解析YAML。</p>
+<h1 id="YAML基础"><a href="#YAML基础" class="headerlink" title="YAML基础"></a><center><font color=red>YAML基础</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编程免不了要写配置文件，怎么写配置也是一门学问。YAML是专门用来写配置文件的语言，非常简洁和强大，远比JSON格式方便。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YAML(/ˈjæməl/，尾音类似camel骆驼)是一个可读性高，用来表达数据序列化的格式。在开发的这种语言时，YAML的本意其实是：”Yet Another Markup Language”(仍是一种标记语言)，但为了强调这种语言以数据做为中心，而不是以标记语言为重点，而用反向缩略语重命名，”YAML Ain’t a Markup Language”的递归缩写。YAML参考了其他多种语言，包括：XML、C语言、Python、Perl以及电子邮件格式RFC2822等，目前已有多种编程支持或者说解析YAML。</p>
 <h2 id="二、语法"><a href="#二、语法" class="headerlink" title="二、语法"></a>二、语法</h2><ol>
 <li><p>基本语法</p>
 <ul>
@@ -24004,79 +24466,45 @@ read_xlsx(name, sheet)
 <li><a href="https://yaml.org/">YAML官网</a></li>
 <li><a href="https://www.runoob.com/w3cnote/yaml-intro.html">菜鸟教程</a></li>
 </ol>
+<hr>
+<h1 id="python解析YAML"><a href="#python解析YAML" class="headerlink" title="python解析YAML"></a><center><font color=red>python解析YAML</font></center></h1><h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><ol>
+<li>安装YAML解析依赖包<code>pip install PyYAML</code></li>
+<li>准备YAML文件(和test.py同目录)，语法自行脑补</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name: 张翠山</span><br><span class="line">age: 40</span><br><span class="line">son:</span><br><span class="line"> - name: 张无忌</span><br><span class="line">   age: 20</span><br><span class="line">   sex: 男</span><br><span class="line">   GF:</span><br><span class="line">    - name: 赵敏</span><br><span class="line">      age: 20</span><br><span class="line">      parent:</span><br><span class="line">        mother: 群演</span><br><span class="line">        father: 汝阳王</span><br><span class="line">    - name: 小昭</span><br><span class="line">      age: 20</span><br><span class="line">      parent:</span><br><span class="line">        mother: 黛绮丝</span><br><span class="line">        father: 韩千叶</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、开始"><a href="#二、开始" class="headerlink" title="二、开始"></a>二、开始</h2><ol>
+<li>查看安装的扩展包<code>pip list</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Package           Version</span><br><span class="line">----------------- ----------</span><br><span class="line">astroid           2.3.3</span><br><span class="line">certifi           2019.11.28</span><br><span class="line">chardet           3.0.4</span><br><span class="line">click             7.1.1</span><br><span class="line">idna              2.9</span><br><span class="line">isort             4.3.21</span><br><span class="line">lazy-object-proxy 1.4.3</span><br><span class="line">mccabe            0.6.1</span><br><span class="line">pip               20.0.2</span><br><span class="line">pylint            2.4.4</span><br><span class="line">PyYAML            5.3</span><br><span class="line">requests          2.23.0</span><br><span class="line">setuptools        41.2.0</span><br><span class="line">sh                1.12.14</span><br><span class="line">six               1.14.0</span><br><span class="line">urllib3           1.25.8</span><br><span class="line">wrapt             1.11.2</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>代码(<code>test.py</code>)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import yaml</span><br><span class="line"></span><br><span class="line"># 获取文件所在目录</span><br><span class="line">base_dir = os.path.dirname(os.path.realpath(&#x27;__file__&#x27;))</span><br><span class="line"># 另一种获取目录的方法</span><br><span class="line">#base_dir = os.getcwd()</span><br><span class="line">#print(base_dir)</span><br><span class="line"></span><br><span class="line">file = open(os.path.join(base_dir, &#x27;config.yaml&#x27;))</span><br><span class="line">content = yaml.load(file, Loader=yaml.FullLoader)</span><br><span class="line">print(content)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>跑一下代码<code>python3 test.py</code>，结果如下(已格式化)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;张翠山&quot;,</span><br><span class="line">  &quot;age&quot;: 40,</span><br><span class="line">  &quot;son&quot;: </span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;张无忌&quot;,</span><br><span class="line">      &quot;age&quot;: 20,</span><br><span class="line">      &quot;sex&quot;: &quot;男&quot;,</span><br><span class="line">      &quot;GF&quot;: </span><br><span class="line">      [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;赵敏&quot;,</span><br><span class="line">          &quot;age&quot;: 20,</span><br><span class="line">          &quot;parent&quot;: </span><br><span class="line">          &#123;</span><br><span class="line">            &quot;mother&quot;: &quot;群演&quot;,</span><br><span class="line">            &quot;father&quot;: &quot;汝阳王&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;小昭&quot;,</span><br><span class="line">          &quot;age&quot;: 20,</span><br><span class="line">          &quot;parent&quot;: </span><br><span class="line">          &#123;</span><br><span class="line">            &quot;mother&quot;: &quot;黛绮丝&quot;,</span><br><span class="line">            &quot;father&quot;: &quot;韩千叶&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://pypi.org/project/pip/">pip</a></li>
+<li><a href="https://pypi.org/">扩展包</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2016/07/yaml.html">YAML教程</a></li>
+<li><a href="https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation">yaml.load</a></li>
+</ol>
 ]]></content>
       <categories>
-        <category>YAML</category>
+        <category>PL</category>
       </categories>
       <tags>
+        <tag>Python</tag>
+        <tag>pip</tag>
         <tag>YAML</tag>
         <tag>九子夺嫡</tag>
         <tag>爱新觉罗</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言文件读取的几种方式</title>
-    <url>/2016/12/12/Go-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>读取文件有三种方式：将文件整个读入内存、按字节数读取、按行读取。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、方式"><a href="#一、方式" class="headerlink" title="一、方式"></a>一、方式</h2><ol>
-<li>将文件整个读入内存</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">2. 按字节读取</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">3. 按行读取</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>```</p>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href="http://c.biancheng.net/view/5729.html">参考一</a></li>
-<li><a href="https://segmentfault.com/a/1190000017918542">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx反向代理go</title>
-    <url>/2016/11/01/Go-nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Go/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>客观是指不依赖于人的意识而存在的一切事物，经过研究推算得出的结论。主观与客观相反。</p>
-</blockquote>
-<span id="more"></span>
-
-
-<h2 id="一、安装nginx"><a href="#一、安装nginx" class="headerlink" title="一、安装nginx"></a>一、安装nginx</h2><h2 id="二、安装go"><a href="#二、安装go" class="headerlink" title="二、安装go"></a>二、安装go</h2><h2 id="三、代码"><a href="#三、代码" class="headerlink" title="三、代码"></a>三、代码</h2><ol>
-<li>cd ~/go/src &amp;&amp; mkdir web</li>
-<li>vim test.go</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;log&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;strings&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func printRequest(r *http.Request) &#123;</span><br><span class="line">	fmt.Println(&quot;r.Form=&quot;, r.Form)</span><br><span class="line">	fmt.Println(&quot;r.PostForm=&quot;, r.PostForm)</span><br><span class="line">	fmt.Println(&quot;path=&quot;, r.URL.Path)</span><br><span class="line">	fmt.Println(&quot;scheme=&quot;, r.URL.Scheme)</span><br><span class="line">	fmt.Println(&quot;method=&quot;, r.Method)</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Get参数列表&quot;)</span><br><span class="line">	for k, v := range r.Form &#123;</span><br><span class="line">		fmt.Println(&quot;Http Get[&quot;+k+&quot;]=&quot;, strings.Join(v, &quot; ; &quot;))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Post参数列表&quot;)</span><br><span class="line">	for k, v := range r.PostForm &#123;</span><br><span class="line">		fmt.Println(&quot;Http Post[&quot;+k+&quot;]=&quot;, strings.Join(v, &quot; ; &quot;))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;表单参数列表&quot;)</span><br><span class="line">	arraA := r.Form[&quot;a&quot;]</span><br><span class="line">	fmt.Println(&quot;r.Form[&#x27;a&#x27;]=&quot;, arraA)</span><br><span class="line">	if len(arraA) &gt; 0 &#123;</span><br><span class="line">		fmt.Println(&quot;r.Form[&#x27;a&#x27;][0]=&quot;, arraA[0])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func defaultFunc(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	r.ParseForm() //解析参数</span><br><span class="line">	fmt.Println(&quot;This is func default&quot;)</span><br><span class="line">	printRequest(r)</span><br><span class="line"></span><br><span class="line">	fmt.Fprintf(w, &quot;This is a default method&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func testFunc(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	r.ParseForm() //解析参数</span><br><span class="line">	fmt.Println(&quot;This is func test&quot;)</span><br><span class="line">	printRequest(r)</span><br><span class="line"></span><br><span class="line">	fmt.Fprintf(w, &quot;Func Test&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func anotherFunc(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line">	r.ParseForm() //解析参数</span><br><span class="line">	fmt.Println(&quot;This is func another&quot;)</span><br><span class="line">	printRequest(r)</span><br><span class="line"></span><br><span class="line">	fmt.Fprintf(w, &quot;Another Func&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	http.HandleFunc(&quot;/&quot;, defaultFunc)</span><br><span class="line">	http.HandleFunc(&quot;/test&quot;, testFunc)</span><br><span class="line">	http.HandleFunc(&quot;/another&quot;, anotherFunc)</span><br><span class="line"></span><br><span class="line">	err := http.ListenAndServe(&quot;:9090&quot;, nil)</span><br><span class="line"></span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		log.Fatal(&quot;Error:&quot;, err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>运行<code>go run test.go</code>，浏览器打开<code>localhost:9090</code>，可看到终端输出</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">This is func another</span><br><span class="line">r.Form= map[a:[b] id:[1]]</span><br><span class="line">r.PostForm= map[]</span><br><span class="line">path= /another</span><br><span class="line">scheme=</span><br><span class="line">method= GET</span><br><span class="line"></span><br><span class="line">Get参数列表</span><br><span class="line">Http Get[id]= 1</span><br><span class="line">Http Get[a]= b</span><br><span class="line"></span><br><span class="line">Post参数列表</span><br><span class="line"></span><br><span class="line">表单参数列表</span><br><span class="line">r.Form[&#x27;a&#x27;]= [b]</span><br><span class="line">r.Form[&#x27;a&#x27;][0]= b</span><br><span class="line">This is func default</span><br><span class="line">r.Form= map[]</span><br><span class="line">r.PostForm= map[]</span><br><span class="line">path= /favicon.ico</span><br><span class="line">scheme=</span><br><span class="line">method= GET</span><br><span class="line"></span><br><span class="line">Get参数列表</span><br><span class="line"></span><br><span class="line">Post参数列表</span><br><span class="line"></span><br><span class="line">表单参数列表</span><br><span class="line">r.Form[&#x27;a&#x27;]= []</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、设置反向代理"><a href="#四、设置反向代理" class="headerlink" title="四、设置反向代理"></a>四、设置反向代理</h2><ol>
-<li>进入nginx配置目录<code>cd /path/nginx/conf/vhost</code></li>
-<li>vim go.conf</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8081;</span><br><span class="line">    #server_name  go.cn;</span><br><span class="line"></span><br><span class="line">    access_log  logs/go.access.log;</span><br><span class="line">    error_log  logs/go.error.log;</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass  http://localhost:9090;#go 服务器可以指定到其他的机器上，这里设定本机服务器</span><br><span class="line">        </span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host             $host;</span><br><span class="line">        proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>运行<code>go run index.go</code>，浏览器打开<code>localhost:8081</code>，可看到对应输出</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>Nginx</tag>
-        <tag>反向代理</tag>
+        <tag>PyYAML</tag>
       </tags>
   </entry>
   <entry>
@@ -24327,6 +24755,7 @@ read_xlsx(name, sheet)
 </li>
 <li><a href="https://clickhouse.com/docs/zh/">ClickHouse</a></li>
 <li><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">tmux</a>，<a href="http://louiszhai.github.io/2017/09/30/tmux/">使用手册</a></li>
+<li><a href="https://www.apipost.cn/">ApiPost</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -25908,462 +26337,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Go语言多切片和数组</title>
-    <url>/2016/06/29/Go-%E5%88%87%E7%89%87%E5%92%8C%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>数组是同一类型元素的集合，Go语言中不允许混合不同类型的元素(interface{}类型数组可以包含任意类型)。切片是由数组建立的一种方便、灵活且功能强大的包装，它本身不拥有任何数据，只是对现有数组的引用。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>数组：是同一类型元素的集合，Go语言中不允许混合不同类型的元素(interface{}类型数组可以包含任意类型)。</p>
-<ul>
-<li>数组是值类型，意为当把数组a赋值给一个新的变量b时，变量b得到的只是一个原始数组a的副本，如果对新变量b进行更改则不会影响原始数组a。</li>
-<li>数组的下标从<code>0</code>开始.</li>
-</ul>
-</li>
-<li><p>切片：是由数组建立的一种方便、灵活且功能强大的包装，它本身不拥有任何数据，只是对现有数组的引用。</p>
-<ul>
-<li>切片是引用类型，同值类型刚好相反。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>数组</p>
-<ul>
-<li><p>声明方式</p>
-<ul>
-<li>只声明不初始化<code>var a [3]int</code>，此时a的所有元素都被赋值为整型<code>0</code></li>
-<li>声明并初始化(必须初始化所有元素)<ul>
-<li>简略模式声明：<code>a := [3]int&#123;1, 2, 3&#125;</code>，也可初始化部分元素：<code>a := [3]int&#123;1&#125;</code></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var a [3]int </span><br><span class="line">a[0] = 12 // array index starts at 0</span><br><span class="line">a[1] = 78</span><br><span class="line">a[2] = 50`</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>简略模式声明时不指定长度<code>a := [...]int&#123;12, 78, 50&#125;</code>，编译器会自动计算</li>
-</ul>
-</li>
-<li><p>数组长度<code>len(a)</code></p>
-</li>
-<li><p>遍历数组</p>
-<ul>
-<li>使用for循环</li>
-<li>使用range返回<code>key,value</code>，key可省略</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">func main() &#123;</span><br><span class="line">   c := [...]int&#123;1, 2&#125;</span><br><span class="line">for i := 0; i &lt; len(c); i++ &#123;</span><br><span class="line">	fmt.Printf(&quot;第 %d 个元素为：%d\n&quot;, i, c[i])</span><br><span class="line">&#125;</span><br><span class="line">   for i, v := range c &#123;</span><br><span class="line">       fmt.Printf(&quot;第 %d 个元素为：%d\n&quot;, i, v)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>切片</p>
-<ul>
-<li><p>声明方式</p>
-<ul>
-<li>基于数组arr创建<ul>
-<li><code>arr[:]</code></li>
-</ul>
-</li>
-<li>简略模式创建</li>
-<li>使用make创建</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line"> b := [5]int&#123;76, 77, 78, 79, 80&#125;</span><br><span class="line">    var c []int = b[:]</span><br><span class="line"> var d []int = b[1:4]</span><br><span class="line">    fmt.Println(c)</span><br><span class="line"> fmt.Println(d)</span><br><span class="line"></span><br><span class="line"> e := []int&#123;6, 7, 8&#125; // creates and array and returns a slice reference</span><br><span class="line"> fmt.Println(e)</span><br><span class="line"></span><br><span class="line"> f := make([]int, 5, 5)</span><br><span class="line"> fmt.Println(f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>追加元素<code>append(slice, element)</code></p>
-<ul>
-<li><code>...</code>运算符</li>
-</ul>
-</li>
-<li><p>切片长度<code>len(slice)</code></p>
-</li>
-<li><p>切片容量<code>cap(slice)</code></p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://golang.google.cn/">参考一</a></li>
-<li><a href="https://studygolang.com/articles/12121">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>Go</tag>
-        <tag>切片</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言基础</title>
-    <url>/2016/06/17/Go-%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>古人学问无遗力，少壮工夫老始成。纸上得来终觉浅，绝知此事要躬行。 —— 宋.陆游 《冬夜读书示子聿》</p>
-</blockquote>
-<span id="more"></span>
-
-<hr>
-<h1 id="Mac下go环境搭建"><a href="#Mac下go环境搭建" class="headerlink" title="Mac下go环境搭建"></a><center><font color=red>Mac下go环境搭建</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
-<li><p>通过安装包</p>
-<ul>
-<li><a href="https://golang.google.cn/doc/install?download=go1.13.3.darwin-amd64.pkg">下载</a>安装文件</li>
-<li>一路双击安装就行了</li>
-<li>配置环境变量<code>vim ~/.bash_profile</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#注意不要和GOROOT相同，否则会报warning: GOPATH set to GOROOT (/usr/local/go) has no effect</span><br><span class="line">export GOPATH=~/go  #GOPATH是自定义的工作空间，它是日常开发的根目录。</span><br><span class="line">export GOBIN=/usr/local/go/bin</span><br><span class="line">export PATH=$PATH:$GOBIN</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过Homebrew安装</p>
-<ul>
-<li><code>brew install go</code></li>
-</ul>
-</li>
-<li><p>相关命令</p>
-<ul>
-<li>查看版本<code>go version</code></li>
-<li>查看环境变量<code>go env</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="二、测试"><a href="#二、测试" class="headerlink" title="二、测试"></a>二、测试</h2><ol>
-<li><p><code>vim main.go</code></p>
-</li>
-<li><p>写入以下脚本</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line">import(&quot;fmt&quot;)</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">    fmt.Println(&quot;It works!&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>生成可执行文件 <code>go build main.go</code></li>
-<li>运行可执行文件 <code>./main</code></li>
-</ol>
-<h2 id="三、vs-code开发配置"><a href="#三、vs-code开发配置" class="headerlink" title="三、vs code开发配置"></a>三、vs code开发配置</h2><ol>
-<li><p>vs code开发时自动导入包</p>
-<ul>
-<li>command+shift+P</li>
-<li>go:install/update tools</li>
-<li>将所有16个插件都勾选上安装</li>
-</ul>
-</li>
-<li><p>vs code安装tools超时失败</p>
-<ul>
-<li>自动下载：<code>go env -w GO111MODULE=on</code></li>
-<li>设置代理：<code>go env -w GOPROXY=https://goproxy.cn,direct</code></li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="package和import"><a href="#package和import" class="headerlink" title="package和import"></a><center><font color=red>package和import</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>Go语言使用包<code>package</code>来管理定义模块，使用<code>import</code>导入模块。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://chai2010.cn/">参考一</a></li>
-<li><a href="https://studygolang.com/articles/18395">参考二</a></li>
-</ol>
-<hr>
-<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a><center><font color=red>基本数据类型</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>在Go编程语言中，数据类型用于声明函数和变量，它的出现是为了合理分配利用内存，根据需求把数据分成不同的内存大小，避免不必要的内存浪费。</p>
-</li>
-<li><p>Go语言数据类型包含基本类型和复合类型两大类。</p>
-<ul>
-<li>基本数据类型包括：布尔型、字符串型、数值型(整型、浮点型、复数型)、错误类型。</li>
-<li>复合数据类型包括：数组、结构体、指针、切片、字典(也称map)、通道、函数、接口。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.runoob.com/go/go-tutorial.html">参考一</a></li>
-</ol>
-<hr>
-<h1 id="env说明"><a href="#env说明" class="headerlink" title="env说明"></a><center><font color=red>env说明</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><blockquote>
-<p>go env命令用于打印Go语言的环境变量信息，也可进行设置环境变量信息。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GO111MODULE=&quot;&quot; </span><br><span class="line">GOARCH=&quot;amd64&quot;</span><br><span class="line">GOBIN=&quot;&quot;</span><br><span class="line">GOCACHE=&quot;***&quot;</span><br><span class="line">GOENV=&quot;***&quot;</span><br><span class="line">GOEXE=&quot;&quot;</span><br><span class="line">GOFLAGS=&quot;&quot;</span><br><span class="line">GOHOSTARCH=&quot;amd64&quot;</span><br><span class="line">GOHOSTOS=&quot;darwin&quot;</span><br><span class="line">GONOPROXY=&quot;&quot;</span><br><span class="line">GONOSUMDB=&quot;&quot;</span><br><span class="line">GOOS=&quot;darwin&quot;</span><br><span class="line">GOPATH=&quot;***&quot;</span><br><span class="line">GOPRIVATE=&quot;&quot;</span><br><span class="line">GOPROXY=&quot;https://proxy.golang.org,direct&quot;</span><br><span class="line">GOROOT=&quot;/usr/local/go&quot;</span><br><span class="line">GOSUMDB=&quot;sum.golang.org&quot;</span><br><span class="line">GOTMPDIR=&quot;&quot;</span><br><span class="line">GOTOOLDIR=&quot;/usr/local/go/pkg/tool/darwin_amd64&quot;</span><br><span class="line">GCCGO=&quot;gccgo&quot;</span><br><span class="line">AR=&quot;ar&quot;</span><br><span class="line">CC=&quot;clang&quot;</span><br><span class="line">CXX=&quot;clang++&quot;</span><br><span class="line">CGO_ENABLED=&quot;1&quot;</span><br><span class="line">GOMOD=&quot;&quot;</span><br><span class="line">CGO_CFLAGS=&quot;-g -O2&quot;</span><br><span class="line">CGO_CPPFLAGS=&quot;&quot;</span><br><span class="line">CGO_CXXFLAGS=&quot;-g -O2&quot;</span><br><span class="line">CGO_FFLAGS=&quot;-g -O2&quot;</span><br><span class="line">CGO_LDFLAGS=&quot;-g -O2&quot;</span><br><span class="line">PKG_CONFIG=&quot;pkg-config&quot;</span><br><span class="line">GOGCCFLAGS=&quot;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/14/kx973qc93bn0kpgymsb01xbh0000gn/T/go-build470845532=/tmp/go-build -gno-record-gcc-switches -fno-common&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、常用"><a href="#二、常用" class="headerlink" title="二、常用"></a>二、常用</h2><table>
-<thead>
-<tr>
-<th align="center">参数名</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">GCCGO</td>
-<td align="left">构建时时候所用编译器</td>
-</tr>
-<tr>
-<td align="center">GOARCH</td>
-<td align="left">计算机处理器的架构(常见如amd64、arm等)</td>
-</tr>
-<tr>
-<td align="center">GOBIN</td>
-<td align="left">存放可执行文件的绝对路径</td>
-</tr>
-<tr>
-<td align="center">GOCACHE</td>
-<td align="left">存储编译后信息的缓存目录</td>
-</tr>
-<tr>
-<td align="center">GOFLAGS</td>
-<td align="left">go命令能够识别的标记(可以是多个，中间用空格隔开)</td>
-</tr>
-<tr>
-<td align="center">GOOS</td>
-<td align="left">编译代码的操作系统名称(如linux、windows、darwin等)，用于交叉编译</td>
-</tr>
-<tr>
-<td align="center">GOPATH</td>
-<td align="left">工作区所在的绝对目录</td>
-</tr>
-<tr>
-<td align="center">GOPROXY</td>
-<td align="left">go module目录所在的地址</td>
-</tr>
-<tr>
-<td align="center">GOROOT</td>
-<td align="left">Go语言的安装目录的绝对路径</td>
-</tr>
-<tr>
-<td align="center">GOTOOLDIR</td>
-<td align="left">Go工具目录的绝对路径</td>
-</tr>
-<tr>
-<td align="center">CGO_ENABLED</td>
-<td align="left">指明cgo工具是否可用的标识</td>
-</tr>
-<tr>
-<td align="center">GOEXE</td>
-<td align="left">可执行文件的后缀</td>
-</tr>
-<tr>
-<td align="center">GOHOSTARCH</td>
-<td align="left">程序运行环境的目标计算架构</td>
-</tr>
-<tr>
-<td align="center">GOHOSTOS</td>
-<td align="left">程序运行环境的目标操作系统</td>
-</tr>
-</tbody></table>
-<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.zhangbj.com/p/256.html">参考一</a></li>
-<li><a href="https://studygolang.com/">参考二</a></li>
-</ol>
-<hr>
-<h1 id="常见web框架"><a href="#常见web框架" class="headerlink" title="常见web框架"></a><center><font color=red>常见web框架</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件框架(software framework)，通常指的是为了实现某个业界标准或完成特定基本任务的软件组件规范，也指为了实现某个软件组件规范时，提供规范所要求之基础功能的软件产品。Web框架，全称web应用框架(Web application framework)是一种开发框架，用来支持动态网站、网络应用程序及网络服务的开发。</p>
-<h2 id="二、常见"><a href="#二、常见" class="headerlink" title="二、常见"></a>二、常见</h2><ol>
-<li><a href="https://beego.me/">Beego</a></li>
-<li><a href="https://github.com/gin-gonic/gin">Gin</a></li>
-<li><a href="https://www.iris-go.com/">Iris</a></li>
-<li><a href="https://echo.labstack.com/">Echo</a></li>
-<li><a href="https://gobuffalo.io/en/">Buffalo</a></li>
-<li><a href="https://github.com/revel/revel">Revel</a></li>
-</ol>
-<h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.zhihu.com/question/27370112">参考一</a></li>
-<li><a href="https://blog.csdn.net/bluehawksky/article/details/90447467">参考二</a></li>
-</ol>
-<hr>
-<h1 id="多返回值"><a href="#多返回值" class="headerlink" title="多返回值"></a><center><font color=red>多返回值</font></center></h1><h2 id="一、概念-4"><a href="#一、概念-4" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数的函数名即是该函数的代表，也是一个变量。由于函数名变量通常用来把函数的处理结果数据返回给调用函数，即递归调用，所以一般把函数名变量称为返回值，函数的返回值类型是在定义函数时指定的。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go一个非常特别的特性(对于编译语言而言)是函数和方法可以返回多个值(Python和Perl同样也可以)。这可以用于改进一大堆在C程序中糟糕的惯例用法：修改参数的方式，返回一个错误(例如遇到EOF则返回-1)。Go函数的返回值或者结果参数可以指定一个名字(名字不是强制的，但是它们可以使得代码更加健壮和清晰)，并且像原始的变量那样使用，就像输入参数那样。如果对其命名，在函数开始时，它们会用其类型的零值初始化。如果函数在不加参数的情况下执行了return语句，结果参数会返回。用这个特性，允许(再一次的)用较少的代码做更多的事。</p>
-<h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>普通例子</p>
-<ul>
-<li>代码(test.go)</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func multiReturn() (a int, b int, c int) &#123;</span><br><span class="line">	a, b, c = 111, 222, 333</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	a, b, c := multiReturn()</span><br><span class="line">	fmt.Printf(&quot;a = %d, b = %d, c = %d\n&quot;, a, b, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>运行<ul>
-<li>方式一：<code>go run test.go</code></li>
-<li>方式二：<code>go build test.go &amp;&amp; ./test</code></li>
-<li>方式三：<a href="https://play.golang.org">在线运行</a></li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>错误处理</li>
-</ol>
-<h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://golang.google.cn/">参考一</a></li>
-</ol>
-<hr>
-<h1 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a><center><font color=red>交叉编译</font></center></h1><h2 id="一、概念-5"><a href="#一、概念-5" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很多时候会有这样的场景出现，使用Mac开发或使用Windows开发，需要编译成Linux系统的执行文件，此时就需要用到交叉编译。在<code>1.5+</code>版本后(通过自举)，Go程序编译时可通过设置环境变量实现交叉编译，从而大大提高了开发效率。</p>
-<blockquote>
-<p>编程语言的自举就是完全依靠自身语言(如go)写出自己的编译器、解释器来编译自身。</p>
-</blockquote>
-<h2 id="二、使用-3"><a href="#二、使用-3" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>可通过<code>go tool dist list</code>查看当前版本支持的系统和架构</li>
-</ol>
-<blockquote>
-<p>常见如下：</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">GOOS</th>
-<th align="center">GOARCH</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">darwin</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">darwin</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">darwin</td>
-<td align="center">arm</td>
-</tr>
-<tr>
-<td align="center">darwin</td>
-<td align="center">arm64</td>
-</tr>
-<tr>
-<td align="center">dragonfly</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">freebsd</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">freebsd</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">freebsd</td>
-<td align="center">arm</td>
-</tr>
-<tr>
-<td align="center">linux</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">linux</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">linux</td>
-<td align="center">arm</td>
-</tr>
-<tr>
-<td align="center">linux</td>
-<td align="center">arm64</td>
-</tr>
-<tr>
-<td align="center">linux</td>
-<td align="center">ppc64</td>
-</tr>
-<tr>
-<td align="center">linux</td>
-<td align="center">ppc64le</td>
-</tr>
-<tr>
-<td align="center">netbsd</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">netbsd</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">netbsd</td>
-<td align="center">arm</td>
-</tr>
-<tr>
-<td align="center">openbsd</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">openbsd</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">openbsd</td>
-<td align="center">arm</td>
-</tr>
-<tr>
-<td align="center">plan9</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">plan9</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">solaris</td>
-<td align="center">amd64</td>
-</tr>
-<tr>
-<td align="center">windows</td>
-<td align="center">386</td>
-</tr>
-<tr>
-<td align="center">windows</td>
-<td align="center">amd64</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li>使用<ul>
-<li>main.go</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;runtime&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	fmt.Printf(&quot;OS: %s\nArchitecture: %s\n&quot;, runtime.GOOS, runtime.GOARCH)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>windows/linux/mac<ul>
-<li>CGO_ENABLED=0 GOOS=window GOARCH=amd64 go build main.go</li>
-<li>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go</li>
-<li>CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build main.go</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>默认情况下Go环境变量<code>CGO_ENABLED=1</code>(可通过<code>go env</code>查看)，即默认开启cgo，意为允许在Go代码中调用C代码。<ul>
-<li>要使用CGO特性，需要安装<code>C/C++</code>构建工具链，在MacOS和Linux下是要安装GCC，在windows下是需要安装MinGW工具，同时需要保证环境变量CGO_ENABLED被设置为1，这表示CGO是被启用的状态。</li>
-<li>交叉编译时CGO默认是禁止的，亦可在编译时指定CGO_ENABLED=0。</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;runtime&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void sayHello()&#123;</span><br><span class="line">	int a;</span><br><span class="line">	printf(&quot;请输入数字：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">    printf(&quot;a的值为：%d&quot;, a);</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br><span class="line">import &quot;C&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	fmt.Printf(&quot;OS: %s\nArchitecture: %s\n&quot;, runtime.GOOS, runtime.GOARCH)</span><br><span class="line">	C.sayHello()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<p>CGO_ENABLED=1 go run main.go</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>CGO_ENABLED=0 go run main.go</p>
-</blockquote>
-</blockquote>
-<h2 id="三、参考-5"><a href="#三、参考-5" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
-        <tag>多返回值</tag>
-        <tag>env</tag>
-        <tag>web</tag>
-        <tag>Beego</tag>
-        <tag>Gin</tag>
-        <tag>Iris</tag>
-        <tag>Echo</tag>
-        <tag>Buffalo</tag>
-        <tag>Revel</tag>
-        <tag>交叉编译</tag>
-        <tag>自举</tag>
-        <tag>CGO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java关键字volatile</title>
     <url>/2016/06/10/Java-%E5%85%B3%E9%94%AE%E5%AD%97volatile/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -26679,8 +26652,8 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Ruby入门</title>
-    <url>/2016/05/05/Ruby-%E5%85%A5%E9%97%A8/</url>
+    <title>Ruby</title>
+    <url>/2016/05/05/PL-Ruby/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>认知，是指人们获得知识或应用知识的过程，或信息加工的过程，这是人的最基本的心理过程。它包括感觉、知觉、记忆、思维、想像和语言等。人脑接受外界输入的信息，经过头脑的加工处理，转换成内在的心理活动，进而支配人的行为，这个过程就是信息加工的过程，也就是认知过程。</p>
 </blockquote>
@@ -26692,7 +26665,7 @@ read_xlsx(name, sheet)
 </ol>
 ]]></content>
       <categories>
-        <category>Ruby</category>
+        <category>PL</category>
       </categories>
       <tags>
         <tag>Ruby</tag>
@@ -31965,80 +31938,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Go语言结构体struct</title>
-    <url>/2015/06/17/Go-%E7%BB%93%E6%9E%84%E4%BD%93struct/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>和C语言类似，结构体是一种用户自定义的可用的数据类型，它允许存储不同类型的数据项。同时结构体是一种值类型，在不包含引用类型的情况下可以进行等值<code>==</code>比较。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和C语言类似，结构体是一种用户自定义的可用的数据类型，它允许存储不同类型的数据项。同时结构体是一种值类型，在不包含引用类型的情况下可以进行等值<code>==</code>比较。</p>
-<ol>
-<li><p>分类</p>
-<ul>
-<li>命名结构体</li>
-<li>匿名结构体</li>
-</ul>
-</li>
-<li><p>访问控制</p>
-<ul>
-<li>结构体内部变量的首字母大写是公开变量，无访问限制。</li>
-<li>结构体内部变量的首字母小写是内部变量，只有属于同一个package的代码才能直接访问。</li>
-</ul>
-</li>
-<li><p>结构体类型定义方法，表明该方法的适用对象是当前结构体，具体做法是在func关键字和方法名之间加入接收者</p>
-<ul>
-<li>值类型</li>
-<li>指针类型</li>
-</ul>
-</li>
-<li><p>进阶</p>
-<ul>
-<li>空结构体及其应用</li>
-<li>结构体匿名字段</li>
-<li>嵌套结构体<ul>
-<li>方法和字段提升</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>声明结构体</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type 结构体名 struct &#123;</span><br><span class="line">    属性名1 类型 `tag`</span><br><span class="line">    属性名2 类型 `tag`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如：</span><br><span class="line">type Person struct &#123;</span><br><span class="line">    Name string</span><br><span class="line">    age int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>创建结构体变量</p>
-<ul>
-<li>直接声明：<code>var p1 Person</code></li>
-<li>用大括号：<code>p2 := Person&#123;&#125;</code></li>
-<li><code>new</code>方式：<code>var p3Point = new(Person)</code></li>
-<li><code>&amp;</code>方式：<code>var p4Point = &amp;Person&#123;&quot;王5&quot;, 22&#125;</code></li>
-</ul>
-</li>
-<li><p>定义方法</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">    Name string</span><br><span class="line">    age int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (p Person) say() float64 &#123;</span><br><span class="line">    fmt.Println(&quot;hello&quot;)</span><br><span class="line">    return 1.1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://studygolang.com/articles/12263">参考一</a></li>
-<li><a href="https://geektutu.com/post/hpg-empty-struct.html">参考二</a></li>
-<li><a href="https://juejin.cn/post/6844903814168838151">参考三</a></li>
-<li><a href="https://juejin.cn/post/6844904196781637640">参考四</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>结构体</tag>
-        <tag>struct</tag>
-        <tag>Go</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言预处理</title>
     <url>/2015/06/11/C-%E9%A2%84%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -34746,23 +34645,6 @@ read_xlsx(name, sheet)
         <tag>内存溢出</tag>
         <tag>内存泄露</tag>
         <tag>野指针</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown入门</title>
-    <url>/2015/01/04/Markdown-%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>rpm命令是RPM软件包的管理工具。rpm原本是Red Hat Linux发行版专门用来管理Linux各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM套件管理方式的出现，让Linux易于安装，升级，间接提升了Linux的适用度。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯(John Gruber)。它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的HTML文档。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、常用工具"><a href="#三、常用工具" class="headerlink" title="三、常用工具"></a>三、常用工具</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2>]]></content>
-      <categories>
-        <category>Markdown</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -39401,6 +39283,8 @@ read_xlsx(name, sheet)
 <li><a href="https://www.kancloud.cn/study_team/php_array/482879">php删除数组中指定值的元素的几种方法</a></li>
 <li><a href="https://blog.csdn.net/u011132987/article/details/47398995">压缩编码哪种最好</a></li>
 <li><a href="https://github.com/shuchkin/simplexlsx">上传xlsx</a></li>
+<li><a href="https://github.com/pangudashu/php7-internal">PHP7内核剖析</a></li>
+<li><a href="https://www.php.net/manual/zh/features.gc.php">垃圾回收机制</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -42021,233 +41905,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>收集</title>
-    <url>/2014/02/02/Front-%E6%94%B6%E9%9B%86/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>JavaScript是一种多范式的动态语言，它包含类型、运算符、标准内置(built-in)对象和方法。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、学习资料"><a href="#一、学习资料" class="headerlink" title="一、学习资料"></a>一、学习资料</h2><ol>
-<li><a href="https://www.cnblogs.com/penghuwan/p/12239817.html">CSS动效集锦</a></li>
-</ol>
-<h2 id="二、知识点"><a href="#二、知识点" class="headerlink" title="二、知识点"></a>二、知识点</h2><ol>
-<li><p>Vue知识点</p>
-<ul>
-<li>vue的生命周期（共11个）</li>
-<li>vue父子组件之间传值</li>
-<li>vue获取DOM元素</li>
-<li>router几种跳转方式，如何传参和接受参数，导航守卫是什么</li>
-<li>vuex五种状态(state, getter, mutation, action, module)</li>
-<li>vue 中的 data 为什么是一个函数</li>
-<li>vue 双向绑定原理</li>
-<li>vue等单页面的优缺点</li>
-<li>加了keep-alivce后增加了什么周期？多了什么钩子函数？分别是做什么的</li>
-<li>vue双向数据绑定在什么时候收集订阅者，怎么收集的</li>
-<li>会话存储和本地存储的区别</li>
-<li>什么是WebSQL，是H5的一部分吗</li>
-<li>vue、react、angular的区别？vuex和axios的作用？用过哪些UI框架？</li>
-<li>vue的路由实现：hash模式和history模式</li>
-<li>node.js文件读写方式和实现</li>
-<li>JavaScript几种异步方法和原理</li>
-<li>addEventListener的使用和作用域</li>
-</ul>
-</li>
-<li><p>面试题</p>
-<ul>
-<li>用到了es6的哪些特性，有什么感受，跟es5对比有什么不同？</li>
-<li>webpack常用的哪些功能，自己的理解，和gulp对比有什么不同？</li>
-<li>闭包的作用与举例</li>
-<li>js的原型链和继承</li>
-<li>vue生命周期</li>
-<li>父组件和子组件之间的通信</li>
-<li>3个vue常用的生命周期的钩子函数</li>
-<li>vue.cli怎么使用自定义组件</li>
-<li>vuex有哪几种特性</li>
-</ul>
-</li>
-<li><p>ajax技术</p>
-<ul>
-<li><code>Ajax</code>，异步JavaScript和XML，全称<code>Asynchronous Javascript And XML</code>，是指一种创建交互式网页应用的网页开发技术。它用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，可以在无需重新加载整个网页的情况下异步更新部分网页的内容</li>
-<li>支持的方法<ul>
-<li>$.ajax():返回其创建的 XMLHttpRequest 对象。</li>
-<li>$.get():通过远程 HTTP GET 请求载入信息</li>
-<li>$.post():通过远程 HTTP POST 请求载入信息。</li>
-<li>$.getJSON():通过 HTTP GET 请求载入 JSON 数据。</li>
-</ul>
-</li>
-<li>ajax请求失败：<ul>
-<li>dataType错误:后台返回的dataType类型和前台写的不一致</li>
-<li>async请求同步异步问题：async默认是true(异步请求),如果想一个ajax执行完后再执行另一个ajax, 需要把async=false </li>
-<li>data不能不写data为空也一定要传”{}” </li>
-<li>传递的参数：必须是ajax支持的编码格式(xml html json script jsonp text) E. URL路径问题  </li>
-</ul>
-</li>
-<li>问题<ul>
-<li>ajax跨域请求</li>
-<li>ajax同步异步</li>
-<li>ajax请求可以正常返回json数据，但弹窗没反应</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>前端三大框架</p>
-<ul>
-<li>React<ul>
-<li>特性</li>
-<li>原理</li>
-</ul>
-</li>
-<li>Vue<ul>
-<li>特性</li>
-<li>原理</li>
-</ul>
-</li>
-<li>Angular<ul>
-<li>特性</li>
-<li>原理</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>跨域请求</p>
-<ul>
-<li>浏览器同源策略：只有当协议、域名和端口号相同才成为同源。</li>
-<li>非同源限制<ul>
-<li>cookie、localStorage、indexDB无法读取</li>
-<li>DOM 无法获得</li>
-<li>ajax请求不能发送</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>sass和less</p>
-<ul>
-<li>sass和less都是css的预编译处理语言，他们引入了mixins，参数，嵌套规则，运算，颜色，名字空间，作用域，JavaScript赋值等加快了css开发效率。</li>
-<li>对比<ul>
-<li>less是基于JavaScript的在客户端处理，所以安装的时候用npm</li>
-<li>sass是基于ruby所以在服务器处理</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>js中null和空字符串</p>
-<ul>
-<li><p>类型</p>
-<ul>
-<li>null表示的是一个对象的值，而并不是一个字符串，如声明一个变量 <code>var str = null</code>;</li>
-<li>“”表示的是一个长度为0空字符串，如声明一个变量 <code>var str = &quot;&quot;</code>;</li>
-</ul>
-</li>
-<li><p>内存分配</p>
-<ul>
-<li>var str = null ; 表示声明一个字符串对象的引用，但指向为null，也就是说还没有指向任何的内存空间；</li>
-<li>var str = “”;    表示声明一个字符串类型的引用，其值为””空字符串，这个str引用指向的是空字符串的内存空间；</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(typeof null)  //object</span><br><span class="line">console.log(typeof &quot;&quot;)    //string</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>等值判断</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;&#x27; == null) // false</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>扩展</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(0 == &#x27;&#x27;)   //true </span><br><span class="line">console.log(0 == null) //false </span><br><span class="line"></span><br><span class="line">console.log(false == &#x27;&#x27;)   //true</span><br><span class="line">console.log(false == null) //false </span><br><span class="line"></span><br><span class="line">console.log(undefined == &#x27;&#x27;)   //false </span><br><span class="line">console.log(undefined == null) //true</span><br></pre></td></tr></table></figure></li>
-<li><p>ES/ECMAScript</p>
-<ul>
-<li>ECMAScript 和 JavaScript 是什么关系？<ul>
-<li>1996 年 11 月，JavaScript 的创造者 Netscape 公司，决定将 JavaScript 提交给标准化组织 ECMA，希望这种语言能够成为国际标准。次年，ECMA 发布 262 号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为 ECMAScript，这个版本就是 1.0 版。</li>
-<li>该标准从一开始就是针对 JavaScript 语言制定的，但是之所以不叫 JavaScript，有两个原因。一是商标，Java 是 Sun 公司的商标，根据授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 本身也已经被 Netscape 公司注册为商标。二是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。</li>
-<li>因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 JScript 和 ActionScript）。日常场合，这两个词是可以互换的。</li>
-</ul>
-</li>
-<li>ES6 与 ECMAScript 2015 的关系<ul>
-<li>2011 年，ECMAScript 5.1 版发布后，就开始制定 6.0 版了。因此，ES6 这个词的原意是指 JavaScript 语言的下一个版本。</li>
-<li>但是因为这个版本引入的语法功能太多，而且制定过程当中，还有很多组织和个人不断提交新功能。事情很快就变得清楚了，不可能在一个版本里面包括所有将要引入的功能。常规的做法是先发布 6.0 版，过一段时间再发 6.1 版，然后是 6.2 版、6.3 版等。但是标准的制定者不想这样做。他们想让标准的升级成为常规流程：任何人在任何时候，都可以向标准委员会提交新语法的提案，然后标准委员会每个月开一次会，评估这些提案是否可以接受，需要哪些改进。如果经过多次会议以后，一个提案足够成熟了，就可以正式进入标准了。这就是说，标准的版本升级成为了一个不断滚动的流程，每个月都会有变动。</li>
-<li>标准委员会最终决定，标准在每年的 6 月份正式发布一次，作为当年的正式版本。接下来的时间，就在这个版本的基础上做改动，直到下一年的 6 月份，草案就自然变成了新一年的版本。这样一来，就不需要以前的版本号了，只要用年份标记就可以了。</li>
-<li><strong>ES6 的第一个版本，就这样在 2015 年 6 月发布了，正式名称就是《ECMAScript 2015 标准》（简称 ES2015）。</strong>2016 年 6 月，小幅修订的《ECMAScript 2016 标准》（简称 ES2016）如期发布，这个版本可以看作是 ES6.1 版，因为两者的差异非常小（只新增了数组实例的includes方法和指数运算符），基本上是同一个标准。根据计划，2017 年 6 月发布 ES2017 标准。</li>
-<li>因此，ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等等，而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。本书中提到 ES6 的地方，一般是指 ES2015 标准，但有时也是泛指“下一代 JavaScript 语言”。</li>
-</ul>
-</li>
-<li>ES5、ES6对比</li>
-<li><a href="http://es6.ruanyifeng.com/#docs/intro">参考</a></li>
-</ul>
-</li>
-<li><p>包管理grunt-gulp-webpack</p>
-</li>
-<li><p>jquery选择器</p>
-<ul>
-<li><p>基本选择器</p>
-</li>
-<li><p>#id  </p>
-</li>
-<li><p>element  </p>
-</li>
-<li><p>class  </p>
-</li>
-<li><p><code>*</code> </p>
-</li>
-<li><p>selector1,selector2,selectorN</p>
-</li>
-<li><p>层级选择器</p>
-</li>
-<li><p>ancestor descendant  </p>
-</li>
-<li><p>parent&gt;child  </p>
-</li>
-<li><p>prev+next  </p>
-</li>
-<li><p>prev ~ siblings</p>
-</li>
-<li><p>过滤选择器</p>
-</li>
-<li><p>基本过滤选择器 <code>:first/:last  :not  :even、:odd  :eq、:gt、:lt  :header  :animated</code></p>
-</li>
-<li><p>内容过滤选择器 <code>:contains、:empty、:has、:parent</code></p>
-</li>
-<li><p>可见性过滤选择器 <code>:hidden  :visible</code></p>
-</li>
-<li><p>属性过滤选择器</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[attribute]  [attribute=value]  [attribute!=value]  [attribute^=value]</span><br><span class="line">[attribute$=value]  [attribute*=value]  [selector][selector2]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>子元素过滤选择器 ·:nth-child   :first-child last-child   :only-child`</p>
-</li>
-<li><p>表单对象属性过滤选择器</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">:enabled、:disabled  :checked  :selected</span><br><span class="line">:input  :text、:password  :radio、:checkbox</span><br><span class="line">:submit、:image、:reset、:button、:file  :hidden</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JSONP:JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于<code>server1.example.com</code>的网页无法与不是<code>server1.example.com</code>的服务器沟通，而<code>HTML</code>的<code>&lt;script&gt;</code>元素是一个例外。利用<code>&lt;script&gt;</code>元素的这个开放策略，网页可以得到从其他来源动态产生的JSON资料，而这种使用模式就是所谓的JSONP。用JSONP抓到的资料并不是JSON，而是任意的JavaScript，用JavaScript直译器执行而不是用JSON解析器解析。</p>
-</li>
-</ol>
-<ul>
-<li>index.html</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;  </span><br><span class="line">    &lt;head&gt;  </span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;  </span><br><span class="line">        &lt;title&gt;jsonp&lt;/title&gt;  </span><br><span class="line">        &lt;script src=&quot;https://code.jquery.com/jquery-3.3.1.js&quot; integrity=&quot;sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;  </span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;  </span><br><span class="line">    $(function()&#123;   </span><br><span class="line">        // 方式一  </span><br><span class="line">        // $.ajax(&#123;</span><br><span class="line">        //     url:&quot;index.php&quot;,//将要请求的方式</span><br><span class="line">        //     type:&#x27;get&#x27;,</span><br><span class="line">        //     data:&quot;&quot;,</span><br><span class="line">        //     dataType:&#x27;jsonp&#x27;,</span><br><span class="line">        //     jsonp: &quot;callback&quot;,</span><br><span class="line">        //     contentType: &quot;application/json&quot;,//contentTy类型</span><br><span class="line">        //     jsonpCallback:&quot;flightHandler&quot;,//自定义的jsonp回调函数名称</span><br><span class="line">        //     success: function(data) &#123;</span><br><span class="line">        //         alert(data);</span><br><span class="line">        //     &#125;,</span><br><span class="line">        //     error: function() &#123;</span><br><span class="line">        //         alert(0);</span><br><span class="line">        //     &#125;</span><br><span class="line">        // &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    // 方式二步骤1</span><br><span class="line">    function flightHandler(data) &#123;</span><br><span class="line">        alert(data);</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/script&gt;  </span><br><span class="line">    &lt;!-- 方式二步骤2 --&gt;</span><br><span class="line">    &lt;script src=&quot;index.php?callback=flightHandler&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;body&gt;  </span><br><span class="line">        &lt;div id=&quot;showcontent&quot;&gt;Result:&lt;/div&gt;  </span><br><span class="line">    &lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;  </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>index.php</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$call = $_GET[&#x27;callback&#x27;];</span><br><span class="line">$data = &#x27;[&quot;111&quot;,&quot;222&quot;]&#x27;;</span><br><span class="line">echo $call.&quot;(&quot; . $data . &quot;)&quot;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Front</category>
-      </categories>
-      <tags>
-        <tag>收集</tag>
-        <tag>前端</tag>
-        <tag>JS</tag>
-        <tag>ajax</tag>
-        <tag>sass</tag>
-        <tag>less</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL各种日志</title>
     <url>/2013/11/06/MySQL-%E5%90%84%E7%A7%8D%E6%97%A5%E5%BF%97/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -43469,6 +43126,7 @@ read_xlsx(name, sheet)
 <li><a href="https://cloud.tencent.com/developer/article/1592913">大文件小内存排序问题</a></li>
 <li><a href="https://github.com/microsoft/terminal/tree/v1.11.2731.0">Windows Terminal, Console and Command-Line</a></li>
 <li><a href="http://www.cygwin.com/">Cygwin</a></li>
+<li><a href="https://github.com/bitleak/lmstfy">LMSTFY</a></li>
 </ol>
 <h2 id="二、常用"><a href="#二、常用" class="headerlink" title="二、常用"></a>二、常用</h2><ol>
 <li><p>使用vim时，如果不小心按了<code>ctrl + s</code>后，终端窗口就动不了了，只需按<code>ctrl + q</code>即可恢复正常。</p>
@@ -43699,6 +43357,189 @@ read_xlsx(name, sheet)
 </ul>
 </li>
 </ol>
+<ol start="31">
+<li><a href="https://www.cnblogs.com/penghuwan/p/12239817.html">CSS动效集锦</a></li>
+</ol>
+<ol start="32">
+<li><p>Vue知识点</p>
+<ul>
+<li>vue的生命周期（共11个）</li>
+<li>vue父子组件之间传值</li>
+<li>vue获取DOM元素</li>
+<li>router几种跳转方式，如何传参和接受参数，导航守卫是什么</li>
+<li>vuex五种状态(state, getter, mutation, action, module)</li>
+<li>vue 中的 data 为什么是一个函数</li>
+<li>vue 双向绑定原理</li>
+<li>vue等单页面的优缺点</li>
+<li>加了keep-alivce后增加了什么周期？多了什么钩子函数？分别是做什么的</li>
+<li>vue双向数据绑定在什么时候收集订阅者，怎么收集的</li>
+<li>会话存储和本地存储的区别</li>
+<li>什么是WebSQL，是H5的一部分吗</li>
+<li>vue、react、angular的区别？vuex和axios的作用？用过哪些UI框架？</li>
+<li>vue的路由实现：hash模式和history模式</li>
+<li>node.js文件读写方式和实现</li>
+<li>JavaScript几种异步方法和原理</li>
+<li>addEventListener的使用和作用域</li>
+</ul>
+</li>
+<li><p>面试题</p>
+<ul>
+<li>用到了es6的哪些特性，有什么感受，跟es5对比有什么不同？</li>
+<li>webpack常用的哪些功能，自己的理解，和gulp对比有什么不同？</li>
+<li>闭包的作用与举例</li>
+<li>js的原型链和继承</li>
+<li>vue生命周期</li>
+<li>父组件和子组件之间的通信</li>
+<li>3个vue常用的生命周期的钩子函数</li>
+<li>vue.cli怎么使用自定义组件</li>
+<li>vuex有哪几种特性</li>
+</ul>
+<ol start="34">
+<li>ajax技术</li>
+</ol>
+<ul>
+<li><code>Ajax</code>，异步JavaScript和XML，全称<code>Asynchronous Javascript And XML</code>，是指一种创建交互式网页应用的网页开发技术。它用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，可以在无需重新加载整个网页的情况下异步更新部分网页的内容</li>
+<li>支持的方法</li>
+<li>$.ajax():返回其创建的 XMLHttpRequest 对象。</li>
+<li>$.get():通过远程 HTTP GET 请求载入信息</li>
+<li>$.post():通过远程 HTTP POST 请求载入信息。</li>
+<li>$.getJSON():通过 HTTP GET 请求载入 JSON 数据。</li>
+<li>ajax请求失败：</li>
+<li>dataType错误:后台返回的dataType类型和前台写的不一致</li>
+<li>async请求同步异步问题：async默认是true(异步请求),如果想一个ajax执行完后再执行另一个ajax, 需要把async=false </li>
+<li>data不能不写data为空也一定要传”{}” </li>
+<li>传递的参数：必须是ajax支持的编码格式(xml html json script jsonp text) E. URL路径问题  </li>
+<li>问题</li>
+<li>ajax跨域请求</li>
+<li>ajax同步异步</li>
+<li>ajax请求可以正常返回json数据，但弹窗没反应</li>
+</ul>
+</li>
+<li><p>前端三大框架</p>
+<ul>
+<li>React</li>
+<li>特性</li>
+<li>原理</li>
+<li>Vue</li>
+<li>特性</li>
+<li>原理</li>
+<li>Angular</li>
+<li>特性</li>
+<li>原理</li>
+</ul>
+</li>
+<li><p>跨域请求</p>
+<ul>
+<li>浏览器同源策略：只有当协议、域名和端口号相同才成为同源。</li>
+<li>非同源限制</li>
+<li>cookie、localStorage、indexDB无法读取</li>
+<li>DOM 无法获得</li>
+<li>ajax请求不能发送</li>
+</ul>
+</li>
+<li><p>sass和less</p>
+<ul>
+<li>sass和less都是css的预编译处理语言，他们引入了mixins，参数，嵌套规则，运算，颜色，名字空间，作用域，JavaScript赋值等加快了css开发效率。</li>
+<li>对比</li>
+<li>less是基于JavaScript的在客户端处理，所以安装的时候用npm</li>
+<li>sass是基于ruby所以在服务器处理</li>
+</ul>
+</li>
+<li><p>js中null和空字符串</p>
+<ul>
+<li>类型</li>
+<li>null表示的是一个对象的值，而并不是一个字符串，如声明一个变量 <code>var str = null</code>;</li>
+<li>“”表示的是一个长度为0空字符串，如声明一个变量 <code>var str = &quot;&quot;</code>;</li>
+<li>内存分配</li>
+<li>var str = null ; 表示声明一个字符串对象的引用，但指向为null，也就是说还没有指向任何的内存空间；</li>
+<li>var str = “”;    表示声明一个字符串类型的引用，其值为””空字符串，这个str引用指向的是空字符串的内存空间；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(typeof null)  //object</span><br><span class="line">console.log(typeof &quot;&quot;)    //string</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>等值判断</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;&#x27; == null) // false</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>扩展</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(0 == &#x27;&#x27;)   //true </span><br><span class="line">console.log(0 == null) //false </span><br><span class="line"></span><br><span class="line">console.log(false == &#x27;&#x27;)   //true</span><br><span class="line">console.log(false == null) //false </span><br><span class="line"></span><br><span class="line">console.log(undefined == &#x27;&#x27;)   //false </span><br><span class="line">console.log(undefined == null) //true</span><br></pre></td></tr></table></figure></li>
+<li><p>ES/ECMAScript</p>
+<ul>
+<li>ECMAScript 和 JavaScript 是什么关系？</li>
+<li>1996 年 11 月，JavaScript 的创造者 Netscape 公司，决定将 JavaScript 提交给标准化组织 ECMA，希望这种语言能够成为国际标准。次年，ECMA 发布 262 号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为 ECMAScript，这个版本就是 1.0 版。</li>
+<li>该标准从一开始就是针对 JavaScript 语言制定的，但是之所以不叫 JavaScript，有两个原因。一是商标，Java 是 Sun 公司的商标，根据授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 本身也已经被 Netscape 公司注册为商标。二是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。</li>
+<li>因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 JScript 和 ActionScript）。日常场合，这两个词是可以互换的。</li>
+<li>ES6 与 ECMAScript 2015 的关系</li>
+<li>2011 年，ECMAScript 5.1 版发布后，就开始制定 6.0 版了。因此，ES6 这个词的原意是指 JavaScript 语言的下一个版本。</li>
+<li>但是因为这个版本引入的语法功能太多，而且制定过程当中，还有很多组织和个人不断提交新功能。事情很快就变得清楚了，不可能在一个版本里面包括所有将要引入的功能。常规的做法是先发布 6.0 版，过一段时间再发 6.1 版，然后是 6.2 版、6.3 版等。但是标准的制定者不想这样做。他们想让标准的升级成为常规流程：任何人在任何时候，都可以向标准委员会提交新语法的提案，然后标准委员会每个月开一次会，评估这些提案是否可以接受，需要哪些改进。如果经过多次会议以后，一个提案足够成熟了，就可以正式进入标准了。这就是说，标准的版本升级成为了一个不断滚动的流程，每个月都会有变动。</li>
+<li>标准委员会最终决定，标准在每年的 6 月份正式发布一次，作为当年的正式版本。接下来的时间，就在这个版本的基础上做改动，直到下一年的 6 月份，草案就自然变成了新一年的版本。这样一来，就不需要以前的版本号了，只要用年份标记就可以了。</li>
+<li><strong>ES6 的第一个版本，就这样在 2015 年 6 月发布了，正式名称就是《ECMAScript 2015 标准》（简称 ES2015）。</strong>2016 年 6 月，小幅修订的《ECMAScript 2016 标准》（简称 ES2016）如期发布，这个版本可以看作是 ES6.1 版，因为两者的差异非常小（只新增了数组实例的includes方法和指数运算符），基本上是同一个标准。根据计划，2017 年 6 月发布 ES2017 标准。</li>
+<li>因此，ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等等，而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。本书中提到 ES6 的地方，一般是指 ES2015 标准，但有时也是泛指“下一代 JavaScript 语言”。</li>
+<li>ES5、ES6对比</li>
+<li><a href="http://es6.ruanyifeng.com/#docs/intro">参考</a></li>
+</ul>
+</li>
+<li><p>包管理grunt-gulp-webpack</p>
+</li>
+<li><p>jquery选择器</p>
+<ul>
+<li><p>基本选择器</p>
+</li>
+<li><p>#id  </p>
+</li>
+<li><p>element  </p>
+</li>
+<li><p>class  </p>
+</li>
+<li><p><code>*</code> </p>
+</li>
+<li><p>selector1,selector2,selectorN</p>
+</li>
+<li><p>层级选择器</p>
+</li>
+<li><p>ancestor descendant  </p>
+</li>
+<li><p>parent&gt;child  </p>
+</li>
+<li><p>prev+next  </p>
+</li>
+<li><p>prev ~ siblings</p>
+</li>
+<li><p>过滤选择器</p>
+</li>
+<li><p>基本过滤选择器 <code>:first/:last  :not  :even、:odd  :eq、:gt、:lt  :header  :animated</code></p>
+</li>
+<li><p>内容过滤选择器 <code>:contains、:empty、:has、:parent</code></p>
+</li>
+<li><p>可见性过滤选择器 <code>:hidden  :visible</code></p>
+</li>
+<li><p>属性过滤选择器</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[attribute]  [attribute=value]  [attribute!=value]  [attribute^=value]</span><br><span class="line">[attribute$=value]  [attribute*=value]  [selector][selector2]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>子元素过滤选择器 ·:nth-child   :first-child last-child   :only-child`</p>
+</li>
+<li><p>表单对象属性过滤选择器</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">:enabled、:disabled  :checked  :selected</span><br><span class="line">:input  :text、:password  :radio、:checkbox</span><br><span class="line">:submit、:image、:reset、:button、:file  :hidden</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSONP:JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于<code>server1.example.com</code>的网页无法与不是<code>server1.example.com</code>的服务器沟通，而<code>HTML</code>的<code>&lt;script&gt;</code>元素是一个例外。利用<code>&lt;script&gt;</code>元素的这个开放策略，网页可以得到从其他来源动态产生的JSON资料，而这种使用模式就是所谓的JSONP。用JSONP抓到的资料并不是JSON，而是任意的JavaScript，用JavaScript直译器执行而不是用JSON解析器解析。</p>
+</li>
+</ol>
+<ul>
+<li>index.html</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;  </span><br><span class="line">    &lt;head&gt;  </span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;  </span><br><span class="line">        &lt;title&gt;jsonp&lt;/title&gt;  </span><br><span class="line">        &lt;script src=&quot;https://code.jquery.com/jquery-3.3.1.js&quot; integrity=&quot;sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;  </span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;  </span><br><span class="line">    $(function()&#123;   </span><br><span class="line">        // 方式一  </span><br><span class="line">        // $.ajax(&#123;</span><br><span class="line">        //     url:&quot;index.php&quot;,//将要请求的方式</span><br><span class="line">        //     type:&#x27;get&#x27;,</span><br><span class="line">        //     data:&quot;&quot;,</span><br><span class="line">        //     dataType:&#x27;jsonp&#x27;,</span><br><span class="line">        //     jsonp: &quot;callback&quot;,</span><br><span class="line">        //     contentType: &quot;application/json&quot;,//contentTy类型</span><br><span class="line">        //     jsonpCallback:&quot;flightHandler&quot;,//自定义的jsonp回调函数名称</span><br><span class="line">        //     success: function(data) &#123;</span><br><span class="line">        //         alert(data);</span><br><span class="line">        //     &#125;,</span><br><span class="line">        //     error: function() &#123;</span><br><span class="line">        //         alert(0);</span><br><span class="line">        //     &#125;</span><br><span class="line">        // &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    // 方式二步骤1</span><br><span class="line">    function flightHandler(data) &#123;</span><br><span class="line">        alert(data);</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/script&gt;  </span><br><span class="line">    &lt;!-- 方式二步骤2 --&gt;</span><br><span class="line">    &lt;script src=&quot;index.php?callback=flightHandler&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;body&gt;  </span><br><span class="line">        &lt;div id=&quot;showcontent&quot;&gt;Result:&lt;/div&gt;  </span><br><span class="line">    &lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>index.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$call = $_GET[&#x27;callback&#x27;];</span><br><span class="line">$data = &#x27;[&quot;111&quot;,&quot;222&quot;]&#x27;;</span><br><span class="line">echo $call.&quot;(&quot; . $data . &quot;)&quot;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Technology</category>
@@ -43707,7 +43548,7 @@ read_xlsx(name, sheet)
         <tag>收集</tag>
         <tag>技术</tag>
         <tag>HDFS</tag>
-        <tag>区块链</tag>
+        <tag>区块链 - ajax - 收集 - sass - less</tag>
       </tags>
   </entry>
   <entry>
