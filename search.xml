@@ -505,6 +505,107 @@
       </tags>
   </entry>
   <entry>
+    <title>PHP进阶</title>
+    <url>/2022/02/20/PHP-%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>垃圾回收机制是一种动态存储分配方案，它会自动释放程序不再需要的已分配的内存块，自动回收内存的过程叫垃圾收集，它是新一代语言所共有的特征。</p>
+</blockquote>
+<span id="more"></span>
+
+
+<h1 id="SPL"><a href="#SPL" class="headerlink" title="SPL"></a><center><font color=red>SPL</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
+<li>SPL，<code>Standard PHP Library</code>的缩写，译为标准PHP类库，是用于解决典型问题(<code>standard problems</code>)的一组接口与类的集合。</li>
+</ol>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li>参考<a href="https://www.php.net/manual/zh/book.spl.php">官方文档</a></li>
+</ol>
+<hr>
+<h1 id="yield"><a href="#yield" class="headerlink" title="yield"></a><center><font color=red>yield</font></center></h1><hr>
+<h1 id="预定义接口"><a href="#预定义接口" class="headerlink" title="预定义接口"></a><center><font color=red>预定义接口</font></center></h1>]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>SPL</tag>
+        <tag>yield</tag>
+        <tag>预定义接口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WebScoket基础</title>
+    <url>/2022/02/12/PL-WebScoket/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>业精于勤荒于嬉，行成于思毁于随。 —— 唐·韩愈《进学解》</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebSocket是一种网络传输协议，可在单个TCP连接上进行全双工通信，位于OSI模型的应用层。WebSocket协议在2011年由IETF标准化为<a href="https://tools.ietf.org/html/rfc6455">RFC 6455</a>，后由<a href="https://datatracker.ietf.org/doc/html/rfc7936">RFC 7936</a>补充规范。Web IDL中的WebSocket API由W3C标准化。WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就可以创建持久性的连接，并进行双向数据传输。</p>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket">参考一</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2017/05/websocket.html">参考二</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096">参考三</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/WebSocket">参考四</a></li>
+<li><a href="https://code.google.com/archive/p/phpwebsocket/">参考五</a></li>
+<li><a href="https://www.cnblogs.com/chyingp/p/websocket-deep-in.html">参考六</a></li>
+<li><a href="https://github.com/sdaitzman/phpwebsocket/issues/33">参考七</a></li>
+<li><a href="https://bugs.php.net/bug.php?id=78038">参考八</a></li>
+<li><a href="https://www.jianshu.com/p/f671d3895d13">参考九</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/RFC">参考十</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>PL</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>Node</tag>
+        <tag>WebSocket</tag>
+        <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP多线程与并发</title>
+    <url>/2022/01/23/PHP-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>周国平老师曾说过：人生有三次成长：一是发现自己不再是世界中心的时候，二是发现再怎么努力也无能为力的时候，三是接受自己的平凡并去享受平凡的时候。</p>
+</blockquote>
+<span id="more"></span>
+
+
+
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>线程</tag>
+        <tag>并发</tag>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RabbitMQ事务</title>
+    <url>/2022/01/16/MQ-RabbitMQ%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>智者不锐，慧者不傲，谋者不露，强者不暴。 —— 启功(也可能是启功引用《中国古代典籍》)</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://blog.csdn.net/o9109003234/article/details/115843165">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>MQ</category>
+      </categories>
+      <tags>
+        <tag>RabbitMQ</tag>
+        <tag>MQ</tag>
+        <tag>事务</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL工作原理</title>
     <url>/2022/01/09/MySQL-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -575,12 +676,19 @@
 <span id="more"></span>
 
 <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;陆陆续续使用了MySQL、NoSQL、MQ等有些时间了，从使用角度说它们没有太大的共性，但从底层来说有些技术还是通用的，比如它们都会涉及到数据落盘，即通过将数据写入磁盘的方式保证可靠性。</p>
-<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
+<h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><ol>
+<li>MySQL</li>
+<li>MongoDB</li>
+<li>Redis</li>
+<li>RabbitMQ</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
       <categories>
         <category>OS</category>
       </categories>
       <tags>
         <tag>MySQL</tag>
+        <tag>RabbitMQ</tag>
         <tag>MongoDB</tag>
         <tag>操作系统</tag>
         <tag>Redis</tag>
@@ -4538,8 +4646,8 @@
       </tags>
   </entry>
   <entry>
-    <title>DevOps之ansible</title>
-    <url>/2021/02/20/DevOps-ansible/</url>
+    <title>ansible</title>
+    <url>/2021/02/20/Tools-ansible/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>一日练，一日功，一日不练十日空。—— 《增广贤文》</p>
 </blockquote>
@@ -4653,7 +4761,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>DevOps</category>
+        <category>Tools</category>
       </categories>
       <tags>
         <tag>DevOps</tag>
@@ -7961,24 +8069,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ThreadLocal</title>
-    <url>/2020/01/12/Java-ThreadLocal/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>清朝君主是指清代的皇帝，一般不包括后金政权的大汗，如果从皇太极建立清朝开始则有11位君主，从入关以后开始算共有十个皇帝。十一个皇帝分别是：皇太极(后金天聪汗，改元为清后年号崇德)；福临(顺治)；玄烨(康熙)；胤禛<em>yìn zhēn</em>(雍正)；弘历(乾隆)；永琰，后改顒琰<em>yóng yǎn</em>(嘉庆)；旻宁<em>mín níng</em>(道光)；奕詝<em>yì zhǔ</em>(咸丰)；载淳<em>zǎi chún</em>(同治)；载湉<em>zǎi tián</em>(光绪)；溥仪<em>pǔ yí</em>(宣统)，不包括努尔哈赤和多尔衮两位追封的皇帝。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ThreadLocal是JDK底层提供的一个解决多线程并发问题的工具类,它为每个线程提供了一个本地的副本变量机制，实现了和其它线程隔离，并且这种变量只在本线程的生命周期内起作用，可以减少同一个线程内多个方法之间的公共变量传递的复杂度。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>ThreadLocal</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>碰撞检测</title>
     <url>/2020/01/10/Game-%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -9359,7 +9449,8 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、缓存DB一致性方案"><a href="#一、缓存DB一致性方案" class="headerlink" title="一、缓存DB一致性方案"></a>一、缓存DB一致性方案</h2><ol>
+
+<h1 id="缓存DB一致性方案"><a href="#缓存DB一致性方案" class="headerlink" title="缓存DB一致性方案"></a><center><font color=red>缓存DB一致性方案</font></center></h1><h2 id="一、canal"><a href="#一、canal" class="headerlink" title="一、canal"></a>一、canal</h2><ol>
 <li>canal，发音<code>[kə&#39;næl]</code>，原意为水道/管道/沟渠等。它是阿里巴巴旗下的一款开源项目，纯Java开发，主要用途是基于MySQL数据库增量日志解析，提供增量数据订阅和消费。早期阿里巴巴因为杭州和美国双机房部署，存在跨机房同步的业务需求，实现方式主要是基于业务trigger获取增量变更。从2010年开始，业务逐步尝试数据库日志解析获取增量变更进行同步，由此衍生出了大量的数据库增量订阅和消费业务。</li>
 </ol>
 <p><img src="canal.png" alt="canal"></p>
@@ -9388,7 +9479,8 @@
 <li><p><a href="https://github.com/alibaba/canal">参考</a></p>
 </li>
 </ol>
-<h2 id="二、连接池"><a href="#二、连接池" class="headerlink" title="二、连接池"></a>二、连接池</h2><ol>
+<hr>
+<h1 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a><center><font color=red>连接池</font></center></h1><ol>
 <li><p>定义：数据库连接池(Connection pooling)是指程序启动时建立足够的数据库连接，并将这些连接组成一个连接池，由程序动态地对连接池中的连接进行申请、使用、释放。</p>
 </li>
 <li><p>过程：数据库连接池在初始化时将创建一定数量的数据库连接放到连接池中，连接的数量是由最小数据库连接数来设定的。无论这些数据库连接是否被使用，连接池都将一直保证至少拥有这么多的连接数量。连接池的最大数据库连接数量限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。</p>
@@ -9461,7 +9553,8 @@
 </ul>
 </li>
 </ol>
-<h2 id="三、数据库中间件"><a href="#三、数据库中间件" class="headerlink" title="三、数据库中间件"></a>三、数据库中间件</h2><ol>
+<hr>
+<h1 id="数据库中间件"><a href="#数据库中间件" class="headerlink" title="数据库中间件"></a><center><font color=red>数据库中间件</font></center></h1><ol>
 <li><p>Mycat是一个开源的分布式数据库系统，是一个数据库中间件，也可以理解为是数据库代理。在架构体系中是位于数据库和应用层之间的一个组件，并且对于应用层是透明的，即数据库感受不到Mycat的存在，认为是直接连接的MySQL数据库(实际上是连接的Mycat，Mycat实现了MySQL的原生协议)。</p>
 <blockquote>
 <blockquote>
@@ -9527,6 +9620,38 @@
 <li><a href="https://www.cnblogs.com/jenvid/p/10180435.html">Mycat基本知识</a></li>
 <li><a href="https://www.jianshu.com/p/f02a48226222">Mycat</a></li>
 <li><a href="https://www.jianshu.com/p/c6e29d724fca">Mycat</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="自增ID"><a href="#自增ID" class="headerlink" title="自增ID"></a><center><font color=red>自增ID</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
+<li>创建测试数据库<code>show create database auto_test;</code></li>
+<li>切换数据库<code>use auto_test;</code></li>
+<li>创建测试数据表<code>create table test1(id int primary key auto_increment);</code></li>
+<li>插入测试数据</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into test1 value();</span><br><span class="line">insert into test1 value();</span><br><span class="line">insert into test1 value();</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>查看数据<code>select * from test1;</code></li>
+<li>查看自增信息<ul>
+<li>方式一：<code>show create table test1;</code></li>
+<li>方式二：<code>select * from information_schema.tables where table_schema=&#39;auto_test&#39; and table_name=&#39;test1&#39;;</code></li>
+</ul>
+</li>
+<li>修改自增信息<code>alter table test1 auto_increment=1000;</code></li>
+<li>查看自增信息</li>
+<li>插入测试数据<code>insert into test1 value();</code></li>
+<li>查看数据<code>select * from test1;</code></li>
+</ol>
+<h2 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
+<li>当前会话生效：<code>set auto_increment_offset=3;</code>或<code>set session auto_increment_offset=3;</code></li>
+<li>全局会话生效：<code>set global auto_increment_offset=3;</code><ul>
+<li>服务重启后失效，或再次全局修改后失效</li>
+</ul>
+</li>
+<li>永久会话生效，修改my.cnf，添加<code>auto_increment_offset=3</code><ul>
+<li>brew安装的MySQL配置文件位置<code>mysql --help| grep my</code></li>
 </ul>
 </li>
 </ol>
@@ -9903,8 +10028,8 @@
       </tags>
   </entry>
   <entry>
-    <title>IO那些事儿</title>
-    <url>/2019/09/22/OS-IO%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</url>
+    <title>磁盘那些事儿</title>
+    <url>/2019/09/22/OS-%E7%A3%81%E7%9B%98%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>微服务架构的特点：“一解释就懂，一问就不知，一讨论就吵架”。</p>
 </blockquote>
@@ -10000,7 +10125,7 @@
 <blockquote>
 <p>同步/异步讨论的对象是双方， 而阻塞/非阻塞讨论的对象是自身。</p>
 </blockquote>
-<h2 id="六、参考"><a href="#六、参考" class="headerlink" title="六、参考"></a>六、参考</h2><ol>
+<h2 id="七、I-O缓冲"><a href="#七、I-O缓冲" class="headerlink" title="七、I/O缓冲"></a>七、<a href="https://www.cnblogs.com/wonderKK/archive/2012/06/13/2547740.html">I/O缓冲</a></h2><h2 id="八、参考"><a href="#八、参考" class="headerlink" title="八、参考"></a>八、参考</h2><ol>
 <li><a href="https://www.cnblogs.com/duanxz/p/3698530.html">reactor、proactor</a></li>
 </ol>
 ]]></content>
@@ -10162,99 +10287,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java框架</title>
-    <url>/2019/08/26/Java-%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>智者不锐，慧者不傲，谋者不露，强者不暴。 —— 启功(也可能是启功引用《中国古代典籍》)</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、Netty"><a href="#一、Netty" class="headerlink" title="一、Netty"></a>一、Netty</h2><ol>
-<li>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。<ul>
-<li>简单来说有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、Spring"><a href="#二、Spring" class="headerlink" title="二、Spring"></a>二、Spring</h2><ol>
-<li><p>spring 是一个开源框架，处于mvc的控制层，能应对需求的快速变化，主要原因是它有一种面向切面编程(aop)的优势，其次它提升了系统性能，是因为通过依赖倒置机制(ioc)，系统中用到的对象不是在系统加载时就全部实例化，而是在调用到这个类时才会实例化该对象。</p>
-<ul>
-<li>轻量：从大小到开销来说都是轻量的，spring框架开源字啊一个只有1m大小的jar文件中发布，而且spring所处理的开销也是微不足道的</li>
-<li>非侵入式：spring应用中的对象不依赖于spring的特定类</li>
-<li>IOC(控制反转)：一个对象依赖的其他对象会通过被动的方式传递进来，而不是这个对象自己创建或者主动查找依赖对象</li>
-<li>AOP(面向切面)：只完成业务逻辑，并不负责其他的系统级的关注点，有两种实现方式：<ul>
-<li>jdk动态代理</li>
-<li>CGLib动态代理</li>
-</ul>
-</li>
-<li>容器：定义了bean是如何创建、配置、管理的</li>
-<li>框架模块：可以不必将应用完全基于spring，可以自由的挑选适用你的模块，而忽略其余的模块</li>
-<li>核心容器：提供了依赖注入特征来实现容器对bean的管理。这里最基本的概念是BeanFactory，它是任何spring应用的核心。BeanFactory是工厂模式的一个实现，他使用ioc将应用配置和依赖说明从实际的应用代码中分离出来</li>
-<li>应用上下文(context)模块：核心模块的beanFactory使spring成为了一个容器，而上下文模块使他成为一个框架，这个模块扩展了BeanFactory的概念，增加了对国际化消息、事件传播以及验证的支持。</li>
-</ul>
-</li>
-<li><p>spring bean加载、注入过程</p>
-<ul>
-<li>执行该对象的构造方法</li>
-<li>执行set参数注入方法</li>
-<li>执行BeanNameAware的实现方法获取bean的id</li>
-<li>执行BeanFactoryAware的实现方法获取bean的工厂</li>
-<li>执行BeanPostProcessor的postProcessBeforeInitalization处理方法</li>
-<li>执行In</li>
-</ul>
-</li>
-<li><p>spring事务的传播机制有以下几种：</p>
-<ul>
-<li>PROPAGATION_REQUIRED：如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</li>
-<li>PROPAGATION_SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
-<li>PROPAGATION_MANDATORY：使用当前的事务，如果当前没有事务，就抛出异常。</li>
-<li>PROPAGATION_REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。</li>
-<li>PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
-<li>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。</li>
-<li>PROPAGATION_NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
-</ul>
-</li>
-<li><p>springboot核心配置文件</p>
-<ul>
-<li>applicaion：主要用于springboot项目的自动化配置</li>
-<li>boostrap：主要用于一些固定的不能被覆盖的属性，一些加密解密的场景。<blockquote>
-<p>配置文件有properties和yml格式，其中yml格式不支持<code>@propertySource</code>注解导入配置。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>springboot核心注解：启动类上面的注解是<code>@springbootApplication</code>，它是核心注解，包含了以下三个注解</p>
-<ul>
-<li>@springbootConfiguration：组合了@Configuration注解，实现配置文件的功能</li>
-<li>@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项</li>
-<li>@ComponentScan：spring组件扫描</li>
-</ul>
-</li>
-<li><p>开启springboot特性的几种方式：</p>
-<ul>
-<li>继承spring-boot-starter-parent项目</li>
-<li>导入spring-boot-dependencies项目依赖</li>
-</ul>
-</li>
-<li><p>springboot 配置加载顺序</p>
-<ul>
-<li>properties</li>
-<li>yaml文件</li>
-<li>系统环境变量</li>
-<li>命令行参数</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Netty</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Openresty</title>
     <url>/2019/08/23/Nginx-Openresty/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -10332,7 +10364,7 @@
     <title>selenium</title>
     <url>/2019/08/21/Tools-selenium/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>卑鄙是卑鄙者的通行证， 高尚是高尚者的墓志铭， 看吧，在那镀金的天空中， 飘满了死者弯曲的倒影。冰川纪过去了，为什么到处都是冰凌？好望角发现了，为什么死海里千帆相竞？我来到这个世界上，只带着纸、绳索和身影，为了在审判之前，宣读那些被判决的声音。告诉你吧，世界，我–不–相–信！纵使你脚下有一千名挑战者，那就把我算作第一千零一名。我不相信天是蓝的，我不相信雷的回声，我不相信梦是假的，我不相信死无报应。如果海洋注定要决堤，就让所有的苦水都注入我心中，如果陆地注定要上升，就让人类重新选择生存的峰顶。新的转机和闪闪星斗，正在缀满没有遮拦的天空。那是五千年的象形文字，那是未来人们凝视的眼睛。 —— 海岛 《回答》</p>
+<p>卑鄙是卑鄙者的通行证，高尚是高尚者的墓志铭。 —— 海岛 《回答》</p>
 </blockquote>
 <span id="more"></span>
 
@@ -10376,87 +10408,6 @@
         <tag>Kubernetes</tag>
         <tag>k8s</tag>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL执行计划</title>
-    <url>/2019/07/20/MySQL-%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>一日之计在于晨，一年之计在于春，一生之计在于勤。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、explain"><a href="#一、explain" class="headerlink" title="一、explain"></a>一、explain</h2><ol>
-<li><p>使用 <code>explain SQL语句;</code></p>
-<ul>
-<li>不单单select，insert/delete/update语句都可使用</li>
-</ul>
-</li>
-<li><p>返回</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">           id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: table_multi_union_index</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: ALL</span><br><span class="line">possible_keys: NULL</span><br><span class="line">          key: NULL</span><br><span class="line">      key_len: NULL</span><br><span class="line">          ref: NULL</span><br><span class="line">         rows: 4</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>作用<ul>
-<li>查看SQL索引使用情况</li>
-<li>查看联接查询执行顺序</li>
-<li>查询扫描的数据行数</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、profiling"><a href="#二、profiling" class="headerlink" title="二、profiling"></a>二、profiling</h2><ol>
-<li><p>查看profiling状态 <code>show variables like &#39;profiling&#39;;</code>，默认关闭</p>
-</li>
-<li><p>开启profiling <code>set profiling=1</code>，接下来写query语句都会被记录</p>
-</li>
-<li><p>查看所有profiling <code>show profiles;</code></p>
-</li>
-<li><p>查看profiling <code>show profile [type] id for query [ID];</code>，其中type值可以为：</p>
-<ul>
-<li>all：显示示所有的开销信息</li>
-<li>block io：显示块IO相关开销</li>
-<li>context switches：上下文切换相关开销</li>
-<li>cpu：显示CPU相关开销信息</li>
-<li>ipc：显示发送和接收相关开销信息</li>
-<li>memory：显示内存相关开销信息</li>
-<li>page faults：显示页面错误相关开销信息</li>
-<li>source：显示和Source_function，Source_file，Source_line相关的开销信息</li>
-<li>swaps：显示交换次数相关开销的信息</li>
-</ul>
-</li>
-<li><p>作用：记录SQL语句资源开销，如IO，上下文切换，CPU，Memory等</p>
-</li>
-</ol>
-<h2 id="三、optimizer-trace"><a href="#三、optimizer-trace" class="headerlink" title="三、optimizer_trace"></a>三、optimizer_trace</h2><ol>
-<li>查看optimizer_trace状态 <code>show variables like &#39;optimizer_trace&#39;;</code>，默认<code>enabled=off,one_line=off</code></li>
-<li>开启optimizer_trace <code>set optimizer_trace=&#39;enabled=on&#39;;</code><ul>
-<li><code>set optimizer_trace=&quot;enabled=on&quot;,end_markers_in_json=on;</code></li>
-</ul>
-</li>
-<li>查询optimizer_trace表 <code>select trace from information_schema.optimizer_trace\G;</code></li>
-<li>导入文件，通过工具查看 <code>select trace into dumpfile &#39;test.trace&#39; from information_schema.optimizer_trace\G;</code><ul>
-<li>ERROR 1290 (HY000): The MySQL server is running with the –secure-file-priv option so it cannot execute this statement，查看<code>show variables like &#39;secure_file_priv&#39;;</code>，将此值更改为某个路径或置为空即可(需要修改my.cnf，命令行不可修改)<ul>
-<li>secure_file_priv为 NULL 时，表示限制mysqld不允许导入或导出。</li>
-<li>secure_file_priv为 /tmp 时，表示限制mysqld只能在/tmp目录中执行导入导出，其他目录不能执行。</li>
-<li>secure_file_priv没有值时，表示不限制mysqld在任意目录的导入导出。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://dev.mysql.com/doc/internals/en/optimizer-tracing.html">optimizer-trace</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>optimizer_trace</tag>
-        <tag>profiling</tag>
-        <tag>explain</tag>
       </tags>
   </entry>
   <entry>
@@ -10886,7 +10837,14 @@
 </ul>
 </li>
 <li>设置</li>
-<li>参考<br>*<a href="https://code.visualstudio.com/docs/languages/java">参考一</a><br>*<a href="https://www.cnblogs.com/ywsoftware/p/11089249.html">参考二</a></li>
+<li>参考<ul>
+<li><a href="https://code.visualstudio.com/docs/languages/java">参考一</a></li>
+<li><a href="https://www.cnblogs.com/ywsoftware/p/11089249.html">参考二</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="六、常用"><a href="#六、常用" class="headerlink" title="六、常用"></a>六、常用</h2><ol>
+<li><a href="https://www.cnblogs.com/fightjianxian/p/12802385.html">设置缩进</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -10977,172 +10935,6 @@
         <tag>标准错误输出</tag>
         <tag>文件重定向</tag>
         <tag>标准输入输出重定向</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习之Guzzle</title>
-    <url>/2019/05/21/PHP-%E5%AD%A6%E4%B9%A0%E4%B9%8BGuzzle/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在PHP中命名空间用来解决在编写类库或应用程序时创建可重用的代码如类或函数时碰到的两类问题：用户编写的代码与PHP内部的类/函数/常量或第三方类/函数/常量之间的名字冲突和为很长的标识符名称(通常是为了缓解第一类问题而定义的)创建一个别名(或简短)的名称，提高源代码的可读性。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
-<li><a href="https://guzzle-cn.readthedocs.io/zh_CN/latest/">Guzzle</a>是一个PHP的HTTP客户端，用来轻而易举地发送请求，并集成到我们的WEB服务上。<ul>
-<li>接口简单：构建查询语句、POST请求、分流上传下载大文件、使用HTTP cookies、上传JSON数据等等。</li>
-<li>发送同步或异步的请求均使用相同的接口。</li>
-<li>使用PSR-7接口来请求、响应、分流，允许你使用其他兼容的PSR-7类库与Guzzle共同开发。</li>
-<li>抽象了底层的HTTP传输，允许你改变环境以及其他的代码，如：对cURL与PHP的流或socket并非重度依赖，非阻塞事件循环。</li>
-<li>中间件系统允许你创建构成客户端行为。</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>依赖</p>
-<ul>
-<li><code>&gt;=PHP 5.5.0</code></li>
-<li>php.ini文件设置allow_url_fopen = On</li>
-<li>cURL &gt;= 7.19.4(可选)</li>
-<li>openssl和zlib扩展(没有此扩展，使用composer安装guzzle的时候也会报错)</li>
-</ul>
-</li>
-<li><p>安装 <code>composer require guzzlehttp/guzzle:~6.0</code>，6.0版本要求php7.1以上</p>
-</li>
-<li><p>使用</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>Guzzle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java工具</title>
-    <url>/2019/05/16/Java-%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>变量的作用域是指一个变量能够起作用的程序范围，如果一个变量在某个文件或函数范围内有效，则称该文件或函数为变量的作用域，在此作用域内可以引用此变量。根据作用域的不同，变量可分为两种类型，即局部变量和全局变量。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、Tomcat"><a href="#一、Tomcat" class="headerlink" title="一、Tomcat"></a>一、Tomcat</h2><ol>
-<li><p>Tomcat服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache服务器，可利用它响应HTML(标准通用标记语言下的一个应用)页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
-</li>
-<li><p>安装</p>
-<ul>
-<li>安装[Tomcat]<a href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a>)<ul>
-<li><code>cd /usr/local/src/ &amp;&amp; sudo wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz</code></li>
-</ul>
-</li>
-<li><code>cd /usr/local &amp;&amp; sudo tar -zxvf apache-tomcat-9.0.34.tar.gz</code></li>
-</ul>
-</li>
-<li><p><a href="http://tomcat.apache.org/">参考</a></p>
-</li>
-</ol>
-<h2 id="二、Maven"><a href="#二、Maven" class="headerlink" title="二、Maven"></a>二、Maven</h2><ol>
-<li><p>Maven是一个项目管理工具，它包含了一个项目对象模型(Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，以及用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
-<ul>
-<li>maven是java的包管理工具，相当于是nodejs中的npm，php中的composer，python中的pip等，通过maven可以方便地引入各种java的第三方类库(包括Spring、Struts、junit等)和插件(如tomcat等)。</li>
-</ul>
-</li>
-<li><p>安装</p>
-<ul>
-<li>安装<a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java SE</a>，直接选择了dmg安装<ul>
-<li>默认安装目录<code>/Library/Java/</code></li>
-</ul>
-</li>
-<li>安装<a href="http://maven.apache.org/download.cgi">Maven</a><ul>
-<li><code>cd /usr/local/src</code></li>
-<li><code>wget http://apache.communilink.net/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</code></li>
-</ul>
-</li>
-<li>解压<ul>
-<li><code>cd /usr/local</code></li>
-<li><code>sudo tar -zxvf apache-maven-3.6.3-bin.tar.gz</code></li>
-</ul>
-</li>
-<li>设置环境变量<code>vim ~/.bash_profile</code>，加入maven的bin路径</li>
-<li><code>source ~/.bash_profile</code>立即生效</li>
-<li>查看安装是否成功<code>mvn -v</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)</span><br><span class="line">Maven home: /usr/local/apache-maven-3.6.3</span><br><span class="line">Java version: 14, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.5&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>使用brew安装<code>brew install maven</code></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<ol start="3">
-<li>使用<code>mvn -h</code><ul>
-<li>常用命令<ul>
-<li>创建maven项目：<code>mvn archetype:create</code><ul>
-<li>指定<code>group</code>：<code>-DgroupId=packageName</code></li>
-<li>指定<code>artifact</code>：<code>-DartifactId=projectName</code></li>
-<li>创建<code>web</code>项目：<code>-DarchetypeArtifactId=maven-archetype-webapp</code></li>
-</ul>
-</li>
-<li>创建maven项目：<code>mvn archetype:generate</code></li>
-<li>验证项目是否正确：<code>mvn validate</code></li>
-<li>maven打包：<code>mvn package</code></li>
-<li>只打jar包：<code>mvn jar:jar</code></li>
-<li>生成源码jar包：<code>mvn source:jar</code></li>
-<li>产生应用需要的任何额外的源代码：<code>mvn generate-sources</code></li>
-<li>编译源代码：<code>mvn compile</code></li>
-<li>编译测试代码：<code>mvn test-compile</code></li>
-<li>运行测试：<code>mvn test</code></li>
-<li>运行检查：<code>mvn verify</code></li>
-<li>清理maven项目：<code>mvn clean</code></li>
-<li>生成eclipse项目：<code>mvn eclipse:eclipse</code></li>
-<li>清理eclipse配置：<code>mvn eclipse:clean</code></li>
-<li>生成idea项目：<code>mvn idea:idea</code></li>
-<li>安装项目到本地仓库：<code>mvn install</code></li>
-<li>发布项目到远程仓库：<code>mvn:deploy</code></li>
-<li>在集成测试可以运行的环境中处理和发布包：<code>mvn integration-test</code></li>
-<li>显示maven依赖树：<code>mvn dependency:tree</code></li>
-<li>显示maven依赖列表：<code>mvn dependency:list</code></li>
-<li>下载依赖包的源码：<code>mvn dependency:sources</code></li>
-<li>安装本地jar到本地仓库：<code>mvn install:install-file -DgroupId=packageName -DartifactId=projectName -Dversion=version -Dpackaging=jar -Dfile=path</code></li>
-</ul>
-</li>
-<li>web项目相关命令<ul>
-<li>启动tomcat：<code>mvn tomcat:run</code></li>
-<li>启动jetty：<code>mvn jetty:run</code></li>
-<li>运行打包部署：<code>mvn tomcat:deploy</code></li>
-<li>撤销部署：<code>mvn tomcat:undeploy</code></li>
-<li>启动web应用：<code>mvn tomcat:start</code></li>
-<li>停止web应用：<code>mvn tomcat:stop</code></li>
-<li>重新部署：<code>mvn tomcat:redeploy</code></li>
-<li>部署展开的war文件：<code>mvn war:exploded tomcat:exploded</code></li>
-</ul>
-</li>
-<li>其他<ul>
-<li><code>mvn clean</code>：表示运行清理操作(会默认把target文件夹中的数据清理)。</li>
-<li><code>mvn clean test</code>：运行清理和测试。</li>
-<li><code>mvn clean compile</code>：表示先运行清理之后运行编译，会将代码编译到target文件夹中。</li>
-<li><code>mvn clean package</code>：运行清理和打包。</li>
-<li><code>mvn clean install</code>：运行清理和安装，会将打好的包安装到本地仓库中，以便其他的项目可以调用。</li>
-<li><code>mvn clean deploy</code>：运行清理和发布(发布到私服上面)。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Tomcat</tag>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -11249,31 +11041,6 @@
         <tag>map</tag>
         <tag>Nginx</tag>
         <tag>反向代理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iperf</title>
-    <url>/2019/05/12/Tools-iperf/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>物来顺应，未来不迎，当时不杂，既过不恋。 —— 曾国潘</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>安装</li>
-<li>使用</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://iperf.fr/">参考一</a></li>
-<li><a href="https://www.cnblogs.com/cloudwas/p/13084815.html">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>iperf</tag>
       </tags>
   </entry>
   <entry>
@@ -12157,7 +11924,7 @@
       </tags>
   </entry>
   <entry>
-    <title>底层之运行机制</title>
+    <title>PHP运行机制</title>
     <url>/2019/04/10/PHP-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。</p>
@@ -12484,23 +12251,7 @@
       </tags>
   </entry>
   <entry>
-    <title>生成器yield</title>
-    <url>/2019/03/20/PHP-%E7%94%9F%E6%88%90%E5%99%A8yield/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>一个生成器函数看起来像一个普通的函数，不同的是普通函数返回一个值，而一个生成器可以yield生成许多它所需要的值。</p>
-</blockquote>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>生成器</tag>
-        <tag>yield</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>反射reflection</title>
+    <title>PHP反射</title>
     <url>/2019/03/19/PHP-%E5%8F%8D%E5%B0%84reflection/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>面向对象编程中，对象被赋予了自省的能力，而这个自省的过程就是反射。<code>PHP5+</code>具有完整的反射<code>API</code>，添加了对类、接口、函数、方法和扩展进行反向工程的能力。此外，反射<code>API</code>提供了方法来取出函数、类和方法中的文档注释。</p>
@@ -13893,7 +13644,71 @@
 <li><p><a href="https://dev.mysql.com/doc/refman/5.7/en/index-condition-pushdown-optimization.html">ICP</a></p>
 </li>
 </ol>
-<h2 id="四、explain"><a href="#四、explain" class="headerlink" title="四、explain"></a>四、explain</h2><h2 id="五、key-len计算方法"><a href="#五、key-len计算方法" class="headerlink" title="五、key_len计算方法"></a>五、key_len计算方法</h2><ol>
+<hr>
+<h1 id="MySQL执行计划"><a href="#MySQL执行计划" class="headerlink" title="MySQL执行计划"></a><center><font color=red>MySQL执行计划</font></center></h1><h2 id="一、explain"><a href="#一、explain" class="headerlink" title="一、explain"></a>一、explain</h2><ol>
+<li><p>使用 <code>explain SQL语句;</code></p>
+<ul>
+<li>不单单select，insert/delete/update语句都可使用</li>
+</ul>
+</li>
+<li><p>返回</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">           id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: table_multi_union_index</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: ALL</span><br><span class="line">possible_keys: NULL</span><br><span class="line">          key: NULL</span><br><span class="line">      key_len: NULL</span><br><span class="line">          ref: NULL</span><br><span class="line">         rows: 4</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>作用<ul>
+<li>查看SQL索引使用情况</li>
+<li>查看联接查询执行顺序</li>
+<li>查询扫描的数据行数</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、profiling"><a href="#二、profiling" class="headerlink" title="二、profiling"></a>二、profiling</h2><ol>
+<li><p>查看profiling状态 <code>show variables like &#39;profiling&#39;;</code>，默认关闭</p>
+</li>
+<li><p>开启profiling <code>set profiling=1</code>，接下来写query语句都会被记录</p>
+</li>
+<li><p>查看所有profiling <code>show profiles;</code></p>
+</li>
+<li><p>查看profiling <code>show profile [type] id for query [ID];</code>，其中type值可以为：</p>
+<ul>
+<li>all：显示示所有的开销信息</li>
+<li>block io：显示块IO相关开销</li>
+<li>context switches：上下文切换相关开销</li>
+<li>cpu：显示CPU相关开销信息</li>
+<li>ipc：显示发送和接收相关开销信息</li>
+<li>memory：显示内存相关开销信息</li>
+<li>page faults：显示页面错误相关开销信息</li>
+<li>source：显示和Source_function，Source_file，Source_line相关的开销信息</li>
+<li>swaps：显示交换次数相关开销的信息</li>
+</ul>
+</li>
+<li><p>作用：记录SQL语句资源开销，如IO，上下文切换，CPU，Memory等</p>
+</li>
+</ol>
+<h2 id="三、optimizer-trace"><a href="#三、optimizer-trace" class="headerlink" title="三、optimizer_trace"></a>三、optimizer_trace</h2><ol>
+<li>查看optimizer_trace状态 <code>show variables like &#39;optimizer_trace&#39;;</code>，默认<code>enabled=off,one_line=off</code></li>
+<li>开启optimizer_trace <code>set optimizer_trace=&#39;enabled=on&#39;;</code><ul>
+<li><code>set optimizer_trace=&quot;enabled=on&quot;,end_markers_in_json=on;</code></li>
+</ul>
+</li>
+<li>查询optimizer_trace表 <code>select trace from information_schema.optimizer_trace\G;</code></li>
+<li>导入文件，通过工具查看 <code>select trace into dumpfile &#39;test.trace&#39; from information_schema.optimizer_trace\G;</code><ul>
+<li>ERROR 1290 (HY000): The MySQL server is running with the –secure-file-priv option so it cannot execute this statement，查看<code>show variables like &#39;secure_file_priv&#39;;</code>，将此值更改为某个路径或置为空即可(需要修改my.cnf，命令行不可修改)<ul>
+<li>secure_file_priv为 NULL 时，表示限制mysqld不允许导入或导出。</li>
+<li>secure_file_priv为 /tmp 时，表示限制mysqld只能在/tmp目录中执行导入导出，其他目录不能执行。</li>
+<li>secure_file_priv没有值时，表示不限制mysqld在任意目录的导入导出。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://dev.mysql.com/doc/internals/en/optimizer-tracing.html">optimizer-trace</a></li>
+</ol>
+<hr>
+<h1 id="key-len计算方法"><a href="#key-len计算方法" class="headerlink" title="key_len计算方法"></a><center><font color=red>key_len计算方法</font></center></h1><ol>
 <li>mysql版本5.7.26(<code>select version()</code>)，编码方式utf8(<code>show variables like &#39;%char%&#39;</code>)</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">## 不允许为null</span><br><span class="line">create table key_length_table(</span><br><span class="line">	`id` int(10) not null auto_increment,</span><br><span class="line">	`name` char(10) not null,</span><br><span class="line">	`age`  int(3) not null,</span><br><span class="line">	`addr` varchar(50) not null,</span><br><span class="line">	`created` timestamp,</span><br><span class="line">	key name(name),</span><br><span class="line">	key age(age),</span><br><span class="line">	key addr(addr),</span><br><span class="line">	key created(created),</span><br><span class="line">	primary key id(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">## 允许为null</span><br><span class="line">create table key_length_table(</span><br><span class="line">	`id` int(10) not null auto_increment,</span><br><span class="line">	`name` char(10),</span><br><span class="line">	`age`  int(3),</span><br><span class="line">	`addr` varchar(50),</span><br><span class="line">	`created` timestamp,</span><br><span class="line">	key name(name),</span><br><span class="line">	key age(age),</span><br><span class="line">	key addr(addr),</span><br><span class="line">	key created(created),</span><br><span class="line">	primary key id(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">## 初始化数据</span><br><span class="line">insert into key_length_table(name,age,addr,created) values(&#x27;张三&#x27;,1,&#x27;北京市昌平区&#x27;,now()),(&#x27;张四&#x27;,2,&#x27;北京市海淀区&#x27;,now()),(&#x27;张五&#x27;,3,&#x27;北京市朝阳区&#x27;,now());</span><br></pre></td></tr></table></figure>
@@ -14180,6 +13995,8 @@
       <tags>
         <tag>MySQL</tag>
         <tag>索引</tag>
+        <tag>optimizer_trace</tag>
+        <tag>profiling</tag>
         <tag>explain</tag>
         <tag>毛泽东</tag>
         <tag>索引条件下推</tag>
@@ -14838,7 +14655,7 @@
       </tags>
   </entry>
   <entry>
-    <title>php安装lua扩展各种扩展</title>
+    <title>PHP各种扩展</title>
     <url>/2018/12/18/PHP-%E5%90%84%E7%A7%8D%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Lua是一个简洁、轻量、可扩展的脚本语言，它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。它用ANSI C语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。</p>
@@ -17907,50 +17724,211 @@
       </tags>
   </entry>
   <entry>
-    <title>学习之Workerman</title>
-    <url>/2018/04/26/PHP-%E5%AD%A6%E4%B9%A0%E4%B9%8BWorkerman/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>上传就是将信息从个人计算机(本地计算机)传送至中央计算机(远程计算机)系统上，让网络上的人都能看到。将制作好的网页、文字、图片、视频等通过Web或者Ftp传送至互联网上的服务器系统，这一过程称为上传。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>Workerman是纯PHP开发框架，需要依赖很多额外的第三方PHP扩展来实现。它是一款开源高性能异步PHP socket即时通讯框架。支持高并发，超高稳定性，被广泛的用于手机app、移动通讯，微信小程序，手游服务端、网络游戏、PHP聊天室、硬件通讯、智能家居、车联网、物联网等领域的开发。支持TCP长连接，支持Websocket、HTTP等协议，支持自定义协议。拥有异步Mysql、异步Redis、异步Http、MQTT物联网客户端、异步消息队列等众多高性能组件。</li>
-</ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.workerman.net/">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>swoole</tag>
-        <tag>Workerman</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习之SPL</title>
-    <url>/2018/04/25/PHP-%E5%AD%A6%E4%B9%A0%E4%B9%8BSPL/</url>
+    <title>PHP各种学习</title>
+    <url>/2018/04/25/PHP-%E5%90%84%E7%A7%8D%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>真正的高贵，从来不是要比别人优秀，而是要跨越曾经的自己。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
-<li>SPL，<code>Standard PHP Library</code>的缩写，译为标准PHP类库，是用于解决典型问题(<code>standard problems</code>)的一组接口与类的集合。</li>
+
+
+
+<hr>
+<h1 id="Guzzle"><a href="#Guzzle" class="headerlink" title="Guzzle"></a><center><font color=red>Guzzle</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
+<li><a href="https://guzzle-cn.readthedocs.io/zh_CN/latest/">Guzzle</a>是一个PHP的HTTP客户端，用来轻而易举地发送请求，并集成到我们的WEB服务上。<ul>
+<li>接口简单：构建查询语句、POST请求、分流上传下载大文件、使用HTTP cookies、上传JSON数据等等。</li>
+<li>发送同步或异步的请求均使用相同的接口。</li>
+<li>使用PSR-7接口来请求、响应、分流，允许你使用其他兼容的PSR-7类库与Guzzle共同开发。</li>
+<li>抽象了底层的HTTP传输，允许你改变环境以及其他的代码，如：对cURL与PHP的流或socket并非重度依赖，非阻塞事件循环。</li>
+<li>中间件系统允许你创建构成客户端行为。</li>
+</ul>
+</li>
 </ol>
-<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li>参考<a href="https://www.php.net/manual/zh/book.spl.php">官方文档</a></li>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>依赖</p>
+<ul>
+<li><code>&gt;=PHP 5.5.0</code></li>
+<li>php.ini文件设置allow_url_fopen = On</li>
+<li>cURL &gt;= 7.19.4(可选)</li>
+<li>openssl和zlib扩展(没有此扩展，使用composer安装guzzle的时候也会报错)</li>
+</ul>
+</li>
+<li><p>安装 <code>composer require guzzlehttp/guzzle:~6.0</code>，6.0版本要求php7.1以上</p>
+</li>
+<li><p>使用</p>
+</li>
 </ol>
-]]></content>
+<hr>
+<h1 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a><center><font color=red>Laravel</font></center></h1><h2 id="一、特点"><a href="#一、特点" class="headerlink" title="一、特点"></a>一、特点</h2><ol>
+<li>强大的rest router:用简单的回调函数就可以调用，快速绑定controller和router</li>
+<li>artisan:命令行工具，很多手动的工作都自动化</li>
+<li>可继承的模板，简化view的开发和管理</li>
+<li>blade模板:渲染速度更快</li>
+<li>ORM操作数据库</li>
+<li>migration:管理数据库和版本控制</li>
+<li>PHPUnit单元测试功能</li>
+<li>composer包自动管理依赖</li>
+<li>设计模式:laravel框架引入了门面，依赖注入，Ioc 模式，以及各种各样的设计模式等</li>
+</ol>
+<h2 id="二、项目创建"><a href="#二、项目创建" class="headerlink" title="二、项目创建"></a>二、项目创建</h2><ol>
+<li><code>git clone https://github.com/laravel/laravel.git</code></li>
+<li><code>composer install</code></li>
+<li><code>copy .env.example .env</code></li>
+<li><code>.env</code></li>
+<li><code>php artisan key:generate</code></li>
+<li><code>php artisan migrate</code></li>
+</ol>
+<h2 id="三、Request-Lifecycle"><a href="#三、Request-Lifecycle" class="headerlink" title="三、Request Lifecycle"></a>三、Request Lifecycle</h2><blockquote>
+<p>Laravel 的生命周期从public\index.php开始，从public\index.php结束，以下是public\index.php全部代码：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">require __DIR__.&#x27;/../bootstrap/autoload.php&#x27;;</span><br><span class="line"></span><br><span class="line">$app = require_once __DIR__.&#x27;/../bootstrap/app.php&#x27;;</span><br><span class="line">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</span><br><span class="line"></span><br><span class="line">$response = $kernel-&gt;handle(</span><br><span class="line">    $request = Illuminate\Http\Request::capture()</span><br><span class="line">);</span><br><span class="line">$response-&gt;send();</span><br><span class="line"></span><br><span class="line">$kernel-&gt;terminate($request, $response);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>加载项目依赖，注册加载composer自动生成的class loader，也就是加载初始化第三方依赖(包括项目自带和手动require)。</li>
+<li>创建应用实例，生成容器 Container，并向容器注册核心组件，是从bootstrap/app.php脚本获取 Laravel 应用实例，并且绑定内核服务容器。<ul>
+<li>它根据HTTP请求的运行环境的不同，将请求发送至相应的内核：HTTP内核或Console内核。</li>
+</ul>
+</li>
+<li>接收请求并响应，请求被发送到HTTP内核或Console内核，这取决于进入应用的请求类型。<ul>
+<li>HTTP内核继承自Illuminate\Foundation\Http\Kernel类，该类定义了一个bootstrappers数组，这个数组中的类在请求被执行前运行，这些bootstrappers配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。</li>
+<li>HTTP内核还定义了一系列所有请求在处理前需要经过的HTTP中间件，这些中间件处理HTTP会话的读写、判断应用是否处于维护模式、验证CSRF令牌等等。</li>
+</ul>
+</li>
+<li>发送请求，在Laravel基础的服务启动之后，把请求传递给路由。<ul>
+<li>路由器将会分发请求到路由或控制器，同时运行所有路由指定的中间件。</li>
+<li>传递给路由是通过Pipeline来传递的，在传递给路由之前所有请求都要经过app\Http\Kernel.php中的$middleware数组，也就是中间件。</li>
+<li>默认只有一个全局中间件，用来检测你的网站是否暂时关闭。所有请求都要经过，你也可以添加自己的全局中间件。</li>
+<li>然后遍历所有注册的路由，找到最先符合的第一个路由，经过它的路由中间件，进入到控制器或者闭包函数，执行你的具体逻辑代码，把那些不符合或恶意的的请求隔离在外。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、操作数据库"><a href="#四、操作数据库" class="headerlink" title="四、操作数据库"></a>四、操作数据库</h2><blockquote>
+<p>Laravel makes interacting with databases extremely simple across a variety of database backends using either raw SQL, the fluent query builder, and the Eloquent ORM. </p>
+</blockquote>
+<ol>
+<li><p>insert：插入数据时，需要维护created_at和updated_at字段</p>
+</li>
+<li><p>save：无论插入或者更新会自动维护，无需手动操作，其接受一个完整的Eloquent模型实例</p>
+<ul>
+<li>更新模型时，需要检索到它然后设置模型属性，再调用save方法，updated_at时间戳会自动更新</li>
+<li>save()方法的调用必须先实例化对象，所以是非静态(static)方法</li>
+<li>save()方法的功能是插入或更新，每一次调用方法都会查找当前的数据是否包含主键和数据表里是否包含当前主键，如果数据中没主键则获得一个自增的主键给当前对象，如果数据表中已存在该主键则更新该条数据</li>
+<li>返回值为整型或false</li>
+</ul>
+</li>
+<li><p>create：自动维护created_at和updated_at两个字段，其接受普通的PHP数组</p>
+<ul>
+<li>create()方法为静态方法，通过通过类直接调用</li>
+<li>create()的功能为实例对象和插入(new and create)</li>
+<li>返回值为当前模型的实例对象</li>
+</ul>
+</li>
+<li><p>update：更新操作，自动维护updated_at字段</p>
+</li>
+</ol>
+<h2 id="五、反射的应用"><a href="#五、反射的应用" class="headerlink" title="五、反射的应用"></a>五、反射的应用</h2><h2 id="六、Contracts"><a href="#六、Contracts" class="headerlink" title="六、Contracts"></a>六、Contracts</h2><blockquote>
+<p>Laravel’s Contracts are a set of interfaces that define the core services provided by the framework.</p>
+</blockquote>
+<h2 id="七、Facades"><a href="#七、Facades" class="headerlink" title="七、Facades"></a>七、Facades</h2><blockquote>
+<p>Facades provide a “static” interface to classes that are available in the application’s service container. Laravel ships with many facades which provide access to almost all of Laravel’s features.</p>
+</blockquote>
+<h2 id="八、Service-Container"><a href="#八、Service-Container" class="headerlink" title="八、Service Container"></a>八、Service Container</h2><blockquote>
+<p>The Laravel service container is a powerful tool for managing class dependencies and performing dependency injection. Dependency injection is a fancy phrase that essentially means this: class dependencies are “injected” into<br>the class via the constructor or, in some cases, “setter” methods.</p>
+</blockquote>
+<h2 id="九、Service-Providers"><a href="#九、Service-Providers" class="headerlink" title="九、Service Providers"></a>九、Service Providers</h2><blockquote>
+<p>Service providers are the central place of all Laravel application bootstrapping. Your own application, as well as all of Laravel’s core services are bootstrapped via service providers.</p>
+</blockquote>
+<h2 id="十、参考"><a href="#十、参考" class="headerlink" title="十、参考"></a>十、参考</h2><ol>
+<li><a href="https://laravel.com/">参考一</a></li>
+<li><a href="https://learnku.com/articles/28772">参考二</a></li>
+</ol>
+<hr>
+<h1 id="PHPUnit"><a href="#PHPUnit" class="headerlink" title="PHPUnit"></a><center><font color=red>PHPUnit</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHPUnit是用于PHP编程语言的单元测试框架。它是xUnit体系结构的一个实例，用于单元测试框架，该框架起源于SUnit并在JUnit中流行。PHPUnit由Sebastian Bergmann创建，其开发托管在GitHub上。</p>
+<blockquote>
+<p>作用</p>
+</blockquote>
+<ul>
+<li>通过命令操控测试脚本</li>
+<li>测试性能</li>
+<li>测试代码覆盖率</li>
+<li>自动化的更新测试用例的参数数据</li>
+<li>各种格式的日志</li>
+</ul>
+<blockquote>
+<p>使用规则</p>
+</blockquote>
+<ul>
+<li>一般被测试类的后面加上”Test”,比如要测试的类为Array,则测试用例的命名为ArrayTest。</li>
+<li>测试类ArrayTest继承于PHPUnit_Framework_TestCase</li>
+<li>测试方法必须为public权限，都是test开头，或者你也可以选择给其加注释@test来表明该函数为测试函数</li>
+<li>通过断言方法来对实际值和预期值进行断言，断言方法可以参照<a href="http://www.phpunit.cn/manual/5.7/zh_cn/appendixes.assertions.html">手册</a></li>
+</ul>
+<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>通过归档文件安装</p>
+<ul>
+<li>下载归档文件 <code>wget http://phar.phpunit.cn/phpunit.phar</code></li>
+<li>增加可执行权限 <code>chmod +x phpunit.phar</code></li>
+<li>全局可执行 <code>sudo mv phpunit.phar /usr/local/bin/phpunit</code><ul>
+<li>若安装两个php版本，则修改<code>/usr/local/bin/phpunit</code>，修改可执行文件php路径 <code>#!/usr/local/bin/php5.6</code></li>
+</ul>
+</li>
+<li>测试安装是否成功 <code>phpunit --version</code><ul>
+<li>本地源码安装了两个版本的php，5.6和7.3，执行完以上步骤不顶球用，一执行就报错</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP Fatal error:  Uncaught PharException: phar &quot;/usr/local/bin/phpunit&quot; has a broken signature in /usr/local/bin/phpunit:27</span><br><span class="line">Stack trace:</span><br><span class="line">#0 /usr/local/bin/phpunit(27): Phar::mapPhar(&#x27;phpunit-6.5.3.p...&#x27;)</span><br><span class="line">#1 &#123;main&#125;</span><br><span class="line">  thrown in /usr/local/bin/phpunit on line 27</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过composer安装</p>
+<ul>
+<li>全局安装 <code>composer global require phpunit/phpunit</code></li>
+<li>创建项目 <code>mkdir test</code></li>
+<li>切换目录 <code>cd test</code></li>
+<li>初始化 <code>composer init</code></li>
+<li>引入文件 <code>composer require --dev phpunit/phpunit</code></li>
+<li>新建测试文件夹 <code>mkdir tests</code></li>
+<li>新建phpunit.xml为了引入autoload.php</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;phpunit bootstrap=&quot;vendor/autoload.php&quot;&gt;</span><br><span class="line">    &lt;testsuites&gt;</span><br><span class="line">        &lt;testsuite name=&quot;service&quot;&gt;</span><br><span class="line">            &lt;directory&gt;tests&lt;/directory&gt;</span><br><span class="line">        &lt;/testsuite&gt;</span><br><span class="line">    &lt;/testsuites&gt;</span><br><span class="line">&lt;/phpunit&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建测试脚本EqualsTest.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use PHPUnit\Framework\TestCase;</span><br><span class="line"></span><br><span class="line">class EqualsTest extends TestCase &#123;</span><br><span class="line">    public function testFailure()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(1, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function testFailure2()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(&#x27;bar&#x27;, &#x27;baz&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function testFailure3()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(&quot;foo\nbar\nbaz\n&quot;, &quot;foo\nbah\nbaz\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行 <code>../vendor/bin/phpunit EqualsTest.php</code><ul>
+<li>通过归档文件安装时phpunit已建好，默认使用</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://phpunit.de/">参考一</a></li>
+<li><a href="https://phpunit.readthedocs.io/en/9.3/">参考二</a></li>
+<li><a href="https://juejin.im/post/6844903541136424967">参考三</a></li>
+</ol>
+<hr>
+<h1 id="Wrokerman"><a href="#Wrokerman" class="headerlink" title="Wrokerman"></a><center><font color=red>Wrokerman</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>Workerman是纯PHP开发框架，需要依赖很多额外的第三方PHP扩展来实现。它是一款开源高性能异步PHP socket即时通讯框架。支持高并发，超高稳定性，被广泛的用于手机app、移动通讯，微信小程序，手游服务端、网络游戏、PHP聊天室、硬件通讯、智能家居、车联网、物联网等领域的开发。支持TCP长连接，支持Websocket、HTTP等协议，支持自定义协议。拥有异步Mysql、异步Redis、异步Http、MQTT物联网客户端、异步消息队列等众多高性能组件。</li>
+</ol>
+<h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.workerman.net/">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Swoole"><a href="#Swoole" class="headerlink" title="Swoole"></a><center><font color=red>Swoole</font></center></h1>]]></content>
       <categories>
         <category>PHP</category>
       </categories>
       <tags>
         <tag>PHP</tag>
-        <tag>SPL</tag>
+        <tag>Guzzle</tag>
+        <tag>PHPUnit</tag>
+        <tag>Workerman</tag>
+        <tag>Laravel</tag>
+        <tag>Swoole</tag>
       </tags>
   </entry>
   <entry>
@@ -19615,35 +19593,6 @@
       </categories>
       <tags>
         <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Postman</title>
-    <url>/2018/01/12/Tools-postman/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>宁可十年不将军，不可一日不拱卒。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p><code>Postman is a collaboration platform for API development. Postman&#39;s features simplify each step of building an API and streamline collaboration so you can create better APIs—faster.</code> 翻译下就是说Postman是一个API开发的协作平台，可以提升工作效率之类的，相信有过Postman使用经验的小伙伴肯定已经有所了解，广泛用于接口开发、调试、监控、自动化测试、文档生成与管理等各个方面。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>HTTP请求</li>
-<li>Collection管理</li>
-<li>HTTP响应美化</li>
-<li>内置测试脚本语言</li>
-<li>设定变量与环境</li>
-<li>monitor管理</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.getpostman.com/">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>Postman</tag>
       </tags>
   </entry>
   <entry>
@@ -21940,90 +21889,6 @@
       </tags>
   </entry>
   <entry>
-    <title>学习之PHPUnit</title>
-    <url>/2017/07/24/PHP-%E5%AD%A6%E4%B9%A0%E4%B9%8BPHPunit/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>2003年非典的爆发是因为有人吃了含有SARS病毒的果子狸，这种病毒来源于蝙蝠中的一种——菊头蝠。2020年新型冠状病毒疫情，有关专家称这次新型冠状病毒的自然宿主最有可能是蝙蝠，它与云南菊头蝠中存在的RaTG13冠状病毒一致性高达96%。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHPUnit是用于PHP编程语言的单元测试框架。它是xUnit体系结构的一个实例，用于单元测试框架，该框架起源于SUnit并在JUnit中流行。PHPUnit由Sebastian Bergmann创建，其开发托管在GitHub上。</p>
-<blockquote>
-<p>作用</p>
-</blockquote>
-<ul>
-<li>通过命令操控测试脚本</li>
-<li>测试性能</li>
-<li>测试代码覆盖率</li>
-<li>自动化的更新测试用例的参数数据</li>
-<li>各种格式的日志</li>
-</ul>
-<blockquote>
-<p>使用规则</p>
-</blockquote>
-<ul>
-<li>一般被测试类的后面加上”Test”,比如要测试的类为Array,则测试用例的命名为ArrayTest。</li>
-<li>测试类ArrayTest继承于PHPUnit_Framework_TestCase</li>
-<li>测试方法必须为public权限，都是test开头，或者你也可以选择给其加注释@test来表明该函数为测试函数</li>
-<li>通过断言方法来对实际值和预期值进行断言，断言方法可以参照<a href="http://www.phpunit.cn/manual/5.7/zh_cn/appendixes.assertions.html">手册</a></li>
-</ul>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>通过归档文件安装</p>
-<ul>
-<li>下载归档文件 <code>wget http://phar.phpunit.cn/phpunit.phar</code></li>
-<li>增加可执行权限 <code>chmod +x phpunit.phar</code></li>
-<li>全局可执行 <code>sudo mv phpunit.phar /usr/local/bin/phpunit</code><ul>
-<li>若安装两个php版本，则修改<code>/usr/local/bin/phpunit</code>，修改可执行文件php路径 <code>#!/usr/local/bin/php5.6</code></li>
-</ul>
-</li>
-<li>测试安装是否成功 <code>phpunit --version</code><ul>
-<li>本地源码安装了两个版本的php，5.6和7.3，执行完以上步骤不顶球用，一执行就报错</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP Fatal error:  Uncaught PharException: phar &quot;/usr/local/bin/phpunit&quot; has a broken signature in /usr/local/bin/phpunit:27</span><br><span class="line">Stack trace:</span><br><span class="line">#0 /usr/local/bin/phpunit(27): Phar::mapPhar(&#x27;phpunit-6.5.3.p...&#x27;)</span><br><span class="line">#1 &#123;main&#125;</span><br><span class="line">  thrown in /usr/local/bin/phpunit on line 27</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过composer安装</p>
-<ul>
-<li>全局安装 <code>composer global require phpunit/phpunit</code></li>
-<li>创建项目 <code>mkdir test</code></li>
-<li>切换目录 <code>cd test</code></li>
-<li>初始化 <code>composer init</code></li>
-<li>引入文件 <code>composer require --dev phpunit/phpunit</code></li>
-<li>新建测试文件夹 <code>mkdir tests</code></li>
-<li>新建phpunit.xml为了引入autoload.php</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;phpunit bootstrap=&quot;vendor/autoload.php&quot;&gt;</span><br><span class="line">    &lt;testsuites&gt;</span><br><span class="line">        &lt;testsuite name=&quot;service&quot;&gt;</span><br><span class="line">            &lt;directory&gt;tests&lt;/directory&gt;</span><br><span class="line">        &lt;/testsuite&gt;</span><br><span class="line">    &lt;/testsuites&gt;</span><br><span class="line">&lt;/phpunit&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>新建测试脚本EqualsTest.php</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use PHPUnit\Framework\TestCase;</span><br><span class="line"></span><br><span class="line">class EqualsTest extends TestCase &#123;</span><br><span class="line">    public function testFailure()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(1, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function testFailure2()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(&#x27;bar&#x27;, &#x27;baz&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function testFailure3()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(&quot;foo\nbar\nbaz\n&quot;, &quot;foo\nbah\nbaz\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>执行 <code>../vendor/bin/phpunit EqualsTest.php</code><ul>
-<li>通过归档文件安装时phpunit已建好，默认使用</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://phpunit.de/">参考一</a></li>
-<li><a href="https://phpunit.readthedocs.io/en/9.3/">参考二</a></li>
-<li><a href="https://juejin.im/post/6844903541136424967">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>PHPUnit</tag>
-        <tag>单元测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac下安装使用ELK</title>
     <url>/2017/07/22/ELK-Mac%E4%B8%8B%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8ELK/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -22297,7 +22162,7 @@
       </tags>
   </entry>
   <entry>
-    <title>底层之异常处理</title>
+    <title>PHP异常处理</title>
     <url>/2017/07/13/PHP-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>pcntl_fork的作用是在当前进程当前位置产生分支(子进程)。译注：fork是创建了一个子进程，父进程和子进程都从fork的位置开始向下继续执行，不同的是父进程执行过程中，得到的fork返回值为子进程号，而子进程得到的是0。</p>
@@ -22387,7 +22252,7 @@
       </tags>
   </entry>
   <entry>
-    <title>进程信号处理</title>
+    <title>PHP进程信号处理</title>
     <url>/2017/06/27/PHP-%E8%BF%9B%E7%A8%8B%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>《谁伴我闯荡》是中国香港摇滚乐队Beyond演唱的一首粤语歌曲，由刘卓辉作词，黄家驹作曲，Beyond编曲，收录在Beyond于1991年9月6日发行的粤语专辑《犹豫》中。该歌曲也是Beyond自传式电影《莫欺少年穷》的插曲之一，也是Beyond为数不多的专为电影创作作品。另外，本歌曲在港剧《笑看风云》中也被用做插曲。</p>
@@ -22737,7 +22602,10 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var f = function () &#123;</span><br><span class="line"> console.log(this.x);</span><br><span class="line">&#125;</span><br><span class="line">var x   = 1;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    f: f,</span><br><span class="line">    x: 2,</span><br><span class="line">&#125;;</span><br><span class="line">f()     // 全局环境，引用全局环境的变量x,打印输出1</span><br><span class="line">obj.f() // obj环境执行，打印输出2</span><br></pre></td></tr></table></figure>
 <p>&#160;&#160;&#160;&#160;上面代码中，函数f在全局环境执行，this.x指向全局环境的x。<br><img src="04.jpeg" alt="全局环境"><br>obj环境执行，this.x指向obj.x。<br><img src="05.jpeg" alt="obj环境"><br>&#160;&#160;&#160;&#160;回到本文开头提出的问题，obj.foo()是通过obj找到foo，所以就是在obj环境执行。一旦var foo = obj.foo，变量foo就直接指向函数本身，所以foo()就变成在全局环境执行。</p>
 <hr>
-<h1 id="哈希槽"><a href="#哈希槽" class="headerlink" title="哈希槽"></a><center><font color=red>哈希槽</font></center></h1>]]></content>
+<h1 id="Express"><a href="#Express" class="headerlink" title="Express"></a><center><font color=red>Express</font></center></h1><ol>
+<li><a href="https://expressjs.com/zh-cn/guide/routing.html">Express路由</a></li>
+</ol>
+]]></content>
       <categories>
         <category>PL</category>
       </categories>
@@ -23425,6 +23293,7 @@ read_xlsx(name, sheet)
 </ol>
 <h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a href="https://zhuanlan.zhihu.com/p/107897903">参考一</a></li>
+<li><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">参考二</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -23851,8 +23720,8 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>MongoDB问题收集</title>
-    <url>/2017/02/11/MongoDB-%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86/</url>
+    <title>MongoDB收集</title>
+    <url>/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>劝君莫惜金缕衣，劝君惜取少年时。花开堪折直须折，莫待无花空折枝。 —— 唐·无名氏 《金缕衣》</p>
 </blockquote>
@@ -24690,20 +24559,13 @@ read_xlsx(name, sheet)
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、列表</h2><ol>
+<h2 id="一、工具"><a href="#一、工具" class="headerlink" title="一、工具"></a>一、工具</h2><ol>
 <li><a href="https://sketchbook.com/">sketchbook</a></li>
-<li>[gimp]<a href="https://www.gimp.org/">https://www.gimp.org/</a><ul>
-<li>GIMP是GNU Image Manipulation Program(GNU图像处理程序)的缩写，它是Peter Mattis和Spencer Kimhall开发的免费照片和图像处理和创作工具，功能十分强大。</li>
-</ul>
-</li>
-<li><a href="https://fouber.github.io/lottery/">lottery</a></li>
-<li><a href="http://www.gnu.org/software/libiconv/">libiconv</a></li>
-<li><a href="http://xmlsoft.org/">libxml2</a></li>
+<li><a href="https://www.gimp.org/">gimp</a>，GNU Image Manipulation Program(GNU图像处理程序)的缩写，它是Peter Mattis和Spencer Kimhall开发的免费照片和图像处理和创作工具，功能十分强大。</li>
+<li><a href="https://www.getpostman.com/">postman</a>，是一个API开发的协作平台，可以提升工作效率之类的，相信有过Postman使用经验的小伙伴肯定已经有所了解，广泛用于接口开发、调试、监控、自动化测试、文档生成与管理等各个方面。</li>
 <li><a href="http://docs.jinkan.org/">jinjia</a></li>
-<li><a href="https://github.com/L1cardo/BILIBILI-HELPER">bilibili</a></li>
 <li><a href="https://excalidraw.com/">excalidraw</a></li>
 <li><a href="https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html">AnyConnect</a>，<a href="https://www.jianshu.com/p/b1bb49732d62">卸载后重装失败</a>，<a href="https://blog.csdn.net/weixin_42638711/article/details/108795677">卸载</a></li>
-<li><a href="https://developers.dingtalk.com/document/app/custom-robot-access">钉钉机器人</a></li>
 <li><a href="https://gitmind.cn/">gitmind</a></li>
 <li><a href="https://www.feishu.cn/">飞书</a></li>
 <li><a href="https://app.diagrams.net/">draw.io</a></li>
@@ -24712,17 +24574,11 @@ read_xlsx(name, sheet)
 <li><a href="https://apps.apple.com/my/app/pixeur-get-screen-color/id1507890049?mt=12">Pixeur</a></li>
 <li><a href="https://www.macwk.com/">macwk</a></li>
 <li><a href="https://sourceforge.net/projects/kdiff3/files/">kdiff3</a></li>
-<li><a href="http://supervisord.org/">进程监控supervisor</a><ul>
-<li>Supervisor是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。它是通过fork/exec的方式把这些被管理的进程当作supervisor的子进程来启动，这样只要在supervisor的配置文件中，把要管理的进程的可执行文件的路径写进去即可。也实现当子进程挂掉的时候，父进程可以准确获取子进程挂掉的信息的，可以选择是否自己启动和报警。supervisor还提供了一个功能，可以为supervisord或者每个子进程，设置一个非root的user，这个user就可以管理它对应的进程。</li>
-</ul>
-</li>
+<li><a href="http://supervisord.org/">supervisor</a>，是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。</li>
 <li><a href="https://mac.softpedia.com/get/Utilities/Gas-Mask.shtml">Gas Mask</a></li>
 <li><a href="https://github.com/qishibo/AnotherRedisDesktopManager/">AnotherRedisDesktopManager</a></li>
 <li><a href="http://freemacsoft.net/appcleaner/">AppCleaner</a></li>
-<li><a href="https://www.scootersoftware.com/">Beyond Compare</a>，<a href="https://www.beyondcompare.cc/">中文</a><ul>
-<li>使用Beyond Compare只需使用简单而强大的命令和操作，即可开启优质的对比体验，找出您感兴趣的差异，合并变化，然后同步文件，并生成报告。</li>
-</ul>
-</li>
+<li><a href="https://www.scootersoftware.com/">Beyond Compare</a>，<a href="https://www.beyondcompare.cc/">中文</a></li>
 <li><a href="https://www.psiphon3.com/zh/index.html">Psiphon</a></li>
 <li><a href="https://www.macupdate.com/app/mac/60122/paper">Pap.er</a></li>
 <li><a href="https://robomongo.org/download">Robo 3T</a></li>
@@ -24731,31 +24587,26 @@ read_xlsx(name, sheet)
 </ul>
 </li>
 <li><a href="https://www.theunarchiver.com/">The Unarchiver</a></li>
-<li><a href="https://tortoisegit.org/">TortoiseGit</a><ul>
-<li>TortoiseGit is a Windows Shell Interface to Git and based on TortoiseSVN. It’s open source and can fully be build with freely available software.</li>
-</ul>
-</li>
-<li><a href="https://tortoisesvn.net/index.zh.html">TortoiseSvn</a><ul>
-<li>TortoiseSVN是可用于Windows系统的<code>Apache™ Subversion(SVN)®</code>版本控制客户端.TortoiseSVN无需使用Subversion命令行，是目前最方便的Subversion版本控制系统，其操作和使用非常直观和简洁。</li>
-</ul>
-</li>
+<li><a href="https://tortoisegit.org/">TortoiseGit</a></li>
+<li><a href="https://tortoisesvn.net/index.zh.html">TortoiseSvn</a>，是可用于Windows系统的<code>Apache™ Subversion(SVN)®</code>版本控制客户端.TortoiseSVN无需使用Subversion命令行，是目前最方便的Subversion版本控制系统，其操作和使用非常直观和简洁。</li>
 <li><a href="https://crystalidea.com/macs-fan-control/download">Macs Fan Control</a>，Mac风扇风速控制</li>
-<li><a href="https://tunnelblick.net/">Tunnelblick</a><ul>
-<li>Tunnelblick helps you control OpenVPN® VPNs on macOS. It is Free Software that puts its users first. There are no ads, no affiliate marketers, no tracking — we don’t even keep logs of your IP address or other information. We just supply open technology for fast, easy, private, and secure control of VPNs.</li>
-</ul>
-</li>
+<li><a href="https://tunnelblick.net/">Tunnelblick</a></li>
 <li><a href="https://www.sourcetreeapp.com/">Sourcetree</a>，Git客户端</li>
 <li><a href="https://www.stellarinfo.com/gdc/mac-data-recovery/">mac-data-retriever</a>，Mac数据恢复，拯救<code>rm -rf *</code></li>
 <li><a href="http://blog.bahraniapps.com/gifcam/">GifCam</a>，Windows下gif制作工具</li>
-<li><a href="https://github.com/macvim-dev/macvim/releases">MacVim</a><ul>
-<li>brew install macvim</li>
-<li>dmg安装</li>
-<li>git clone <a href="https://github.com/gmarik/vundle.git">https://github.com/gmarik/vundle.git</a></li>
-</ul>
-</li>
+<li><a href="https://github.com/macvim-dev/macvim/releases">MacVim</a></li>
 <li><a href="https://clickhouse.com/docs/zh/">ClickHouse</a></li>
 <li><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">tmux</a>，<a href="http://louiszhai.github.io/2017/09/30/tmux/">使用手册</a></li>
 <li><a href="https://www.apipost.cn/">ApiPost</a></li>
+<li><a href="https://iperf.fr/">iperf</a>，<a href="https://www.cnblogs.com/cloudwas/p/13084815.html">使用</a></li>
+</ol>
+<h2 id="二、库"><a href="#二、库" class="headerlink" title="二、库"></a>二、库</h2><ol>
+<li><a href="http://www.gnu.org/software/libiconv/">libiconv</a></li>
+<li><a href="http://xmlsoft.org/">libxml2</a></li>
+</ol>
+<h2 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h2><ol start="3">
+<li><a href="https://fouber.github.io/lottery/">lottery</a></li>
+<li><a href="https://developers.dingtalk.com/document/app/custom-robot-access">钉钉机器人</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -26337,23 +26188,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>java关键字volatile</title>
-    <url>/2016/06/10/Java-%E5%85%B3%E9%94%AE%E5%AD%97volatile/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>万维网(英语：World Wide Web)，简写WWW，是一个透过互联网访问的、由许多互相链接的超文本组成的系统，由英国科学家蒂姆·伯纳斯-李于1989年发明。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>volatile</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker入门</title>
     <url>/2016/06/09/Docker-%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -26669,24 +26503,6 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Ruby</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java关键字synchronized</title>
-    <url>/2016/05/01/Java-%E5%85%B3%E9%94%AE%E5%AD%97synchronized/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>”一切皆文件”指的是对所有文件(目录、字符设备、块设备、套接字、打印机、进程、线程、管道等)操作，读写都可用<code>fopen()/fclose()/fwrite()/fread()</code>等函数进行处理。它屏蔽了硬件的区别，所有设备都抽象成文件，提供统一的接口给用户。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;synchronized是Java的一种同步锁，可用在代码块、方法、静态方法、类中，用于保证多线程操作时的原子性。<br>synchronized修饰非静态方法，实际上是对调用该方法的对象加锁，俗称“对象锁”，不同的对象没有竞争关系。synchronized修饰static静态方法，实际上是对该类对象加锁，俗称“类锁”，这个类所有的对象竞争一把锁。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -27058,110 +26874,6 @@ read_xlsx(name, sheet)
         <tag>chsh</tag>
         <tag>BASH_SOURCE</tag>
         <tag>dirname</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java反射reflection</title>
-    <url>/2016/04/09/Java-%E5%8F%8D%E5%B0%84reflection/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>复调音乐，一种“多声部音乐”，作品中含有两条以上(含)独立旋律，通过技术性处理和谐地结合在一起，这样的音乐就叫做复调音乐。复调音乐拥有漫长的历史，在中世纪的教会圣咏中就有了最早的复音音乐，诗班在唱颂歌的时候各自在不同的声部上吟唱不同的旋律。其后尼德兰的荷兰乐派进一步发展出复音的理论和写作技术。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射(Reflection)是Java的特征之一，它允许运行中的Java程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java里有一句话：万物皆对象，而一个对象必然有一个与之对应的类。具体到代码层面，Java中每个类都有一个与之对应的类对象(Class对象)，这个类对象由JVM生成并保存了对应类的相关信息，而类对象所对应的类就是<code>java.lang.Class</code>，它是所有反射API的入口点。</p>
-<blockquote>
-<p>获取Class类对象的三种方法</p>
-</blockquote>
-<ul>
-<li>使用<code>Class.forName</code>静态方法，如<code>Class clz = Class.forName(&quot;java.lang.String&quot;);</code></li>
-<li>使用<code>.class</code>方法，如<code>Class clz = String.class;</code></li>
-<li>使用类对象的<code>getClass()</code>方法，如<code>String str = new String(&quot;Hello&quot;); Class clz = str.getClass();</code></li>
-</ul>
-<blockquote>
-<p>反射的用法</p>
-</blockquote>
-<ol>
-<li><p>通过反射创建类对象，分为两种：</p>
-<ul>
-<li>通过Class对象的newInstance()方法</li>
-<li>通过Constructor对象的newInstance()方法</li>
-</ul>
-</li>
-<li><p>通过反射获取类属性、方法、构造器</p>
-<ul>
-<li>获取属性<ul>
-<li>getFields()获取类中所有被public修饰的所有属性</li>
-<li>getDeclaredFields()获取类中所有的属性(不包括继承下来的属性)</li>
-</ul>
-</li>
-<li>获取方法<ul>
-<li>getMethods()获取类中被public修饰的所有方法(包括从父类中继承的那一部分)</li>
-<li>getDeclaredMethods()获取所有方法(不包括从父类中继承的那一部分)</li>
-</ul>
-</li>
-<li>获取构造器<ul>
-<li>getConstructors()获取类中所有被public修饰的构造器</li>
-<li>getDeclaredConstructors()获取类中所有构造器</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>通过反射调用方法</p>
-<ul>
-<li>通过反射获取到某个Method类对象后可以通过调用invoke方法执行<code>invoke(Oject obj, Object... args)</code></li>
-</ul>
-</li>
-<li><p>通过反射设置访问属性<code>setAccessible(bool)</code></p>
-</li>
-<li><p>通过反射获取注解</p>
-<ul>
-<li>getAnnotations()获取该对象上的所有注解</li>
-<li>getDeclaredAnnotations()获取该对象上的显式标注的所有注解(不包括继承下来的注解)</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>应用场景</p>
-</blockquote>
-<ul>
-<li>框架开发</li>
-<li>工厂模式，消除多个分支</li>
-<li>动态加载类</li>
-</ul>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li><p>简单例子</p>
-<ul>
-<li><p>code</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;reflect/Fruit.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">class Fruit &#123;</span><br><span class="line">    public String name;</span><br><span class="line">    protected int num;</span><br><span class="line">    private int price;</span><br><span class="line"></span><br><span class="line">    public Fruit(String name, int price) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;reflect/FruitMain.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.*;</span><br><span class="line"></span><br><span class="line">class FruitMain &#123;</span><br><span class="line">    // @SuppressWarnings(&quot;rawtypes&quot;)</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 正常的调用</span><br><span class="line">        Fruit apple = new Fruit(&quot;Apple&quot;, 15);</span><br><span class="line">        System.out.println(&quot;Apple Init Price:&quot; + apple.getPrice());</span><br><span class="line">        apple.setPrice(5);</span><br><span class="line">        System.out.println(&quot;Apple Set Price:&quot; + apple.getPrice());</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName(&quot;reflect.Fruit&quot;);</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(String.class, int.class);</span><br><span class="line">            Method getPriceMethod = clz.getMethod(&quot;getPrice&quot;);</span><br><span class="line">            Fruit pearObj = (Fruit)con.newInstance(&quot;Pear&quot;, 10);</span><br><span class="line">            System.out.println(&quot;Pear Init Price:&quot; + getPriceMethod.invoke(pearObj));</span><br><span class="line">            Method setPriceMethod = clz.getMethod(&quot;setPrice&quot;, int.class);</span><br><span class="line">            setPriceMethod.invoke(pearObj, 14);</span><br><span class="line">            System.out.println(&quot;Pear Set Price:&quot; + getPriceMethod.invoke(pearObj));</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName(&quot;reflect.Fruit&quot;);</span><br><span class="line">            Method method = clz.getMethod(&quot;setPrice&quot;, int.class);</span><br><span class="line">            Method method1 = clz.getMethod(&quot;getPrice&quot;);</span><br><span class="line">            Class&lt;?&gt;[] parTypes = new Class&lt;?&gt;[2];</span><br><span class="line">            parTypes[0] = String.class;</span><br><span class="line">            parTypes[1] = int.class;</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(parTypes);</span><br><span class="line">            Object[] pars = new Object[2];</span><br><span class="line">            pars[0] = &quot;Banana&quot;;</span><br><span class="line">            pars[1] = 11;</span><br><span class="line">            Object obj = con.newInstance(pars);</span><br><span class="line">            System.out.println(&quot;Banana Init Price:&quot; + method1.invoke(obj));</span><br><span class="line">            method.invoke(obj, 8);</span><br><span class="line">            System.out.println(&quot;Banana Set Price:&quot; + method1.invoke(obj));</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>javac reflect/Main.java </p>
-</li>
-<li><p>java reflect.Main</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Apple Init Price:15</span><br><span class="line">Apple Set Price:5</span><br><span class="line">Pear Init Price:10</span><br><span class="line">Pear Set Price:14</span><br><span class="line">Banana Init Price:11</span><br><span class="line">Banana Set Price:8</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.oracle.com/technical-resources/articles/java/javareflection.html">参考一</a></li>
-<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/package-summary.html">参考二</a></li>
-<li><a href="https://www.sczyh30.com/posts/Java/java-reflection-1/">参考三</a></li>
-<li><a href="https://juejin.cn/post/6844904005294882830">参考四</a></li>
-<li><a href="https://dunwu.github.io/javacore/basics/java-reflection.html">参考五</a></li>
-<li><a href="https://www.cnblogs.com/cxuanBlog/p/13551797.html">参考六</a></li>
-<li><a href="https://www.cnblogs.com/penghuwan/p/7580145.html">参考七</a></li>
-<li><a href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html">参考八</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>反射</tag>
-        <tag>reflection</tag>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -29402,105 +29114,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>学习之Laravel</title>
-    <url>/2016/02/06/PHP-%E5%AD%A6%E4%B9%A0%E4%B9%8BLaravel/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>薛定谔的猫(英文名称：Erwin Schrödinger’s Cat)是奥地利著名物理学家薛定谔(Erwin Schrödinger，1887年8月12日——1961年1月4日)提出的一个思想实验，是指将一只猫关在装有少量镭和氰化物的密闭容器里。镭的衰变存在几率，如果镭发生衰变，会触发机关打碎装有氰化物的瓶子，猫就会死；如果镭不发生衰变，猫就存活。</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="一、特点"><a href="#一、特点" class="headerlink" title="一、特点"></a>一、特点</h2><ol>
-<li>强大的rest router:用简单的回调函数就可以调用，快速绑定controller和router</li>
-<li>artisan:命令行工具，很多手动的工作都自动化</li>
-<li>可继承的模板，简化view的开发和管理</li>
-<li>blade模板:渲染速度更快</li>
-<li>ORM操作数据库</li>
-<li>migration:管理数据库和版本控制</li>
-<li>PHPUnit单元测试功能</li>
-<li>composer包自动管理依赖</li>
-<li>设计模式:laravel框架引入了门面，依赖注入，Ioc 模式，以及各种各样的设计模式等</li>
-</ol>
-<h2 id="二、项目创建"><a href="#二、项目创建" class="headerlink" title="二、项目创建"></a>二、项目创建</h2><ol>
-<li><code>git clone https://github.com/laravel/laravel.git</code></li>
-<li><code>composer install</code></li>
-<li><code>copy .env.example .env</code></li>
-<li><code>.env</code></li>
-<li><code>php artisan key:generate</code></li>
-<li><code>php artisan migrate</code></li>
-</ol>
-<h2 id="三、Request-Lifecycle"><a href="#三、Request-Lifecycle" class="headerlink" title="三、Request Lifecycle"></a>三、Request Lifecycle</h2><blockquote>
-<p>Laravel 的生命周期从public\index.php开始，从public\index.php结束，以下是public\index.php全部代码：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">require __DIR__.&#x27;/../bootstrap/autoload.php&#x27;;</span><br><span class="line"></span><br><span class="line">$app = require_once __DIR__.&#x27;/../bootstrap/app.php&#x27;;</span><br><span class="line">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</span><br><span class="line"></span><br><span class="line">$response = $kernel-&gt;handle(</span><br><span class="line">    $request = Illuminate\Http\Request::capture()</span><br><span class="line">);</span><br><span class="line">$response-&gt;send();</span><br><span class="line"></span><br><span class="line">$kernel-&gt;terminate($request, $response);</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>加载项目依赖，注册加载composer自动生成的class loader，也就是加载初始化第三方依赖(包括项目自带和手动require)。</li>
-<li>创建应用实例，生成容器 Container，并向容器注册核心组件，是从bootstrap/app.php脚本获取 Laravel 应用实例，并且绑定内核服务容器。<ul>
-<li>它根据HTTP请求的运行环境的不同，将请求发送至相应的内核：HTTP内核或Console内核。</li>
-</ul>
-</li>
-<li>接收请求并响应，请求被发送到HTTP内核或Console内核，这取决于进入应用的请求类型。<ul>
-<li>HTTP内核继承自Illuminate\Foundation\Http\Kernel类，该类定义了一个bootstrappers数组，这个数组中的类在请求被执行前运行，这些bootstrappers配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。</li>
-<li>HTTP内核还定义了一系列所有请求在处理前需要经过的HTTP中间件，这些中间件处理HTTP会话的读写、判断应用是否处于维护模式、验证CSRF令牌等等。</li>
-</ul>
-</li>
-<li>发送请求，在Laravel基础的服务启动之后，把请求传递给路由。<ul>
-<li>路由器将会分发请求到路由或控制器，同时运行所有路由指定的中间件。</li>
-<li>传递给路由是通过Pipeline来传递的，在传递给路由之前所有请求都要经过app\Http\Kernel.php中的$middleware数组，也就是中间件。</li>
-<li>默认只有一个全局中间件，用来检测你的网站是否暂时关闭。所有请求都要经过，你也可以添加自己的全局中间件。</li>
-<li>然后遍历所有注册的路由，找到最先符合的第一个路由，经过它的路由中间件，进入到控制器或者闭包函数，执行你的具体逻辑代码，把那些不符合或恶意的的请求隔离在外。</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、操作数据库"><a href="#四、操作数据库" class="headerlink" title="四、操作数据库"></a>四、操作数据库</h2><blockquote>
-<p>Laravel makes interacting with databases extremely simple across a variety of database backends using either raw SQL, the fluent query builder, and the Eloquent ORM. </p>
-</blockquote>
-<ol>
-<li><p>insert：插入数据时，需要维护created_at和updated_at字段</p>
-</li>
-<li><p>save：无论插入或者更新会自动维护，无需手动操作，其接受一个完整的Eloquent模型实例</p>
-<ul>
-<li>更新模型时，需要检索到它然后设置模型属性，再调用save方法，updated_at时间戳会自动更新</li>
-<li>save()方法的调用必须先实例化对象，所以是非静态(static)方法</li>
-<li>save()方法的功能是插入或更新，每一次调用方法都会查找当前的数据是否包含主键和数据表里是否包含当前主键，如果数据中没主键则获得一个自增的主键给当前对象，如果数据表中已存在该主键则更新该条数据</li>
-<li>返回值为整型或false</li>
-</ul>
-</li>
-<li><p>create：自动维护created_at和updated_at两个字段，其接受普通的PHP数组</p>
-<ul>
-<li>create()方法为静态方法，通过通过类直接调用</li>
-<li>create()的功能为实例对象和插入(new and create)</li>
-<li>返回值为当前模型的实例对象</li>
-</ul>
-</li>
-<li><p>update：更新操作，自动维护updated_at字段</p>
-</li>
-</ol>
-<h2 id="五、反射的应用"><a href="#五、反射的应用" class="headerlink" title="五、反射的应用"></a>五、反射的应用</h2><h2 id="六、Contracts"><a href="#六、Contracts" class="headerlink" title="六、Contracts"></a>六、Contracts</h2><blockquote>
-<p>Laravel’s Contracts are a set of interfaces that define the core services provided by the framework.</p>
-</blockquote>
-<h2 id="七、Facades"><a href="#七、Facades" class="headerlink" title="七、Facades"></a>七、Facades</h2><blockquote>
-<p>Facades provide a “static” interface to classes that are available in the application’s service container. Laravel ships with many facades which provide access to almost all of Laravel’s features.</p>
-</blockquote>
-<h2 id="八、Service-Container"><a href="#八、Service-Container" class="headerlink" title="八、Service Container"></a>八、Service Container</h2><blockquote>
-<p>The Laravel service container is a powerful tool for managing class dependencies and performing dependency injection. Dependency injection is a fancy phrase that essentially means this: class dependencies are “injected” into<br>the class via the constructor or, in some cases, “setter” methods.</p>
-</blockquote>
-<h2 id="九、Service-Providers"><a href="#九、Service-Providers" class="headerlink" title="九、Service Providers"></a>九、Service Providers</h2><blockquote>
-<p>Service providers are the central place of all Laravel application bootstrapping. Your own application, as well as all of Laravel’s core services are bootstrapped via service providers.</p>
-</blockquote>
-<h2 id="十、参考"><a href="#十、参考" class="headerlink" title="十、参考"></a>十、参考</h2><ol>
-<li><a href="https://laravel.com/">参考一</a></li>
-<li><a href="https://learnku.com/articles/28772">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>laravel</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux文本处理三剑客</title>
     <url>/2016/01/31/Linux-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E4%B8%89%E5%89%91%E5%AE%A2/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -29921,6 +29534,31 @@ read_xlsx(name, sheet)
         <tag>Mac</tag>
         <tag>Python</tag>
         <tag>time</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java并发编程</title>
+    <url>/2016/01/12/Java-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>清朝君主是指清代的皇帝，一般不包括后金政权的大汗，如果从皇太极建立清朝开始则有11位君主，从入关以后开始算共有十个皇帝。十一个皇帝分别是：皇太极(后金天聪汗，改元为清后年号崇德)；福临(顺治)；玄烨(康熙)；胤禛<em>yìn zhēn</em>(雍正)；弘历(乾隆)；永琰，后改顒琰<em>yóng yǎn</em>(嘉庆)；旻宁<em>mín níng</em>(道光)；奕詝<em>yì zhǔ</em>(咸丰)；载淳<em>zǎi chún</em>(同治)；载湉<em>zǎi tián</em>(光绪)；溥仪<em>pǔ yí</em>(宣统)，不包括努尔哈赤和多尔衮两位追封的皇帝。</p>
+</blockquote>
+<span id="more"></span>
+
+
+
+<h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a><center><font color=red>ThreadLocal</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ThreadLocal是JDK底层提供的一个解决多线程并发问题的工具类,它为每个线程提供了一个本地的副本变量机制，实现了和其它线程隔离，并且这种变量只在本线程的生命周期内起作用，可以减少同一个线程内多个方法之间的公共变量传递的复杂度。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1306581251653666">参考下</a></li>
+</ol>
+<hr>
+<h1 id="关键字synchronized"><a href="#关键字synchronized" class="headerlink" title="关键字synchronized"></a><center><font color=red>关键字synchronized</font></center></h1><hr>
+<h1 id="关键字volatile"><a href="#关键字volatile" class="headerlink" title="关键字volatile"></a><center><font color=red>关键字volatile</font></center></h1>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>ThreadLocal</tag>
       </tags>
   </entry>
   <entry>
@@ -30614,7 +30252,7 @@ read_xlsx(name, sheet)
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、MYSQL支持的数据库引擎"><a href="#一、MYSQL支持的数据库引擎" class="headerlink" title="一、MYSQL支持的数据库引擎"></a>一、MYSQL支持的数据库引擎</h2><blockquote>
+<h1 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a><center><font color=red>数据库引擎</font></center></h1><h2 id="一、MYSQL支持的数据库引擎"><a href="#一、MYSQL支持的数据库引擎" class="headerlink" title="一、MYSQL支持的数据库引擎"></a>一、MYSQL支持的数据库引擎</h2><blockquote>
 <p>查看mysql支持的数据库引擎：<code>show engines;</code>，以下是常用到的几种数据库引擎：</p>
 </blockquote>
 <ol>
@@ -30739,7 +30377,7 @@ read_xlsx(name, sheet)
 </ol>
 <p><em>扩展：</em> 全文索引是指对char、varchar和text中的每个词（停用词除外）建立倒排序索引。MyISAM的全文索引其实没啥用，因为它不支持中文分词，必须由使用者分词后加入空格再写到数据表里，而且少于4个汉字的词会和停用词一样被忽略掉。</p>
 <hr>
-<blockquote>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a><center><font color=red>扩展</font></center></h1><blockquote>
 <p>聚簇索引是将数据存储与索引放到了一块，找到索引也就找到了数据；非聚簇索引则是将数据存储与索引分开，索引结构的叶子节点指向了数据的对应行的地址。</p>
 </blockquote>
 <!-- more -->
@@ -31221,8 +30859,8 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>java性能调试工具</title>
-    <url>/2015/06/25/Java-%E6%80%A7%E8%83%BD%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/</url>
+    <title>Java性能调试</title>
+    <url>/2015/06/25/Java-%E6%80%A7%E8%83%BD%E8%B0%83%E8%AF%95/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>1990年8月3日至6日，Beyond主唱黄家驹随香港电台“爱心第一旅”远赴巴布亚新几内亚，并亲眼目睹了当地人民因为战争和灾荒而遭受的苦难生活。回到香港以后，黄家驹在报纸上读到了曼德拉被困狱中的故事，并由此产生了内心的共鸣。黄家驹认为曼德拉的精神内涵是关于抗争与希望，这与Beyond在香港艰辛打拼的背景不谋而合，于是黄家驹就创作了歌曲《光辉岁月》。</p>
 </blockquote>
@@ -31387,14 +31025,18 @@ read_xlsx(name, sheet)
 <td align="center">查看包信息</td>
 <td align="center">brew info package_name</td>
 </tr>
+<tr>
+<td align="center">查看可通过brew启动的服务</td>
+<td align="center">brew services list</td>
+</tr>
+<tr>
+<td align="center">通过brew启停服务</td>
+<td align="center">brew services start/stop name</td>
+</tr>
 </tbody></table>
-<ul>
-<li><code>brew</code>是从下载源码解压然后<code>./configure &amp;&amp; make install</code>，同时会包含相关依存库，并自动配置好各种环境变量，而且易于卸载。</li>
-<li><code>brew cask</code>是已经编译好了的应用包(<code>.dmg/.pkg</code>)，仅仅是下载解压，放在统一的目录中(<code>/opt/homebrew-cask/Caskroom</code>)，省掉了自己去下载、解压、拖拽(安装)等步骤，同样卸载相当容易与干净。</li>
-<li>定期执行<code>brew cleanup</code>会释放好多磁盘空间</li>
-</ul>
 <ol start="4">
-<li>例子<ul>
+<li><p>例子</p>
+<ul>
 <li>查找包<code>brew search redis</code></li>
 <li>安装包<code>brew install redis</code>，默认安装在<code>/usr/local/Cellar</code></li>
 <li>通过brew安装的应用配置目录在<code>/usr/local/etc/</code>，如mysql的my.cnf，redis的redis.conf</li>
@@ -31406,9 +31048,17 @@ read_xlsx(name, sheet)
 </li>
 </ul>
 </li>
-<li><a href="https://brew.sh/">官网</a></li>
-<li>cask</li>
-<li>readline</li>
+<li><p><a href="https://brew.sh/">官网</a></p>
+</li>
+<li><p><a href="https://github.com/Homebrew/homebrew-cask/tags">cask</a></p>
+<ul>
+<li><code>brew</code>是从下载源码解压然后<code>./configure &amp;&amp; make install</code>，同时会包含相关依存库，并自动配置好各种环境变量，而且易于卸载。</li>
+<li><code>brew cask</code>是已经编译好了的应用包(<code>.dmg/.pkg</code>)，仅仅是下载解压，放在统一的目录中(<code>/opt/homebrew-cask/Caskroom</code>)，省掉了自己去下载、解压、拖拽(安装)等步骤，同样卸载相当容易与干净。</li>
+<li>定期执行<code>brew cleanup</code>会释放好多磁盘空间</li>
+</ul>
+</li>
+<li><p>readline</p>
+</li>
 </ol>
 <h2 id="四、常见问题"><a href="#四、常见问题" class="headerlink" title="四、常见问题"></a>四、常见问题</h2><blockquote>
 <p>MacBook Pro是苹果公司于2006年1月11日由史蒂夫·乔布斯在MacWorld 2006大会上发布的笔记本，用来取代PowerBook G4产品线。MacBook Pro与新iMac(酷睿)同为第一款转换为英特尔核心的产品。苹果在2006年10月24日发布了使用Intel Core 2 Duo处理器的MacBook Pro笔记本电脑。2009年6月8日发布了外形全新设计的“Unibody”MacBook Pro笔记本电脑。2012年WWDC上，苹果全球营销高级副总裁(SVP, Worldwide Marketing)菲尔·席勒发布了配备Retina显示器并重新设计的第三代MacBook Pro，它的分辨率高达2880x1800，220ppi。厚度仅18mm。并在此后取消17英寸产品线。2013年末，Apple更新了MacBook Pro系列，仅余下一款MacBook Pro 13”没有配备Retina显示器，但它是目前为止最后一款可以自行更换内存条(RAM)和硬盘的笔记本电脑型号。2016年10月28日，加入Touch Bar的新款MacBook Pro发布，售价13888元起。2018年7月12日，新版MacBook Pro发布，2018款MacBook Pro全系配备英特尔第八代酷睿处理器，配合True Tone技术的屏幕和Apple T2芯片，用户体验有了显著提升。2019年5月22日，Apple 为 MacBook Pro 带来更新，配备更快的第八代和第九代 Intel Core 处理器，这也是 MacBook Pro 首次搭载八核处理器。</p>
@@ -33070,7 +32720,10 @@ read_xlsx(name, sheet)
 </li>
 <li><p><a href="http://www.matools.com/blog/190754794">开干</a></p>
 <ul>
-<li>查看配置文件可存放位置<code>mysql --help|grep my.cnf</code>，会出现<code>/etc/my.cnf /etc/mysql/my.cnf /usr/local/mysql/etc/my.cnf ~/.my.cnf</code>四个路径</li>
+<li>查看配置文件可存放位置<code>mysql --help|grep my.cnf</code>，会出现<code>/etc/my.cnf /etc/mysql/my.cnf /usr/local/mysql/etc/my.cnf ~/.my.cnf</code>四个路径<ul>
+<li>或者<code>mysqld --help --verbose | less</code></li>
+</ul>
+</li>
 <li>sudo mkdir -p /usr/local/mysql/etc</li>
 <li>cd /usr/local/mysql/etc</li>
 <li>sudo vim my.cnf</li>
@@ -33413,6 +33066,8 @@ read_xlsx(name, sheet)
 <li><p><a href="https://help.aliyun.com/document_detail/172749.html">Binlog in Redo</a></p>
 </li>
 <li><p><a href="https://github.com/radondb/radondb-mysql-kubernetes">RadonDB MySQL</a></p>
+</li>
+<li><p><a href="https://www.toutiao.com/i7056760515992863245">自增ID</a></p>
 </li>
 </ol>
 ]]></content>
@@ -33846,8 +33501,193 @@ read_xlsx(name, sheet)
 <h2 id="三、资料"><a href="#三、资料" class="headerlink" title="三、资料"></a>三、资料</h2><ol>
 <li><a href="https://github.com/Guan-Ren/GitHub-Chinese-Top-Charts">GitHub-Chinese-Top-Charts</a></li>
 <li><a href="https://javaguide.cn/">JavaGuide</a></li>
+<li><a href="http://www.blogjava.net/xylz/archive/2010/07/08/325587.html">深入浅出 Java Concurrency</a></li>
+<li><a href="https://www.pdai.tech/">Java全栈知识体系</a></li>
+<li><a href="https://www.zhihu.com/question/36028919">如何深入学习Java并发编程</a></li>
 </ol>
-<h2 id="四、面试"><a href="#四、面试" class="headerlink" title="四、面试"></a>四、面试</h2><ol>
+<h2 id="四、框架"><a href="#四、框架" class="headerlink" title="四、框架"></a>四、框架</h2><h3 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h3><ol>
+<li>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。<ul>
+<li>简单来说有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><ol>
+<li><p>spring 是一个开源框架，处于mvc的控制层，能应对需求的快速变化，主要原因是它有一种面向切面编程(aop)的优势，其次它提升了系统性能，是因为通过依赖倒置机制(ioc)，系统中用到的对象不是在系统加载时就全部实例化，而是在调用到这个类时才会实例化该对象。</p>
+<ul>
+<li>轻量：从大小到开销来说都是轻量的，spring框架开源字啊一个只有1m大小的jar文件中发布，而且spring所处理的开销也是微不足道的</li>
+<li>非侵入式：spring应用中的对象不依赖于spring的特定类</li>
+<li>IOC(控制反转)：一个对象依赖的其他对象会通过被动的方式传递进来，而不是这个对象自己创建或者主动查找依赖对象</li>
+<li>AOP(面向切面)：只完成业务逻辑，并不负责其他的系统级的关注点，有两种实现方式：<ul>
+<li>jdk动态代理</li>
+<li>CGLib动态代理</li>
+</ul>
+</li>
+<li>容器：定义了bean是如何创建、配置、管理的</li>
+<li>框架模块：可以不必将应用完全基于spring，可以自由的挑选适用你的模块，而忽略其余的模块</li>
+<li>核心容器：提供了依赖注入特征来实现容器对bean的管理。这里最基本的概念是BeanFactory，它是任何spring应用的核心。BeanFactory是工厂模式的一个实现，他使用ioc将应用配置和依赖说明从实际的应用代码中分离出来</li>
+<li>应用上下文(context)模块：核心模块的beanFactory使spring成为了一个容器，而上下文模块使他成为一个框架，这个模块扩展了BeanFactory的概念，增加了对国际化消息、事件传播以及验证的支持。</li>
+</ul>
+</li>
+<li><p>spring bean加载、注入过程</p>
+<ul>
+<li>执行该对象的构造方法</li>
+<li>执行set参数注入方法</li>
+<li>执行BeanNameAware的实现方法获取bean的id</li>
+<li>执行BeanFactoryAware的实现方法获取bean的工厂</li>
+<li>执行BeanPostProcessor的postProcessBeforeInitalization处理方法</li>
+<li>执行In</li>
+</ul>
+</li>
+<li><p>spring事务的传播机制有以下几种：</p>
+<ul>
+<li>PROPAGATION_REQUIRED：如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</li>
+<li>PROPAGATION_SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
+<li>PROPAGATION_MANDATORY：使用当前的事务，如果当前没有事务，就抛出异常。</li>
+<li>PROPAGATION_REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。</li>
+<li>PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+<li>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。</li>
+<li>PROPAGATION_NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
+</ul>
+</li>
+<li><p>springboot核心配置文件</p>
+<ul>
+<li>applicaion：主要用于springboot项目的自动化配置</li>
+<li>boostrap：主要用于一些固定的不能被覆盖的属性，一些加密解密的场景。<blockquote>
+<p>配置文件有properties和yml格式，其中yml格式不支持<code>@propertySource</code>注解导入配置。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>springboot核心注解：启动类上面的注解是<code>@springbootApplication</code>，它是核心注解，包含了以下三个注解</p>
+<ul>
+<li>@springbootConfiguration：组合了@Configuration注解，实现配置文件的功能</li>
+<li>@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项</li>
+<li>@ComponentScan：spring组件扫描</li>
+</ul>
+</li>
+<li><p>开启springboot特性的几种方式：</p>
+<ul>
+<li>继承spring-boot-starter-parent项目</li>
+<li>导入spring-boot-dependencies项目依赖</li>
+</ul>
+</li>
+<li><p>springboot 配置加载顺序</p>
+<ul>
+<li>properties</li>
+<li>yaml文件</li>
+<li>系统环境变量</li>
+<li>命令行参数</li>
+</ul>
+</li>
+</ol>
+<h2 id="一、Tomcat"><a href="#一、Tomcat" class="headerlink" title="一、Tomcat"></a>一、Tomcat</h2><ol>
+<li><p>Tomcat服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache服务器，可利用它响应HTML(标准通用标记语言下的一个应用)页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
+</li>
+<li><p>安装</p>
+<ul>
+<li>安装[Tomcat]<a href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a>)<ul>
+<li><code>cd /usr/local/src/ &amp;&amp; sudo wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz</code></li>
+</ul>
+</li>
+<li><code>cd /usr/local &amp;&amp; sudo tar -zxvf apache-tomcat-9.0.34.tar.gz</code></li>
+</ul>
+</li>
+<li><p><a href="http://tomcat.apache.org/">参考</a></p>
+</li>
+</ol>
+<h2 id="二、Maven"><a href="#二、Maven" class="headerlink" title="二、Maven"></a>二、Maven</h2><ol>
+<li><p>Maven是一个项目管理工具，它包含了一个项目对象模型(Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，以及用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
+<ul>
+<li>maven是java的包管理工具，相当于是nodejs中的npm，php中的composer，python中的pip等，通过maven可以方便地引入各种java的第三方类库(包括Spring、Struts、junit等)和插件(如tomcat等)。</li>
+</ul>
+</li>
+<li><p>安装</p>
+<ul>
+<li>安装<a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java SE</a>，直接选择了dmg安装<ul>
+<li>默认安装目录<code>/Library/Java/</code></li>
+</ul>
+</li>
+<li>安装<a href="http://maven.apache.org/download.cgi">Maven</a><ul>
+<li><code>cd /usr/local/src</code></li>
+<li><code>wget http://apache.communilink.net/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</code></li>
+</ul>
+</li>
+<li>解压<ul>
+<li><code>cd /usr/local</code></li>
+<li><code>sudo tar -zxvf apache-maven-3.6.3-bin.tar.gz</code></li>
+</ul>
+</li>
+<li>设置环境变量<code>vim ~/.bash_profile</code>，加入maven的bin路径</li>
+<li><code>source ~/.bash_profile</code>立即生效</li>
+<li>查看安装是否成功<code>mvn -v</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)</span><br><span class="line">Maven home: /usr/local/apache-maven-3.6.3</span><br><span class="line">Java version: 14, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.5&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>使用brew安装<code>brew install maven</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li>使用<code>mvn -h</code><ul>
+<li>常用命令<ul>
+<li>创建maven项目：<code>mvn archetype:create</code><ul>
+<li>指定<code>group</code>：<code>-DgroupId=packageName</code></li>
+<li>指定<code>artifact</code>：<code>-DartifactId=projectName</code></li>
+<li>创建<code>web</code>项目：<code>-DarchetypeArtifactId=maven-archetype-webapp</code></li>
+</ul>
+</li>
+<li>创建maven项目：<code>mvn archetype:generate</code></li>
+<li>验证项目是否正确：<code>mvn validate</code></li>
+<li>maven打包：<code>mvn package</code></li>
+<li>只打jar包：<code>mvn jar:jar</code></li>
+<li>生成源码jar包：<code>mvn source:jar</code></li>
+<li>产生应用需要的任何额外的源代码：<code>mvn generate-sources</code></li>
+<li>编译源代码：<code>mvn compile</code></li>
+<li>编译测试代码：<code>mvn test-compile</code></li>
+<li>运行测试：<code>mvn test</code></li>
+<li>运行检查：<code>mvn verify</code></li>
+<li>清理maven项目：<code>mvn clean</code></li>
+<li>生成eclipse项目：<code>mvn eclipse:eclipse</code></li>
+<li>清理eclipse配置：<code>mvn eclipse:clean</code></li>
+<li>生成idea项目：<code>mvn idea:idea</code></li>
+<li>安装项目到本地仓库：<code>mvn install</code></li>
+<li>发布项目到远程仓库：<code>mvn:deploy</code></li>
+<li>在集成测试可以运行的环境中处理和发布包：<code>mvn integration-test</code></li>
+<li>显示maven依赖树：<code>mvn dependency:tree</code></li>
+<li>显示maven依赖列表：<code>mvn dependency:list</code></li>
+<li>下载依赖包的源码：<code>mvn dependency:sources</code></li>
+<li>安装本地jar到本地仓库：<code>mvn install:install-file -DgroupId=packageName -DartifactId=projectName -Dversion=version -Dpackaging=jar -Dfile=path</code></li>
+</ul>
+</li>
+<li>web项目相关命令<ul>
+<li>启动tomcat：<code>mvn tomcat:run</code></li>
+<li>启动jetty：<code>mvn jetty:run</code></li>
+<li>运行打包部署：<code>mvn tomcat:deploy</code></li>
+<li>撤销部署：<code>mvn tomcat:undeploy</code></li>
+<li>启动web应用：<code>mvn tomcat:start</code></li>
+<li>停止web应用：<code>mvn tomcat:stop</code></li>
+<li>重新部署：<code>mvn tomcat:redeploy</code></li>
+<li>部署展开的war文件：<code>mvn war:exploded tomcat:exploded</code></li>
+</ul>
+</li>
+<li>其他<ul>
+<li><code>mvn clean</code>：表示运行清理操作(会默认把target文件夹中的数据清理)。</li>
+<li><code>mvn clean test</code>：运行清理和测试。</li>
+<li><code>mvn clean compile</code>：表示先运行清理之后运行编译，会将代码编译到target文件夹中。</li>
+<li><code>mvn clean package</code>：运行清理和打包。</li>
+<li><code>mvn clean install</code>：运行清理和安装，会将打好的包安装到本地仓库中，以便其他的项目可以调用。</li>
+<li><code>mvn clean deploy</code>：运行清理和发布(发布到私服上面)。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="五、面试"><a href="#五、面试" class="headerlink" title="五、面试"></a>五、面试</h2><ol>
 <li><p>Java 基础</p>
 <ul>
 <li>JDK和JRE 有什么区别？</li>
@@ -34106,6 +33946,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Java</tag>
+        <tag>Tomcat</tag>
+        <tag>Maven</tag>
+        <tag>Netty</tag>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -37973,7 +37817,7 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>php收集</title>
+    <title>PHP收集</title>
     <url>/2014/07/02/PHP-%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>干冰不是冰，水银不是银，纯碱不是碱，熊猫不是猫，鲸鱼不是鱼，双氧水不是水，铅笔芯不是铅。</p>
@@ -41170,237 +41014,36 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>泛型generic</title>
-    <url>/2014/05/14/Java-%E6%B3%9B%E5%9E%8Bgeneric/</url>
+    <title>PHP基础</title>
+    <url>/2014/04/25/PHP-%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>九·一八事变，又称奉天事变、柳条湖事件。是1931年9月18日夜日本在中国东北蓄意制造并发动的一场侵华战争，是日本帝国主义侵华的开端。</p>
+<p>薛定谔的猫(英文名称：Erwin Schrödinger’s Cat)是奥地利著名物理学家薛定谔(Erwin Schrödinger，1887年8月12日——1961年1月4日)提出的一个思想实验，是指将一只猫关在装有少量镭和氰化物的密闭容器里。镭的衰变存在几率，如果镭发生衰变，会触发机关打碎装有氰化物的瓶子，猫就会死；如果镭不发生衰变，猫就存活。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泛型程序设计(generic programming)是程序设计语言的一种风格或范式。泛型允许程序员在强类型程序设计语言中编写代码时使用一些以后才指定的类型，在实例化时作为参数指明这些类型。</p>
-<p>Java泛型(generics)是<a href="https://www.oracle.com/java/technologies/oracle-java-archive-downloads.html"><code>JDK5</code></a>中引入的一个新特性，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型(只在编译阶段有效)。泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java早期使用Object类型来接收任意的对象类型，但是在实际的使用中会有类型转换的问题，即：向上转型没有任何问题，但是向下转型时其实隐含了类型转换的问题，这就是程序不安全的原因。也就是因为存在这种安全隐患，所以Java在JDK5以后就提供了泛型来解决这个安全问题。</p>
-<blockquote>
-<p>分类：</p>
-<blockquote>
-<p>泛型类</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>泛型方法</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>泛型接口</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>泛型通配符</p>
-</blockquote>
-</blockquote>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
-<p>假定目录为<code>/Users/java</code></p>
-</blockquote>
-<ol>
-<li>泛型类：泛型类型用于类的定义中，通过泛型可以完成对一组类的操作对外开放相同的接口。<ul>
-<li>泛型的类型参数只能是类类型，不能是简单类型。</li>
-<li>不能对确切的泛型类型使用<code>instanceof</code>操作。</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Generic.java</span><br><span class="line">public class Generic&lt;T&gt;&#123; </span><br><span class="line">    private T key;</span><br><span class="line"></span><br><span class="line">    public Generic(T key) &#123;</span><br><span class="line">        this.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getKey()&#123;</span><br><span class="line">        return key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#MainClass.java</span><br><span class="line">public class MainClass &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Generic&lt;Integer&gt; genericInteger = new Generic&lt;Integer&gt;(123456);</span><br><span class="line">        Generic&lt;String&gt; genericString = new Generic&lt;String&gt;(&quot;abc&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;key的值:&quot; + genericInteger.getKey());</span><br><span class="line">        System.out.println(&quot;key的值:&quot; + genericString.getKey());</span><br><span class="line"></span><br><span class="line">        System.out.printf(&quot;key的值:%d\n&quot;, genericInteger.getKey());</span><br><span class="line">        System.out.printf(&quot;key的值:%s\n&quot;, genericString.getKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>泛型方法</p>
-</li>
-<li><p>泛型接口</p>
-</li>
-<li><p>泛型通配符</p>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/coprince/p/8603492.html">参考一</a></li>
-<li><a href="https://www.cnblogs.com/guoyansi19900907/p/12127931.html">参考二</a></li>
-</ol>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>PHP</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>泛型</tag>
+        <tag>PHP</tag>
       </tags>
   </entry>
   <entry>
-    <title>注解annotation</title>
-    <url>/2014/04/11/Java-%E6%B3%A8%E8%A7%A3annotation/</url>
+    <title>Java异常处理</title>
+    <url>/2014/04/18/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>周国平老师曾说过：人生有三次成长：一是发现自己不再是世界中心的时候，二是发现再怎么努力也无能为力的时候，三是接受自己的平凡并去享受平凡的时候。</p>
+<p>异常是在程序执行期间可能发生的错误事件，它会破坏程序的正常流程，Java提供了一种健壮且面向对象的方式来处理各种异常情况。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java注解(Annotation)又称Java标注，是JDK5.0引入的一种注释机制。Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。Java虚拟机可以保留标注内容，在运行时可以获取到标注内容。当然它也支持自定义Java标注。</p>
-<ol>
-<li><p>分类</p>
-<ul>
-<li>按照运行机制：<ul>
-<li>源码注解：只存在<code>.java</code>文件中，编译时就不存在了(平时对代码的逻辑说明等)</li>
-<li>编译时注解：注解在源码和<code>.class文件</code>如：<code>@Override``@Suppvisewarnings</code>等，他们只在编译时起作用，按照注解的指定来编译</li>
-<li>运行时注解：在运行时期作用，如Spring中<code>@Autowired</code>在运行时会把对应的Bean注入到指定属性中。</li>
-</ul>
-</li>
-<li>按照来源：<ul>
-<li>来自JDK的注解</li>
-<li>来自第三方的注解</li>
-<li>自定义注解</li>
-</ul>
-</li>
-<li>元注解：注解的注解<ul>
-<li><code>@Target</code>：标志注解可以在那些地方可以使用。</li>
-<li><code>@Retention</code>：描述注解的生命周期，表示需要在什么级别保存该注解，即保留的时间长短。</li>
-<li><code>@Documented</code>：描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。<ul>
-<li>它是一个标记注解，没有成员。</li>
-</ul>
-</li>
-<li><code>@Inherited</code>：只能被用来标注“Annotation类型”，表示它所标注的Annotation具有继承性。</li>
-<li><code>@Repeatable</code>：Java 8新增，允许在相同的程序元素中重复注解。</li>
-<li><code>@Native</code>：Java 8新增，修饰成员变量，表示这个变量可以被本地代码引用，常常被代码生成工具使用。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>作用</p>
-<ul>
-<li><p>编译检查，常见如：</p>
-<ul>
-<li><p><code>@Override</code>：告诉编译器这个方法是一个重写方法，如果父类中不存在该方法编译器便会报错，提示该方法没有重写父类中的方法，这样可以防止不小心拼写错误造成麻烦。</p>
-<ul>
-<li>只能标注方法</li>
-</ul>
-</li>
-<li><p><code>@Deprecated</code>：所标注内容不再被建议使用，如果使用或者进行重写，程序会发出警告。</p>
-<ul>
-<li>一般某个类不再使用会加上此注解，如功能设计的时候某个类存在，实际开发过程中该类没有被使用同时又不保证后期会不会再重新使用就可以使用此注解</li>
-</ul>
-</li>
-<li><p><code>@SuppressWarnings</code>：告诉编译器对被批注的代码元素内部的某些警告保持静默。</p>
-<table>
-<thead>
-<tr>
-<th align="center">关键字</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">all</td>
-<td align="left">抑制所有警告</td>
-</tr>
-<tr>
-<td align="center">boxing</td>
-<td align="left">抑制装箱、拆箱操作时候的警告</td>
-</tr>
-<tr>
-<td align="center">cast</td>
-<td align="left">抑制映射相关的警告</td>
-</tr>
-<tr>
-<td align="center">dep-ann</td>
-<td align="left">抑制启用注释的警告</td>
-</tr>
-<tr>
-<td align="center">deprecation</td>
-<td align="left">抑制过期方法警告</td>
-</tr>
-<tr>
-<td align="center">fallthrough</td>
-<td align="left">抑制确在switch中缺失breaks的警告</td>
-</tr>
-<tr>
-<td align="center">finally</td>
-<td align="left">抑制finally模块没有返回的警告</td>
-</tr>
-<tr>
-<td align="center">hiding</td>
-<td align="left">不常用</td>
-</tr>
-<tr>
-<td align="center">incomplete-switch</td>
-<td align="left">忽略没有完整的switch语句</td>
-</tr>
-<tr>
-<td align="center">nls</td>
-<td align="left">忽略非nls格式的字符</td>
-</tr>
-<tr>
-<td align="center">null</td>
-<td align="left">忽略对null的操作</td>
-</tr>
-<tr>
-<td align="center">rawtypes</td>
-<td align="left">使用generics时忽略没有指定相应的类型</td>
-</tr>
-<tr>
-<td align="center">restriction</td>
-<td align="left">不常用</td>
-</tr>
-<tr>
-<td align="center">serial</td>
-<td align="left">忽略在serializable类中没有声明serialVersionUID变量</td>
-</tr>
-<tr>
-<td align="center">static-access</td>
-<td align="left">抑制不正确的静态访问方式警告</td>
-</tr>
-<tr>
-<td align="center">synthetic-access</td>
-<td align="left">抑制子类没有按最优方法访问内部类的警告</td>
-</tr>
-<tr>
-<td align="center">unchecked</td>
-<td align="left">抑制没有进行类型检查操作的警告</td>
-</tr>
-<tr>
-<td align="center">unqualified-field-access</td>
-<td align="left">抑制没有权限访问的域的警告</td>
-</tr>
-<tr>
-<td align="center">unused</td>
-<td align="left">抑制没被使用过的代码的警告</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-</li>
-<li><p>生成帮助文档，如<code>@Documented</code></p>
-</li>
-<li><p>在反射中使用<code>Annotation</code></p>
-</li>
-<li><p>便于查看和维护代码，如<code>@Override</code>可以清楚的知道这是一个重写方法</p>
-</li>
-<li><p>在框架中使用，简化程序配置</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
-<p>TODO</p>
-</blockquote>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/package-summary.html">参考一</a></li>
-<li><a href="https://www.cnblogs.com/whyaza/p/11081590.html">参考二</a></li>
-</ol>
-]]></content>
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>注解</tag>
-        <tag>Annotation</tag>
-        <tag>周国平</tag>
+        <tag>异常</tag>
       </tags>
   </entry>
   <entry>
@@ -41908,7 +41551,7 @@ read_xlsx(name, sheet)
     <title>MySQL各种日志</title>
     <url>/2013/11/06/MySQL-%E5%90%84%E7%A7%8D%E6%97%A5%E5%BF%97/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>分类：查询日志、慢查询日志、错误日志、二进制日志、中继日志、事务日志。</p>
+<p>一日之计在于晨，一年之计在于春，一生之计在于勤。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -42208,79 +41851,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>java之package</title>
-    <url>/2013/09/05/Java-%E5%8C%85package/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Spotlight是Mac OS X v10.4的一项快速、随打即找、系统支援的桌面搜寻特色。使用Metadata搜寻引擎，spotlight被设计为可以找到任何位于电脑中广泛的项目，包含文件、图片、音乐、应用程式、系统喜好设定控制台，也可以是文件或是PDF中指定的字。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在编写Java程序时，随着程序架构越来越大，类的个数也越来越多，这时就会发现管理程序中维护类名称也是一件很麻烦的事，尤其是一些同名问题的发生。另一方面，有时开发人员还可能需要将处理同一方面的问题的类放在同一个目录下，以便于管理。基于以上原因，Java引入了包(package)机制，提供了类的多层命名空间，用于解决类的命名冲突、类文件管理等问题。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java使用包(package)这种机制是为了防止命名冲突，同时可以进行访问控制，提供搜索和定位类、接口、枚举和注释等。</p>
-<ol>
-<li><p>语法<code>package &#123;package_name&#125;</code></p>
-<ul>
-<li>包声明应该在源文件的第一行(无import关键字的情况)且每个源文件只能有一个包声明<ul>
-<li>如果一个源文件中没有使用包声明，那么其中的类、函数、枚举、注释等将被放在一个无名的包(unnamed package)中。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>包的3个作用如下：</p>
-<ul>
-<li>区分相同名称的类从而避免命名冲去。</li>
-<li>能够较好地管理大量的类，方便维护和查找。</li>
-<li>控制访问范围，拥有包访问权限的类才能访问某个包中的类。</li>
-</ul>
-</li>
-<li><p>特性</p>
-<ul>
-<li>如果Java文件中使用了package，那么该Java文件必须放在命名与package名称相同的目录下。</li>
-<li>包名全部由小写字母，多个单词也全部小写，如<code>mypack1.mypack2.mypack3</code></li>
-<li>如果包名包含多个层次，每个层次用“.”分割，java解释器会将package中的<code>.</code>解释为目录分隔符<code>/</code>，如上面的例子：<code>mypack1/mypack2/mypack3</code></li>
-<li>包名一般由倒置的域名开头，比如<code>com.baidu</code>(不要有<code>www</code>)。</li>
-<li>自定义包不能<code>java</code>开头。</li>
-<li>在同一<code>package</code>中的类是可以互相访问的，即不需要<code>import</code>即可使用</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>Java中的<code>import</code>和<code>C/C++</code>中的<code>#include</code>是不同的，<code>import</code>并不会在当前<code>java</code>文件中嵌入另一个<code>package</code>中的类的代码，只是告诉<code>java</code>文件不属于该包的类能够到哪里去寻找而已，classpath是java在编译程序时查找类文件的路径，java编译器会在classpath中包含有的路径中查找java的类文件。</p>
-</blockquote>
-<ol start="4">
-<li>import关键字<ul>
-<li><code>import</code>语句并不是必需的，如果在类里使用其它类的全名可以不使用<code>import</code>语句</li>
-<li>导入包中的全部类：<code>import 包名.*;</code><ul>
-<li>使用星号<code>*</code>会增加编译时间，特别是引入多个大包时，所以一般使用时会指定某个具体的类</li>
-</ul>
-</li>
-<li>导入包中的某个具体类：<code>import 包名.类名;</code></li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>Java默认为所有源文件导入<code>java.lang</code>包下的所有类，因此前面在<code>Java</code>程序中使用<code>String</code>、<code>System</code>类时都无须使用<code>import</code>语句来导入这些类。</p>
-</blockquote>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
-<p>TODO</p>
-</blockquote>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="http://c.biancheng.net/view/6084.html">参考一</a></li>
-<li><a href="https://docs.oracle.com/javase/8/docs/api/">参考二</a></li>
-<li><a href="https://www.oracle.com/cn/java/technologies/java-se-api-doc.html">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>package</tag>
-        <tag>import</tag>
-        <tag>classpath</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言收集</title>
     <url>/2013/06/16/C-%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -42437,25 +42007,8 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>java异常处理</title>
-    <url>/2013/04/18/Java-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>异常是在程序执行期间可能发生的错误事件，它会破坏程序的正常流程，Java提供了一种健壮且面向对象的方式来处理各种异常情况。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>异常</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数及其使用</title>
-    <url>/2013/04/10/PHP-%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E4%BD%BF%E7%94%A8/</url>
+    <title>PHP函数及其使用</title>
+    <url>/2013/04/10/PHP-%E5%87%BD%E6%95%B0%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>有容乃大，无欲则刚，容是别人，欲是自己。 —— 《士兵突击》</p>
 </blockquote>
@@ -43585,14 +43138,33 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>java构造函数</title>
-    <url>/2013/01/23/Java-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
+    <title>Java基础</title>
+    <url>/2013/01/15/Java-%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>正则表达式，又称规则表达式(Regular Expression，在代码中常简写为regex、regexp或RE)，是计算机科学的一个概念，它通常被用来检索、替换那些符合某个模式(规则)的文本。</p>
+<p>“条条大路通罗马”原话是“All Roads Lead to Rome”，出自《罗马典故》，是指做成一件事的方法不只一种，人生的路也不止一条等着我们发现。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java构造函数，也叫构造方法，是java中一种特殊的函数。函数名与类名相同，无返回值，一般用来初始化成员属性和成员方法的，即new对象产生后，就调用了对象了属性和方法，在对象创建时即被调用。</p>
+
+
+<h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a><center><font color=red>Java数据类型</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<li><p>基本数据类型</p>
+<ul>
+<li>整型：byte、short、int、long，如35，默认什么也不加就是int型，35B表示是byte型，35S表示short型，35L表示long型的</li>
+<li>浮点型：float、double，默认double，如要用float则应加”F”()</li>
+<li>字符型：char</li>
+<li>布尔型：boolean</li>
+</ul>
+</li>
+<li><p>引用数据类型</p>
+</li>
+</ol>
+<p>①String不是基本数据类型，是引用数据类型，它是java提供的一个类</p>
+<p>②Java基本类型存储在栈中，因此它们的存取速度要快于存储在堆中的对应包装类的实例对象。从Java5.0（1.5）开始，JAVA虚拟机（Java Virtual Machine）可以完成基本类型和它们对应包装类之间的自动转换。因此我们在赋值、参数传递以及数学运算的时候像使用基本类型一样使用它们的包装类，但这并不意味着你可以通过基本类型调用它们的包装类才具有的方法。另外，所有基本类型的包装类都使用了final修饰，因此我们无法继承它们扩展新的类，也无法重写它们的任何方法。</p>
+<p>③基本类型的优势：数据存储相对简单，运算效率比较高</p>
+<p>包装类的优势：有的容易，比如集合的元素必须是对象类型，满足了java一切皆是对象的思想。</p>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
+<h1 id="Java构造函数"><a href="#Java构造函数" class="headerlink" title="Java构造函数"></a><center><font color=red>Java构造函数</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java构造函数，也叫构造方法，是java中一种特殊的函数。函数名与类名相同，无返回值，一般用来初始化成员属性和成员方法的，即new对象产生后，就调用了对象了属性和方法，在对象创建时即被调用。</p>
 <blockquote>
 <p>特点</p>
 </blockquote>
@@ -43610,49 +43182,362 @@ read_xlsx(name, sheet)
 <li>一个类可以有多个构造函数</li>
 <li>一般函数不能调用构造函数，只有构造函数才能调用构造函数</li>
 </ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://www.cnblogs.com/ibelieve618/p/6364541.html">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Java包"><a href="#Java包" class="headerlink" title="Java包"></a><center><font color=red>Java包</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在编写Java程序时，随着程序架构越来越大，类的个数也越来越多，这时就会发现管理程序中维护类名称也是一件很麻烦的事，尤其是一些同名问题的发生。另一方面，有时开发人员还可能需要将处理同一方面的问题的类放在同一个目录下，以便于管理。基于以上原因，Java引入了包(package)机制，提供了类的多层命名空间，用于解决类的命名冲突、类文件管理等问题。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java使用包(package)这种机制是为了防止命名冲突，同时可以进行访问控制，提供搜索和定位类、接口、枚举和注释等。</p>
+<ol>
+<li><p>语法<code>package &#123;package_name&#125;</code></p>
+<ul>
+<li>包声明应该在源文件的第一行(无import关键字的情况)且每个源文件只能有一个包声明<ul>
+<li>如果一个源文件中没有使用包声明，那么其中的类、函数、枚举、注释等将被放在一个无名的包(unnamed package)中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>包的3个作用如下：</p>
+<ul>
+<li>区分相同名称的类从而避免命名冲去。</li>
+<li>能够较好地管理大量的类，方便维护和查找。</li>
+<li>控制访问范围，拥有包访问权限的类才能访问某个包中的类。</li>
+</ul>
+</li>
+<li><p>特性</p>
+<ul>
+<li>如果Java文件中使用了package，那么该Java文件必须放在命名与package名称相同的目录下。</li>
+<li>包名全部由小写字母，多个单词也全部小写，如<code>mypack1.mypack2.mypack3</code></li>
+<li>如果包名包含多个层次，每个层次用“.”分割，java解释器会将package中的<code>.</code>解释为目录分隔符<code>/</code>，如上面的例子：<code>mypack1/mypack2/mypack3</code></li>
+<li>包名一般由倒置的域名开头，比如<code>com.baidu</code>(不要有<code>www</code>)。</li>
+<li>自定义包不能<code>java</code>开头。</li>
+<li>在同一<code>package</code>中的类是可以互相访问的，即不需要<code>import</code>即可使用</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Java中的<code>import</code>和<code>C/C++</code>中的<code>#include</code>是不同的，<code>import</code>并不会在当前<code>java</code>文件中嵌入另一个<code>package</code>中的类的代码，只是告诉<code>java</code>文件不属于该包的类能够到哪里去寻找而已，classpath是java在编译程序时查找类文件的路径，java编译器会在classpath中包含有的路径中查找java的类文件。</p>
+</blockquote>
+<ol start="4">
+<li>import关键字<ul>
+<li><code>import</code>语句并不是必需的，如果在类里使用其它类的全名可以不使用<code>import</code>语句</li>
+<li>导入包中的全部类：<code>import 包名.*;</code><ul>
+<li>使用星号<code>*</code>会增加编译时间，特别是引入多个大包时，所以一般使用时会指定某个具体的类</li>
+</ul>
+</li>
+<li>导入包中的某个具体类：<code>import 包名.类名;</code></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>Java默认为所有源文件导入<code>java.lang</code>包下的所有类，因此前面在<code>Java</code>程序中使用<code>String</code>、<code>System</code>类时都无须使用<code>import</code>语句来导入这些类。</p>
+</blockquote>
+<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="http://c.biancheng.net/view/6084.html">参考一</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/">参考二</a></li>
+<li><a href="https://www.oracle.com/cn/java/technologies/java-se-api-doc.html">参考三</a></li>
+</ol>
+<hr>
+<h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a><center><font color=red>Java注解</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java注解(Annotation)又称Java标注，是JDK5.0引入的一种注释机制。Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。Java虚拟机可以保留标注内容，在运行时可以获取到标注内容。当然它也支持自定义Java标注。</p>
+<ol>
+<li><p>分类</p>
+<ul>
+<li>按照运行机制：<ul>
+<li>源码注解：只存在<code>.java</code>文件中，编译时就不存在了(平时对代码的逻辑说明等)</li>
+<li>编译时注解：注解在源码和<code>.class文件</code>如：<code>@Override``@Suppvisewarnings</code>等，他们只在编译时起作用，按照注解的指定来编译</li>
+<li>运行时注解：在运行时期作用，如Spring中<code>@Autowired</code>在运行时会把对应的Bean注入到指定属性中。</li>
+</ul>
+</li>
+<li>按照来源：<ul>
+<li>来自JDK的注解</li>
+<li>来自第三方的注解</li>
+<li>自定义注解</li>
+</ul>
+</li>
+<li>元注解：注解的注解<ul>
+<li><code>@Target</code>：标志注解可以在那些地方可以使用。</li>
+<li><code>@Retention</code>：描述注解的生命周期，表示需要在什么级别保存该注解，即保留的时间长短。</li>
+<li><code>@Documented</code>：描述其它类型的annotation应该被作为被标注的程序成员的公共API，因此可以被例如javadoc此类的工具文档化。<ul>
+<li>它是一个标记注解，没有成员。</li>
+</ul>
+</li>
+<li><code>@Inherited</code>：只能被用来标注“Annotation类型”，表示它所标注的Annotation具有继承性。</li>
+<li><code>@Repeatable</code>：Java 8新增，允许在相同的程序元素中重复注解。</li>
+<li><code>@Native</code>：Java 8新增，修饰成员变量，表示这个变量可以被本地代码引用，常常被代码生成工具使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>作用</p>
+<ul>
+<li><p>编译检查，常见如：</p>
+<ul>
+<li><p><code>@Override</code>：告诉编译器这个方法是一个重写方法，如果父类中不存在该方法编译器便会报错，提示该方法没有重写父类中的方法，这样可以防止不小心拼写错误造成麻烦。</p>
+<ul>
+<li>只能标注方法</li>
+</ul>
+</li>
+<li><p><code>@Deprecated</code>：所标注内容不再被建议使用，如果使用或者进行重写，程序会发出警告。</p>
+<ul>
+<li>一般某个类不再使用会加上此注解，如功能设计的时候某个类存在，实际开发过程中该类没有被使用同时又不保证后期会不会再重新使用就可以使用此注解</li>
+</ul>
+</li>
+<li><p><code>@SuppressWarnings</code>：告诉编译器对被批注的代码元素内部的某些警告保持静默。</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">all</td>
+<td align="left">抑制所有警告</td>
+</tr>
+<tr>
+<td align="center">boxing</td>
+<td align="left">抑制装箱、拆箱操作时候的警告</td>
+</tr>
+<tr>
+<td align="center">cast</td>
+<td align="left">抑制映射相关的警告</td>
+</tr>
+<tr>
+<td align="center">dep-ann</td>
+<td align="left">抑制启用注释的警告</td>
+</tr>
+<tr>
+<td align="center">deprecation</td>
+<td align="left">抑制过期方法警告</td>
+</tr>
+<tr>
+<td align="center">fallthrough</td>
+<td align="left">抑制确在switch中缺失breaks的警告</td>
+</tr>
+<tr>
+<td align="center">finally</td>
+<td align="left">抑制finally模块没有返回的警告</td>
+</tr>
+<tr>
+<td align="center">hiding</td>
+<td align="left">不常用</td>
+</tr>
+<tr>
+<td align="center">incomplete-switch</td>
+<td align="left">忽略没有完整的switch语句</td>
+</tr>
+<tr>
+<td align="center">nls</td>
+<td align="left">忽略非nls格式的字符</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="left">忽略对null的操作</td>
+</tr>
+<tr>
+<td align="center">rawtypes</td>
+<td align="left">使用generics时忽略没有指定相应的类型</td>
+</tr>
+<tr>
+<td align="center">restriction</td>
+<td align="left">不常用</td>
+</tr>
+<tr>
+<td align="center">serial</td>
+<td align="left">忽略在serializable类中没有声明serialVersionUID变量</td>
+</tr>
+<tr>
+<td align="center">static-access</td>
+<td align="left">抑制不正确的静态访问方式警告</td>
+</tr>
+<tr>
+<td align="center">synthetic-access</td>
+<td align="left">抑制子类没有按最优方法访问内部类的警告</td>
+</tr>
+<tr>
+<td align="center">unchecked</td>
+<td align="left">抑制没有进行类型检查操作的警告</td>
+</tr>
+<tr>
+<td align="center">unqualified-field-access</td>
+<td align="left">抑制没有权限访问的域的警告</td>
+</tr>
+<tr>
+<td align="center">unused</td>
+<td align="left">抑制没被使用过的代码的警告</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>生成帮助文档，如<code>@Documented</code></p>
+</li>
+<li><p>在反射中使用<code>Annotation</code></p>
+</li>
+<li><p>便于查看和维护代码，如<code>@Override</code>可以清楚的知道这是一个重写方法</p>
+</li>
+<li><p>在框架中使用，简化程序配置</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/annotation/package-summary.html">参考一</a></li>
+<li><a href="https://www.cnblogs.com/whyaza/p/11081590.html">参考二</a></li>
+</ol>
+<hr>
+<h1 id="Java泛型"><a href="#Java泛型" class="headerlink" title="Java泛型"></a><center><font color=red>Java泛型</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泛型程序设计(generic programming)是程序设计语言的一种风格或范式。泛型允许程序员在强类型程序设计语言中编写代码时使用一些以后才指定的类型，在实例化时作为参数指明这些类型。</p>
+<p>Java泛型(generics)是<a href="https://www.oracle.com/java/technologies/oracle-java-archive-downloads.html"><code>JDK5</code></a>中引入的一个新特性，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型(只在编译阶段有效)。泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java早期使用Object类型来接收任意的对象类型，但是在实际的使用中会有类型转换的问题，即：向上转型没有任何问题，但是向下转型时其实隐含了类型转换的问题，这就是程序不安全的原因。也就是因为存在这种安全隐患，所以Java在JDK5以后就提供了泛型来解决这个安全问题。</p>
+<blockquote>
+<p>分类：</p>
+<blockquote>
+<p>泛型类</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>泛型方法</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>泛型接口</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>泛型通配符</p>
+</blockquote>
+</blockquote>
+<h2 id="二、使用-3"><a href="#二、使用-3" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
+<p>假定目录为<code>/Users/java</code></p>
+</blockquote>
+<ol>
+<li>泛型类：泛型类型用于类的定义中，通过泛型可以完成对一组类的操作对外开放相同的接口。<ul>
+<li>泛型的类型参数只能是类类型，不能是简单类型。</li>
+<li>不能对确切的泛型类型使用<code>instanceof</code>操作。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Generic.java</span><br><span class="line">public class Generic&lt;T&gt;&#123; </span><br><span class="line">    private T key;</span><br><span class="line"></span><br><span class="line">    public Generic(T key) &#123;</span><br><span class="line">        this.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getKey()&#123;</span><br><span class="line">        return key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#MainClass.java</span><br><span class="line">public class MainClass &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Generic&lt;Integer&gt; genericInteger = new Generic&lt;Integer&gt;(123456);</span><br><span class="line">        Generic&lt;String&gt; genericString = new Generic&lt;String&gt;(&quot;abc&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;key的值:&quot; + genericInteger.getKey());</span><br><span class="line">        System.out.println(&quot;key的值:&quot; + genericString.getKey());</span><br><span class="line"></span><br><span class="line">        System.out.printf(&quot;key的值:%d\n&quot;, genericInteger.getKey());</span><br><span class="line">        System.out.printf(&quot;key的值:%s\n&quot;, genericString.getKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>泛型方法</p>
+</li>
+<li><p>泛型接口</p>
+</li>
+<li><p>泛型通配符</p>
+</li>
+</ol>
+<h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/coprince/p/8603492.html">参考一</a></li>
+<li><a href="https://www.cnblogs.com/guoyansi19900907/p/12127931.html">参考二</a></li>
+</ol>
+<hr>
+<h1 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a><center><font color=red>Java反射</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射(Reflection)是Java的特征之一，它允许运行中的Java程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java里有一句话：万物皆对象，而一个对象必然有一个与之对应的类。具体到代码层面，Java中每个类都有一个与之对应的类对象(Class对象)，这个类对象由JVM生成并保存了对应类的相关信息，而类对象所对应的类就是<code>java.lang.Class</code>，它是所有反射API的入口点。</p>
+<blockquote>
+<p>获取Class类对象的三种方法</p>
+</blockquote>
+<ul>
+<li>使用<code>Class.forName</code>静态方法，如<code>Class clz = Class.forName(&quot;java.lang.String&quot;);</code></li>
+<li>使用<code>.class</code>方法，如<code>Class clz = String.class;</code></li>
+<li>使用类对象的<code>getClass()</code>方法，如<code>String str = new String(&quot;Hello&quot;); Class clz = str.getClass();</code></li>
+</ul>
+<blockquote>
+<p>反射的用法</p>
+</blockquote>
+<ol>
+<li><p>通过反射创建类对象，分为两种：</p>
+<ul>
+<li>通过Class对象的newInstance()方法</li>
+<li>通过Constructor对象的newInstance()方法</li>
+</ul>
+</li>
+<li><p>通过反射获取类属性、方法、构造器</p>
+<ul>
+<li>获取属性<ul>
+<li>getFields()获取类中所有被public修饰的所有属性</li>
+<li>getDeclaredFields()获取类中所有的属性(不包括继承下来的属性)</li>
+</ul>
+</li>
+<li>获取方法<ul>
+<li>getMethods()获取类中被public修饰的所有方法(包括从父类中继承的那一部分)</li>
+<li>getDeclaredMethods()获取所有方法(不包括从父类中继承的那一部分)</li>
+</ul>
+</li>
+<li>获取构造器<ul>
+<li>getConstructors()获取类中所有被public修饰的构造器</li>
+<li>getDeclaredConstructors()获取类中所有构造器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>通过反射调用方法</p>
+<ul>
+<li>通过反射获取到某个Method类对象后可以通过调用invoke方法执行<code>invoke(Oject obj, Object... args)</code></li>
+</ul>
+</li>
+<li><p>通过反射设置访问属性<code>setAccessible(bool)</code></p>
+</li>
+<li><p>通过反射获取注解</p>
+<ul>
+<li>getAnnotations()获取该对象上的所有注解</li>
+<li>getDeclaredAnnotations()获取该对象上的显式标注的所有注解(不包括继承下来的注解)</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>应用场景</p>
+</blockquote>
+<ul>
+<li>框架开发</li>
+<li>工厂模式，消除多个分支</li>
+<li>动态加载类</li>
+</ul>
+<h2 id="二、使用-4"><a href="#二、使用-4" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>简单例子</p>
+<ul>
+<li><p>code</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;reflect/Fruit.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">class Fruit &#123;</span><br><span class="line">    public String name;</span><br><span class="line">    protected int num;</span><br><span class="line">    private int price;</span><br><span class="line"></span><br><span class="line">    public Fruit(String name, int price) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;reflect/FruitMain.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.*;</span><br><span class="line"></span><br><span class="line">class FruitMain &#123;</span><br><span class="line">    // @SuppressWarnings(&quot;rawtypes&quot;)</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 正常的调用</span><br><span class="line">        Fruit apple = new Fruit(&quot;Apple&quot;, 15);</span><br><span class="line">        System.out.println(&quot;Apple Init Price:&quot; + apple.getPrice());</span><br><span class="line">        apple.setPrice(5);</span><br><span class="line">        System.out.println(&quot;Apple Set Price:&quot; + apple.getPrice());</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName(&quot;reflect.Fruit&quot;);</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(String.class, int.class);</span><br><span class="line">            Method getPriceMethod = clz.getMethod(&quot;getPrice&quot;);</span><br><span class="line">            Fruit pearObj = (Fruit)con.newInstance(&quot;Pear&quot;, 10);</span><br><span class="line">            System.out.println(&quot;Pear Init Price:&quot; + getPriceMethod.invoke(pearObj));</span><br><span class="line">            Method setPriceMethod = clz.getMethod(&quot;setPrice&quot;, int.class);</span><br><span class="line">            setPriceMethod.invoke(pearObj, 14);</span><br><span class="line">            System.out.println(&quot;Pear Set Price:&quot; + getPriceMethod.invoke(pearObj));</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName(&quot;reflect.Fruit&quot;);</span><br><span class="line">            Method method = clz.getMethod(&quot;setPrice&quot;, int.class);</span><br><span class="line">            Method method1 = clz.getMethod(&quot;getPrice&quot;);</span><br><span class="line">            Class&lt;?&gt;[] parTypes = new Class&lt;?&gt;[2];</span><br><span class="line">            parTypes[0] = String.class;</span><br><span class="line">            parTypes[1] = int.class;</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(parTypes);</span><br><span class="line">            Object[] pars = new Object[2];</span><br><span class="line">            pars[0] = &quot;Banana&quot;;</span><br><span class="line">            pars[1] = 11;</span><br><span class="line">            Object obj = con.newInstance(pars);</span><br><span class="line">            System.out.println(&quot;Banana Init Price:&quot; + method1.invoke(obj));</span><br><span class="line">            method.invoke(obj, 8);</span><br><span class="line">            System.out.println(&quot;Banana Set Price:&quot; + method1.invoke(obj));</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>javac reflect/Main.java </p>
+</li>
+<li><p>java reflect.Main</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Apple Init Price:15</span><br><span class="line">Apple Set Price:5</span><br><span class="line">Pear Init Price:10</span><br><span class="line">Pear Set Price:14</span><br><span class="line">Banana Init Price:11</span><br><span class="line">Banana Set Price:8</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考-5"><a href="#三、参考-5" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.oracle.com/technical-resources/articles/java/javareflection.html">参考一</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/package-summary.html">参考二</a></li>
+<li><a href="https://www.sczyh30.com/posts/Java/java-reflection-1/">参考三</a></li>
+<li><a href="https://juejin.cn/post/6844904005294882830">参考四</a></li>
+<li><a href="https://dunwu.github.io/javacore/basics/java-reflection.html">参考五</a></li>
+<li><a href="https://www.cnblogs.com/cxuanBlog/p/13551797.html">参考六</a></li>
+<li><a href="https://www.cnblogs.com/penghuwan/p/7580145.html">参考七</a></li>
+<li><a href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html">参考八</a></li>
 </ol>
 ]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>构造函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java数据类型</title>
-    <url>/2013/01/15/Java-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>“条条大路通罗马”原话是“All Roads Lead to Rome”，出自《罗马典故》，是指做成一件事的方法不只一种，人生的路也不止一条等着我们发现。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
-<li><p>基本数据类型</p>
-<ul>
-<li>整型：byte、short、int、long，如35，默认什么也不加就是int型，35B表示是byte型，35S表示short型，35L表示long型的</li>
-<li>浮点型：float、double，默认double，如要用float则应加”F”()</li>
-<li>字符型：char</li>
-<li>布尔型：boolean</li>
-</ul>
-</li>
-<li><p>引用数据类型</p>
-</li>
-</ol>
-<p>①String不是基本数据类型，是引用数据类型，它是java提供的一个类</p>
-<p>②Java基本类型存储在栈中，因此它们的存取速度要快于存储在堆中的对应包装类的实例对象。从Java5.0（1.5）开始，JAVA虚拟机（Java Virtual Machine）可以完成基本类型和它们对应包装类之间的自动转换。因此我们在赋值、参数传递以及数学运算的时候像使用基本类型一样使用它们的包装类，但这并不意味着你可以通过基本类型调用它们的包装类才具有的方法。另外，所有基本类型的包装类都使用了final修饰，因此我们无法继承它们扩展新的类，也无法重写它们的任何方法。</p>
-<p>③基本类型的优势：数据存储相对简单，运算效率比较高</p>
-<p>包装类的优势：有的容易，比如集合的元素必须是对象类型，满足了java一切皆是对象的思想。</p>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
+        <tag>反射</tag>
         <tag>Java</tag>
         <tag>数据类型</tag>
+        <tag>泛型</tag>
+        <tag>注解</tag>
+        <tag>包</tag>
       </tags>
   </entry>
   <entry>
@@ -43771,6 +43656,7 @@ read_xlsx(name, sheet)
 <li><a href="https://iwantjingjing.com/">I want jing jing</a></li>
 <li><a href="https://whiteccinn.github.io/">白菜君の技术库</a></li>
 <li><a href="http://blog.langpz.com/">蓝胖纸 | 哆啦A梦</a></li>
+<li><a href="https://blog.codingnow.com/">云风的 BLOG</a>，<a href="https://github.com/cloudwu">GitHub</a></li>
 <li><a href="http://www.laruence.com/">风雪之隅</a></li>
 <li><a href="https://www.ruanyifeng.com/">阮一峰</a></li>
 <li><a href="https://www.liaoxuefeng.com/">廖雪峰</a></li>
@@ -43822,7 +43708,6 @@ read_xlsx(name, sheet)
 <li><a href="https://bugstack.cn/">bugstack虫洞栈</a></li>
 <li><a href="https://tanqingbo.cn/">IT码农</a></li>
 <li><a href="https://www.zhyong.cn/">YouForever</a></li>
-<li><a href="https://blog.codingnow.com/">云风的 BLOG</a></li>
 <li><a href="http://wxnacy.com/">温欣爸比</a></li>
 <li><a href="https://yemilice.com/">Yemilice</a></li>
 <li><a href="https://qcrao.com/">码农桃花源</a></li>
@@ -43834,6 +43719,8 @@ read_xlsx(name, sheet)
 <li><a href="https://shuyi.tech/">陈树义的博客</a></li>
 <li><a href="https://www.zhangjc.com/">Charles Zhang</a></li>
 <li><a href="https://mashengjie.com/">马胜杰博客</a></li>
+<li><a href="https://www.infoq.cn/profile/8D2D4D588D3D8A/publish">杨亚洲(专注mongodb及高性能中间件)</a>，<a href="https://www.zhihu.com/people/yang-ya-zhou-42">知乎</a>，<a href="https://github.com/y123456yz">GitHub</a></li>
+<li><a href="http://socketo.me/">Ratchet-WebSockets for PHP</a></li>
 </ol>
 <hr>
 <ol>
@@ -43902,6 +43789,7 @@ read_xlsx(name, sheet)
 <li><a href="https://github.com/itdevbooks/pdf">计算机电子书免费下载</a></li>
 <li><a href="https://github.com/huangz1990/redis-3.0-annotated">redis-3.0-annotated</a></li>
 <li><a href="https://github.com/cookieY/Yearning">Yearning</a></li>
+<li><a href="https://blog.ti-node.com/">谢顶道人</a>，<a href="https://segmentfault.com/u/laolixiuxiu/articles">饭否</a>，<a href="https://github.com/elarity">GitHub</a></li>
 </ol>
 <h2 id="三、公众号"><a href="#三、公众号" class="headerlink" title="三、公众号"></a>三、公众号</h2><blockquote>
 <p>TODO</p>
