@@ -67,7 +67,7 @@
 <meta property="og:image" content="https://liusir.me/2013/01/02/Hexo-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/g2.png">
 <meta property="og:image" content="https://liusir.me/2013/01/02/Hexo-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/g3.jpeg">
 <meta property="article:published_time" content="2013-01-02T10:18:21.000Z">
-<meta property="article:modified_time" content="2022-05-24T07:31:41.990Z">
+<meta property="article:modified_time" content="2022-06-06T15:22:47.261Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="Hexo">
@@ -287,6 +287,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
@@ -820,8 +827,13 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">next主题自带：</span><br><span class="line">&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">修改为：</span><br><span class="line">&lt;script async src=&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <ol start="5">
-<li>清一下缓存，重新发布下，打完收工</li>
+<li><p>清一下缓存，重新发布下，打完收工</p>
+</li>
+<li><p>代码备份</p>
+</li>
 </ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var bszCaller,bszTag;!function()&#123;var c,d,e,a=!1,b=[];ready=function(c)&#123;return a||&quot;interactive&quot;===document.readyState||&quot;complete&quot;===document.readyState?c.call(document):b.push(function()&#123;return c.call(this)&#125;),this&#125;,d=function()&#123;for(var a=0,c=b.length;c&gt;a;a++)b[a].apply(document);b=[]&#125;,e=function()&#123;a||(a=!0,d.call(window),document.removeEventListener?document.removeEventListener(&quot;DOMContentLoaded&quot;,e,!1):document.attachEvent&amp;&amp;(document.detachEvent(&quot;onreadystatechange&quot;,e),window==window.top&amp;&amp;(clearInterval(c),c=null)))&#125;,document.addEventListener?document.addEventListener(&quot;DOMContentLoaded&quot;,e,!1):document.attachEvent&amp;&amp;(document.attachEvent(&quot;onreadystatechange&quot;,function()&#123;/loaded|complete/.test(document.readyState)&amp;&amp;e()&#125;),window==window.top&amp;&amp;(c=setInterval(function()&#123;try&#123;a||document.documentElement.doScroll(&quot;left&quot;)&#125;catch(b)&#123;return&#125;e()&#125;,5)))&#125;(),bszCaller=&#123;fetch:function(a,b)&#123;var c=&quot;BusuanziCallback_&quot;+Math.floor(1099511627776*Math.random());window[c]=this.evalCall(b),a=a.replace(&quot;=BusuanziCallback&quot;,&quot;=&quot;+c),scriptTag=document.createElement(&quot;SCRIPT&quot;),scriptTag.type=&quot;text/javascript&quot;,scriptTag.defer=!0,scriptTag.src=a,scriptTag.referrerPolicy=&quot;no-referrer-when-downgrade&quot;,document.getElementsByTagName(&quot;HEAD&quot;)[0].appendChild(scriptTag)&#125;,evalCall:function(a)&#123;return function(b)&#123;ready(function()&#123;try&#123;a(b),scriptTag.parentElement.removeChild(scriptTag)&#125;catch(c)&#123;bszTag.hides()&#125;&#125;)&#125;&#125;&#125;,bszCaller.fetch(&quot;//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback&quot;,function(a)&#123;bszTag.texts(a),bszTag.shows()&#125;),bszTag=&#123;bszs:[&quot;site_pv&quot;,&quot;page_pv&quot;,&quot;site_uv&quot;],texts:function(a)&#123;this.bszs.map(function(b)&#123;var c=document.getElementById(&quot;busuanzi_value_&quot;+b);c&amp;&amp;(c.innerHTML=a[b])&#125;)&#125;,hides:function()&#123;this.bszs.map(function(a)&#123;var b=document.getElementById(&quot;busuanzi_container_&quot;+a);b&amp;&amp;(b.style.display=&quot;none&quot;)&#125;)&#125;,shows:function()&#123;this.bszs.map(function(a)&#123;var b=document.getElementById(&quot;busuanzi_container_&quot;+a);b&amp;&amp;(b.style.display=&quot;inline&quot;)&#125;)&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
 <h2 id="二、参考-1"><a href="#二、参考-1" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="http://ibruce.info/2015/04/04/busuanzi/">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/time888/article/details/74203939">参考二</a></li>
@@ -1284,6 +1296,27 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <!-- <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+  <script src="https://liusir.me/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
