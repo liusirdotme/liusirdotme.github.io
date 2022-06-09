@@ -56,6 +56,57 @@
       </tags>
   </entry>
   <entry>
+    <title>Go语言GVM</title>
+    <url>/2022/06/05/Go-GVM/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>张牙舞爪的人，往往是脆弱的。因为真正强大的人，是自信的，自信就会温和，温和就会坚定。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvm，即Go Version Manager，Go版本管理器，使用shell脚本开发，它可以非常轻量的切换Go版本。对比其他语言通常也有类似的工具，如NodeJS的NVM，Python的pyenv等。其原理就是下载不同的Golang安装包，然后放置到独立的目录，使用时将GOROOT和GOPATH指向对应版本的目录即可完成版本切换。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>安装<code>bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)</code></p>
+<ul>
+<li>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 9 ms: Connection refused<ul>
+<li><a href="https://ipaddress.com/website/raw.githubusercontent.com">访问</a></li>
+<li>设置hosts<code>185.199.108.133 raw.githubusercontent.com</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>安装完成后会提示Please restart your terminal session or to get started right away run <code>source /Users/liuyulong/.gvm/scripts/gvm</code></p>
+</li>
+<li><p>常用命令<code>gvm</code></p>
+<ul>
+<li>gvm version</li>
+<li>gvm listall</li>
+<li>gvm install <code>version</code><ul>
+<li><code>HTTP/2 stream 1 was not closed cleanly before end of the underlying stream</code><ul>
+<li>git config –global http.version HTTP/1.1</li>
+<li>git config –global http.postBuffer 524288000</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>gvm list</li>
+<li>gvm use <code>version</code></li>
+<li>gvm uninstall <code>version</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://github.com/moovweb/gvm">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+        <tag>GVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go语言上下文</title>
     <url>/2022/05/28/Go-%E4%B8%8A%E4%B8%8B%E6%96%87/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -20829,7 +20880,7 @@
     <title>Go语言收集</title>
     <url>/2018/02/04/Go-%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>go env命令用于打印Go语言的环境变量信息，也可进行设置环境变量信息。</p>
+<p>所谓的成功，就是用自己的方式度过人生。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -32216,6 +32267,7 @@ read_xlsx(name, sheet)
 <li><a href="https://blog.csdn.net/devcy/article/details/100104471">ModuleNotFoundError</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/389756262">Python 不愧是脚本之王</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/37239021">Python3新特性-类型注解</a></li>
+<li><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/">python3-cookbook</a></li>
 </ol>
 <h2 id="二、常用"><a href="#二、常用" class="headerlink" title="二、常用"></a>二、常用</h2><ol>
 <li><p><code>id(object)</code>返回对象的“标识值”。该值是一个整数，在此对象的生命周期中保证是唯一且恒定的。</p>
