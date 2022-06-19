@@ -58,7 +58,7 @@
 <meta property="og:description" content="“条条大路通罗马”原话是“All Roads Lead to Rome”，出自《罗马典故》，是指做成一件事的方法不只一种，人生的路也不止一条等着我们发现。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2013-01-15T06:49:48.000Z">
-<meta property="article:modified_time" content="2022-02-10T15:25:09.542Z">
+<meta property="article:modified_time" content="2022-06-19T16:46:39.188Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="反射">
@@ -284,13 +284,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>5.3k</span>
+              <span>9.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>5 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -689,7 +689,219 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/penghuwan/p/7580145.html">参考七</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html">参考八</a></li>
 </ol>
-
+<hr>
+<h1 id="Java三大器"><a href="#Java三大器" class="headerlink" title="Java三大器"></a><center><font color=red>Java三大器</font></center></h1><ol>
+<li>过滤器</li>
+<li>拦截器</li>
+<li>监听器</li>
+</ol>
+<hr>
+<h1 id="Java四大域"><a href="#Java四大域" class="headerlink" title="Java四大域"></a><center><font color=red>Java四大域</font></center></h1><ol>
+<li>ServletContext域</li>
+<li>Request域</li>
+<li>Session域</li>
+<li>PageContext域</li>
+</ol>
+<hr>
+<h1 id="Java九大隐式对象"><a href="#Java九大隐式对象" class="headerlink" title="Java九大隐式对象"></a><center><font color=red>Java九大隐式对象</font></center></h1><p>jsp被翻译成servlet之后，service方法中有9个对象定义并初始化完毕，在jsp脚本中可以直接使用这9个对象。</p>
+<ol>
+<li>page</li>
+<li>confing</li>
+<li>application</li>
+<li>response</li>
+<li>request</li>
+<li>session</li>
+<li>out</li>
+<li>exception</li>
+<li>pageContext</li>
+</ol>
+<hr>
+<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a><center><font color=red>Tomcat</font></center></h1><ol>
+<li><p>Tomcat服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache服务器，可利用它响应HTML(标准通用标记语言下的一个应用)页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
+</li>
+<li><p>安装</p>
+<ul>
+<li>安装[Tomcat]<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a>)<ul>
+<li><code>cd /usr/local/src/ &amp;&amp; sudo wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz</code></li>
+</ul>
+</li>
+<li><code>cd /usr/local &amp;&amp; sudo tar -zxvf apache-tomcat-9.0.34.tar.gz</code></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">参考</a></p>
+</li>
+</ol>
+<hr>
+<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a><center><font color=red>Maven</font></center></h1><ol>
+<li><p>Maven是一个项目管理工具，它包含了一个项目对象模型(Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，以及用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
+<ul>
+<li>maven是java的包管理工具，相当于是nodejs中的npm，php中的composer，python中的pip等，通过maven可以方便地引入各种java的第三方类库(包括Spring、Struts、junit等)和插件(如tomcat等)。</li>
+</ul>
+</li>
+<li><p>安装</p>
+<ul>
+<li><p>安装<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase-downloads.html">Java SE</a>，直接选择了dmg安装</p>
+<ul>
+<li>默认安装目录<code>/Library/Java/</code></li>
+</ul>
+</li>
+<li><p>安装<a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">Maven</a></p>
+<ul>
+<li><p>brew安装<code>brew install maven</code></p>
+</li>
+<li><p>源码安装</p>
+<ul>
+<li><code>cd /usr/local/src</code></li>
+<li><code>wget http://apache.communilink.net/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</code></li>
+<li>解压<ul>
+<li><code>cd /usr/local</code></li>
+<li><code>sudo tar -zxvf apache-maven-3.6.3-bin.tar.gz</code></li>
+</ul>
+</li>
+<li>设置环境变量<code>vim ~/.bash_profile</code>，加入maven的bin路径</li>
+<li><code>source ~/.bash_profile</code>立即生效</li>
+<li>查看安装是否成功<code>mvn -v</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)</span><br><span class="line">Maven home: /usr/local/apache-maven-3.6.3</span><br><span class="line">Java version: 14, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.5&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用<code>mvn -h</code></p>
+<ul>
+<li>常用命令<ul>
+<li>创建maven项目：<code>mvn archetype:create</code><ul>
+<li>指定<code>group</code>：<code>-DgroupId=packageName</code></li>
+<li>指定<code>artifact</code>：<code>-DartifactId=projectName</code></li>
+<li>创建<code>web</code>项目：<code>-DarchetypeArtifactId=maven-archetype-webapp</code></li>
+</ul>
+</li>
+<li>创建maven项目：<code>mvn archetype:generate</code></li>
+<li>验证项目是否正确：<code>mvn validate</code></li>
+<li>maven打包：<code>mvn package</code></li>
+<li>只打jar包：<code>mvn jar:jar</code></li>
+<li>生成源码jar包：<code>mvn source:jar</code></li>
+<li>产生应用需要的任何额外的源代码：<code>mvn generate-sources</code></li>
+<li>编译源代码：<code>mvn compile</code></li>
+<li>编译测试代码：<code>mvn test-compile</code></li>
+<li>运行测试：<code>mvn test</code></li>
+<li>运行检查：<code>mvn verify</code></li>
+<li>清理maven项目：<code>mvn clean</code></li>
+<li>生成eclipse项目：<code>mvn eclipse:eclipse</code></li>
+<li>清理eclipse配置：<code>mvn eclipse:clean</code></li>
+<li>生成idea项目：<code>mvn idea:idea</code></li>
+<li>安装项目到本地仓库：<code>mvn install</code></li>
+<li>发布项目到远程仓库：<code>mvn:deploy</code></li>
+<li>在集成测试可以运行的环境中处理和发布包：<code>mvn integration-test</code></li>
+<li>显示maven依赖树：<code>mvn dependency:tree</code></li>
+<li>显示maven依赖列表：<code>mvn dependency:list</code></li>
+<li>下载依赖包的源码：<code>mvn dependency:sources</code></li>
+<li>安装本地jar到本地仓库：<code>mvn install:install-file -DgroupId=packageName -DartifactId=projectName -Dversion=version -Dpackaging=jar -Dfile=path</code></li>
+</ul>
+</li>
+<li>web项目相关命令<ul>
+<li>启动tomcat：<code>mvn tomcat:run</code></li>
+<li>启动jetty：<code>mvn jetty:run</code></li>
+<li>运行打包部署：<code>mvn tomcat:deploy</code></li>
+<li>撤销部署：<code>mvn tomcat:undeploy</code></li>
+<li>启动web应用：<code>mvn tomcat:start</code></li>
+<li>停止web应用：<code>mvn tomcat:stop</code></li>
+<li>重新部署：<code>mvn tomcat:redeploy</code></li>
+<li>部署展开的war文件：<code>mvn war:exploded tomcat:exploded</code></li>
+</ul>
+</li>
+<li>其他<ul>
+<li><code>mvn clean</code>：表示运行清理操作(会默认把target文件夹中的数据清理)。</li>
+<li><code>mvn clean test</code>：运行清理和测试。</li>
+<li><code>mvn clean compile</code>：表示先运行清理之后运行编译，会将代码编译到target文件夹中。</li>
+<li><code>mvn clean package</code>：运行清理和打包。</li>
+<li><code>mvn clean install</code>：运行清理和安装，会将打好的包安装到本地仓库中，以便其他的项目可以调用。</li>
+<li><code>mvn clean deploy</code>：运行清理和发布(发布到私服上面)。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a><center><font color=red>Netty</font></center></h1><ol>
+<li>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。<ul>
+<li>简单来说有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a><center><font color=red>Spring</font></center></h1><ol>
+<li><p>spring 是一个开源框架，处于mvc的控制层，能应对需求的快速变化，主要原因是它有一种面向切面编程(aop)的优势，其次它提升了系统性能，是因为通过依赖倒置机制(ioc)，系统中用到的对象不是在系统加载时就全部实例化，而是在调用到这个类时才会实例化该对象。</p>
+<ul>
+<li>轻量：从大小到开销来说都是轻量的，spring框架开源字啊一个只有1m大小的jar文件中发布，而且spring所处理的开销也是微不足道的</li>
+<li>非侵入式：spring应用中的对象不依赖于spring的特定类</li>
+<li>IOC(控制反转)：一个对象依赖的其他对象会通过被动的方式传递进来，而不是这个对象自己创建或者主动查找依赖对象</li>
+<li>AOP(面向切面)：只完成业务逻辑，并不负责其他的系统级的关注点，有两种实现方式：<ul>
+<li>jdk动态代理</li>
+<li>CGLib动态代理</li>
+</ul>
+</li>
+<li>容器：定义了bean是如何创建、配置、管理的</li>
+<li>框架模块：可以不必将应用完全基于spring，可以自由的挑选适用你的模块，而忽略其余的模块</li>
+<li>核心容器：提供了依赖注入特征来实现容器对bean的管理。这里最基本的概念是BeanFactory，它是任何spring应用的核心。BeanFactory是工厂模式的一个实现，他使用ioc将应用配置和依赖说明从实际的应用代码中分离出来</li>
+<li>应用上下文(context)模块：核心模块的beanFactory使spring成为了一个容器，而上下文模块使他成为一个框架，这个模块扩展了BeanFactory的概念，增加了对国际化消息、事件传播以及验证的支持。</li>
+</ul>
+</li>
+<li><p>spring bean加载、注入过程</p>
+<ul>
+<li>执行该对象的构造方法</li>
+<li>执行set参数注入方法</li>
+<li>执行BeanNameAware的实现方法获取bean的id</li>
+<li>执行BeanFactoryAware的实现方法获取bean的工厂</li>
+<li>执行BeanPostProcessor的postProcessBeforeInitalization处理方法</li>
+<li>执行In</li>
+</ul>
+</li>
+<li><p>spring事务的传播机制有以下几种：</p>
+<ul>
+<li>PROPAGATION_REQUIRED：如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</li>
+<li>PROPAGATION_SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
+<li>PROPAGATION_MANDATORY：使用当前的事务，如果当前没有事务，就抛出异常。</li>
+<li>PROPAGATION_REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。</li>
+<li>PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+<li>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。</li>
+<li>PROPAGATION_NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
+</ul>
+</li>
+<li><p>springboot核心配置文件</p>
+<ul>
+<li>applicaion：主要用于springboot项目的自动化配置</li>
+<li>boostrap：主要用于一些固定的不能被覆盖的属性，一些加密解密的场景。<blockquote>
+<p>配置文件有properties和yml格式，其中yml格式不支持<code>@propertySource</code>注解导入配置。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>springboot核心注解：启动类上面的注解是<code>@springbootApplication</code>，它是核心注解，包含了以下三个注解</p>
+<ul>
+<li>@springbootConfiguration：组合了@Configuration注解，实现配置文件的功能</li>
+<li>@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项</li>
+<li>@ComponentScan：spring组件扫描</li>
+</ul>
+</li>
+<li><p>开启springboot特性的几种方式：</p>
+<ul>
+<li>继承spring-boot-starter-parent项目</li>
+<li>导入spring-boot-dependencies项目依赖</li>
+</ul>
+</li>
+<li><p>springboot 配置加载顺序</p>
+<ul>
+<li>properties</li>
+<li>yaml文件</li>
+<li>系统环境变量</li>
+<li>命令行参数</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="Java九大隐式对象-1"><a href="#Java九大隐式对象-1" class="headerlink" title="Java九大隐式对象"></a><center><font color=red>Java九大隐式对象</font></center></h1>
     </div>
 
     
@@ -760,7 +972,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Java数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">Java构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">Java包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%B3%A8%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Java注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">4.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%B3%9B%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">Java泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-3"><span class="nav-number">5.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">5.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%8F%8D%E5%B0%84"><span class="nav-number">6.</span> <span class="nav-text">Java反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-3"><span class="nav-number">6.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-4"><span class="nav-number">6.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Java数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">Java构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">Java包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%B3%A8%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Java注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">4.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E6%B3%9B%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">Java泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-3"><span class="nav-number">5.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">5.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%8F%8D%E5%B0%84"><span class="nav-number">6.</span> <span class="nav-text">Java反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-3"><span class="nav-number">6.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-4"><span class="nav-number">6.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E4%B8%89%E5%A4%A7%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">Java三大器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%9B%9B%E5%A4%A7%E5%9F%9F"><span class="nav-number">8.</span> <span class="nav-text">Java四大域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E4%B9%9D%E5%A4%A7%E9%9A%90%E5%BC%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">9.</span> <span class="nav-text">Java九大隐式对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat"><span class="nav-number">10.</span> <span class="nav-text">Tomcat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven"><span class="nav-number">11.</span> <span class="nav-text">Maven</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty"><span class="nav-number">12.</span> <span class="nav-text">Netty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring"><span class="nav-number">13.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E4%B9%9D%E5%A4%A7%E9%9A%90%E5%BC%8F%E5%AF%B9%E8%B1%A1-1"><span class="nav-number">14.</span> <span class="nav-text">Java九大隐式对象</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -59,7 +59,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.me/2015/02/26/Java-%E6%94%B6%E9%9B%86/java.png">
 <meta property="article:published_time" content="2015-02-26T03:09:56.000Z">
-<meta property="article:modified_time" content="2022-03-15T14:47:22.515Z">
+<meta property="article:modified_time" content="2022-06-19T16:44:25.267Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Netty">
@@ -285,13 +285,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>14k</span>
+              <span>9.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>12 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -308,7 +308,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、用法"><a href="#一、用法" class="headerlink" title="一、用法"></a>一、用法</h2><ol>
+<h2 id="一、收集"><a href="#一、收集" class="headerlink" title="一、收集"></a>一、收集</h2><ol>
 <li><p><code>String a = &quot;abc&quot;</code>和<code>String b = new String(&quot;abc&quot;)</code></p>
 <ul>
 <li>String a = “abc”是指在栈中创建一个string类的对象引用变量，然后查找栈中有没有存放”abc”，如果没有则将”abc”放入栈，并令a指向abc。</li>
@@ -405,59 +405,6 @@
 <li>特点：查询效率高，增删效率低，线程不安全(线程安全的数组容器是Vector)，使用频率高。</li>
 </ul>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shoshana-kong/p/11069146.html">jps</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142483400">EasyLog</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47401636">java多线程的几种实现方式</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34405799">java之spring注入的几种方式</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">java线程池</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1493834">Java中sleep和wait的区别</a></p>
-</li>
-<li><p><code>A JNI error has occurred, please check your installation and try again</code>，存在多版本时，如果环境变量设置不统一会出现此情况</p>
-</li>
-<li><p><code>找不到或无法加载主类</code>，当源文件中含有package时会出现此状况，一般解决方案是创建与包名相同的文件路径结构或删除包名(不建议)</p>
-<ul>
-<li><code>错误: 找不到符号</code>，其中一种情况也是包名和文件路径不一致导致的，解决方法和上面一样</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangyongjian/p/3653281.html">类A是公共的,应在名为A.java的文件中声明</a></p>
-</li>
-<li><p>Arthas、jProfiler、VisualVM、Jconsole</p>
-</li>
-</ol>
-<h2 id="二、常用"><a href="#二、常用" class="headerlink" title="二、常用"></a>二、常用</h2><ol>
-<li><p>三大器</p>
-<ul>
-<li>过滤器</li>
-<li>拦截器</li>
-<li>监听器</li>
-</ul>
-</li>
-<li><p>四大域:ServletContext对象，叫做Servlet的上下文对象，表示一个当前的web应用环境，一个web应用中只有一个ServletContext对象。</p>
-<ul>
-<li>ServletContext域</li>
-<li>Request域</li>
-<li>Session域</li>
-<li>PageContext域</li>
-</ul>
-</li>
-<li><p>九大隐式对象:jsp被翻译成servlet之后，service方法中有9个对象定义并初始化完毕，在jsp脚本中可以直接使用这9个对象。</p>
-<ul>
-<li>page</li>
-<li>confing</li>
-<li>application</li>
-<li>response</li>
-<li>request</li>
-<li>session</li>
-<li>out</li>
-<li>exception</li>
-<li>pageContext</li>
-</ul>
-</li>
 <li><p>ArrayList和LinkedList</p>
 <ul>
 <li>① ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。</li>
@@ -476,19 +423,14 @@
 <ul>
 <li>①继承不同。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Hashtable extends Dictionary implements Map</span><br><span class="line"></span><br><span class="line">public class HashMap extends AbstractMap implements Map</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class Hashtable extends Dictionary implements Map</span><br><span class="line">public class HashMap extends AbstractMap implements Map</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>②Hashtable中的方法是同步的，而HashMap中的方法在缺省情况下是非同步的。在多线程并发的环境下，可以直接使用Hashtable，但是要使用HashMap的话就要自己增加同步处理了。</p>
-</li>
-<li><p>③Hashtable中，key和value都不允许出现null值。在HashMap中，null可以作为键，这样的键只有一个；可以有一个或多个键所对应的值为null。当get()方法返回null值时，即可以表示 HashMap中没有该键，也可以表示该键所对应的值为null。因此，在HashMap中不能由get()方法来判断HashMap中是否存在某个键， 而应该用containsKey()方法来判断。</p>
-</li>
-<li><p>④两个遍历方式的内部实现上不同。Hashtable、HashMap都使用了Iterator。而由于历史原因，Hashtable还使用了Enumeration的方式 。</p>
-</li>
-<li><p>⑤哈希值的使用不同，HashTable直接使用对象的hashCode。而HashMap重新计算hash值。</p>
-</li>
-<li><p>⑥Hashtable和HashMap它们两个内部实现方式的数组的初始大小和扩容的方式。HashTable中hash数组默认大小是11，增加的方式是 old*2+1。HashMap中hash数组的默认大小是16，而且一定是2的指数。</p>
-</li>
+<li>②Hashtable中的方法是同步的，而HashMap中的方法在缺省情况下是非同步的。在多线程并发的环境下，可以直接使用Hashtable，但是要使用HashMap的话就要自己增加同步处理了。</li>
+<li>③Hashtable中，key和value都不允许出现null值。在HashMap中，null可以作为键，这样的键只有一个；可以有一个或多个键所对应的值为null。当get()方法返回null值时，即可以表示 HashMap中没有该键，也可以表示该键所对应的值为null。因此，在HashMap中不能由get()方法来判断HashMap中是否存在某个键， 而应该用containsKey()方法来判断。</li>
+<li>④两个遍历方式的内部实现上不同。Hashtable、HashMap都使用了Iterator。而由于历史原因，Hashtable还使用了Enumeration的方式 。</li>
+<li>⑤哈希值的使用不同，HashTable直接使用对象的hashCode。而HashMap重新计算hash值。</li>
+<li>⑥Hashtable和HashMap它们两个内部实现方式的数组的初始大小和扩容的方式。HashTable中hash数组默认大小是11，增加的方式是 old*2+1。HashMap中hash数组的默认大小是16，而且一定是2的指数。</li>
 </ul>
 </li>
 <li><p>javac/java/javap/jad/jar</p>
@@ -549,20 +491,18 @@
 <blockquote>
 <p>JVM即Java虚拟机，它是Java程序实现跨平台的最核心的部分，所有的Java程序会首先被编译为<code>.class</code>的类文件，这种类文件可以在虚拟机上执行。</p>
 </blockquote>
-<ol start="8">
+<ol start="14">
 <li><p>synchronizedMap/Hashtable</p>
 <ul>
 <li><p>HashMap是一种存取高效但不保证有序的容器，数据结构是数组+链表+红黑树，是解决hash冲突的产物。</p>
-<ul>
-<li>它实现了Map接口，采用kv键值对存储数据，并且实现了浅拷贝和序列化，默认大小是16，阈值是0.75，初始化大小必须是2的幂，最大是2的30次方，数组中存储的链表节点Entry类实现于Map.Entry接口，实现了对节点的通用操作。</li>
-</ul>
+</li>
+<li><p>它实现了Map接口，采用kv键值对存储数据，并且实现了浅拷贝和序列化，默认大小是16，阈值是0.75，初始化大小必须是2的幂，最大是2的30次方，数组中存储的链表节点Entry类实现于Map.Entry接口，实现了对节点的通用操作。</p>
 </li>
 <li><p>java.util.concurrent包下的容器都是安全失败的，可以在多线程下并发使用，并发修改。</p>
-<ul>
-<li>快速失败fail-fast是java集合中的一种机制，在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改(增加、删除、修改)，则会抛出Concurrent Modification Exception。<ul>
-<li>原理：在遍历的过程中使用一个modCount遍历用来记录内容变化，如果发生变化，他的值就会改变，每当迭代器使用hashNext、next遍历下一个元素之前，都会检测modCount变量。</li>
-</ul>
 </li>
+<li><p>快速失败fail-fast是java集合中的一种机制，在用迭代器遍历一个集合对象时，如果遍历过程中对集合对象的内容进行了修改(增加、删除、修改)，则会抛出Concurrent Modification Exception。</p>
+<ul>
+<li>原理：在遍历的过程中使用一个modCount遍历用来记录内容变化，如果发生变化，他的值就会改变，每当迭代器使用hashNext、next遍历下一个元素之前，都会检测modCount变量。</li>
 </ul>
 </li>
 </ul>
@@ -571,17 +511,16 @@
 <ul>
 <li>浅拷贝只复制指向某个对象的指针，而不是复制对象本身，新旧对象还是共享同一块内存，拷贝对象的时候只对基本数据类型进行了拷贝，对于引用数据类型只是进行了引用的传递，没有真实的创建一个新的对象。</li>
 <li>深拷贝会创造一个一模一样的对象，新旧对象不共享内存。</li>
-<li>参考<ul>
+<li>参考</li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6a8997560b05">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://varaneckas.com/jad/">参考二</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiftle/p/9068354.html">参考三</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903925460500487">参考四</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>查看Java字节码：Java字节码(英语：Java bytecode)是Java虚拟机执行的一种指令格式，大多数操作码都是一个字节长故称为字节码。</p>
-</li>
+</ol>
+<ol start="16">
+<li>查看Java字节码：Java字节码(英语：Java bytecode)是Java虚拟机执行的一种指令格式，大多数操作码都是一个字节长故称为字节码。</li>
 </ol>
 <blockquote>
 <p>假设已经运行并生成了<code>Test.class</code>文件</p>
@@ -600,7 +539,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="三、资料"><a href="#三、资料" class="headerlink" title="三、资料"></a>三、资料</h2><ol>
+<h2 id="二、链接"><a href="#二、链接" class="headerlink" title="二、链接"></a>二、链接</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://github.com/Guan-Ren/GitHub-Chinese-Top-Charts">GitHub-Chinese-Top-Charts</a></li>
 <li><a target="_blank" rel="noopener" href="https://javaguide.cn/">JavaGuide</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.blogjava.net/xylz/archive/2010/07/08/325587.html">深入浅出 Java Concurrency</a></li>
@@ -608,190 +547,23 @@
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/36028919">如何深入学习Java并发编程</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wzb56_earl/article/details/7919769">java与C/C++之间通过jni相互调用</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.itwanger.com/java/2019/11/09/java-bingfa.html">Java：并发不易，先学会用</a></li>
+<li><a href="fastthread.io">fastthread.io</a></li>
+<li><a href="heaphero.io">heaphero.io</a></li>
+<li><a href="gceasy.io">gceasy.io</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shoshana-kong/p/11069146.html">jps</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142483400">EasyLog</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47401636">java多线程的几种实现方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34405799">java之spring注入的几种方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">java线程池</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1493834">Java中sleep和wait的区别</a></li>
+<li><code>A JNI error has occurred, please check your installation and try again</code>，存在多版本时，如果环境变量设置不统一会出现此情况</li>
+<li><code>找不到或无法加载主类</code>，当源文件中含有package时会出现此状况，一般解决方案是创建与包名相同的文件路径结构或删除包名(不建议)<ul>
+<li><code>错误: 找不到符号</code>，其中一种情况也是包名和文件路径不一致导致的，解决方法和上面一样</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangyongjian/p/3653281.html">类A是公共的,应在名为A.java的文件中声明</a></li>
 </ol>
-<h2 id="四、框架"><a href="#四、框架" class="headerlink" title="四、框架"></a>四、框架</h2><h3 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h3><ol>
-<li>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。<ul>
-<li>简单来说有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</li>
-</ul>
-</li>
-</ol>
-<h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><ol>
-<li><p>spring 是一个开源框架，处于mvc的控制层，能应对需求的快速变化，主要原因是它有一种面向切面编程(aop)的优势，其次它提升了系统性能，是因为通过依赖倒置机制(ioc)，系统中用到的对象不是在系统加载时就全部实例化，而是在调用到这个类时才会实例化该对象。</p>
-<ul>
-<li>轻量：从大小到开销来说都是轻量的，spring框架开源字啊一个只有1m大小的jar文件中发布，而且spring所处理的开销也是微不足道的</li>
-<li>非侵入式：spring应用中的对象不依赖于spring的特定类</li>
-<li>IOC(控制反转)：一个对象依赖的其他对象会通过被动的方式传递进来，而不是这个对象自己创建或者主动查找依赖对象</li>
-<li>AOP(面向切面)：只完成业务逻辑，并不负责其他的系统级的关注点，有两种实现方式：<ul>
-<li>jdk动态代理</li>
-<li>CGLib动态代理</li>
-</ul>
-</li>
-<li>容器：定义了bean是如何创建、配置、管理的</li>
-<li>框架模块：可以不必将应用完全基于spring，可以自由的挑选适用你的模块，而忽略其余的模块</li>
-<li>核心容器：提供了依赖注入特征来实现容器对bean的管理。这里最基本的概念是BeanFactory，它是任何spring应用的核心。BeanFactory是工厂模式的一个实现，他使用ioc将应用配置和依赖说明从实际的应用代码中分离出来</li>
-<li>应用上下文(context)模块：核心模块的beanFactory使spring成为了一个容器，而上下文模块使他成为一个框架，这个模块扩展了BeanFactory的概念，增加了对国际化消息、事件传播以及验证的支持。</li>
-</ul>
-</li>
-<li><p>spring bean加载、注入过程</p>
-<ul>
-<li>执行该对象的构造方法</li>
-<li>执行set参数注入方法</li>
-<li>执行BeanNameAware的实现方法获取bean的id</li>
-<li>执行BeanFactoryAware的实现方法获取bean的工厂</li>
-<li>执行BeanPostProcessor的postProcessBeforeInitalization处理方法</li>
-<li>执行In</li>
-</ul>
-</li>
-<li><p>spring事务的传播机制有以下几种：</p>
-<ul>
-<li>PROPAGATION_REQUIRED：如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</li>
-<li>PROPAGATION_SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。</li>
-<li>PROPAGATION_MANDATORY：使用当前的事务，如果当前没有事务，就抛出异常。</li>
-<li>PROPAGATION_REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。</li>
-<li>PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
-<li>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。</li>
-<li>PROPAGATION_NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</li>
-</ul>
-</li>
-<li><p>springboot核心配置文件</p>
-<ul>
-<li>applicaion：主要用于springboot项目的自动化配置</li>
-<li>boostrap：主要用于一些固定的不能被覆盖的属性，一些加密解密的场景。<blockquote>
-<p>配置文件有properties和yml格式，其中yml格式不支持<code>@propertySource</code>注解导入配置。</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>springboot核心注解：启动类上面的注解是<code>@springbootApplication</code>，它是核心注解，包含了以下三个注解</p>
-<ul>
-<li>@springbootConfiguration：组合了@Configuration注解，实现配置文件的功能</li>
-<li>@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项</li>
-<li>@ComponentScan：spring组件扫描</li>
-</ul>
-</li>
-<li><p>开启springboot特性的几种方式：</p>
-<ul>
-<li>继承spring-boot-starter-parent项目</li>
-<li>导入spring-boot-dependencies项目依赖</li>
-</ul>
-</li>
-<li><p>springboot 配置加载顺序</p>
-<ul>
-<li>properties</li>
-<li>yaml文件</li>
-<li>系统环境变量</li>
-<li>命令行参数</li>
-</ul>
-</li>
-</ol>
-<h2 id="一、Tomcat"><a href="#一、Tomcat" class="headerlink" title="一、Tomcat"></a>一、Tomcat</h2><ol>
-<li><p>Tomcat服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache服务器，可利用它响应HTML(标准通用标记语言下的一个应用)页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
-</li>
-<li><p>安装</p>
-<ul>
-<li>安装[Tomcat]<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-90.cgi">https://tomcat.apache.org/download-90.cgi</a>)<ul>
-<li><code>cd /usr/local/src/ &amp;&amp; sudo wget http://ftp.cuhk.edu.hk/pub/packages/apache.org/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz</code></li>
-</ul>
-</li>
-<li><code>cd /usr/local &amp;&amp; sudo tar -zxvf apache-tomcat-9.0.34.tar.gz</code></li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">参考</a></p>
-</li>
-</ol>
-<h2 id="二、Maven"><a href="#二、Maven" class="headerlink" title="二、Maven"></a>二、Maven</h2><ol>
-<li><p>Maven是一个项目管理工具，它包含了一个项目对象模型(Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，以及用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
-<ul>
-<li>maven是java的包管理工具，相当于是nodejs中的npm，php中的composer，python中的pip等，通过maven可以方便地引入各种java的第三方类库(包括Spring、Struts、junit等)和插件(如tomcat等)。</li>
-</ul>
-</li>
-<li><p>安装</p>
-<ul>
-<li>安装<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase-downloads.html">Java SE</a>，直接选择了dmg安装<ul>
-<li>默认安装目录<code>/Library/Java/</code></li>
-</ul>
-</li>
-<li>安装<a target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">Maven</a><ul>
-<li><code>cd /usr/local/src</code></li>
-<li><code>wget http://apache.communilink.net/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</code></li>
-</ul>
-</li>
-<li>解压<ul>
-<li><code>cd /usr/local</code></li>
-<li><code>sudo tar -zxvf apache-maven-3.6.3-bin.tar.gz</code></li>
-</ul>
-</li>
-<li>设置环境变量<code>vim ~/.bash_profile</code>，加入maven的bin路径</li>
-<li><code>source ~/.bash_profile</code>立即生效</li>
-<li>查看安装是否成功<code>mvn -v</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)</span><br><span class="line">Maven home: /usr/local/apache-maven-3.6.3</span><br><span class="line">Java version: 14, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.5&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>使用brew安装<code>brew install maven</code></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<ol start="3">
-<li>使用<code>mvn -h</code><ul>
-<li>常用命令<ul>
-<li>创建maven项目：<code>mvn archetype:create</code><ul>
-<li>指定<code>group</code>：<code>-DgroupId=packageName</code></li>
-<li>指定<code>artifact</code>：<code>-DartifactId=projectName</code></li>
-<li>创建<code>web</code>项目：<code>-DarchetypeArtifactId=maven-archetype-webapp</code></li>
-</ul>
-</li>
-<li>创建maven项目：<code>mvn archetype:generate</code></li>
-<li>验证项目是否正确：<code>mvn validate</code></li>
-<li>maven打包：<code>mvn package</code></li>
-<li>只打jar包：<code>mvn jar:jar</code></li>
-<li>生成源码jar包：<code>mvn source:jar</code></li>
-<li>产生应用需要的任何额外的源代码：<code>mvn generate-sources</code></li>
-<li>编译源代码：<code>mvn compile</code></li>
-<li>编译测试代码：<code>mvn test-compile</code></li>
-<li>运行测试：<code>mvn test</code></li>
-<li>运行检查：<code>mvn verify</code></li>
-<li>清理maven项目：<code>mvn clean</code></li>
-<li>生成eclipse项目：<code>mvn eclipse:eclipse</code></li>
-<li>清理eclipse配置：<code>mvn eclipse:clean</code></li>
-<li>生成idea项目：<code>mvn idea:idea</code></li>
-<li>安装项目到本地仓库：<code>mvn install</code></li>
-<li>发布项目到远程仓库：<code>mvn:deploy</code></li>
-<li>在集成测试可以运行的环境中处理和发布包：<code>mvn integration-test</code></li>
-<li>显示maven依赖树：<code>mvn dependency:tree</code></li>
-<li>显示maven依赖列表：<code>mvn dependency:list</code></li>
-<li>下载依赖包的源码：<code>mvn dependency:sources</code></li>
-<li>安装本地jar到本地仓库：<code>mvn install:install-file -DgroupId=packageName -DartifactId=projectName -Dversion=version -Dpackaging=jar -Dfile=path</code></li>
-</ul>
-</li>
-<li>web项目相关命令<ul>
-<li>启动tomcat：<code>mvn tomcat:run</code></li>
-<li>启动jetty：<code>mvn jetty:run</code></li>
-<li>运行打包部署：<code>mvn tomcat:deploy</code></li>
-<li>撤销部署：<code>mvn tomcat:undeploy</code></li>
-<li>启动web应用：<code>mvn tomcat:start</code></li>
-<li>停止web应用：<code>mvn tomcat:stop</code></li>
-<li>重新部署：<code>mvn tomcat:redeploy</code></li>
-<li>部署展开的war文件：<code>mvn war:exploded tomcat:exploded</code></li>
-</ul>
-</li>
-<li>其他<ul>
-<li><code>mvn clean</code>：表示运行清理操作(会默认把target文件夹中的数据清理)。</li>
-<li><code>mvn clean test</code>：运行清理和测试。</li>
-<li><code>mvn clean compile</code>：表示先运行清理之后运行编译，会将代码编译到target文件夹中。</li>
-<li><code>mvn clean package</code>：运行清理和打包。</li>
-<li><code>mvn clean install</code>：运行清理和安装，会将打好的包安装到本地仓库中，以便其他的项目可以调用。</li>
-<li><code>mvn clean deploy</code>：运行清理和发布(发布到私服上面)。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、面试"><a href="#五、面试" class="headerlink" title="五、面试"></a>五、面试</h2><ol>
+<h2 id="三、面试"><a href="#三、面试" class="headerlink" title="三、面试"></a>三、面试</h2><ol>
 <li><p>Java 基础</p>
 <ul>
 <li>JDK和JRE 有什么区别？</li>
@@ -1114,7 +886,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一、用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">二、常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">三、资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A1%86%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">四、框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty"><span class="nav-number">4.1.</span> <span class="nav-text">Netty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring"><span class="nav-number">4.2.</span> <span class="nav-text">Spring</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Tomcat"><span class="nav-number">5.</span> <span class="nav-text">一、Tomcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Maven"><span class="nav-number">6.</span> <span class="nav-text">二、Maven</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%9D%A2%E8%AF%95"><span class="nav-number">7.</span> <span class="nav-text">五、面试</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">一、收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">二、链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%9D%A2%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">三、面试</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
