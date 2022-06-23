@@ -464,9 +464,9 @@
         <tag>技术</tag>
         <tag>Go</tag>
         <tag>PHP</tag>
+        <tag>IPC</tag>
         <tag>RPC</tag>
         <tag>LPC</tag>
-        <tag>IPC</tag>
         <tag>gRPC</tag>
         <tag>Protobuf</tag>
       </tags>
@@ -2002,9 +2002,9 @@
         <tag>select</tag>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
-        <tag>I/O多路复用</tag>
         <tag>epoll</tag>
         <tag>kqueue</tag>
+        <tag>I/O多路复用</tag>
         <tag>evport</tag>
       </tags>
   </entry>
@@ -4050,8 +4050,8 @@
       </categories>
       <tags>
         <tag>教育</tag>
-        <tag>衣服</tag>
         <tag>宝宝</tag>
+        <tag>衣服</tag>
         <tag>新疆</tag>
         <tag>长绒棉</tag>
         <tag>奶粉</tag>
@@ -4312,18 +4312,18 @@
         <category>PHP</category>
       </categories>
       <tags>
+        <tag>GitHub</tag>
         <tag>RabbitMQ</tag>
         <tag>Redis</tag>
         <tag>MongoDB</tag>
         <tag>PHP</tag>
-        <tag>swoole</tag>
         <tag>断点上传</tag>
         <tag>断点续传</tag>
         <tag>OAuth2.0</tag>
         <tag>composer</tag>
-        <tag>GitHub</tag>
         <tag>packagist</tag>
         <tag>psr</tag>
+        <tag>swoole</tag>
         <tag>异步任务</tag>
       </tags>
   </entry>
@@ -4820,8 +4820,8 @@
       </categories>
       <tags>
         <tag>教育</tag>
-        <tag>宝宝</tag>
         <tag>新手爸妈</tag>
+        <tag>宝宝</tag>
         <tag>疫苗</tag>
       </tags>
   </entry>
@@ -5542,14 +5542,14 @@
         <tag>Logstash</tag>
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
-        <tag>YAML</tag>
-        <tag>倒排索引</tag>
         <tag>Search</tag>
         <tag>lucene</tag>
+        <tag>倒排索引</tag>
         <tag>分析器</tag>
         <tag>分词器</tag>
         <tag>字符过滤器</tag>
         <tag>索引模板</tag>
+        <tag>YAML</tag>
         <tag>反向索引</tag>
         <tag>正向索引</tag>
         <tag>Solr</tag>
@@ -5784,8 +5784,42 @@
         <tag>Logstash</tag>
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
-        <tag>Nginx</tag>
         <tag>CSV</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust入门</title>
+    <url>/2021/04/17/Rust-%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>自古逢秋悲寂寥，我言秋日胜春朝。晴空一鹤排云上，便引诗情到碧霄。 – 唐·刘禹锡 《秋词》 </p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rust是一门系统编程语言，专注于安全，尤其是并发安全，支持函数式和命令式以及泛型等编程范式的多范式语言。Rust在语法上和<code>C++</code>类似，但是设计者想要在保证性能的同时提供更好的内存安全。 Rust最初是由Mozilla研究院的Graydon Hoare设计创造，然后在Dave Herman, Brendan Eich以及很多其他人的贡献下逐步完善的。Rust的设计者们通过在研发Servo网站浏览器布局引擎过程中积累的经验优化了Rust语言和Rust编译器。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>安装<code>curl --proto &#39;=https&#39; --tlsv1.2 https://sh.rustup.rs -sSf | sh</code></li>
+<li>查看版本<code>rustc --version</code></li>
+<li>升级<code>rustup update</code></li>
+<li>卸载<code>rustup self uninstall</code></li>
+<li>查看cargo版本<code>cargo --version</code></li>
+<li>新建项目<code>cargo new project_name</code></li>
+<li>构建项目<code>cargo build</code><ul>
+<li><code>cargo build --release</code> //打包生产环境</li>
+</ul>
+</li>
+<li>运行项目<code>cargo run</code></li>
+<li>检查项目代码<code>cargo check</code></li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.rust-lang.org/">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>Rust</tag>
       </tags>
   </entry>
   <entry>
@@ -7481,8 +7515,8 @@
         <category>Network</category>
       </categories>
       <tags>
-        <tag>并发</tag>
         <tag>计算机网络</tag>
+        <tag>并发</tag>
       </tags>
   </entry>
   <entry>
@@ -12615,13 +12649,13 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+        <tag>标准输入</tag>
+        <tag>标准输出</tag>
+        <tag>标准错误输出</tag>
         <tag>文件描述符</tag>
         <tag>stdin</tag>
-        <tag>标准输入</tag>
         <tag>stdout</tag>
-        <tag>标准输出</tag>
         <tag>stderr</tag>
-        <tag>标准错误输出</tag>
         <tag>文件重定向</tag>
         <tag>标准输入输出重定向</tag>
       </tags>
@@ -12693,6 +12727,7 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>OOP</tag>
         <tag>结构体</tag>
         <tag>struct</tag>
+        <tag>Nginx</tag>
         <tag>Go</tag>
         <tag>面向对象</tag>
         <tag>封装</tag>
@@ -12701,7 +12736,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>interface</tag>
         <tag>接口</tag>
         <tag>map</tag>
-        <tag>Nginx</tag>
         <tag>反向代理</tag>
       </tags>
   </entry>
@@ -13259,9 +13293,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>Redis</category>
       </categories>
       <tags>
+        <tag>事务</tag>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
-        <tag>事务</tag>
         <tag>Lua</tag>
       </tags>
   </entry>
@@ -13984,9 +14018,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>PHP</tag>
         <tag>反射</tag>
         <tag>reflection</tag>
+        <tag>PHP</tag>
         <tag>public</tag>
         <tag>private</tag>
         <tag>protected</tag>
@@ -14184,11 +14218,11 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       </categories>
       <tags>
         <tag>技术</tag>
-        <tag>NFS</tag>
+        <tag>IPC</tag>
         <tag>RPC</tag>
+        <tag>NFS</tag>
         <tag>LPC</tag>
         <tag>Dubbo</tag>
-        <tag>IPC</tag>
       </tags>
   </entry>
   <entry>
@@ -14562,9 +14596,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       <tags>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
+        <tag>info</tag>
         <tag>eval</tag>
         <tag>memory</tag>
-        <tag>info</tag>
         <tag>slowlog</tag>
         <tag>config</tag>
         <tag>client</tag>
@@ -15073,12 +15107,12 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>线程</tag>
         <tag>协程</tag>
         <tag>操作系统</tag>
-        <tag>RPC</tag>
-        <tag>IPC</tag>
         <tag>挂起</tag>
         <tag>fork</tag>
         <tag>调度</tag>
         <tag>切换</tag>
+        <tag>IPC</tag>
+        <tag>RPC</tag>
       </tags>
   </entry>
   <entry>
@@ -15597,9 +15631,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       <tags>
         <tag>MySQL</tag>
         <tag>索引</tag>
+        <tag>explain</tag>
         <tag>毛泽东</tag>
         <tag>索引条件下推</tag>
-        <tag>explain</tag>
         <tag>覆盖索引</tag>
         <tag>前缀索引</tag>
         <tag>联合索引</tag>
@@ -16400,10 +16434,10 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>Lua</tag>
-        <tag>PHP</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
+        <tag>Lua</tag>
+        <tag>PHP</tag>
         <tag>swoole</tag>
         <tag>phpize</tag>
         <tag>make</tag>
@@ -18821,11 +18855,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>Gin</tag>
         <tag>interface</tag>
         <tag>接口</tag>
-        <tag>自举</tag>
-        <tag>channel</tag>
-        <tag>反射</tag>
-        <tag>reflection</tag>
-        <tag>断言</tag>
         <tag>多返回值</tag>
         <tag>env</tag>
         <tag>web</tag>
@@ -18835,9 +18864,14 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>Buffalo</tag>
         <tag>Revel</tag>
         <tag>交叉编译</tag>
+        <tag>自举</tag>
         <tag>CGO</tag>
         <tag>切片</tag>
         <tag>信道</tag>
+        <tag>channel</tag>
+        <tag>断言</tag>
+        <tag>反射</tag>
+        <tag>reflection</tag>
         <tag>defer</tag>
         <tag>延迟调用</tag>
         <tag>异常处理</tag>
@@ -21385,40 +21419,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       </tags>
   </entry>
   <entry>
-    <title>Rust入门</title>
-    <url>/2018/01/15/Rust-%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>自古逢秋悲寂寥，我言秋日胜春朝。晴空一鹤排云上，便引诗情到碧霄。 – 唐·刘禹锡 《秋词》 </p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rust是一门系统编程语言，专注于安全，尤其是并发安全，支持函数式和命令式以及泛型等编程范式的多范式语言。Rust在语法上和<code>C++</code>类似，但是设计者想要在保证性能的同时提供更好的内存安全。 Rust最初是由Mozilla研究院的Graydon Hoare设计创造，然后在Dave Herman, Brendan Eich以及很多其他人的贡献下逐步完善的。Rust的设计者们通过在研发Servo网站浏览器布局引擎过程中积累的经验优化了Rust语言和Rust编译器。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>安装<code>curl --proto &#39;=https&#39; --tlsv1.2 https://sh.rustup.rs -sSf | sh</code></li>
-<li>查看版本<code>rustc --version</code></li>
-<li>升级<code>rustup update</code></li>
-<li>卸载<code>rustup self uninstall</code></li>
-<li>查看cargo版本<code>cargo --version</code></li>
-<li>新建项目<code>cargo new project_name</code></li>
-<li>构建项目<code>cargo build</code><ul>
-<li><code>cargo build --release</code> //打包生产环境</li>
-</ul>
-</li>
-<li>运行项目<code>cargo run</code></li>
-<li>检查项目代码<code>cargo check</code></li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.rust-lang.org/">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Rust</category>
-      </categories>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MongoDB之MapReduce</title>
     <url>/2018/01/12/MongoDB-MapReduce/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -22387,9 +22387,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>MongoDB</category>
       </categories>
       <tags>
+        <tag>事务</tag>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
-        <tag>事务</tag>
         <tag>WiredTiger</tag>
         <tag>ACID</tag>
         <tag>Write Concern</tag>
@@ -24354,8 +24354,8 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>PL</category>
       </categories>
       <tags>
-        <tag>JS</tag>
         <tag>let</tag>
+        <tag>JS</tag>
         <tag>前端</tag>
         <tag>函数防抖</tag>
         <tag>函数节流</tag>
@@ -24632,8 +24632,8 @@ read_xlsx(name, sheet)
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>CSV</tag>
+        <tag>Python</tag>
         <tag>xls</tag>
         <tag>xlsx</tag>
         <tag>pandas</tag>
@@ -25971,11 +25971,11 @@ read_xlsx(name, sheet)
       <tags>
         <tag>select</tag>
         <tag>操作系统</tag>
+        <tag>多路复用</tag>
         <tag>IO</tag>
+        <tag>poll</tag>
         <tag>epoll</tag>
         <tag>kqueue</tag>
-        <tag>多路复用</tag>
-        <tag>poll</tag>
         <tag>iocp</tag>
       </tags>
   </entry>
@@ -26111,9 +26111,9 @@ read_xlsx(name, sheet)
         <category>PL</category>
       </categories>
       <tags>
+        <tag>YAML</tag>
         <tag>Python</tag>
         <tag>pip</tag>
-        <tag>YAML</tag>
         <tag>九子夺嫡</tag>
         <tag>爱新觉罗</tag>
         <tag>PyYAML</tag>
@@ -26407,6 +26407,8 @@ read_xlsx(name, sheet)
 <li><p><a href="https://dev.yorhel.nl/ncdu">ncdu</a></p>
 </li>
 <li><p><a href="https://github.com/dbcli/mycli">mycli</a></p>
+</li>
+<li><p><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">FloatConverter</a></p>
 </li>
 </ol>
 <h2 id="二、库"><a href="#二、库" class="headerlink" title="二、库"></a>二、库</h2><ol>
@@ -28675,12 +28677,12 @@ read_xlsx(name, sheet)
       <tags>
         <tag>收集</tag>
         <tag>Linux</tag>
+        <tag>shell</tag>
+        <tag>declare</tag>
         <tag>zabbix</tag>
         <tag>Audit</tag>
         <tag>Netlink</tag>
         <tag>strace</tag>
-        <tag>shell</tag>
-        <tag>declare</tag>
         <tag>while</tag>
         <tag>if</tag>
         <tag>case</tag>
@@ -33409,11 +33411,11 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Mac</tag>
+        <tag>brew</tag>
+        <tag>spctl</tag>
         <tag>DNS</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
-        <tag>brew</tag>
-        <tag>spctl</tag>
         <tag>xcode-select</tag>
         <tag>cask</tag>
         <tag>readline</tag>
@@ -34023,7 +34025,6 @@ read_xlsx(name, sheet)
       <tags>
         <tag>union</tag>
         <tag>MySQL</tag>
-        <tag>explain</tag>
         <tag>grant</tag>
         <tag>revoke</tag>
         <tag>group</tag>
@@ -34031,6 +34032,7 @@ read_xlsx(name, sheet)
         <tag>in</tag>
         <tag>order</tag>
         <tag>WGHOL</tag>
+        <tag>explain</tag>
       </tags>
   </entry>
   <entry>
@@ -35032,10 +35034,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>环境变量</tag>
-        <tag>PATH</tag>
         <tag>source</tag>
         <tag>export</tag>
+        <tag>环境变量</tag>
+        <tag>PATH</tag>
       </tags>
   </entry>
   <entry>
@@ -39019,16 +39021,16 @@ read_xlsx(name, sheet)
       <tags>
         <tag>变量</tag>
         <tag>Linux</tag>
+        <tag>shell</tag>
+        <tag>let</tag>
+        <tag>source</tag>
+        <tag>export</tag>
+        <tag>declare</tag>
+        <tag>local</tag>
+        <tag>特殊变量</tag>
         <tag>标准输入</tag>
         <tag>标准输出</tag>
         <tag>标准错误输出</tag>
-        <tag>shell</tag>
-        <tag>declare</tag>
-        <tag>source</tag>
-        <tag>export</tag>
-        <tag>let</tag>
-        <tag>local</tag>
-        <tag>特殊变量</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
       </tags>
@@ -39384,11 +39386,11 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>技术</tag>
+        <tag>倒排索引</tag>
         <tag>幂等性</tag>
         <tag>闭包</tag>
         <tag>彩虹表</tag>
         <tag>搜索引擎</tag>
-        <tag>倒排索引</tag>
         <tag>字符</tag>
         <tag>字符集</tag>
         <tag>字符编码</tag>
@@ -45637,8 +45639,8 @@ read_xlsx(name, sheet)
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>反射</tag>
+        <tag>Java</tag>
         <tag>数据类型</tag>
         <tag>注解</tag>
         <tag>包</tag>

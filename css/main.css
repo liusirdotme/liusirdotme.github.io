@@ -1151,7 +1151,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #671bb6;
+  background: #ffff53;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1962,6 +1962,9 @@ pre .javascript .function {
 }
 .category-all-page .category-list-item {
   margin: 5px 10px;
+  width: 250px;
+  float: left;
+  margin-right: 15px;
 }
 .category-all-page .category-list-count {
   color: #bbb;
