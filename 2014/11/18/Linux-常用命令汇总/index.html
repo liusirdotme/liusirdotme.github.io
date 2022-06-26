@@ -58,7 +58,7 @@
 <meta property="og:description" content="未来的你，一定会感谢现在拼命努力的自己。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-11-18T03:02:23.000Z">
-<meta property="article:modified_time" content="2021-12-04T05:57:14.772Z">
+<meta property="article:modified_time" content="2022-06-26T20:13:53.081Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="命令">
@@ -286,7 +286,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>13 分钟</span>
+              <span>12 分钟</span>
             </span>
 
         </div>
@@ -303,7 +303,7 @@
 </blockquote>
 <span id="more"></span>
 
-<ol>
+<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a><center><font color=red>常用</font></center></h1><ol>
 <li><p>ping</p>
 </li>
 <li><p>ifconfig</p>
@@ -355,11 +355,12 @@
 <ul>
 <li>连接redis<code>telnet 127.0.0.1 6379</code></li>
 </ul>
-<h2 id="一、cut"><a href="#一、cut" class="headerlink" title="一、cut"></a>一、cut</h2></li>
-<li><p>作用：从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</p>
 </li>
-<li><p>语法</p>
-</li>
+</ol>
+<hr>
+<h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a><center><font color=red>cut</font></center></h1><ol>
+<li>作用：从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</li>
+<li>语法</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">用法：cut [选项]... [文件]...</span><br><span class="line">从每个文件中输出指定部分到标准输出。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">  -b, --bytes=列表		只选中指定的这些字节</span><br><span class="line">  -c, --characters=列表		只选中指定的这些字符</span><br><span class="line">  -d, --delimiter=分界符	使用指定分界符代替制表符作为区域分界</span><br><span class="line">  -f, --fields=LIST       select only these fields;  also print any line that contains no delimiter character, unless the -s option is                      specified</span><br><span class="line">  -n                      with -b: don&#x27;t split multibyte characters</span><br><span class="line">      --complement		补全选中的字节、字符或域</span><br><span class="line">  -s, --only-delimited		不打印没有包含分界符的行</span><br><span class="line">      --output-delimiter=字符串	使用指定的字符串作为输出分界符，默认采用输入</span><br><span class="line">				的分界符</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br><span class="line"></span><br><span class="line">仅使用f -b, -c 或-f 中的一个。每一个列表都是专门为一个类别作出的，或者您可以用逗号隔开要同时显示的不同类别。您的输入顺序将作为读取顺序，每个仅能输入一次。</span><br><span class="line"></span><br><span class="line">每种参数格式表示范围如下：</span><br><span class="line">N	从第1 个开始数的第N 个字节、字符或域</span><br><span class="line">N-	从第N 个开始到所在行结束的所有字符、字节或域</span><br><span class="line">N-M	从第N 个开始到第M 个之间(包括第M 个)的所有字符、字节或域</span><br><span class="line">-M	从第1 个开始到第M 个之间(包括第M 个)的所有字符、字节或域</span><br><span class="line"></span><br><span class="line">当没有文件参数，或者文件不存在时，从标准输入读取</span><br></pre></td></tr></table></figure>
 
@@ -395,7 +396,8 @@
 <blockquote>
 <p>cut只允许间隔符是一个字符</p>
 </blockquote>
-<h2 id="二、sort"><a href="#二、sort" class="headerlink" title="二、sort"></a>二、sort</h2><ol>
+<hr>
+<h1 id="sort"><a href="#sort" class="headerlink" title="sort"></a><center><font color=red>sort</font></center></h1><ol>
 <li>作用：将文件的每一行作为一个单位相互比较，比较原则是从首字符向后依次按ASCII码值进行比较，最后将他们按升序输出。</li>
 <li>语法</li>
 </ol>
@@ -453,7 +455,8 @@
 
 </li>
 </ul>
-<h2 id="三、uniq"><a href="#三、uniq" class="headerlink" title="三、uniq"></a>三、uniq</h2><ol>
+<hr>
+<h1 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a><center><font color=red>uniq</font></center></h1><ol>
 <li>作用：将输入文件(或标准输入)中邻近的重复行写入到输出文件(或标准输出)中。</li>
 <li>语法</li>
 </ol>
@@ -465,7 +468,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></table></figure>
 
 <ol start="4">
-<li><p>使用</p>
+<li><p>使用1</p>
 <ul>
 <li><code>uniq a.txt</code></li>
 </ul>
@@ -490,118 +493,14 @@
 <li><code>uniq -d a.txt</code></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ccc:20:4</span><br></pre></td></tr></table></figure>
-
 </li>
-</ol>
-<blockquote>
-<p>uniq只检测邻近的行是否重复，<code>sort -u</code>将输入文件先排序然后再处理重复行。</p>
-</blockquote>
-<h2 id="四、find"><a href="#四、find" class="headerlink" title="四、find"></a>四、find</h2><blockquote>
-<p>find: paths must precede expression，多文件的查找的时候需要增加单引号</p>
-</blockquote>
-<h2 id="五、scp"><a href="#五、scp" class="headerlink" title="五、scp"></a>五、scp</h2><h2 id="六、xargs"><a href="#六、xargs" class="headerlink" title="六、xargs"></a>六、xargs</h2><ol>
-<li><p>介绍<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xargs是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。它可以将管道或标准输入(stdin)数据转换成命令行参数，也能够从文件的输出中读取数据，还可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。</p>
+<li><p>使用2 </p>
 <ul>
-<li>xargs默认的命令是echo，这意味着通过管道传递给xargs的输入将会包含换行和空白，不过通过xargs的处理换行和空白将被空格取代。</li>
+<li>test.txt</li>
 </ul>
-</li>
-<li><p>demo</p>
-<ul>
-<li>前期准备</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /Users/your_name/Desktop/xargs</span><br><span class="line">cd /Users/your_name/Desktop/xargs</span><br><span class="line">touch 1.txt 2.txt 3.txt 4.txt</span><br><span class="line">cd ~ # 这一步很重要，如果还是在当前目录操作，差异不是那么明显</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>命令对比</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name &#x27;*.txt&#x27; | ls -l</span><br><span class="line"></span><br><span class="line">-rwxrwxrwx    1 playcrab  staff      11 11 18 17:11 README.md</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff    3162 11 25 14:51 _config.yml</span><br><span class="line">-rw-r--r--    1 playcrab  staff     174  3  8 01:03 db.json</span><br><span class="line">drwxrwxrwx  320 playcrab  staff   10240 11 25 15:10 node_modules</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff  145778 11 25 15:10 package-lock.json</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     749 11 25 15:10 package.json</span><br><span class="line">drwxr-xr-x   18 playcrab  staff     576 11 25 15:08 public</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     194 11 25 13:57 release.sh</span><br><span class="line">drwxrwxrwx    5 playcrab  staff     160 11 18 17:11 scaffolds</span><br><span class="line">drwxrwxrwx    9 playcrab  staff     288 11 18 17:18 source</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name &#x27;*.txt&#x27; | xargs ls -l</span><br><span class="line"></span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/1.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/2.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/3.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/t.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="七、管道"><a href="#七、管道" class="headerlink" title="七、管道"></a>七、管道</h2><ol>
-<li><p>概念<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在类Unix操作系统(以及一些其他借用了这个设计的操作系统，如Windows)中，管道(英语：Pipeline)是一系列将标准输入输出链接起来的进程，其中每一个进程的输出被直接作为下一个进程的输入。 每一个链接都由匿名管道实现。管道中的组成元素也被称作过滤程序。这个概念是由道格拉斯·麦克罗伊为Unix 命令行发明的，因与物理上的管道相似而得名。</p>
-</li>
-<li><p>使用</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkfifo test</span><br><span class="line">echo 123 &gt; test</span><br><span class="line">cat &lt; test </span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果想将一个命令或文件的内容作为另一个命令的参数而不是输入，管道线是不能实现的，三种常见的解决办法是：</p>
-<blockquote>
-<p><code>xargs</code>命令<br>带有<code>-exec</code>选项的 find 命令<br>命令替换</p>
-</blockquote>
-</blockquote>
-<ol start="3">
-<li><a target="_blank" rel="noopener" href="http://cn.linux.vbird.org/">参考</a></li>
-</ol>
-<h2 id="八、uniq"><a href="#八、uniq" class="headerlink" title="八、uniq"></a>八、uniq</h2><ol>
-<li>uniq:从输入文件或者标准输入中筛选相邻的匹配行并写入到输出文件或标准输出。<ul>
-<li>语法 uniq [参数]  [文件]</li>
-<li>检查重复行的时候，只会检查相邻的行</li>
-<li>不附加任何选项时匹配行将在首次出现处被合并</li>
-<li>参数如下</li>
-</ul>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">参数名</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-c, –count</td>
-<td align="left">在每行前加上表示相应行目出现次数的前缀编号</td>
-</tr>
-<tr>
-<td align="center">-d, –repeated</td>
-<td align="left">只输出重复的行</td>
-</tr>
-<tr>
-<td align="center">-D, –all-repeated</td>
-<td align="left">只输出重复的行，不过有几行输出几行</td>
-</tr>
-<tr>
-<td align="center">-f, –skip-fields=N</td>
-<td align="left">忽略的段数(如：-f 1 忽略第一)</td>
-</tr>
-<tr>
-<td align="center">-i, –ignore-case</td>
-<td align="left">不区分大小写</td>
-</tr>
-<tr>
-<td align="center">-s, –skip-chars=N</td>
-<td align="left">忽略的字符数，如：-s 5就忽略后面5个字符</td>
-</tr>
-<tr>
-<td align="center">-u, –unique</td>
-<td align="left">去除重复的后全部显示出来(只比较相邻的两行)</td>
-</tr>
-<tr>
-<td align="center">-z, –zero-terminated</td>
-<td align="left">end lines with 0 byte, not newline</td>
-</tr>
-<tr>
-<td align="center">-w, –check-chars=N</td>
-<td align="left">对每行第N个字符(单词)以后的内容不作对照</td>
-</tr>
-<tr>
-<td align="center">–help</td>
-<td align="left">显示此帮助信息并退出</td>
-</tr>
-<tr>
-<td align="center">–version</td>
-<td align="left">显示版本信息并退出</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li><p>测试用例 test.txt</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">this is a test</span><br><span class="line">this is a test</span><br><span class="line">this is a test</span><br><span class="line">this is a Test  </span><br><span class="line">i am tank</span><br><span class="line">i love tank</span><br><span class="line">i love tank</span><br><span class="line">this is a test </span><br><span class="line">whom have a try  </span><br><span class="line">WhoM have a try  </span><br><span class="line">you  have a try  </span><br><span class="line">i want to abroad  </span><br><span class="line">those are good men  </span><br><span class="line">we are good men</span><br><span class="line">this is a test</span><br></pre></td></tr></table></figure>
-</li>
+
+<ul>
 <li><p>测试</p>
 <ul>
 <li>去除相邻重复的行并统计输出重复的次数 uniq -c test.txt</li>
@@ -614,598 +513,34 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1 i am tank</span><br><span class="line">2 i love tank</span><br><span class="line">1 i want to abroad</span><br><span class="line">5 this is a test</span><br><span class="line">1 this is a Test</span><br><span class="line">1 those are good men</span><br><span class="line">1 we are good men</span><br><span class="line">1 whom have a try</span><br><span class="line">1 WhoM have a try</span><br><span class="line">1 you  have a try</span><br></pre></td></tr></table></figure>
 
 </li>
-</ol>
-<h2 id="九、top"><a href="#九、top" class="headerlink" title="九、top"></a>九、top</h2><blockquote>
-<p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器(以下所有实验均基于CentOS6.2版本)。</p>
-</blockquote>
-<ol>
-<li>top -h</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -hv | -abcHimMsS -d delay -n iterations [-u user | -U user] -p pid [,pid ...]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>常用</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top   //每隔5秒显式所有进程的资源占用情况</span><br><span class="line">top -d 2  //每隔2秒显式所有进程的资源占用情况</span><br><span class="line">top -c  //每隔5秒显式进程的资源占用情况，并显示进程的命令行参数(默认只有进程名)</span><br><span class="line">top -p 12345 -p 6789//每隔5秒显示pid是12345和pid是6789的两个进程的资源占用情况</span><br><span class="line">top -d 2 -c -p 123456 //每隔2秒显示pid是12345的进程的资源使用情况，并显式该进程启动的命令行参数</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>默认情况下仅PID、USER、PR、NI、VIRT、RES、SHR、S、%CPU、%MEM、TIME+、COMMAND列，可通过输入相应参数</p>
-<blockquote>
-<p>f:改变显示的内容<br>o:改变列的显示顺序<br>F:将进程按照相应的列进行排序<br>O:将进程按照相应的列进行排序<br>R:将当前的排序倒转</p>
-</blockquote>
-</blockquote>
-<ol start="3">
-<li><p>返回值说明</p>
-<ul>
-<li>header部分</li>
 </ul>
 </li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top - 20:14:08 up 1570 days,  9:16,  2 users,  load average: 0.25, 0.22, 0.27</span><br><span class="line">Tasks: 331 total,   3 running, 327 sleeping,   0 stopped,   1 zombie</span><br><span class="line">Cpu(s):  4.3%us,  3.1%sy,  0.0%ni, 92.2%id,  0.1%wa,  0.0%hi,  0.3%si,  0.0%st</span><br><span class="line">Mem:  16331772k total, 16135152k used,   196620k free,   784104k buffers</span><br><span class="line">Swap:        0k total,        0k used,        0k free,  7094008k cached</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>前五行是系统整体的统计信息。</p>
-<blockquote>
-<p>第一行是任务队列信息，同<code>uptime</code>命令的执行结果，其内容如下：</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">20:14:08 #当前时间</span><br><span class="line">up 1570 days, 9:16, #系统运行时间，格式为 天，时:分  </span><br><span class="line">2 users, #当前登录用户数</span><br><span class="line">load average: 0.25, 0.22, 0.27 # 系统负载，即任务队列的平均长度。三个数值分别为 1分钟、5分钟、15分钟前到现在的平均值。</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<p>第二为进程信息：</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">total 进程总数</span><br><span class="line">running 正在运行的进程数</span><br><span class="line">sleeping 睡眠的进程数</span><br><span class="line">stopped 停止的进程数</span><br><span class="line">zombie 僵尸进程数</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<p>第三行为CPU信息：</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0.3% us 用户空间占用CPU百分比</span><br><span class="line">1.0% sy 内核空间占用CPU百分比</span><br><span class="line">0.0% ni 用户进程空间内改变过优先级的进程占用CPU百分比</span><br><span class="line">98.7% id 空闲CPU百分比</span><br><span class="line">0.0% wa 等待输入输出的CPU时间百分比</span><br><span class="line">0.0%hi：硬中断占用百分比</span><br><span class="line">0.0%si：软中断占用百分比</span><br><span class="line">0.0%st：虚拟机占用百分比</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<p>最后两行为内存和Swap信息：</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Mem:</span><br><span class="line">191272k total    物理内存总量</span><br><span class="line">173656k used    使用的物理内存总量</span><br><span class="line">17616k free    空闲内存总量</span><br><span class="line">22052k buffers    用作内核缓存的内存量</span><br><span class="line"></span><br><span class="line">Swap: </span><br><span class="line">192772k total    交换区总量</span><br><span class="line">0k used    使用的交换区总量</span><br><span class="line">192772k free    空闲交换区总量</span><br><span class="line">123988k cached    缓冲的交换区总量，内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖，该数值即为这些内容已存在于内存中的交换区的大小，相应的内存再次被换出时可不必再对交换区写入。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>content部分</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">序号  列名    含义</span><br><span class="line">a    PID     进程id</span><br><span class="line">b    PPID    父进程id</span><br><span class="line">c    RUSER   Real user name</span><br><span class="line">d    UID     进程所有者的用户id</span><br><span class="line">e    USER    进程所有者的用户名</span><br><span class="line">f    GROUP   进程所有者的组名</span><br><span class="line">g    TTY     启动进程的终端名。不是从终端启动的进程则显示为 ?</span><br><span class="line">h    PR      优先级</span><br><span class="line">i    NI      nice值。负值表示高优先级，正值表示低优先级</span><br><span class="line">j    P       最后使用的CPU，仅在多CPU环境下有意义</span><br><span class="line">k    %CPU    上次更新到现在的CPU时间占用百分比</span><br><span class="line">l    TIME    进程使用的CPU时间总计，单位秒</span><br><span class="line">m    TIME+   进程使用的CPU时间总计，单位1/100秒</span><br><span class="line">n    %MEM    进程使用的物理内存百分比</span><br><span class="line">o    VIRT    进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES</span><br><span class="line">p    SWAP    进程使用的虚拟内存中，被换出的大小，单位kb。</span><br><span class="line">q    RES     进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA</span><br><span class="line">r    CODE    可执行代码占用的物理内存大小，单位kb</span><br><span class="line">s    DATA    可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb</span><br><span class="line">t    SHR     共享内存大小，单位kb</span><br><span class="line">u    nFLT    页面错误次数</span><br><span class="line">v    nDRT    最后一次写入到现在，被修改过的页面数。</span><br><span class="line">w    S       进程状态(D=不可中断的睡眠状态,R=运行,S=睡眠,T=跟踪/停止,Z=僵尸进程)</span><br><span class="line">x    COMMAND 命令名/命令行</span><br><span class="line">y    WCHAN   若该进程在睡眠，则显示睡眠中的系统函数名</span><br><span class="line">z    Flags   任务标志，参考 sched.h</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316399.html">参考</a></li>
-</ol>
-<h2 id="十、alias"><a href="#十、alias" class="headerlink" title="十、alias"></a>十、alias</h2><h2 id="十一、cat"><a href="#十一、cat" class="headerlink" title="十一、cat"></a>十一、cat</h2><ol>
-<li><p>cat命令用于连接文件并打印到标准输出设备上，strings命令在对象文件或二进制文件中查找可打印的字符串。</p>
-</li>
-<li><p>语法<code>cat -h</code>或<code>cat --help</code></p>
-<ul>
-<li>linux：<code>cat [-AbeEnstTuv] [--help] [--version] filename</code></li>
-<li>MacOS：<code>cat [-benstuv] filename</code><ul>
-<li><code>-n</code>或<code>--number</code>：由1开始对所有输出的行数编号</li>
-<li><code>-b</code>或<code>--number-nonblank</code>：和<code>-n</code>相似，只不过对于空白行不编号</li>
-<li><code>-s</code>或<code>--squeeze-blank</code>：当遇到有连续两行以上的空白行就替换为一行的空白行</li>
-<li><code>-v</code>或<code>--show-nonprinting</code>：使用<code>^</code>和<code>M-</code>符号，除了<code>LFD</code>和<code>TAB</code>之外</li>
-<li><code>-E</code>或<code>--show-ends</code>: 在每行结束处显示<code>$</code></li>
-<li><code>-T</code>或<code>--show-tabs</code>: 将<code>TAB</code>字符显示为<code>^I</code></li>
-<li><code>-A</code>或<code>--show-all</code>相当于<code>-vET</code>选项</li>
-<li><code>-e</code>相当于<code>-vE</code>选项</li>
-<li><code>-t</code>相当于<code>-vT</code>选项</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>strings</p>
-<ul>
-<li>redis.so，使用cat会打印一堆乱码</li>
-<li>strings /your_path/redis.so</li>
-</ul>
-</li>
-<li><p>使用</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>cat 1.txt | grep 123 | grep 1234 |xargs echo &gt;&gt; 2.txt</code></p>
-</li>
-<li><p>shell脚本</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `ls ./online_Money`</span><br><span class="line">do</span><br><span class="line">    tar -zxvf ./online_Money/$i</span><br><span class="line">    for j in `ls ./data/userData/log/20140401/623205`</span><br><span class="line">    do</span><br><span class="line">        cat ./data/userData/log/20140401/623205/$j | grep 8300 | grep 623205_101_x | xargs printf &quot;%s\n&quot; &gt;&gt; ./2.log</span><br><span class="line">    done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li><a target="_blank" rel="noopener" href="https://man.linuxde.net/strings">参考</a></li>
-</ol>
-<h2 id="十二、column"><a href="#十二、column" class="headerlink" title="十二、column"></a>十二、column</h2><ol>
-<li><p>column命令用于格式化输出信息。</p>
-</li>
-<li><p>语法<code>cat -h</code>或<code>cat --help</code></p>
-<ul>
-<li><code>-c 字符数</code>：  指定显示的列宽</li>
-<li><code>-s &quot;分隔符&quot;</code>： 使用-t选项时，指定分隔符（允许指定多个分隔符）</li>
-<li><code>-t</code>：判断输入行的列数来创建一个表。分隔符是使用在-s中指定的字符。如果没有指定分隔符，默认是空格</li>
-<li><code>-x</code>：更改排列顺序（左→右）。默认的顺序为（上→下）</li>
-</ul>
-</li>
-<li><p>使用</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>cat a.txt</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>cat a.txt | column -c 80</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>cat a.txt | column -s “:”</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>cat a.txt | column -s “:” -t</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123  456  789  111</span><br><span class="line">abc  def  fgh  iii</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>go tool dist list | column -c 75</li>
-</ul>
-<h2 id="十三、curl"><a href="#十三、curl" class="headerlink" title="十三、curl"></a>十三、curl</h2><blockquote>
-<p>curl是常用的命令行工具，用来请求Web服务器。它的名字就是客户端(client)的URL工具的意思。它的功能非常强大，命令行参数多达几十种。如果熟练的话完全可以取代Postman这一类的图形界面工具。</p>
-</blockquote>
-<ol>
-<li><p>curl是一个利用URL规则在命令行下工作的文件传输工具，是一款很强大的http命令行工具。</p>
-<ul>
-<li>支持文件的上传和下载</li>
-<li>支持包括HTTP、HTTPS、FTP等众多协议</li>
-</ul>
-</li>
-<li><p>语法 <code>curl [option] [url]</code></p>
-<ul>
-<li><code>option</code>参数详解见<code>curl -h</code></li>
-</ul>
-</li>
-<li><p>常用</p>
-<ul>
-<li>POST请求<code>curl -d key=value url</code></li>
-<li>GET请求<code>curl -G -d key=value url</code></li>
-<li>保存访问的网页<ul>
-<li>使用linux的重定向功能保存 <code>curl http://study.com &gt;&gt; linux.html</code></li>
-<li>可以使用curl的内置-o(小写)保存网页 <code>curl -o linux.html http://study.com</code></li>
-<li>可以使用curl的内置-O(大写)保存网页中的具体文件 <code>curl -O http://study.com/hello.sh</code></li>
-</ul>
-</li>
-<li>测试网页返回值 <code>curl -o /dev/null -s -w %&#123;http_code&#125; www.linux.com</code></li>
-<li>指定proxy服务器以及其端口通过使用-x <code>curl -x 192.168.100.100:1080 http://study.com</code></li>
-<li>cookie的使用<ul>
-<li>保存http的response里面的cookie信息到cookiec.txt，使用内置-c(小写)，<code>curl -c cookiec.txt  http://study.com</code></li>
-<li>保存http的response里面的header信息到cookied.txt，使用内置-D(大写) <code>curl -D cookied.txt http://study.com</code></li>
-<li>使用cookie通过内置<code>-b</code>，即<code>curl -b cookiec.txt http://study.com</code></li>
-</ul>
-</li>
-<li>模仿浏览器通过<code>-A</code>设定header信息 <code>curl -A &quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)&quot; http://study.com</code></li>
-<li>伪造referer通过<code>-e</code>设定<code>curl -e &quot;www.linux.com&quot; http://mail.linux.com</code></li>
-<li>下载文件<ul>
-<li>使用内置-o(小写)<code>curl -o dodo1.jpg http:www.linux.com/dodo1.JPG</code></li>
-<li>使用内置-O(大写)<code>curl -O http://study.com/dodo1.JPG</code></li>
-<li>循环下载 <code>curl -O http://study.com/dodo[1-5].JPG</code>，这样就会把dodo[1-5].JPG全部保存下来</li>
-<li>下载重命名 <ul>
-<li><code>curl -O http://study.com/&#123;hello,bb&#125;/dodo[1-5].JPG</code></li>
-<li><code>curl -o #1_#2.JPG http://study.com/&#123;hello,bb&#125;/dodo[1-5].JPG</code></li>
-</ul>
-</li>
-<li>分块下载使用内置-r<ul>
-<li><code>curl -r 0-100 -o dodo1_part1.JPG http://study.com/dodo1.JPG</code></li>
-<li><code>curl -r 100-200 -o dodo1_part2.JPG http://study.com/dodo1.JPG</code></li>
-<li><code>curl -r 200- -o dodo1_part3.JPG http://study.com/dodo1.JPG</code></li>
-<li><code>cat dodo1_part* &gt; dodo1.JPG</code> ##将下载好的各块拼装好dodo1.JPG的内容了</li>
-</ul>
-</li>
-<li>通过ftp下载文件<ul>
-<li><code>curl -O -u 用户名:密码 ftp://www.linux.com/dodo1.JPG</code></li>
-<li><code>curl -O ftp://用户名:密码@www.linux.com/dodo1.JPG</code></li>
-</ul>
-</li>
-<li>显示下载进度条 <code>curl -# -O http://study.com/dodo1.JPG</code></li>
-<li>不显示下载进度信息 <code>curl -s -O http://study.com/dodo1.JPG</code></li>
-</ul>
-</li>
-<li>断点续传通过内置-C实现<code>curl -C -O http://study.com/dodo1.JPG</code></li>
-<li>上传文件通过内置-T实现<code>curl -T dodo1.JPG -u 用户名:密码 ftp://www.linux.com/img/</code> </li>
-<li>显示抓取错误 <code>curl -f http://study.com/error</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="十四、declar"><a href="#十四、declar" class="headerlink" title="十四、declar"></a>十四、declar</h2><ol>
-<li><p>语法：<code>declare [选项] [name[=value]]</code></p>
-<ul>
-<li><p>选项</p>
-<ul>
-<li><p><code>-a</code>：创建数组(如果支持)。</p>
-</li>
-<li><p><code>-A</code>：创建关联数组(如果支持)。</p>
-</li>
-<li><p><code>-f</code>：将操作或显示限制为函数名及函数定义。</p>
-</li>
-<li><p><code>-F</code>：只显示函数名(调试时附加行号和源文件)。</p>
-</li>
-<li><p><code>-i</code>：增加整型属性。</p>
-</li>
-<li><p><code>+i</code>：删除整型属性。</p>
-</li>
-<li><p><code>-r</code>：增加只读属性。</p>
-</li>
-<li><p><code>-t</code>：增加追踪属性。</p>
-</li>
-<li><p><code>+t</code>：删除追踪属性。</p>
-</li>
-<li><p><code>-x</code>：增加导出属性。</p>
-</li>
-<li><p><code>+x</code>：删除导出属性。</p>
-</li>
-<li><p><code>-p</code>：显示每个名称的属性和值。</p>
-</li>
-<li><p><code>-g</code>：在shell函数中使用时创建全局变量，其他情况下忽略(如果该选项存在，mac不支持)。</p>
-</li>
-<li><p><code>-l</code>：增加小写属性，变量的值将转换为小写(如果该选项存在，mac不支持)。</p>
-</li>
-<li><p><code>+l</code>：删除小写属性(如果该选项存在，mac不支持)。</p>
-</li>
-<li><p><code>-n</code>：增加引用属性(如果该选项存在，mac不支持)。</p>
-</li>
-<li><p><code>+n</code>：删除引用属性(如果该选项存在，mac不支持)。    </p>
-</li>
-<li><p><code>-u</code>：增加大写属性，变量的值将转换为大写(如果该选项存在，mac不支持)。</p>
-</li>
-<li><p><code>+u</code>：删除大写属性(如果该选项存在，mac不支持)。</p>
-</li>
-</ul>
-</li>
-<li><p>参数</p>
-<ul>
-<li><code>name</code>：可选，变量名或函数名。</li>
-<li><code>value</code>：可选，变量的值。</li>
-</ul>
-</li>
-<li><p>正常执行后返回true</p>
-</li>
-</ul>
-</li>
-<li><p>作用：声明变量，设置或显示变量的值和属性。</p>
-<ul>
-<li>显示包含指定属性的全部变量和值</li>
-<li>显示包含指定属性的一到多个变量和值</li>
-<li>显示一到多个变量的属性和值</li>
-<li>显示所有变量的属性和值并显示函数的定义</li>
-<li>显示所有变量的属性和值</li>
-<li>显示所有全局变量的属性和值</li>
-<li>显示全部函数名和函数定义</li>
-<li>只显示全部函数名</li>
-<li>显示一到多个函数名和函数定义</li>
-<li>只显示一到多个函数名</li>
-<li>声明全局变量(可选：赋值)</li>
-<li>声明变量(可选：赋值、属性)</li>
-<li>增加、删除变量的属性(可选：赋值)</li>
-</ul>
-</li>
-<li><p>使用</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://wangchujiang.com/linux-command/c/declare.html">参考</a></p>
-</li>
-</ol>
-<h2 id="十五、echo"><a href="#十五、echo" class="headerlink" title="十五、echo"></a>十五、echo</h2><blockquote>
-<p>echo:Shell的echo指令与PHP的echo指令类似，都是用于字符串的输出，命令格式：<code>echo string</code>.</p>
-</blockquote>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell-echo.html">参考一</a></li>
-</ol>
-<h2 id="十六、expect"><a href="#十六、expect" class="headerlink" title="十六、expect"></a>十六、expect</h2><ol>
-<li>expect是由<code>Don Libes</code>基于<code>Tcl</code>(全称<code>Tool Command Language</code>)语言开发的，主要应用于自动化交互式操作的场景，借助expect处理交互的命令可以将交互过程如<code>ssh</code>登录，<code>ftp</code>登录等写在一个脚本上，使之自动化完成。它尤其适用于需要对多台服务器执行相同操作的环境中，可以大大提高系统管理人员的工作效率。</li>
 </ol>
 <blockquote>
-<p>主要涉及以下四个命令：</p>
+<p>uniq只检测邻近的行是否重复，<code>sort -u</code>将输入文件先排序然后再处理重复行。</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">send</td>
-<td align="left">用于向进程发送字符串</td>
-</tr>
-<tr>
-<td align="center">expect</td>
-<td align="left">从进程接收字符串</td>
-</tr>
-<tr>
-<td align="center">spawn</td>
-<td align="left">启动新的进程</td>
-</tr>
-<tr>
-<td align="center">interact</td>
-<td align="left">允许用户交互</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li><p>知识点</p>
-<ul>
-<li>脚本执行时用<code>expect shell.sh</code>或在脚本中调用<code>expect child.sh</code></li>
-<li>向一个脚本传递参数时，<code>expect</code>将参数值保存在数组<code>$argv</code>中，$argc表示参数个数</li>
-<li>在脚本中将对应参数赋值给变量<code>set 变量名 [lindex $argv n]</code>，n取值0~n(参数个数)</li>
-<li>若登陆后便退出远程终端，则写<code>expect eof</code>即可</li>
-</ul>
+<hr>
+<h1 id="find"><a href="#find" class="headerlink" title="find"></a><center><font color=red>find</font></center></h1><ol>
+<li><p>find: paths must precede expression，多文件的查找的时候需要增加单引号</p>
 </li>
 <li><p>使用</p>
 <ul>
-<li>将需要登录的机器单独放一个配置文件，如<code>config</code></li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip1:username1:password1:22:connect1</span><br><span class="line">ip2:username2:password2:22:connect2</span><br><span class="line">ip3:username3:password3:22:connect3</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>登录脚本<code>login.sh</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">oIFS=&quot;$IFS&quot;</span><br><span class="line"></span><br><span class="line">j=1</span><br><span class="line">for i in `cat config`</span><br><span class="line">do</span><br><span class="line">   IFS=&quot;:&quot;</span><br><span class="line">   #echo $i</span><br><span class="line">   str=($i) #初始化数组</span><br><span class="line">   echo $j  $&#123;str[1]&#125;---$&#123;str[2]&#125;</span><br><span class="line">   let j++</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">IFS=&quot;$oIFS&quot;</span><br><span class="line"></span><br><span class="line">read num</span><br><span class="line"></span><br><span class="line">filter=`sed -n &quot;$num p&quot; config`</span><br><span class="line">#echo $filter</span><br><span class="line"></span><br><span class="line">IFS=&quot;:&quot;</span><br><span class="line">str=($filter)</span><br><span class="line">echo $&#123;str[@]&#125;</span><br><span class="line">host=$&#123;str[0]&#125;</span><br><span class="line">username=$&#123;str[1]&#125;</span><br><span class="line">password=$&#123;str[2]&#125;</span><br><span class="line">port=$&#123;str[3]&#125;</span><br><span class="line"></span><br><span class="line">./expect.sh $host $username $password $port</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>交互脚本<code>expect.sh</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line"></span><br><span class="line">set timeout 30</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set username [lindex $argv 1]</span><br><span class="line">set password [lindex $argv 2]</span><br><span class="line">set port [lindex $argv 3]</span><br><span class="line"></span><br><span class="line">spawn ssh -p $port $username@$host</span><br><span class="line">expect &quot;password&quot; &#123;send &quot;$password\r&quot;&#125;</span><br><span class="line"></span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>执行<code>./login.sh</code>，输入数字即可登录对应的服务器</li>
-</ul>
-<ol start="4">
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lzrabbit/p/4298794.html">参考</a></li>
-</ol>
-<h2 id="十七、export"><a href="#十七、export" class="headerlink" title="十七、export"></a>十七、export</h2><ol>
-<li><p>export命令用于设置或显示环境变量。</p>
-<ul>
-<li>可新增、修改、删除环境变量</li>
-<li>只可作用于本次登录操作</li>
-</ul>
-</li>
-<li><p>知识点</p>
-<ul>
-<li><p>在shell脚本中，不加export命令设置的环境变量只在本shell生效，加上则对本shell及其子shell都生效。</p>
-<ul>
-<li>举个例子</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">①在终端中键入以下命令</span><br><span class="line">my_name=liusir</span><br><span class="line"></span><br><span class="line">②新建echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line"></span><br><span class="line">③运行echo.sh：`bash echo.sh`，无任何输出</span><br><span class="line"></span><br><span class="line">④在终端中键入以下命令</span><br><span class="line">export another_name=liuliu</span><br><span class="line"></span><br><span class="line">⑤修改echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line">echo $another_name</span><br><span class="line"></span><br><span class="line">⑥运行echo.sh：`bash echo.sh`，可以看到liuliu正常输出</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>再举个例子</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">①销毁之前例子的变量unset my_name another_name</span><br><span class="line"></span><br><span class="line">②创建脚本parent.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">my_name=liusir</span><br><span class="line">echo &quot;parent shell: $my_name&quot; </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">③创建脚本child.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;child shell: $my_name&quot;</span><br><span class="line"></span><br><span class="line">④运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:</span><br><span class="line"></span><br><span class="line">⑤修改parent.sh，变量前增加export</span><br><span class="line">#!/bin/bash</span><br><span class="line">export my_name=liusir</span><br><span class="line">echo &quot;parent shell: $my_name&quot; </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">⑥运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:liuliuliu</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>直接输入export会将显示bash下的所有环境变量</p>
-<ul>
-<li>env、set、export、declare都可以显示shell的变量<ul>
-<li>env与export输出的是环境变量</li>
-<li>set与declare是输出环境变量和自定义变量</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>扩展</p>
-<ul>
-<li><code>bash</code>和<code>./</code>都是用来执行shell脚本的，使用<code>bash</code>时脚本可以无执行权限，<code>./</code>脚本必须有可执行权限</li>
-<li><code>source</code>命令通常用于重新执行刚修改的初始化文档，如执行上文的<code>source parent.sh</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="十八、kill"><a href="#十八、kill" class="headerlink" title="十八、kill"></a>十八、kill</h2><blockquote>
-<p>Mac</p>
-</blockquote>
-<ol>
-<li><p>作用：用于删除执行中的程序或工作。</p>
-</li>
-<li><p>语法</p>
-<ul>
-<li>kill [-s signal_name] pid</li>
-<li>kill -l [exit_status]</li>
-<li>kill -signal_name pid</li>
-<li>kill -signal_number pid</li>
-</ul>
-</li>
-<li><p>查看所有信号<code>kill -l</code></p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HUP  INT    QUIT  ILL   TRAP  ABRT  EMT   FPE </span><br><span class="line">KILL BUS    SEGV  SYS   PIPE  ALRM  TERM  URG </span><br><span class="line">STOP TSTP   CONT  CHLD  TTIN  TTOU  IO    XCPU </span><br><span class="line">XFSZ VTALRM PROF  WINCH INFO  USR1  USR2</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>常用信号</p>
-</blockquote>
-<ul>
-<li>1       HUP(hang up)</li>
-<li>2       INT(interrupt)</li>
-<li>3       QUIT(quit)</li>
-<li>6       ABRT(abort)</li>
-<li>9       KILL(non-catchable, non-ignorable kill)</li>
-<li>14      ALRM(alarm clock)</li>
-<li>15      TERM(software termination signal)</li>
-</ul>
-<blockquote>
-<p>Linux</p>
-</blockquote>
-<ol>
-<li><p>作用：用于删除执行中的程序或工作。</p>
-</li>
-<li><p>语法</p>
-<ul>
-<li>kill [-s signal | -p] [-q sigval] [-a] [–] pid…</li>
-<li>kill -l [signal]</li>
-</ul>
-</li>
-<li><p>查看所有信号<code>kill -l</code></p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1) SIGHUP	     2) SIGINT	     3) SIGQUIT	     4) SIGILL	     5) SIGTRAP</span><br><span class="line"> 6) SIGABRT	     7) SIGBUS	     8) SIGFPE	     9) SIGKILL	    10) SIGUSR1</span><br><span class="line">11) SIGSEGV	    12) SIGUSR2	    13) SIGPIPE	    14) SIGALRM	    15) SIGTERM</span><br><span class="line">16) SIGSTKFLT	17) SIGCHLD	    18) SIGCONT	    19) SIGSTOP	    20) SIGTSTP</span><br><span class="line">21) SIGTTIN	    22) SIGTTOU	    23) SIGURG	    24) SIGXCPU	    25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM	27) SIGPROF	    28) SIGWINCH	29) SIGIO	    30) SIGPWR</span><br><span class="line">31) SIGSYS	    34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1	64) SIGRTMAX</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略。</p>
-</blockquote>
-<blockquote>
-<p>常用信号：</p>
-</blockquote>
-<ul>
-<li>HUP    1    终端断线</li>
-<li>INT    2    中断(同<code>Ctrl + C</code>)</li>
-<li>QUIT   3    退出(同<code>Ctrl + \</code>)</li>
-<li>KILL   9    强制终止</li>
-<li>TERM   15   终止</li>
-<li>CONT   18   继续(与STOP相反)</li>
-<li>STOP   19   暂停(同<code>Ctrl + Z</code>)</li>
-</ul>
-<blockquote>
-<p>常用</p>
-</blockquote>
-<ol>
-<li>杀死进程 <code>kill 进程id</code></li>
-<li>彻底杀死进程 <code>kill -9 进程id</code><ul>
-<li>查出服务的进程id <code>ps aux |grep nginx</code></li>
-<li>杀死进程 <code>kill -9 3645</code><blockquote>
-<blockquote>
-<p>直接杀死程序 <code>pkill -9 nginx</code>或批量杀死进程<code>killall -9 nginx</code></p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>杀死指定用户进程</li>
-<li>获取所有信号 <code>kill -l</code><ul>
-<li>获取指定信号值 <code>kill -l signal_name</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="十九、ln"><a href="#十九、ln" class="headerlink" title="十九、ln"></a>十九、ln</h2><ol>
-<li><p>语法  <code>ln [参数][源文件或目录][目标文件或目录]</code></p>
-</li>
-<li><p>参数说明</p>
-<ul>
-<li>必要参数</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-b 删除，覆盖以前建立的链接</span><br><span class="line">-d 允许超级用户制作目录的硬链接</span><br><span class="line">-f 强制执行</span><br><span class="line">-i 交互模式，文件存在则提示用户是否覆盖</span><br><span class="line">-n 把符号链接视为一般目录</span><br><span class="line">-s 软链接(符号链接)</span><br><span class="line">-v 显示详细的处理过程</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>可选参数</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-S &quot;-S&lt;字尾备份字符串&gt; &quot;或 &quot;--suffix=&lt;字尾备份字符串&gt;&quot;</span><br><span class="line">-V &quot;-V&lt;备份方式&gt;&quot;或&quot;--version-control=&lt;备份方式&gt;&quot;</span><br><span class="line">--help 显示帮助信息</span><br><span class="line">--version 显示版本信息</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>demo</p>
-<ul>
-<li>创建软连接  ln -f /usr/loca/mysql/bin/mysql /usr/local/bin/mysql</li>
-</ul>
-</li>
-<li><p>扩展</p>
-<ul>
-<li>软连接<ul>
-<li>软链接以路径的形式存在，类似于Windows操作系统中的快捷方式</li>
-<li>软链接可以跨文件系统，硬链接不可以</li>
-<li>软链接可以对一个不存在的文件名进行链接</li>
-<li>软链接可以对目录进行链接</li>
-</ul>
-</li>
-<li>硬链接<ul>
-<li>硬链接，以文件副本的形式存在，但不占用实际空间。</li>
-<li>不允许给目录创建硬链接</li>
-<li>硬链接只有在同一个文件系统中才能创建</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="二十、lsof"><a href="#二十、lsof" class="headerlink" title="二十、lsof"></a>二十、lsof</h2><ol>
-<li>lsof(<code>list open files</code>)是一个列出当前系统打开文件的工具。</li>
-</ol>
-<blockquote>
-<blockquote>
-<p>在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。</p>
-</blockquote>
-</blockquote>
-<ol start="2">
-<li><p>语法<code>lsof [option] [filename]</code></p>
-<ul>
-<li>-a 列出打开文件存在的进程</li>
-<li>-c&lt;进程名&gt; 列出指定进程所打开的文件</li>
-<li>-g  列出GID号进程详情</li>
-<li>-d&lt;文件号&gt; 列出占用该文件号的进程</li>
-<li>+d&lt;目录&gt;  列出目录下被打开的文件</li>
-<li>+D&lt;目录&gt;  递归列出目录下被打开的文件</li>
-<li>-n&lt;目录&gt;  列出使用NFS的文件</li>
-<li>-i&lt;条件&gt;  列出符合条件的进程，搜多条件可为IPV4/6地址、协议、:端口、 @ip等</li>
-<li>-p&lt;进程号&gt; 列出指定进程号所打开的文件</li>
-<li>-u  列出UID号进程详情</li>
-<li>-h 显示帮助信息</li>
-<li>-v 显示版本信息</li>
-</ul>
-</li>
-<li><p>常用参数选项</p>
-</li>
-<li><p>输出各列说明</p>
-<ul>
-<li>COMMAND：进程的名称 PID：进程标识符</li>
-<li>USER：进程所有者</li>
-<li>FD：文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等 TYPE：文件类型，如DIR、REG等</li>
-<li>DEVICE：指定磁盘的名称</li>
-<li>SIZE：文件的大小</li>
-<li>NODE：索引节点（文件在磁盘上的标识）</li>
-<li>NAME：打开文件的确切名称</li>
-</ul>
-</li>
-<li><p>实战</p>
-<ul>
-<li>打开一个具体文件的进程 <code>lsof /usr/local/nginx/sbin/nginx</code></li>
-<li>列出一个目录下的进程，+D迭代，+d非迭代 <code>lsof +D /usr/local/nginx1.15.12</code></li>
-<li>以进程名称为开始字符的进程，使用-c参数 <code>lsof -c 进程名 [-c 进程名...]</code></li>
-<li>指定具体的某个用户的进程 <code>lsof -u username</code></li>
-<li>使用or/and组合命令 <ul>
-<li>默认or <code>lsof -u app -c init</code></li>
-<li>and加-a参数 <code>lsof -u app -c init -a</code></li>
-</ul>
-</li>
-<li>使用-i参数列出所有的网络链接信息 <code>lsof -i</code></li>
-<li>通过具体的进程ID来显示正在使用的进程信息 <code>lsof -i -p PID -a</code></li>
-<li>通过使用-i:port来显具体端口进程信息 <code>lsof -i:80</code></li>
-<li>列出所有TCP和UDP连接 <code>lsof -i tcp/udp</code><ul>
-<li>列出指定范围内被打开的TCP端口 <code>lsof -i tcp:1-1024</code></li>
-</ul>
-</li>
-<li>列出所有的网络文件系统的文件 <code>lsof -N</code></li>
-<li>列出IPv4或IPv6打开的文件 <code>lsof -i4/i6</code></li>
-<li>统计系统打开的文件总数 <code>sudo lsof -P -n | wc -l</code><ul>
-<li>-P 选项表示不解析端口号</li>
-<li>-n 选项表示不解析主机名</li>
-</ul>
-</li>
-<li>查看删除文件的进程是否结束<code>lsof | grep deleted</code></li>
+<li>查看文件/文件夹所在分区/挂载点信息:<code>df &lt;路径&gt;</code></li>
+<li>查找当前路径下文件大小大于800M的文件:<code>find . -type f -size +800M</code></li>
+<li><code>find . -type f -size +20M -print0 | xargs -0 ls -l --block-size=m</code></li>
+<li><code>find . -type f -size +20M -print0 | xargs -0 du -h | sort -nr</code></li>
+<li>查找黄金 <code>find ./ -type f -name &quot;*.csv&quot; | xargs grep &quot;gold&quot;</code></li>
 </ul>
 </li>
 <li><p>参考</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/10271351.html">参考一</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/heboxiang/p/11273833.html">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kerrycode/p/4391859.html">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16885135/article/details/52224997">参考二</a></li>
 </ul>
 </li>
 </ol>
-<h2 id="二十一、scp"><a href="#二十一、scp" class="headerlink" title="二十一、scp"></a>二十一、scp</h2><ol>
+<hr>
+<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a><center><font color=red>scp</font></center></h1><ol>
 <li>scp命令用于Linux之间复制文件和目录<ul>
 <li>secure copy的缩写</li>
 <li>Linux系统下基于ssh登陆进行安全的远程文件拷贝命令</li>
@@ -1311,10 +646,654 @@
 <blockquote>
 <p>在本地使用此命令从服务器拷贝文件到本次目录，需要退出已登录的服务器</p>
 </blockquote>
-<h2 id="二十二、split"><a href="#二十二、split" class="headerlink" title="二十二、split"></a>二十二、split</h2><blockquote>
+<hr>
+<h1 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a><center><font color=red>xargs</font></center></h1><ol>
+<li><p>介绍<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xargs是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。它可以将管道或标准输入(stdin)数据转换成命令行参数，也能够从文件的输出中读取数据，还可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。</p>
+<ul>
+<li>xargs默认的命令是echo，这意味着通过管道传递给xargs的输入将会包含换行和空白，不过通过xargs的处理换行和空白将被空格取代。</li>
+</ul>
+</li>
+<li><p>demo</p>
+<ul>
+<li>前期准备</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /Users/your_name/Desktop/xargs</span><br><span class="line">cd /Users/your_name/Desktop/xargs</span><br><span class="line">touch 1.txt 2.txt 3.txt 4.txt</span><br><span class="line">cd ~ # 这一步很重要，如果还是在当前目录操作，差异不是那么明显</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命令对比</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name &#x27;*.txt&#x27; | ls -l</span><br><span class="line"></span><br><span class="line">-rwxrwxrwx    1 playcrab  staff      11 11 18 17:11 README.md</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff    3162 11 25 14:51 _config.yml</span><br><span class="line">-rw-r--r--    1 playcrab  staff     174  3  8 01:03 db.json</span><br><span class="line">drwxrwxrwx  320 playcrab  staff   10240 11 25 15:10 node_modules</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff  145778 11 25 15:10 package-lock.json</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     749 11 25 15:10 package.json</span><br><span class="line">drwxr-xr-x   18 playcrab  staff     576 11 25 15:08 public</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     194 11 25 13:57 release.sh</span><br><span class="line">drwxrwxrwx    5 playcrab  staff     160 11 18 17:11 scaffolds</span><br><span class="line">drwxrwxrwx    9 playcrab  staff     288 11 18 17:18 source</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name &#x27;*.txt&#x27; | xargs ls -l</span><br><span class="line"></span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/1.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/2.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/3.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/t.txt</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a><center><font color=red>管道</font></center></h1><ol>
+<li><p>概念<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在类Unix操作系统(以及一些其他借用了这个设计的操作系统，如Windows)中，管道(英语：Pipeline)是一系列将标准输入输出链接起来的进程，其中每一个进程的输出被直接作为下一个进程的输入。 每一个链接都由匿名管道实现。管道中的组成元素也被称作过滤程序。这个概念是由道格拉斯·麦克罗伊为Unix 命令行发明的，因与物理上的管道相似而得名。</p>
+</li>
+<li><p>使用</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkfifo test</span><br><span class="line">echo 123 &gt; test</span><br><span class="line">cat &lt; test </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果想将一个命令或文件的内容作为另一个命令的参数而不是输入，管道线是不能实现的，三种常见的解决办法是：</p>
+<blockquote>
+<p><code>xargs</code>命令<br>带有<code>-exec</code>选项的 find 命令<br>命令替换</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li><a target="_blank" rel="noopener" href="http://cn.linux.vbird.org/">参考</a></li>
+</ol>
+<hr>
+<h1 id="top"><a href="#top" class="headerlink" title="top"></a><center><font color=red>top</font></center></h1><blockquote>
+<p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器(以下所有实验均基于CentOS6.2版本)。</p>
+</blockquote>
+<ol>
+<li>top -h</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -hv | -abcHimMsS -d delay -n iterations [-u user | -U user] -p pid [,pid ...]</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>常用</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top   //每隔5秒显式所有进程的资源占用情况</span><br><span class="line">top -d 2  //每隔2秒显式所有进程的资源占用情况</span><br><span class="line">top -c  //每隔5秒显式进程的资源占用情况，并显示进程的命令行参数(默认只有进程名)</span><br><span class="line">top -p 12345 -p 6789//每隔5秒显示pid是12345和pid是6789的两个进程的资源占用情况</span><br><span class="line">top -d 2 -c -p 123456 //每隔2秒显示pid是12345的进程的资源使用情况，并显式该进程启动的命令行参数</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>默认情况下仅PID、USER、PR、NI、VIRT、RES、SHR、S、%CPU、%MEM、TIME+、COMMAND列，可通过输入相应参数</p>
+<blockquote>
+<p>f:改变显示的内容<br>o:改变列的显示顺序<br>F:将进程按照相应的列进行排序<br>O:将进程按照相应的列进行排序<br>R:将当前的排序倒转</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li><p>返回值说明</p>
+<ul>
+<li>header部分</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top - 20:14:08 up 1570 days,  9:16,  2 users,  load average: 0.25, 0.22, 0.27</span><br><span class="line">Tasks: 331 total,   3 running, 327 sleeping,   0 stopped,   1 zombie</span><br><span class="line">Cpu(s):  4.3%us,  3.1%sy,  0.0%ni, 92.2%id,  0.1%wa,  0.0%hi,  0.3%si,  0.0%st</span><br><span class="line">Mem:  16331772k total, 16135152k used,   196620k free,   784104k buffers</span><br><span class="line">Swap:        0k total,        0k used,        0k free,  7094008k cached</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>前五行是系统整体的统计信息。</p>
+<blockquote>
+<p>第一行是任务队列信息，同<code>uptime</code>命令的执行结果，其内容如下：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">20:14:08 #当前时间</span><br><span class="line">up 1570 days, 9:16, #系统运行时间，格式为 天，时:分  </span><br><span class="line">2 users, #当前登录用户数</span><br><span class="line">load average: 0.25, 0.22, 0.27 # 系统负载，即任务队列的平均长度。三个数值分别为 1分钟、5分钟、15分钟前到现在的平均值。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p>第二为进程信息：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">total 进程总数</span><br><span class="line">running 正在运行的进程数</span><br><span class="line">sleeping 睡眠的进程数</span><br><span class="line">stopped 停止的进程数</span><br><span class="line">zombie 僵尸进程数</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p>第三行为CPU信息：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0.3% us 用户空间占用CPU百分比</span><br><span class="line">1.0% sy 内核空间占用CPU百分比</span><br><span class="line">0.0% ni 用户进程空间内改变过优先级的进程占用CPU百分比</span><br><span class="line">98.7% id 空闲CPU百分比</span><br><span class="line">0.0% wa 等待输入输出的CPU时间百分比</span><br><span class="line">0.0%hi：硬中断占用百分比</span><br><span class="line">0.0%si：软中断占用百分比</span><br><span class="line">0.0%st：虚拟机占用百分比</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p>最后两行为内存和Swap信息：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Mem:</span><br><span class="line">191272k total    物理内存总量</span><br><span class="line">173656k used    使用的物理内存总量</span><br><span class="line">17616k free    空闲内存总量</span><br><span class="line">22052k buffers    用作内核缓存的内存量</span><br><span class="line"></span><br><span class="line">Swap: </span><br><span class="line">192772k total    交换区总量</span><br><span class="line">0k used    使用的交换区总量</span><br><span class="line">192772k free    空闲交换区总量</span><br><span class="line">123988k cached    缓冲的交换区总量，内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖，该数值即为这些内容已存在于内存中的交换区的大小，相应的内存再次被换出时可不必再对交换区写入。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>content部分</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">序号  列名    含义</span><br><span class="line">a    PID     进程id</span><br><span class="line">b    PPID    父进程id</span><br><span class="line">c    RUSER   Real user name</span><br><span class="line">d    UID     进程所有者的用户id</span><br><span class="line">e    USER    进程所有者的用户名</span><br><span class="line">f    GROUP   进程所有者的组名</span><br><span class="line">g    TTY     启动进程的终端名。不是从终端启动的进程则显示为 ?</span><br><span class="line">h    PR      优先级</span><br><span class="line">i    NI      nice值。负值表示高优先级，正值表示低优先级</span><br><span class="line">j    P       最后使用的CPU，仅在多CPU环境下有意义</span><br><span class="line">k    %CPU    上次更新到现在的CPU时间占用百分比</span><br><span class="line">l    TIME    进程使用的CPU时间总计，单位秒</span><br><span class="line">m    TIME+   进程使用的CPU时间总计，单位1/100秒</span><br><span class="line">n    %MEM    进程使用的物理内存百分比</span><br><span class="line">o    VIRT    进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES</span><br><span class="line">p    SWAP    进程使用的虚拟内存中，被换出的大小，单位kb。</span><br><span class="line">q    RES     进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA</span><br><span class="line">r    CODE    可执行代码占用的物理内存大小，单位kb</span><br><span class="line">s    DATA    可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb</span><br><span class="line">t    SHR     共享内存大小，单位kb</span><br><span class="line">u    nFLT    页面错误次数</span><br><span class="line">v    nDRT    最后一次写入到现在，被修改过的页面数。</span><br><span class="line">w    S       进程状态(D=不可中断的睡眠状态,R=运行,S=睡眠,T=跟踪/停止,Z=僵尸进程)</span><br><span class="line">x    COMMAND 命令名/命令行</span><br><span class="line">y    WCHAN   若该进程在睡眠，则显示睡眠中的系统函数名</span><br><span class="line">z    Flags   任务标志，参考 sched.h</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316399.html">参考</a></li>
+</ol>
+<hr>
+<h1 id="alias"><a href="#alias" class="headerlink" title="alias"></a><center><font color=red>alias</font></center></h1><hr>
+<h1 id="cat"><a href="#cat" class="headerlink" title="cat"></a><center><font color=red>cat</font></center></h1><ol>
+<li><p>cat命令用于连接文件并打印到标准输出设备上，strings命令在对象文件或二进制文件中查找可打印的字符串。</p>
+</li>
+<li><p>语法<code>cat -h</code>或<code>cat --help</code></p>
+<ul>
+<li>linux：<code>cat [-AbeEnstTuv] [--help] [--version] filename</code></li>
+<li>MacOS：<code>cat [-benstuv] filename</code><ul>
+<li><code>-n</code>或<code>--number</code>：由1开始对所有输出的行数编号</li>
+<li><code>-b</code>或<code>--number-nonblank</code>：和<code>-n</code>相似，只不过对于空白行不编号</li>
+<li><code>-s</code>或<code>--squeeze-blank</code>：当遇到有连续两行以上的空白行就替换为一行的空白行</li>
+<li><code>-v</code>或<code>--show-nonprinting</code>：使用<code>^</code>和<code>M-</code>符号，除了<code>LFD</code>和<code>TAB</code>之外</li>
+<li><code>-E</code>或<code>--show-ends</code>: 在每行结束处显示<code>$</code></li>
+<li><code>-T</code>或<code>--show-tabs</code>: 将<code>TAB</code>字符显示为<code>^I</code></li>
+<li><code>-A</code>或<code>--show-all</code>相当于<code>-vET</code>选项</li>
+<li><code>-e</code>相当于<code>-vE</code>选项</li>
+<li><code>-t</code>相当于<code>-vT</code>选项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>strings</p>
+<ul>
+<li>redis.so，使用cat会打印一堆乱码</li>
+<li>strings /your_path/redis.so</li>
+</ul>
+</li>
+<li><p>使用</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>cat 1.txt | grep 123 | grep 1234 |xargs echo &gt;&gt; 2.txt</code></p>
+</li>
+<li><p>shell脚本</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `ls ./online_Money`</span><br><span class="line">do</span><br><span class="line">    tar -zxvf ./online_Money/$i</span><br><span class="line">    for j in `ls ./data/userData/log/20140401/623205`</span><br><span class="line">    do</span><br><span class="line">        cat ./data/userData/log/20140401/623205/$j | grep 8300 | grep 623205_101_x | xargs printf &quot;%s\n&quot; &gt;&gt; ./2.log</span><br><span class="line">    done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><a target="_blank" rel="noopener" href="https://man.linuxde.net/strings">参考</a></li>
+</ol>
+<hr>
+<h1 id="column"><a href="#column" class="headerlink" title="column"></a><center><font color=red>column</font></center></h1><ol>
+<li><p>column命令用于格式化输出信息。</p>
+</li>
+<li><p>语法<code>cat -h</code>或<code>cat --help</code></p>
+<ul>
+<li><code>-c 字符数</code>：  指定显示的列宽</li>
+<li><code>-s &quot;分隔符&quot;</code>： 使用-t选项时，指定分隔符（允许指定多个分隔符）</li>
+<li><code>-t</code>：判断输入行的列数来创建一个表。分隔符是使用在-s中指定的字符。如果没有指定分隔符，默认是空格</li>
+<li><code>-x</code>：更改排列顺序（左→右）。默认的顺序为（上→下）</li>
+</ul>
+</li>
+<li><p>使用</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cat a.txt</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cat a.txt | column -c 80</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cat a.txt | column -s “:”</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cat a.txt | column -s “:” -t</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123  456  789  111</span><br><span class="line">abc  def  fgh  iii</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>go tool dist list | column -c 75</li>
+</ul>
+<hr>
+<h1 id="curl"><a href="#curl" class="headerlink" title="curl"></a><center><font color=red>curl</font></center></h1><blockquote>
+<p>curl是常用的命令行工具，用来请求Web服务器。它的名字就是客户端(client)的URL工具的意思。它的功能非常强大，命令行参数多达几十种。如果熟练的话完全可以取代Postman这一类的图形界面工具。</p>
+</blockquote>
+<ol>
+<li><p>curl是一个利用URL规则在命令行下工作的文件传输工具，是一款很强大的http命令行工具。</p>
+<ul>
+<li>支持文件的上传和下载</li>
+<li>支持包括HTTP、HTTPS、FTP等众多协议</li>
+</ul>
+</li>
+<li><p>语法 <code>curl [option] [url]</code></p>
+<ul>
+<li><code>option</code>参数详解见<code>curl -h</code></li>
+</ul>
+</li>
+<li><p>常用</p>
+<ul>
+<li>POST请求<code>curl -d key=value url</code></li>
+<li>GET请求<code>curl -G -d key=value url</code></li>
+<li>保存访问的网页<ul>
+<li>使用linux的重定向功能保存 <code>curl http://study.com &gt;&gt; linux.html</code></li>
+<li>可以使用curl的内置-o(小写)保存网页 <code>curl -o linux.html http://study.com</code></li>
+<li>可以使用curl的内置-O(大写)保存网页中的具体文件 <code>curl -O http://study.com/hello.sh</code></li>
+</ul>
+</li>
+<li>测试网页返回值 <code>curl -o /dev/null -s -w %&#123;http_code&#125; www.linux.com</code></li>
+<li>指定proxy服务器以及其端口通过使用-x <code>curl -x 192.168.100.100:1080 http://study.com</code></li>
+<li>cookie的使用<ul>
+<li>保存http的response里面的cookie信息到cookiec.txt，使用内置-c(小写)，<code>curl -c cookiec.txt  http://study.com</code></li>
+<li>保存http的response里面的header信息到cookied.txt，使用内置-D(大写) <code>curl -D cookied.txt http://study.com</code></li>
+<li>使用cookie通过内置<code>-b</code>，即<code>curl -b cookiec.txt http://study.com</code></li>
+</ul>
+</li>
+<li>模仿浏览器通过<code>-A</code>设定header信息 <code>curl -A &quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)&quot; http://study.com</code></li>
+<li>伪造referer通过<code>-e</code>设定<code>curl -e &quot;www.linux.com&quot; http://mail.linux.com</code></li>
+<li>下载文件<ul>
+<li>使用内置-o(小写)<code>curl -o dodo1.jpg http:www.linux.com/dodo1.JPG</code></li>
+<li>使用内置-O(大写)<code>curl -O http://study.com/dodo1.JPG</code></li>
+<li>循环下载 <code>curl -O http://study.com/dodo[1-5].JPG</code>，这样就会把dodo[1-5].JPG全部保存下来</li>
+<li>下载重命名 <ul>
+<li><code>curl -O http://study.com/&#123;hello,bb&#125;/dodo[1-5].JPG</code></li>
+<li><code>curl -o #1_#2.JPG http://study.com/&#123;hello,bb&#125;/dodo[1-5].JPG</code></li>
+</ul>
+</li>
+<li>分块下载使用内置-r<ul>
+<li><code>curl -r 0-100 -o dodo1_part1.JPG http://study.com/dodo1.JPG</code></li>
+<li><code>curl -r 100-200 -o dodo1_part2.JPG http://study.com/dodo1.JPG</code></li>
+<li><code>curl -r 200- -o dodo1_part3.JPG http://study.com/dodo1.JPG</code></li>
+<li><code>cat dodo1_part* &gt; dodo1.JPG</code> ##将下载好的各块拼装好dodo1.JPG的内容了</li>
+</ul>
+</li>
+<li>通过ftp下载文件<ul>
+<li><code>curl -O -u 用户名:密码 ftp://www.linux.com/dodo1.JPG</code></li>
+<li><code>curl -O ftp://用户名:密码@www.linux.com/dodo1.JPG</code></li>
+</ul>
+</li>
+<li>显示下载进度条 <code>curl -# -O http://study.com/dodo1.JPG</code></li>
+<li>不显示下载进度信息 <code>curl -s -O http://study.com/dodo1.JPG</code></li>
+</ul>
+</li>
+<li>断点续传通过内置-C实现<code>curl -C -O http://study.com/dodo1.JPG</code></li>
+<li>上传文件通过内置-T实现<code>curl -T dodo1.JPG -u 用户名:密码 ftp://www.linux.com/img/</code> </li>
+<li>显示抓取错误 <code>curl -f http://study.com/error</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="declare"><a href="#declare" class="headerlink" title="declare"></a><center><font color=red>declare</font></center></h1><ol>
+<li><p>语法：<code>declare [选项] [name[=value]]</code></p>
+<ul>
+<li><p>选项</p>
+<ul>
+<li><p><code>-a</code>：创建数组(如果支持)。</p>
+</li>
+<li><p><code>-A</code>：创建关联数组(如果支持)。</p>
+</li>
+<li><p><code>-f</code>：将操作或显示限制为函数名及函数定义。</p>
+</li>
+<li><p><code>-F</code>：只显示函数名(调试时附加行号和源文件)。</p>
+</li>
+<li><p><code>-i</code>：增加整型属性。</p>
+</li>
+<li><p><code>+i</code>：删除整型属性。</p>
+</li>
+<li><p><code>-r</code>：增加只读属性。</p>
+</li>
+<li><p><code>-t</code>：增加追踪属性。</p>
+</li>
+<li><p><code>+t</code>：删除追踪属性。</p>
+</li>
+<li><p><code>-x</code>：增加导出属性。</p>
+</li>
+<li><p><code>+x</code>：删除导出属性。</p>
+</li>
+<li><p><code>-p</code>：显示每个名称的属性和值。</p>
+</li>
+<li><p><code>-g</code>：在shell函数中使用时创建全局变量，其他情况下忽略(如果该选项存在，mac不支持)。</p>
+</li>
+<li><p><code>-l</code>：增加小写属性，变量的值将转换为小写(如果该选项存在，mac不支持)。</p>
+</li>
+<li><p><code>+l</code>：删除小写属性(如果该选项存在，mac不支持)。</p>
+</li>
+<li><p><code>-n</code>：增加引用属性(如果该选项存在，mac不支持)。</p>
+</li>
+<li><p><code>+n</code>：删除引用属性(如果该选项存在，mac不支持)。    </p>
+</li>
+<li><p><code>-u</code>：增加大写属性，变量的值将转换为大写(如果该选项存在，mac不支持)。</p>
+</li>
+<li><p><code>+u</code>：删除大写属性(如果该选项存在，mac不支持)。</p>
+</li>
+</ul>
+</li>
+<li><p>参数</p>
+<ul>
+<li><code>name</code>：可选，变量名或函数名。</li>
+<li><code>value</code>：可选，变量的值。</li>
+</ul>
+</li>
+<li><p>正常执行后返回true</p>
+</li>
+</ul>
+</li>
+<li><p>作用：声明变量，设置或显示变量的值和属性。</p>
+<ul>
+<li>显示包含指定属性的全部变量和值</li>
+<li>显示包含指定属性的一到多个变量和值</li>
+<li>显示一到多个变量的属性和值</li>
+<li>显示所有变量的属性和值并显示函数的定义</li>
+<li>显示所有变量的属性和值</li>
+<li>显示所有全局变量的属性和值</li>
+<li>显示全部函数名和函数定义</li>
+<li>只显示全部函数名</li>
+<li>显示一到多个函数名和函数定义</li>
+<li>只显示一到多个函数名</li>
+<li>声明全局变量(可选：赋值)</li>
+<li>声明变量(可选：赋值、属性)</li>
+<li>增加、删除变量的属性(可选：赋值)</li>
+</ul>
+</li>
+<li><p>使用</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://wangchujiang.com/linux-command/c/declare.html">参考</a></p>
+</li>
+</ol>
+<hr>
+<h1 id="echo"><a href="#echo" class="headerlink" title="echo"></a><center><font color=red>echo</font></center></h1><blockquote>
+<p>echo:Shell的echo指令与PHP的echo指令类似，都是用于字符串的输出，命令格式：<code>echo string</code>.</p>
+</blockquote>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell-echo.html">参考一</a></li>
+</ol>
+<hr>
+<h1 id="expect"><a href="#expect" class="headerlink" title="expect"></a><center><font color=red>expect</font></center></h1><ol>
+<li>expect是由<code>Don Libes</code>基于<code>Tcl</code>(全称<code>Tool Command Language</code>)语言开发的，主要应用于自动化交互式操作的场景，借助expect处理交互的命令可以将交互过程如<code>ssh</code>登录，<code>ftp</code>登录等写在一个脚本上，使之自动化完成。它尤其适用于需要对多台服务器执行相同操作的环境中，可以大大提高系统管理人员的工作效率。</li>
+</ol>
+<blockquote>
+<p>主要涉及以下四个命令：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">send</td>
+<td align="left">用于向进程发送字符串</td>
+</tr>
+<tr>
+<td align="center">expect</td>
+<td align="left">从进程接收字符串</td>
+</tr>
+<tr>
+<td align="center">spawn</td>
+<td align="left">启动新的进程</td>
+</tr>
+<tr>
+<td align="center">interact</td>
+<td align="left">允许用户交互</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><p>知识点</p>
+<ul>
+<li>脚本执行时用<code>expect shell.sh</code>或在脚本中调用<code>expect child.sh</code></li>
+<li>向一个脚本传递参数时，<code>expect</code>将参数值保存在数组<code>$argv</code>中，$argc表示参数个数</li>
+<li>在脚本中将对应参数赋值给变量<code>set 变量名 [lindex $argv n]</code>，n取值0~n(参数个数)</li>
+<li>若登陆后便退出远程终端，则写<code>expect eof</code>即可</li>
+</ul>
+</li>
+<li><p>使用</p>
+<ul>
+<li>将需要登录的机器单独放一个配置文件，如<code>config</code></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip1:username1:password1:22:connect1</span><br><span class="line">ip2:username2:password2:22:connect2</span><br><span class="line">ip3:username3:password3:22:connect3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>登录脚本<code>login.sh</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">oIFS=&quot;$IFS&quot;</span><br><span class="line"></span><br><span class="line">j=1</span><br><span class="line">for i in `cat config`</span><br><span class="line">do</span><br><span class="line">   IFS=&quot;:&quot;</span><br><span class="line">   #echo $i</span><br><span class="line">   str=($i) #初始化数组</span><br><span class="line">   echo $j  $&#123;str[1]&#125;---$&#123;str[2]&#125;</span><br><span class="line">   let j++</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">IFS=&quot;$oIFS&quot;</span><br><span class="line"></span><br><span class="line">read num</span><br><span class="line"></span><br><span class="line">filter=`sed -n &quot;$num p&quot; config`</span><br><span class="line">#echo $filter</span><br><span class="line"></span><br><span class="line">IFS=&quot;:&quot;</span><br><span class="line">str=($filter)</span><br><span class="line">echo $&#123;str[@]&#125;</span><br><span class="line">host=$&#123;str[0]&#125;</span><br><span class="line">username=$&#123;str[1]&#125;</span><br><span class="line">password=$&#123;str[2]&#125;</span><br><span class="line">port=$&#123;str[3]&#125;</span><br><span class="line"></span><br><span class="line">./expect.sh $host $username $password $port</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>交互脚本<code>expect.sh</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line"></span><br><span class="line">set timeout 30</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set username [lindex $argv 1]</span><br><span class="line">set password [lindex $argv 2]</span><br><span class="line">set port [lindex $argv 3]</span><br><span class="line"></span><br><span class="line">spawn ssh -p $port $username@$host</span><br><span class="line">expect &quot;password&quot; &#123;send &quot;$password\r&quot;&#125;</span><br><span class="line"></span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行<code>./login.sh</code>，输入数字即可登录对应的服务器</li>
+</ul>
+<ol start="4">
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lzrabbit/p/4298794.html">参考</a></li>
+</ol>
+<hr>
+<h1 id="export"><a href="#export" class="headerlink" title="export"></a><center><font color=red>export</font></center></h1><ol>
+<li><p>export命令用于设置或显示环境变量。</p>
+<ul>
+<li>可新增、修改、删除环境变量</li>
+<li>只可作用于本次登录操作</li>
+</ul>
+</li>
+<li><p>知识点</p>
+<ul>
+<li><p>在shell脚本中，不加export命令设置的环境变量只在本shell生效，加上则对本shell及其子shell都生效。</p>
+<ul>
+<li>举个例子</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">①在终端中键入以下命令</span><br><span class="line">my_name=liusir</span><br><span class="line"></span><br><span class="line">②新建echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line"></span><br><span class="line">③运行echo.sh：`bash echo.sh`，无任何输出</span><br><span class="line"></span><br><span class="line">④在终端中键入以下命令</span><br><span class="line">export another_name=liuliu</span><br><span class="line"></span><br><span class="line">⑤修改echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line">echo $another_name</span><br><span class="line"></span><br><span class="line">⑥运行echo.sh：`bash echo.sh`，可以看到liuliu正常输出</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再举个例子</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">①销毁之前例子的变量unset my_name another_name</span><br><span class="line"></span><br><span class="line">②创建脚本parent.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">my_name=liusir</span><br><span class="line">echo &quot;parent shell: $my_name&quot; </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">③创建脚本child.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;child shell: $my_name&quot;</span><br><span class="line"></span><br><span class="line">④运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:</span><br><span class="line"></span><br><span class="line">⑤修改parent.sh，变量前增加export</span><br><span class="line">#!/bin/bash</span><br><span class="line">export my_name=liusir</span><br><span class="line">echo &quot;parent shell: $my_name&quot; </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">⑥运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:liuliuliu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接输入export会将显示bash下的所有环境变量</p>
+<ul>
+<li>env、set、export、declare都可以显示shell的变量<ul>
+<li>env与export输出的是环境变量</li>
+<li>set与declare是输出环境变量和自定义变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>扩展</p>
+<ul>
+<li><code>bash</code>和<code>./</code>都是用来执行shell脚本的，使用<code>bash</code>时脚本可以无执行权限，<code>./</code>脚本必须有可执行权限</li>
+<li><code>source</code>命令通常用于重新执行刚修改的初始化文档，如执行上文的<code>source parent.sh</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="kill"><a href="#kill" class="headerlink" title="kill"></a><center><font color=red>kill</font></center></h1><blockquote>
+<p>Mac</p>
+</blockquote>
+<ol>
+<li><p>作用：用于删除执行中的程序或工作。</p>
+</li>
+<li><p>语法</p>
+<ul>
+<li>kill [-s signal_name] pid</li>
+<li>kill -l [exit_status]</li>
+<li>kill -signal_name pid</li>
+<li>kill -signal_number pid</li>
+</ul>
+</li>
+<li><p>查看所有信号<code>kill -l</code></p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HUP  INT    QUIT  ILL   TRAP  ABRT  EMT   FPE </span><br><span class="line">KILL BUS    SEGV  SYS   PIPE  ALRM  TERM  URG </span><br><span class="line">STOP TSTP   CONT  CHLD  TTIN  TTOU  IO    XCPU </span><br><span class="line">XFSZ VTALRM PROF  WINCH INFO  USR1  USR2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常用信号</p>
+</blockquote>
+<ul>
+<li>1       HUP(hang up)</li>
+<li>2       INT(interrupt)</li>
+<li>3       QUIT(quit)</li>
+<li>6       ABRT(abort)</li>
+<li>9       KILL(non-catchable, non-ignorable kill)</li>
+<li>14      ALRM(alarm clock)</li>
+<li>15      TERM(software termination signal)</li>
+</ul>
+<blockquote>
+<p>Linux</p>
+</blockquote>
+<ol>
+<li><p>作用：用于删除执行中的程序或工作。</p>
+</li>
+<li><p>语法</p>
+<ul>
+<li>kill [-s signal | -p] [-q sigval] [-a] [–] pid…</li>
+<li>kill -l [signal]</li>
+</ul>
+</li>
+<li><p>查看所有信号<code>kill -l</code></p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1) SIGHUP	     2) SIGINT	     3) SIGQUIT	     4) SIGILL	     5) SIGTRAP</span><br><span class="line"> 6) SIGABRT	     7) SIGBUS	     8) SIGFPE	     9) SIGKILL	    10) SIGUSR1</span><br><span class="line">11) SIGSEGV	    12) SIGUSR2	    13) SIGPIPE	    14) SIGALRM	    15) SIGTERM</span><br><span class="line">16) SIGSTKFLT	17) SIGCHLD	    18) SIGCONT	    19) SIGSTOP	    20) SIGTSTP</span><br><span class="line">21) SIGTTIN	    22) SIGTTOU	    23) SIGURG	    24) SIGXCPU	    25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM	27) SIGPROF	    28) SIGWINCH	29) SIGIO	    30) SIGPWR</span><br><span class="line">31) SIGSYS	    34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1	64) SIGRTMAX</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略。</p>
+</blockquote>
+<blockquote>
+<p>常用信号：</p>
+</blockquote>
+<ul>
+<li>HUP    1    终端断线</li>
+<li>INT    2    中断(同<code>Ctrl + C</code>)</li>
+<li>QUIT   3    退出(同<code>Ctrl + \</code>)</li>
+<li>KILL   9    强制终止</li>
+<li>TERM   15   终止</li>
+<li>CONT   18   继续(与STOP相反)</li>
+<li>STOP   19   暂停(同<code>Ctrl + Z</code>)</li>
+</ul>
+<blockquote>
+<p>常用</p>
+</blockquote>
+<ol>
+<li>杀死进程 <code>kill 进程id</code></li>
+<li>彻底杀死进程 <code>kill -9 进程id</code><ul>
+<li>查出服务的进程id <code>ps aux |grep nginx</code></li>
+<li>杀死进程 <code>kill -9 3645</code><blockquote>
+<blockquote>
+<p>直接杀死程序 <code>pkill -9 nginx</code>或批量杀死进程<code>killall -9 nginx</code></p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>杀死指定用户进程</li>
+<li>获取所有信号 <code>kill -l</code><ul>
+<li>获取指定信号值 <code>kill -l signal_name</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="ln"><a href="#ln" class="headerlink" title="ln"></a><center><font color=red>ln</font></center></h1><ol>
+<li><p>语法  <code>ln [参数][源文件或目录][目标文件或目录]</code></p>
+</li>
+<li><p>参数说明</p>
+<ul>
+<li>必要参数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-b 删除，覆盖以前建立的链接</span><br><span class="line">-d 允许超级用户制作目录的硬链接</span><br><span class="line">-f 强制执行</span><br><span class="line">-i 交互模式，文件存在则提示用户是否覆盖</span><br><span class="line">-n 把符号链接视为一般目录</span><br><span class="line">-s 软链接(符号链接)</span><br><span class="line">-v 显示详细的处理过程</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可选参数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-S &quot;-S&lt;字尾备份字符串&gt; &quot;或 &quot;--suffix=&lt;字尾备份字符串&gt;&quot;</span><br><span class="line">-V &quot;-V&lt;备份方式&gt;&quot;或&quot;--version-control=&lt;备份方式&gt;&quot;</span><br><span class="line">--help 显示帮助信息</span><br><span class="line">--version 显示版本信息</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>demo</p>
+<ul>
+<li>创建软连接  ln -f /usr/loca/mysql/bin/mysql /usr/local/bin/mysql</li>
+</ul>
+</li>
+<li><p>扩展</p>
+<ul>
+<li>软连接<ul>
+<li>软链接以路径的形式存在，类似于Windows操作系统中的快捷方式</li>
+<li>软链接可以跨文件系统，硬链接不可以</li>
+<li>软链接可以对一个不存在的文件名进行链接</li>
+<li>软链接可以对目录进行链接</li>
+</ul>
+</li>
+<li>硬链接<ul>
+<li>硬链接，以文件副本的形式存在，但不占用实际空间。</li>
+<li>不允许给目录创建硬链接</li>
+<li>硬链接只有在同一个文件系统中才能创建</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a><center><font color=red>lsof</font></center></h1><ol>
+<li>lsof(<code>list open files</code>)是一个列出当前系统打开文件的工具。</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li><p>语法<code>lsof [option] [filename]</code></p>
+<ul>
+<li>-a 列出打开文件存在的进程</li>
+<li>-c&lt;进程名&gt; 列出指定进程所打开的文件</li>
+<li>-g  列出GID号进程详情</li>
+<li>-d&lt;文件号&gt; 列出占用该文件号的进程</li>
+<li>+d&lt;目录&gt;  列出目录下被打开的文件</li>
+<li>+D&lt;目录&gt;  递归列出目录下被打开的文件</li>
+<li>-n&lt;目录&gt;  列出使用NFS的文件</li>
+<li>-i&lt;条件&gt;  列出符合条件的进程，搜多条件可为IPV4/6地址、协议、:端口、 @ip等</li>
+<li>-p&lt;进程号&gt; 列出指定进程号所打开的文件</li>
+<li>-u  列出UID号进程详情</li>
+<li>-h 显示帮助信息</li>
+<li>-v 显示版本信息</li>
+</ul>
+</li>
+<li><p>常用参数选项</p>
+</li>
+<li><p>输出各列说明</p>
+<ul>
+<li>COMMAND：进程的名称 PID：进程标识符</li>
+<li>USER：进程所有者</li>
+<li>FD：文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等 TYPE：文件类型，如DIR、REG等</li>
+<li>DEVICE：指定磁盘的名称</li>
+<li>SIZE：文件的大小</li>
+<li>NODE：索引节点（文件在磁盘上的标识）</li>
+<li>NAME：打开文件的确切名称</li>
+</ul>
+</li>
+<li><p>实战</p>
+<ul>
+<li>打开一个具体文件的进程 <code>lsof /usr/local/nginx/sbin/nginx</code></li>
+<li>列出一个目录下的进程，+D迭代，+d非迭代 <code>lsof +D /usr/local/nginx1.15.12</code></li>
+<li>以进程名称为开始字符的进程，使用-c参数 <code>lsof -c 进程名 [-c 进程名...]</code></li>
+<li>指定具体的某个用户的进程 <code>lsof -u username</code></li>
+<li>使用or/and组合命令 <ul>
+<li>默认or <code>lsof -u app -c init</code></li>
+<li>and加-a参数 <code>lsof -u app -c init -a</code></li>
+</ul>
+</li>
+<li>使用-i参数列出所有的网络链接信息 <code>lsof -i</code></li>
+<li>通过具体的进程ID来显示正在使用的进程信息 <code>lsof -i -p PID -a</code></li>
+<li>通过使用-i:port来显具体端口进程信息 <code>lsof -i:80</code></li>
+<li>列出所有TCP和UDP连接 <code>lsof -i tcp/udp</code><ul>
+<li>列出指定范围内被打开的TCP端口 <code>lsof -i tcp:1-1024</code></li>
+</ul>
+</li>
+<li>列出所有的网络文件系统的文件 <code>lsof -N</code></li>
+<li>列出IPv4或IPv6打开的文件 <code>lsof -i4/i6</code></li>
+<li>统计系统打开的文件总数 <code>sudo lsof -P -n | wc -l</code><ul>
+<li>-P 选项表示不解析端口号</li>
+<li>-n 选项表示不解析主机名</li>
+</ul>
+</li>
+<li>查看删除文件的进程是否结束<code>lsof | grep deleted</code></li>
+</ul>
+</li>
+<li><p>参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sparkdev/p/10271351.html">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/heboxiang/p/11273833.html">参考二</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="split"><a href="#split" class="headerlink" title="split"></a><center><font color=red>split</font></center></h1><blockquote>
 <p>split:一个100G的文件，内存只有4G，那么问题来了，如何对其进行全排序？</p>
 </blockquote>
-<h2 id="二十三、test"><a href="#二十三、test" class="headerlink" title="二十三、test"></a>二十三、test</h2><ol>
+<hr>
+<h1 id="test"><a href="#test" class="headerlink" title="test"></a><center><font color=red>test</font></center></h1><ol>
 <li><p>Shell中的<code>test</code>命令用于检查某个条件是否成立，它可以进行数值、字符和文件以及逻辑运算等方面的测试。<code>[]</code>功能和test命令一样，只是不同的写法，同时<code>[[]]</code>也可在部分情况下代替<code>[]</code>。</p>
 </li>
 <li><p>使用</p>
@@ -1392,7 +1371,8 @@
 <li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/f-ck-need-u/p/7427357.html">参考</a></p>
 </li>
 </ol>
-<h2 id="二十四、ssh-keygen"><a href="#二十四、ssh-keygen" class="headerlink" title="二十四、ssh-keygen"></a>二十四、ssh-keygen</h2><ol>
+<hr>
+<h1 id="ssh-keygen"><a href="#ssh-keygen" class="headerlink" title="ssh-keygen"></a><center><font color=red>ssh-keygen</font></center></h1><ol>
 <li>Secure Shell(安全外壳协议，简称SSH)是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接，其最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令。在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击。SSH旨在保证非安全网络环境(例如互联网)中信息加密完整可靠。</li>
 <li>ssh-keygen命令用于为ssh生成、管理和转换认证密钥，Linux下可通过<code>ssh-keygen /?</code>方式查看其具体用法：</li>
 </ol>
@@ -1439,7 +1419,8 @@
 </ul>
 </li>
 </ol>
-<h2 id="二十五、strace"><a href="#二十五、strace" class="headerlink" title="二十五、strace"></a>二十五、strace</h2><ol>
+<hr>
+<h1 id="strace"><a href="#strace" class="headerlink" title="strace"></a><center><font color=red>strace</font></center></h1><ol>
 <li><p>strace常用来跟踪进程执行时的系统调用和所接收的信号。在Linux世界，进程不能直接访问硬件设备，当进程需要访问硬件设备(比如读取磁盘文件，接收网络数据等等)时，必须由用户态模式切换至内核态模式，通过系统调用访问硬件设备。strace可以跟踪到一个进程产生的系统调用，包括参数，返回值，执行消耗的时间。</p>
 </li>
 <li><p>使用，可通过命令<code>man dtruss</code>来查看</p>
@@ -1474,7 +1455,8 @@
 </ul>
 </li>
 </ol>
-<h2 id="二十六、dtruss"><a href="#二十六、dtruss" class="headerlink" title="二十六、dtruss"></a>二十六、dtruss</h2><ol>
+<hr>
+<h1 id="dtruss"><a href="#dtruss" class="headerlink" title="dtruss"></a><center><font color=red>dtruss</font></center></h1><ol>
 <li><p>dtruss：使用DTrace来监视系统调用，在进程进行系统调用的时候进行输出。它就像DTrace版的truss，和truss相比，它插入一些信息。值得注意的是只有在有root权限的终端下才可以使用DTrace(Mac下需要关闭SIP，即<code>csrutil disable</code>)。</p>
 </li>
 <li><p>使用，可通过命令<code>man dtruss</code>来查看</p>
@@ -1500,7 +1482,8 @@
 </ul>
 </li>
 </ol>
-<h2 id="二十七、dtrace"><a href="#二十七、dtrace" class="headerlink" title="二十七、dtrace"></a>二十七、dtrace</h2><ol>
+<hr>
+<h1 id="dtrace"><a href="#dtrace" class="headerlink" title="dtrace"></a><center><font color=red>dtrace</font></center></h1><ol>
 <li>dtrace：全称Dynamic Tracing，译为动态跟踪，是由<code>Sun™</code>开发的一个用来在生产和试验性生产系统上找出系统瓶颈的工具，可以对内核(kernel)和用户应用程序(user application)进行动态跟踪并且对系统运行不构成任何危险的技术。</li>
 </ol>
 <blockquote>
@@ -1509,7 +1492,8 @@
 <ol start="2">
 <li><a target="_blank" rel="noopener" href="https://shadowdragons.github.io/2018/10/07/strace-dtruss/">参考</a></li>
 </ol>
-<h2 id="二十八、tar"><a href="#二十八、tar" class="headerlink" title="二十八、tar"></a>二十八、tar</h2><ol>
+<hr>
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a><center><font color=red>tar</font></center></h1><ol>
 <li><p>tar命令可以为linux的文件和目录创建档案。利用tar，可以为某一特定文件创建档案（备份文件），也可以在档案中改变文件，或者向档案中加入新的文件。</p>
 <ul>
 <li>五个独立命令<ul>
@@ -1564,26 +1548,8 @@
 <li><p>注意：使用gzip压缩的文件不能追加，如<code>tar -czvf test.tar.gz 1.txt</code>，然后<code>tar -rvf test.tar.gz 2.txt</code>，报错<code>Cannot append to compressed archive</code></p>
 </li>
 </ol>
-<h2 id="二十九、find"><a href="#二十九、find" class="headerlink" title="二十九、find"></a>二十九、find</h2><ol>
-<li><p>find</p>
-</li>
-<li><p>使用</p>
-<ul>
-<li>查看文件/文件夹所在分区/挂载点信息:<code>df &lt;路径&gt;</code></li>
-<li>查找当前路径下文件大小大于800M的文件:<code>find . -type f -size +800M</code></li>
-<li><code>find . -type f -size +20M -print0 | xargs -0 ls -l --block-size=m</code></li>
-<li><code>find . -type f -size +20M -print0 | xargs -0 du -h | sort -nr</code></li>
-<li>查找黄金 <code>find ./ -type f -name &quot;*.csv&quot; | xargs grep &quot;gold&quot;</code></li>
-</ul>
-</li>
-<li><p>参考</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kerrycode/p/4391859.html">参考一</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16885135/article/details/52224997">参考二</a></li>
-</ul>
-</li>
-</ol>
-<h2 id="三十、脚本收集"><a href="#三十、脚本收集" class="headerlink" title="三十、脚本收集"></a>三十、脚本收集</h2><ol>
+<hr>
+<h1 id="脚本收集"><a href="#脚本收集" class="headerlink" title="脚本收集"></a><center><font color=red>脚本收集</font></center></h1><ol>
 <li>查询大文件和目录</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">dir1=`du -m /* |sort -n |tail -1 |awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">cd $dir1</span><br><span class="line">while :</span><br><span class="line">do</span><br><span class="line">   dir2=`du -m ./* |sort -n |tail -1 |awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   if [ -d $dir2 ]</span><br><span class="line">   then</span><br><span class="line">      cd $dir2</span><br><span class="line">   else</span><br><span class="line">      dir3=`pwd`</span><br><span class="line">      break</span><br><span class="line">   fi</span><br><span class="line">done</span><br><span class="line">file=`du -m ./* |sort -n |tail -1 |awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">echo &quot;The max_size_dir is :  $dir3&quot;</span><br><span class="line">echo &quot;The size is : `du -m $dir3 | awk &#x27;&#123;print $1&#125;&#x27;`M&quot;</span><br><span class="line">echo &quot;The max_size_file is: `which $file`&quot;</span><br><span class="line">echo &quot;The size is : `du -m $dir2 | awk &#x27;&#123;print $1&#125;&#x27;`M”</span><br></pre></td></tr></table></figure>
@@ -1653,7 +1619,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81cut"><span class="nav-number">1.</span> <span class="nav-text">一、cut</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81sort"><span class="nav-number">2.</span> <span class="nav-text">二、sort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81uniq"><span class="nav-number">3.</span> <span class="nav-text">三、uniq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81find"><span class="nav-number">4.</span> <span class="nav-text">四、find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81scp"><span class="nav-number">5.</span> <span class="nav-text">五、scp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81xargs"><span class="nav-number">6.</span> <span class="nav-text">六、xargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E7%AE%A1%E9%81%93"><span class="nav-number">7.</span> <span class="nav-text">七、管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81uniq"><span class="nav-number">8.</span> <span class="nav-text">八、uniq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81top"><span class="nav-number">9.</span> <span class="nav-text">九、top</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81alias"><span class="nav-number">10.</span> <span class="nav-text">十、alias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81cat"><span class="nav-number">11.</span> <span class="nav-text">十一、cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81column"><span class="nav-number">12.</span> <span class="nav-text">十二、column</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81curl"><span class="nav-number">13.</span> <span class="nav-text">十三、curl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81declar"><span class="nav-number">14.</span> <span class="nav-text">十四、declar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81echo"><span class="nav-number">15.</span> <span class="nav-text">十五、echo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E3%80%81expect"><span class="nav-number">16.</span> <span class="nav-text">十六、expect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%83%E3%80%81export"><span class="nav-number">17.</span> <span class="nav-text">十七、export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%85%AB%E3%80%81kill"><span class="nav-number">18.</span> <span class="nav-text">十八、kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81ln"><span class="nav-number">19.</span> <span class="nav-text">十九、ln</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E3%80%81lsof"><span class="nav-number">20.</span> <span class="nav-text">二十、lsof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E3%80%81scp"><span class="nav-number">21.</span> <span class="nav-text">二十一、scp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E3%80%81split"><span class="nav-number">22.</span> <span class="nav-text">二十二、split</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%89%E3%80%81test"><span class="nav-number">23.</span> <span class="nav-text">二十三、test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E5%9B%9B%E3%80%81ssh-keygen"><span class="nav-number">24.</span> <span class="nav-text">二十四、ssh-keygen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%94%E3%80%81strace"><span class="nav-number">25.</span> <span class="nav-text">二十五、strace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AD%E3%80%81dtruss"><span class="nav-number">26.</span> <span class="nav-text">二十六、dtruss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%83%E3%80%81dtrace"><span class="nav-number">27.</span> <span class="nav-text">二十七、dtrace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E3%80%81tar"><span class="nav-number">28.</span> <span class="nav-text">二十八、tar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8D%81%E4%B9%9D%E3%80%81find"><span class="nav-number">29.</span> <span class="nav-text">二十九、find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%8D%81%E3%80%81%E8%84%9A%E6%9C%AC%E6%94%B6%E9%9B%86"><span class="nav-number">30.</span> <span class="nav-text">三十、脚本收集</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">常用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cut"><span class="nav-number">2.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sort"><span class="nav-number">3.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uniq"><span class="nav-number">4.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find"><span class="nav-number">5.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp"><span class="nav-number">6.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xargs"><span class="nav-number">7.</span> <span class="nav-text">xargs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">8.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#top"><span class="nav-number">9.</span> <span class="nav-text">top</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#alias"><span class="nav-number">10.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cat"><span class="nav-number">11.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#column"><span class="nav-number">12.</span> <span class="nav-text">column</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#curl"><span class="nav-number">13.</span> <span class="nav-text">curl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#declare"><span class="nav-number">14.</span> <span class="nav-text">declare</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echo"><span class="nav-number">15.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expect"><span class="nav-number">16.</span> <span class="nav-text">expect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#export"><span class="nav-number">17.</span> <span class="nav-text">export</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kill"><span class="nav-number">18.</span> <span class="nav-text">kill</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln"><span class="nav-number">19.</span> <span class="nav-text">ln</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lsof"><span class="nav-number">20.</span> <span class="nav-text">lsof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#split"><span class="nav-number">21.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#test"><span class="nav-number">22.</span> <span class="nav-text">test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh-keygen"><span class="nav-number">23.</span> <span class="nav-text">ssh-keygen</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strace"><span class="nav-number">24.</span> <span class="nav-text">strace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dtruss"><span class="nav-number">25.</span> <span class="nav-text">dtruss</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dtrace"><span class="nav-number">26.</span> <span class="nav-text">dtrace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar"><span class="nav-number">27.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%94%B6%E9%9B%86"><span class="nav-number">28.</span> <span class="nav-text">脚本收集</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1777,7 +1743,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12:10</span>
+    <span title="站点阅读时长">12:09</span>
 </div>
 
         
