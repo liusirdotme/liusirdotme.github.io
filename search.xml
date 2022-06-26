@@ -134,10 +134,27 @@
       </tags>
   </entry>
   <entry>
+    <title>你真的了解防火墙吗</title>
+    <url>/2022/06/26/Network-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3%E9%98%B2%E7%81%AB%E5%A2%99%E5%90%97/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>线程池的基本思想是对象池，在程序启动时就开辟一块内存空间，里面存放了众多(未死亡的)的线程，池中的线程执行调度由池管理器来处理，当有线程任务时，从池中取一个，执行完成后线程对象归池，这样可以避免反复创建线程对象带来的性能开销，节省了系统的资源。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>防火墙</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go语言Gin框架</title>
     <url>/2022/06/12/Go-Gin%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Gin是Go语言写的一个Web框架，它具有运行速度快，分组的路由器，良好的崩溃捕获和错误处理，友好的支持中间件，支持丰富的数据格式如json、xml等。</p>
+<p>宁欺白须公，莫欺少年穷。终须有日龙穿凤，唔信一世裤穿窿。—— 清·吴敬梓《儒林外史》</p>
 </blockquote>
 <span id="more"></span>
 
@@ -7405,14 +7422,142 @@
       </tags>
   </entry>
   <entry>
-    <title>ARP-NAT-ICMP-DHCP</title>
-    <url>/2020/05/30/Network-ARP-NAT-ICMP-DHCP/</url>
+    <title>计算机网络中的那些词儿</title>
+    <url>/2020/05/30/Network-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E8%AF%8D%E5%84%BF/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p><code>ARP</code>欺骗，又称<code>ARP</code>毒化、<code>ARP</code>攻击，是针对以太网<code>ARP</code>协议的一种攻击技术，通过欺骗局域网内访问者<code>PC</code>的网关<code>MAC</code>地址，使访问者<code>PC</code>错以为攻击者更改后的<code>MAC</code>地址是网关的<code>MAC</code>，导致网络不通。</p>
+<p>不闻不若闻之，闻之不若见之，见之不若知之，知之不若行之。 —— 战国时期·荀子 《荀子·儒效》</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、ARP"><a href="#一、ARP" class="headerlink" title="一、ARP"></a>一、ARP</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ARP</code>协议，全称<code>Address Resolution Protocol</code>，即地址解析协议，作用是根据<code>IP</code>地址获取物理地址，也称<code>MAC</code>地址(唯一，通常由设备厂商分配)。源主机发送信息时，将包含目标<code>IP</code>地址的<code>ARP</code>请求广播到网络上的所有主机，并接收返回消息以此确定目标的物理地址。源主机收到返回消息后将该IP地址和物理地址存入本机<code>ARP</code>缓存中并保留一定时间(每台主机都会在自己的ARP缓冲区中简历一个ARP列表用于存储IP地址与MAC地址的对应关系)，下次请求时直接查询<code>ARP</code>缓存以节约资源。</p>
+<h1 id="ABC类地址"><a href="#ABC类地址" class="headerlink" title="ABC类地址"></a><center><font color=red>ABC类地址</font></center></h1><h2 id="一、ABC类地址"><a href="#一、ABC类地址" class="headerlink" title="一、ABC类地址"></a>一、ABC类地址</h2><blockquote>
+<p>按照TCP/IP协议规定，IP地址用二进制来表示，每个IP地址长32bit即4个字节。一个采用二进制形式的IP地址是一串很长的数字，为了方便人们的理解和使用，IP地址经常被写成十进制的形式，中间使用符号“.”分开不同的字节。为了便于寻址和层次化的构造网络，IP地址被分为A、B、C、D、E五类，商业应用中只用到A、B、C三类。</p>
+</blockquote>
+<ol>
+<li><p>A类地址：网络标识由第一组8位二进制数表示，网络中的主机标识占3组8位二进制数。</p>
+<ul>
+<li><p>特点是网络标识的第一位二进制数取值必须为“0”</p>
+</li>
+<li><p>数字0和127不作为A类地址，数字127保留给内部回送函数，而数字0则表示该地址是本地宿主机，不能传送</p>
+</li>
+<li><p>基于以上两点可知A类地址第一个字节的表示范围为00000001<code>~</code>011111110，即1<code>~</code>126</p>
+</li>
+<li><p>A类地址有126个网段，每个网络大约允许有1670万(2^24 - 2)台主机，通常分配给拥有大量主机的网。</p>
+</li>
+<li><p><font color=red>10.X.X.X</font>是私有地址，范围：<code>10.0.0.0~10.255.255.255</code></p>
+</li>
+<li><p><font color=red>127.X.X.X</font>是保留地址，做循环测试使用。</p>
+</li>
+</ul>
+</li>
+<li><p>B类地址：网络标识由前两组8位二进制数表示，网络中的主机标识占两组8位二进制数。</p>
+<ul>
+<li>特点是网络标识的前两位二进制数取值必须为“10”</li>
+<li>基于其特点可知第一个字节的范围是10000000<code>~</code>101111111，即128<code>~</code>191</li>
+<li>B类地址允许有16384(1011 1111 1111 1111 - 1000 0000 0000 0000) + 1个网段，每个网络允许有65533(2^16 - 2)台主机，适用于结点比较多的网络(如区域网)。</li>
+<li><font color=red>172.16.0.0<code>~</code>172.31.255.255</font>是私有地址。</li>
+<li><font color=red>169.254.X.X</font>是保留地址。<ul>
+<li>如果你的IP地址是自动获取IP地址，而你在网络上有没有找到可用的DHCP服务器，就会得到其中一个IP地址。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>C类地址：网络标识由前3组8位二进制数表示，网络中主机标识占1组8位二进制数。</p>
+<ul>
+<li>特点是网络标识的前3位二进制数取值必须为“110”</li>
+<li>基于其特点可知第一个字节的范围是11000000<code>~</code>11011111，即192<code>~</code>223</li>
+<li>有(1101 1111 1111 1111 1111 1111 - 1100 0000 0000 0000 0000 0000) + 1个网段，有254(2^8 - 2)台主机，适用于结点比较少的网络(如校园网)</li>
+<li><font color=red>192.168.X.X</font>是私有地址，其范围：<code>192.168.0.0~192.168.255.255</code></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>互联网上的IP地址统一由一个叫IANA(Internet Assigned Numbers Authority，互联网网络号分配机构)的组织来管理。根据用途和安全性级别的不同，IP地址还可以大致分为两类：公共地址和私有地址。公共地址在Internet中使用，可以在Internet中随意访问。私有地址只能在内部网络中使用，只有通过代理服务器才能与Internet通信。</p>
+</blockquote>
+<blockquote>
+<p>保留的IP地址段不会在互联网上使用，因此与广域网相连的路由器在处理保留IP地址时，只是将该数据包丢弃处理，而不会路由到广域网上去，从而将保留IP地址产生的数据隔离在局域网内部。</p>
+</blockquote>
+<h2 id="二、子网掩码"><a href="#二、子网掩码" class="headerlink" title="二、子网掩码"></a>二、子网掩码</h2><ol>
+<li>子网掩码(subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。<ul>
+<li>子网掩码的格式永远都是一个32位的2进制数，其对应网络地址的所有位都置为1(前面是一连串的1)，对应于主机地址的所有位都置为0(后面是一连串的0)</li>
+<li>子网掩码左边是网络标识位，均为二进制1，右边是主机标识位，均为二进制0。</li>
+<li>它目的是为了让掩码与IP地址做<font color=red><strong>按位与运算</strong></font>时用0遮住原主机数，而不改变原网络段数字，而且很容易通过0的位数确定子网的主机数</li>
+<li>子网掩码不能单独存在，它必须结合IP地址一起使用</li>
+<li>子网掩码的作用是将某个IP地址划分成网络地址和主机地址两部分，并说明该IP地址是在局域网上，还是在广域网上</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><font color=red>为了让人们直观的看到子网掩码，有一种方法只需要将一个斜线放在IP地址后面，接着用一个十进制的数字用以表示<strong>网络标识</strong>的位数，类似这样：192.0.2.12/30，这样就很容易知道子网掩码有30个1，2个0。</font></p>
+</blockquote>
+<h2 id="三、位运算"><a href="#三、位运算" class="headerlink" title="三、位运算"></a>三、位运算</h2><ol>
+<li>按位与<code>&amp;</code>：<code>0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1</code></li>
+<li>按位或<code>|</code>：<code>0|0=0; 0|1=1; 1|0=1; 1|1=1</code></li>
+<li>按位异或<code>^</code>：<code>0^0=0; 0^1=1; 1^0=1; 1^1=0</code></li>
+<li>按位取反<code>~</code>：<code>~1=0; ~0=1</code></li>
+<li>左移运算符<code>&lt;&lt;</code>：<code>a=a&lt;&lt;1将a的二进制位左移1位，右补0，左移1位后a=a*2</code>，相当于乘以2</li>
+<li>右移运算符<code>&gt;&gt;</code>：<code>a=a&gt;&gt;1将a的二进制位右移1位，左补0或补1，得看被移数是正还是负</code>，相当于除以2</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">子网掩码的二进制数值</th>
+<th align="center">子网掩码的十进制数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A类地址</td>
+<td align="center">11111111 00000000 00000000 00000000</td>
+<td align="center">255.0.0.0</td>
+</tr>
+<tr>
+<td align="center">B类地址</td>
+<td align="center">11111111 11111111 00000000 00000000</td>
+<td align="center">255.255.0.0</td>
+</tr>
+<tr>
+<td align="center">C类地址</td>
+<td align="center">11111111 11111111 11111111 000000000</td>
+<td align="center">255.255.255.0</td>
+</tr>
+</tbody></table>
+<h2 id="四、网关"><a href="#四、网关" class="headerlink" title="四、网关"></a>四、网关</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，从一个房间走到另一个房间，必然要经过一扇门。同样地，从一个网络向另一个网络发送信息，也必须经过一道“关口”，这道关口就是网关(Gateway)，就是一个网络连接到另一个网络的“关口”，也就是网络关卡。</p>
+<ol>
+<li>网关(Gateway)又称网间连接器、协议转换器。默认网关在网络层上以实现网络互连，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。<ul>
+<li>网关的结构也和路由器类似，不同的是互连层</li>
+<li>网关既可以用于广域网互连，也可以用于局域网互连</li>
+<li>通常指的网关就是路由器的IP</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>那么网关到底是什么呢？网关实质上是一个网络通向其他网络的IP地址。</p>
+<blockquote>
+<p>比如有网络A和网络B，网络A的IP地址范围为192.168.1.1<code>~</code>192.168.1.254，子网掩码为255.255.255.0；网络B的IP地址范围为192.168.2.1<code>~</code>192.168.2.254，子网掩码为255.255.255.0。在没有路由器的情况下，两个网络之间是不能进行TCP/IP通信的，即使是两个网络连接在同一台交换机(或集线器)上，TCP/IP协议也会根据子网掩码(255.255.255.0)判定两个网络中的主机处在不同的网络里。而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>所以说，只有设置好网关的IP地址，TCP/IP协议才能实现不同网络之间的相互通信。那么这个IP地址是哪台机器的IP地址呢？网关的IP地址是具有路由功能的设备的IP地址，具有路由功能的设备有路由器、启用了路由协议的服务器(实质上相当于一台路由器)、代理服务器(也相当于一台路由器)。</p>
+</blockquote>
+<h2 id="五、路由器"><a href="#五、路由器" class="headerlink" title="五、路由器"></a>五、路由器</h2><ol>
+<li><p>路由器是连接两个或多个网络的硬件设备，在网络间起网关的作用，是读取每一个数据包中的地址然后决定如何传送的专用智能性的网络设备。</p>
+<ul>
+<li>它能够理解不同的协议，例如某个局域网使用的以太网协议，因特网使用的TCP/IP协议。这样，路由器可以分析各种不同类型网络传来的数据包的目的地址，把非TCP/IP网络的地址转换成TCP/IP地址，或者反之；再根据选定的路由算法把各数据包按最佳路线传送到指定位置。所以路由器可以把非TCP/IP网络连接到因特网上。</li>
+</ul>
+</li>
+<li><p>路由器的功能就是将不同的子网之间的数据进行传递，具体功能有以下几点：</p>
+<ul>
+<li>实现IP、TCP、UDP、ICMP等网络的互连</li>
+<li>对数据进行处理。收发数据包，具有对数据的分组过滤、复用、加密、压缩及防护墙等各项功能</li>
+<li>依据路由表的信息，对数据包下一传输目的地进行选择</li>
+<li>进行外部网关协议和其他自制域之间拓扑信息的交换</li>
+<li>实现网络管理和系统支持功能</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="ARP-DHCP-NAT-ICMP"><a href="#ARP-DHCP-NAT-ICMP" class="headerlink" title="ARP-DHCP-NAT-ICMP"></a><center><font color=red>ARP-DHCP-NAT-ICMP</font></center></h1><h2 id="一、ARP"><a href="#一、ARP" class="headerlink" title="一、ARP"></a>一、ARP</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ARP</code>协议，全称<code>Address Resolution Protocol</code>，即地址解析协议，作用是根据<code>IP</code>地址获取物理地址，也称<code>MAC</code>地址(唯一，通常由设备厂商分配)。源主机发送信息时，将包含目标<code>IP</code>地址的<code>ARP</code>请求广播到网络上的所有主机，并接收返回消息以此确定目标的物理地址。源主机收到返回消息后将该IP地址和物理地址存入本机<code>ARP</code>缓存中并保留一定时间(每台主机都会在自己的ARP缓冲区中简历一个ARP列表用于存储IP地址与MAC地址的对应关系)，下次请求时直接查询<code>ARP</code>缓存以节约资源。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ARP</code>欺骗，又称<code>ARP</code>毒化、<code>ARP</code>攻击，是针对以太网<code>ARP</code>协议的一种攻击技术，通过欺骗局域网内访问者<code>PC</code>的网关<code>MAC</code>地址，使访问者<code>PC</code>错以为攻击者更改后的<code>MAC</code>地址是网关的<code>MAC</code>，导致网络不通。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址解析协议是建立在网络中各个主机互相信任的基础上的，网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存。由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址解析协议是建立在网络中各个主机互相信任的基础上的，局域网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。</p>
@@ -7481,18 +7626,118 @@
 <li><a href="https://zhuanlan.zhihu.com/p/107445582">参考一</a></li>
 <li><a href="https://cloud.tencent.com/developer/article/1008158">参考二</a></li>
 </ol>
+<hr>
+<h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a><center><font color=red>CDN</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的关键技术主要包括了节点调度、节点负载均衡和内容存储、分发、管理技术。</p>
+<h2 id="二、原理解析"><a href="#二、原理解析" class="headerlink" title="二、原理解析"></a>二、原理解析</h2><ol>
+<li><p>传统web的访问过程</p>
+<ul>
+<li>用户在浏览器中输入要访问的域名</li>
+<li>浏览器向域名解析服务器发出解析请求，获得此域名对应的IP地址</li>
+<li>浏览器利用所得到的IP地址，向该IP对应的服务器发出请求</li>
+<li>服务器响应此请求，将数据传输至浏览器</li>
+<li>浏览器渲染页面呈现给用户</li>
+</ul>
+</li>
+<li><p>CDN加速过程</p>
+<ul>
+<li>用户在浏览器中输入要访问的域名</li>
+<li>浏览器向域名解析服务器发出解析请求</li>
+<li>浏览器拿到域名对应的CNAME记录<ul>
+<li>由于CDN对域名解析过程进行了调整，浏览器(一般)得到的是该域名对应的CNAME记录</li>
+<li>浏览器再次对获得的CNAME域名进行解析能得到缓存服务器实际的IP地址。 <ul>
+<li>在此过程中，全局负载均衡DNS解析服务器会根据用户端的源IP地址(如通过地理位置(北京上海等)、接入网类型(电信网通等))将用户的访问请求定位到离用户路由最短、位置最近、负载最轻的Cache节点(缓存服务器)上，实现就近定位。</li>
+<li>定位优先原则可按位置、可按路由、也可按负载等。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浏览器再次解析CNAME得到该域名CDN缓存服务器的IP地址</li>
+<li>浏览器向缓存服务器发出访问请求</li>
+<li>缓存服务器根据浏览器提供的域名，通过Cache内部专用DNS解析得到此域名源服务器的真实IP地址，再由缓存服务器向此真实IP地址发送请求</li>
+<li>缓存服务器从真实IP地址得到内容后，一方面在本地进行保存以备以后使用，另一方面把得到的数据发送到客户端浏览器以完成此次请求</li>
+<li>用户端得到由缓存服务器传回的数据后显示出来</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>CDN是在用户和服务器之间增加Cache层，通过接管DNS将用户的请求引导到Cache节点而不是服务器源站点。</p>
+</blockquote>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/44966787">参考一</a></li>
+</ol>
+<hr>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a><center><font color=red>DNS</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DNS是域名系统(Domain Name System)的缩写，是根据提供的域名来查询相应的IP地址。在Internet上域名与IP地址之间是一一对应的，域名虽然便于人们记忆，但机器之间只能互相认识IP地址，它们之间的转换工作称为域名解析，域名解析需要由专门的域名解析服务器来完成，DNS就是进行域名解析的服务器。</p>
+<h2 id="二、DNS服务器"><a href="#二、DNS服务器" class="headerlink" title="二、DNS服务器"></a>二、DNS服务器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域名到IP地址的解析是由分布在因特网上的许多域名服务器程序共同完成的。域名服务器程序在专设的结点上运行，而人们也常把运行域名服务器程序的机器称为域名服务器。根据其所负责管辖的范围，又分为：</p>
+<ol>
+<li><p>根域名服务器：最高层次的域名服务器，所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。</p>
+<ul>
+<li>不管是哪一个本地域名服务器，若要对因特网上任何一个域名进行解析，只要自己无法解析，就首先求助根域名服务器。</li>
+<li>在很多情况下，根域名服务器并不直接把待查询的域名直接解析出IP地址，而是告诉本地域名服务器下一步应当找哪一个顶级域名服务器进行查询。</li>
+</ul>
+</li>
+<li><p>顶级域名服务器：负责管理在该顶级域名服务器注册的二级域名。</p>
+</li>
+<li><p>权限域名服务器：负责一个“区”的域名服务器。一个服务器所负责管辖(或有权限)的范围叫做区(zone)，各单位根据具体情况来划分自己管辖范围的区，但在一个区中的所有节点必须是能够连通的。每一个区设置相应的权限域名服务器，用来保存该区中的所有主机到域名IP地址的映射。</p>
+<ul>
+<li>DNS服务器的管辖范围不是以“域”为单位，而是以“区”为单位。</li>
+</ul>
+</li>
+<li><p>本地域名服务器：当一个主机发出DNS查询请求时，这个查询请求报文就发送给本地域名服务器。</p>
+</li>
+</ol>
+<h2 id="三、域名分级"><a href="#三、域名分级" class="headerlink" title="三、域名分级"></a>三、域名分级</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以<a href="http://www.google.com为例，顶级域名为com，二级域名为google，三级域名为www，中间由点`.`连接。全球域名按照从大到小的结构形成了一棵树状结构，一个完整的域名通常包含两级及以上。级别最低的域名写在最左边，而级别最高的字符写在最右边，由多个标号(多级域名)组成的完整域名总共不超过255个字符。">www.google.com为例，顶级域名为com，二级域名为google，三级域名为www，中间由点`.`连接。全球域名按照从大到小的结构形成了一棵树状结构，一个完整的域名通常包含两级及以上。级别最低的域名写在最左边，而级别最高的字符写在最右边，由多个标号(多级域名)组成的完整域名总共不超过255个字符。</a></p>
+<h2 id="四、查询过程"><a href="#四、查询过程" class="headerlink" title="四、查询过程"></a>四、查询过程</h2><p>以在地址栏输入baidu.com为例：</p>
+<blockquote>
+<p>系统那个检查本地hosts文件是否存在域名映射，如果存在则域名解析到此完成</p>
+<blockquote>
+<p>如果本地hosts文件不存在映射关系，则会查询本地DNS缓存，如果存在则域名解析完成</p>
+<blockquote>
+<p>如果本地DNS缓存没有命中，则系统向本地DNS服务器进行<strong>递归</strong>查询，如果存在则域名到此解析完成</p>
+<blockquote>
+<p>如果本地DNS服务器不存在此记录，本地域名服务器向一个根域名服务器<strong>迭代</strong>查询，根域名服务器告诉本地域名服务器下一次应查询的顶级域名服务器IP地址</p>
+<blockquote>
+<p>本地域名服务器向顶级域名服务器进行查询，如果存在则域名解析完成，否则告诉本地域名服务器下一步应查询的权限服务器的IP地址</p>
+<blockquote>
+<p>本地域名服务器向权限域名服务器进行查询，如果域名进行了解析，此步骤肯定能查到baidui.com对应的IP地址，至此解析完成</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="五、DNS的记录类型"><a href="#五、DNS的记录类型" class="headerlink" title="五、DNS的记录类型"></a>五、DNS的记录类型</h2><ol>
+<li>域名和IP之间的对应关系，称为“记录”(record)。根据使用的目的不同，又分为不同的类型，常见的DNS记录类型如下：<ul>
+<li>A：地址记录(Address)，返回域名指向的IP地址。</li>
+<li>NS：域名服务器记录(Name Server)，返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。</li>
+<li>MX：邮件记录(Mail eXchange)，返回接收电子邮件的服务器地址。</li>
+<li>CNAME：规范名称记录(Canonical Name)，返回另一个域名，即当前查询的域名是另一个域名的跳转。</li>
+<li>PTR：逆向查询记录(Pointer Record)，只用于从IP地址查询域名。</li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Network</category>
       </categories>
       <tags>
         <tag>计算机网络</tag>
+        <tag>A类</tag>
+        <tag>B类</tag>
+        <tag>C类</tag>
+        <tag>子网掩码</tag>
+        <tag>位运算</tag>
+        <tag>网关</tag>
+        <tag>路由器</tag>
         <tag>ARP</tag>
         <tag>RARP</tag>
         <tag>NAT</tag>
         <tag>ICMP</tag>
         <tag>DHCP</tag>
         <tag>RIP</tag>
+        <tag>DNS</tag>
+        <tag>CDN</tag>
+        <tag>CNAME</tag>
       </tags>
   </entry>
   <entry>
@@ -11340,6 +11585,99 @@
         <tag>基准测试</tag>
         <tag>压力测试</tag>
         <tag>sysbench</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB索引</title>
+    <url>/2019/10/19/MongoDB-%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>MongoDB是一个基于分布式文件存储的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。它是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。它支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。Mongo最大的特点是它支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索引是特殊的数据结构，索引存储在一个易于遍历读取的数据集合中(索引存储在特定字段或字段集的值)，而且是使用了B-tree结构。如果没有索引，MongoDB必须执行全集合collections扫描，即扫描集合中的每个文档，选取符合查询条件的文档document。如果查询时存在适当的索引，MongoDB可以使用索引来限制它必须查询的文档document的数量，特别是在处理大量数据时，所以选择正确的索引是很关键的、重要的。</p>
+<h2 id="二、存储引擎"><a href="#二、存储引擎" class="headerlink" title="二、存储引擎"></a>二、存储引擎</h2><ol>
+<li><p>MMAPv1引擎：mongodb原生的存储引擎，比较简单，直接使用系统级的内存映射文件机制(memory mapped files)，一直是mongodb的默认存储引擎，对于insert、read和in-place update(update不导致文档的size变大)性能较高；不过MMAPV1在lock的并发级别上，支持到collection级别，所以对于同一个collection同时只能有一个write操作执行，这一点相对于wiredTiger而言，在write并发性上就稍弱一些。对于production环境而言，较大的内存可以使此引擎更加高效，有效减少“page fault”频率，但是因为其并发级别的限制，多核CPU并不能使其受益。此引擎将不会使用到swap空间，但是对于wiredTiger而言需要一定的swap空间。(核心：对于大文件MAP操作，比较忌讳的就是在文件的中间修改数据，而且导致文件长度增长，这会涉及到索引引用的大面积调整)</p>
+</li>
+<li><p>wiredTiger引擎：3.0新增引擎，官方宣称在read、insert和复杂的update下具有更高的性能。所以后续版本，我们建议使用wiredTiger。所有的write请求都基于“文档级别”的lock，因此多个客户端可以同时更新一个colleciton中的不同文档，这种更细颗粒度的lock，可以支撑更高的读写负载和并发量。因为对于production环境，更多的CPU可以有效提升wireTiger的性能，因为它是的IO是多线程的。wiredTiger不像MMAPV1引擎那样尽可能的耗尽内存，它可以通过在配置文件中指定“cacheSizeGB”参数设定引擎使用的内存量，此内存用于缓存工作集数据(索引、namespace，未提交的write，query缓冲等)。</p>
+</li>
+</ol>
+<h2 id="三、原理"><a href="#三、原理" class="headerlink" title="三、原理"></a>三、原理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当往某各个集合插入多个文档后，每个文档在经过底层的存储引擎持久化后会有一个位置信息，通过这个位置信息就能从存储引擎里读出该文档。比如MMAPv1引擎，位置信息是『文件id + 文件内offset 』，在wiredTiger存储引擎(一个KV存储引擎)里，位置信息是wiredtiger在存储文档时生成的一个key，通过这个key能访问到对应的文档。</p>
+<h2 id="四、分类"><a href="#四、分类" class="headerlink" title="四、分类"></a>四、分类</h2><ol>
+<li>单列索引</li>
+<li>复合索引</li>
+<li>多key索引</li>
+<li>全文索引</li>
+<li>hash索引</li>
+</ol>
+<h2 id="五、索引属性"><a href="#五、索引属性" class="headerlink" title="五、索引属性"></a>五、索引属性</h2><ol>
+<li>TTL索引(TTL Indexes)</li>
+<li>惟一性索引(Unique Indexes)</li>
+<li>部分索引(Partial Indexes)</li>
+<li>稀疏索引(Sparse Indexes)</li>
+</ol>
+<h2 id="六、使用"><a href="#六、使用" class="headerlink" title="六、使用"></a>六、使用</h2><ol>
+<li><p>添加索引</p>
+<ul>
+<li><p>语法<code>db.collections.createIndex(&#123;key：order_type&#125;[, options])</code></p>
+<ul>
+<li>createIndex()用于3.0+版本,ensureIndex()用于3.0-以下版本</li>
+</ul>
+</li>
+<li><p>keys:要建立索引的参数列表,如：{KEY:1}，其中key表示字段名，1表示升序排序，-1表示降序。</p>
+</li>
+<li><p>options:可选参数，表示建立索引的设置。可选值如下：</p>
+<ul>
+<li>backgroundBoolean建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 “background” 可选参数。 “background” 默认值为false。</li>
+<li>uniqueBoolean建立的索引是否唯一。指定为true创建唯一索引。默认值为false.</li>
+<li>namestring索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。</li>
+<li>dropDupsBoolean3.0+版本已废弃。在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为false.</li>
+<li>sparseBoolean对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为false.</li>
+<li>expireAfterSecondsinteger指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。</li>
+<li>vindex version索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。</li>
+<li>weightsdocument索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。</li>
+<li>default_languagestring对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语</li>
+<li>language_override：string：对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看索引</p>
+<ul>
+<li>db.collection.getIndexes() 查看集合中的索引</li>
+<li>db.collection.totalIndexSize() 查看集合中的索引大小</li>
+<li>db.system.indexes.find() 查看数据库中所有索引</li>
+<li>getIndexKeys() 查看索引键</li>
+<li>getIndexSpecs() 查看集合各索引的详细信息</li>
+</ul>
+</li>
+<li><p>删除索引</p>
+<ul>
+<li>db.collection.dropIndexes()   //删除所有索引</li>
+<li>db.collection.dropIndex()    //删除指定的索引  </li>
+</ul>
+</li>
+<li><p>重建索引</p>
+<ul>
+<li>db.collection.reIndex()</li>
+</ul>
+</li>
+</ol>
+<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><ol>
+<li><a href="https://juejin.im/post/5d41924f5188255d5102e1fd#heading-16">参考一</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/method/">参考二</a></li>
+<li><a href="https://blog.51cto.com/qiangsh/2052609">参考三</a></li>
+<li><a href="http://www.mongoing.com/archives/2797">参考四</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/77971681">参考五</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>MongoDB</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
+        <tag>索引</tag>
       </tags>
   </entry>
   <entry>
@@ -16286,7 +16624,7 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 <td align="center">HDLC/PPP/SLIP</td>
 </tr>
 </tbody></table>
-<h2 id="二、五层模型"><a href="#二、五层模型" class="headerlink" title="二、五层模型"></a>二、五层模型</h2><ol>
+<h2 id="二、TCP-IP五层模型"><a href="#二、TCP-IP五层模型" class="headerlink" title="二、TCP/IP五层模型"></a>二、TCP/IP五层模型</h2><ol>
 <li>五层模型结构包括：物理层、数据链路层、网络层、运输层、应用层。</li>
 <li>五层模型只是OSI和TCP/IP的综合，实际应用还是TCP/IP的四层结构。</li>
 </ol>
@@ -20716,99 +21054,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       <tags>
         <tag>MySQL</tag>
         <tag>优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB索引</title>
-    <url>/2018/01/19/MongoDB-%E7%B4%A2%E5%BC%95/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>MongoDB是一个基于分布式文件存储的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。它是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。它支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。Mongo最大的特点是它支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索引是特殊的数据结构，索引存储在一个易于遍历读取的数据集合中(索引存储在特定字段或字段集的值)，而且是使用了B-tree结构。如果没有索引，MongoDB必须执行全集合collections扫描，即扫描集合中的每个文档，选取符合查询条件的文档document。如果查询时存在适当的索引，MongoDB可以使用索引来限制它必须查询的文档document的数量，特别是在处理大量数据时，所以选择正确的索引是很关键的、重要的。</p>
-<h2 id="二、存储引擎"><a href="#二、存储引擎" class="headerlink" title="二、存储引擎"></a>二、存储引擎</h2><ol>
-<li><p>MMAPv1引擎：mongodb原生的存储引擎，比较简单，直接使用系统级的内存映射文件机制(memory mapped files)，一直是mongodb的默认存储引擎，对于insert、read和in-place update(update不导致文档的size变大)性能较高；不过MMAPV1在lock的并发级别上，支持到collection级别，所以对于同一个collection同时只能有一个write操作执行，这一点相对于wiredTiger而言，在write并发性上就稍弱一些。对于production环境而言，较大的内存可以使此引擎更加高效，有效减少“page fault”频率，但是因为其并发级别的限制，多核CPU并不能使其受益。此引擎将不会使用到swap空间，但是对于wiredTiger而言需要一定的swap空间。(核心：对于大文件MAP操作，比较忌讳的就是在文件的中间修改数据，而且导致文件长度增长，这会涉及到索引引用的大面积调整)</p>
-</li>
-<li><p>wiredTiger引擎：3.0新增引擎，官方宣称在read、insert和复杂的update下具有更高的性能。所以后续版本，我们建议使用wiredTiger。所有的write请求都基于“文档级别”的lock，因此多个客户端可以同时更新一个colleciton中的不同文档，这种更细颗粒度的lock，可以支撑更高的读写负载和并发量。因为对于production环境，更多的CPU可以有效提升wireTiger的性能，因为它是的IO是多线程的。wiredTiger不像MMAPV1引擎那样尽可能的耗尽内存，它可以通过在配置文件中指定“cacheSizeGB”参数设定引擎使用的内存量，此内存用于缓存工作集数据(索引、namespace，未提交的write，query缓冲等)。</p>
-</li>
-</ol>
-<h2 id="三、原理"><a href="#三、原理" class="headerlink" title="三、原理"></a>三、原理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当往某各个集合插入多个文档后，每个文档在经过底层的存储引擎持久化后会有一个位置信息，通过这个位置信息就能从存储引擎里读出该文档。比如MMAPv1引擎，位置信息是『文件id + 文件内offset 』，在wiredTiger存储引擎(一个KV存储引擎)里，位置信息是wiredtiger在存储文档时生成的一个key，通过这个key能访问到对应的文档。</p>
-<h2 id="四、分类"><a href="#四、分类" class="headerlink" title="四、分类"></a>四、分类</h2><ol>
-<li>单列索引</li>
-<li>复合索引</li>
-<li>多key索引</li>
-<li>全文索引</li>
-<li>hash索引</li>
-</ol>
-<h2 id="五、索引属性"><a href="#五、索引属性" class="headerlink" title="五、索引属性"></a>五、索引属性</h2><ol>
-<li>TTL索引(TTL Indexes)</li>
-<li>惟一性索引(Unique Indexes)</li>
-<li>部分索引(Partial Indexes)</li>
-<li>稀疏索引(Sparse Indexes)</li>
-</ol>
-<h2 id="六、使用"><a href="#六、使用" class="headerlink" title="六、使用"></a>六、使用</h2><ol>
-<li><p>添加索引</p>
-<ul>
-<li><p>语法<code>db.collections.createIndex(&#123;key：order_type&#125;[, options])</code></p>
-<ul>
-<li>createIndex()用于3.0+版本,ensureIndex()用于3.0-以下版本</li>
-</ul>
-</li>
-<li><p>keys:要建立索引的参数列表,如：{KEY:1}，其中key表示字段名，1表示升序排序，-1表示降序。</p>
-</li>
-<li><p>options:可选参数，表示建立索引的设置。可选值如下：</p>
-<ul>
-<li>backgroundBoolean建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 “background” 可选参数。 “background” 默认值为false。</li>
-<li>uniqueBoolean建立的索引是否唯一。指定为true创建唯一索引。默认值为false.</li>
-<li>namestring索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。</li>
-<li>dropDupsBoolean3.0+版本已废弃。在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为false.</li>
-<li>sparseBoolean对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为false.</li>
-<li>expireAfterSecondsinteger指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。</li>
-<li>vindex version索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。</li>
-<li>weightsdocument索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。</li>
-<li>default_languagestring对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语</li>
-<li>language_override：string：对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>查看索引</p>
-<ul>
-<li>db.collection.getIndexes() 查看集合中的索引</li>
-<li>db.collection.totalIndexSize() 查看集合中的索引大小</li>
-<li>db.system.indexes.find() 查看数据库中所有索引</li>
-<li>getIndexKeys() 查看索引键</li>
-<li>getIndexSpecs() 查看集合各索引的详细信息</li>
-</ul>
-</li>
-<li><p>删除索引</p>
-<ul>
-<li>db.collection.dropIndexes()   //删除所有索引</li>
-<li>db.collection.dropIndex()    //删除指定的索引  </li>
-</ul>
-</li>
-<li><p>重建索引</p>
-<ul>
-<li>db.collection.reIndex()</li>
-</ul>
-</li>
-</ol>
-<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><ol>
-<li><a href="https://juejin.im/post/5d41924f5188255d5102e1fd#heading-16">参考一</a></li>
-<li><a href="https://docs.mongodb.com/manual/reference/method/">参考二</a></li>
-<li><a href="https://blog.51cto.com/qiangsh/2052609">参考三</a></li>
-<li><a href="http://www.mongoing.com/archives/2797">参考四</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/77971681">参考五</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>MongoDB</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>NoSQL</tag>
-        <tag>索引</tag>
       </tags>
   </entry>
   <entry>
@@ -25510,155 +25755,6 @@ read_xlsx(name, sheet)
         <tag>九子夺嫡</tag>
         <tag>爱新觉罗</tag>
         <tag>PyYAML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ABC类地址</title>
-    <url>/2016/10/25/Network-ABC%E7%B1%BB%E5%9C%B0%E5%9D%80/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>不闻不若闻之，闻之不若见之，见之不若知之，知之不若行之。 —— 战国时期·荀子 《荀子·儒效》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、ABC类地址"><a href="#一、ABC类地址" class="headerlink" title="一、ABC类地址"></a>一、ABC类地址</h2><blockquote>
-<p>按照TCP/IP协议规定，IP地址用二进制来表示，每个IP地址长32bit即4个字节。一个采用二进制形式的IP地址是一串很长的数字，为了方便人们的理解和使用，IP地址经常被写成十进制的形式，中间使用符号“.”分开不同的字节。为了便于寻址和层次化的构造网络，IP地址被分为A、B、C、D、E五类，商业应用中只用到A、B、C三类。</p>
-</blockquote>
-<ol>
-<li><p>A类地址：网络标识由第一组8位二进制数表示，网络中的主机标识占3组8位二进制数。</p>
-<ul>
-<li><p>特点是网络标识的第一位二进制数取值必须为“0”</p>
-</li>
-<li><p>数字0和127不作为A类地址，数字127保留给内部回送函数，而数字0则表示该地址是本地宿主机，不能传送</p>
-</li>
-<li><p>基于以上两点可知A类地址第一个字节的表示范围为00000001<code>~</code>011111110，即1<code>~</code>126</p>
-</li>
-<li><p>A类地址有126个网段，每个网络大约允许有1670万(2^24 - 2)台主机，通常分配给拥有大量主机的网。</p>
-</li>
-<li><p><font color=red>10.X.X.X</font>是私有地址，范围：<code>10.0.0.0~10.255.255.255</code></p>
-</li>
-<li><p><font color=red>127.X.X.X</font>是保留地址，做循环测试使用。</p>
-</li>
-</ul>
-</li>
-<li><p>B类地址：网络标识由前两组8位二进制数表示，网络中的主机标识占两组8位二进制数。</p>
-<ul>
-<li>特点是网络标识的前两位二进制数取值必须为“10”</li>
-<li>基于其特点可知第一个字节的范围是10000000<code>~</code>101111111，即128<code>~</code>191</li>
-<li>B类地址允许有16384(1011 1111 1111 1111 - 1000 0000 0000 0000) + 1个网段，每个网络允许有65533(2^16 - 2)台主机，适用于结点比较多的网络(如区域网)。</li>
-<li><font color=red>172.16.0.0<code>~</code>172.31.255.255</font>是私有地址。</li>
-<li><font color=red>169.254.X.X</font>是保留地址。<ul>
-<li>如果你的IP地址是自动获取IP地址，而你在网络上有没有找到可用的DHCP服务器，就会得到其中一个IP地址。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>C类地址：网络标识由前3组8位二进制数表示，网络中主机标识占1组8位二进制数。</p>
-<ul>
-<li>特点是网络标识的前3位二进制数取值必须为“110”</li>
-<li>基于其特点可知第一个字节的范围是11000000<code>~</code>11011111，即192<code>~</code>223</li>
-<li>有(1101 1111 1111 1111 1111 1111 - 1100 0000 0000 0000 0000 0000) + 1个网段，有254(2^8 - 2)台主机，适用于结点比较少的网络(如校园网)</li>
-<li><font color=red>192.168.X.X</font>是私有地址，其范围：<code>192.168.0.0~192.168.255.255</code></li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>互联网上的IP地址统一由一个叫IANA(Internet Assigned Numbers Authority，互联网网络号分配机构)的组织来管理。根据用途和安全性级别的不同，IP地址还可以大致分为两类：公共地址和私有地址。公共地址在Internet中使用，可以在Internet中随意访问。私有地址只能在内部网络中使用，只有通过代理服务器才能与Internet通信。</p>
-</blockquote>
-<blockquote>
-<p>保留的IP地址段不会在互联网上使用，因此与广域网相连的路由器在处理保留IP地址时，只是将该数据包丢弃处理，而不会路由到广域网上去，从而将保留IP地址产生的数据隔离在局域网内部。</p>
-</blockquote>
-<h2 id="二、子网掩码"><a href="#二、子网掩码" class="headerlink" title="二、子网掩码"></a>二、子网掩码</h2><ol>
-<li>子网掩码(subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。<ul>
-<li>子网掩码的格式永远都是一个32位的2进制数，其对应网络地址的所有位都置为1(前面是一连串的1)，对应于主机地址的所有位都置为0(后面是一连串的0)</li>
-<li>子网掩码左边是网络标识位，均为二进制1，右边是主机标识位，均为二进制0。</li>
-<li>它目的是为了让掩码与IP地址做<font color=red><strong>按位与运算</strong></font>时用0遮住原主机数，而不改变原网络段数字，而且很容易通过0的位数确定子网的主机数</li>
-<li>子网掩码不能单独存在，它必须结合IP地址一起使用</li>
-<li>子网掩码的作用是将某个IP地址划分成网络地址和主机地址两部分，并说明该IP地址是在局域网上，还是在广域网上</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p><font color=red>为了让人们直观的看到子网掩码，有一种方法只需要将一个斜线放在IP地址后面，接着用一个十进制的数字用以表示<strong>网络标识</strong>的位数，类似这样：192.0.2.12/30，这样就很容易知道子网掩码有30个1，2个0。</font></p>
-</blockquote>
-<h2 id="三、位运算"><a href="#三、位运算" class="headerlink" title="三、位运算"></a>三、位运算</h2><ol>
-<li>按位与<code>&amp;</code>：<code>0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1</code></li>
-<li>按位或<code>|</code>：<code>0|0=0; 0|1=1; 1|0=1; 1|1=1</code></li>
-<li>按位异或<code>^</code>：<code>0^0=0; 0^1=1; 1^0=1; 1^1=0</code></li>
-<li>按位取反<code>~</code>：<code>~1=0; ~0=1</code></li>
-<li>左移运算符<code>&lt;&lt;</code>：<code>a=a&lt;&lt;1将a的二进制位左移1位，右补0，左移1位后a=a*2</code>，相当于乘以2</li>
-<li>右移运算符<code>&gt;&gt;</code>：<code>a=a&gt;&gt;1将a的二进制位右移1位，左补0或补1，得看被移数是正还是负</code>，相当于除以2</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">类别</th>
-<th align="center">子网掩码的二进制数值</th>
-<th align="center">子网掩码的十进制数值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">A类地址</td>
-<td align="center">11111111 00000000 00000000 00000000</td>
-<td align="center">255.0.0.0</td>
-</tr>
-<tr>
-<td align="center">B类地址</td>
-<td align="center">11111111 11111111 00000000 00000000</td>
-<td align="center">255.255.0.0</td>
-</tr>
-<tr>
-<td align="center">C类地址</td>
-<td align="center">11111111 11111111 11111111 000000000</td>
-<td align="center">255.255.255.0</td>
-</tr>
-</tbody></table>
-<h2 id="四、网关"><a href="#四、网关" class="headerlink" title="四、网关"></a>四、网关</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，从一个房间走到另一个房间，必然要经过一扇门。同样地，从一个网络向另一个网络发送信息，也必须经过一道“关口”，这道关口就是网关(Gateway)，就是一个网络连接到另一个网络的“关口”，也就是网络关卡。</p>
-<ol>
-<li>网关(Gateway)又称网间连接器、协议转换器。默认网关在网络层上以实现网络互连，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。<ul>
-<li>网关的结构也和路由器类似，不同的是互连层</li>
-<li>网关既可以用于广域网互连，也可以用于局域网互连</li>
-<li>通常指的网关就是路由器的IP</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>那么网关到底是什么呢？网关实质上是一个网络通向其他网络的IP地址。</p>
-<blockquote>
-<p>比如有网络A和网络B，网络A的IP地址范围为192.168.1.1<code>~</code>192.168.1.254，子网掩码为255.255.255.0；网络B的IP地址范围为192.168.2.1<code>~</code>192.168.2.254，子网掩码为255.255.255.0。在没有路由器的情况下，两个网络之间是不能进行TCP/IP通信的，即使是两个网络连接在同一台交换机(或集线器)上，TCP/IP协议也会根据子网掩码(255.255.255.0)判定两个网络中的主机处在不同的网络里。而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>所以说，只有设置好网关的IP地址，TCP/IP协议才能实现不同网络之间的相互通信。那么这个IP地址是哪台机器的IP地址呢？网关的IP地址是具有路由功能的设备的IP地址，具有路由功能的设备有路由器、启用了路由协议的服务器(实质上相当于一台路由器)、代理服务器(也相当于一台路由器)。</p>
-</blockquote>
-<h2 id="五、路由器"><a href="#五、路由器" class="headerlink" title="五、路由器"></a>五、路由器</h2><ol>
-<li><p>路由器是连接两个或多个网络的硬件设备，在网络间起网关的作用，是读取每一个数据包中的地址然后决定如何传送的专用智能性的网络设备。</p>
-<ul>
-<li>它能够理解不同的协议，例如某个局域网使用的以太网协议，因特网使用的TCP/IP协议。这样，路由器可以分析各种不同类型网络传来的数据包的目的地址，把非TCP/IP网络的地址转换成TCP/IP地址，或者反之；再根据选定的路由算法把各数据包按最佳路线传送到指定位置。所以路由器可以把非TCP/IP网络连接到因特网上。</li>
-</ul>
-</li>
-<li><p>路由器的功能就是将不同的子网之间的数据进行传递，具体功能有以下几点：</p>
-<ul>
-<li>实现IP、TCP、UDP、ICMP等网络的互连</li>
-<li>对数据进行处理。收发数据包，具有对数据的分组过滤、复用、加密、压缩及防护墙等各项功能</li>
-<li>依据路由表的信息，对数据包下一传输目的地进行选择</li>
-<li>进行外部网关协议和其他自制域之间拓扑信息的交换</li>
-<li>实现网络管理和系统支持功能</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>A类</tag>
-        <tag>B类</tag>
-        <tag>C类</tag>
-        <tag>子网掩码</tag>
-        <tag>位运算</tag>
-        <tag>网关</tag>
-        <tag>路由器</tag>
       </tags>
   </entry>
   <entry>
@@ -32804,10 +32900,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Mac</tag>
-        <tag>DNS</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
         <tag>brew</tag>
+        <tag>DNS</tag>
         <tag>spctl</tag>
         <tag>xcode-select</tag>
         <tag>cask</tag>
@@ -33643,72 +33739,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>DNS</title>
-    <url>/2015/05/15/Network-DNS/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>宁欺白须公，莫欺少年穷。终须有日龙穿凤，唔信一世裤穿窿。—— 清·吴敬梓《儒林外史》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DNS是域名系统(Domain Name System)的缩写，是根据提供的域名来查询相应的IP地址。在Internet上域名与IP地址之间是一一对应的，域名虽然便于人们记忆，但机器之间只能互相认识IP地址，它们之间的转换工作称为域名解析，域名解析需要由专门的域名解析服务器来完成，DNS就是进行域名解析的服务器。</p>
-<h2 id="二、DNS服务器"><a href="#二、DNS服务器" class="headerlink" title="二、DNS服务器"></a>二、DNS服务器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域名到IP地址的解析是由分布在因特网上的许多域名服务器程序共同完成的。域名服务器程序在专设的结点上运行，而人们也常把运行域名服务器程序的机器称为域名服务器。根据其所负责管辖的范围，又分为：</p>
-<ol>
-<li><p>根域名服务器：最高层次的域名服务器，所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。</p>
-<ul>
-<li>不管是哪一个本地域名服务器，若要对因特网上任何一个域名进行解析，只要自己无法解析，就首先求助根域名服务器。</li>
-<li>在很多情况下，根域名服务器并不直接把待查询的域名直接解析出IP地址，而是告诉本地域名服务器下一步应当找哪一个顶级域名服务器进行查询。</li>
-</ul>
-</li>
-<li><p>顶级域名服务器：负责管理在该顶级域名服务器注册的二级域名。</p>
-</li>
-<li><p>权限域名服务器：负责一个“区”的域名服务器。一个服务器所负责管辖(或有权限)的范围叫做区(zone)，各单位根据具体情况来划分自己管辖范围的区，但在一个区中的所有节点必须是能够连通的。每一个区设置相应的权限域名服务器，用来保存该区中的所有主机到域名IP地址的映射。</p>
-<ul>
-<li>DNS服务器的管辖范围不是以“域”为单位，而是以“区”为单位。</li>
-</ul>
-</li>
-<li><p>本地域名服务器：当一个主机发出DNS查询请求时，这个查询请求报文就发送给本地域名服务器。</p>
-</li>
-</ol>
-<h2 id="三、域名分级"><a href="#三、域名分级" class="headerlink" title="三、域名分级"></a>三、域名分级</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以<a href="http://www.google.com为例，顶级域名为com，二级域名为google，三级域名为www，中间由点`.`连接。全球域名按照从大到小的结构形成了一棵树状结构，一个完整的域名通常包含两级及以上。级别最低的域名写在最左边，而级别最高的字符写在最右边，由多个标号(多级域名)组成的完整域名总共不超过255个字符。">www.google.com为例，顶级域名为com，二级域名为google，三级域名为www，中间由点`.`连接。全球域名按照从大到小的结构形成了一棵树状结构，一个完整的域名通常包含两级及以上。级别最低的域名写在最左边，而级别最高的字符写在最右边，由多个标号(多级域名)组成的完整域名总共不超过255个字符。</a></p>
-<h2 id="四、查询过程"><a href="#四、查询过程" class="headerlink" title="四、查询过程"></a>四、查询过程</h2><p>以在地址栏输入baidu.com为例：</p>
-<blockquote>
-<p>系统那个检查本地hosts文件是否存在域名映射，如果存在则域名解析到此完成</p>
-<blockquote>
-<p>如果本地hosts文件不存在映射关系，则会查询本地DNS缓存，如果存在则域名解析完成</p>
-<blockquote>
-<p>如果本地DNS缓存没有命中，则系统向本地DNS服务器进行<strong>递归</strong>查询，如果存在则域名到此解析完成</p>
-<blockquote>
-<p>如果本地DNS服务器不存在此记录，本地域名服务器向一个根域名服务器<strong>迭代</strong>查询，根域名服务器告诉本地域名服务器下一次应查询的顶级域名服务器IP地址</p>
-<blockquote>
-<p>本地域名服务器向顶级域名服务器进行查询，如果存在则域名解析完成，否则告诉本地域名服务器下一步应查询的权限服务器的IP地址</p>
-<blockquote>
-<p>本地域名服务器向权限域名服务器进行查询，如果域名进行了解析，此步骤肯定能查到baidui.com对应的IP地址，至此解析完成</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="五、DNS的记录类型"><a href="#五、DNS的记录类型" class="headerlink" title="五、DNS的记录类型"></a>五、DNS的记录类型</h2><ol>
-<li>域名和IP之间的对应关系，称为“记录”(record)。根据使用的目的不同，又分为不同的类型，常见的DNS记录类型如下：<ul>
-<li>A：地址记录(Address)，返回域名指向的IP地址。</li>
-<li>NS：域名服务器记录(Name Server)，返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。</li>
-<li>MX：邮件记录(Mail eXchange)，返回接收电子邮件的服务器地址。</li>
-<li>CNAME：规范名称记录(Canonical Name)，返回另一个域名，即当前查询的域名是另一个域名的跳转。</li>
-<li>PTR：逆向查询记录(Pointer Record)，只用于从IP地址查询域名。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>DNS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>电影杂谈</title>
     <url>/2015/05/05/Hobby-%E7%94%B5%E5%BD%B1%E6%9D%82%E8%B0%88/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -33794,63 +33824,6 @@ read_xlsx(name, sheet)
       <tags>
         <tag>电影</tag>
         <tag>好莱坞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CDN</title>
-    <url>/2015/04/09/Network-CDN/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>线程池的基本思想是对象池，在程序启动时就开辟一块内存空间，里面存放了众多(未死亡的)的线程，池中的线程执行调度由池管理器来处理，当有线程任务时，从池中取一个，执行完成后线程对象归池，这样可以避免反复创建线程对象带来的性能开销，节省了系统的资源。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的关键技术主要包括了节点调度、节点负载均衡和内容存储、分发、管理技术。</p>
-<h2 id="二、原理解析"><a href="#二、原理解析" class="headerlink" title="二、原理解析"></a>二、原理解析</h2><ol>
-<li><p>传统web的访问过程</p>
-<ul>
-<li>用户在浏览器中输入要访问的域名</li>
-<li>浏览器向域名解析服务器发出解析请求，获得此域名对应的IP地址</li>
-<li>浏览器利用所得到的IP地址，向该IP对应的服务器发出请求</li>
-<li>服务器响应此请求，将数据传输至浏览器</li>
-<li>浏览器渲染页面呈现给用户</li>
-</ul>
-</li>
-<li><p>CDN加速过程</p>
-<ul>
-<li>用户在浏览器中输入要访问的域名</li>
-<li>浏览器向域名解析服务器发出解析请求</li>
-<li>浏览器拿到域名对应的CNAME记录<ul>
-<li>由于CDN对域名解析过程进行了调整，浏览器(一般)得到的是该域名对应的CNAME记录</li>
-<li>浏览器再次对获得的CNAME域名进行解析能得到缓存服务器实际的IP地址。 <ul>
-<li>在此过程中，全局负载均衡DNS解析服务器会根据用户端的源IP地址(如通过地理位置(北京上海等)、接入网类型(电信网通等))将用户的访问请求定位到离用户路由最短、位置最近、负载最轻的Cache节点(缓存服务器)上，实现就近定位。</li>
-<li>定位优先原则可按位置、可按路由、也可按负载等。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>浏览器再次解析CNAME得到该域名CDN缓存服务器的IP地址</li>
-<li>浏览器向缓存服务器发出访问请求</li>
-<li>缓存服务器根据浏览器提供的域名，通过Cache内部专用DNS解析得到此域名源服务器的真实IP地址，再由缓存服务器向此真实IP地址发送请求</li>
-<li>缓存服务器从真实IP地址得到内容后，一方面在本地进行保存以备以后使用，另一方面把得到的数据发送到客户端浏览器以完成此次请求</li>
-<li>用户端得到由缓存服务器传回的数据后显示出来</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>CDN是在用户和服务器之间增加Cache层，通过接管DNS将用户的请求引导到Cache节点而不是服务器源站点。</p>
-</blockquote>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://zhuanlan.zhihu.com/p/44966787">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>CDN</tag>
-        <tag>CNAME</tag>
       </tags>
   </entry>
   <entry>
