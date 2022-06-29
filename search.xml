@@ -481,9 +481,9 @@
         <tag>技术</tag>
         <tag>Go</tag>
         <tag>PHP</tag>
-        <tag>RPC</tag>
-        <tag>LPC</tag>
         <tag>IPC</tag>
+        <tag>LPC</tag>
+        <tag>RPC</tag>
         <tag>gRPC</tag>
         <tag>Protobuf</tag>
       </tags>
@@ -5165,9 +5165,9 @@
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
         <tag>YAML</tag>
-        <tag>倒排索引</tag>
         <tag>Search</tag>
         <tag>lucene</tag>
+        <tag>倒排索引</tag>
         <tag>分析器</tag>
         <tag>分词器</tag>
         <tag>字符过滤器</tag>
@@ -6890,62 +6890,6 @@
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
         <tag>cerebro</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SVN常用命令</title>
-    <url>/2020/08/01/Technology-SVN%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>故天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。 ——《孟子·告子下》之《生于忧患，死于安乐》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>检出版本库：<code>svn checkout path</code></li>
-<li>添加文件：<code>svn add file</code><ul>
-<li>支持正则，如添加所有的css文件：<code>svn add *.css</code></li>
-</ul>
-</li>
-<li>提交修改到版本库：<code>svn commit -m &#39;comments&#39;</code></li>
-<li>查看当前版本库状态：<code>svn status</code></li>
-<li>查看当前版本库信息：<code>svn info</code></li>
-<li>恢复当前版本库修改：<code>svn revert path</code> <ul>
-<li>恢复当前版本库的所有修改：<code>svn revert --recursive path</code></li>
-</ul>
-</li>
-<li>更新当前版本库：<code>svn up</code><ul>
-<li>更新指定文件：<code>svn up file</code></li>
-<li>更新至指定版本：<code>svn update -r version_num file</code></li>
-</ul>
-</li>
-<li>从当前版本库删除：<code>svn delete file</code><ul>
-<li><code>--force</code>选项可强制删除</li>
-</ul>
-</li>
-<li>给文件枷锁：<code>svn lock -m &#39;comments&#39; path</code><ul>
-<li>解锁：<code>svn unlock path</code></li>
-</ul>
-</li>
-<li>比较文件差异：<code>svn diff file</code><ul>
-<li>可比较两个版本间的差异：<code>svn diff -r 100:101 file</code></li>
-</ul>
-</li>
-<li>合并两个版本间的差异：<code>svn merge -r 100:101 path</code></li>
-<li>移除冲突状态：<code>svn resolved</code></li>
-</ol>
-<blockquote>
-<p>终极必杀技：<code>svn help [子命令]</code></p>
-</blockquote>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="http://svnbook.red-bean.com/zh/1.8/svn.ref.svn.html">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>SVN</tag>
       </tags>
   </entry>
   <entry>
@@ -9147,14 +9091,139 @@
       </tags>
   </entry>
   <entry>
-    <title>node操作MongoDB</title>
-    <url>/2020/03/14/Node-Node%E6%93%8D%E4%BD%9CMongoDB/</url>
+    <title>NodeJS</title>
+    <url>/2020/03/14/PL-NodeJS/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>居安思危，思则有备，有备无患。 —— 《左传·襄公十一年》</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、准备阶段"><a href="#一、准备阶段" class="headerlink" title="一、准备阶段"></a>一、准备阶段</h2><ol>
+<h1 id="NodeJS和JS"><a href="#NodeJS和JS" class="headerlink" title="NodeJS和JS"></a><center><font color=red>NodeJS和JS</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript是一门动态脚本语言，可以运行于宿主环境(如浏览器等包含Js引擎的环境)。浏览器通过内置一个Js引擎可以解释执行Js代码，浏览器实现Js标准规范(ECMAScript)，提供API(DOM和BOM)，可以使用JavaScript调用，支持操作页面DOM，调用某些浏览器操作等客户端功能，可以说<code>JavaScript = ECMAScript + DOM + 宿主环境(BOM)</code>。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node.js是一个基于Google V8引擎(Js引擎的某一种)构建的JavaScript运行环境，提供API(操作系统、文件系统、网络系统、数据库等)，可以使用JavaScript调用，支持读取本地文件，开启本地主机端口服务，发送/接受请求等服务端功能，可以说<code>Node.js = JavaScript + Node环境</code>。</p>
+<blockquote>
+<p>要执行JavaScript代码必须要有一个Js引擎，而浏览器和Nodejs环境都内置了Js引擎。所以如果Js代码中调用了浏览器提供的API，则必须安装一个浏览器；若调用了Nodejs提供的API，则必须安装nodejs环境，然后以各自规定的方式加载、执行JavaScript代码。</p>
+</blockquote>
+<blockquote>
+<p>前端JS是基于浏览器端的JavaScript，Node.js则一个是基于服务端的javascript(后端NodeJs)。</p>
+</blockquote>
+<h2 id="二、对比"><a href="#二、对比" class="headerlink" title="二、对比"></a>二、对比</h2><ol>
+<li>JavaScript是一门编程语言(脚本语言)，而Node.js是一个运行环境。</li>
+<li>JavaScript以前是在浏览器里执行的，需要浏览器里的JavaScript引擎，Firefox有叫做Spidermonkey的引擎，Safari有JavaScriptCore的引擎，Chrome有V8的引擎，现在有人把Chrome有V8的引擎的引擎拿出来做了包装，加入了内置基本模块(大多用JavaScript编写)，就构成了Node.js。</li>
+<li>Node.js可以说是JavaScript的一种独立于浏览器的运行环境。</li>
+<li>两者侧重点也不太一样：<ul>
+<li>JavaScript<ul>
+<li>DOM(一些操作页面元素的方法)</li>
+<li>BOM(一些操作浏览器的方法)</li>
+</ul>
+</li>
+<li>Node.js<ul>
+<li>OS(操作系统)</li>
+<li>file(文件系统)</li>
+<li>net(网络系统)</li>
+<li>database(数据库)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://nodejs.org/zh-cn/">Nodejs</a></li>
+<li><a href="https://www.javascript.com/">JavaScript</a></li>
+<li><a href="https://www.pluralsight.com/paths/node-js">参考三</a></li>
+</ol>
+<hr>
+<h1 id="修改npm镜像"><a href="#修改npm镜像" class="headerlink" title="修改npm镜像"></a><center><font color=red>修改npm镜像</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>定义：npm全称为Node Package Manager，是一个基于Node.js的包管理器，也是整个Node.js社区最流行、支持的第三方模块最多的包管理器，它的初衷是为了让JavaScript开发人员更容易分享和重用代码。</p>
+</li>
+<li><p>常见使用场景：</p>
+<ul>
+<li>获取第三方包并使用。</li>
+<li>将自己编写的包发布。</li>
+</ul>
+</li>
+<li><p>常用命令</p>
+<ul>
+<li>安装<code>npm install [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
+<li>卸载<code>npm uninstall [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
+<li>更新<code>npm update [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
+<li>搜索<code>npm search [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
+<li>查看安装模块<code>npm list/ls/la/ll [-g]</code> </li>
+<li>查看模块路径<code>npm root [-g]</code></li>
+<li>查看模块信息<code>npm view &lt;name&gt; [package.json属性名称]</code></li>
+<li>查看官方文档<code>npm docs &lt;name&gt;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="二、修改镜像"><a href="#二、修改镜像" class="headerlink" title="二、修改镜像"></a>二、修改镜像</h2><ol>
+<li>常见镜像<ul>
+<li><a href="http://registry.npm.taobao.org/">淘宝npm镜像</a>，<a href="http://npm.taobao.org/">搜索传送门</a></li>
+<li><a href="http://r.cnpmjs.org/">cnpmjs镜像</a>，<a href="http://cnpmjs.org/">搜索传送门</a></li>
+</ul>
+</li>
+<li>使用<ul>
+<li>临时使用<code>npm --registry https://registry.npm.taobao.org install &lt;name&gt;</code></li>
+<li>持久使用<ul>
+<li>配置源<code>npm config set registry https://registry.npm.taobao.org</code></li>
+<li>查看源<code>npm config get registry</code>或<code>npm info express</code></li>
+</ul>
+</li>
+<li>通过<code>cnpm</code>使用</li>
+<li>安装cnpm<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
+<li>使用cnpm和使用npm命令一样，正常操作就行了</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.jianshu.com/p/7ea13d57638b">参考一</a></li>
+<li><a href="https://docs.npmjs.com/cli/npm">参考二</a></li>
+<li><a href="https://www.npmjs.com.cn/cli/npm/">参考三</a></li>
+</ol>
+<hr>
+<h1 id="Node运行机制"><a href="#Node运行机制" class="headerlink" title="Node运行机制"></a><center><font color=red>Node运行机制</font></center></h1><h2 id="一、事件循环"><a href="#一、事件循环" class="headerlink" title="一、事件循环"></a>一、事件循环</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，JS从诞生之日起就是一门单线程的非阻塞的脚本语言。单线程是由其最初的用途来决定的——与浏览器交互，JS代码在执行的任何时候都只有一个主线程来处理所有的任务。非阻塞则是当代码需要进行一项异步任务的时候(如I/O事件，无法立刻返回结果，需要花一定时间才能返回)，主线程会挂起(pending)这个任务，然后在异步任务返回结果的时候再根据一定规则去执行相应的回调。要实现非阻塞，就要说到我们的主角——事件循环。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript引擎本身不实现事件循环机制，浏览器中的事件循环由浏览器实现的，NodeJS中事件循环主要是由底层Libuv库实现的。</p>
+<h2 id="二、I-O多路复用"><a href="#二、I-O多路复用" class="headerlink" title="二、I/O多路复用"></a>二、I/O多路复用</h2><ol>
+<li>select</li>
+<li>poll</li>
+<li>epoll(kqueue/iocp)</li>
+</ol>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">Youtube演讲</a></li>
+<li><a href="http://latentflip.com/loupe/">演示小工具</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">Firefox手册</a></li>
+<li><a href="https://v8.dev/">V8 JavaScript 引擎</a></li>
+<li><a href="https://www.cnblogs.com/hustskyking/p/websocket-with-node.html">WebSocket</a></li>
+</ol>
+<hr>
+<h1 id="Mac下nvm安装使用"><a href="#Mac下nvm安装使用" class="headerlink" title="Mac下nvm安装使用"></a><center><font color=red>Mac下nvm安装使用</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nvm是node版本管理工具，为了解决node各种版本存在不兼容现象，nvm是让你在同一台机器上安装和切换不同版本的node的工具。</p>
+<h2 id="二、安装使用"><a href="#二、安装使用" class="headerlink" title="二、安装使用"></a>二、安装使用</h2><ol>
+<li><p>安装<code>brew install nvm</code></p>
+<ul>
+<li><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</code></li>
+<li><code>wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</code></li>
+</ul>
+</li>
+<li><p>配置，正常安装完后会有相应提示，如</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Please note that upstream has asked us to make explicit managing</span><br><span class="line">nvm via Homebrew is unsupported by them and you should check any</span><br><span class="line">  1 export JMETER_HOME=/usr/local/apache-jmeter-5.3/bin</span><br><span class="line">problems against the standard nvm install method prior to reporting.</span><br><span class="line"></span><br><span class="line">You should create NVM&#x27;s working directory if it doesn&#x27;t exist:</span><br><span class="line"></span><br><span class="line">  mkdir ~/.nvm</span><br><span class="line"></span><br><span class="line">Add the following to ~/.zshrc or your desired shell</span><br><span class="line">configuration file:</span><br><span class="line"></span><br><span class="line">  export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">  [ -s &quot;/usr/local/opt/nvm/nvm.sh&quot; ] &amp;&amp; . &quot;/usr/local/opt/nvm/nvm.sh&quot;  # This loads nvm</span><br><span class="line">  [ -s &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot; ] &amp;&amp; . &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot;  # This loads nvm bash_completion</span><br><span class="line"></span><br><span class="line">You can set $NVM_DIR to any location, but leaving it unchanged from</span><br><span class="line">/usr/local/opt/nvm will destroy any nvm-installed Node installations</span><br><span class="line">upon upgrade/reinstall.</span><br><span class="line"></span><br><span class="line">Type `nvm help` for further information.</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>source .bash_profile</code></li>
+<li>查看nvm版本<code>nvm --version</code></li>
+<li>安装node指定版本<code>nvm install 版本号</code></li>
+<li>查看本地node的所有版本<code>nvm list</code></li>
+<li>切到指定node版本<code>nvm use 版本号</code></li>
+<li>卸载指定的node版本<code>nvm uninstall 版本号</code></li>
+<li>安装最新的node稳定版本<code>nvm install --lts</code></li>
+<li>查看node的所有的版本<code>nvm ls-remote</code></li>
+<li>使用node指定版本执行指定文件<code>nvm exec 版本号 node 要执行的文件路径</code></li>
+<li>设置默认版本的Node，每次启动终端都使用该版本的node<code>nvm alias default 版本号</code></li>
+</ol>
+<h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://github.com/nvm-sh/nvm">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Node操作MongoDB"><a href="#Node操作MongoDB" class="headerlink" title="Node操作MongoDB"></a><center><font color=red>Node操作MongoDB</font></center></h1><h2 id="一、准备阶段"><a href="#一、准备阶段" class="headerlink" title="一、准备阶段"></a>一、准备阶段</h2><ol>
 <li>安装node</li>
 <li>安装MongoDB</li>
 </ol>
@@ -9191,18 +9260,27 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var MongoClient = require(&#x27;mongodb&#x27;).MongoClient;</span><br><span class="line">var url = &quot;mongodb://localhost:27017/&quot;;</span><br><span class="line"> </span><br><span class="line">MongoClient.connect(url, &#123; useNewUrlParser: true, useUnifiedTopology: true &#125;, function(err, con) &#123;</span><br><span class="line">    if (err) &#123;</span><br><span class="line">        throw err;</span><br><span class="line">    &#125;</span><br><span class="line">    var db = con.db(&quot;mydb&quot;);</span><br><span class="line">    var filter = &#123;name: &quot;张五&quot; &#125;;  // 查询条件</span><br><span class="line">    db.collection(&quot;student&quot;).deleteMany(filter, function (err, res) &#123;</span><br><span class="line">        if (err) &#123;</span><br><span class="line">            throw err;</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(res.result.n + &quot; 条文档被删除&quot;);</span><br><span class="line">        con.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#find">node package</a>s</li>
+<h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#find">node package</a></li>
 </ol>
 </li>
 </ol>
 ]]></content>
       <categories>
-        <category>Node</category>
+        <category>PL</category>
       </categories>
       <tags>
+        <tag>镜像</tag>
+        <tag>Mac</tag>
         <tag>MongoDB</tag>
+        <tag>非阻塞</tag>
         <tag>Node</tag>
+        <tag>JS</tag>
+        <tag>npm</tag>
+        <tag>翻墙</tag>
+        <tag>运行机制</tag>
+        <tag>单线程</tag>
+        <tag>nvm</tag>
       </tags>
   </entry>
   <entry>
@@ -13972,203 +14050,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       </tags>
   </entry>
   <entry>
-    <title>NFS-RPC</title>
-    <url>/2019/03/17/Technology-NFS-RPC/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>分布式、微服务、集群等这些高频词汇是面试过程中经常遇到的，说到集群肯定会有session共享的问题，进而又提到了NFS，而RPC又和NFS有着千丝万缕的关系，特此记录！</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
-<li>NFS<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>NFS（Network File System）</code>，即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过<code>TCP/IP</code>网络共享资源。在<code>NFS</code>的应用中，本地<code>NFS</code>的客户端应用可以透明地读写位于远端<code>NFS</code>服务器上的文件，就像访问本地文件一样。它最大的功能就是可以透过网络，让不同的机器、不同的操作系统可以彼此分享个别的档案 (<code>share files</code>)，可以简单的将它看做是一个文件服务器 (<code>file server</code>) 。这个<code>NFS</code>服务器可以让你的<code>PC</code>来将网络远程的<code>NFS</code>服务器分享的目录，挂载到本地端的机器当中，在本地的机器看起来那个远程主机的目录就好像是自己的一个磁盘分区槽一样 (<code>partition</code>)。</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS的基本原则是“容许不同的客户端及服务端通过一组RPC分享相同的文件系统”，它是独立于操作系统，容许不同硬件及操作系统的系统共同进行文件的分享。</p>
-<ol start="2">
-<li>RPC</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IPC(Inter-Process Communication)，即进程间通信，指在不同进程之间传播或交换信息的一些技术和方法，本质是为了解决资源隔离的不同进程间互访资源问题。进程可以是在同一台计算机上，也可能是在网络联通的不同计算机上。根据进程所处位置不同，进程间通信的方法包括两类：①本地过程调用(LPC，Local Procedure Call)：用在多任务操作系统中，使得同时运行的任务能互相会话。这些任务共享内存空间使任务同步和互相发送信息。②远程过程调用(RPC，Remote Procedure Call)：允许程序调用另一个地址空间(通常是共享网络的另一台机器上)的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的，本质上编写的调用代码基本相同。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>RPC（Remote Procedure Call）</code>，即远程过程调用，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC多出现在分布式系统中，因为每个服务的职责相对单一，对于一个请求大多会调用不同服务提供的方法，将最后结果聚合后返回。<code>RPC</code>协议假定某些传输协议的存在，如<code>TCP</code>或<code>UDP</code>，为通信程序之间携带信息数据。在<code>OSI</code>网络通信模型中，<code>RPC</code>跨越了传输层和应用层。<code>RPC</code>使得开发包括网络分布式多程序在内的应用程序更加容易。<code>RPC</code>最主要的功能就是在指定每个<code>NFS</code>功能所对应的<code>port number</code>，并且回报给客户端，让客户端可以连结到正确的端口上去。它能使客户端执行其他系统中程序的一种机制。</p>
-<p><img src="rpc.png" alt="RPC调用过程"></p>
-<ol start="3">
-<li><code>RPC</code>又是如何知道每个<code>NFS</code>端口的？</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当服务器在启动<code>NFS</code>时会随机取用数个端口并主动的向<code>RPC</code>注册，因此<code>RPC</code>可以知道每个端口对应的<code>NFS</code>功能。<code>RPC</code>固定使用<code>port 111</code>来监听客户端的需求并回报客户端正确的端口。注意，启动<code>NFS</code>之前<code>RPC</code>就要先启动了，否则<code>NFS</code>会无法向<code>RPC</code>注册。另外，<code>RPC</code>若重新启动时，原本注册的数据会不见，因此<code>RPC</code>重新启动后，它管理的所有服务都需要重新启动来重新向<code>RPC</code>注册。</p>
-<ol start="4">
-<li>关系<ul>
-<li>NFS是一个文件系统，而RPC是负责信息的传输。</li>
-<li>NFS在文件传送或信息传送过程中依赖于RPC协议。</li>
-<li>NFS本身是没有提供信息传输的协议和功能的，但NFS却能让我们通过网络进行资料的分享，这是因为NFS使用了一些其它的传输协议，而这些传输协议用到这个RPC功能的。</li>
-<li>当客户端有NFS档案存取需求流程:<ul>
-<li>客户端向服务器<code>RPC(port 111)</code>发出<code>NFS</code>档案存取请求；</li>
-<li>服务器端找到对应的已注册的<code>NFS daemon</code>端口并返回给客户端；</li>
-<li>客户端拿到正确的端口后，就可以直接与<code>NFS daemon</code>来联机。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
-<li><p>NFS服务搭建</p>
-<ul>
-<li>背景</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">节点一：ubuntu14</span><br><span class="line">ip：192.168.20.10</span><br><span class="line">cat /etc/issue</span><br><span class="line">Ubuntu 14.04.6 LTS \n \l</span><br><span class="line"></span><br><span class="line">节点二：centos7</span><br><span class="line">ip：192.168.10.10</span><br><span class="line">cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.6.1810 (Core)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>nfs服务器部署在ubuntu14</p>
-<ul>
-<li><p>安装服务端 <code>sudo apt-get install nfs-kernel-server</code></p>
-</li>
-<li><p>安装客户端 <code>sudo apt-get install nfs-common​</code></p>
-</li>
-<li><p>创建共享目录 <code>cd /home &amp;&amp; sudo mkdir nfs_share</code></p>
-</li>
-<li><p>修改目录权限 <code>sudo chmod -R 777 /home/nfs_share</code></p>
-</li>
-<li><p>修改配置项 <code>sudo vim /etc/exports</code>，添加内容 <code>/home/nfs_share 192.168.10.10(rw,sync,no_subtree_check,insecure)</code></p>
-</li>
-<li><p>更新一下配置项(每次修改完<code>/etc/exports</code>须执行一次，初次启动不需要) <code>exportfs -a</code></p>
-<ul>
-<li><code>/home/nfs_share</code>为ubuntu14共享目录</li>
-<li>ip为centos7</li>
-<li>括号内选项<ul>
-<li>ro：共享目录只读</li>
-<li>rw：共享目录可读可写</li>
-<li>all_squash：所有访问用户都映射为匿名用户或用户组</li>
-<li>no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组</li>
-<li>root_squash（默认）：将来访的root用户映射为匿名用户或用户组</li>
-<li>no_root_squash：来访的root用户保持root帐号权限</li>
-<li>anonuid=<UID>：指定匿名访问用户的本地用户UID，默认为nfsnobody（65534）</li>
-<li>anongid=<GID>：指定匿名访问用户的本地用户组GID，默认为nfsnobody（65534）</li>
-<li>secure（默认）：限制客户端只能从小于1024的tcp/ip端口连接服务器</li>
-<li>insecure：允许客户端从大于1024的tcp/ip端口连接服务器</li>
-<li>sync：将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性</li>
-<li>async：将数据先保存在内存缓冲区中，必要时才写入磁盘</li>
-<li>wdelay（默认）：检查是否有相关的写操作，如果有则将这些写操作一起执行，这样可以提高效率</li>
-<li>no_wdelay：若有写操作则立即执行，应与sync配合使用</li>
-<li>subtree_check（默认） ：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限</li>
-<li>no_subtree_check ：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>启动服务 <code>sudo /etc/init.d/nfs-kernel-server start</code></p>
-<ul>
-<li>重启服务 <code>sudo /etc/init.d/nfs-kernel-server restart</code></li>
-<li>关闭服务 <code>sudo /etc/init.d/nfs-kernel-server stop</code></li>
-</ul>
-</li>
-<li><p>新建共享文件 <code>touch /home/nfs_share/test.txt</code></p>
-</li>
-</ul>
-</li>
-<li><p>客户端安装在centos7</p>
-<ul>
-<li><p>安装客户端 <code>sudo yum -y install nfs-utils rpcbind</code></p>
-</li>
-<li><p>关掉centos7防火墙和SELinux <code>systemctl stop firewalld</code> <code>sudo setenforce 0</code></p>
-</li>
-<li><p>查看是否连接成功 <code>showmount -e 192.168.20.10</code></p>
-<ul>
-<li>ip为ubuntu14</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share 192.168.10.10</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>挂在目录 <code>sudo mount -t nfs 192.168.20.10:/home/nfs_share /mnt</code></p>
-<ul>
-<li>报错 <code>mount.nfs: access denied by server while mounting 192.168.20.10:/home/nfs_share</code></li>
-</ul>
-</li>
-<li><p>回到<code>ubuntu14</code></p>
-<ul>
-<li>修改<code>/etc/exports</code>，改为<code>/home/nfs_share *(rw,sync,no_subtree_check)</code></li>
-<li>执行<code>sudo exportfs -a</code></li>
-</ul>
-</li>
-<li><p>回到centos7，查看<code>showmount -e 192.168.20.10</code></p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share (everyone)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重新挂载 <code>sudo mount -t nfs 192.168.20.10:/home/nfs_share /mnt</code>，无输出错误信息则成功</li>
-<li>取消挂载 <code>sudo umount /mnt</code></li>
-</ul>
-</li>
-<li><p>测试</p>
-<ul>
-<li>ubuntu14 <code>cd /home/nfs_share &amp;&amp; touch 1.txt</code></li>
-<li>centos7 <code>ls /mnt</code>，有1.txt则表示成功</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、RPC框架"><a href="#三、RPC框架" class="headerlink" title="三、RPC框架"></a>三、RPC框架</h2><ol>
-<li>框架组成<ul>
-<li>服务提供者：远程服务的被调用方，提供服务实现。</li>
-<li>服务消费者：远程服务的调用方。</li>
-<li>注册中心：提供服务的注册和发现。</li>
-<li>调用监控：监控远程服务调用情况。</li>
-</ul>
-</li>
-</ol>
-<p><img src="frame.png" alt="RPC框架组成"></p>
-<blockquote>
-<p>RPC属于那一层？</p>
-</blockquote>
-<ol start="2">
-<li>常见框架</li>
-</ol>
-<blockquote>
-<p>目前业界主流的RPC框架包括阿里巴巴的Dubbo、谷歌开源的gRPC、Apache的Thrift(之前是Facebook)、新浪微博的Montan等。</p>
-</blockquote>
-<ul>
-<li><p>国内</p>
-<ul>
-<li><a href="http://dubbo.I/O/">Dubbo</a>，来自阿里巴巴 </li>
-<li><a href="https://github.com/weibocom/motan">Motan</a>，新浪微博自用</li>
-<li><a href="https://github.com/dangdangdotcom/dubbox">Dubbox</a>，基于dubbo</li>
-<li><a href="https://github.com/smallnest/rpcx">rpcx</a>，基于Golang的</li>
-<li><a href="https://github.com/neoremind/navi-pbrpc">Navi &amp; Navipbrpc</a></li>
-</ul>
-</li>
-<li><p>国外</p>
-<ul>
-<li><a href="https://thrift.apache.org">Thrift from facebook</a></li>
-<li><a href="https://avro.apache.org">Avro from hadoop</a></li>
-<li><a href="https://twitter.github.I/O/finagle">Finagle by twitter</a></li>
-<li><a href="http://www.grpc.I/O">gRPC by Google</a></li>
-<li><a href="http://hessian.caucho.com">Hessian from cuacho</a></li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>PHP相关<ul>
-<li><a href="http://www.phprpc.org/zh_CN/">phprpc</a></li>
-<li><a href="https://github.com/laruence/yar">yar</a></li>
-<li><a href="http://thrift.apache.org/">thrift</a></li>
-<li><a href="https://www.grpc.io/">gRPC</a></li>
-<li><a href="https://www.swoole.com/">swoole</a></li>
-<li><a href="https://github.com/hprose/hprose-php">hprose</a></li>
-</ul>
-</li>
-</ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://www.jianshu.com/p/44368535796f">参考一</a></li>
-<li><a href="https://www.zybuluo.com/phper/note/76641">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>NFS</tag>
-        <tag>RPC</tag>
-        <tag>LPC</tag>
-        <tag>Dubbo</tag>
-        <tag>IPC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>各种安装</title>
     <url>/2019/03/13/Linux-%E5%90%84%E7%A7%8D%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -15050,8 +14931,8 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>线程</tag>
         <tag>协程</tag>
         <tag>操作系统</tag>
-        <tag>RPC</tag>
         <tag>IPC</tag>
+        <tag>RPC</tag>
         <tag>挂起</tag>
         <tag>fork</tag>
         <tag>调度</tag>
@@ -20296,6 +20177,11 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP状态码(英语：HTTP Status Code)是用以表示网页服务器超文本传输协议响应状态的3位数字代码。它由RFC 2616规范定义的，并得到RFC 2518、RFC 2817、RFC 2295、RFC 2774与RFC 4918等规范扩展。所有状态码的第一个数字代表了响应的五种状态之一。所示的消息短语是典型的，但是可以提供任何可读取的替代方案。除非另有说明，状态码是HTTP/1.1标准(RFC 7231)的一部分。HTTP状态码的官方注册表由互联网号码分配局(Internet Assigned Numbers Authority)维护。</p>
 <p><img src="http%E8%AF%B7%E6%B1%82.png" alt="http请求"></p>
 <h2 id="二、常见错误码"><a href="#二、常见错误码" class="headerlink" title="二、常见错误码"></a>二、常见错误码</h2><ol>
+<li><p>400</p>
+<ul>
+<li>Bad Request，往往因为语法错误而无法被服务端理解</li>
+</ul>
+</li>
 <li><p>413</p>
 <ul>
 <li><p>Request Entity Too Large，请求体过大，一般出现在上传大文件请求</p>
@@ -20315,6 +20201,8 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 </li>
 <li><p>499</p>
 <ul>
+<li><p>nginx独有，表示在收到客户端完整的HTTP request前，客户端试图关闭TCP连接导致</p>
+</li>
 <li><p>下载nginx-1.16.1.tar.gz，解压到nginx-1.16.1目录，打开<code>nginx-1.16.1/src/http/ngx_http_request.h</code>文件，见499定义：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * HTTP does not define the code for the case when a client closed</span><br><span class="line"> * the connection while we are processing its request so we introduce</span><br><span class="line"> * own code to log such situation when a client has closed the connection</span><br><span class="line"> * before we even try to send the HTTP header to it</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_CLIENT_CLOSED_REQUEST     499</span><br></pre></td></tr></table></figure>
 </li>
@@ -20353,6 +20241,7 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://nginx.org/en/docs/">参考一</a></li>
+<li><a href="https://www.nginx.com/nginx-wiki/build/dirhtml/extending/api/http/">参考二</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -21864,30 +21753,48 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 </li>
 </ol>
 <ol start="4">
-<li>tcpdump(免费，Mac、Linux)<ul>
-<li>tcpdump是Unix/Linux下的抓包工具，它可以针对指定网卡、端口、协议等进行抓包。</li>
-<li>安装<code>brew install tcpdump</code></li>
-<li>使用<code>sudo tcpdump host www.baidu.com</code><ul>
-<li>打开浏览器访问百度首页</li>
-<li>回到抓包页面可看到<ul>
-<li>以<code>21:33:08.338975 IP 10.2.182.71.61413 &gt; 220.181.38.149.https: Flags [S], seq 1290980111, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val 859313791 ecr 0,sackOK,eol], length 0</code>为例<ul>
-<li><code>21:33:08.338975</code>代表数据传输的时间</li>
-<li><code>IP 10.2.182.71.61414</code>代表发送端的主机和端口</li>
-<li><code>&gt;</code>代表数据传输方向</li>
-<li><code>220.181.38.149.https</code>代表接收端的主机和端口号</li>
-<li>Flags代表TCP包中的标志信息，主要有以下几种：<ul>
+<li><p>tcpdump(免费，Mac、Linux)</p>
+<ul>
+<li><p>tcpdump是Unix/Linux下的抓包工具，它可以针对指定网卡、端口、协议等进行抓包。</p>
+</li>
+<li><p>安装<code>brew install tcpdump</code></p>
+</li>
+<li><p>使用<code>sudo tcpdump host www.baidu.com</code></p>
+<ul>
+<li><p>打开浏览器访问百度首页</p>
+</li>
+<li><p>回到抓包页面可看到</p>
+<ul>
+<li><p>以<code>21:33:08.338975 IP 10.2.182.71.61413 &gt; 220.181.38.149.https: Flags [S], seq 1290980111, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val 859313791 ecr 0,sackOK,eol], length 0</code>为例</p>
+<ul>
+<li><p><code>21:33:08.338975</code>代表数据传输的时间</p>
+</li>
+<li><p><code>IP 10.2.182.71.61414</code>代表发送端的主机和端口</p>
+</li>
+<li><p><code>&gt;</code>代表数据传输方向</p>
+</li>
+<li><p><code>220.181.38.149.https</code>代表接收端的主机和端口号</p>
+</li>
+<li><p>Flags代表TCP包中的标志信息，主要有以下几种：</p>
+<ul>
 <li><code>[S]</code>代表SYN，表示这是一个SYN请求</li>
 <li><code>[.]</code>代表ACK，表示这是一个ACK确认包</li>
 <li><code>[S.]</code>表示这是一个SYN+ACK确认包</li>
-<li><code>[P.]</code>代表PUSH，可以是从服务器端向客户端推送，也可以从客户端向服务器端推</li>
+<li><code>[P.]</code>代表PUSH+ACK，可以是从服务器端向客户端推送，也可以从客户端向服务器端推</li>
 <li><code>[F]</code>代表FIN，关闭连接操作，client/server都可发起</li>
+<li><code>[F.]</code>表示FIN+ACK</li>
 <li><code>[R]</code>表示这是一个RST包，与F包作用相同，但RST表示连接关闭时，仍然有数据未被处理，可以理解为是强制切断连接</li>
+<li><code>[R.]</code>表示RST+ACK</li>
 </ul>
 </li>
-<li>seq代表序列号</li>
-<li>ack代表确认序号，因为这是一个SYN包故没有ack</li>
-<li>win代表滑动窗口大小</li>
-<li>options：tcp包的option区域，具体如下：<ul>
+<li><p>seq代表序列号</p>
+</li>
+<li><p>ack代表确认序号，因为这是一个SYN包故没有ack</p>
+</li>
+<li><p>win代表滑动窗口大小</p>
+</li>
+<li><p>options：tcp包的option区域，具体如下：</p>
+<ul>
 <li>mss：</li>
 <li>nop：</li>
 <li>wscale：</li>
@@ -21896,7 +21803,8 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 <li>sack：</li>
 </ul>
 </li>
-<li>length代表数据包的大小</li>
+<li><p>length代表数据包的大小</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -22582,142 +22490,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>app</tag>
         <tag>Tk</tag>
         <tag>Tcl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UML</title>
-    <url>/2017/10/10/Technology-UML/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
-<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
-<li>用例图：展现了一组用例、参与者以及它们之间的关系，描述系统的静态使用情况，说白了就是用户与各项操作之间的关系。</li>
-<li>类图：展示了一组类、接口和协作以及它们之间的关系，类图也是我们在建模中所建立的最常见的图。系统可以有多个类图，所以一个类图只表达了系统的一个方面。一般在高层给出主要职责，低层给出类的属性和操作，类图分三层:<ul>
-<li>第一层显示类的名称，如果是抽象类，则就用斜体显示</li>
-<li>第二层是类的特性，通常就是字段和属性</li>
-<li>第三层是类的操作，通常是方法或行为</li>
-<li>特性和操作前面的符号：<ul>
-<li><code>+</code> 表示public</li>
-<li><code>#</code> 表示protected</li>
-<li><code>-</code> 表示private </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>对象图：类图的一个例子，它和类图的区别在于对象图所显示的是类的多个对象实例而非实际的类，对象图显示的是系统执行时的一个可能的快照，即在某一时间点上系统可能呈现出的样子。</li>
-<li>构件图：也叫组件图，由组件、接口和组件之间联系构成。</li>
-<li>配置图：展现了对运行时处理节点以及其中组件的配置，说白了就是把系统用到的处理器和设备联系起来，称之为系统的配件图。</li>
-<li>时序图：显示多个对象之间的动态协作，重点显示对象之间发送消息的时间顺序。相比协作图，时序图用的比较多，因为它们之间的逻辑顺序很清晰，如果顺序体现的不那么明显，应该选用协作图，关系更清楚。</li>
-<li>协作图：对一次交互中有意义的对象和对象间的连接建模，主要强调收发消息，而不强调对象之间的顺序。</li>
-<li>状态图：展示了一个特定对象的所有可能状态以及由于各种事件的发生而引起的状态之间的转移。一个状态图描述了一个状态机，状态图对于接口、类或协作的行为建模尤为重要，可用来描述实例的生命周期。</li>
-<li>活动图：状态图的一个变体，显示了系统中从一个活动到另一个活动的流程，强调的是对象之间的流程控制。</li>
-</ol>
-<h2 id="三、类图"><a href="#三、类图" class="headerlink" title="三、类图"></a>三、类图</h2><blockquote>
-<p>概念</p>
-</blockquote>
-<ol>
-<li><p>类图(Class diagram)，显示了模型的静态结构，特别是模型中存在的类、类的内部结构以及它们与其他类的关系等。它用于描述系统中所包含的类以及它们之间的相互关系，帮助人们简化对系统的理解，它是系统分析和设计阶段的重要产物，也是系统编码和测试的重要模型依据。 </p>
-<ul>
-<li>类图以反映类结构和类之间关系为目的，用以描述软件系统的结构，是一种静态建模方法</li>
-<li>类图主要用在面向对象软件开发的分析和设计阶段，描述系统的静态结构</li>
-<li>类图是最常用的UML图，显示出类、接口以及它们之间的静态结构和关系，它用于描述系统的结构化设计</li>
-<li>类图最基本的元素是类或者接口。 </li>
-</ul>
-</li>
-<li><p>作用</p>
-<ul>
-<li>在软件工程中，类图是一种静态的结构图，描述了系统的类的集合，类的属性和类之间的关系，可以简化了人们对系统的理解。</li>
-<li>类图是系统分析和设计阶段的重要产物，是系统编码和测试的重要模型。</li>
-</ul>
-</li>
-<li><p>使用场合</p>
-<ul>
-<li>为系统词汇建模型：为系统的词汇建模实际上是从词汇表中发现类，发现它的责任。</li>
-<li>模型化简单的协作：协作是指一些类、接口和其他的元素一起工作提供一些合作的行为，这些行为不是简单地将元素相加能得到的。例如：当你为一个分布式的系统中的事务处理过程建模型时，你不可能只通过一个类来明白事务是怎样进行的，事实上这个过程的执行涉及到一系列的类的协同工作。使用类图来可视化这些类和他们的关系。</li>
-<li>模型化一个逻辑数据库模式：想象模式是概念上设计数据库的蓝图。在很多领域，你将想保存持久性数据到关系数据库或面向对象的数据库。你可以用类图为这些数据库模式建立模型。</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>类图结构</p>
-</blockquote>
-<ol>
-<li><p>在UML类图中，使用长方形描述一个类的主要构成，长方形垂直地分为三层，以此放置类的名称、属性和方法。</p>
-</li>
-<li><p>类的名称表示方法</p>
-<ul>
-<li>一般的类的类名用正常字体粗体表示</li>
-<li>抽象类名用斜体字粗体</li>
-<li>接口则需在上方加上<code>&lt;&lt;interface&gt;&gt;</code></li>
-</ul>
-</li>
-<li><p>类的属性和方法的访问控制符表示</p>
-<ul>
-<li><code>+</code>:表示public</li>
-<li><code>#</code>:表示protected</li>
-<li><code>-</code>:表示private</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>六种类关系</p>
-</blockquote>
-<p><img src="relation.png" alt="类关系表示方法"></p>
-<ol>
-<li><p>继承关系：继承关系(Extend)也称泛化关系(Generalization)，用于描述父类与子类之间的关系。</p>
-<ul>
-<li>父类又称作基类，子类又称作派生类</li>
-<li>继承关系中，子类继承父类的所有功能(属性、方法)</li>
-<li>子类中除了与父类一致的信息以外，还包括额外的信息</li>
-</ul>
-</li>
-<li><p>实现关系：即Implementation，主要用来规定接口和实现类的关系。</p>
-<ul>
-<li>接口是方法的集合，在实现关系中，类实现了接口并要实现接口声明的所有方法</li>
-<li>抽象类也有类似的要求，即要实现所有的抽象方法</li>
-</ul>
-</li>
-<li><p>组合关系：即Composition，整体与部分的关系(不可以分开)。</p>
-<ul>
-<li>组合关系表示类之间整体与部分的关系，整体和部分有一致的生存期</li>
-<li>一旦整体对象不存在，部分对象也将不存在，是同生共死的关系</li>
-</ul>
-</li>
-<li><p>聚合关系：即Aggregation，整体和部分的关系(可以分开)。</p>
-<ul>
-<li>聚合关系也表示类之间整体与部分的关系，成员对象是整体对象的一部分，但是成员对象可以脱离整体对象独立存在</li>
-</ul>
-</li>
-<li><p>关联关系：即Association，表示一个类的属性保存了对另一个类的一个实例(或多个实例)的引用。</p>
-<ul>
-<li>关联关系是类与类之间最常用的一种关系，表示一类对象与另一类对象之间有联系</li>
-<li>组合、聚合也属于关联关系，只是关联关系的类间关系比其他两种要弱</li>
-</ul>
-</li>
-<li><p>依赖关系：即Dependence，假设A类的变化引起了B类的变化，则说名B类依赖于A类。</p>
-<ul>
-<li>大多数情况下，依赖关系体现在某个类的方法使用另一个类的对象作为参数</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>总结</p>
-</blockquote>
-<ol>
-<li>六种类关系中，组合、聚合和关联的代码结构一样，可以从关系的强弱来理解，各类关系从强到弱依次是：继承→实现→组合→聚合→关联→依赖。</li>
-<li>具体关系可参看下图</li>
-</ol>
-<p><img src="all.png" alt="类及累的关系表示图"></p>
-]]></content>
-      <categories>
-        <category>Technology</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-        <tag>UML</tag>
       </tags>
   </entry>
   <entry>
@@ -25942,71 +25714,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>修改npm镜像</title>
-    <url>/2016/08/17/Node-%E4%BF%AE%E6%94%B9npm%E9%95%9C%E5%83%8F/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>所谓翻墙，是指绕过相应的IP封锁、内容过滤、域名劫持、流量限制等，实现对网络内容的访问。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>定义：npm全称为Node Package Manager，是一个基于Node.js的包管理器，也是整个Node.js社区最流行、支持的第三方模块最多的包管理器，它的初衷是为了让JavaScript开发人员更容易分享和重用代码。</p>
-</li>
-<li><p>常见使用场景：</p>
-<ul>
-<li>获取第三方包并使用。</li>
-<li>将自己编写的包发布。</li>
-</ul>
-</li>
-<li><p>常用命令</p>
-<ul>
-<li>安装<code>npm install [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
-<li>卸载<code>npm uninstall [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
-<li>更新<code>npm update [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
-<li>搜索<code>npm search [&lt;name&gt;&lt;version&gt;][-g]/[--save][-dev]</code></li>
-<li>查看安装模块<code>npm list/ls/la/ll [-g]</code> </li>
-<li>查看模块路径<code>npm root [-g]</code></li>
-<li>查看模块信息<code>npm view &lt;name&gt; [package.json属性名称]</code></li>
-<li>查看官方文档<code>npm docs &lt;name&gt;</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="二、修改镜像"><a href="#二、修改镜像" class="headerlink" title="二、修改镜像"></a>二、修改镜像</h2><ol>
-<li>常见镜像<ul>
-<li><a href="http://registry.npm.taobao.org/">淘宝npm镜像</a>，<a href="http://npm.taobao.org/">搜索传送门</a></li>
-<li><a href="http://r.cnpmjs.org/">cnpmjs镜像</a>，<a href="http://cnpmjs.org/">搜索传送门</a></li>
-</ul>
-</li>
-<li>使用<ul>
-<li>临时使用<code>npm --registry https://registry.npm.taobao.org install &lt;name&gt;</code></li>
-<li>持久使用<ul>
-<li>配置源<code>npm config set registry https://registry.npm.taobao.org</code></li>
-<li>查看源<code>npm config get registry</code>或<code>npm info express</code></li>
-</ul>
-</li>
-<li>通过<code>cnpm</code>使用</li>
-<li>安装cnpm<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
-<li>使用cnpm和使用npm命令一样，正常操作就行了</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.jianshu.com/p/7ea13d57638b">参考一</a></li>
-<li><a href="https://docs.npmjs.com/cli/npm">参考二</a></li>
-<li><a href="https://www.npmjs.com.cn/cli/npm/">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>镜像</tag>
-        <tag>Node</tag>
-        <tag>npm</tag>
-        <tag>翻墙</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>行政杂谈</title>
     <url>/2016/08/10/Hobby-%E8%A1%8C%E6%94%BF%E6%9D%82%E8%B0%88/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -27768,37 +27475,6 @@ read_xlsx(name, sheet)
       <tags>
         <tag>MySQL</tag>
         <tag>buffer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>node运行机制</title>
-    <url>/2016/05/17/Node-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Patch - Publicly released update to fix a known bug/issue. Hotfix - Update to fix a very specific issue, not always publicly released. Maintenance Release - Incremental update between service packs or software versions to fix multiple outstanding issues. Service Pack - Large Update that fixes many outstanding issues, normally includes all Patches, Hotfixes, Maintenance releases that predate the service pack.</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、事件循环"><a href="#一、事件循环" class="headerlink" title="一、事件循环"></a>一、事件循环</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;众所周知，JS从诞生之日起就是一门单线程的非阻塞的脚本语言。单线程是由其最初的用途来决定的——与浏览器交互，JS代码在执行的任何时候都只有一个主线程来处理所有的任务。非阻塞则是当代码需要进行一项异步任务的时候(如I/O事件，无法立刻返回结果，需要花一定时间才能返回)，主线程会挂起(pending)这个任务，然后在异步任务返回结果的时候再根据一定规则去执行相应的回调。要实现非阻塞，就要说到我们的主角——事件循环。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<h2 id="二、I-O多路复用"><a href="#二、I-O多路复用" class="headerlink" title="二、I/O多路复用"></a>二、I/O多路复用</h2><ol>
-<li>select</li>
-<li>poll</li>
-<li>epoll(kqueue/iocp)</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">Youtube演讲</a></li>
-<li><a href="http://latentflip.com/loupe/">演示小工具</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">Firefox手册</a></li>
-<li><a href="https://v8.dev/">V8 JavaScript 引擎</a></li>
-<li><a href="https://www.cnblogs.com/hustskyking/p/websocket-with-node.html">WebSocket</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>运行机制</tag>
-        <tag>单线程非阻塞</tag>
       </tags>
   </entry>
   <entry>
@@ -29569,53 +29245,6 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node和JS对比</title>
-    <url>/2016/03/17/Node-Node%E5%92%8CJS%E5%AF%B9%E6%AF%94/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>前端JS是基于浏览器端的Javascript，Node.js则一个是基于服务端的javascript(后端Nodejs)。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript是一门动态脚本语言，可以运行于宿主环境(如浏览器等包含Js引擎的环境)。浏览器通过内置一个Js引擎可以解释执行Js代码，浏览器实现Js标准规范(ECMAScript)，提供API(DOM和BOM)，可以使用JavaScript调用，支持操作页面DOM，调用某些浏览器操作等客户端功能，可以说<code>JavaScript = ECMAScript + DOM + 宿主环境(BOM)</code>。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node.js是一个基于Google V8引擎(Js引擎的某一种)构建的JavaScript运行环境，提供API(操作系统、文件系统、网络系统、数据库等)，可以使用JavaScript调用，支持读取本地文件，开启本地主机端口服务，发送/接受请求等服务端功能，可以说<code>Node.js = JavaScript + Node环境</code>。</p>
-<blockquote>
-<p>要执行JavaScript代码必须要有一个Js引擎，而浏览器和Nodejs环境都内置了Js引擎。所以如果Js代码中调用了浏览器提供的API，则必须安装一个浏览器；若调用了Nodejs提供的API，则必须安装nodejs环境，然后以各自规定的方式加载、执行JavaScript代码。</p>
-</blockquote>
-<h2 id="二、对比"><a href="#二、对比" class="headerlink" title="二、对比"></a>二、对比</h2><ol>
-<li>JavaScript是一门编程语言(脚本语言)，而Node.js是一个运行环境。</li>
-<li>JavaScript以前是在浏览器里执行的，需要浏览器里的JavaScript引擎，Firefox有叫做Spidermonkey的引擎，Safari有JavaScriptCore的引擎，Chrome有V8的引擎，现在有人把Chrome有V8的引擎的引擎拿出来做了包装，加入了内置基本模块(大多用JavaScript编写)，就构成了Node.js。</li>
-<li>Node.js可以说是JavaScript的一种独立于浏览器的运行环境。</li>
-<li>两者侧重点也不太一样：<ul>
-<li>JavaScript<ul>
-<li>DOM(一些操作页面元素的方法)</li>
-<li>BOM(一些操作浏览器的方法)</li>
-</ul>
-</li>
-<li>Node.js<ul>
-<li>OS(操作系统)</li>
-<li>file(文件系统)</li>
-<li>net(网络系统)</li>
-<li>database(数据库)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://nodejs.org/zh-cn/">Nodejs</a></li>
-<li><a href="https://www.javascript.com/">JavaScript</a></li>
-<li><a href="https://www.pluralsight.com/paths/node-js">参考三</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Node</tag>
-        <tag>JS</tag>
       </tags>
   </entry>
   <entry>
@@ -36397,12 +36026,12 @@ read_xlsx(name, sheet)
 <span id="more"></span>
 
 <h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a><center><font color=red>常用</font></center></h1><ol>
-<li><p>ping</p>
+<li>ping<ul>
+<li>ping <a href="http://www.baidu.com">www.baidu.com</a></li>
+</ul>
 </li>
-<li><p>ifconfig</p>
-</li>
-<li><p>netstat</p>
-<ul>
+<li>ifconfig</li>
+<li>netstat<ul>
 <li>通过pid查看占用端口<code>netstat -nap | grep pid</code></li>
 <li>通过端口查看进程<code>netstat -nap | grep 端口号</code><ul>
 <li><code>-p</code>显示端口进程</li>
@@ -36410,45 +36039,52 @@ read_xlsx(name, sheet)
 </li>
 </ul>
 </li>
-<li><p>lsof</p>
+<li>lsof</li>
+<li>tcpdump</li>
+<li>traceroute<ul>
+<li>traceroute <a href="http://www.baidu.com">www.baidu.com</a></li>
+</ul>
 </li>
-<li><p>tcpdump</p>
+<li>nslookup<ul>
+<li>nslookup <a href="http://www.baidu.com">www.baidu.com</a></li>
+</ul>
 </li>
-<li><p>traceroute</p>
-</li>
-<li><p>nslookup</p>
-</li>
-<li><p>ssh</p>
-</li>
-<li><p>top</p>
-</li>
-<li><p>free</p>
-</li>
-<li><p>du</p>
-</li>
-<li><p>uname</p>
-</li>
-<li><p>hostname</p>
-<ul>
+<li>ssh</li>
+<li>top</li>
+<li>free</li>
+<li>du</li>
+<li>uname</li>
+<li>hostname<ul>
 <li><code>hostname -f</code></li>
 </ul>
 </li>
-<li><p>sleep</p>
-<ul>
+<li>sleep<ul>
 <li>linux支持<code>s/m/h</code>等时间单位，MacOS只支持<code>s</code></li>
 </ul>
 </li>
-<li><p>pwd</p>
-<ul>
+<li>pwd<ul>
 <li>默认显示的是连接路径</li>
 <li><code>pwd -P</code>可显示实际路径</li>
 </ul>
 </li>
-<li><p>telnet</p>
-<ul>
+<li>telnet<ul>
 <li>连接redis<code>telnet 127.0.0.1 6379</code></li>
+<li>连接百度<code>telnet www.baidu.com 80</code></li>
 </ul>
 </li>
+<li>nc<ul>
+<li>连接mysql<code>nc -zv 127.0.0.1  3306</code></li>
+</ul>
+</li>
+<li>strace<ul>
+<li>strace telnet <a href="http://www.baidu.com">www.baidu.com</a> 500</li>
+</ul>
+</li>
+<li>openssl <ul>
+<li>openssl s_client -connect <a href="http://www.baidu.com:443">www.baidu.com:443</a></li>
+</ul>
+</li>
+<li>mtr</li>
 </ol>
 <hr>
 <h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a><center><font color=red>cut</font></center></h1><ol>
@@ -37513,7 +37149,7 @@ read_xlsx(name, sheet)
 </li>
 </ol>
 <hr>
-<h1 id="strace"><a href="#strace" class="headerlink" title="strace"></a><center><font color=red>strace</font></center></h1><ol>
+<h1 id="strace和dtruss"><a href="#strace和dtruss" class="headerlink" title="strace和dtruss"></a><center><font color=red>strace和dtruss</font></center></h1><ol>
 <li><p>strace常用来跟踪进程执行时的系统调用和所接收的信号。在Linux世界，进程不能直接访问硬件设备，当进程需要访问硬件设备(比如读取磁盘文件，接收网络数据等等)时，必须由用户态模式切换至内核态模式，通过系统调用访问硬件设备。strace可以跟踪到一个进程产生的系统调用，包括参数，返回值，执行消耗的时间。</p>
 </li>
 <li><p>使用，可通过命令<code>man dtruss</code>来查看</p>
@@ -37545,6 +37181,11 @@ read_xlsx(name, sheet)
 <li><code>-s strsize</code>：指定输出的字符串的最大长度，默认为32。</li>
 <li><code>-u username</code>：以<code>username</code>的<code>UID</code>和<code>GID</code>执行被跟踪的命令</li>
 <li><code>-e expr</code>：指定一个表达式，用来控制如何跟踪。</li>
+</ul>
+</li>
+<li><p>strace telnet <a href="http://www.baidu.com">www.baidu.com</a> 500</p>
+<ul>
+<li>dtruss telnet <a href="http://www.baidu.com">www.baidu.com</a> 500</li>
 </ul>
 </li>
 </ol>
@@ -38461,8 +38102,8 @@ read_xlsx(name, sheet)
 <li>目录搜索引擎：依赖人工收集处理数据并置于分类目录链接下的搜索方式。</li>
 </ol>
 <hr>
-<h1 id="字符集和字符编码"><a href="#字符集和字符编码" class="headerlink" title="字符集和字符编码"></a><center><font color=red>字符集和字符编码</font></center></h1><h1 id="一、字符"><a href="#一、字符" class="headerlink" title="一、字符"></a>一、字符</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符(Character)是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等，如：1、2、3、A、B、C、~！·#￥%……—*（）——+等。</p>
-<h1 id="二、字符集"><a href="#二、字符集" class="headerlink" title="二、字符集"></a>二、字符集</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符集(Character set)是多个字符的集合，字符集种类较多，每个字符集包含的字符个数不同，常见字符集名称：ASCII字符集、GB2312字符集、BIG5字符集、 GB18030字符集、Unicode字符集等。计算机要准确的处理各种字符集文字，就需要进行字符编码，以便计算机能够识别和存储各种文字。中文文字数目大，而且还分为简体中文和繁体中文两种不同书写规则的文字，而计算机最初是按英语单字节字符设计的，因此，对中文字符进行编码，是中文信息交流的技术基础。</p>
+<h1 id="字符集和字符编码"><a href="#字符集和字符编码" class="headerlink" title="字符集和字符编码"></a><center><font color=red>字符集和字符编码</font></center></h1><h2 id="一、字符"><a href="#一、字符" class="headerlink" title="一、字符"></a>一、字符</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符(Character)是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等，如：1、2、3、A、B、C、~！·#￥%……—*（）——+等。</p>
+<h2 id="二、字符集"><a href="#二、字符集" class="headerlink" title="二、字符集"></a>二、字符集</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符集(Character set)是多个字符的集合，字符集种类较多，每个字符集包含的字符个数不同，常见字符集名称：ASCII字符集、GB2312字符集、BIG5字符集、 GB18030字符集、Unicode字符集等。计算机要准确的处理各种字符集文字，就需要进行字符编码，以便计算机能够识别和存储各种文字。中文文字数目大，而且还分为简体中文和繁体中文两种不同书写规则的文字，而计算机最初是按英语单字节字符设计的，因此，对中文字符进行编码，是中文信息交流的技术基础。</p>
 <ol start="2">
 <li>分类<ul>
 <li>ASCII</li>
@@ -38478,7 +38119,7 @@ read_xlsx(name, sheet)
 </ul>
 </li>
 </ol>
-<h1 id="三、字符编码"><a href="#三、字符编码" class="headerlink" title="三、字符编码"></a>三、字符编码</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符编码(Character encoding)也称字集码，是把字符集中的字符编码为指定集合中某一对象(例如：比特模式、自然数序列、8位组或者电脉冲)，以便文本在计算机中存储和通过通信网络的传递。它是一套法则，使用该法则能够对自然语言的字符集合(如字母表或音节表)与另一个集合(如号码或电脉冲)进行配对，即在符号集合与数字系统之间建立对应关系。它是信息处理的一项基本技术，通常人们用符号集合(如文字)来表达信息，而以计算机为基础的信息处理系统则是利用元件(硬件)不同状态的组合来存储和处理信息的，元件不同状态的组合能代表数字系统的数字，因此字符编码就是将符号转换为计算机可以接受的数字系统的数(称为数字代码)。常见的例子包括将拉丁字母表编码成摩斯电码和ASCII。</p>
+<h2 id="三、字符编码"><a href="#三、字符编码" class="headerlink" title="三、字符编码"></a>三、字符编码</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符编码(Character encoding)也称字集码，是把字符集中的字符编码为指定集合中某一对象(例如：比特模式、自然数序列、8位组或者电脉冲)，以便文本在计算机中存储和通过通信网络的传递。它是一套法则，使用该法则能够对自然语言的字符集合(如字母表或音节表)与另一个集合(如号码或电脉冲)进行配对，即在符号集合与数字系统之间建立对应关系。它是信息处理的一项基本技术，通常人们用符号集合(如文字)来表达信息，而以计算机为基础的信息处理系统则是利用元件(硬件)不同状态的组合来存储和处理信息的，元件不同状态的组合能代表数字系统的数字，因此字符编码就是将符号转换为计算机可以接受的数字系统的数(称为数字代码)。常见的例子包括将拉丁字母表编码成摩斯电码和ASCII。</p>
 <hr>
 <h1 id="对象深-浅复制"><a href="#对象深-浅复制" class="headerlink" title="对象深/浅复制"></a><center><font color=red>对象深/浅复制</font></center></h1><h2 id="一、PHP"><a href="#一、PHP" class="headerlink" title="一、PHP"></a>一、PHP</h2><ol>
 <li><p>定义</p>
@@ -38698,31 +38339,362 @@ read_xlsx(name, sheet)
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$func = function ($param) &#123;</span><br><span class="line"> echo $param;</span><br><span class="line">&#125;;</span><br><span class="line">$func(&quot;Hello World !&quot;);</span><br><span class="line">输出：Hello World !</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>闭包</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//方式一、在函数里定义一个匿名函数，并且调用它</span><br><span class="line">function printStr() &#123;</span><br><span class="line"> $func = function($str) &#123;</span><br><span class="line">     echo $str;</span><br><span class="line"> &#125;;</span><br><span class="line"> $func(&#x27;Hello World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">printStr();</span><br><span class="line">输出：Hello World</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//方式二、在函数中把匿名函数返回，并且调用它</span><br><span class="line">function getPrintStrFunc() &#123;</span><br><span class="line">    $func = function($str) &#123;</span><br><span class="line">        echo $str;</span><br><span class="line">    &#125;;</span><br><span class="line">    return $func;</span><br><span class="line">&#125;</span><br><span class="line">$printStrFunc = getPrintStrFunc();</span><br><span class="line">$printStrFunc(&#x27;Hello World&#x27;);</span><br><span class="line">输出：Hello World</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//方式三、把匿名函数当做参数传递，并且调用它</span><br><span class="line">function callFunc($func) &#123;</span><br><span class="line"> $func(&#x27;Hello World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">$printStrFunc = function($str) &#123;</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;;</span><br><span class="line">callFunc($printStrFunc);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//也可以直接将匿名函数进行传递(js写法)</span><br><span class="line">callFunc(function($str)&#123;</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;);</span><br><span class="line">输出：Hello World</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//方式四、使用关键字 use 连接闭包和外界变量</span><br><span class="line">function getMoney() &#123;</span><br><span class="line"> $money = &#x27;10元&#x27;;</span><br><span class="line"> $func = function() use ($money) &#123;</span><br><span class="line">  echo $money;</span><br><span class="line"> &#125;;</span><br><span class="line"> $func();</span><br><span class="line">&#125;</span><br><span class="line">getMoney();</span><br><span class="line">输出：10元</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//方式一、在函数里定义一个匿名函数，并且调用它</span><br><span class="line">function printStr() &#123;</span><br><span class="line"> $func = function($str) &#123;</span><br><span class="line">     echo $str;</span><br><span class="line"> &#125;;</span><br><span class="line"> $func(&#x27;Hello World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">printStr();</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//方式二、在函数中把匿名函数返回，并且调用它</span><br><span class="line">function getPrintStrFunc() &#123;</span><br><span class="line">    $func = function($str) &#123;</span><br><span class="line">        echo $str;</span><br><span class="line">    &#125;;</span><br><span class="line">    return $func;</span><br><span class="line">&#125;</span><br><span class="line">$printStrFunc = getPrintStrFunc();</span><br><span class="line">$printStrFunc(&#x27;Hello World&#x27;);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//方式三、把匿名函数当做参数传递，并且调用它</span><br><span class="line">function callFunc($func) &#123;</span><br><span class="line"> $func(&#x27;Hello World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">$printStrFunc = function($str) &#123;</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;;</span><br><span class="line">callFunc($printStrFunc);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//也可以直接将匿名函数进行传递(js写法)</span><br><span class="line">callFunc(function($str)&#123;</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//方式四、使用关键字 use 连接闭包和外界变量</span><br><span class="line">function getMoney() &#123;</span><br><span class="line"> $money = &#x27;10元&#x27;;</span><br><span class="line"> $func = function() use ($money) &#123;</span><br><span class="line">  echo $money;</span><br><span class="line"> &#125;;</span><br><span class="line"> $func();</span><br><span class="line">&#125;</span><br><span class="line">getMoney();</span><br><span class="line">输出：10元</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h2 id="二、JS闭包"><a href="#二、JS闭包" class="headerlink" title="二、JS闭包"></a>二、JS闭包</h2><ol>
-<li><p>变量作用域：全局变量和局部变量</p>
-<ul>
+<li>变量作用域：全局变量和局部变量<ul>
 <li>函数内部可以直接读取全局变量</li>
 <li>正常情况下，函数外部无法读取函数内部局部变量</li>
 <li>函数内部声明变量时要用 var 关键字，否则声明的则为全局变量</li>
 </ul>
 </li>
-<li><p>闭包就是能够读取其他函数内部变量的函数，函数没有被释放，整条作用域链上的局部变量都将得到保留，本质上就是将函数内部和函数外部连接的一座桥梁，可以简单理解成“定义在一个函数内部的函数”。</p>
+<li>闭包就是能够读取其他函数内部变量的函数，函数没有被释放，整条作用域链上的局部变量都将得到保留，本质上就是将函数内部和函数外部连接的一座桥梁，可以简单理解成“定义在一个函数内部的函数”。</li>
+<li>举例</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">  　var n = 999;</span><br><span class="line">　  nAdd = function()&#123; // 全局变量</span><br><span class="line">　　  　n += 1;</span><br><span class="line">　  &#125;</span><br><span class="line">　  function f2()&#123;</span><br><span class="line">　　  　console.log(n);</span><br><span class="line">　  &#125;</span><br><span class="line">　  return f2;</span><br><span class="line">&#125;</span><br><span class="line">var result = f1();</span><br><span class="line">result();　　// 从函数外部通过闭包f2获取到函数f1内部局部变量的值</span><br><span class="line">nAdd();　　  // 从函数外部通过闭包修改局部变量n的值</span><br><span class="line">result();　　// 再次通过闭包f2获取到函数f1内部局部变量的值</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>未完待续… </li>
+</ol>
+<hr>
+<h1 id="NFS-RPC"><a href="#NFS-RPC" class="headerlink" title="NFS-RPC"></a><center><font color=red>NFS-RPC</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li>NFS<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>NFS（Network File System）</code>，即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过<code>TCP/IP</code>网络共享资源。在<code>NFS</code>的应用中，本地<code>NFS</code>的客户端应用可以透明地读写位于远端<code>NFS</code>服务器上的文件，就像访问本地文件一样。它最大的功能就是可以透过网络，让不同的机器、不同的操作系统可以彼此分享个别的档案 (<code>share files</code>)，可以简单的将它看做是一个文件服务器 (<code>file server</code>) 。这个<code>NFS</code>服务器可以让你的<code>PC</code>来将网络远程的<code>NFS</code>服务器分享的目录，挂载到本地端的机器当中，在本地的机器看起来那个远程主机的目录就好像是自己的一个磁盘分区槽一样 (<code>partition</code>)。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS的基本原则是“容许不同的客户端及服务端通过一组RPC分享相同的文件系统”，它是独立于操作系统，容许不同硬件及操作系统的系统共同进行文件的分享。</p>
+<ol start="2">
+<li>RPC</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IPC(Inter-Process Communication)，即进程间通信，指在不同进程之间传播或交换信息的一些技术和方法，本质是为了解决资源隔离的不同进程间互访资源问题。进程可以是在同一台计算机上，也可能是在网络联通的不同计算机上。根据进程所处位置不同，进程间通信的方法包括两类：①本地过程调用(LPC，Local Procedure Call)：用在多任务操作系统中，使得同时运行的任务能互相会话。这些任务共享内存空间使任务同步和互相发送信息。②远程过程调用(RPC，Remote Procedure Call)：允许程序调用另一个地址空间(通常是共享网络的另一台机器上)的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的，本质上编写的调用代码基本相同。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>RPC（Remote Procedure Call）</code>，即远程过程调用，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC多出现在分布式系统中，因为每个服务的职责相对单一，对于一个请求大多会调用不同服务提供的方法，将最后结果聚合后返回。<code>RPC</code>协议假定某些传输协议的存在，如<code>TCP</code>或<code>UDP</code>，为通信程序之间携带信息数据。在<code>OSI</code>网络通信模型中，<code>RPC</code>跨越了传输层和应用层。<code>RPC</code>使得开发包括网络分布式多程序在内的应用程序更加容易。<code>RPC</code>最主要的功能就是在指定每个<code>NFS</code>功能所对应的<code>port number</code>，并且回报给客户端，让客户端可以连结到正确的端口上去。它能使客户端执行其他系统中程序的一种机制。</p>
+<p><img src="rpc.png" alt="RPC调用过程"></p>
+<ol start="3">
+<li><code>RPC</code>又是如何知道每个<code>NFS</code>端口的？</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当服务器在启动<code>NFS</code>时会随机取用数个端口并主动的向<code>RPC</code>注册，因此<code>RPC</code>可以知道每个端口对应的<code>NFS</code>功能。<code>RPC</code>固定使用<code>port 111</code>来监听客户端的需求并回报客户端正确的端口。注意，启动<code>NFS</code>之前<code>RPC</code>就要先启动了，否则<code>NFS</code>会无法向<code>RPC</code>注册。另外，<code>RPC</code>若重新启动时，原本注册的数据会不见，因此<code>RPC</code>重新启动后，它管理的所有服务都需要重新启动来重新向<code>RPC</code>注册。</p>
+<ol start="4">
+<li>关系<ul>
+<li>NFS是一个文件系统，而RPC是负责信息的传输。</li>
+<li>NFS在文件传送或信息传送过程中依赖于RPC协议。</li>
+<li>NFS本身是没有提供信息传输的协议和功能的，但NFS却能让我们通过网络进行资料的分享，这是因为NFS使用了一些其它的传输协议，而这些传输协议用到这个RPC功能的。</li>
+<li>当客户端有NFS档案存取需求流程:<ul>
+<li>客户端向服务器<code>RPC(port 111)</code>发出<code>NFS</code>档案存取请求；</li>
+<li>服务器端找到对应的已注册的<code>NFS daemon</code>端口并返回给客户端；</li>
+<li>客户端拿到正确的端口后，就可以直接与<code>NFS daemon</code>来联机。</li>
+</ul>
 </li>
-<li><p>举例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">　  　var n = 999;</span><br><span class="line">　　  nAdd = function()&#123; // 全局变量</span><br><span class="line">　　　  　n += 1;</span><br><span class="line">　　  &#125;</span><br><span class="line">　　  function f2()&#123;</span><br><span class="line">　　　  　console.log(n);</span><br><span class="line">　　  &#125;</span><br><span class="line">　　  return f2;</span><br><span class="line">&#125;</span><br><span class="line">var result = f1();</span><br><span class="line">result();　　// 从函数外部通过闭包f2获取到函数f1内部局部变量的值</span><br><span class="line">nAdd();　　  // 从函数外部通过闭包修改局部变量n的值</span><br><span class="line">result();　　// 再次通过闭包f2获取到函数f1内部局部变量的值</span><br></pre></td></tr></table></figure>
+</ul>
 </li>
-<li><p>未完待续… </p>
+</ol>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
+<li><p>NFS服务搭建</p>
+<ul>
+<li>背景</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">节点一：ubuntu14</span><br><span class="line">ip：192.168.20.10</span><br><span class="line">cat /etc/issue</span><br><span class="line">Ubuntu 14.04.6 LTS \n \l</span><br><span class="line"></span><br><span class="line">节点二：centos7</span><br><span class="line">ip：192.168.10.10</span><br><span class="line">cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.6.1810 (Core)</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>nfs服务器部署在ubuntu14</p>
+<ul>
+<li><p>安装服务端 <code>sudo apt-get install nfs-kernel-server</code></p>
+</li>
+<li><p>安装客户端 <code>sudo apt-get install nfs-common​</code></p>
+</li>
+<li><p>创建共享目录 <code>cd /home &amp;&amp; sudo mkdir nfs_share</code></p>
+</li>
+<li><p>修改目录权限 <code>sudo chmod -R 777 /home/nfs_share</code></p>
+</li>
+<li><p>修改配置项 <code>sudo vim /etc/exports</code>，添加内容 <code>/home/nfs_share 192.168.10.10(rw,sync,no_subtree_check,insecure)</code></p>
+</li>
+<li><p>更新一下配置项(每次修改完<code>/etc/exports</code>须执行一次，初次启动不需要) <code>exportfs -a</code></p>
+<ul>
+<li><code>/home/nfs_share</code>为ubuntu14共享目录</li>
+<li>ip为centos7</li>
+<li>括号内选项<ul>
+<li>ro：共享目录只读</li>
+<li>rw：共享目录可读可写</li>
+<li>all_squash：所有访问用户都映射为匿名用户或用户组</li>
+<li>no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组</li>
+<li>root_squash（默认）：将来访的root用户映射为匿名用户或用户组</li>
+<li>no_root_squash：来访的root用户保持root帐号权限</li>
+<li>anonuid=<UID>：指定匿名访问用户的本地用户UID，默认为nfsnobody（65534）</li>
+<li>anongid=<GID>：指定匿名访问用户的本地用户组GID，默认为nfsnobody（65534）</li>
+<li>secure（默认）：限制客户端只能从小于1024的tcp/ip端口连接服务器</li>
+<li>insecure：允许客户端从大于1024的tcp/ip端口连接服务器</li>
+<li>sync：将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性</li>
+<li>async：将数据先保存在内存缓冲区中，必要时才写入磁盘</li>
+<li>wdelay（默认）：检查是否有相关的写操作，如果有则将这些写操作一起执行，这样可以提高效率</li>
+<li>no_wdelay：若有写操作则立即执行，应与sync配合使用</li>
+<li>subtree_check（默认） ：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限</li>
+<li>no_subtree_check ：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>启动服务 <code>sudo /etc/init.d/nfs-kernel-server start</code></p>
+<ul>
+<li>重启服务 <code>sudo /etc/init.d/nfs-kernel-server restart</code></li>
+<li>关闭服务 <code>sudo /etc/init.d/nfs-kernel-server stop</code></li>
+</ul>
+</li>
+<li><p>新建共享文件 <code>touch /home/nfs_share/test.txt</code></p>
+</li>
+</ul>
+</li>
+<li><p>客户端安装在centos7</p>
+<ul>
+<li><p>安装客户端 <code>sudo yum -y install nfs-utils rpcbind</code></p>
+</li>
+<li><p>关掉centos7防火墙和SELinux <code>systemctl stop firewalld</code> <code>sudo setenforce 0</code></p>
+</li>
+<li><p>查看是否连接成功 <code>showmount -e 192.168.20.10</code></p>
+<ul>
+<li>ip为ubuntu14</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share 192.168.10.10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂在目录 <code>sudo mount -t nfs 192.168.20.10:/home/nfs_share /mnt</code></p>
+<ul>
+<li>报错 <code>mount.nfs: access denied by server while mounting 192.168.20.10:/home/nfs_share</code></li>
+</ul>
+</li>
+<li><p>回到<code>ubuntu14</code></p>
+<ul>
+<li>修改<code>/etc/exports</code>，改为<code>/home/nfs_share *(rw,sync,no_subtree_check)</code></li>
+<li>执行<code>sudo exportfs -a</code></li>
+</ul>
+</li>
+<li><p>回到centos7，查看<code>showmount -e 192.168.20.10</code></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share (everyone)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重新挂载 <code>sudo mount -t nfs 192.168.20.10:/home/nfs_share /mnt</code>，无输出错误信息则成功</li>
+<li>取消挂载 <code>sudo umount /mnt</code></li>
+</ul>
+</li>
+<li><p>测试</p>
+<ul>
+<li>ubuntu14 <code>cd /home/nfs_share &amp;&amp; touch 1.txt</code></li>
+<li>centos7 <code>ls /mnt</code>，有1.txt则表示成功</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、RPC框架"><a href="#三、RPC框架" class="headerlink" title="三、RPC框架"></a>三、RPC框架</h2><ol>
+<li>框架组成<ul>
+<li>服务提供者：远程服务的被调用方，提供服务实现。</li>
+<li>服务消费者：远程服务的调用方。</li>
+<li>注册中心：提供服务的注册和发现。</li>
+<li>调用监控：监控远程服务调用情况。</li>
+</ul>
+</li>
+</ol>
+<p><img src="frame.png" alt="RPC框架组成"></p>
+<blockquote>
+<p>RPC属于那一层？</p>
+</blockquote>
+<ol start="2">
+<li>常见框架</li>
+</ol>
+<blockquote>
+<p>目前业界主流的RPC框架包括阿里巴巴的Dubbo、谷歌开源的gRPC、Apache的Thrift(之前是Facebook)、新浪微博的Montan等。</p>
+</blockquote>
+<ul>
+<li><p>国内</p>
+<ul>
+<li><a href="http://dubbo.I/O/">Dubbo</a>，来自阿里巴巴 </li>
+<li><a href="https://github.com/weibocom/motan">Motan</a>，新浪微博自用</li>
+<li><a href="https://github.com/dangdangdotcom/dubbox">Dubbox</a>，基于dubbo</li>
+<li><a href="https://github.com/smallnest/rpcx">rpcx</a>，基于Golang的</li>
+<li><a href="https://github.com/neoremind/navi-pbrpc">Navi &amp; Navipbrpc</a></li>
+</ul>
+</li>
+<li><p>国外</p>
+<ul>
+<li><a href="https://thrift.apache.org">Thrift from facebook</a></li>
+<li><a href="https://avro.apache.org">Avro from hadoop</a></li>
+<li><a href="https://twitter.github.I/O/finagle">Finagle by twitter</a></li>
+<li><a href="http://www.grpc.I/O">gRPC by Google</a></li>
+<li><a href="http://hessian.caucho.com">Hessian from cuacho</a></li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>PHP相关<ul>
+<li><a href="http://www.phprpc.org/zh_CN/">phprpc</a></li>
+<li><a href="https://github.com/laruence/yar">yar</a></li>
+<li><a href="http://thrift.apache.org/">thrift</a></li>
+<li><a href="https://www.grpc.io/">gRPC</a></li>
+<li><a href="https://www.swoole.com/">swoole</a></li>
+<li><a href="https://github.com/hprose/hprose-php">hprose</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="四、参考-2"><a href="#四、参考-2" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://www.jianshu.com/p/44368535796f">参考一</a></li>
+<li><a href="https://www.zybuluo.com/phper/note/76641">参考二</a></li>
+</ol>
+<hr>
+<h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a><center><font color=red>UML</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<li>用例图：展现了一组用例、参与者以及它们之间的关系，描述系统的静态使用情况，说白了就是用户与各项操作之间的关系。</li>
+<li>类图：展示了一组类、接口和协作以及它们之间的关系，类图也是我们在建模中所建立的最常见的图。系统可以有多个类图，所以一个类图只表达了系统的一个方面。一般在高层给出主要职责，低层给出类的属性和操作，类图分三层:<ul>
+<li>第一层显示类的名称，如果是抽象类，则就用斜体显示</li>
+<li>第二层是类的特性，通常就是字段和属性</li>
+<li>第三层是类的操作，通常是方法或行为</li>
+<li>特性和操作前面的符号：<ul>
+<li><code>+</code> 表示public</li>
+<li><code>#</code> 表示protected</li>
+<li><code>-</code> 表示private </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对象图：类图的一个例子，它和类图的区别在于对象图所显示的是类的多个对象实例而非实际的类，对象图显示的是系统执行时的一个可能的快照，即在某一时间点上系统可能呈现出的样子。</li>
+<li>构件图：也叫组件图，由组件、接口和组件之间联系构成。</li>
+<li>配置图：展现了对运行时处理节点以及其中组件的配置，说白了就是把系统用到的处理器和设备联系起来，称之为系统的配件图。</li>
+<li>时序图：显示多个对象之间的动态协作，重点显示对象之间发送消息的时间顺序。相比协作图，时序图用的比较多，因为它们之间的逻辑顺序很清晰，如果顺序体现的不那么明显，应该选用协作图，关系更清楚。</li>
+<li>协作图：对一次交互中有意义的对象和对象间的连接建模，主要强调收发消息，而不强调对象之间的顺序。</li>
+<li>状态图：展示了一个特定对象的所有可能状态以及由于各种事件的发生而引起的状态之间的转移。一个状态图描述了一个状态机，状态图对于接口、类或协作的行为建模尤为重要，可用来描述实例的生命周期。</li>
+<li>活动图：状态图的一个变体，显示了系统中从一个活动到另一个活动的流程，强调的是对象之间的流程控制。</li>
+</ol>
+<h2 id="三、类图"><a href="#三、类图" class="headerlink" title="三、类图"></a>三、类图</h2><blockquote>
+<p>概念</p>
+</blockquote>
+<ol>
+<li><p>类图(Class diagram)，显示了模型的静态结构，特别是模型中存在的类、类的内部结构以及它们与其他类的关系等。它用于描述系统中所包含的类以及它们之间的相互关系，帮助人们简化对系统的理解，它是系统分析和设计阶段的重要产物，也是系统编码和测试的重要模型依据。 </p>
+<ul>
+<li>类图以反映类结构和类之间关系为目的，用以描述软件系统的结构，是一种静态建模方法</li>
+<li>类图主要用在面向对象软件开发的分析和设计阶段，描述系统的静态结构</li>
+<li>类图是最常用的UML图，显示出类、接口以及它们之间的静态结构和关系，它用于描述系统的结构化设计</li>
+<li>类图最基本的元素是类或者接口。 </li>
+</ul>
+</li>
+<li><p>作用</p>
+<ul>
+<li>在软件工程中，类图是一种静态的结构图，描述了系统的类的集合，类的属性和类之间的关系，可以简化了人们对系统的理解。</li>
+<li>类图是系统分析和设计阶段的重要产物，是系统编码和测试的重要模型。</li>
+</ul>
+</li>
+<li><p>使用场合</p>
+<ul>
+<li>为系统词汇建模型：为系统的词汇建模实际上是从词汇表中发现类，发现它的责任。</li>
+<li>模型化简单的协作：协作是指一些类、接口和其他的元素一起工作提供一些合作的行为，这些行为不是简单地将元素相加能得到的。例如：当你为一个分布式的系统中的事务处理过程建模型时，你不可能只通过一个类来明白事务是怎样进行的，事实上这个过程的执行涉及到一系列的类的协同工作。使用类图来可视化这些类和他们的关系。</li>
+<li>模型化一个逻辑数据库模式：想象模式是概念上设计数据库的蓝图。在很多领域，你将想保存持久性数据到关系数据库或面向对象的数据库。你可以用类图为这些数据库模式建立模型。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>类图结构</p>
+</blockquote>
+<ol>
+<li><p>在UML类图中，使用长方形描述一个类的主要构成，长方形垂直地分为三层，以此放置类的名称、属性和方法。</p>
+</li>
+<li><p>类的名称表示方法</p>
+<ul>
+<li>一般的类的类名用正常字体粗体表示</li>
+<li>抽象类名用斜体字粗体</li>
+<li>接口则需在上方加上<code>&lt;&lt;interface&gt;&gt;</code></li>
+</ul>
+</li>
+<li><p>类的属性和方法的访问控制符表示</p>
+<ul>
+<li><code>+</code>:表示public</li>
+<li><code>#</code>:表示protected</li>
+<li><code>-</code>:表示private</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>六种类关系</p>
+</blockquote>
+<p><img src="relation.png" alt="类关系表示方法"></p>
+<ol>
+<li><p>继承关系：继承关系(Extend)也称泛化关系(Generalization)，用于描述父类与子类之间的关系。</p>
+<ul>
+<li>父类又称作基类，子类又称作派生类</li>
+<li>继承关系中，子类继承父类的所有功能(属性、方法)</li>
+<li>子类中除了与父类一致的信息以外，还包括额外的信息</li>
+</ul>
+</li>
+<li><p>实现关系：即Implementation，主要用来规定接口和实现类的关系。</p>
+<ul>
+<li>接口是方法的集合，在实现关系中，类实现了接口并要实现接口声明的所有方法</li>
+<li>抽象类也有类似的要求，即要实现所有的抽象方法</li>
+</ul>
+</li>
+<li><p>组合关系：即Composition，整体与部分的关系(不可以分开)。</p>
+<ul>
+<li>组合关系表示类之间整体与部分的关系，整体和部分有一致的生存期</li>
+<li>一旦整体对象不存在，部分对象也将不存在，是同生共死的关系</li>
+</ul>
+</li>
+<li><p>聚合关系：即Aggregation，整体和部分的关系(可以分开)。</p>
+<ul>
+<li>聚合关系也表示类之间整体与部分的关系，成员对象是整体对象的一部分，但是成员对象可以脱离整体对象独立存在</li>
+</ul>
+</li>
+<li><p>关联关系：即Association，表示一个类的属性保存了对另一个类的一个实例(或多个实例)的引用。</p>
+<ul>
+<li>关联关系是类与类之间最常用的一种关系，表示一类对象与另一类对象之间有联系</li>
+<li>组合、聚合也属于关联关系，只是关联关系的类间关系比其他两种要弱</li>
+</ul>
+</li>
+<li><p>依赖关系：即Dependence，假设A类的变化引起了B类的变化，则说名B类依赖于A类。</p>
+<ul>
+<li>大多数情况下，依赖关系体现在某个类的方法使用另一个类的对象作为参数</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<ol>
+<li>六种类关系中，组合、聚合和关联的代码结构一样，可以从关系的强弱来理解，各类关系从强到弱依次是：继承→实现→组合→聚合→关联→依赖。</li>
+<li>具体关系可参看下图</li>
+</ol>
+<p><img src="all.png" alt="类及累的关系表示图"></p>
+<hr>
+<h1 id="SVN"><a href="#SVN" class="headerlink" title="SVN"></a><center><font color=red>SVN</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>检出版本库：<code>svn checkout path</code></li>
+<li>添加文件：<code>svn add file</code><ul>
+<li>支持正则，如添加所有的css文件：<code>svn add *.css</code></li>
+</ul>
+</li>
+<li>提交修改到版本库：<code>svn commit -m &#39;comments&#39;</code></li>
+<li>查看当前版本库状态：<code>svn status</code></li>
+<li>查看当前版本库信息：<code>svn info</code></li>
+<li>恢复当前版本库修改：<code>svn revert path</code> <ul>
+<li>恢复当前版本库的所有修改：<code>svn revert --recursive path</code></li>
+</ul>
+</li>
+<li>更新当前版本库：<code>svn up</code><ul>
+<li>更新指定文件：<code>svn up file</code></li>
+<li>更新至指定版本：<code>svn update -r version_num file</code></li>
+</ul>
+</li>
+<li>从当前版本库删除：<code>svn delete file</code><ul>
+<li><code>--force</code>选项可强制删除</li>
+</ul>
+</li>
+<li>给文件枷锁：<code>svn lock -m &#39;comments&#39; path</code><ul>
+<li>解锁：<code>svn unlock path</code></li>
+</ul>
+</li>
+<li>比较文件差异：<code>svn diff file</code><ul>
+<li>可比较两个版本间的差异：<code>svn diff -r 100:101 file</code></li>
+</ul>
+</li>
+<li>合并两个版本间的差异：<code>svn merge -r 100:101 path</code></li>
+<li>移除冲突状态：<code>svn resolved</code></li>
+</ol>
+<blockquote>
+<p>终极必杀技：<code>svn help [子命令]</code></p>
+</blockquote>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="http://svnbook.red-bean.com/zh/1.8/svn.ref.svn.html">参考一</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -38732,9 +38704,12 @@ read_xlsx(name, sheet)
         <tag>技术</tag>
         <tag>幂等性</tag>
         <tag>闭包</tag>
+        <tag>IPC</tag>
+        <tag>LPC</tag>
+        <tag>RPC</tag>
+        <tag>倒排索引</tag>
         <tag>彩虹表</tag>
         <tag>搜索引擎</tag>
-        <tag>倒排索引</tag>
         <tag>字符</tag>
         <tag>字符集</tag>
         <tag>字符编码</tag>
@@ -38744,6 +38719,10 @@ read_xlsx(name, sheet)
         <tag>哈希</tag>
         <tag>MVC</tag>
         <tag>MVVM</tag>
+        <tag>NFS</tag>
+        <tag>Dubbo</tag>
+        <tag>UML</tag>
+        <tag>SVN</tag>
       </tags>
   </entry>
   <entry>
@@ -42579,6 +42558,69 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>字节序大小端</title>
+    <url>/2014/03/01/OS-%E5%AD%97%E8%8A%82%E5%BA%8F%E5%A4%A7%E5%B0%8F%E7%AB%AF/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>有些人闯进你的生活，只是为了给你上一课，然后转身离开。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机硬件有两种储存数据的方式：大端字节序(big endian)和小端字节序(little endian)，大部分计算机都是大端序。</p>
+<ol>
+<li>大端字节序：高位字节在前，低位字节在后(这是人类读写数值的习惯)。</li>
+<li>小端字节序：低位字节在前，高位字节在后。</li>
+</ol>
+<blockquote>
+<p>举例来说，对于数值<code>0x1234</code>，高位字节是<code>0x12</code>，低位字节是<code>0x34</code></p>
+<blockquote>
+<p>使用大端模式存储如下：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">内存低地址 ————————————————————&gt; 内存高地址</span><br><span class="line">      ... |  0x12  |  0x34  | ...</span><br><span class="line">      ...     a        a+1    ...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p>使用小端模式存储如下：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">内存低地址 ————————————————————&gt; 内存高地址</span><br><span class="line">      ... |  0x34  |  0x12  | ...</span><br><span class="line">      ...     a        a+1    ...</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、判断大小端"><a href="#二、判断大小端" class="headerlink" title="二、判断大小端"></a>二、判断大小端</h2><ol>
+<li>union方式<ul>
+<li>联合体类型数据所占的内存空间等于其最大的成员所占的空间，对联合体内部所有成员的存取都是相对于该联合体基地址的偏移量为<code>0</code>处开始</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    union&#123;</span><br><span class="line">        int a;</span><br><span class="line">        char b;</span><br><span class="line">    &#125; data;</span><br><span class="line">  </span><br><span class="line">    data.a = 1;</span><br><span class="line"></span><br><span class="line">    // 在联合体data所占内存中，b所占内存等于a所占内存的低地址部分 </span><br><span class="line">    if (1 == data.b) &#123;</span><br><span class="line">        printf(&quot;小端模式&quot;);</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">        printf(&quot;大端模式&quot;);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对联合体成员a赋值1，十六进制为<code>0x00000001</code>，其中1为数据的低字节位<ul>
+<li>如果1被存储在data所占内存的低地址中，那data.b的值将会是1，就是小端模式。</li>
+<li>如果1被存储在data所占内存的高地址中，那data.b的值将会是0，就是大端模式。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>int强制类型转换char</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i = 1;</span><br><span class="line">    char* j = (char*)&amp;i;</span><br><span class="line">    if (*j == 1) &#123;</span><br><span class="line">        printf(&quot;小端存储&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        printf(&quot;大端存储&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/144718837">参考一</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/11/byte-order.html">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>OS</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>大端</tag>
+        <tag>小端</tag>
+        <tag>字节序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言指针</title>
     <url>/2014/02/15/C-%E6%8C%87%E9%92%88/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -43674,52 +43716,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Mac下nvm安装使用</title>
-    <url>/2013/05/17/Node-Mac%E4%B8%8Bnvm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>nvm是node版本管理工具，为了解决node各种版本存在不兼容现象，nvm是让你在同一台机器上安装和切换不同版本的node的工具。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nvm是node版本管理工具，为了解决node各种版本存在不兼容现象，nvm是让你在同一台机器上安装和切换不同版本的node的工具。</p>
-<h2 id="二、安装使用"><a href="#二、安装使用" class="headerlink" title="二、安装使用"></a>二、安装使用</h2><ol>
-<li><p>安装<code>brew install nvm</code></p>
-<ul>
-<li><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</code></li>
-<li><code>wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash</code></li>
-</ul>
-</li>
-<li><p>配置，正常安装完后会有相应提示，如</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Please note that upstream has asked us to make explicit managing</span><br><span class="line">nvm via Homebrew is unsupported by them and you should check any</span><br><span class="line">  1 export JMETER_HOME=/usr/local/apache-jmeter-5.3/bin</span><br><span class="line">problems against the standard nvm install method prior to reporting.</span><br><span class="line"></span><br><span class="line">You should create NVM&#x27;s working directory if it doesn&#x27;t exist:</span><br><span class="line"></span><br><span class="line">  mkdir ~/.nvm</span><br><span class="line"></span><br><span class="line">Add the following to ~/.zshrc or your desired shell</span><br><span class="line">configuration file:</span><br><span class="line"></span><br><span class="line">  export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">  [ -s &quot;/usr/local/opt/nvm/nvm.sh&quot; ] &amp;&amp; . &quot;/usr/local/opt/nvm/nvm.sh&quot;  # This loads nvm</span><br><span class="line">  [ -s &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot; ] &amp;&amp; . &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot;  # This loads nvm bash_completion</span><br><span class="line"></span><br><span class="line">You can set $NVM_DIR to any location, but leaving it unchanged from</span><br><span class="line">/usr/local/opt/nvm will destroy any nvm-installed Node installations</span><br><span class="line">upon upgrade/reinstall.</span><br><span class="line"></span><br><span class="line">Type `nvm help` for further information.</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><code>source .bash_profile</code></li>
-<li>查看nvm版本<code>nvm --version</code></li>
-<li>安装node指定版本<code>nvm install 版本号</code></li>
-<li>查看本地node的所有版本<code>nvm list</code></li>
-<li>切到指定node版本<code>nvm use 版本号</code></li>
-<li>卸载指定的node版本<code>nvm uninstall 版本号</code></li>
-<li>安装最新的node稳定版本<code>nvm install --lts</code></li>
-<li>查看node的所有的版本<code>nvm ls-remote</code></li>
-<li>使用node指定版本执行指定文件<code>nvm exec 版本号 node 要执行的文件路径</code></li>
-<li>设置默认版本的Node，每次启动终端都使用该版本的node<code>nvm alias default 版本号</code></li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://github.com/nvm-sh/nvm">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Node</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Node</tag>
-        <tag>nvm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PHP函数及其使用</title>
     <url>/2013/04/10/PHP-%E5%87%BD%E6%95%B0%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -44545,12 +44541,12 @@ read_xlsx(name, sheet)
     <title>技术收集</title>
     <url>/2013/02/22/Technology-%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>HDFS(Hadoop Distributed File System)是一个易于扩展的分布式文件系统，运行在网百上千台低成本的机器上。</p>
+<p>故天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。 ——《孟子·告子下》之《生于忧患，死于安乐》</p>
 </blockquote>
 <span id="more"></span>
 
 <h2 id="一、连接"><a href="#一、连接" class="headerlink" title="一、连接"></a>一、连接</h2><ol>
-<li><a href="https://www.zhihu.com/topic/19657742/hot">HDFS</a></li>
+<li><a href="https://www.zhihu.com/topic/19657742/hot">HDFS</a>，是一个易于扩展的分布式文件系统。</li>
 <li>opengl</li>
 <li>dx </li>
 <li>canvas </li>
@@ -45624,69 +45620,6 @@ read_xlsx(name, sheet)
         <tag>注解</tag>
         <tag>包</tag>
         <tag>泛型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字节序大小端</title>
-    <url>/2013/01/11/OS-%E5%AD%97%E8%8A%82%E5%BA%8F%E5%A4%A7%E5%B0%8F%E7%AB%AF/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>有些人闯进你的生活，只是为了给你上一课，然后转身离开。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机硬件有两种储存数据的方式：大端字节序(big endian)和小端字节序(little endian)，大部分计算机都是大端序。</p>
-<ol>
-<li>大端字节序：高位字节在前，低位字节在后(这是人类读写数值的习惯)。</li>
-<li>小端字节序：低位字节在前，高位字节在后。</li>
-</ol>
-<blockquote>
-<p>举例来说，对于数值<code>0x1234</code>，高位字节是<code>0x12</code>，低位字节是<code>0x34</code></p>
-<blockquote>
-<p>使用大端模式存储如下：</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">内存低地址 ————————————————————&gt; 内存高地址</span><br><span class="line">      ... |  0x12  |  0x34  | ...</span><br><span class="line">      ...     a        a+1    ...</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<p>使用小端模式存储如下：</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">内存低地址 ————————————————————&gt; 内存高地址</span><br><span class="line">      ... |  0x34  |  0x12  | ...</span><br><span class="line">      ...     a        a+1    ...</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、判断大小端"><a href="#二、判断大小端" class="headerlink" title="二、判断大小端"></a>二、判断大小端</h2><ol>
-<li>union方式<ul>
-<li>联合体类型数据所占的内存空间等于其最大的成员所占的空间，对联合体内部所有成员的存取都是相对于该联合体基地址的偏移量为<code>0</code>处开始</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    union&#123;</span><br><span class="line">        int a;</span><br><span class="line">        char b;</span><br><span class="line">    &#125; data;</span><br><span class="line">  </span><br><span class="line">    data.a = 1;</span><br><span class="line"></span><br><span class="line">    // 在联合体data所占内存中，b所占内存等于a所占内存的低地址部分 </span><br><span class="line">    if (1 == data.b) &#123;</span><br><span class="line">        printf(&quot;小端模式&quot;);</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">        printf(&quot;大端模式&quot;);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>对联合体成员a赋值1，十六进制为<code>0x00000001</code>，其中1为数据的低字节位<ul>
-<li>如果1被存储在data所占内存的低地址中，那data.b的值将会是1，就是小端模式。</li>
-<li>如果1被存储在data所占内存的高地址中，那data.b的值将会是0，就是大端模式。</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>int强制类型转换char</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i = 1;</span><br><span class="line">    char* j = (char*)&amp;i;</span><br><span class="line">    if (*j == 1) &#123;</span><br><span class="line">        printf(&quot;小端存储&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        printf(&quot;大端存储&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://zhuanlan.zhihu.com/p/144718837">参考一</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2016/11/byte-order.html">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>OS</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>大端</tag>
-        <tag>小端</tag>
-        <tag>字节序</tag>
       </tags>
   </entry>
   <entry>
