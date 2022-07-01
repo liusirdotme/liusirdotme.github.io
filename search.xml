@@ -134,20 +134,323 @@
       </tags>
   </entry>
   <entry>
-    <title>你真的了解防火墙吗</title>
-    <url>/2022/06/26/Network-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3%E9%98%B2%E7%81%AB%E5%A2%99%E5%90%97/</url>
+    <title>多路复用杂谈</title>
+    <url>/2022/06/26/OS-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%9D%82%E8%B0%88/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>线程池的基本思想是对象池，在程序启动时就开辟一块内存空间，里面存放了众多(未死亡的)的线程，池中的线程执行调度由池管理器来处理，当有线程任务时，从池中取一个，执行完成后线程对象归池，这样可以避免反复创建线程对象带来的性能开销，节省了系统的资源。</p>
+<p>操作系统是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入设备与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li><p>I/O多路复用就是通过一种机制(select/poll/epoll都是IO多路复用的机制)，可以监视多个描述符，一旦某个描述符就绪(一般是读就绪或者写就绪)，能够通知应用程序进行相应的读写操作。</p>
+<ul>
+<li>select/poll/epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的；而异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。</li>
+</ul>
+</li>
+<li><p>一些概念</p>
+<ul>
+<li>用户空间/内核空间：现在操作系统都是采用虚拟存储器，那么对32位操作系统而言，它的寻址空间(虚拟存储空间)为2的32次方。<ul>
+<li>操作系统的核心是内核，独立于普通的应用程序，可以访问受保护的内存空间，也有访问底层硬件设备的所有权限。</li>
+<li>为了保证用户进程不能直接操作内核(kernel)，保证内核的安全，操作系统将虚拟空间划分为两部分，一部分为内核空间，一部分为用户空间。</li>
+</ul>
+</li>
+<li>进程切换：为了控制进程的执行，内核必须有能力挂起正在CPU上运行的进程，并恢复以前挂起的某个进程的执行，这种行为被称为进程切换。因此可以说，任何进程都是在操作系统内核的支持下运行的，是与内核紧密相关的，并且进程切换是非常耗费资源的。</li>
+<li>进程阻塞：正在执行的进程，由于期待的某些事件未发生，如请求系统资源失败、等待某种操作的完成、新数据尚未到达或无新工作做等，则由系统自动执行阻塞原语(Block)，使自己由运行状态变为阻塞状态。<ul>
+<li>进程的阻塞是自身的一种主动行为，也因此只有处于运行态的进程(获得了CPU资源)才可能将其转为阻塞状态。</li>
+<li>当进程进入阻塞状态，是不占用CPU资源的。</li>
+</ul>
+</li>
+<li>文件描述符：文件描述符(File descriptor)是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。<ul>
+<li>文件描述符在形式上是一个非负整数，实际上它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。</li>
+<li>当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。</li>
+<li>在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。</li>
+<li>但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。</li>
+</ul>
+</li>
+<li>缓存I/O：又称为标准I/O，大多数文件系统的默认I/O操作都是缓存I/O。<ul>
+<li>在Linux的缓存I/O机制中，操作系统会将I/O的数据缓存在文件系统的页缓存中，即数据会先被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的地址空间。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><ol>
+<li><p>select方式</p>
+<ul>
+<li><p>原理：进程调用select函数会被阻塞，然后内核会轮询检查select负责的fd，直到有文件描述符就绪(或超时timeout)，select函数就会返回。若未超时，当select函数返回后，可以通过调用FD_ISSET遍历fdset，来找到就绪的描述符后进程被唤醒，处理结束后又继续轮询检查。它采用一个1024长度的数组来存储状态，也就是说它最多可以同时检查1024个文件描述符。</p>
+<ul>
+<li>select机制中有一种fd_set的数据结构，实际上是一个long类型的数组，每一个数组元素都能与一打开的文件句柄(Socket、文件、命名管道、设备等句柄)建立联系，建立联系的工作由程序员完成。当调用select()时，由内核根据IO状态修改fd_set的内容，由此来通知执行了select()的进程哪一Socket或文件可读。</li>
+<li>select本质上是通过设置或者轮询检查存放fd标志位的数据结构(fdset)来进行下一步处理</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FD_ZERO(fd_set *fdset);          // 将set清零使集合中不含任何fd</span><br><span class="line">FD_SET(int fd, fd_set *fdset);   // 将fd加入set集合</span><br><span class="line">FD_CLR(int fd, fd_set *fdset);   // 将fd从set集合中清除</span><br><span class="line">FD_ISSET(int fd, fd_set *fdset); // 检测fd是否在set集合中，不在则返回0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>select函数 <code>int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout);</code></p>
+<ul>
+<li>参数：<ul>
+<li>nfds：需要检查的文件描述字个数</li>
+<li>readset：用来检查可读性的一组文件描述字。</li>
+<li>writeset：用来检查可写性的一组文件描述字。</li>
+<li>exceptset：用来检查是否有异常条件出现的文件描述字。(注：错误不包括在异常条件之内)</li>
+<li>timeout：超时，填NULL为阻塞，填0为非阻塞，其他为一段超时时间</li>
+</ul>
+</li>
+<li>返回值int：若有就绪描述符返回其数目，若超时则为0，若出错则为-1</li>
+</ul>
+</li>
+<li><p>优势：select最大优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同一个线程内同时处理多个IO请求的目的。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
+</li>
+<li><p>问题</p>
+<ul>
+<li>单个进程可监视的fd数量是有限的。<ul>
+<li>一般来说这个数目和系统内存关系很大，具体数目可以cat /proc/sys/fs/file-max察看。</li>
+<li>32位机默认是1024个，64位机默认是2048。</li>
+</ul>
+</li>
+<li>采用轮询的方法，效率较低。<ul>
+<li>每一次调用select都需要将用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态。</li>
+</ul>
+</li>
+<li>当监听的fd数量较多但活跃数(就绪)较少时，select仍然需要遍历检查FD_SETSIZE个fd，他的时间复杂度为O(n)。<ul>
+<li>需要维护一个用来存放大量fd的数据结构，这样会使得用户空间和内核空间在传递该结构时复制开销大</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>poll方式</p>
+<ul>
+<li><p>poll实现原理基本和select相同，主要的区别是底层实现方式，poll采用了链表结构从而提高了select方式1024个文件描述符的限制，另外在轮训</p>
+</li>
+<li><p>poll函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int poll(struct pollfd *fds, nfds_t nfds, int timeout);</span><br><span class="line">typedef struct pollfd &#123;</span><br><span class="line">   int fd;        // 需要被检测或选择的文件描述符</span><br><span class="line">   short events;  // 对文件描述符fd上感兴趣的事件</span><br><span class="line">   short revents; // 文件描述符fd上当前实际发生的事件</span><br><span class="line">&#125; pollfd_t;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数<ul>
+<li>struct pollfd *fds：fds是一个struct pollfd类型的数组，用于存放需要检测其状态的socket描述符，并且调用poll函数之后fds数组不会被清空；一个pollfd结构体表示一个被监视的文件描述符，通过传递fds指示poll()监视多个文件描述符。其中，结构体的events域是监视该文件描述符的事件掩码，由用户来设置这个域，结构体的revents域是文件描述符的操作结果事件掩码，内核在调用返回时设置这个域</li>
+<li>nfds_t nfds：记录数组fds中描述符的总数量</li>
+</ul>
+</li>
+<li>返回值int：函数返回fds集合中就绪的读、写或出错的描述符数量，返回0表示超时，返回-1表示出错</li>
+</ul>
+</li>
+<li><p>优缺点</p>
+<ul>
+<li>poll改变了文件描述符集合的描述方式，使用了pollfd结构而不是select的fd_set结构，使得poll支持的文件描述符集合限制远大于select的1024。</li>
+<li>poll有一个“水平触发”的特点，如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。</li>
+<li>poll基于链表存储，poll和select在本质上没有什么区别，它解决了select对监听数量有限制这一缺点。</li>
+<li>poll的问题：采用轮询的方式进行fd检查，每次调用都会将链表传入内核空间，不论其是否有意义。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>epoll方式</p>
+<ul>
+<li><p>相关函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int epoll_create(int size);</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);</span><br><span class="line">int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>epoll_create函数创建一个epoll句柄，参数size表明内核要监听的描述符数量。调用成功时返回一个epoll句柄描述符，失败时返回-1。</p>
+</li>
+<li><p>epoll_ctl 函数注册要监听的事件类型。四个参数解释如下：</p>
+<ul>
+<li>epfd 表示epoll句柄</li>
+<li>op 表示fd操作类型，有如下3种<ul>
+<li>EPOLL_CTL_ADD 注册新的fd到epfd中</li>
+<li>EPOLL_CTL_MOD 修改已注册的fd的监听事件</li>
+<li>EPOLL_CTL_DEL 从epfd中删除一个fd</li>
+</ul>
+</li>
+<li>fd 是要监听的描述符</li>
+<li>event 表示要监听的事件，epoll_event 结构体定义如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct epoll_event &#123;</span><br><span class="line">    __uint32_t events;  /* Epoll events */</span><br><span class="line">    epoll_data_t data;  /* User data variable */</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">typedef union epoll_data &#123;</span><br><span class="line">    void *ptr;</span><br><span class="line">    int fd;</span><br><span class="line">    __uint32_t u32;</span><br><span class="line">    __uint64_t u64;</span><br><span class="line">&#125; epoll_data_t;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>epoll_wait函数等待事件的就绪，成功时返回就绪的事件数目，调用失败时返回 -1，等待超时返回 0。</p>
+<ul>
+<li>epfd 是epoll句柄</li>
+<li>events 表示从内核得到的就绪事件集合</li>
+<li>maxevents 告诉内核events的大小</li>
+<li>timeout 表示等待的超时事件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>epoll的实现重点有几个关键词<code>mmap</code>，<code>红黑树</code>，<code>回调函数</code>，<code>rdlist</code></p>
+<ul>
+<li>epoll是通过内核与用户空间mmap同一块内存实现的。<ul>
+<li>mmap将用户空间的一块地址和内核空间的一块地址同时映射到相同的一块物理内存地址(不管是用户空间还是内核空间都是虚拟地址，最终要通过地址映射映射到物理地址)，使得这块物理内存对内核和对用户均可见，减少用户态和内核态之间的数据交换,调用epoll_create会返回一个文件描述符。</li>
+</ul>
+</li>
+<li>在调用epoll_ctl时，会将监听事件放到一个数据结构–红黑树(红黑树本身插入和删除时间复杂度为LogN)中，并且与网络配置器绑定一个回调函数。<ul>
+<li>这棵红黑树是存放在mmap出的内存中的。</li>
+</ul>
+</li>
+<li>当监听的事件发生时，将调用之前绑定的回调函数，这个回调函数的作用是将该事件存放到rdlist中去，这是一个双向循环链表。</li>
+<li>调用epoll_wait函数，去查找rdlist中的就绪事件，存放在传入的参数events中，并返回就绪事件的数量。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>select/poll/epoll对比</p>
+<ul>
+<li>用户态将文件描述符传入内核的方式：<ul>
+<li>select：创建3个文件描述符集并拷贝到内核中，分别监听读、写、异常动作。这里受到单个进程可以打开的fd数量限制,默认是1024。 </li>
+<li>poll：将传入的struct pollfd结构体数组拷贝到内核中进行监听。 </li>
+<li>epoll：执行epoll_create会在内核的高速cache区中建立一颗红黑树以及就绪链表(该链表存储已经就绪的文件描述符)。接着用户执行的epoll_ctl函数添加文件描述符会在红黑树上增加相应的结点。</li>
+</ul>
+</li>
+<li>内核态检测文件描述符是否可读可写的方式：<ul>
+<li>select：采用轮询方式遍历所有fd，最后返回一个描述符读写操作是否就绪的mask掩码，根据这个掩码给fd_set赋值。 </li>
+<li>poll：同样采用轮询方式查询每个fd的状态，如果就绪则在等待队列中加入一项并继续遍历。 </li>
+<li>epoll：采用回调机制。在执行epoll_ctl的add操作时，不仅将文件描述符放到红黑树上，而且也注册了回调函数，内核在检测到某文件描述符可读/可写时会调用回调函数，该回调函数将文件描述符放在就绪链表中。</li>
+</ul>
+</li>
+<li>如何找到就绪的文件描述符并传递给用户态：<ul>
+<li>select：将之前传入的fd_set拷贝传出到用户态并返回就绪的文件描述符总数。用户态并不知道是哪些文件描述符处于就绪态，需要遍历来判断。 </li>
+<li>poll：将之前传入的fd数组拷贝传出用户态并返回就绪的文件描述符总数。用户态并不知道是哪些文件描述符处于就绪态，需要遍历来判断。 </li>
+<li>epoll：epoll_wait只用观察就绪链表中有无数据即可，最后将链表的数据返回给数组并返回就绪的数量。内核将就绪的文件描述符放在传入的数组中，所以只用遍历依次处理即可。这里返回的文件描述符是通过mmap让内核和用户空间共享同一块内存实现传递的，减少了不必要的拷贝。</li>
+</ul>
+</li>
+<li>继续重新监听时如何重复以上步骤：<ul>
+<li>select：将新的监听文件描述符集合拷贝传入内核中，继续以上步骤。 </li>
+<li>poll：将新的struct pollfd结构体数组拷贝传入内核中，继续以上步骤。 </li>
+<li>epoll：无需重新构建红黑树，直接沿用已存在的即可。</li>
+</ul>
+</li>
+<li>对比总结<ul>
+<li>select和poll的动作基本一致，只是poll采用链表来进行文件描述符的存储，而select采用fd标注位来存放，所以select会受到最大连接数的限制,而poll不会。</li>
+<li>select、poll、epoll虽然都会返回就绪的文件描述符数量，但是select和poll并不会明确指出是哪些文件描述符就绪，而epoll会。造成的区别就是系统调用返回后，调用select和poll的程序需要遍历监听的整个文件描述符找到是谁处于就绪，而epoll则直接处理就行了。</li>
+<li>select、poll都需要将有关文件描述符的数据结构拷贝进内核，最后再拷贝出来。而epoll创建的有关文件描述符的数据结构本身就存于内核态中，系统调用返回时也采用mmap共享存储区，需要拷贝的次数大大减少。</li>
+<li>select、poll采用轮询的方式来检查文件描述符是否处于就绪态，而epoll采用回调机制。造成的结果就是随着fd的增加，select和poll的效率会线性降低，而epoll不会受到太大影响，除非活跃的socket很多。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、epoll的不同实现方式"><a href="#三、epoll的不同实现方式" class="headerlink" title="三、epoll的不同实现方式"></a>三、epoll的不同实现方式</h2><ol>
+<li><p>epoll</p>
+<ul>
+<li>epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。</li>
+<li>epoll的核心是3个API，核心数据结构是：1个红黑树和1个链表。</li>
+</ul>
+<p><img src="epoll.png" alt="epoll"></p>
+<ul>
+<li><p>三个步骤</p>
+<ul>
+<li>首先，需要调用epoll_create来创建一个epoll的文件描述符，内核会同时创建一个eventpoll的数据结构。这个数据结构里面会包含两个东西，一个是红黑树，专门用于存储epoll_ctl注册进来的fd文件描述符；另外一个是就绪链表，用来存储epoll_wait调用相关的，已经就绪的那些fd文件描述符。</li>
+<li>其次，因为epoll中的所有事件，都与网卡驱动程序建立回调关系，当相应的事件发生的时候，会通过这个回调函数，将发生的事件添加到就绪链表当中。</li>
+<li>最后，当调用epoll_wait检查是否有事件发生时，只需要检查eventpoll对象中的rdlist双链表中是否有需要处理的事件。如果rdlist不为空，则把发生的事件复制到用户态，同时将事件数量返回给用户。</li>
+</ul>
+</li>
+<li><p>epoll是通过后台中断的方式来获得就绪的状态，调用epoll_create创建实例，调用epoll_ctl添加或删除监控的文件描述符，调用epoll_wait阻塞住，直到有就绪的文件描述符，通过epoll_event参数返回就绪状态的文件描述符和事件。</p>
+<ul>
+<li>epoll_create 创建一个epoll对象，一般epollfd = epoll_create()</li>
+<li>epoll_ctl(epoll_add/epoll_del的合体)，往epoll对象中增加/删除某一个流的某一个事件<ul>
+<li>epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//有缓冲区内有数据时epoll_wait返回</li>
+<li>epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//缓冲区可写入时epoll_wait返回</li>
+</ul>
+</li>
+<li>epoll_wait(epollfd,…)等待直到注册的事件发生</li>
+</ul>
+</li>
+<li><p>两种触发方式</p>
+<ul>
+<li>边缘触发(edge trigger，ET)<ul>
+<li>对于读操作<ul>
+<li>当缓冲区由不可读变为可读的时候，即缓冲区由空变为不空的时候</li>
+<li>当有新数据到达时，即缓冲区中的待读数据变多的时候</li>
+<li>当缓冲区有数据可读，且应用进程对相应的描述符进行EPOLL_CTL_MOD修改EPOLLIN事件时</li>
+</ul>
+</li>
+<li>对于写操作<ul>
+<li>当缓冲区由不可写变为可写时</li>
+<li>当有旧数据被发送走，即缓冲区中的内容变少的时候</li>
+<li>当缓冲区有空间可写，且应用进程对相应的描述符进行EPOLL_CTL_MOD修改EPOLLOUT事件时。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>水平触发(level trigger，LT)，默认<ul>
+<li>对于读操作，只要缓冲内容不为空，LT模式返回读就绪。</li>
+<li>对于写操作，只要缓冲区还不满，LT模式会返回写就绪。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>kqueue</p>
+<ul>
+<li><p>kqueue是FreeBSD上的一种的多路复用机制，它是针对传统的select/poll处理大量的文件描述符性能较低效而开发出来的。kqueue与epoll非常相似，最初是2000年Jonathan Lemon在FreeBSD系统上开发的一个高性能的事件通知接口。</p>
+</li>
+<li><p>原理：注册一批socket描述符到kqueue以后，当其中的描述符状态发生变化时，kqueue将一次性通知应用程序哪些描述符可读、可写或出错了。</p>
+</li>
+<li><p>kqueue支持多种类型的文件描述符，包括socket、信号、定时器、AIO、VNODE、PIPE。 </p>
+</li>
+<li><p>kqueue的接口包括kqueue()、kevent()两个系统调用和一个struct kevent结构：</p>
+<ul>
+<li><p>kqueue()生成一个内核事件队列，返回该队列的文件描述符，其它 API 通过该描述符操作这个kqueue，如：注册，反注册，获取通知等。</p>
+</li>
+<li><p>kevent()提供向内核注册/反注册事件和返回就绪事件或错误事件。</p>
+<ul>
+<li>注册/撤销：kevent()中的neventlist参数将其设为0且传入合法的changelist和nchangelist，就会将changelist中的事件注册到kqueue中。当关闭某文件描述符时，与之关联的事件会被自动地从kqueue移除。</li>
+<li>启用禁用/禁止过滤器事件：通过flags EV_ENABLE和EV_DISABLE使过滤器事件有效或无效。这个功能在利用 EVFILT_WRITE 发送数据时非常有用。</li>
+<li>获取已触发事件：将nchangelist设置成0及其他参数，当kevent非错误和超时返回时，在eventlist和neventlist中就保存可用事件集合。</li>
+</ul>
+</li>
+<li><p>struct kevent就是kevent()操作的最基本的事件结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct kevent &#123; </span><br><span class="line">     uintptr_t ident;       /* 事件 ID */ </span><br><span class="line">     short     filter;       /* 事件过滤器 */ </span><br><span class="line">     u_short   flags;        /* 行为标识 */ </span><br><span class="line">     u_int     fflags;       /* 过滤器标识值 */ </span><br><span class="line">     intptr_t  data;         /* 过滤器数据 */ </span><br><span class="line">     void      *udata;       /* 应用透传数据 */ </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ident：事件的id，一般设置为文件描述符。</li>
+<li>filter：可以将kqueue filter看作事件。内核检测ident上注册的filter的状态，状态发生了变化，就通知应用程序。<blockquote>
+<p>在一个kqueue中，<code>&#123;ident, filter&#125;</code>确定一个唯一的事件</p>
+</blockquote>
+</li>
+<li>行为标志flags：<ul>
+<li>EV_ADD：指示加入事件到 kqueue</li>
+<li>EV_DELETE：指示将传入的事件从 kqueue 中移除</li>
+</ul>
+</li>
+<li>过滤器标识值：<ul>
+<li>EV_ENABLE：过滤器事件可用，注册一个事件时，默认是可用的。</li>
+<li>EV_DISABLE：过滤器事件不可用，当内部描述可读或可写时，将不通知应用程序。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>iocp</p>
+<ul>
+<li>输入输出完成端口(Input/Output Completion Port，IOCP)，是支持多个同时发生的异步I/O操作的应用程序编程接口，在Windows NT的3.5版本以后，或AIX 5版以后或Solaris第十版以后，开始支持。</li>
+<li>原理：通常情况下，线程池中的工作线程的数量与CPU内核数量相同，以此来最小化线程切换代价。一个IOCP对象，在操作系统中可关联着多个Socket和(或)文件控制端。IOCP对象内部有一个先进先出(FIFO)队列，用于存放IOCP所关联的输入输出端的服务请求完成消息。请求输入输出服务的进程不接收IO服务完成通知，而是检查IOCP的消息队列以确定IO请求的状态。 (线程池中的)多个线程负责从IOCP消息队列中取走完成通知并执行数据处理；如果队列中没有消息，那么线程阻塞挂起在该队列。这些线程从而实现了负载均衡。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="http://www.cnblogs.com/duanxz/p/5155926.html">参考一</a></li>
+<li><a href="http://www.xmailserver.org/linux-patches/nio-improve.html">参考二</a></li>
+<li><a href="https://my.oschina.net/xianggao/blog/663655">参考三</a></li>
+<li><a href="http://baijiahao.baidu.com/s?id=1641172494287388070&wfr=spider&for=pc">参考四</a></li>
+<li><a href="https://www.cnblogs.com/FG123/p/5256553.html">参考五</a></li>
+</ol>
+]]></content>
       <categories>
-        <category>Network</category>
+        <category>OS</category>
       </categories>
       <tags>
-        <tag>计算机网络</tag>
-        <tag>防火墙</tag>
+        <tag>select</tag>
+        <tag>操作系统</tag>
+        <tag>IO</tag>
+        <tag>epoll</tag>
+        <tag>kqueue</tag>
+        <tag>多路复用</tag>
+        <tag>poll</tag>
+        <tag>iocp</tag>
       </tags>
   </entry>
   <entry>
@@ -482,8 +785,8 @@
         <tag>Go</tag>
         <tag>PHP</tag>
         <tag>IPC</tag>
-        <tag>RPC</tag>
         <tag>LPC</tag>
+        <tag>RPC</tag>
         <tag>gRPC</tag>
         <tag>Protobuf</tag>
       </tags>
@@ -1430,9 +1733,9 @@
         <tag>select</tag>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
+        <tag>I/O多路复用</tag>
         <tag>epoll</tag>
         <tag>kqueue</tag>
-        <tag>I/O多路复用</tag>
         <tag>evport</tag>
       </tags>
   </entry>
@@ -3592,18 +3895,18 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>GitHub</tag>
         <tag>RabbitMQ</tag>
         <tag>Redis</tag>
         <tag>MongoDB</tag>
         <tag>PHP</tag>
+        <tag>swoole</tag>
         <tag>断点上传</tag>
         <tag>断点续传</tag>
         <tag>OAuth2.0</tag>
         <tag>composer</tag>
+        <tag>GitHub</tag>
         <tag>packagist</tag>
         <tag>psr</tag>
-        <tag>swoole</tag>
         <tag>异步任务</tag>
       </tags>
   </entry>
@@ -5164,6 +5467,7 @@
         <tag>Logstash</tag>
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
+        <tag>YAML</tag>
         <tag>Search</tag>
         <tag>lucene</tag>
         <tag>倒排索引</tag>
@@ -5171,7 +5475,6 @@
         <tag>分词器</tag>
         <tag>字符过滤器</tag>
         <tag>索引模板</tag>
-        <tag>YAML</tag>
         <tag>反向索引</tag>
         <tag>正向索引</tag>
         <tag>Solr</tag>
@@ -5406,8 +5709,8 @@
         <tag>Logstash</tag>
         <tag>Kibana</tag>
         <tag>Filebeat</tag>
-        <tag>CSV</tag>
         <tag>Nginx</tag>
+        <tag>CSV</tag>
       </tags>
   </entry>
   <entry>
@@ -7660,12 +7963,34 @@
 </ul>
 </li>
 </ol>
-]]></content>
+<hr>
+<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a><center><font color=red>防火墙</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;防火墙一词来源于建筑学中，人们通过在建筑中砌起一道墙，一旦发生火灾，它能够防止火势蔓延到别的房间，从而起到一定的防护作用。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在现代互联网技术中，防火墙已成为一种必不可少的安全组件(硬件、软件)。它通过在专有网络和公网之间搭建一道屏障，通过包过滤和其他技术对来自互联网安全未知的数据惊醒拦截防止恶意请求进入专有网络，或限制请求不明来源的超链接等防止内部用户数据泄露等，从而起到保护的作用。</p>
+<ol>
+<li><p>分类</p>
+<ul>
+<li>包过滤(Packet filtering)：工作在网络层，仅根据数据包头中的IP地址、端口号、协议类型等标志确定是否允许数据包通过。</li>
+<li>应用代理(Application Proxy)：工作在应用层，通过编写不同的应用代理程序，实现对应用层数据的检测和分析。</li>
+<li>状态检测(Stateful Inspection)：工作在<code>2~4</code>层，访问控制方式与1同，但处理的对象不是单个数据包，而是整个连接，通过规则表和连接状态表，综合判断是否允许数据包通过。</li>
+<li>完全内容检测(Compelete Content Inspection)：工作在<code>2~7</code>层，不仅分析数据包头信息、状态信息，而且对应用层协议进行还原和内容分析，有效防范混合型安全威胁。</li>
+</ul>
+</li>
+<li><p>常用拦截规则</p>
+<ul>
+<li>限制IP</li>
+<li>限制端口</li>
+<li>限制域名</li>
+<li>限制协议(HTTP/TCP等)</li>
+<li>限制关键字</li>
+<li>限制程序</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2>]]></content>
       <categories>
         <category>Network</category>
       </categories>
       <tags>
-        <tag>DNS</tag>
         <tag>计算机网络</tag>
         <tag>A类</tag>
         <tag>B类</tag>
@@ -7680,8 +8005,10 @@
         <tag>ICMP</tag>
         <tag>DHCP</tag>
         <tag>RIP</tag>
+        <tag>DNS</tag>
         <tag>CDN</tag>
         <tag>CNAME</tag>
+        <tag>防火墙</tag>
       </tags>
   </entry>
   <entry>
@@ -9274,8 +9601,8 @@
         <tag>Mac</tag>
         <tag>MongoDB</tag>
         <tag>非阻塞</tag>
-        <tag>JS</tag>
         <tag>Node</tag>
+        <tag>JS</tag>
         <tag>npm</tag>
         <tag>翻墙</tag>
         <tag>运行机制</tag>
@@ -12670,13 +12997,13 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>标准输入</tag>
-        <tag>标准输出</tag>
-        <tag>标准错误输出</tag>
         <tag>文件描述符</tag>
         <tag>stdin</tag>
+        <tag>标准输入</tag>
         <tag>stdout</tag>
+        <tag>标准输出</tag>
         <tag>stderr</tag>
+        <tag>标准错误输出</tag>
         <tag>文件重定向</tag>
         <tag>标准输入输出重定向</tag>
       </tags>
@@ -12748,7 +13075,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>OOP</tag>
         <tag>结构体</tag>
         <tag>struct</tag>
-        <tag>Nginx</tag>
         <tag>Go</tag>
         <tag>面向对象</tag>
         <tag>封装</tag>
@@ -12757,6 +13083,7 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>interface</tag>
         <tag>接口</tag>
         <tag>map</tag>
+        <tag>Nginx</tag>
         <tag>反向代理</tag>
       </tags>
   </entry>
@@ -13314,9 +13641,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>Redis</category>
       </categories>
       <tags>
-        <tag>事务</tag>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
+        <tag>事务</tag>
         <tag>Lua</tag>
       </tags>
   </entry>
@@ -14039,9 +14366,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>PHP</category>
       </categories>
       <tags>
+        <tag>PHP</tag>
         <tag>反射</tag>
         <tag>reflection</tag>
-        <tag>PHP</tag>
         <tag>public</tag>
         <tag>private</tag>
         <tag>protected</tag>
@@ -14420,9 +14747,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       <tags>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
-        <tag>info</tag>
         <tag>eval</tag>
         <tag>memory</tag>
+        <tag>info</tag>
         <tag>slowlog</tag>
         <tag>config</tag>
         <tag>client</tag>
@@ -14931,12 +15258,12 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>线程</tag>
         <tag>协程</tag>
         <tag>操作系统</tag>
+        <tag>IPC</tag>
+        <tag>RPC</tag>
         <tag>挂起</tag>
         <tag>fork</tag>
         <tag>调度</tag>
         <tag>切换</tag>
-        <tag>IPC</tag>
-        <tag>RPC</tag>
       </tags>
   </entry>
   <entry>
@@ -15455,9 +15782,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
       <tags>
         <tag>MySQL</tag>
         <tag>索引</tag>
-        <tag>explain</tag>
         <tag>毛泽东</tag>
         <tag>索引条件下推</tag>
+        <tag>explain</tag>
         <tag>覆盖索引</tag>
         <tag>前缀索引</tag>
         <tag>联合索引</tag>
@@ -16258,10 +16585,10 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>SIP</tag>
-        <tag>csrutil</tag>
         <tag>Lua</tag>
         <tag>PHP</tag>
+        <tag>SIP</tag>
+        <tag>csrutil</tag>
         <tag>swoole</tag>
         <tag>phpize</tag>
         <tag>make</tag>
@@ -18109,10 +18436,6 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 <td align="left">计算机处理器的架构(常见如amd64、arm等)</td>
 </tr>
 <tr>
-<td align="center">GOBIN</td>
-<td align="left">存放可执行文件的绝对路径</td>
-</tr>
-<tr>
 <td align="center">GOCACHE</td>
 <td align="left">存储编译后信息的缓存目录</td>
 </tr>
@@ -18125,16 +18448,20 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 <td align="left">编译代码的操作系统名称(如linux、windows、darwin等)，用于交叉编译</td>
 </tr>
 <tr>
-<td align="center">GOPATH</td>
-<td align="left">工作区所在的绝对目录</td>
-</tr>
-<tr>
 <td align="center">GOPROXY</td>
 <td align="left">go module目录所在的地址</td>
 </tr>
 <tr>
 <td align="center">GOROOT</td>
-<td align="left">Go语言的安装目录的绝对路径</td>
+<td align="left">Go语言的安装目录的路径</td>
+</tr>
+<tr>
+<td align="center">GOPATH</td>
+<td align="left">工作区所在的路径(可存在多个工作区)，用于存放源代码、归档和可执行文件</td>
+</tr>
+<tr>
+<td align="center">GOBIN</td>
+<td align="left">存放可执行文件的路径</td>
 </tr>
 <tr>
 <td align="center">GOTOOLDIR</td>
@@ -18376,11 +18703,30 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
 <li><a href="https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63">参考一</a></li>
 </ol>
 <hr>
-<h1 id="go-get-go-install-go-build-go-mod"><a href="#go-get-go-install-go-build-go-mod" class="headerlink" title="go get / go install / go build / go mod"></a><center><font color=red>go get / go install / go build / go mod</font></center></h1><ol>
-<li>go get </li>
-<li>go install </li>
-<li>go build</li>
-<li>go mod</li>
+<h1 id="go-build-go-install-go-run-go-get-go-mod"><a href="#go-build-go-install-go-run-go-get-go-mod" class="headerlink" title="go build / go install / go run / go get / go mod"></a><center><font color=red>go build / go install / go run / go get / go mod</font></center></h1><ol>
+<li>go build<ul>
+<li>对于命令源码文件，执行后会在当前目录下生成可执行文件<ul>
+<li>执行go build时指定文件名如index.go，生成的可执行文件与命令源码文件名称相同如<code>index</code></li>
+<li>执行go build时不指定文件名，生成的可执行文件与命令源码文件所在目录名相同如<code>goapp</code></li>
+</ul>
+</li>
+<li>对于库源码文件，执行后不会在当前目录生成任何文件(可通过<code>-x</code>参数查看构建细节)，主要用于验证和检查</li>
+</ul>
+</li>
+<li>go install：约等于<code>go build + 链接</code><ul>
+<li>对于命令源码文件，执行后会在<code>$GOPATH/bin/</code>目录下生成可执行文件</li>
+<li>对于库源码文件，执行后会在<code>$GOPATH/pkg/darwin_amd64(平台)/</code>目录下生成归档文件</li>
+</ul>
+</li>
+<li>go run：只能用于main包，在临时目录生成可执行文件并执行</li>
+<li>go get：约等于<code>git clone + go install</code></li>
+<li>go mod：go1.11新增特性，用于替代老版本必须将项目放在GOPATH下，不方便管理<ul>
+<li>相关的三个参数设置GO111MODULE/GOPRIVATE/GOPROXY<ul>
+<li>go env -w GO111MODULE=off/on/auto</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 <hr>
 <h1 id="常见web框架"><a href="#常见web框架" class="headerlink" title="常见web框架"></a><center><font color=red>常见web框架</font></center></h1><h2 id="一、概念-11"><a href="#一、概念-11" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件框架(software framework)，通常指的是为了实现某个业界标准或完成特定基本任务的软件组件规范，也指为了实现某个软件组件规范时，提供规范所要求之基础功能的软件产品。Web框架，全称web应用框架(Web application framework)是一种开发框架，用来支持动态网站、网络应用程序及网络服务的开发。</p>
@@ -18467,6 +18813,11 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>Gin</tag>
         <tag>interface</tag>
         <tag>接口</tag>
+        <tag>自举</tag>
+        <tag>channel</tag>
+        <tag>反射</tag>
+        <tag>reflection</tag>
+        <tag>断言</tag>
         <tag>多返回值</tag>
         <tag>env</tag>
         <tag>web</tag>
@@ -18476,14 +18827,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <tag>Buffalo</tag>
         <tag>Revel</tag>
         <tag>交叉编译</tag>
-        <tag>自举</tag>
         <tag>CGO</tag>
         <tag>切片</tag>
         <tag>信道</tag>
-        <tag>channel</tag>
-        <tag>断言</tag>
-        <tag>反射</tag>
-        <tag>reflection</tag>
         <tag>defer</tag>
         <tag>延迟调用</tag>
         <tag>异常处理</tag>
@@ -21945,9 +22291,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>事务</tag>
         <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>事务</tag>
         <tag>WiredTiger</tag>
         <tag>ACID</tag>
         <tag>Write Concern</tag>
@@ -23776,9 +24122,9 @@ fmt.Printf(&quot;value: %s\n&quot;, **value)</code></pre><p>}</p>
         <category>PL</category>
       </categories>
       <tags>
+        <tag>JS</tag>
         <tag>let</tag>
         <tag>前端</tag>
-        <tag>JS</tag>
         <tag>函数防抖</tag>
         <tag>函数节流</tag>
         <tag>事件捕获</tag>
@@ -24054,8 +24400,8 @@ read_xlsx(name, sheet)
         <category>Python</category>
       </categories>
       <tags>
-        <tag>CSV</tag>
         <tag>Python</tag>
+        <tag>CSV</tag>
         <tag>xls</tag>
         <tag>xlsx</tag>
         <tag>pandas</tag>
@@ -25082,326 +25428,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>多路复用杂谈</title>
-    <url>/2017/02/09/OS-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%9D%82%E8%B0%88/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>操作系统是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入设备与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
-<li><p>I/O多路复用就是通过一种机制(select/poll/epoll都是IO多路复用的机制)，可以监视多个描述符，一旦某个描述符就绪(一般是读就绪或者写就绪)，能够通知应用程序进行相应的读写操作。</p>
-<ul>
-<li>select/poll/epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的；而异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。</li>
-</ul>
-</li>
-<li><p>一些概念</p>
-<ul>
-<li>用户空间/内核空间：现在操作系统都是采用虚拟存储器，那么对32位操作系统而言，它的寻址空间(虚拟存储空间)为2的32次方。<ul>
-<li>操作系统的核心是内核，独立于普通的应用程序，可以访问受保护的内存空间，也有访问底层硬件设备的所有权限。</li>
-<li>为了保证用户进程不能直接操作内核(kernel)，保证内核的安全，操作系统将虚拟空间划分为两部分，一部分为内核空间，一部分为用户空间。</li>
-</ul>
-</li>
-<li>进程切换：为了控制进程的执行，内核必须有能力挂起正在CPU上运行的进程，并恢复以前挂起的某个进程的执行，这种行为被称为进程切换。因此可以说，任何进程都是在操作系统内核的支持下运行的，是与内核紧密相关的，并且进程切换是非常耗费资源的。</li>
-<li>进程阻塞：正在执行的进程，由于期待的某些事件未发生，如请求系统资源失败、等待某种操作的完成、新数据尚未到达或无新工作做等，则由系统自动执行阻塞原语(Block)，使自己由运行状态变为阻塞状态。<ul>
-<li>进程的阻塞是自身的一种主动行为，也因此只有处于运行态的进程(获得了CPU资源)才可能将其转为阻塞状态。</li>
-<li>当进程进入阻塞状态，是不占用CPU资源的。</li>
-</ul>
-</li>
-<li>文件描述符：文件描述符(File descriptor)是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。<ul>
-<li>文件描述符在形式上是一个非负整数，实际上它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。</li>
-<li>当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。</li>
-<li>在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。</li>
-<li>但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。</li>
-</ul>
-</li>
-<li>缓存I/O：又称为标准I/O，大多数文件系统的默认I/O操作都是缓存I/O。<ul>
-<li>在Linux的缓存I/O机制中，操作系统会将I/O的数据缓存在文件系统的页缓存中，即数据会先被拷贝到操作系统内核的缓冲区中，然后才会从操作系统内核的缓冲区拷贝到应用程序的地址空间。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><ol>
-<li><p>select方式</p>
-<ul>
-<li><p>原理：进程调用select函数会被阻塞，然后内核会轮询检查select负责的fd，直到有文件描述符就绪(或超时timeout)，select函数就会返回。若未超时，当select函数返回后，可以通过调用FD_ISSET遍历fdset，来找到就绪的描述符后进程被唤醒，处理结束后又继续轮询检查。它采用一个1024长度的数组来存储状态，也就是说它最多可以同时检查1024个文件描述符。</p>
-<ul>
-<li>select机制中有一种fd_set的数据结构，实际上是一个long类型的数组，每一个数组元素都能与一打开的文件句柄(Socket、文件、命名管道、设备等句柄)建立联系，建立联系的工作由程序员完成。当调用select()时，由内核根据IO状态修改fd_set的内容，由此来通知执行了select()的进程哪一Socket或文件可读。</li>
-<li>select本质上是通过设置或者轮询检查存放fd标志位的数据结构(fdset)来进行下一步处理</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FD_ZERO(fd_set *fdset);          // 将set清零使集合中不含任何fd</span><br><span class="line">FD_SET(int fd, fd_set *fdset);   // 将fd加入set集合</span><br><span class="line">FD_CLR(int fd, fd_set *fdset);   // 将fd从set集合中清除</span><br><span class="line">FD_ISSET(int fd, fd_set *fdset); // 检测fd是否在set集合中，不在则返回0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>select函数 <code>int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout);</code></p>
-<ul>
-<li>参数：<ul>
-<li>nfds：需要检查的文件描述字个数</li>
-<li>readset：用来检查可读性的一组文件描述字。</li>
-<li>writeset：用来检查可写性的一组文件描述字。</li>
-<li>exceptset：用来检查是否有异常条件出现的文件描述字。(注：错误不包括在异常条件之内)</li>
-<li>timeout：超时，填NULL为阻塞，填0为非阻塞，其他为一段超时时间</li>
-</ul>
-</li>
-<li>返回值int：若有就绪描述符返回其数目，若超时则为0，若出错则为-1</li>
-</ul>
-</li>
-<li><p>优势：select最大优势是用户可以在一个线程内同时处理多个socket的IO请求。用户可以注册多个socket，然后不断地调用select读取被激活的socket，即可达到在同一个线程内同时处理多个IO请求的目的。而在同步阻塞模型中，必须通过多线程的方式才能达到这个目的。</p>
-</li>
-<li><p>问题</p>
-<ul>
-<li>单个进程可监视的fd数量是有限的。<ul>
-<li>一般来说这个数目和系统内存关系很大，具体数目可以cat /proc/sys/fs/file-max察看。</li>
-<li>32位机默认是1024个，64位机默认是2048。</li>
-</ul>
-</li>
-<li>采用轮询的方法，效率较低。<ul>
-<li>每一次调用select都需要将用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态。</li>
-</ul>
-</li>
-<li>当监听的fd数量较多但活跃数(就绪)较少时，select仍然需要遍历检查FD_SETSIZE个fd，他的时间复杂度为O(n)。<ul>
-<li>需要维护一个用来存放大量fd的数据结构，这样会使得用户空间和内核空间在传递该结构时复制开销大</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>poll方式</p>
-<ul>
-<li><p>poll实现原理基本和select相同，主要的区别是底层实现方式，poll采用了链表结构从而提高了select方式1024个文件描述符的限制，另外在轮训</p>
-</li>
-<li><p>poll函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int poll(struct pollfd *fds, nfds_t nfds, int timeout);</span><br><span class="line">typedef struct pollfd &#123;</span><br><span class="line">   int fd;        // 需要被检测或选择的文件描述符</span><br><span class="line">   short events;  // 对文件描述符fd上感兴趣的事件</span><br><span class="line">   short revents; // 文件描述符fd上当前实际发生的事件</span><br><span class="line">&#125; pollfd_t;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数<ul>
-<li>struct pollfd *fds：fds是一个struct pollfd类型的数组，用于存放需要检测其状态的socket描述符，并且调用poll函数之后fds数组不会被清空；一个pollfd结构体表示一个被监视的文件描述符，通过传递fds指示poll()监视多个文件描述符。其中，结构体的events域是监视该文件描述符的事件掩码，由用户来设置这个域，结构体的revents域是文件描述符的操作结果事件掩码，内核在调用返回时设置这个域</li>
-<li>nfds_t nfds：记录数组fds中描述符的总数量</li>
-</ul>
-</li>
-<li>返回值int：函数返回fds集合中就绪的读、写或出错的描述符数量，返回0表示超时，返回-1表示出错</li>
-</ul>
-</li>
-<li><p>优缺点</p>
-<ul>
-<li>poll改变了文件描述符集合的描述方式，使用了pollfd结构而不是select的fd_set结构，使得poll支持的文件描述符集合限制远大于select的1024。</li>
-<li>poll有一个“水平触发”的特点，如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。</li>
-<li>poll基于链表存储，poll和select在本质上没有什么区别，它解决了select对监听数量有限制这一缺点。</li>
-<li>poll的问题：采用轮询的方式进行fd检查，每次调用都会将链表传入内核空间，不论其是否有意义。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>epoll方式</p>
-<ul>
-<li><p>相关函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int epoll_create(int size);</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);</span><br><span class="line">int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>epoll_create函数创建一个epoll句柄，参数size表明内核要监听的描述符数量。调用成功时返回一个epoll句柄描述符，失败时返回-1。</p>
-</li>
-<li><p>epoll_ctl 函数注册要监听的事件类型。四个参数解释如下：</p>
-<ul>
-<li>epfd 表示epoll句柄</li>
-<li>op 表示fd操作类型，有如下3种<ul>
-<li>EPOLL_CTL_ADD 注册新的fd到epfd中</li>
-<li>EPOLL_CTL_MOD 修改已注册的fd的监听事件</li>
-<li>EPOLL_CTL_DEL 从epfd中删除一个fd</li>
-</ul>
-</li>
-<li>fd 是要监听的描述符</li>
-<li>event 表示要监听的事件，epoll_event 结构体定义如下：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct epoll_event &#123;</span><br><span class="line">    __uint32_t events;  /* Epoll events */</span><br><span class="line">    epoll_data_t data;  /* User data variable */</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">typedef union epoll_data &#123;</span><br><span class="line">    void *ptr;</span><br><span class="line">    int fd;</span><br><span class="line">    __uint32_t u32;</span><br><span class="line">    __uint64_t u64;</span><br><span class="line">&#125; epoll_data_t;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>epoll_wait函数等待事件的就绪，成功时返回就绪的事件数目，调用失败时返回 -1，等待超时返回 0。</p>
-<ul>
-<li>epfd 是epoll句柄</li>
-<li>events 表示从内核得到的就绪事件集合</li>
-<li>maxevents 告诉内核events的大小</li>
-<li>timeout 表示等待的超时事件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>epoll的实现重点有几个关键词<code>mmap</code>，<code>红黑树</code>，<code>回调函数</code>，<code>rdlist</code></p>
-<ul>
-<li>epoll是通过内核与用户空间mmap同一块内存实现的。<ul>
-<li>mmap将用户空间的一块地址和内核空间的一块地址同时映射到相同的一块物理内存地址(不管是用户空间还是内核空间都是虚拟地址，最终要通过地址映射映射到物理地址)，使得这块物理内存对内核和对用户均可见，减少用户态和内核态之间的数据交换,调用epoll_create会返回一个文件描述符。</li>
-</ul>
-</li>
-<li>在调用epoll_ctl时，会将监听事件放到一个数据结构–红黑树(红黑树本身插入和删除时间复杂度为LogN)中，并且与网络配置器绑定一个回调函数。<ul>
-<li>这棵红黑树是存放在mmap出的内存中的。</li>
-</ul>
-</li>
-<li>当监听的事件发生时，将调用之前绑定的回调函数，这个回调函数的作用是将该事件存放到rdlist中去，这是一个双向循环链表。</li>
-<li>调用epoll_wait函数，去查找rdlist中的就绪事件，存放在传入的参数events中，并返回就绪事件的数量。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>select/poll/epoll对比</p>
-<ul>
-<li>用户态将文件描述符传入内核的方式：<ul>
-<li>select：创建3个文件描述符集并拷贝到内核中，分别监听读、写、异常动作。这里受到单个进程可以打开的fd数量限制,默认是1024。 </li>
-<li>poll：将传入的struct pollfd结构体数组拷贝到内核中进行监听。 </li>
-<li>epoll：执行epoll_create会在内核的高速cache区中建立一颗红黑树以及就绪链表(该链表存储已经就绪的文件描述符)。接着用户执行的epoll_ctl函数添加文件描述符会在红黑树上增加相应的结点。</li>
-</ul>
-</li>
-<li>内核态检测文件描述符是否可读可写的方式：<ul>
-<li>select：采用轮询方式遍历所有fd，最后返回一个描述符读写操作是否就绪的mask掩码，根据这个掩码给fd_set赋值。 </li>
-<li>poll：同样采用轮询方式查询每个fd的状态，如果就绪则在等待队列中加入一项并继续遍历。 </li>
-<li>epoll：采用回调机制。在执行epoll_ctl的add操作时，不仅将文件描述符放到红黑树上，而且也注册了回调函数，内核在检测到某文件描述符可读/可写时会调用回调函数，该回调函数将文件描述符放在就绪链表中。</li>
-</ul>
-</li>
-<li>如何找到就绪的文件描述符并传递给用户态：<ul>
-<li>select：将之前传入的fd_set拷贝传出到用户态并返回就绪的文件描述符总数。用户态并不知道是哪些文件描述符处于就绪态，需要遍历来判断。 </li>
-<li>poll：将之前传入的fd数组拷贝传出用户态并返回就绪的文件描述符总数。用户态并不知道是哪些文件描述符处于就绪态，需要遍历来判断。 </li>
-<li>epoll：epoll_wait只用观察就绪链表中有无数据即可，最后将链表的数据返回给数组并返回就绪的数量。内核将就绪的文件描述符放在传入的数组中，所以只用遍历依次处理即可。这里返回的文件描述符是通过mmap让内核和用户空间共享同一块内存实现传递的，减少了不必要的拷贝。</li>
-</ul>
-</li>
-<li>继续重新监听时如何重复以上步骤：<ul>
-<li>select：将新的监听文件描述符集合拷贝传入内核中，继续以上步骤。 </li>
-<li>poll：将新的struct pollfd结构体数组拷贝传入内核中，继续以上步骤。 </li>
-<li>epoll：无需重新构建红黑树，直接沿用已存在的即可。</li>
-</ul>
-</li>
-<li>对比总结<ul>
-<li>select和poll的动作基本一致，只是poll采用链表来进行文件描述符的存储，而select采用fd标注位来存放，所以select会受到最大连接数的限制,而poll不会。</li>
-<li>select、poll、epoll虽然都会返回就绪的文件描述符数量，但是select和poll并不会明确指出是哪些文件描述符就绪，而epoll会。造成的区别就是系统调用返回后，调用select和poll的程序需要遍历监听的整个文件描述符找到是谁处于就绪，而epoll则直接处理就行了。</li>
-<li>select、poll都需要将有关文件描述符的数据结构拷贝进内核，最后再拷贝出来。而epoll创建的有关文件描述符的数据结构本身就存于内核态中，系统调用返回时也采用mmap共享存储区，需要拷贝的次数大大减少。</li>
-<li>select、poll采用轮询的方式来检查文件描述符是否处于就绪态，而epoll采用回调机制。造成的结果就是随着fd的增加，select和poll的效率会线性降低，而epoll不会受到太大影响，除非活跃的socket很多。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、epoll的不同实现方式"><a href="#三、epoll的不同实现方式" class="headerlink" title="三、epoll的不同实现方式"></a>三、epoll的不同实现方式</h2><ol>
-<li><p>epoll</p>
-<ul>
-<li>epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。</li>
-<li>epoll的核心是3个API，核心数据结构是：1个红黑树和1个链表。</li>
-</ul>
-<p><img src="epoll.png" alt="epoll"></p>
-<ul>
-<li><p>三个步骤</p>
-<ul>
-<li>首先，需要调用epoll_create来创建一个epoll的文件描述符，内核会同时创建一个eventpoll的数据结构。这个数据结构里面会包含两个东西，一个是红黑树，专门用于存储epoll_ctl注册进来的fd文件描述符；另外一个是就绪链表，用来存储epoll_wait调用相关的，已经就绪的那些fd文件描述符。</li>
-<li>其次，因为epoll中的所有事件，都与网卡驱动程序建立回调关系，当相应的事件发生的时候，会通过这个回调函数，将发生的事件添加到就绪链表当中。</li>
-<li>最后，当调用epoll_wait检查是否有事件发生时，只需要检查eventpoll对象中的rdlist双链表中是否有需要处理的事件。如果rdlist不为空，则把发生的事件复制到用户态，同时将事件数量返回给用户。</li>
-</ul>
-</li>
-<li><p>epoll是通过后台中断的方式来获得就绪的状态，调用epoll_create创建实例，调用epoll_ctl添加或删除监控的文件描述符，调用epoll_wait阻塞住，直到有就绪的文件描述符，通过epoll_event参数返回就绪状态的文件描述符和事件。</p>
-<ul>
-<li>epoll_create 创建一个epoll对象，一般epollfd = epoll_create()</li>
-<li>epoll_ctl(epoll_add/epoll_del的合体)，往epoll对象中增加/删除某一个流的某一个事件<ul>
-<li>epoll_ctl(epollfd, EPOLL_CTL_ADD, socket, EPOLLIN);//有缓冲区内有数据时epoll_wait返回</li>
-<li>epoll_ctl(epollfd, EPOLL_CTL_DEL, socket, EPOLLOUT);//缓冲区可写入时epoll_wait返回</li>
-</ul>
-</li>
-<li>epoll_wait(epollfd,…)等待直到注册的事件发生</li>
-</ul>
-</li>
-<li><p>两种触发方式</p>
-<ul>
-<li>边缘触发(edge trigger，ET)<ul>
-<li>对于读操作<ul>
-<li>当缓冲区由不可读变为可读的时候，即缓冲区由空变为不空的时候</li>
-<li>当有新数据到达时，即缓冲区中的待读数据变多的时候</li>
-<li>当缓冲区有数据可读，且应用进程对相应的描述符进行EPOLL_CTL_MOD修改EPOLLIN事件时</li>
-</ul>
-</li>
-<li>对于写操作<ul>
-<li>当缓冲区由不可写变为可写时</li>
-<li>当有旧数据被发送走，即缓冲区中的内容变少的时候</li>
-<li>当缓冲区有空间可写，且应用进程对相应的描述符进行EPOLL_CTL_MOD修改EPOLLOUT事件时。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>水平触发(level trigger，LT)，默认<ul>
-<li>对于读操作，只要缓冲内容不为空，LT模式返回读就绪。</li>
-<li>对于写操作，只要缓冲区还不满，LT模式会返回写就绪。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>kqueue</p>
-<ul>
-<li><p>kqueue是FreeBSD上的一种的多路复用机制，它是针对传统的select/poll处理大量的文件描述符性能较低效而开发出来的。kqueue与epoll非常相似，最初是2000年Jonathan Lemon在FreeBSD系统上开发的一个高性能的事件通知接口。</p>
-</li>
-<li><p>原理：注册一批socket描述符到kqueue以后，当其中的描述符状态发生变化时，kqueue将一次性通知应用程序哪些描述符可读、可写或出错了。</p>
-</li>
-<li><p>kqueue支持多种类型的文件描述符，包括socket、信号、定时器、AIO、VNODE、PIPE。 </p>
-</li>
-<li><p>kqueue的接口包括kqueue()、kevent()两个系统调用和一个struct kevent结构：</p>
-<ul>
-<li><p>kqueue()生成一个内核事件队列，返回该队列的文件描述符，其它 API 通过该描述符操作这个kqueue，如：注册，反注册，获取通知等。</p>
-</li>
-<li><p>kevent()提供向内核注册/反注册事件和返回就绪事件或错误事件。</p>
-<ul>
-<li>注册/撤销：kevent()中的neventlist参数将其设为0且传入合法的changelist和nchangelist，就会将changelist中的事件注册到kqueue中。当关闭某文件描述符时，与之关联的事件会被自动地从kqueue移除。</li>
-<li>启用禁用/禁止过滤器事件：通过flags EV_ENABLE和EV_DISABLE使过滤器事件有效或无效。这个功能在利用 EVFILT_WRITE 发送数据时非常有用。</li>
-<li>获取已触发事件：将nchangelist设置成0及其他参数，当kevent非错误和超时返回时，在eventlist和neventlist中就保存可用事件集合。</li>
-</ul>
-</li>
-<li><p>struct kevent就是kevent()操作的最基本的事件结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct kevent &#123; </span><br><span class="line">     uintptr_t ident;       /* 事件 ID */ </span><br><span class="line">     short     filter;       /* 事件过滤器 */ </span><br><span class="line">     u_short   flags;        /* 行为标识 */ </span><br><span class="line">     u_int     fflags;       /* 过滤器标识值 */ </span><br><span class="line">     intptr_t  data;         /* 过滤器数据 */ </span><br><span class="line">     void      *udata;       /* 应用透传数据 */ </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>ident：事件的id，一般设置为文件描述符。</li>
-<li>filter：可以将kqueue filter看作事件。内核检测ident上注册的filter的状态，状态发生了变化，就通知应用程序。<blockquote>
-<p>在一个kqueue中，<code>&#123;ident, filter&#125;</code>确定一个唯一的事件</p>
-</blockquote>
-</li>
-<li>行为标志flags：<ul>
-<li>EV_ADD：指示加入事件到 kqueue</li>
-<li>EV_DELETE：指示将传入的事件从 kqueue 中移除</li>
-</ul>
-</li>
-<li>过滤器标识值：<ul>
-<li>EV_ENABLE：过滤器事件可用，注册一个事件时，默认是可用的。</li>
-<li>EV_DISABLE：过滤器事件不可用，当内部描述可读或可写时，将不通知应用程序。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>iocp</p>
-<ul>
-<li>输入输出完成端口(Input/Output Completion Port，IOCP)，是支持多个同时发生的异步I/O操作的应用程序编程接口，在Windows NT的3.5版本以后，或AIX 5版以后或Solaris第十版以后，开始支持。</li>
-<li>原理：通常情况下，线程池中的工作线程的数量与CPU内核数量相同，以此来最小化线程切换代价。一个IOCP对象，在操作系统中可关联着多个Socket和(或)文件控制端。IOCP对象内部有一个先进先出(FIFO)队列，用于存放IOCP所关联的输入输出端的服务请求完成消息。请求输入输出服务的进程不接收IO服务完成通知，而是检查IOCP的消息队列以确定IO请求的状态。 (线程池中的)多个线程负责从IOCP消息队列中取走完成通知并执行数据处理；如果队列中没有消息，那么线程阻塞挂起在该队列。这些线程从而实现了负载均衡。</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="http://www.cnblogs.com/duanxz/p/5155926.html">参考一</a></li>
-<li><a href="http://www.xmailserver.org/linux-patches/nio-improve.html">参考二</a></li>
-<li><a href="https://my.oschina.net/xianggao/blog/663655">参考三</a></li>
-<li><a href="http://baijiahao.baidu.com/s?id=1641172494287388070&wfr=spider&for=pc">参考四</a></li>
-<li><a href="https://www.cnblogs.com/FG123/p/5256553.html">参考五</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>OS</category>
-      </categories>
-      <tags>
-        <tag>select</tag>
-        <tag>操作系统</tag>
-        <tag>多路复用</tag>
-        <tag>IO</tag>
-        <tag>poll</tag>
-        <tag>epoll</tag>
-        <tag>kqueue</tag>
-        <tag>iocp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>框架</title>
     <url>/2017/01/22/Python-%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -25533,562 +25559,17 @@ read_xlsx(name, sheet)
         <category>PL</category>
       </categories>
       <tags>
-        <tag>YAML</tag>
         <tag>Python</tag>
         <tag>pip</tag>
+        <tag>YAML</tag>
         <tag>九子夺嫡</tag>
         <tag>爱新觉罗</tag>
         <tag>PyYAML</tag>
       </tags>
   </entry>
   <entry>
-    <title>pipenv</title>
-    <url>/2016/09/11/Python-pipenv/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>“细节决定成败”是一句俗语，也是一种哲理哲思，指的是讲究细节能决定事件的走向。对于不清楚，不了解的事物不要轻易下定论，不要让机遇悄悄溜走。也许一个决定，一个微不足道的细节，恰恰决定了你的成败。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>定义<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipenv是Pipfile主要倡导者、requests作者Kenneth Reitz写的一个命令行工具，主要包含了Pipfile、pip、click、requests和virtualenv。Pipfile和pipenv本来都是Kenneth Reitz的个人项目，后来贡献给了pypa组织。Pipfile是社区拟定的依赖管理文件，用于替代过于简陋的 requirements.txt 文件。</p>
-</li>
-<li><p>安装</p>
-</li>
-</ol>
-<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://pypi.org/project/pipenv/">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工具收集</title>
-    <url>/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>他强由他强，清风拂山岗；他横由他横，明月照大江。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、工具"><a href="#一、工具" class="headerlink" title="一、工具"></a>一、工具</h2><ol>
-<li><p><a href="https://sketchbook.com/">sketchbook</a></p>
-</li>
-<li><p><a href="https://www.gimp.org/">gimp</a>，GNU Image Manipulation Program(GNU图像处理程序)的缩写，它是Peter Mattis和Spencer Kimhall开发的免费照片和图像处理和创作工具，功能十分强大。</p>
-</li>
-<li><p><a href="https://www.getpostman.com/">postman</a>，是一个API开发的协作平台，可以提升工作效率之类的，相信有过Postman使用经验的小伙伴肯定已经有所了解，广泛用于接口开发、调试、监控、自动化测试、文档生成与管理等各个方面。</p>
-</li>
-<li><p><a href="https://www.apipost.cn/">ApiPost</a></p>
-</li>
-<li><p><a href="http://docs.jinkan.org/">jinjia</a></p>
-</li>
-<li><p><a href="https://excalidraw.com/">excalidraw</a></p>
-</li>
-<li><p><a href="https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html">AnyConnect</a>，<a href="https://www.jianshu.com/p/b1bb49732d62">卸载后重装失败</a>，<a href="https://blog.csdn.net/weixin_42638711/article/details/108795677">卸载</a></p>
-</li>
-<li><p><a href="https://tunnelblick.net/">Tunnelblick</a></p>
-</li>
-<li><p><a href="https://gitmind.cn/">gitmind</a></p>
-</li>
-<li><p><a href="https://www.feishu.cn/">飞书</a></p>
-</li>
-<li><p><a href="https://app.diagrams.net/">draw.io</a></p>
-</li>
-</ol>
-<ol>
-<li><p><a href="https://lemon.qq.com/">lemon</a></p>
-</li>
-<li><p><a href="https://apps.apple.com/my/app/pixeur-get-screen-color/id1507890049?mt=12">Pixeur</a></p>
-</li>
-<li><p><a href="https://mac.softpedia.com/get/Utilities/Gas-Mask.shtml">Gas Mask</a></p>
-</li>
-<li><p><a href="http://freemacsoft.net/appcleaner/">AppCleaner</a></p>
-</li>
-<li><p><a href="https://www.macupdate.com/app/mac/60122/paper">Pap.er</a></p>
-</li>
-<li><p><a href="https://www.theunarchiver.com/">The Unarchiver</a></p>
-</li>
-<li><p><a href="https://www.stellarinfo.com/gdc/mac-data-recovery/">mac-data-retriever</a>，Mac数据恢复，拯救<code>rm -rf *</code></p>
-</li>
-<li><p><a href="https://crystalidea.com/macs-fan-control/download">Macs Fan Control</a>，Mac风扇风速控制</p>
-</li>
-<li><p><a href="https://www.macwk.com/">macwk</a></p>
-</li>
-<li><p><a href="https://sourceforge.net/projects/kdiff3/files/">kdiff3</a></p>
-</li>
-<li><p><a href="http://supervisord.org/">supervisor</a>，是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。</p>
-</li>
-</ol>
-<ol>
-<li><p><a href="https://www.scootersoftware.com/">Beyond Compare</a>，<a href="https://www.beyondcompare.cc/">中文</a></p>
-</li>
-<li><p><a href="https://www.psiphon3.com/zh/index.html">Psiphon</a></p>
-</li>
-<li><p><a href="https://www.sourcetreeapp.com/">Sourcetree</a>，Git客户端</p>
-</li>
-<li><p><a href="https://tortoisegit.org/">TortoiseGit</a></p>
-</li>
-<li><p><a href="https://tortoisesvn.net/index.zh.html">TortoiseSvn</a>，是可用于Windows系统的<code>Apache™ Subversion(SVN)®</code>版本控制客户端.TortoiseSVN无需使用Subversion命令行，是目前最方便的Subversion版本控制系统，其操作和使用非常直观和简洁。</p>
-</li>
-<li><p><a href="http://blog.bahraniapps.com/gifcam/">GifCam</a>，Windows下gif制作工具</p>
-</li>
-<li><p><a href="https://github.com/macvim-dev/macvim/releases">MacVim</a></p>
-</li>
-<li><p><a href="https://neovim.io/">NeoVim</a></p>
-</li>
-<li><p><a href="https://clickhouse.com/docs/zh/">ClickHouse</a></p>
-</li>
-<li><p><a href="https://iterm2.com/">iterm2</a></p>
-</li>
-<li><p><a href="https://ohmyz.sh/">ohmyz</a></p>
-</li>
-<li><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">tmux</a>，<a href="http://louiszhai.github.io/2017/09/30/tmux/">使用手册</a></p>
-</li>
-<li><p><a href="https://iperf.fr/">iperf</a>，<a href="https://www.cnblogs.com/cloudwas/p/13084815.html">使用</a></p>
-</li>
-<li><p><a href="https://robomongo.org/download">Robo 3T</a></p>
-</li>
-<li><p><a href="https://dbeaver.io/">DBeaver</a>，跨平台</p>
-</li>
-<li><p><a href="https://sequelpro.com/test-builds?utm_source=ld246.com">Sequel Pro</a>，<a href="https://ld246.com/article/1558755765625">崩溃修复</a></p>
-<ul>
-<li>Mac OS X原生的应用工具Sequel Pro是一款管理 MySQL的工具，界面简洁易用，可以一次性连接多个数据库，允许快速访问。</li>
-</ul>
-</li>
-<li><p><a href="https://github.com/qishibo/AnotherRedisDesktopManager/">AnotherRedisDesktopManager</a></p>
-</li>
-<li><p><a href="https://www.sourceinsight.com/">Sourceinsight</a></p>
-</li>
-<li><p><a href="https://www.vandyke.com/products/securecrt/">SecureCRT</a></p>
-</li>
-<li><p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a></p>
-</li>
-<li><p><a href="https://httpie.io/">http客户端</a></p>
-</li>
-<li><p><a href="https://stedolan.github.io/jq/">jq</a></p>
-</li>
-<li><p><a href="https://github.com/antonmedv/fx">fx</a></p>
-</li>
-<li><p><a href="https://github.com/jonas/tig">tig</a></p>
-</li>
-<li><p><a href="https://github.com/ranger/ranger">ranger</a></p>
-</li>
-<li><p><a href="https://dev.yorhel.nl/ncdu">ncdu</a></p>
-</li>
-<li><p><a href="https://github.com/dbcli/mycli">mycli</a></p>
-</li>
-<li><p><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">FloatConverter</a></p>
-</li>
-</ol>
-<h2 id="二、库"><a href="#二、库" class="headerlink" title="二、库"></a>二、库</h2><ol>
-<li><a href="http://www.gnu.org/software/libiconv/">libiconv</a></li>
-<li><a href="http://xmlsoft.org/">libxml2</a></li>
-</ol>
-<h2 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h2><ol>
-<li><a href="https://fouber.github.io/lottery/">lottery</a></li>
-<li><a href="https://developers.dingtalk.com/document/app/custom-robot-access">钉钉机器人</a></li>
-<li><a href="http://www.fontawesome.com.cn/">Font Awesome</a></li>
-<li><a href="https://www.bootcdn.cn/">BootCDN</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>sketchbook</tag>
-        <tag>gimp</tag>
-        <tag>libiconv</tag>
-        <tag>libxml2</tag>
-        <tag>jinjia</tag>
-        <tag>AnyConnect</tag>
-        <tag>excalidraw</tag>
-        <tag>钉钉</tag>
-        <tag>gitmind</tag>
-        <tag>飞书</tag>
-        <tag>supervisor</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>行政杂谈</title>
-    <url>/2016/08/10/Hobby-%E8%A1%8C%E6%94%BF%E6%9D%82%E8%B0%88/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>民主集中制是民主基础上的集中和集中指导下的民主相结合的制度，是党的根本组织制度和领导制度，也是马克思主义认识论和群众路线在党的生活和组织建设中的运用。</p>
-</blockquote>
-<span id="more"></span>
-<h1 id="一、机关单位和事业单位"><a href="#一、机关单位和事业单位" class="headerlink" title="一、机关单位和事业单位"></a><center><font color=red>一、机关单位和事业单位</font></center></h1><ol>
-<li><p>机关单位：指国家机关，指从事国家管理和行使国家权力的机关。包括国家元首、权力机关、行政机关、审判机关、检察机关和军事机关。</p>
-<ul>
-<li>国家机关，是指国家为行使其职能而设立的各种机构，是专司国家权力和国家管理职能的组织，包括中央和地方各级组织。</li>
-</ul>
-</li>
-<li><p>事业单位：英文是Public Institution，是指由政府利用国有资产设立的，从事教育、科技、文化、卫生等活动的社会服务组织。</p>
-<ul>
-<li>事业单位接受政府领导，是表现形式为组织或机构的法人实体。</li>
-<li>事业单位一般是国家设置的带有一定的公益性质的机构，但不属于政府机构，与公务员是不同的。<ul>
-<li>根据国家事业单位分类改革精神，事业单位不再分为全额拨款事业单位、差额拨款事业单位，而分为公益一类事业单位、公益二类事业单位，目前还新兴了利用国有资产举办的事业单位和社会资本举办事业单位，是国家不拨款的事业单位。</li>
-</ul>
-</li>
-<li>事业单位的明显特征为中心、会、所、站、队、院、社、台、宫、馆等字词结尾，例如会计核算中心、卫生监督所、司法所、银监会、保监会、质监站、安全生产监察大队等。</li>
-<li>事业单位分为参公事业单位以及一般事业单位。<ul>
-<li>参公事业单位是指人员使用事业编制，参照公务员法进行管理。</li>
-<li>参公改革之后的事业单位在省公务员招考中招考，普通事业单位在事业单位招聘中招考。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="二、部、厅、局、所"><a href="#二、部、厅、局、所" class="headerlink" title="二、部、厅、局、所"></a><center><font color=red>二、部、厅、局、所</font></center></h1><ol>
-<li>公安部，全称中华人民共和国公安部(The Ministry of Public Security of the People’s Republic of China)，是国务院组成部门，是国务院主管全国公安工作的职能部门，是全国公安工作的最高领导机关和指挥机关。主要职责包括预防、制止和侦查违法犯罪活动；防范、打击恐怖活动；维护社会治安秩序；管理户口、居民身份证、国籍、出入境事务和外国人在中国境内居留、旅行的有关事务；监督管理公共信息网络的安全监察工作等。</li>
-</ol>
-<blockquote>
-<p>1954年9月，第一届全国人民代表大会第一次会议在北京召开，将原中央人民政府公安部改为中华人民共和国公安部，成为国务院的组成部门。</p>
-</blockquote>
-<blockquote>
-<p>2018年3月，根据第十三届全国人民代表大会第一次会议批准的国务院机构改革方案，将公安部的消防管理职责整合，组建中华人民共和国应急管理部；将中华人民共和国公安部的出入境管理、边防检查职责整合建立健全签证管理协调机制，组建中华人民共和国国家移民管理局，由中华人民共和国公安部管理。</p>
-</blockquote>
-<blockquote>
-<p>2018年3月，根据中共中央印发的《深化党和国家机构改革方案》，将中央防范和处理邪教问题领导小组及其办公室的防范和处理邪教工作职责交由中央政法委员会、公安部承担</p>
-</blockquote>
-<blockquote>
-<p>公安部设有办公厅、情报指挥、研究室、督察审计、人事训练、新闻宣传、经济犯罪侦查、治安管理、刑事侦查、反恐怖、食品药品犯罪侦查、特勤、铁路公安、网络安全保卫、监所管理、警务保障、交通管理、法制、国际合作、装备财务、禁毒、科技信息化等局级机构，分别承担有关业务工作。海关总署缉私局、中国民用航空局公安局列入公安部序列，分别接受公安部和海关总署、公安部和中国民用航空局双重领导，以公安部领导为主。</p>
-</blockquote>
-<ol start="2">
-<li>公安厅，公安厅是根据中共中央、国务院批准设置的，是省(自治区)政府下设主管全省(区)公安工作的职能部门。公安厅受省(自治区)政府、公安部的双重领导。各市、县(县级市、区)设有公安局(分局)，在镇、乡、街道设派出所。公安局接受同级人民政府和上级公安机关领导，分局、派出所是上级公安机关的派出机构。</li>
-</ol>
-<blockquote>
-<p>公安厅一般的机构设置为：办公室、人事管理、教育培训、警备督察、国内安全保卫、刑事侦查、经济犯罪侦查、禁毒、治安管理、出入境管理、交通管理、边防管理、消防管理、监所管理、警卫、公共信息网络安全监察、法制、信息通信、装备财务、宣传等机构。</p>
-</blockquote>
-<ol start="3">
-<li>公安局，公安局是公安机关的组织形式，是主管公安工作的政府下设职能部门。</li>
-</ol>
-<blockquote>
-<p>公安局按级别通常有：直辖市公安局、省会城市公安局、地级市公安局、县级公安局，除县级公安局外，前几者均可按城市的区下分区分局。特定公安局一般受所在地政府领导、受上级公安厅、局指导。公安机关的最高部门是公安部，指导全国公安工作，包括所有各级公安局。受所在地政府、上级公安机关双重领导。</p>
-</blockquote>
-<blockquote>
-<p>此外，还有一些其他部门的公安部门，有别于地方政府的公安局，比如：铁路公安、森林公安、民航公安等。</p>
-</blockquote>
-<blockquote>
-<p>行政级别</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>直辖市公安局，正厅级建制(局长可以高配副部级)，如天津市公安局、上海市公安局。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>地级市公安局，正处级建制(局长可以高配副厅级)，属市政府工作部门。如：东莞市公安局、上海市公安局自由贸易试验区分局，为市公安局直属正处级机构，行使相当于地区公安分局的执法权限，并享有市公安局部分行政审批权限。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>县公安局是主管全县公安工作的县政府工作部门，为正科级(局长可以高配副处级)，如：屏南县公安局、弥渡县公安局。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>派出所，股所级或者副科级、正科级建制等(所长可以高配)。</p>
-</blockquote>
-</blockquote>
-<ol start="4">
-<li>公安派出所指的是中国市、县公安局或公安分局管理社会治安和户籍工作的派出机关。第一届全国人民代表大会常务委员会第4次会议通过的《公安派出所组织条例》规定了其任务、职权、组织原则、工作纪律等。公安派出所根据地区大小、人口多少、社会情况和工作需要设立城市一般按街道或在流动人员较集中的火车站、港口等地方设立；农村一般按城镇，乡设立。</li>
-</ol>
-<blockquote>
-<p>编制</p>
-<blockquote>
-<p>股所级的派出所，设所长1名，指导员(政治指导员)1名。<br>科级派出所，设所长1名，教导员(政治教导员)1名。</p>
-</blockquote>
-</blockquote>
-<hr>
-<h1 id="三、中国行政区划分"><a href="#三、中国行政区划分" class="headerlink" title="三、中国行政区划分"></a><center><font color=red>三、中国行政区划分</font></center></h1><ol>
-<li>直辖市，是中国行政区划之一，行政地位与省、自治区、特别行政区相同，是中华人民共和国省级行政区，是直接由中央人民政府所管辖的建制城市。中国的直辖市与省，自治区，特别行政区一样均为最高一级行政单位，行政地位与省相同，但是管辖区域与地级市相同，管辖区，县，自治县等。</li>
-</ol>
-<blockquote>
-<p>由于直辖市的定位特殊，中国直辖市的中共市委书记一般由中共中央政治局委员兼任， 中国大陆现有北京市、天津市、上海市、重庆市4个直辖市。其中，截至2019年，北京市共辖16个市辖区，分别是东城区、西城区、朝阳区、丰台区、石景山区、海淀区、顺义区、通州区、大兴区、房山区、门头沟区、昌平区、平谷区、密云区、怀柔区、延庆区。</p>
-</blockquote>
-<ol start="2">
-<li><p>地级市，是中国行政区划之一，行政地位与地区、自治州、盟相同，属于地级行政区，是建制与地区相同的市，由省、自治区管辖。自1983年11月5日开始，在国家行政机构区划统计上作为行政区划术语固定下来。</p>
-</li>
-<li><p>县级市，是中国行政区划之一，行政地位与市辖区、县、自治县、旗、自治旗、特区、林区相同，属县级行政区，由省、自治区直辖(大部)属于地级市代管）或由地区、自治州、盟管辖。自1983年起，县级市被作为行政区划术语被正式确立下来。</p>
-</li>
-<li><p>行政区划制度</p>
-<ul>
-<li>第一级是省级行政区：省、自治区、直辖市、特别行政区</li>
-<li>第二级是地级行政区：地区、盟、自治州、市(地级)、市辖区</li>
-<li>第三级是县级行政区：县、自治县、旗、自治旗、市(县级)、市辖区、林区、特区</li>
-<li>第四级是乡级行政区：乡、民族乡、镇、街道、苏木、区公所</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>还有第五第六级行政区，就到村里了，这里只介绍前四级行政区划。</p>
-</blockquote>
-<ol start="5">
-<li>河南省目前有郑州市、开封市、洛阳市、平顶山市、安阳市、鹤壁市、新乡市、焦作市、濮阳市、许昌市、漯河市、三门峡市、南阳市、商丘市、信阳市、周口市、驻马店市17个地级市。</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">地级市/省直辖</th>
-<th align="center">县级市</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">郑州市</td>
-<td align="center">新郑市、新密市、登封市、荥阳市、巩义市</td>
-</tr>
-<tr>
-<td align="center">新乡市</td>
-<td align="center">卫辉市、辉县市、长垣市</td>
-</tr>
-<tr>
-<td align="center">平顶山市</td>
-<td align="center">舞钢市、汝州市</td>
-</tr>
-<tr>
-<td align="center">三门峡市</td>
-<td align="center">义马市、灵宝市</td>
-</tr>
-<tr>
-<td align="center">焦作市</td>
-<td align="center">沁阳市、孟州市</td>
-</tr>
-<tr>
-<td align="center">许昌市</td>
-<td align="center">禹州市、长葛市</td>
-</tr>
-<tr>
-<td align="center">洛阳市</td>
-<td align="center">偃师市</td>
-</tr>
-<tr>
-<td align="center">安阳市</td>
-<td align="center">林州市</td>
-</tr>
-<tr>
-<td align="center">商丘市</td>
-<td align="center">永城市</td>
-</tr>
-<tr>
-<td align="center">周口市</td>
-<td align="center">项城市</td>
-</tr>
-<tr>
-<td align="center">南阳市</td>
-<td align="center">邓州市</td>
-</tr>
-<tr>
-<td align="center">省直辖县级行政单位</td>
-<td align="center">济源市</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><a href="https://www.zhihu.com/question/22873663">参考一</a></p>
-</blockquote>
-<hr>
-<h1 id="四、两会"><a href="#四、两会" class="headerlink" title="四、两会"></a><center><font color=red>四、两会</font></center></h1><ol>
-<li><p>概念</p>
-<ul>
-<li>两会是对自1959年以来历年召开的中华人民共和国全国人民代表大会和中国人民政治协商会议的统称。由于两场会议会期基本重合，而且对于国家运作的重要程度都非常的高，故简称做“两会”。从省级地方到中央，各地的政协及人大的全体会议的会期全部基本重合，所以两会的名称可以同时适用于全国及各省(市、自治区)。<ul>
-<li>全国人大，全称：全国人民代表大会，其是最高国家权力机关，人民代表大会制度是实现人民当家作主的根本政治制度。在我国，人民通过民主选举选出自己的代表，组成人民代表大会，集中行使国家权力。根据宪法的规定，全国人民代表大会具有全权的和最高的地位。</li>
-<li>政协，全称：中国人民政治协商会议，其主要职能是政治协商和民主监督，组织参加政协的各党派、团体和各族各界人士参政议政。政协全国委员会每届任期5年，每年举行一次全体会议。人民政协在中央设有全国委员会和常务委员会以及9个专门委员会，在地方设有政协地方委员会。每届任期5年，每年举行一次全体会议。</li>
-</ul>
-</li>
-<li>两会每5年称为一届，每年会议称X届X次会议。根据中国宪法规定：“两会”召开的意义在于将“两会”代表从人民中得来的信息和要求进行收集及整理，传达给党中央。“两会”代表是代表着广大选民的一种利益的，代表着选民在召开两会期间，向政府有关部门提出选民们自己的意见和要求。地方每年召开的人大和政协也称为两会，通常召开的时间比全国“两会”时间要早。</li>
-</ul>
-</li>
-<li><p>政协会议参与的各方主要有：</p>
-</li>
-</ol>
-<ul>
-<li>中国共产党，作为执政党参与会议；</li>
-<li>中国国民党革命委员会，由原中国国民党民主派和其他爱国民主人士所创建，于1948年1月1日成立，是政协的重要组成政党之一；</li>
-<li>中国民主同盟，于1941年3月19日在重庆秘密成立，其成员有中国青年党、国家社会党（后改称民主社会党）、中华民族解放行动委员会（后改称中国农工民主党）、中华职业教育社、乡村建设协会的成员及其他人士。1942年，全国各界救国联合会加入，形成现有格局</li>
-<li>中国民主建国会，1945年12月16日，民建在重庆成立，成员主要是爱国的民族工商业者和有联系的知识分子，发起人有黄炎培、胡厥文、章乃器、施复亮、孙起孟等，是政协的重要组成政党之一；</li>
-<li>中国民主促进会，由马叙伦、王绍鏊、周建人、许广平、林汉达、徐伯昕、赵朴初、雷洁琼、郑振铎、柯灵等著名爱国民主人士于1945年12月30日在上海建立</li>
-<li>中国农工民主党，于1930年8月9日在上海成立，是政协的重要组成政党之一；</li>
-<li>中国致公党，中国致公党是以归侨、侨眷中的中上层人士和其他有海外关系的代表性人士组成的政党，于1925年10月成立于美国旧金山，是政协的重要组成政党之一；</li>
-<li>九三学社，前身为抗日战争后期一批进步学者在重庆组织的“民主科学座谈会”，后为纪念1945年9月3日抗日战争和世界反法西斯战争的伟大胜利，改建为九三学社，是政协的重要组成政党之一；</li>
-<li>台湾民主自治同盟，台湾民主自治同盟是由台湾省人士组成的社会主义劳动者、社会主义事业建设者和拥护社会主义爱国者的政治联盟，1947年11月12日在香港成立，是政协的重要组成政党之一；</li>
-<li>此外，参与政协会议的还有无党派民主人士，中国共产主义青年团，中华全国总工会，中华全国妇女联合会，中华全国青年联合会，中华全国工商业联合会，中国科学技术协会，中华全国台湾同胞联谊会，中华全国归国华侨联合会，文化艺术界，科学技术界，社会科学界，经济界，农业界，教育界，体育界，新闻出版界，医药卫生界，对外友好界，社会福利界，少数民族界，宗教界，特邀香港人士，特邀澳门人士，特别邀请人士等。</li>
-</ul>
-<hr>
-<h1 id="五、护照和签证"><a href="#五、护照和签证" class="headerlink" title="五、护照和签证"></a><center><font color=red>五、护照和签证</font></center></h1><ol>
-<li><p>护照</p>
-<ul>
-<li>护照是一个国家的公民出入本国国境和到国外旅行或居留时，由本国发给的一种证明该公民国籍和身份的合法证件。 护照(Passport)一词在英文中是口岸通行证的意思，也就是说，护照是公民旅行通过各国国际口岸的一种通行证明。所以，世界上一些国家通常也颁发代替护照的通行证件。</li>
-<li>2018年9月1日起，中国全国异地可换补护照。自2019年4月1日起，中华人民共和国普通护照实行“全国通办”，即内地居民可在全国任一出入境管理窗口申请办理出入境证件，申办手续与户籍地一致。从2019年7月1日起，因私普通护照收费标准由160元/本降为120元/本。 </li>
-</ul>
-</li>
-<li><p>签证</p>
-<ul>
-<li>签证(visa)是一个国家的主权机关在本国或外国公民所持的护照或其他旅行证件上的签注、盖印，以表示允许其出入本国国境或者经过国境的手续，也可以说是颁发给他们的一项签注式的证明。概括地说，签证是一个国家的出入境管理机构(例如移民局或其驻外使领馆)，对外国公民表示批准入境所签发的一种文件。</li>
-<li>签证(Visa)是一国政府机关依照本国法律规定为申请入出或通过本国的外国人颁发的一种许可证明。根据国际法原则，任何一个主权国家，有权自主决定是否允许外国人入出其国家，有权依照本国法律颁发签证、拒发签证或者对已经签发的签证宣布吊销。它通常是附载于申请人所持的护照或其他国际旅行证件上。在特殊情况下，凭有效护照或其他国际旅行证件可做在另纸上。随着科技的进步，有些国家已经开始签发电子签证和生物签证，大大增强了签证的防伪功能。</li>
-</ul>
-</li>
-<li><p>两者关系</p>
-<ul>
-<li>护照是持有者的国籍和身份证明，签证则是主权国家准许外国公民或者本国公民出入境或者经过国境的许可证明。</li>
-<li>签证一般都签注在护照上，也有的签注在代替护照的其他旅行证件上，有的还颁发另纸签证。<ul>
-<li>如美国和加拿大的移民签证是一张A4大的纸张，新加坡对外国人也发一种另纸签证，签证一般来说须与护照同时使用，方有效力。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="六、台湾历届领导人"><a href="#六、台湾历届领导人" class="headerlink" title="六、台湾历届领导人"></a><center><font color=red>六、台湾历届领导人</font></center></h1><ol>
-<li><p>基础</p>
-<ul>
-<li>台湾省，简称“台”，是中华人民共和国省级行政区，省会台北，地处中国大陆东南海域，东临太平洋，西隔台湾海峡与福建省相望，南界巴士海峡与菲律宾群岛相对。台湾省由中国第一大岛台湾岛和周围属岛以及澎湖列岛等岛屿组成，总面积约3.6万平方公里。台湾省人口约2360万，超过70%集中在台湾岛西部的5大都会区，其中以台北市为中心的台北都会区最大。</li>
-<li>台湾是中国领土不可分割的一部分。台湾主要的少数民族高山族在17世纪汉族移入前即已在此定居；自明末清初始有大量的福建南部和广东东部人民移垦台湾，最终形成以汉族为主体的社会。南宋澎湖属福建路；元、明在澎湖设巡检司；明末被荷兰和西班牙侵占；1662年郑成功收复；清朝1684年置台湾府，属福建省，1885年设台湾省；1895年清政府以《马关条约》割让与日本；1945年中国人民抗日战争胜利后，中国政府收复台湾，台湾及澎湖重归中国主权管辖之下；1949年原在大陆的中国国民党当局退据台湾。</li>
-</ul>
-</li>
-<li><p>政治体制</p>
-<ul>
-<li>台湾当局采行孙中山提出的“五权宪法”架构，当局组织分成5个机构运作，分别是行政管理机构、立法机构、司法主管机构、考试机构和监察机构。台湾地区领导人(对岸称“总统”)，对内负责政治上的最高责任，为“国军”最高统帅，对“五院”有协调争议权，并直接任命最高行政管理机构负责人(对岸称“行政院院长”)，对外代表台湾地区，1996年起实施直选，任期四年，可连选连任一次。</li>
-</ul>
-</li>
-<li><p>历届领导人</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">任次</th>
-<th align="center">姓名</th>
-<th align="center">任期</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">蒋中正</td>
-<td align="center">1950年—1954年</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">蒋中正</td>
-<td align="center">1954年—1960年</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">蒋中正</td>
-<td align="center">1960年—1966年</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">蒋中正</td>
-<td align="center">1966年—1972年</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">蒋中正</td>
-<td align="center">1972年—1975年</td>
-</tr>
-<tr>
-<td align="center">(继任)</td>
-<td align="center">严家淦(gàn)</td>
-<td align="center">1975年—1978年</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="center">蒋经国</td>
-<td align="center">1978年—1984年</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="center">蒋经国</td>
-<td align="center">1984年—1988年</td>
-</tr>
-<tr>
-<td align="center">(继任)</td>
-<td align="center">李登辉</td>
-<td align="center">1988年—1990年</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center">李登辉</td>
-<td align="center">1990年—1996年</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td align="center">李登辉</td>
-<td align="center">1996年—2000年</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td align="center">陈水扁</td>
-<td align="center">2000年—2004年</td>
-</tr>
-<tr>
-<td align="center">11</td>
-<td align="center">陈水扁</td>
-<td align="center">2004年—2008年</td>
-</tr>
-<tr>
-<td align="center">12</td>
-<td align="center">马英九</td>
-<td align="center">2008年—2012年</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td align="center">马英九</td>
-<td align="center">2012年—2016年</td>
-</tr>
-<tr>
-<td align="center">14</td>
-<td align="center">蔡英文</td>
-<td align="center">2016年—2020年</td>
-</tr>
-<tr>
-<td align="center">15</td>
-<td align="center">蔡英文</td>
-<td align="center">2020年至今</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>1975年，蒋中正去世，副领导人严家淦继任。</p>
-</blockquote>
-<blockquote>
-<p>1988年，蒋经国去世，副领导人李登辉继任。</p>
-</blockquote>
-<hr>
-<h1 id="七、行政级别"><a href="#七、行政级别" class="headerlink" title="七、行政级别"></a><center><font color=red>七、行政级别</font></center></h1><ol>
-<li>待补充</li>
-<li>参考<ul>
-<li>[行政级别]<a href="https://zhuanlan.zhihu.com/p/122224875">https://zhuanlan.zhihu.com/p/122224875</a></li>
-<li>[行政级别]<a href="https://baike.baidu.com/item/%E8%A1%8C%E6%94%BF%E7%BA%A7%E5%88%AB/3545613?fr=aladdin">https://baike.baidu.com/item/%E8%A1%8C%E6%94%BF%E7%BA%A7%E5%88%AB/3545613?fr=aladdin</a></li>
-<li><a href="https://zhidao.baidu.com/question/1932166929548608067.html">行政级别</a></li>
-<li>[公务员职务]<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E5%8A%A1/23121986">https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E5%8A%A1/23121986</a></li>
-<li>[公务员职级]<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E7%BA%A7/23121985">https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E7%BA%A7/23121985</a></li>
-<li>[公务员级别]<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E7%BA%A7%E5%88%AB/6041164">https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E7%BA%A7%E5%88%AB/6041164</a></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Hobby</category>
-      </categories>
-      <tags>
-        <tag>机关单位</tag>
-        <tag>事业单位</tag>
-        <tag>公安部</tag>
-        <tag>公安厅</tag>
-        <tag>公安局</tag>
-        <tag>派出所</tag>
-        <tag>直辖市</tag>
-        <tag>地级市</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Redis五种基本数据类型底层实现</title>
-    <url>/2016/08/08/Redis-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0/</url>
+    <url>/2016/10/08/Redis-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>东临碣石，以观沧海。水何澹澹，山岛竦峙。树木丛生，百草丰茂。秋风萧瑟，洪波涌起。日月之行，若出其中。星汉灿烂，若出其里。幸甚至哉，歌以咏志。 —— 汉·曹操 《观沧海》 </p>
 </blockquote>
@@ -27209,6 +26690,551 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>pipenv</title>
+    <url>/2016/09/11/Python-pipenv/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>“细节决定成败”是一句俗语，也是一种哲理哲思，指的是讲究细节能决定事件的走向。对于不清楚，不了解的事物不要轻易下定论，不要让机遇悄悄溜走。也许一个决定，一个微不足道的细节，恰恰决定了你的成败。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>定义<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pipenv是Pipfile主要倡导者、requests作者Kenneth Reitz写的一个命令行工具，主要包含了Pipfile、pip、click、requests和virtualenv。Pipfile和pipenv本来都是Kenneth Reitz的个人项目，后来贡献给了pypa组织。Pipfile是社区拟定的依赖管理文件，用于替代过于简陋的 requirements.txt 文件。</p>
+</li>
+<li><p>安装</p>
+</li>
+</ol>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://pypi.org/project/pipenv/">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具收集</title>
+    <url>/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>他强由他强，清风拂山岗；他横由他横，明月照大江。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、工具"><a href="#一、工具" class="headerlink" title="一、工具"></a>一、工具</h2><ol>
+<li><p><a href="https://sketchbook.com/">sketchbook</a></p>
+</li>
+<li><p><a href="https://www.gimp.org/">gimp</a>，GNU Image Manipulation Program(GNU图像处理程序)的缩写，它是Peter Mattis和Spencer Kimhall开发的免费照片和图像处理和创作工具，功能十分强大。</p>
+</li>
+<li><p><a href="https://www.getpostman.com/">postman</a>，是一个API开发的协作平台，可以提升工作效率之类的，相信有过Postman使用经验的小伙伴肯定已经有所了解，广泛用于接口开发、调试、监控、自动化测试、文档生成与管理等各个方面。</p>
+</li>
+<li><p><a href="https://www.apipost.cn/">ApiPost</a></p>
+</li>
+<li><p><a href="http://docs.jinkan.org/">jinjia</a></p>
+</li>
+<li><p><a href="https://excalidraw.com/">excalidraw</a></p>
+</li>
+<li><p><a href="https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html">AnyConnect</a>，<a href="https://www.jianshu.com/p/b1bb49732d62">卸载后重装失败</a>，<a href="https://blog.csdn.net/weixin_42638711/article/details/108795677">卸载</a></p>
+</li>
+<li><p><a href="https://tunnelblick.net/">Tunnelblick</a></p>
+</li>
+<li><p><a href="https://gitmind.cn/">gitmind</a></p>
+</li>
+<li><p><a href="https://www.feishu.cn/">飞书</a></p>
+</li>
+<li><p><a href="https://app.diagrams.net/">draw.io</a></p>
+</li>
+</ol>
+<ol>
+<li><p><a href="https://lemon.qq.com/">lemon</a></p>
+</li>
+<li><p><a href="https://apps.apple.com/my/app/pixeur-get-screen-color/id1507890049?mt=12">Pixeur</a></p>
+</li>
+<li><p><a href="https://mac.softpedia.com/get/Utilities/Gas-Mask.shtml">Gas Mask</a></p>
+</li>
+<li><p><a href="http://freemacsoft.net/appcleaner/">AppCleaner</a></p>
+</li>
+<li><p><a href="https://www.macupdate.com/app/mac/60122/paper">Pap.er</a></p>
+</li>
+<li><p><a href="https://www.theunarchiver.com/">The Unarchiver</a></p>
+</li>
+<li><p><a href="https://www.stellarinfo.com/gdc/mac-data-recovery/">mac-data-retriever</a>，Mac数据恢复，拯救<code>rm -rf *</code></p>
+</li>
+<li><p><a href="https://crystalidea.com/macs-fan-control/download">Macs Fan Control</a>，Mac风扇风速控制</p>
+</li>
+<li><p><a href="https://www.macwk.com/">macwk</a></p>
+</li>
+<li><p><a href="https://sourceforge.net/projects/kdiff3/files/">kdiff3</a></p>
+</li>
+<li><p><a href="http://supervisord.org/">supervisor</a>，是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。</p>
+</li>
+</ol>
+<ol>
+<li><p><a href="https://www.scootersoftware.com/">Beyond Compare</a>，<a href="https://www.beyondcompare.cc/">中文</a></p>
+</li>
+<li><p><a href="https://www.psiphon3.com/zh/index.html">Psiphon</a></p>
+</li>
+<li><p><a href="https://www.sourcetreeapp.com/">Sourcetree</a>，Git客户端</p>
+</li>
+<li><p><a href="https://tortoisegit.org/">TortoiseGit</a></p>
+</li>
+<li><p><a href="https://tortoisesvn.net/index.zh.html">TortoiseSvn</a>，是可用于Windows系统的<code>Apache™ Subversion(SVN)®</code>版本控制客户端.TortoiseSVN无需使用Subversion命令行，是目前最方便的Subversion版本控制系统，其操作和使用非常直观和简洁。</p>
+</li>
+<li><p><a href="http://blog.bahraniapps.com/gifcam/">GifCam</a>，Windows下gif制作工具</p>
+</li>
+<li><p><a href="https://github.com/macvim-dev/macvim/releases">MacVim</a></p>
+</li>
+<li><p><a href="https://neovim.io/">NeoVim</a></p>
+</li>
+<li><p><a href="https://clickhouse.com/docs/zh/">ClickHouse</a></p>
+</li>
+<li><p><a href="https://iterm2.com/">iterm2</a></p>
+</li>
+<li><p><a href="https://ohmyz.sh/">ohmyz</a></p>
+</li>
+<li><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">tmux</a>，<a href="http://louiszhai.github.io/2017/09/30/tmux/">使用手册</a></p>
+</li>
+<li><p><a href="https://iperf.fr/">iperf</a>，<a href="https://www.cnblogs.com/cloudwas/p/13084815.html">使用</a></p>
+</li>
+<li><p><a href="https://robomongo.org/download">Robo 3T</a></p>
+</li>
+<li><p><a href="https://dbeaver.io/">DBeaver</a>，跨平台</p>
+</li>
+<li><p><a href="https://sequelpro.com/test-builds?utm_source=ld246.com">Sequel Pro</a>，<a href="https://ld246.com/article/1558755765625">崩溃修复</a></p>
+<ul>
+<li>Mac OS X原生的应用工具Sequel Pro是一款管理 MySQL的工具，界面简洁易用，可以一次性连接多个数据库，允许快速访问。</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/qishibo/AnotherRedisDesktopManager/">AnotherRedisDesktopManager</a></p>
+</li>
+<li><p><a href="https://www.sourceinsight.com/">Sourceinsight</a></p>
+</li>
+<li><p><a href="https://www.vandyke.com/products/securecrt/">SecureCRT</a></p>
+</li>
+<li><p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a></p>
+</li>
+<li><p><a href="https://httpie.io/">http客户端</a></p>
+</li>
+<li><p><a href="https://stedolan.github.io/jq/">jq</a></p>
+</li>
+<li><p><a href="https://github.com/antonmedv/fx">fx</a></p>
+</li>
+<li><p><a href="https://github.com/jonas/tig">tig</a></p>
+</li>
+<li><p><a href="https://github.com/ranger/ranger">ranger</a></p>
+</li>
+<li><p><a href="https://dev.yorhel.nl/ncdu">ncdu</a></p>
+</li>
+<li><p><a href="https://github.com/dbcli/mycli">mycli</a></p>
+</li>
+<li><p><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">FloatConverter</a></p>
+</li>
+</ol>
+<h2 id="二、库"><a href="#二、库" class="headerlink" title="二、库"></a>二、库</h2><ol>
+<li><a href="http://www.gnu.org/software/libiconv/">libiconv</a></li>
+<li><a href="http://xmlsoft.org/">libxml2</a></li>
+</ol>
+<h2 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h2><ol>
+<li><a href="https://fouber.github.io/lottery/">lottery</a></li>
+<li><a href="https://developers.dingtalk.com/document/app/custom-robot-access">钉钉机器人</a></li>
+<li><a href="http://www.fontawesome.com.cn/">Font Awesome</a></li>
+<li><a href="https://www.bootcdn.cn/">BootCDN</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>sketchbook</tag>
+        <tag>gimp</tag>
+        <tag>libiconv</tag>
+        <tag>libxml2</tag>
+        <tag>jinjia</tag>
+        <tag>AnyConnect</tag>
+        <tag>excalidraw</tag>
+        <tag>钉钉</tag>
+        <tag>gitmind</tag>
+        <tag>飞书</tag>
+        <tag>supervisor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>行政杂谈</title>
+    <url>/2016/08/10/Hobby-%E8%A1%8C%E6%94%BF%E6%9D%82%E8%B0%88/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>民主集中制是民主基础上的集中和集中指导下的民主相结合的制度，是党的根本组织制度和领导制度，也是马克思主义认识论和群众路线在党的生活和组织建设中的运用。</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="一、机关单位和事业单位"><a href="#一、机关单位和事业单位" class="headerlink" title="一、机关单位和事业单位"></a><center><font color=red>一、机关单位和事业单位</font></center></h1><ol>
+<li><p>机关单位：指国家机关，指从事国家管理和行使国家权力的机关。包括国家元首、权力机关、行政机关、审判机关、检察机关和军事机关。</p>
+<ul>
+<li>国家机关，是指国家为行使其职能而设立的各种机构，是专司国家权力和国家管理职能的组织，包括中央和地方各级组织。</li>
+</ul>
+</li>
+<li><p>事业单位：英文是Public Institution，是指由政府利用国有资产设立的，从事教育、科技、文化、卫生等活动的社会服务组织。</p>
+<ul>
+<li>事业单位接受政府领导，是表现形式为组织或机构的法人实体。</li>
+<li>事业单位一般是国家设置的带有一定的公益性质的机构，但不属于政府机构，与公务员是不同的。<ul>
+<li>根据国家事业单位分类改革精神，事业单位不再分为全额拨款事业单位、差额拨款事业单位，而分为公益一类事业单位、公益二类事业单位，目前还新兴了利用国有资产举办的事业单位和社会资本举办事业单位，是国家不拨款的事业单位。</li>
+</ul>
+</li>
+<li>事业单位的明显特征为中心、会、所、站、队、院、社、台、宫、馆等字词结尾，例如会计核算中心、卫生监督所、司法所、银监会、保监会、质监站、安全生产监察大队等。</li>
+<li>事业单位分为参公事业单位以及一般事业单位。<ul>
+<li>参公事业单位是指人员使用事业编制，参照公务员法进行管理。</li>
+<li>参公改革之后的事业单位在省公务员招考中招考，普通事业单位在事业单位招聘中招考。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="二、部、厅、局、所"><a href="#二、部、厅、局、所" class="headerlink" title="二、部、厅、局、所"></a><center><font color=red>二、部、厅、局、所</font></center></h1><ol>
+<li>公安部，全称中华人民共和国公安部(The Ministry of Public Security of the People’s Republic of China)，是国务院组成部门，是国务院主管全国公安工作的职能部门，是全国公安工作的最高领导机关和指挥机关。主要职责包括预防、制止和侦查违法犯罪活动；防范、打击恐怖活动；维护社会治安秩序；管理户口、居民身份证、国籍、出入境事务和外国人在中国境内居留、旅行的有关事务；监督管理公共信息网络的安全监察工作等。</li>
+</ol>
+<blockquote>
+<p>1954年9月，第一届全国人民代表大会第一次会议在北京召开，将原中央人民政府公安部改为中华人民共和国公安部，成为国务院的组成部门。</p>
+</blockquote>
+<blockquote>
+<p>2018年3月，根据第十三届全国人民代表大会第一次会议批准的国务院机构改革方案，将公安部的消防管理职责整合，组建中华人民共和国应急管理部；将中华人民共和国公安部的出入境管理、边防检查职责整合建立健全签证管理协调机制，组建中华人民共和国国家移民管理局，由中华人民共和国公安部管理。</p>
+</blockquote>
+<blockquote>
+<p>2018年3月，根据中共中央印发的《深化党和国家机构改革方案》，将中央防范和处理邪教问题领导小组及其办公室的防范和处理邪教工作职责交由中央政法委员会、公安部承担</p>
+</blockquote>
+<blockquote>
+<p>公安部设有办公厅、情报指挥、研究室、督察审计、人事训练、新闻宣传、经济犯罪侦查、治安管理、刑事侦查、反恐怖、食品药品犯罪侦查、特勤、铁路公安、网络安全保卫、监所管理、警务保障、交通管理、法制、国际合作、装备财务、禁毒、科技信息化等局级机构，分别承担有关业务工作。海关总署缉私局、中国民用航空局公安局列入公安部序列，分别接受公安部和海关总署、公安部和中国民用航空局双重领导，以公安部领导为主。</p>
+</blockquote>
+<ol start="2">
+<li>公安厅，公安厅是根据中共中央、国务院批准设置的，是省(自治区)政府下设主管全省(区)公安工作的职能部门。公安厅受省(自治区)政府、公安部的双重领导。各市、县(县级市、区)设有公安局(分局)，在镇、乡、街道设派出所。公安局接受同级人民政府和上级公安机关领导，分局、派出所是上级公安机关的派出机构。</li>
+</ol>
+<blockquote>
+<p>公安厅一般的机构设置为：办公室、人事管理、教育培训、警备督察、国内安全保卫、刑事侦查、经济犯罪侦查、禁毒、治安管理、出入境管理、交通管理、边防管理、消防管理、监所管理、警卫、公共信息网络安全监察、法制、信息通信、装备财务、宣传等机构。</p>
+</blockquote>
+<ol start="3">
+<li>公安局，公安局是公安机关的组织形式，是主管公安工作的政府下设职能部门。</li>
+</ol>
+<blockquote>
+<p>公安局按级别通常有：直辖市公安局、省会城市公安局、地级市公安局、县级公安局，除县级公安局外，前几者均可按城市的区下分区分局。特定公安局一般受所在地政府领导、受上级公安厅、局指导。公安机关的最高部门是公安部，指导全国公安工作，包括所有各级公安局。受所在地政府、上级公安机关双重领导。</p>
+</blockquote>
+<blockquote>
+<p>此外，还有一些其他部门的公安部门，有别于地方政府的公安局，比如：铁路公安、森林公安、民航公安等。</p>
+</blockquote>
+<blockquote>
+<p>行政级别</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>直辖市公安局，正厅级建制(局长可以高配副部级)，如天津市公安局、上海市公安局。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>地级市公安局，正处级建制(局长可以高配副厅级)，属市政府工作部门。如：东莞市公安局、上海市公安局自由贸易试验区分局，为市公安局直属正处级机构，行使相当于地区公安分局的执法权限，并享有市公安局部分行政审批权限。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>县公安局是主管全县公安工作的县政府工作部门，为正科级(局长可以高配副处级)，如：屏南县公安局、弥渡县公安局。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>派出所，股所级或者副科级、正科级建制等(所长可以高配)。</p>
+</blockquote>
+</blockquote>
+<ol start="4">
+<li>公安派出所指的是中国市、县公安局或公安分局管理社会治安和户籍工作的派出机关。第一届全国人民代表大会常务委员会第4次会议通过的《公安派出所组织条例》规定了其任务、职权、组织原则、工作纪律等。公安派出所根据地区大小、人口多少、社会情况和工作需要设立城市一般按街道或在流动人员较集中的火车站、港口等地方设立；农村一般按城镇，乡设立。</li>
+</ol>
+<blockquote>
+<p>编制</p>
+<blockquote>
+<p>股所级的派出所，设所长1名，指导员(政治指导员)1名。<br>科级派出所，设所长1名，教导员(政治教导员)1名。</p>
+</blockquote>
+</blockquote>
+<hr>
+<h1 id="三、中国行政区划分"><a href="#三、中国行政区划分" class="headerlink" title="三、中国行政区划分"></a><center><font color=red>三、中国行政区划分</font></center></h1><ol>
+<li>直辖市，是中国行政区划之一，行政地位与省、自治区、特别行政区相同，是中华人民共和国省级行政区，是直接由中央人民政府所管辖的建制城市。中国的直辖市与省，自治区，特别行政区一样均为最高一级行政单位，行政地位与省相同，但是管辖区域与地级市相同，管辖区，县，自治县等。</li>
+</ol>
+<blockquote>
+<p>由于直辖市的定位特殊，中国直辖市的中共市委书记一般由中共中央政治局委员兼任， 中国大陆现有北京市、天津市、上海市、重庆市4个直辖市。其中，截至2019年，北京市共辖16个市辖区，分别是东城区、西城区、朝阳区、丰台区、石景山区、海淀区、顺义区、通州区、大兴区、房山区、门头沟区、昌平区、平谷区、密云区、怀柔区、延庆区。</p>
+</blockquote>
+<ol start="2">
+<li><p>地级市，是中国行政区划之一，行政地位与地区、自治州、盟相同，属于地级行政区，是建制与地区相同的市，由省、自治区管辖。自1983年11月5日开始，在国家行政机构区划统计上作为行政区划术语固定下来。</p>
+</li>
+<li><p>县级市，是中国行政区划之一，行政地位与市辖区、县、自治县、旗、自治旗、特区、林区相同，属县级行政区，由省、自治区直辖(大部)属于地级市代管）或由地区、自治州、盟管辖。自1983年起，县级市被作为行政区划术语被正式确立下来。</p>
+</li>
+<li><p>行政区划制度</p>
+<ul>
+<li>第一级是省级行政区：省、自治区、直辖市、特别行政区</li>
+<li>第二级是地级行政区：地区、盟、自治州、市(地级)、市辖区</li>
+<li>第三级是县级行政区：县、自治县、旗、自治旗、市(县级)、市辖区、林区、特区</li>
+<li>第四级是乡级行政区：乡、民族乡、镇、街道、苏木、区公所</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>还有第五第六级行政区，就到村里了，这里只介绍前四级行政区划。</p>
+</blockquote>
+<ol start="5">
+<li>河南省目前有郑州市、开封市、洛阳市、平顶山市、安阳市、鹤壁市、新乡市、焦作市、濮阳市、许昌市、漯河市、三门峡市、南阳市、商丘市、信阳市、周口市、驻马店市17个地级市。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">地级市/省直辖</th>
+<th align="center">县级市</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">郑州市</td>
+<td align="center">新郑市、新密市、登封市、荥阳市、巩义市</td>
+</tr>
+<tr>
+<td align="center">新乡市</td>
+<td align="center">卫辉市、辉县市、长垣市</td>
+</tr>
+<tr>
+<td align="center">平顶山市</td>
+<td align="center">舞钢市、汝州市</td>
+</tr>
+<tr>
+<td align="center">三门峡市</td>
+<td align="center">义马市、灵宝市</td>
+</tr>
+<tr>
+<td align="center">焦作市</td>
+<td align="center">沁阳市、孟州市</td>
+</tr>
+<tr>
+<td align="center">许昌市</td>
+<td align="center">禹州市、长葛市</td>
+</tr>
+<tr>
+<td align="center">洛阳市</td>
+<td align="center">偃师市</td>
+</tr>
+<tr>
+<td align="center">安阳市</td>
+<td align="center">林州市</td>
+</tr>
+<tr>
+<td align="center">商丘市</td>
+<td align="center">永城市</td>
+</tr>
+<tr>
+<td align="center">周口市</td>
+<td align="center">项城市</td>
+</tr>
+<tr>
+<td align="center">南阳市</td>
+<td align="center">邓州市</td>
+</tr>
+<tr>
+<td align="center">省直辖县级行政单位</td>
+<td align="center">济源市</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a href="https://www.zhihu.com/question/22873663">参考一</a></p>
+</blockquote>
+<hr>
+<h1 id="四、两会"><a href="#四、两会" class="headerlink" title="四、两会"></a><center><font color=red>四、两会</font></center></h1><ol>
+<li><p>概念</p>
+<ul>
+<li>两会是对自1959年以来历年召开的中华人民共和国全国人民代表大会和中国人民政治协商会议的统称。由于两场会议会期基本重合，而且对于国家运作的重要程度都非常的高，故简称做“两会”。从省级地方到中央，各地的政协及人大的全体会议的会期全部基本重合，所以两会的名称可以同时适用于全国及各省(市、自治区)。<ul>
+<li>全国人大，全称：全国人民代表大会，其是最高国家权力机关，人民代表大会制度是实现人民当家作主的根本政治制度。在我国，人民通过民主选举选出自己的代表，组成人民代表大会，集中行使国家权力。根据宪法的规定，全国人民代表大会具有全权的和最高的地位。</li>
+<li>政协，全称：中国人民政治协商会议，其主要职能是政治协商和民主监督，组织参加政协的各党派、团体和各族各界人士参政议政。政协全国委员会每届任期5年，每年举行一次全体会议。人民政协在中央设有全国委员会和常务委员会以及9个专门委员会，在地方设有政协地方委员会。每届任期5年，每年举行一次全体会议。</li>
+</ul>
+</li>
+<li>两会每5年称为一届，每年会议称X届X次会议。根据中国宪法规定：“两会”召开的意义在于将“两会”代表从人民中得来的信息和要求进行收集及整理，传达给党中央。“两会”代表是代表着广大选民的一种利益的，代表着选民在召开两会期间，向政府有关部门提出选民们自己的意见和要求。地方每年召开的人大和政协也称为两会，通常召开的时间比全国“两会”时间要早。</li>
+</ul>
+</li>
+<li><p>政协会议参与的各方主要有：</p>
+</li>
+</ol>
+<ul>
+<li>中国共产党，作为执政党参与会议；</li>
+<li>中国国民党革命委员会，由原中国国民党民主派和其他爱国民主人士所创建，于1948年1月1日成立，是政协的重要组成政党之一；</li>
+<li>中国民主同盟，于1941年3月19日在重庆秘密成立，其成员有中国青年党、国家社会党（后改称民主社会党）、中华民族解放行动委员会（后改称中国农工民主党）、中华职业教育社、乡村建设协会的成员及其他人士。1942年，全国各界救国联合会加入，形成现有格局</li>
+<li>中国民主建国会，1945年12月16日，民建在重庆成立，成员主要是爱国的民族工商业者和有联系的知识分子，发起人有黄炎培、胡厥文、章乃器、施复亮、孙起孟等，是政协的重要组成政党之一；</li>
+<li>中国民主促进会，由马叙伦、王绍鏊、周建人、许广平、林汉达、徐伯昕、赵朴初、雷洁琼、郑振铎、柯灵等著名爱国民主人士于1945年12月30日在上海建立</li>
+<li>中国农工民主党，于1930年8月9日在上海成立，是政协的重要组成政党之一；</li>
+<li>中国致公党，中国致公党是以归侨、侨眷中的中上层人士和其他有海外关系的代表性人士组成的政党，于1925年10月成立于美国旧金山，是政协的重要组成政党之一；</li>
+<li>九三学社，前身为抗日战争后期一批进步学者在重庆组织的“民主科学座谈会”，后为纪念1945年9月3日抗日战争和世界反法西斯战争的伟大胜利，改建为九三学社，是政协的重要组成政党之一；</li>
+<li>台湾民主自治同盟，台湾民主自治同盟是由台湾省人士组成的社会主义劳动者、社会主义事业建设者和拥护社会主义爱国者的政治联盟，1947年11月12日在香港成立，是政协的重要组成政党之一；</li>
+<li>此外，参与政协会议的还有无党派民主人士，中国共产主义青年团，中华全国总工会，中华全国妇女联合会，中华全国青年联合会，中华全国工商业联合会，中国科学技术协会，中华全国台湾同胞联谊会，中华全国归国华侨联合会，文化艺术界，科学技术界，社会科学界，经济界，农业界，教育界，体育界，新闻出版界，医药卫生界，对外友好界，社会福利界，少数民族界，宗教界，特邀香港人士，特邀澳门人士，特别邀请人士等。</li>
+</ul>
+<hr>
+<h1 id="五、护照和签证"><a href="#五、护照和签证" class="headerlink" title="五、护照和签证"></a><center><font color=red>五、护照和签证</font></center></h1><ol>
+<li><p>护照</p>
+<ul>
+<li>护照是一个国家的公民出入本国国境和到国外旅行或居留时，由本国发给的一种证明该公民国籍和身份的合法证件。 护照(Passport)一词在英文中是口岸通行证的意思，也就是说，护照是公民旅行通过各国国际口岸的一种通行证明。所以，世界上一些国家通常也颁发代替护照的通行证件。</li>
+<li>2018年9月1日起，中国全国异地可换补护照。自2019年4月1日起，中华人民共和国普通护照实行“全国通办”，即内地居民可在全国任一出入境管理窗口申请办理出入境证件，申办手续与户籍地一致。从2019年7月1日起，因私普通护照收费标准由160元/本降为120元/本。 </li>
+</ul>
+</li>
+<li><p>签证</p>
+<ul>
+<li>签证(visa)是一个国家的主权机关在本国或外国公民所持的护照或其他旅行证件上的签注、盖印，以表示允许其出入本国国境或者经过国境的手续，也可以说是颁发给他们的一项签注式的证明。概括地说，签证是一个国家的出入境管理机构(例如移民局或其驻外使领馆)，对外国公民表示批准入境所签发的一种文件。</li>
+<li>签证(Visa)是一国政府机关依照本国法律规定为申请入出或通过本国的外国人颁发的一种许可证明。根据国际法原则，任何一个主权国家，有权自主决定是否允许外国人入出其国家，有权依照本国法律颁发签证、拒发签证或者对已经签发的签证宣布吊销。它通常是附载于申请人所持的护照或其他国际旅行证件上。在特殊情况下，凭有效护照或其他国际旅行证件可做在另纸上。随着科技的进步，有些国家已经开始签发电子签证和生物签证，大大增强了签证的防伪功能。</li>
+</ul>
+</li>
+<li><p>两者关系</p>
+<ul>
+<li>护照是持有者的国籍和身份证明，签证则是主权国家准许外国公民或者本国公民出入境或者经过国境的许可证明。</li>
+<li>签证一般都签注在护照上，也有的签注在代替护照的其他旅行证件上，有的还颁发另纸签证。<ul>
+<li>如美国和加拿大的移民签证是一张A4大的纸张，新加坡对外国人也发一种另纸签证，签证一般来说须与护照同时使用，方有效力。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="六、台湾历届领导人"><a href="#六、台湾历届领导人" class="headerlink" title="六、台湾历届领导人"></a><center><font color=red>六、台湾历届领导人</font></center></h1><ol>
+<li><p>基础</p>
+<ul>
+<li>台湾省，简称“台”，是中华人民共和国省级行政区，省会台北，地处中国大陆东南海域，东临太平洋，西隔台湾海峡与福建省相望，南界巴士海峡与菲律宾群岛相对。台湾省由中国第一大岛台湾岛和周围属岛以及澎湖列岛等岛屿组成，总面积约3.6万平方公里。台湾省人口约2360万，超过70%集中在台湾岛西部的5大都会区，其中以台北市为中心的台北都会区最大。</li>
+<li>台湾是中国领土不可分割的一部分。台湾主要的少数民族高山族在17世纪汉族移入前即已在此定居；自明末清初始有大量的福建南部和广东东部人民移垦台湾，最终形成以汉族为主体的社会。南宋澎湖属福建路；元、明在澎湖设巡检司；明末被荷兰和西班牙侵占；1662年郑成功收复；清朝1684年置台湾府，属福建省，1885年设台湾省；1895年清政府以《马关条约》割让与日本；1945年中国人民抗日战争胜利后，中国政府收复台湾，台湾及澎湖重归中国主权管辖之下；1949年原在大陆的中国国民党当局退据台湾。</li>
+</ul>
+</li>
+<li><p>政治体制</p>
+<ul>
+<li>台湾当局采行孙中山提出的“五权宪法”架构，当局组织分成5个机构运作，分别是行政管理机构、立法机构、司法主管机构、考试机构和监察机构。台湾地区领导人(对岸称“总统”)，对内负责政治上的最高责任，为“国军”最高统帅，对“五院”有协调争议权，并直接任命最高行政管理机构负责人(对岸称“行政院院长”)，对外代表台湾地区，1996年起实施直选，任期四年，可连选连任一次。</li>
+</ul>
+</li>
+<li><p>历届领导人</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">任次</th>
+<th align="center">姓名</th>
+<th align="center">任期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">蒋中正</td>
+<td align="center">1950年—1954年</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">蒋中正</td>
+<td align="center">1954年—1960年</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">蒋中正</td>
+<td align="center">1960年—1966年</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">蒋中正</td>
+<td align="center">1966年—1972年</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">蒋中正</td>
+<td align="center">1972年—1975年</td>
+</tr>
+<tr>
+<td align="center">(继任)</td>
+<td align="center">严家淦(gàn)</td>
+<td align="center">1975年—1978年</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">蒋经国</td>
+<td align="center">1978年—1984年</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">蒋经国</td>
+<td align="center">1984年—1988年</td>
+</tr>
+<tr>
+<td align="center">(继任)</td>
+<td align="center">李登辉</td>
+<td align="center">1988年—1990年</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">李登辉</td>
+<td align="center">1990年—1996年</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">李登辉</td>
+<td align="center">1996年—2000年</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">陈水扁</td>
+<td align="center">2000年—2004年</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">陈水扁</td>
+<td align="center">2004年—2008年</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">马英九</td>
+<td align="center">2008年—2012年</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">马英九</td>
+<td align="center">2012年—2016年</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">蔡英文</td>
+<td align="center">2016年—2020年</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">蔡英文</td>
+<td align="center">2020年至今</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>1975年，蒋中正去世，副领导人严家淦继任。</p>
+</blockquote>
+<blockquote>
+<p>1988年，蒋经国去世，副领导人李登辉继任。</p>
+</blockquote>
+<hr>
+<h1 id="七、行政级别"><a href="#七、行政级别" class="headerlink" title="七、行政级别"></a><center><font color=red>七、行政级别</font></center></h1><ol>
+<li>待补充</li>
+<li>参考<ul>
+<li>[行政级别]<a href="https://zhuanlan.zhihu.com/p/122224875">https://zhuanlan.zhihu.com/p/122224875</a></li>
+<li>[行政级别]<a href="https://baike.baidu.com/item/%E8%A1%8C%E6%94%BF%E7%BA%A7%E5%88%AB/3545613?fr=aladdin">https://baike.baidu.com/item/%E8%A1%8C%E6%94%BF%E7%BA%A7%E5%88%AB/3545613?fr=aladdin</a></li>
+<li><a href="https://zhidao.baidu.com/question/1932166929548608067.html">行政级别</a></li>
+<li>[公务员职务]<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E5%8A%A1/23121986">https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E5%8A%A1/23121986</a></li>
+<li>[公务员职级]<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E7%BA%A7/23121985">https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E7%BA%A7/23121985</a></li>
+<li>[公务员级别]<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E7%BA%A7%E5%88%AB/6041164">https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%85%AC%E5%8A%A1%E5%91%98%E7%BA%A7%E5%88%AB/6041164</a></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hobby</category>
+      </categories>
+      <tags>
+        <tag>机关单位</tag>
+        <tag>事业单位</tag>
+        <tag>公安部</tag>
+        <tag>公安厅</tag>
+        <tag>公安局</tag>
+        <tag>派出所</tag>
+        <tag>直辖市</tag>
+        <tag>地级市</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker入门</title>
     <url>/2016/06/09/Docker-%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -27854,18 +27880,77 @@ read_xlsx(name, sheet)
       <tags>
         <tag>收集</tag>
         <tag>Linux</tag>
-        <tag>shell</tag>
-        <tag>declare</tag>
         <tag>zabbix</tag>
         <tag>Audit</tag>
         <tag>Netlink</tag>
         <tag>strace</tag>
+        <tag>shell</tag>
+        <tag>declare</tag>
         <tag>while</tag>
         <tag>if</tag>
         <tag>case</tag>
         <tag>chsh</tag>
         <tag>BASH_SOURCE</tag>
         <tag>dirname</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>静态链接和动态链接</title>
+    <url>/2016/04/02/OS-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</url>
+    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>gitk是git提供的一个gui工具，可以很清晰地查看搜索提交历史及git相关操作。在终端git仓库目录下输入gitk命令即可使用。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li><p>对于C语言开发，编写好的程序代码一般保存在<code>.c</code>文件中，此时<code>.c</code>文件就叫做源文件。要将编写好的程序运行起来，或者说从源文件到目标文件，一般还要经过以下几个阶段：预编译、编译、汇编、链接、加载(装载)、运行，静态链接和动态链接就是链接这一阶段的产物。</p>
+<ul>
+<li>链接器是一个独立程序，将一个或多个库或目标文件（先前由编译器或汇编器生成）链接到一块生成可执行程序。</li>
+</ul>
+</li>
+<li><p>静态链接</p>
+<ul>
+<li>在实际开发过程中，不可能将所有源代码放在一个文件中，一般会根据模块或功能等分类方式将代码保存在多个源文件中。对于大部分应用来说，多个源文件之间不是独立的，而是会存在这相互依赖的关系，如一个源文件可能要调用另一个源文件中定义的函数等。在编译阶段，由于每个源文件都是独立编译的，即每个<code>.c</code>文件会形成一个<code>.o</code>文件，为了满足相互依赖的关系，需要将这些源文件产生的目标文件进行链接从而形成一个可以执行的程序，这个链接的过程就是静态链接，其后缀名一般为<code>.a</code>，win环境下为<code>.lib</code>。简而言之就是在程序执行之前完成所有的组装工作，生成一个可执行的目标文件(win环境下的<code>.exe</code>文件或linux下的可执行文件)。</li>
+<li>链接器在链接静态链接库的时候是以目标文件为单位的，比如引用了静态库中的<code>printf()</code>函数，那么链接器就会把库中包含<code>printf()</code>函数的那个目标文件链接进来。一般情况下，静态链接库的的目标文件会包含很多函数，如<code>print、sprintf</code>(实际不一定在同一个文件，只为举例用)，如果很多函数都放在一个目标文件中，很多没用的函数都被一起链接进了输出结果中，进而导致空间的浪费。</li>
+<li>优缺点<ul>
+<li>浪费空间</li>
+<li>更新困难</li>
+<li>执行速度快</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动态链接</p>
+<ul>
+<li>动态链接就是把程序按照模块拆分成多个相对独立的部分，运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件，其后缀名一般为<code>.so</code>，win环境下为<code>.dll</code>。简而言之就是在程序已经为了执行被装入内存之后完成链接工作，并且在内存中一般只保留该编译单元的一份拷贝。<ul>
+<li>装载时动态链接(Load-time Dynamic Linking)：在编译之前已经明确知道要调用DLL中的哪几个函数，编译时在目标文件中只保留必要的链接信息而不含DLL函数的代码；当程序执行时，调用函数的时候利用链接信息加载DLL函数代码并在内存中将其链接入调用程序的执行空间中(全部函数加载进内存），其主要目的是便于代码共享。</li>
+<li>运行时动态链接(Run-time Dynamic Linking)：在编译之前不知道将会调用哪些DLL函数，在运行过程中根据需要决定应调用哪个函数，将其加载到内存中(只加载调用的函数进内存)，并标识内存地址，其他程序也可以使用该程序，并用LoadLibrary和GetProcAddress动态获得DLL函数的入口地址(dll在内存中只存在一份)。</li>
+</ul>
+</li>
+<li>优缺点<ul>
+<li>节省空间</li>
+<li>更新简单</li>
+<li>执行速度慢</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>静态链接和动态链接两者最大的区别就在于链接的时机不一样，静态链接是在形成可执行程序前，而动态链接的进行则是在程序执行时。</p>
+</blockquote>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href="https://baike.baidu.com/item/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/4142691?fr=aladdin">静态链接</a></li>
+<li><a href="https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/4142708?fr=aladdin">动态链接</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>OS</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>静态链接</tag>
+        <tag>动态链接</tag>
       </tags>
   </entry>
   <entry>
@@ -31463,65 +31548,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>静态链接和动态链接</title>
-    <url>/2015/09/23/OS-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/</url>
-    <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>gitk是git提供的一个gui工具，可以很清晰地查看搜索提交历史及git相关操作。在终端git仓库目录下输入gitk命令即可使用。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
-<li><p>对于C语言开发，编写好的程序代码一般保存在<code>.c</code>文件中，此时<code>.c</code>文件就叫做源文件。要将编写好的程序运行起来，或者说从源文件到目标文件，一般还要经过以下几个阶段：预编译、编译、汇编、链接、加载(装载)、运行，静态链接和动态链接就是链接这一阶段的产物。</p>
-<ul>
-<li>链接器是一个独立程序，将一个或多个库或目标文件（先前由编译器或汇编器生成）链接到一块生成可执行程序。</li>
-</ul>
-</li>
-<li><p>静态链接</p>
-<ul>
-<li>在实际开发过程中，不可能将所有源代码放在一个文件中，一般会根据模块或功能等分类方式将代码保存在多个源文件中。对于大部分应用来说，多个源文件之间不是独立的，而是会存在这相互依赖的关系，如一个源文件可能要调用另一个源文件中定义的函数等。在编译阶段，由于每个源文件都是独立编译的，即每个<code>.c</code>文件会形成一个<code>.o</code>文件，为了满足相互依赖的关系，需要将这些源文件产生的目标文件进行链接从而形成一个可以执行的程序，这个链接的过程就是静态链接，其后缀名一般为<code>.a</code>，win环境下为<code>.lib</code>。简而言之就是在程序执行之前完成所有的组装工作，生成一个可执行的目标文件(win环境下的<code>.exe</code>文件或linux下的可执行文件)。</li>
-<li>链接器在链接静态链接库的时候是以目标文件为单位的，比如引用了静态库中的<code>printf()</code>函数，那么链接器就会把库中包含<code>printf()</code>函数的那个目标文件链接进来。一般情况下，静态链接库的的目标文件会包含很多函数，如<code>print、sprintf</code>(实际不一定在同一个文件，只为举例用)，如果很多函数都放在一个目标文件中，很多没用的函数都被一起链接进了输出结果中，进而导致空间的浪费。</li>
-<li>优缺点<ul>
-<li>浪费空间</li>
-<li>更新困难</li>
-<li>执行速度快</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>动态链接</p>
-<ul>
-<li>动态链接就是把程序按照模块拆分成多个相对独立的部分，运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件，其后缀名一般为<code>.so</code>，win环境下为<code>.dll</code>。简而言之就是在程序已经为了执行被装入内存之后完成链接工作，并且在内存中一般只保留该编译单元的一份拷贝。<ul>
-<li>装载时动态链接(Load-time Dynamic Linking)：在编译之前已经明确知道要调用DLL中的哪几个函数，编译时在目标文件中只保留必要的链接信息而不含DLL函数的代码；当程序执行时，调用函数的时候利用链接信息加载DLL函数代码并在内存中将其链接入调用程序的执行空间中(全部函数加载进内存），其主要目的是便于代码共享。</li>
-<li>运行时动态链接(Run-time Dynamic Linking)：在编译之前不知道将会调用哪些DLL函数，在运行过程中根据需要决定应调用哪个函数，将其加载到内存中(只加载调用的函数进内存)，并标识内存地址，其他程序也可以使用该程序，并用LoadLibrary和GetProcAddress动态获得DLL函数的入口地址(dll在内存中只存在一份)。</li>
-</ul>
-</li>
-<li>优缺点<ul>
-<li>节省空间</li>
-<li>更新简单</li>
-<li>执行速度慢</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>静态链接和动态链接两者最大的区别就在于链接的时机不一样，静态链接是在形成可执行程序前，而动态链接的进行则是在程序执行时。</p>
-</blockquote>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href="https://baike.baidu.com/item/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/4142691?fr=aladdin">静态链接</a></li>
-<li><a href="https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/4142708?fr=aladdin">动态链接</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>OS</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>静态链接</tag>
-        <tag>动态链接</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序是怎么运行起来的</title>
     <url>/2015/09/18/OS-%E7%A8%8B%E5%BA%8F%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84/</url>
     <content><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><blockquote>
@@ -32541,11 +32567,11 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Mac</tag>
-        <tag>brew</tag>
-        <tag>spctl</tag>
-        <tag>DNS</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
+        <tag>brew</tag>
+        <tag>DNS</tag>
+        <tag>spctl</tag>
         <tag>xcode-select</tag>
         <tag>cask</tag>
         <tag>readline</tag>
@@ -33155,6 +33181,7 @@ read_xlsx(name, sheet)
       <tags>
         <tag>union</tag>
         <tag>MySQL</tag>
+        <tag>explain</tag>
         <tag>grant</tag>
         <tag>revoke</tag>
         <tag>group</tag>
@@ -33162,7 +33189,6 @@ read_xlsx(name, sheet)
         <tag>in</tag>
         <tag>order</tag>
         <tag>WGHOL</tag>
-        <tag>explain</tag>
       </tags>
   </entry>
   <entry>
@@ -35204,10 +35230,10 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>source</tag>
-        <tag>export</tag>
         <tag>环境变量</tag>
         <tag>PATH</tag>
+        <tag>source</tag>
+        <tag>export</tag>
       </tags>
   </entry>
   <entry>
@@ -38881,16 +38907,16 @@ read_xlsx(name, sheet)
       <tags>
         <tag>变量</tag>
         <tag>Linux</tag>
-        <tag>shell</tag>
-        <tag>let</tag>
-        <tag>source</tag>
-        <tag>export</tag>
-        <tag>declare</tag>
-        <tag>local</tag>
-        <tag>特殊变量</tag>
         <tag>标准输入</tag>
         <tag>标准输出</tag>
         <tag>标准错误输出</tag>
+        <tag>shell</tag>
+        <tag>declare</tag>
+        <tag>source</tag>
+        <tag>export</tag>
+        <tag>let</tag>
+        <tag>local</tag>
+        <tag>特殊变量</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
       </tags>
@@ -39571,18 +39597,43 @@ read_xlsx(name, sheet)
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="http://svnbook.red-bean.com/zh/1.8/svn.ref.svn.html">参考一</a></li>
 </ol>
+<hr>
+<h1 id="短链接"><a href="#短链接" class="headerlink" title="短链接"></a><center><font color=red>短链接</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li><p>优点</p>
+<ul>
+<li>链接变短，可增加编辑字数，如短信、有长度限制的平台等</li>
+<li>将链接转成二维码，短链接有高的识别度</li>
+<li>链接太长在有的平台无法识别为超链接</li>
+</ul>
+</li>
+<li><p>基本原理：利用HTTP请求中的302状态码做重定向</p>
+<ul>
+<li>301，代表永久重定向，也就是说第一次请求拿到长链接后，下次浏览器再去请求短链的话，不会向短网址服务器请求了，而是直接从浏览器的缓存里拿，这样在server层面就无法获取到短网址的点击数了，如果这个链接刚好是某个活动的链接，也就无法分析此活动的效果。</li>
+<li>302，代表临时重定向，也就是说每次去请求短链都会去请求短网址服务器(除非响应中用 Cache-Control或Expired暗示浏览器缓存)，这样就便于 server统计点击数。</li>
+</ul>
+</li>
+<li><p>实现方式</p>
+<ul>
+<li>哈希算法</li>
+<li>自增序列算法</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href="https://www.zhihu.com/question/29270034/answer/1679116463">参考一</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Technology</category>
       </categories>
       <tags>
         <tag>技术</tag>
-        <tag>倒排索引</tag>
         <tag>幂等性</tag>
-        <tag>IPC</tag>
-        <tag>RPC</tag>
         <tag>闭包</tag>
+        <tag>IPC</tag>
         <tag>LPC</tag>
+        <tag>RPC</tag>
+        <tag>倒排索引</tag>
         <tag>彩虹表</tag>
         <tag>搜索引擎</tag>
         <tag>字符</tag>
@@ -44179,8 +44230,8 @@ read_xlsx(name, sheet)
         <category>Java</category>
       </categories>
       <tags>
-        <tag>反射</tag>
         <tag>Java</tag>
+        <tag>反射</tag>
         <tag>数据类型</tag>
         <tag>注解</tag>
         <tag>包</tag>
