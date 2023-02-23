@@ -58,7 +58,7 @@
 <meta property="og:description" content="屌丝装逼有三宝，索8k5迈瑞宝。皮薄馅大有三脆，雅阁天籁凯美瑞。技术落后有三旧，锐志c5老马六。百米加速三王侯，君威cc蒙迪欧。怒烧机油三剑客，迈腾昊锐帕萨特。高端大气上档次，c级3系长a4。山寨土豪三件套，皇冠公爵歌诗图。人傻钱多三辆车，凌志英菲和讴歌。各种拆迁款已到，A6路虎大霸道。妹子装逼全靠你，TT卡宴小迷你！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-25T02:36:01.000Z">
-<meta property="article:modified_time" content="2023-02-22T15:24:23.036Z">
+<meta property="article:modified_time" content="2023-02-23T08:29:14.441Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Elasticsearch">
 <meta property="article:tag" content="Logstash">
@@ -286,7 +286,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>262</span>
+              <span>435</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -309,21 +309,26 @@
 </blockquote>
 <span id="more"></span>
 
-<hr>
 <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li><p>日志系统的作用</p>
 <ul>
-<li>收集:能够采集多种来源的日志数据</li>
-<li>传输:能够稳定的把日志数据解析过滤并传输到存储系统</li>
-<li>存储:存储日志数据</li>
-<li>分析:支持UI分析</li>
-<li>警告:能够提供错误报告，监控机制</li>
+<li>收集：能够采集多种来源的日志数据</li>
+<li>传输：能够稳定的把日志数据解析过滤并传输到存储系统</li>
+<li>存储：存储日志数据</li>
+<li>分析：支持UI分析</li>
+<li>警告：能够提供错误报告，监控机制</li>
 </ul>
 </li>
 <li><p>方案</p>
+<ul>
+<li>ELK：<code>Elasticsearch + Logstash + Kibana</code></li>
+<li>EFK：<code>Elasticsearch + Filebeat + Kibana</code></li>
+<li>ELFK：<code>Elasticsearch + Logstash + Filebeat + Kibana</code></li>
+<li>ELFK + MQ：<code>Elasticsearch + Logstash + Filebeat + Kibana + Kafka/Redis</code></li>
+</ul>
 </li>
 </ol>
-<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h2 id="二、实战-ELFK"><a href="#二、实战-ELFK" class="headerlink" title="二、实战(ELFK)"></a>二、实战(ELFK)</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://clickhouse.com/">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.elastic.co/">参考二</a></li>
 </ol>
@@ -400,7 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98-ELFK"><span class="nav-number">2.</span> <span class="nav-text">二、实战(ELFK)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
