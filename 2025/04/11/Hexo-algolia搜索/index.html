@@ -123,8 +123,8 @@
     lazyload: false,
     pangu: false,
     algolia: {
-      appID: 'YLATIWUDOR',
-      apiKey: '5649c1a7920c7dededa7e900bb33c800',
+      appID: '',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
       indexName: 'blog',
       hits: {"per_page":20},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
@@ -149,7 +149,7 @@
 <meta property="og:description" content="好久没打开博客了，某天已看搜索不能用了，重新按照上面的步骤操作，发现流程不太一样了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-11T10:43:12.000Z">
-<meta property="article:modified_time" content="2025-04-18T05:55:07.941Z">
+<meta property="article:modified_time" content="2025-04-22T06:19:01.063Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="algolia">
@@ -366,7 +366,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>361</span>
+              <span>873</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -402,22 +402,46 @@
 </ol>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://dashboard.algolia.com/users/sign_in">注册/登录algolia</a></li>
-<li></li>
+<li>创建应用</li>
+<li>创建索引</li>
+<li>取配置：右上角-&gt;Setting-&gt;Team and Access-&gt;API Keys<ul>
+<li>Application ID</li>
+<li>Search API Key</li>
+<li>Write API Key</li>
+<li>Admin API Key</li>
+</ul>
+</li>
 </ul>
 <ol start="3">
-<li>项目更改<ul>
+<li><p>项目更改</p>
+<ul>
 <li>npm install hexo-algoliasearch –save</li>
 <li>修改配置文件_config.yml</li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">algolia:</span><br><span class="line"> appId: &quot;Z7A3XW4R2I&quot;</span><br><span class="line"> apiKey: &quot;12db1ad54372045549ef465881c17e743&quot;</span><br><span class="line"> adminApiKey: &quot;40321c7c207e7f73b63a19aa24c4761b&quot;</span><br><span class="line"> chunkSize: 5000</span><br><span class="line"> indexName: &quot;my-hexo-blog&quot;</span><br><span class="line"> fields:</span><br><span class="line">   - content:strip:truncate,0,500</span><br><span class="line">   - excerpt:strip</span><br><span class="line">   - gallery</span><br><span class="line">   - permalink</span><br><span class="line">   - photos</span><br><span class="line">   - slug</span><br><span class="line">   - tags</span><br><span class="line">   - title</span><br></pre></td></tr></table></figure></li>
+<li><p>hexo algolia</p>
 </li>
 </ol>
 <h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
-<li>rm node_modules &amp;&amp; npm install –force –verbose，各种报错<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm http fetch GET https://registry.nlark.com/statuses/download/statuses-1.5.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/urllib/download/urllib-2.11.1.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/strip-ansi/download/strip-ansi-6.0.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/tildify/download/tildify-2.0.0.tgz?cache=0&amp;sync_timestamp=1628772896453&amp;other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftildify%2Fdownload%2Ftildify-2.0.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/semver/download/semver-6.3.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/util/download/util-0.10.4.tgz?cache=0&amp;sync_timestamp=1622213272480&amp;other_urls=https%3A%2F%2Fregistry.nlark.com%2Futil%2Fdownload%2Futil-0.10.4.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/supports-color/download/supports-color-7.2.0.tgz?cache=0&amp;sync_timestamp=1626703414084&amp;other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsupports-color%2Fdownload%2Fsupports-color-7.2.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/debug/download/debug-3.1.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/striptags/download/striptags-3.2.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/strip-indent/download/strip-indent-3.0.0.tgz attempt 3 failed with ECONNRESET</span><br></pre></td></tr></table></figure>
+<li><p>rm node_modules &amp;&amp; npm install –force –verbose，各种报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm http fetch GET https://registry.nlark.com/statuses/download/statuses-1.5.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/urllib/download/urllib-2.11.1.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/strip-ansi/download/strip-ansi-6.0.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/tildify/download/tildify-2.0.0.tgz?cache=0&amp;sync_timestamp=1628772896453&amp;other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftildify%2Fdownload%2Ftildify-2.0.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/semver/download/semver-6.3.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/util/download/util-0.10.4.tgz?cache=0&amp;sync_timestamp=1622213272480&amp;other_urls=https%3A%2F%2Fregistry.nlark.com%2Futil%2Fdownload%2Futil-0.10.4.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/supports-color/download/supports-color-7.2.0.tgz?cache=0&amp;sync_timestamp=1626703414084&amp;other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsupports-color%2Fdownload%2Fsupports-color-7.2.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/debug/download/debug-3.1.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/striptags/download/striptags-3.2.0.tgz attempt 3 failed with ECONNRESET</span><br><span class="line">npm http fetch GET https://registry.nlark.com/strip-indent/download/strip-indent-3.0.0.tgz attempt 3 failed with ECONNRESET</span><br></pre></td></tr></table></figure>
 <ul>
 <li>修改源：npm config set registry <a target="_blank" rel="noopener" href="https://registry.npmmirror.com">https://registry.npmmirror.com</a></li>
 <li>设置代理： n<ul>
 <li>npm config set proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7890">http://127.0.0.1:7890</a></li>
 <li>npm config set https-proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7890">http://127.0.0.1:7890</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>hexo algolia报错</p>
+<ul>
+<li>ERROR [hexo-algolia] Please set an <code>HEXO_ALGOLIA_INDEXING_KEY</code> environment variable to enable content indexing.</li>
+<li>ERROR &gt;&gt; Read <a target="_blank" rel="noopener" href="https://npmjs.com/hexo-algolia#api-key">https://npmjs.com/hexo-algolia#api-key</a> for more informations.</li>
+<li>处理：export HEXO_ALGOLIA_INDEXING_KEY=you apiKey，报错：<ul>
+<li>export: </li>
+<li>Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/dalaomanzou/article/details/136360573">https://blog.csdn.net/dalaomanzou/article/details/136360573</a></li>
 </ul>
 </li>
 </ul>
@@ -428,6 +452,10 @@
 <li><a target="_blank" rel="noopener" href="https://www.mebi.me/hexo-with-algolia">参考2</a></li>
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2024117">参考3</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7266670997734654009">参考4</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-algolia">参考5</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thom4parisot/hexo-algolia">参考6</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-algoliasearch">参考7</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-algoliasearch">参考8</a></li>
 </ol>
 
     </div>
@@ -615,12 +643,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">871k</span>
+    <span title="站点总字数">872k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:12</span>
+    <span title="站点阅读时长">13:13</span>
 </div>
 
         
