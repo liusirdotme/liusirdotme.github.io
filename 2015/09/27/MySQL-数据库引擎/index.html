@@ -215,6 +215,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -408,7 +410,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a><center><font color=red>数据库引擎</font></center></h1><h2 id="一、MYSQL支持的数据库引擎"><a href="#一、MYSQL支持的数据库引擎" class="headerlink" title="一、MYSQL支持的数据库引擎"></a>一、MYSQL支持的数据库引擎</h2><blockquote>
+<h1 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a><center><font color="red">数据库引擎</font></center></h1><h2 id="一、MYSQL支持的数据库引擎"><a href="#一、MYSQL支持的数据库引擎" class="headerlink" title="一、MYSQL支持的数据库引擎"></a>一、MYSQL支持的数据库引擎</h2><blockquote>
 <p>查看mysql支持的数据库引擎：<code>show engines;</code>，以下是常用到的几种数据库引擎：</p>
 </blockquote>
 <ol>
@@ -533,7 +535,7 @@
 </ol>
 <p><em>扩展：</em> 全文索引是指对char、varchar和text中的每个词（停用词除外）建立倒排序索引。MyISAM的全文索引其实没啥用，因为它不支持中文分词，必须由使用者分词后加入空格再写到数据表里，而且少于4个汉字的词会和停用词一样被忽略掉。</p>
 <hr>
-<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a><center><font color=red>扩展</font></center></h1><blockquote>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a><center><font color="red">扩展</font></center></h1><blockquote>
 <p>聚簇索引是将数据存储与索引放到了一块，找到索引也就找到了数据；非聚簇索引则是将数据存储与索引分开，索引结构的叶子节点指向了数据的对应行的地址。</p>
 </blockquote>
 <!-- more -->
@@ -563,9 +565,9 @@
 <li><p><code>count(*)</code>统计</p>
 <ul>
 <li>InnoDB不保存表的具体行数，执行select count(*) from table时需要全表扫描</li>
-<li>MyISAM用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快，通过<code>show table status like &#39;table_name&#39;</code>命令拿到rows值(InnoDB是近似值，MyISAM是精确值)</li>
+<li>MyISAM用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快，通过<code>show table status like 'table_name'</code>命令拿到rows值(InnoDB是近似值，MyISAM是精确值)</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">           Name: table_myisam</span><br><span class="line">         Engine: MyISAM</span><br><span class="line">        Version: 10</span><br><span class="line">     Row_format: Fixed</span><br><span class="line">           Rows: 3</span><br><span class="line"> Avg_row_length: 65</span><br><span class="line">    Data_length: 195</span><br><span class="line">Max_data_length: 18295873486192639</span><br><span class="line">   Index_length: 1024</span><br><span class="line">      Data_free: 0</span><br><span class="line"> Auto_increment: NULL</span><br><span class="line">    Create_time: 2019-09-16 23:05:37</span><br><span class="line">    Update_time: 2019-09-16 23:06:17</span><br><span class="line">     Check_time: NULL</span><br><span class="line">      Collation: utf8_general_ci</span><br><span class="line">       Checksum: NULL</span><br><span class="line"> Create_options:</span><br><span class="line">        Comment:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">           Name: table_myisam</span><br><span class="line">         Engine: MyISAM</span><br><span class="line">        Version: 10</span><br><span class="line">     Row_format: Fixed</span><br><span class="line">           Rows: 3</span><br><span class="line"> Avg_row_length: 65</span><br><span class="line">    Data_length: 195</span><br><span class="line">Max_data_length: 18295873486192639</span><br><span class="line">   Index_length: 1024</span><br><span class="line">      Data_free: 0</span><br><span class="line"> Auto_increment: NULL</span><br><span class="line">    Create_time: 2019-09-16 23:05:37</span><br><span class="line">    Update_time: 2019-09-16 23:06:17</span><br><span class="line">     Check_time: NULL</span><br><span class="line">      Collation: utf8_general_ci</span><br><span class="line">       Checksum: NULL</span><br><span class="line"> Create_options:</span><br><span class="line">        Comment:</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>Innodb不支持全文索引(5.7后支持)，而MyISAM支持全文索引，查询效率上MyISAM要高；</p>
 </li>
@@ -842,7 +844,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

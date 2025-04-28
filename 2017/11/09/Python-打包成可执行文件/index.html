@@ -205,6 +205,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -441,10 +443,10 @@
 <ul>
 <li>执行后运行报错</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">File &quot;site-packages/PyInstaller/loader/rthooks/pyi_rth__tkinter.py&quot;, line 30, in &lt;module&gt;</span><br><span class="line">FileNotFoundError: Tcl data directory &quot;/var/folders/2q/s0zwfxm12q7d4qd0y3gggld80000gn/T/_MEIZRbbiz/tcl&quot; not found.</span><br><span class="line">[71390] Failed to execute script pyi_rth__tkinter</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">File "site-packages/PyInstaller/loader/rthooks/pyi_rth__tkinter.py", line 30, in &lt;module&gt;</span><br><span class="line">FileNotFoundError: Tcl data directory "/var/folders/2q/s0zwfxm12q7d4qd0y3gggld80000gn/T/_MEIZRbbiz/tcl" not found.</span><br><span class="line">[71390] Failed to execute script pyi_rth__tkinter</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
-<li>解决：<code>sudo  pyinstaller --add-binary=&#39;/System/Library/Frameworks/Tk.framework/Tk&#39;:&#39;tk&#39; --add-binary=&#39;/System/Library/Frameworks/Tcl.framework/Tcl&#39;:&#39;tcl&#39;  --onefile --clean code.py</code></li>
+<li>解决：<code>sudo  pyinstaller --add-binary='/System/Library/Frameworks/Tk.framework/Tk':'tk' --add-binary='/System/Library/Frameworks/Tcl.framework/Tcl':'tcl'  --onefile --clean code.py</code></li>
 </ul>
 </li>
 </ul>
@@ -666,7 +668,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

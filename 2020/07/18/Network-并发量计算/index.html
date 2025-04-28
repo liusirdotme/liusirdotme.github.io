@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -411,11 +413,11 @@
 <li>峰值时间每秒QPS / 单台机器的QPS = 需要的机器 </li>
 </ul>
 </li>
-<li><p>方式二：统计访问日志access.log <code>cat access.log| grep &#39;GET /&#39;|cut -d &#39; &#39; -f4 |uniq -c |sort -n -r</code></p>
+<li><p>方式二：统计访问日志access.log <code>cat access.log| grep 'GET /'|cut -d ' ' -f4 |uniq -c |sort -n -r</code></p>
 <ul>
 <li>假设日志内容如下</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [08/May/2017:10:03:30 +0800] &quot;GET /server.php HTTP/1.1&quot; 200 1835 &quot;http://localhost&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08/May/2017:10:03:30 +0800] &quot;GET /index.php HTTP/1.1&quot; 200 1835 &quot;http://localhost&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08/May/2017:10:05:30 +0800] &quot;GET /run.php HTTP/1.1&quot; 200 1835 &quot;http://localhost&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08/May/2017:10:07:30 +0800] &quot;GET /server.php HTTP/1.1&quot; 200 1835 &quot;http://localhost&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [08/May/2017:11:07:30 +0800] &quot;GET /main.php HTTP/1.1&quot; 200 1835 &quot;http://localhost&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [07/May/2017:11:09:31 +0800] &quot;GET /public/index.php HTTP/1.1&quot; 200 2298784 &quot;-&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br><span class="line">127.0.0.1 - - [07/May/2017:11:09:31 +0800] &quot;GET /public/index.php HTTP/1.1&quot; 200 2298784 &quot;-&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36&quot; &quot;-&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [08/May/2017:10:03:30 +0800] "GET /server.php HTTP/1.1" 200 1835 "http://localhost" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br><span class="line">127.0.0.1 - - [08/May/2017:10:03:30 +0800] "GET /index.php HTTP/1.1" 200 1835 "http://localhost" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br><span class="line">127.0.0.1 - - [08/May/2017:10:05:30 +0800] "GET /run.php HTTP/1.1" 200 1835 "http://localhost" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br><span class="line">127.0.0.1 - - [08/May/2017:10:07:30 +0800] "GET /server.php HTTP/1.1" 200 1835 "http://localhost" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br><span class="line">127.0.0.1 - - [08/May/2017:11:07:30 +0800] "GET /main.php HTTP/1.1" 200 1835 "http://localhost" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br><span class="line">127.0.0.1 - - [07/May/2017:11:09:31 +0800] "GET /public/index.php HTTP/1.1" 200 2298784 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br><span class="line">127.0.0.1 - - [07/May/2017:11:09:31 +0800] "GET /public/index.php HTTP/1.1" 200 2298784 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36" "-"</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>方式三：产品和运营统计，通过日活、在线、总用户等估算</p>
 <ul>
@@ -442,7 +444,7 @@
 <li>公式1： 吞吐量 = 并发数 / 平均响应时间</li>
 <li>公式2： 吞吐量 = 请求总数 / 总时长</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;从`C = nL / T`推导：</span><br><span class="line">并发 = 请求总数 * 平均响应时间 / 总时长</span><br><span class="line">⏬</span><br><span class="line">并发 / 平均响应时间 = 请求总数 / 总时长</span><br><span class="line">⏬</span><br><span class="line">公式1 = 公式2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;从`C = nL / T`推导：</span><br><span class="line">并发 = 请求总数 * 平均响应时间 / 总时长</span><br><span class="line">⏬</span><br><span class="line">并发 / 平均响应时间 = 请求总数 / 总时长</span><br><span class="line">⏬</span><br><span class="line">公式1 = 公式2</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>响应时间RT(Response Time)：响应时间是指系统对请求作出响应的时间，一般取平均响应时间</p>
 <ul>
@@ -469,35 +471,35 @@
 <li>第一组模型：一共有4个线程，同时发了4笔请求，其中3笔耗时1s，一笔耗时2s，整个过程一共耗时2s。</li>
 </ol>
 <p><img src="1.png" alt="场景一"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">公式1：</span><br><span class="line"> 平均响应时间 = (1+1+1+2) / 4= 1.25s ;</span><br><span class="line"> 并发        = nL/T = (4*1.25) / 2 =2.5</span><br><span class="line"> 吞吐量      = 2.5 / 1.25 = 2 笔/s</span><br><span class="line"></span><br><span class="line">公式2：</span><br><span class="line"> 吞吐量 = 总笔数/总耗时 = 4/2= 2 笔/s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">公式1：</span><br><span class="line"> 平均响应时间 = (1+1+1+2) / 4= 1.25s ;</span><br><span class="line"> 并发        = nL/T = (4*1.25) / 2 =2.5</span><br><span class="line"> 吞吐量      = 2.5 / 1.25 = 2 笔/s</span><br><span class="line"></span><br><span class="line">公式2：</span><br><span class="line"> 吞吐量 = 总笔数/总耗时 = 4/2= 2 笔/s</span><br></pre></td></tr></tbody></table></figure>
 
 
 <ol start="2">
 <li>第二组模型：一共有4个线程，同时发了4笔请求，4笔请求耗时均为1s，1s内全部发送完毕。</li>
 </ol>
 <p><img src="2.png" alt="场景二"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">公式1：</span><br><span class="line"> 平均响应时间 = (1+1+1+1) / 4= 1s</span><br><span class="line"> 并发        = nL/T = (4*1) / 1 =4</span><br><span class="line"> 吞吐量      =  4 / 1= 4 笔/s</span><br><span class="line"></span><br><span class="line">公式2：</span><br><span class="line"> 吞吐量 = 总笔数/总耗时 = 4 / 1= 4 笔/s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">公式1：</span><br><span class="line"> 平均响应时间 = (1+1+1+1) / 4= 1s</span><br><span class="line"> 并发        = nL/T = (4*1) / 1 =4</span><br><span class="line"> 吞吐量      =  4 / 1= 4 笔/s</span><br><span class="line"></span><br><span class="line">公式2：</span><br><span class="line"> 吞吐量 = 总笔数/总耗时 = 4 / 1= 4 笔/s</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>第三组模型：一共有4个线程，4笔请求耗时均为1s，但线程发送出现不同步现象，一共持续1.5s完成全部：</li>
 </ol>
 <p><img src="3.png" alt="场景三"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">公式1：</span><br><span class="line">  平均响应时间 = (1+1+1+1) / 4= 1s</span><br><span class="line">  并发        = nL/T = (4*1) / 1 =4</span><br><span class="line">  吞吐量      = 4 / 1.5= 2.67 笔/s</span><br><span class="line"></span><br><span class="line">公式2：</span><br><span class="line">  吞吐量 = 总笔数 / 总耗时 = 4 / 1.5 = 2.67 笔/s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">公式1：</span><br><span class="line">  平均响应时间 = (1+1+1+1) / 4= 1s</span><br><span class="line">  并发        = nL/T = (4*1) / 1 =4</span><br><span class="line">  吞吐量      = 4 / 1.5= 2.67 笔/s</span><br><span class="line"></span><br><span class="line">公式2：</span><br><span class="line">  吞吐量 = 总笔数 / 总耗时 = 4 / 1.5 = 2.67 笔/s</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li><p>nginx访问量统计</p>
 <ul>
-<li>根据访问IP统计UV <code>awk &#39;&#123;print $1&#125;&#39;  access.log|sort | uniq -c |wc -l</code></li>
-<li>统计访问URL统计PV <code>awk &#39;&#123;print $7&#125;&#39; access.log|wc -l</code></li>
-<li>查询访问最频繁的URL <code>awk &#39;&#123;print $7&#125;&#39; access.log|sort | uniq -c |sort -n -k 1 -r|more</code></li>
-<li>查询访问最频繁的IP <code>awk &#39;&#123;print $1&#125;&#39; access.log|sort | uniq -c |sort -n -k 1 -r|more</code></li>
-<li>根据时间段统计查看日志 <code>cat  access.log| sed -n &#39;/14\/Mar\/2015:21/,/14\/Mar\/2015:22/p&#39;|more</code></li>
+<li>根据访问IP统计UV <code>awk '{print $1}'  access.log|sort | uniq -c |wc -l</code></li>
+<li>统计访问URL统计PV <code>awk '{print $7}' access.log|wc -l</code></li>
+<li>查询访问最频繁的URL <code>awk '{print $7}' access.log|sort | uniq -c |sort -n -k 1 -r|more</code></li>
+<li>查询访问最频繁的IP <code>awk '{print $1}' access.log|sort | uniq -c |sort -n -k 1 -r|more</code></li>
+<li>根据时间段统计查看日志 <code>cat  access.log| sed -n '/14\/Mar\/2015:21/,/14\/Mar\/2015:22/p'|more</code></li>
 </ul>
 </li>
 <li><p>二八定律应用</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">每天300w PV的在单台机器上，这台机器需要多少QPS？</span><br><span class="line">根据公式可得：(3000000 * 0.8) / (86400 * 0.2) = 139(QPS)</span><br><span class="line">如果一台机器的QPS是58，上述QPS需要几台机器来支持？ </span><br><span class="line">根据公式可得：139 / 58 ≈ 3 </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">每天300w PV的在单台机器上，这台机器需要多少QPS？</span><br><span class="line">根据公式可得：(3000000 * 0.8) / (86400 * 0.2) = 139(QPS)</span><br><span class="line">如果一台机器的QPS是58，上述QPS需要几台机器来支持？ </span><br><span class="line">根据公式可得：139 / 58 ≈ 3 </span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://wetest.qq.com/lab/view/177.html">参考一</a></li>
@@ -697,7 +699,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

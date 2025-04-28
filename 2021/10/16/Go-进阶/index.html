@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -399,8 +401,8 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="Go语言通道channel"><a href="#Go语言通道channel" class="headerlink" title="Go语言通道channel"></a><center><font color=red>Go语言通道channel</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
-<h1 id="Go语言select语句"><a href="#Go语言select语句" class="headerlink" title="Go语言select语句"></a><center><font color=red>Go语言select语句</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Golang中，select语句用来监听和channel有关的IO操作，当IO操作发生时会触发相应的case动作。select只能应用于 channel的操作，既可以用于channel的数据接收，也可以用于channel的数据发送。如果select的多个分支都满足条件，则会随机的选取其中一个满足条件的分支执行。它和IO机制中的select一样是多路复用通道，有了select语句，可以实现main主线程与goroutine线程之间的互动。如果说channel实现了多个goroutine之前的同步或者通信，那么select则实现了多个channel的同步或者通信，并且select具有阻塞的特性。</p>
+<h1 id="Go语言通道channel"><a href="#Go语言通道channel" class="headerlink" title="Go语言通道channel"></a><center><font color="red">Go语言通道channel</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
+<h1 id="Go语言select语句"><a href="#Go语言select语句" class="headerlink" title="Go语言select语句"></a><center><font color="red">Go语言select语句</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Golang中，select语句用来监听和channel有关的IO操作，当IO操作发生时会触发相应的case动作。select只能应用于 channel的操作，既可以用于channel的数据接收，也可以用于channel的数据发送。如果select的多个分支都满足条件，则会随机的选取其中一个满足条件的分支执行。它和IO机制中的select一样是多路复用通道，有了select语句，可以实现main主线程与goroutine线程之间的互动。如果说channel实现了多个goroutine之前的同步或者通信，那么select则实现了多个channel的同步或者通信，并且select具有阻塞的特性。</p>
 <ol>
 <li>语法格式<ul>
 <li>候选分支<code>case</code></li>
@@ -408,7 +410,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select &#123;</span><br><span class="line">    case &lt;-ch1:</span><br><span class="line">        // 如果从ch1信道成功接收数据，则执行该分支代码</span><br><span class="line">    case ch2 &lt;- 1:</span><br><span class="line">        // 如果成功向ch2信道成功发送数据，则执行该分支代码</span><br><span class="line">    case ch3 &lt;- 1:</span><br><span class="line">        // 如果成功向ch3信道成功发送数据，则执行该分支代码</span><br><span class="line">    default:</span><br><span class="line">        // 如果上面都没有成功，则进入 default 分支处理流程</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select {</span><br><span class="line">    case &lt;-ch1:</span><br><span class="line">        // 如果从ch1信道成功接收数据，则执行该分支代码</span><br><span class="line">    case ch2 &lt;- 1:</span><br><span class="line">        // 如果成功向ch2信道成功发送数据，则执行该分支代码</span><br><span class="line">    case ch3 &lt;- 1:</span><br><span class="line">        // 如果成功向ch3信道成功发送数据，则执行该分支代码</span><br><span class="line">    default:</span><br><span class="line">        // 如果上面都没有成功，则进入 default 分支处理流程</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>使用注意<ul>
@@ -430,14 +432,14 @@
 <h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
 <li>基本用法</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	c := make(chan int)</span><br><span class="line">	o := make(chan bool)</span><br><span class="line">	go func() &#123;</span><br><span class="line">	   	for &#123;</span><br><span class="line">		  	select &#123;</span><br><span class="line">		  	case v:= &lt;-c:</span><br><span class="line">				fmt.Println(v)</span><br><span class="line">		  	case &lt;-time.After(10 * time.Second):</span><br><span class="line">				fmt.Println(&quot;timeout&quot;)</span><br><span class="line">				o&lt;-true</span><br><span class="line">		  	&#125;</span><br><span class="line">	   	&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	go func() &#123;</span><br><span class="line">		c&lt;-1</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	a := &lt;-o</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">	fmt.Println(&quot;main process over&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	"fmt"</span><br><span class="line">	"time"</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() {</span><br><span class="line">	c := make(chan int)</span><br><span class="line">	o := make(chan bool)</span><br><span class="line">	go func() {</span><br><span class="line">	   	for {</span><br><span class="line">		  	select {</span><br><span class="line">		  	case v:= &lt;-c:</span><br><span class="line">				fmt.Println(v)</span><br><span class="line">		  	case &lt;-time.After(10 * time.Second):</span><br><span class="line">				fmt.Println("timeout")</span><br><span class="line">				o&lt;-true</span><br><span class="line">		  	}</span><br><span class="line">	   	}</span><br><span class="line">	}()</span><br><span class="line"></span><br><span class="line">	go func() {</span><br><span class="line">		c&lt;-1</span><br><span class="line">	}()</span><br><span class="line"></span><br><span class="line">	a := &lt;-o</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">	fmt.Println("main process over")</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 <h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/66edceabd5f6">参考一</a></li>
 </ol>
 <hr>
-<h1 id="Go语言nil，你真的懂了吗"><a href="#Go语言nil，你真的懂了吗" class="headerlink" title="Go语言nil，你真的懂了吗"></a><center><font color=red>Go语言nil，你真的懂了吗</font></center></h1>
+<h1 id="Go语言nil，你真的懂了吗"><a href="#Go语言nil，你真的懂了吗" class="headerlink" title="Go语言nil，你真的懂了吗"></a><center><font color="red">Go语言nil，你真的懂了吗</font></center></h1>
     </div>
 
     
@@ -636,7 +638,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

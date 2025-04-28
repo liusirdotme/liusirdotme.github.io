@@ -211,6 +211,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -404,7 +406,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a><center><font color=red>索引基础</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a><center><font color="red">索引基础</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li><p>定义：索引是加速查询的数据结构，是一个排序的列表，在这个列表中存储着索引的值和包含这个值的数据所在行的物理地址。在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据。</p>
 <ul>
 <li>索引的出现其实就是为了提高数据查询的效率，就像书的目录一样</li>
@@ -449,7 +451,7 @@
 </li>
 <li>创建表时添加 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb(  </span><br><span class="line">    ID INT NOT NULL PRIMARY KEY auto_increment,   </span><br><span class="line">    username VARCHAR(16) NOT NULL,  </span><br><span class="line">    INDEX [indexName] (username(length))  </span><br><span class="line">);  </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tb(  </span><br><span class="line">    ID INT NOT NULL PRIMARY KEY auto_increment,   </span><br><span class="line">    username VARCHAR(16) NOT NULL,  </span><br><span class="line">    INDEX [indexName] (username(length))  </span><br><span class="line">);  </span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>删除索引 </p>
 <ul>
 <li>直接删除 <code>DROP INDEX [indexName] ON tb</code></li>
@@ -528,10 +530,10 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Index Condition Pushdown (ICP) is an optimization for the case where MySQL retrieves rows from a table using an index. Without ICP, the storage engine traverses the index to locate rows in the base table and returns them to the MySQL server which evaluates the WHERE condition for the rows. With ICP enabled, and if parts of the WHERE condition can be evaluated by using only columns from the index, the MySQL server pushes this part of the WHERE condition down to the storage engine. The storage engine then evaluates the pushed index condition by using the index entry and only if this is satisfied is the row read from the table. ICP can reduce the number of times the storage engine must access the base table and the number of times the MySQL server must access the storage engine.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Index Condition Pushdown (ICP) is an optimization for the case where MySQL retrieves rows from a table using an index. Without ICP, the storage engine traverses the index to locate rows in the base table and returns them to the MySQL server which evaluates the WHERE condition for the rows. With ICP enabled, and if parts of the WHERE condition can be evaluated by using only columns from the index, the MySQL server pushes this part of the WHERE condition down to the storage engine. The storage engine then evaluates the pushed index condition by using the index entry and only if this is satisfied is the row read from the table. ICP can reduce the number of times the storage engine must access the base table and the number of times the MySQL server must access the storage engine.</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
-<li><p>开启/关闭 <code>set optimizer_switch=&#39;index_condition_pushdown=on/off&#39;;</code></p>
+<li><p>开启/关闭 <code>set optimizer_switch='index_condition_pushdown=on/off';</code></p>
 </li>
 <li><p>使用场景</p>
 <ul>
@@ -548,18 +550,18 @@
 <ul>
 <li>初始化表</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(32) DEFAULT NULL,</span><br><span class="line">  `age` int(11) DEFAULT NULL,</span><br><span class="line">  `ismale` tinyint(1) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `name_age` (`name`,`age`)</span><br><span class="line">) ENGINE=InnoDB</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `user` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` varchar(32) DEFAULT NULL,</span><br><span class="line">  `age` int(11) DEFAULT NULL,</span><br><span class="line">  `ismale` tinyint(1) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `name_age` (`name`,`age`)</span><br><span class="line">) ENGINE=InnoDB</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
-<li>初始化数据<code>INSERT INTO user(name,age,ismale) VALUES(&#39;张三&#39;,10,1),(&#39;张三&#39;,10,1),(&#39;张三&#39;,10,2),(&#39;张三&#39;,20,1),(&#39;李四&#39;,10,1),(&#39;李四&#39;,10,1)</code>;</li>
-<li>查询SQL <code>select * from user where name like &#39;张 %&#39; and age=10 and ismale=1;</code>，此查询语句会在索引内部先过滤掉age不等于10的记录，然后再进行回表</li>
+<li>初始化数据<code>INSERT INTO user(name,age,ismale) VALUES('张三',10,1),('张三',10,1),('张三',10,2),('张三',20,1),('李四',10,1),('李四',10,1)</code>;</li>
+<li>查询SQL <code>select * from user where name like '张 %' and age=10 and ismale=1;</code>，此查询语句会在索引内部先过滤掉age不等于10的记录，然后再进行回表</li>
 </ul>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/index-condition-pushdown-optimization.html">ICP</a></p>
 </li>
 </ol>
 <hr>
-<h1 id="如何建索引"><a href="#如何建索引" class="headerlink" title="如何建索引"></a><center><font color=red>如何建索引</font></center></h1><h2 id="一、基本原则"><a href="#一、基本原则" class="headerlink" title="一、基本原则"></a>一、基本原则</h2><ol>
+<h1 id="如何建索引"><a href="#如何建索引" class="headerlink" title="如何建索引"></a><center><font color="red">如何建索引</font></center></h1><h2 id="一、基本原则"><a href="#一、基本原则" class="headerlink" title="一、基本原则"></a>一、基本原则</h2><ol>
 <li>对查询频次较高且数据量比较大的表建立索引</li>
 <li>加索引的字段一般从where子句的条件中提取，如果where子句中的组合比较多则应当挑选最常用过滤效果最好的列的组合</li>
 <li>如果where后有多个条件经常被用到，建议建立<code>复合索引</code>，要遵循最左前缀法则，N个列组合而成的复合索引相当于创建了N个索引</li>
@@ -577,7 +579,7 @@
 <li>加了索引还是慢的排查技巧</li>
 </ol>
 <h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><hr>
-<h1 id="MySQL执行计划"><a href="#MySQL执行计划" class="headerlink" title="MySQL执行计划"></a><center><font color=red>MySQL执行计划</font></center></h1><h2 id="一、explain"><a href="#一、explain" class="headerlink" title="一、explain"></a>一、explain</h2><ol>
+<h1 id="MySQL执行计划"><a href="#MySQL执行计划" class="headerlink" title="MySQL执行计划"></a><center><font color="red">MySQL执行计划</font></center></h1><h2 id="一、explain"><a href="#一、explain" class="headerlink" title="一、explain"></a>一、explain</h2><ol>
 <li><p>使用 <code>explain SQL语句;</code></p>
 <ul>
 <li>不单单select，insert/delete/update语句都可使用</li>
@@ -586,7 +588,7 @@
 <li><p>返回</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">           id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: table_multi_union_index</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: ALL</span><br><span class="line">possible_keys: NULL</span><br><span class="line">          key: NULL</span><br><span class="line">      key_len: NULL</span><br><span class="line">          ref: NULL</span><br><span class="line">         rows: 4</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">           id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: table_multi_union_index</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: ALL</span><br><span class="line">possible_keys: NULL</span><br><span class="line">          key: NULL</span><br><span class="line">      key_len: NULL</span><br><span class="line">          ref: NULL</span><br><span class="line">         rows: 4</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>作用<ul>
@@ -597,7 +599,7 @@
 </li>
 </ol>
 <h2 id="二、profiling"><a href="#二、profiling" class="headerlink" title="二、profiling"></a>二、profiling</h2><ol>
-<li><p>查看profiling状态 <code>show variables like &#39;profiling&#39;;</code>，默认关闭</p>
+<li><p>查看profiling状态 <code>show variables like 'profiling';</code>，默认关闭</p>
 </li>
 <li><p>开启profiling <code>set profiling=1</code>，接下来写query语句都会被记录</p>
 </li>
@@ -620,14 +622,14 @@
 </li>
 </ol>
 <h2 id="三、optimizer-trace"><a href="#三、optimizer-trace" class="headerlink" title="三、optimizer_trace"></a>三、optimizer_trace</h2><ol>
-<li>查看optimizer_trace状态 <code>show variables like &#39;optimizer_trace&#39;;</code>，默认<code>enabled=off,one_line=off</code></li>
-<li>开启optimizer_trace <code>set optimizer_trace=&#39;enabled=on&#39;;</code><ul>
-<li><code>set optimizer_trace=&quot;enabled=on&quot;,end_markers_in_json=on;</code></li>
+<li>查看optimizer_trace状态 <code>show variables like 'optimizer_trace';</code>，默认<code>enabled=off,one_line=off</code></li>
+<li>开启optimizer_trace <code>set optimizer_trace='enabled=on';</code><ul>
+<li><code>set optimizer_trace="enabled=on",end_markers_in_json=on;</code></li>
 </ul>
 </li>
 <li>查询optimizer_trace表 <code>select trace from information_schema.optimizer_trace\G;</code></li>
-<li>导入文件，通过工具查看 <code>select trace into dumpfile &#39;test.trace&#39; from information_schema.optimizer_trace\G;</code><ul>
-<li>ERROR 1290 (HY000): The MySQL server is running with the –secure-file-priv option so it cannot execute this statement，查看<code>show variables like &#39;secure_file_priv&#39;;</code>，将此值更改为某个路径或置为空即可(需要修改my.cnf，命令行不可修改)<ul>
+<li>导入文件，通过工具查看 <code>select trace into dumpfile 'test.trace' from information_schema.optimizer_trace\G;</code><ul>
+<li>ERROR 1290 (HY000): The MySQL server is running with the –secure-file-priv option so it cannot execute this statement，查看<code>show variables like 'secure_file_priv';</code>，将此值更改为某个路径或置为空即可(需要修改my.cnf，命令行不可修改)<ul>
 <li>secure_file_priv为 NULL 时，表示限制mysqld不允许导入或导出。</li>
 <li>secure_file_priv为 /tmp 时，表示限制mysqld只能在/tmp目录中执行导入导出，其他目录不能执行。</li>
 <li>secure_file_priv没有值时，表示不限制mysqld在任意目录的导入导出。</li>
@@ -640,18 +642,18 @@
 <li><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/internals/en/optimizer-tracing.html">optimizer-trace</a></li>
 </ol>
 <hr>
-<h1 id="key-len计算方法"><a href="#key-len计算方法" class="headerlink" title="key_len计算方法"></a><center><font color=red>key_len计算方法</font></center></h1><ol>
-<li>mysql版本5.7.26(<code>select version()</code>)，编码方式utf8(<code>show variables like &#39;%char%&#39;</code>)</li>
+<h1 id="key-len计算方法"><a href="#key-len计算方法" class="headerlink" title="key_len计算方法"></a><center><font color="red">key_len计算方法</font></center></h1><ol>
+<li>mysql版本5.7.26(<code>select version()</code>)，编码方式utf8(<code>show variables like '%char%'</code>)</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">## 不允许为null</span><br><span class="line">create table key_length_table(</span><br><span class="line">	`id` int(10) not null auto_increment,</span><br><span class="line">	`name` char(10) not null,</span><br><span class="line">	`age`  int(3) not null,</span><br><span class="line">	`addr` varchar(50) not null,</span><br><span class="line">	`created` timestamp,</span><br><span class="line">	key name(name),</span><br><span class="line">	key age(age),</span><br><span class="line">	key addr(addr),</span><br><span class="line">	key created(created),</span><br><span class="line">	primary key id(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">## 允许为null</span><br><span class="line">create table key_length_table(</span><br><span class="line">	`id` int(10) not null auto_increment,</span><br><span class="line">	`name` char(10),</span><br><span class="line">	`age`  int(3),</span><br><span class="line">	`addr` varchar(50),</span><br><span class="line">	`created` timestamp,</span><br><span class="line">	key name(name),</span><br><span class="line">	key age(age),</span><br><span class="line">	key addr(addr),</span><br><span class="line">	key created(created),</span><br><span class="line">	primary key id(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">## 初始化数据</span><br><span class="line">insert into key_length_table(name,age,addr,created) values(&#x27;张三&#x27;,1,&#x27;北京市昌平区&#x27;,now()),(&#x27;张四&#x27;,2,&#x27;北京市海淀区&#x27;,now()),(&#x27;张五&#x27;,3,&#x27;北京市朝阳区&#x27;,now());</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">## 不允许为null</span><br><span class="line">create table key_length_table(</span><br><span class="line">	`id` int(10) not null auto_increment,</span><br><span class="line">	`name` char(10) not null,</span><br><span class="line">	`age`  int(3) not null,</span><br><span class="line">	`addr` varchar(50) not null,</span><br><span class="line">	`created` timestamp,</span><br><span class="line">	key name(name),</span><br><span class="line">	key age(age),</span><br><span class="line">	key addr(addr),</span><br><span class="line">	key created(created),</span><br><span class="line">	primary key id(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">## 允许为null</span><br><span class="line">create table key_length_table(</span><br><span class="line">	`id` int(10) not null auto_increment,</span><br><span class="line">	`name` char(10),</span><br><span class="line">	`age`  int(3),</span><br><span class="line">	`addr` varchar(50),</span><br><span class="line">	`created` timestamp,</span><br><span class="line">	key name(name),</span><br><span class="line">	key age(age),</span><br><span class="line">	key addr(addr),</span><br><span class="line">	key created(created),</span><br><span class="line">	primary key id(id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">## 初始化数据</span><br><span class="line">insert into key_length_table(name,age,addr,created) values('张三',1,'北京市昌平区',now()),('张四',2,'北京市海淀区',now()),('张五',3,'北京市朝阳区',now());</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li><p>计算</p>
 <ul>
 <li><p>char</p>
 <ul>
-<li>允许为null  <code>explain select * from key_length_table where name=&#39;张三&#39;</code>,<code>key_len = 31 = 10*3+ 1</code></li>
-<li>不允许为null <code>explain select * from key_length_table where name=&#39;张三&#39;</code>,<code>key_len = 30 =10*3</code><blockquote>
+<li>允许为null  <code>explain select * from key_length_table where name='张三'</code>,<code>key_len = 31 = 10*3+ 1</code></li>
+<li>不允许为null <code>explain select * from key_length_table where name='张三'</code>,<code>key_len = 30 =10*3</code><blockquote>
 <blockquote>
 <p>utf8编码下一个字符(中/英)占3个字节，char(10)代表的是10个字符占30个字节，null占1个字节，char类型不需要额外的字节来存储值的的长度</p>
 </blockquote>
@@ -661,8 +663,8 @@
 </li>
 <li><p>varchar </p>
 <ul>
-<li>允许为null <code>explain select * from key_length_table where addr=&#39;北京市海淀区&#39;</code>,<code>key_len = 153 = 50*3 + 1 + 2</code></li>
-<li>不允许为null <code>explain select * from key_length_table where addr=&#39;北京市海淀区&#39;</code>,<code>key_len = 152 = 50*3 + 2</code><blockquote>
+<li>允许为null <code>explain select * from key_length_table where addr='北京市海淀区'</code>,<code>key_len = 153 = 50*3 + 1 + 2</code></li>
+<li>不允许为null <code>explain select * from key_length_table where addr='北京市海淀区'</code>,<code>key_len = 152 = 50*3 + 2</code><blockquote>
 <blockquote>
 <p>utf8编码下一个字符(中/英)占3个字节，varchar(50)就是50个字符占150个字节，null占一个字节，以及varchar类型需要额外的1~2(长度超过255时需要2个字节)字节来存储值的的长度</p>
 </blockquote>
@@ -675,13 +677,13 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `multi_union_index_table` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` char(20) DEFAULT NULL,</span><br><span class="line">  `nick` char(20) NOT NULL,</span><br><span class="line">  `age` int(2) DEFAULT NULL,</span><br><span class="line">  `sex` int(1) NOT NULL,</span><br><span class="line">  `addr` varchar(20) DEFAULT NULL,</span><br><span class="line">  `phone` varchar(20) NOT NULL,</span><br><span class="line">  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `multi_index` (`name`,`nick`,`age`,`sex`,`addr`,`phone`,`created`,`modified`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">INSERT INTO `multi_union_index_table` VALUES (1, &#x27;张三&#x27;, &#x27;张山&#x27;, 10, 1, &#x27;北京&#x27;, &#x27;18888888888&#x27;, &#x27;2019-06-19 15:26:06&#x27;, &#x27;2019-06-19 15:26:06&#x27;);</span><br><span class="line">INSERT INTO `multi_union_index_table` VALUES (3, &#x27;张五&#x27;, &#x27;张五&#x27;, 13, 1, &#x27;天津&#x27;, &#x27;18388888888&#x27;, &#x27;2019-06-19 15:26:06&#x27;, &#x27;2019-06-19 15:26:06&#x27;);</span><br><span class="line">INSERT INTO `multi_union_index_table` VALUES (2, &#x27;张四&#x27;, &#x27;张四&#x27;, 12, 2, &#x27;上海&#x27;, &#x27;181111111111&#x27;, &#x27;2019-06-19 15:26:06&#x27;, &#x27;2019-06-19 15:26:06&#x27;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `multi_union_index_table` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` char(20) DEFAULT NULL,</span><br><span class="line">  `nick` char(20) NOT NULL,</span><br><span class="line">  `age` int(2) DEFAULT NULL,</span><br><span class="line">  `sex` int(1) NOT NULL,</span><br><span class="line">  `addr` varchar(20) DEFAULT NULL,</span><br><span class="line">  `phone` varchar(20) NOT NULL,</span><br><span class="line">  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `multi_index` (`name`,`nick`,`age`,`sex`,`addr`,`phone`,`created`,`modified`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">INSERT INTO `multi_union_index_table` VALUES (1, '张三', '张山', 10, 1, '北京', '18888888888', '2019-06-19 15:26:06', '2019-06-19 15:26:06');</span><br><span class="line">INSERT INTO `multi_union_index_table` VALUES (3, '张五', '张五', 13, 1, '天津', '18388888888', '2019-06-19 15:26:06', '2019-06-19 15:26:06');</span><br><span class="line">INSERT INTO `multi_union_index_table` VALUES (2, '张四', '张四', 12, 2, '上海', '181111111111', '2019-06-19 15:26:06', '2019-06-19 15:26:06');</span><br></pre></td></tr></tbody></table></figure>
 
 
 <blockquote>
 <p>explain SELECT * FROM multi_union_index_table WHERE name=’张三’ AND nick=’张山’ AND age=10 AND sex=1 AND addr=’北京’ AND phone=’18888888888’ AND created=’2019-06-19 15:26:06’ AND modified=’2019-06-19 15:26:06’ \G;</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">         id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: multi_union_index_table</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: ref</span><br><span class="line">possible_keys: multi_index</span><br><span class="line">          key: multi_index</span><br><span class="line">      key_len: 263</span><br><span class="line">          ref: const,const,const,const,const,const,const,const</span><br><span class="line">         rows: 1</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: Using index</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">         id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: multi_union_index_table</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: ref</span><br><span class="line">possible_keys: multi_index</span><br><span class="line">          key: multi_index</span><br><span class="line">      key_len: 263</span><br><span class="line">          ref: const,const,const,const,const,const,const,const</span><br><span class="line">         rows: 1</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: Using index</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p><code>263 = 20*3+1 + 20*3 + 4+1 + 4 + 20*3+2+1 + 20*3+2 + 4 + 4</code></p>
@@ -705,7 +707,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="特殊索引"><a href="#特殊索引" class="headerlink" title="特殊索引"></a><center><font color=red>特殊索引</font></center></h1><h2 id="一、覆盖索引"><a href="#一、覆盖索引" class="headerlink" title="一、覆盖索引"></a>一、覆盖索引</h2><ol>
+<h1 id="特殊索引"><a href="#特殊索引" class="headerlink" title="特殊索引"></a><center><font color="red">特殊索引</font></center></h1><h2 id="一、覆盖索引"><a href="#一、覆盖索引" class="headerlink" title="一、覆盖索引"></a>一、覆盖索引</h2><ol>
 <li>如果一个索引包含(或覆盖)所有需要查询的字段的值，称为‘覆盖索引’，即只需扫描索引而无须回表。<ul>
 <li>由于普通索引存储的是主键的值，通过普通索引查找时先拿到主键的值，通过回到主键索引树搜索的过程，我们称为回表.</li>
 </ul>
@@ -742,19 +744,19 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `table_multi_union_index` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` char(20) DEFAULT NULL,</span><br><span class="line">  `nick` char(20) NOT NULL,</span><br><span class="line">  `age` int(2) DEFAULT NULL,</span><br><span class="line">  `addr` varchar(20) DEFAULT NULL,</span><br><span class="line">  `phone` varchar(20) NOT NULL,</span><br><span class="line">  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `multi_index` (`name`,`nick`,`age`) USING BTREE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `table_multi_union_index` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` char(20) DEFAULT NULL,</span><br><span class="line">  `nick` char(20) NOT NULL,</span><br><span class="line">  `age` int(2) DEFAULT NULL,</span><br><span class="line">  `addr` varchar(20) DEFAULT NULL,</span><br><span class="line">  `phone` varchar(20) NOT NULL,</span><br><span class="line">  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,</span><br><span class="line">  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `multi_index` (`name`,`nick`,`age`) USING BTREE</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>初始化记录</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `table_multi_union_index` VALUES (1, &#x27;tom&#x27;, &#x27;tt&#x27;, 10, &#x27;北京&#x27;, &#x27;18888888888&#x27;, &#x27;2019-09-06 16:30:51&#x27;, &#x27;2019-06-19 15:26:06&#x27;);</span><br><span class="line">INSERT INTO `table_multi_union_index` VALUES (2, &#x27;tom&#x27;, &#x27;tag&#x27;, 12, &#x27;上海&#x27;, &#x27;181111111111&#x27;, &#x27;2019-09-06 16:30:59&#x27;, &#x27;2019-06-19 15:26:06&#x27;);</span><br><span class="line">INSERT INTO `table_multi_union_index` VALUES (3, &#x27;tim&#x27;, &#x27;jj&#x27;, 13, &#x27;天津&#x27;, &#x27;18388888888&#x27;, &#x27;2019-09-06 16:30:53&#x27;, &#x27;2019-06-19 15:26:06&#x27;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `table_multi_union_index` VALUES (1, 'tom', 'tt', 10, '北京', '18888888888', '2019-09-06 16:30:51', '2019-06-19 15:26:06');</span><br><span class="line">INSERT INTO `table_multi_union_index` VALUES (2, 'tom', 'tag', 12, '上海', '181111111111', '2019-09-06 16:30:59', '2019-06-19 15:26:06');</span><br><span class="line">INSERT INTO `table_multi_union_index` VALUES (3, 'tim', 'jj', 13, '天津', '18388888888', '2019-09-06 16:30:53', '2019-06-19 15:26:06');</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>查询<ul>
-<li>normal query:<code>explain select * from table_multi_union_index where name=&#39;tom&#39; and nick=&#39;tt&#39; and age=10\G;</code> </li>
-<li>first one:<code>explain select * from table_multi_union_index where name=&#39;tom&#39;\G;</code></li>
-<li>first two:<code>explain select * from table_multi_union_index where name=&#39;tom&#39; and nick=&#39;tt&#39;\G;</code></li>
-<li>first one and three:<code>explain select * from table_multi_union_index where name=&#39;tom&#39; and age=10\G;</code>，此查询用到了索引条件下推技术，就是存储引擎层根据索引尽可能的过滤数据，然后再返回给服务器层根据where其他条件进行过滤。</li>
+<li>normal query:<code>explain select * from table_multi_union_index where name='tom' and nick='tt' and age=10\G;</code> </li>
+<li>first one:<code>explain select * from table_multi_union_index where name='tom'\G;</code></li>
+<li>first two:<code>explain select * from table_multi_union_index where name='tom' and nick='tt'\G;</code></li>
+<li>first one and three:<code>explain select * from table_multi_union_index where name='tom' and age=10\G;</code>，此查询用到了索引条件下推技术，就是存储引擎层根据索引尽可能的过滤数据，然后再返回给服务器层根据where其他条件进行过滤。</li>
 </ul>
 </li>
 </ul>
@@ -765,7 +767,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">create table multi_index_abc(</span><br><span class="line">    id int(11) unsigned not null auto_increment,</span><br><span class="line">    a char(20) not null default &#x27;&#x27;,</span><br><span class="line">    b char(20) not null default &#x27;&#x27;,</span><br><span class="line">    c char(20) not null default &#x27;&#x27;,</span><br><span class="line">    primary key (id),</span><br><span class="line">    key union_index(a,b,c),</span><br><span class="line">    created timestamp default current_timestamp</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table multi_index_ab(</span><br><span class="line">    id int(11) unsigned not null auto_increment,</span><br><span class="line">    a char(20) not null default &#x27;&#x27;,</span><br><span class="line">    b char(20) not null default &#x27;&#x27;,</span><br><span class="line">    c char(20) not null default &#x27;&#x27;,</span><br><span class="line">    primary key (id),</span><br><span class="line">    key union_index(a,b),</span><br><span class="line">    created timestamp default current_timestamp</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">create table multi_index_abc(</span><br><span class="line">    id int(11) unsigned not null auto_increment,</span><br><span class="line">    a char(20) not null default '',</span><br><span class="line">    b char(20) not null default '',</span><br><span class="line">    c char(20) not null default '',</span><br><span class="line">    primary key (id),</span><br><span class="line">    key union_index(a,b,c),</span><br><span class="line">    created timestamp default current_timestamp</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table multi_index_ab(</span><br><span class="line">    id int(11) unsigned not null auto_increment,</span><br><span class="line">    a char(20) not null default '',</span><br><span class="line">    b char(20) not null default '',</span><br><span class="line">    c char(20) not null default '',</span><br><span class="line">    primary key (id),</span><br><span class="line">    key union_index(a,b),</span><br><span class="line">    created timestamp default current_timestamp</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>定义存储过程<ul>
@@ -775,86 +777,86 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line"></span><br><span class="line">## 初始化init_multi_index_abc表数据</span><br><span class="line">create procedure init_multi_index_abc()</span><br><span class="line">begin</span><br><span class="line">declare i int;</span><br><span class="line">set i = 1;</span><br><span class="line">while(i&lt;10000)do</span><br><span class="line">insert into multi_index_abc(a,b,c) value(substring(md5(rand()),1,20),substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">set i= i+1;</span><br><span class="line">end while;</span><br><span class="line">end$$</span><br><span class="line"></span><br><span class="line">## 初始化init_multi_index_ab表数据</span><br><span class="line">create procedure init_multi_index_ab()</span><br><span class="line">begin</span><br><span class="line">declare i int;</span><br><span class="line">set i = 1;</span><br><span class="line">while(i&lt;10000)do</span><br><span class="line">insert into multi_index_ab(a,b,c) value(substring(md5(rand()),1,20),substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">set i= i+1;</span><br><span class="line">end while;</span><br><span class="line">end$$</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line"></span><br><span class="line">## 初始化init_multi_index_abc表数据</span><br><span class="line">create procedure init_multi_index_abc()</span><br><span class="line">begin</span><br><span class="line">declare i int;</span><br><span class="line">set i = 1;</span><br><span class="line">while(i&lt;10000)do</span><br><span class="line">insert into multi_index_abc(a,b,c) value(substring(md5(rand()),1,20),substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">set i= i+1;</span><br><span class="line">end while;</span><br><span class="line">end$$</span><br><span class="line"></span><br><span class="line">## 初始化init_multi_index_ab表数据</span><br><span class="line">create procedure init_multi_index_ab()</span><br><span class="line">begin</span><br><span class="line">declare i int;</span><br><span class="line">set i = 1;</span><br><span class="line">while(i&lt;10000)do</span><br><span class="line">insert into multi_index_ab(a,b,c) value(substring(md5(rand()),1,20),substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">set i= i+1;</span><br><span class="line">end while;</span><br><span class="line">end$$</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>执行存储过程</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delimiter ;</span><br><span class="line">call init_multi_index_abc();</span><br><span class="line">call init_multi_index_ab();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delimiter ;</span><br><span class="line">call init_multi_index_abc();</span><br><span class="line">call init_multi_index_ab();</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>联合索引abc</p>
 <ul>
 <li>开启资源消耗情况<code>set profiling = on;</code></li>
-<li>查看此选项设置<code>show variables like &#39;%prof%&#39;;</code></li>
-<li>开启优化器跟踪<code>set optimizer_trace=&quot;enabled=on&quot;;</code></li>
-<li>查看此选项设置<code>show variables like &#39;optimizer_trace&#39;;</code></li>
-<li>执行查询语句：<code>select * from multi_index_abc where a=&#39;0716e89340d1d57f91b9&#39; and b=&#39;1b330994f598890c1ca5&#39; and c=&#39;8a4ef874d7dc0a447c49&#39;\G</code></li>
-<li>查看索引情况<code>explain select * from multi_index_abc where a=&#39;0716e89340d1d57f91b9&#39; and b=&#39;1b330994f598890c1ca5&#39; and c=&#39;8a4ef874d7dc0a447c49&#39;\G</code></li>
+<li>查看此选项设置<code>show variables like '%prof%';</code></li>
+<li>开启优化器跟踪<code>set optimizer_trace="enabled=on";</code></li>
+<li>查看此选项设置<code>show variables like 'optimizer_trace';</code></li>
+<li>执行查询语句：<code>select * from multi_index_abc where a='0716e89340d1d57f91b9' and b='1b330994f598890c1ca5' and c='8a4ef874d7dc0a447c49'\G</code></li>
+<li>查看索引情况<code>explain select * from multi_index_abc where a='0716e89340d1d57f91b9' and b='1b330994f598890c1ca5' and c='8a4ef874d7dc0a447c49'\G</code></li>
 <li>查看所有执行语句信息<code>show profiles\G</code><ul>
-<li><code>&#39;SHOW PROFILES&#39; is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
+<li><code>'SHOW PROFILES' is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
 </ul>
 </li>
 <li>查看某个具体query id资源使用情况<code>show profile all for query 3 \G</code></li>
-<li>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile &#39;/path/yourfile&#39; FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，后者报错：<code>ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement</code><ul>
-<li>查看选项配置<code>show variables like &#39;secure_file_priv&#39;;</code><ul>
+<li>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile '/path/yourfile' FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，后者报错：<code>ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement</code><ul>
+<li>查看选项配置<code>show variables like 'secure_file_priv';</code><ul>
 <li>secure_file_prive=null –– 限制mysqld 不允许导入导出</li>
 <li>secure_file_priv=/path/ —— 限制mysqld的导入导出只能发生在默认的/path/目录下</li>
 <li>secure_file_priv=’’ —— 不对mysqld 的导入 导出做限制</li>
 </ul>
 </li>
-<li>尝试修改此选项<code>set global secure_file_priv=&#39;&#39;;</code>，报错<code>ERROR 1238 (HY000): Variable &#39;secure_file_priv&#39; is a read only variable</code>，则去修改MySQL配置文件(MySQL5.7在mac下没有此文件，解决方法见下篇【mac下无mysql配置文件my.cnf】)</li>
+<li>尝试修改此选项<code>set global secure_file_priv='';</code>，报错<code>ERROR 1238 (HY000): Variable 'secure_file_priv' is a read only variable</code>，则去修改MySQL配置文件(MySQL5.7在mac下没有此文件，解决方法见下篇【mac下无mysql配置文件my.cnf】)</li>
 </ul>
 </li>
-<li>假设你已经更改<code>secure_file_priv</code>，重新执行<code>SELECT TRACE INTO  outfile &#39;/path/yourfile&#39; FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</li>
+<li>假设你已经更改<code>secure_file_priv</code>，重新执行<code>SELECT TRACE INTO  outfile '/path/yourfile' FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</li>
 </ul>
 </li>
 <li><p>通过联合索引abc查询，查询顺序cba(acb/bca/bac/cab)</p>
 <ul>
-<li>执行查询语句：<code>select * from multi_index_abc where c=&#39;8a4ef874d7dc0a447c49&#39; and b=&#39;1b330994f598890c1ca5&#39; and a=&#39;0716e89340d1d57f91b9&#39;\G</code></li>
-<li>查看索引情况<code>explain select * from multi_index_abc where c=&#39;8a4ef874d7dc0a447c49&#39; and b=&#39;1b330994f598890c1ca5&#39; and a=&#39;0716e89340d1d57f91b9&#39;\G</code></li>
+<li>执行查询语句：<code>select * from multi_index_abc where c='8a4ef874d7dc0a447c49' and b='1b330994f598890c1ca5' and a='0716e89340d1d57f91b9'\G</code></li>
+<li>查看索引情况<code>explain select * from multi_index_abc where c='8a4ef874d7dc0a447c49' and b='1b330994f598890c1ca5' and a='0716e89340d1d57f91b9'\G</code></li>
 <li>查看所有执行语句信息<code>show profiles\G</code>，同上可拿到query ID<ul>
-<li><code>&#39;SHOW PROFILES&#39; is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
+<li><code>'SHOW PROFILES' is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
 </ul>
 </li>
 <li>查看某个具体query id资源使用情况<code>show profile all for query 14 \G</code>，内容省略</li>
-<li>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile &#39;/path/yourfile&#39; FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</li>
+<li>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile '/path/yourfile' FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</li>
 </ul>
 </li>
 <li><p>通过联合索引abc查询，查询顺序ab，order by c</p>
 <ul>
-<li>执行查询语句：<code>select * from multi_index_abc where a=&#39;0716e89340d1d57f91b9&#39; and b=&#39;1b330994f598890c1ca5&#39; order by c \G</code></li>
-<li>查看索引情况<code>explain select * from multi_index_abc where a=&#39;0716e89340d1d57f91b9&#39; and b=&#39;1b330994f598890c1ca5&#39; order by c \G</code><ul>
+<li>执行查询语句：<code>select * from multi_index_abc where a='0716e89340d1d57f91b9' and b='1b330994f598890c1ca5' order by c \G</code></li>
+<li>查看索引情况<code>explain select * from multi_index_abc where a='0716e89340d1d57f91b9' and b='1b330994f598890c1ca5' order by c \G</code><ul>
 <li>Extra: Using index condition，即用到了索引条件下推ICP(Index Condition Pushdown)</li>
 </ul>
 </li>
 <li>查看所有执行语句信息<code>show profiles\G</code>，同上可拿到query ID<ul>
-<li><code>&#39;SHOW PROFILES&#39; is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
+<li><code>'SHOW PROFILES' is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
 </ul>
 </li>
 <li>查看某个具体query id资源使用情况<code>show profile all for query 22 \G</code>，内容省略</li>
-<li>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile &#39;/path/yourfile&#39; FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</li>
+<li>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile '/path/yourfile' FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</li>
 </ul>
 </li>
 <li><p>联合索引ab</p>
 <ul>
 <li><p>通过联合索引abc查询，查询顺序ab，order by c</p>
 </li>
-<li><p>执行查询语句：<code>select * from multi_index_ab where a=&#39;5f315b047b87d57bae65&#39; and b=&#39;09aaf7fc89949acf3bc1&#39; order by c \G</code></p>
+<li><p>执行查询语句：<code>select * from multi_index_ab where a='5f315b047b87d57bae65' and b='09aaf7fc89949acf3bc1' order by c \G</code></p>
 </li>
-<li><p>查看索引情况<code>explain select * from multi_index_ab where a=&#39;5f315b047b87d57bae65&#39; and b=&#39;09aaf7fc89949acf3bc1&#39; order by c \G</code></p>
+<li><p>查看索引情况<code>explain select * from multi_index_ab where a='5f315b047b87d57bae65' and b='09aaf7fc89949acf3bc1' order by c \G</code></p>
 <ul>
 <li>Extra: Using index condition；; Using filesort即用到了索引条件下推ICP(Index Condition Pushdown)和排序</li>
 </ul>
 </li>
 <li><p>查看所有执行语句信息<code>show profiles\G</code>，同上可拿到query ID</p>
 <ul>
-<li><code>&#39;SHOW PROFILES&#39; is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
+<li><code>'SHOW PROFILES' is deprecated and will be removed in a future release. Please use Performance Schema instead</code></li>
 </ul>
 </li>
 <li><p>查看某个具体query id资源使用情况<code>show profile all for query [ID] \G</code></p>
 </li>
-<li><p>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile &#39;/path/yourfile&#39; FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</p>
+<li><p>查看optimizer_trace<code>SELECT trace FROM information_schema.OPTIMIZER_TRACE \G</code>或<code>SELECT TRACE INTO  outfile '/path/yourfile' FROM INFORMATION_SCHEMA.OPTIMIZER_TRACE;</code>，内容省略</p>
 </li>
 </ul>
 </li>
@@ -866,12 +868,12 @@
 <ul>
 <li>定义表</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table union_utf8_abc(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    a int(11) unsigned not null,</span><br><span class="line">    b char(20) not null,</span><br><span class="line">    c char(20) not null,</span><br><span class="line">    key `union_abc`(`a`,`b`,`c`) using btree</span><br><span class="line">)engine=innodb default charset=utf8;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table union_utf8_abc(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    a int(11) unsigned not null,</span><br><span class="line">    b char(20) not null,</span><br><span class="line">    c char(20) not null,</span><br><span class="line">    key `union_abc`(`a`,`b`,`c`) using btree</span><br><span class="line">)engine=innodb default charset=utf8;</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>初始化数据</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line">create procedure init_abc()</span><br><span class="line">begin</span><br><span class="line">    declare i int;</span><br><span class="line">    set i=1;</span><br><span class="line">    while(i&lt;100000)do</span><br><span class="line">        insert into union_utf8_abc(a,b,c) value(i,substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">        set i=i+1;</span><br><span class="line">    end while;</span><br><span class="line">end $$</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call init_abc();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line">create procedure init_abc()</span><br><span class="line">begin</span><br><span class="line">    declare i int;</span><br><span class="line">    set i=1;</span><br><span class="line">    while(i&lt;100000)do</span><br><span class="line">        insert into union_utf8_abc(a,b,c) value(i,substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">        set i=i+1;</span><br><span class="line">    end while;</span><br><span class="line">end $$</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call init_abc();</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>其中有一条记录如下：</li>
@@ -884,21 +886,21 @@
 | :-- | :-- | :-- | :-- |
 | 207 | 207 | 3a97053e9cdee1f1cc94 | 2c70269da1b829b39384 |
 
-* 执行查询`explain select * from union_utf8_abc where a&gt;100 and b=&apos;3a97053e9cdee1f1cc94&apos; and c=&apos;2c70269da1b829b39384&apos;\G;`
+* 执行查询`explain select * from union_utf8_abc where a&gt;100 and b='3a97053e9cdee1f1cc94' and c='2c70269da1b829b39384'\G;`
    * show warnings\G
-* 改变where顺序`explain select * from union_utf8_abc where b=&apos;3a97053e9cdee1f1cc94&apos; and c=&apos;2c70269da1b829b39384&apos; and a&gt;100\G`
+* 改变where顺序`explain select * from union_utf8_abc where b='3a97053e9cdee1f1cc94' and c='2c70269da1b829b39384' and a&gt;100\G`
    * show warnings\G
 * 修改字段a的类型为char(20) `alter table union_utf8_abc modify column a char(20) not null;`
-* 执行查询`explain select * from union_utf8_abc where a&gt;100 and b=&apos;3a97053e9cdee1f1cc94&apos; and c=&apos;2c70269da1b829b39384&apos;\G`
+* 执行查询`explain select * from union_utf8_abc where a&gt;100 and b='3a97053e9cdee1f1cc94' and c='2c70269da1b829b39384'\G`
    * `show warnings\G;`
-* 改变where顺序`explain select * from union_utf8_abc where b=&apos;3a97053e9cdee1f1cc94&apos; and c=&apos;2c70269da1b829b39384&apos; and a&gt;100\G`</code></pre><ul>
+* 改变where顺序`explain select * from union_utf8_abc where b='3a97053e9cdee1f1cc94' and c='2c70269da1b829b39384' and a&gt;100\G`</code></pre><ul>
 <li><p>联合索引<code>bca</code></p>
 <ul>
 <li><p>定义表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table union_utf8_bca(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    a int(11) unsigned not null,</span><br><span class="line">    b char(20) not null,</span><br><span class="line">    c char(20) not null,</span><br><span class="line">    key `union_bca`(`b`,`c`,`a`) using btree</span><br><span class="line">)engine=innodb default charset=utf8;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table union_utf8_bca(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    a int(11) unsigned not null,</span><br><span class="line">    b char(20) not null,</span><br><span class="line">    c char(20) not null,</span><br><span class="line">    key `union_bca`(`b`,`c`,`a`) using btree</span><br><span class="line">)engine=innodb default charset=utf8;</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>初始化数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line">create procedure init_bca()</span><br><span class="line">begin</span><br><span class="line">    declare i int;</span><br><span class="line">    set i=1;</span><br><span class="line">    while(i&lt;100000)do</span><br><span class="line">        insert into union_utf8_bca(a,b,c) value(i,substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">        set i=i+1;</span><br><span class="line">    end while;</span><br><span class="line">end $$</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call init_bca();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter $$</span><br><span class="line">create procedure init_bca()</span><br><span class="line">begin</span><br><span class="line">    declare i int;</span><br><span class="line">    set i=1;</span><br><span class="line">    while(i&lt;100000)do</span><br><span class="line">        insert into union_utf8_bca(a,b,c) value(i,substring(md5(rand()),1,20),substring(md5(rand()),1,20));</span><br><span class="line">        set i=i+1;</span><br><span class="line">    end while;</span><br><span class="line">end $$</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call init_bca();</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>其中有一条记录如下：</p>
 </li>
@@ -909,14 +911,14 @@
 | :-- | :-- | :-- | :-- |
 | 207 | 207 | 9bddfde911497271c54d | 8f6bdfcfcbb4928a4ce9 |
 
-* 执行查询`explain select * from union_utf8_bca where a&gt;100 and b=&apos;9bddfde911497271c54d&apos; and c=&apos;8f6bdfcfcbb4928a4ce9&apos;\G`
+* 执行查询`explain select * from union_utf8_bca where a&gt;100 and b='9bddfde911497271c54d' and c='8f6bdfcfcbb4928a4ce9'\G`
    * show warnings\G
-* 调换where顺序，执行查询`explain select * from union_utf8_bca where b=&apos;9bddfde911497271c54d&apos; and c=&apos;8f6bdfcfcbb4928a4ce9&apos; and a&gt;100\G`
+* 调换where顺序，执行查询`explain select * from union_utf8_bca where b='9bddfde911497271c54d' and c='8f6bdfcfcbb4928a4ce9' and a&gt;100\G`
    * show warnings\G
 * 修改字段a的类型为char(20)`alter table union_utf8_bca modify column a char(20) not null;`
-* 执行查询`explain select * from union_utf8_bca where a&gt;100 and b=&apos;9bddfde911497271c54d&apos; and c=&apos;8f6bdfcfcbb4928a4ce9&apos;\G`
+* 执行查询`explain select * from union_utf8_bca where a&gt;100 and b='9bddfde911497271c54d' and c='8f6bdfcfcbb4928a4ce9'\G`
    * show warnings\G
-* 改变where顺序`explain select * from union_utf8_bca where b=&apos;9bddfde911497271c54d&apos; and c=&apos;8f6bdfcfcbb4928a4ce9&apos; and a&gt;100\G`
+* 改变where顺序`explain select * from union_utf8_bca where b='9bddfde911497271c54d' and c='8f6bdfcfcbb4928a4ce9' and a&gt;100\G`
    * show warnings\G</code></pre><ol start="5">
 <li><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/index-condition-pushdown-optimization.html">参考</a></p>
 </li>
@@ -1125,7 +1127,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

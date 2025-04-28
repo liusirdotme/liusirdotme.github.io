@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -399,7 +401,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="高可用方案"><a href="#高可用方案" class="headerlink" title="高可用方案"></a><center><font color=red>高可用方案</font></center></h1><h2 id="一、常用方案"><a href="#一、常用方案" class="headerlink" title="一、常用方案"></a>一、常用方案</h2><ol>
+<h1 id="高可用方案"><a href="#高可用方案" class="headerlink" title="高可用方案"></a><center><font color="red">高可用方案</font></center></h1><h2 id="一、常用方案"><a href="#一、常用方案" class="headerlink" title="一、常用方案"></a>一、常用方案</h2><ol>
 <li><p>MySQL原生复制+复制优化</p>
 </li>
 <li><p>MySQL原生复制+第三方监控/转移工具</p>
@@ -415,7 +417,7 @@
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/411645149">参考一</a></li>
 </ol>
 <hr>
-<h1 id="主从复制详解"><a href="#主从复制详解" class="headerlink" title="主从复制详解"></a><center><font color=red>主从复制详解</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL内建的复制功能是构建大型高性能应用程序的基础，将MySQL数据分布到多个系统上，这种分布机制是通过将MySQL某一台主机(master)数据复制到其它主机(slaves)上，并重新执行一遍来实现的。复制过程中一个服务器充当主服务器(master)，而一个或多个其它服务器充当从服务器(slave)。主服务器将更新写入二进制日志文件，并维护文件的一个索引以跟踪日志循环，这些日志可以记录发送到从服务器的更新。当一个从服务器连接主服务器时，它通知主服务器从服务器在日志中读取的最后一次成功更新的位置。从服务器接收从那时起发生的任何更新，然后封锁并等待主服务器通知新的更新。master负责写操作，而读的操作则分摊到slave上进行，这样一来的可以大大提高读取的效率</p>
+<h1 id="主从复制详解"><a href="#主从复制详解" class="headerlink" title="主从复制详解"></a><center><font color="red">主从复制详解</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL内建的复制功能是构建大型高性能应用程序的基础，将MySQL数据分布到多个系统上，这种分布机制是通过将MySQL某一台主机(master)数据复制到其它主机(slaves)上，并重新执行一遍来实现的。复制过程中一个服务器充当主服务器(master)，而一个或多个其它服务器充当从服务器(slave)。主服务器将更新写入二进制日志文件，并维护文件的一个索引以跟踪日志循环，这些日志可以记录发送到从服务器的更新。当一个从服务器连接主服务器时，它通知主服务器从服务器在日志中读取的最后一次成功更新的位置。从服务器接收从那时起发生的任何更新，然后封锁并等待主服务器通知新的更新。master负责写操作，而读的操作则分摊到slave上进行，这样一来的可以大大提高读取的效率</p>
 <p><img src="master-slave.jpeg" alt="mysql主从"></p>
 <p><img src="master-slave.jpg" alt="mysql主从"></p>
 <ol>
@@ -457,10 +459,10 @@
 </ol>
 <h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
 <li><p>master配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server-id=1</span><br><span class="line">log-bin=log</span><br><span class="line">binlog-do-db=database_name //要同步的数据库</span><br><span class="line">...</span><br><span class="line">binlog-ignore-db=mysql //要忽略的数据库</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server-id=1</span><br><span class="line">log-bin=log</span><br><span class="line">binlog-do-db=database_name //要同步的数据库</span><br><span class="line">...</span><br><span class="line">binlog-ignore-db=mysql //要忽略的数据库</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>slave配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server-id=2</span><br><span class="line">master-host=master服务器ip</span><br><span class="line">master-user=mstest      </span><br><span class="line">master-password=123456  </span><br><span class="line">master-port=3306</span><br><span class="line">master-connect-retry=60</span><br><span class="line">replicate-do-db=dababase_name</span><br><span class="line">...</span><br><span class="line">replicate-ignore-db=mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server-id=2</span><br><span class="line">master-host=master服务器ip</span><br><span class="line">master-user=mstest      </span><br><span class="line">master-password=123456  </span><br><span class="line">master-port=3306</span><br><span class="line">master-connect-retry=60</span><br><span class="line">replicate-do-db=dababase_name</span><br><span class="line">...</span><br><span class="line">replicate-ignore-db=mysql</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>验证 <code>show slave status\G;</code>，如果<code>slave_io_running</code>和<code>slave_sql_running</code>都为<code>yes</code>，那么表明可以成功同步了</p>
 </li>
@@ -488,7 +490,7 @@
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6952879005527703583">参考一</a></li>
 </ol>
 <hr>
-<h1 id="主从延迟"><a href="#主从延迟" class="headerlink" title="主从延迟"></a><center><font color=red>主从延迟</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL的主从复制都是单线程的操作，主库对所有DDL和DML产生的日志写进binlog，由于binlog是顺序写，所以效率很高。Slave的SQL Thread线程将主库的DDL和DML操作事件在slave中重放，DML和DDL操作是随机的，不是顺序的，成本高很多。另外由于SQL Thread也是单线程的，当主库的并发较高时，产生的DML数量超过slave的SQL Thread所能处理的速度，或者当slave中有大型query语句产生了锁等待那么延时就产生了。</p>
+<h1 id="主从延迟"><a href="#主从延迟" class="headerlink" title="主从延迟"></a><center><font color="red">主从延迟</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySQL的主从复制都是单线程的操作，主库对所有DDL和DML产生的日志写进binlog，由于binlog是顺序写，所以效率很高。Slave的SQL Thread线程将主库的DDL和DML操作事件在slave中重放，DML和DDL操作是随机的，不是顺序的，成本高很多。另外由于SQL Thread也是单线程的，当主库的并发较高时，产生的DML数量超过slave的SQL Thread所能处理的速度，或者当slave中有大型query语句产生了锁等待那么延时就产生了。</p>
 <ol>
 <li><p>常见原因</p>
 <ul>
@@ -762,7 +764,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

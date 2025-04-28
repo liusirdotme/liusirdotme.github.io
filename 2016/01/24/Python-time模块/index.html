@@ -141,12 +141,12 @@
   };
 </script>
 
-  <meta name="description" content="Python_报错：TypeError: Tuple or struct_time argument required.  1234567891011121314import timets &#x3D; time.time()local &#x3D; time.localtime(ts)#转换成时间元祖format_time&#x3D;time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,">
+  <meta name="description" content="Python_报错：TypeError: Tuple or struct_time argument required.  1234567891011121314import timets &#x3D; time.time()local &#x3D; time.localtime(ts)#转换成时间元祖format_time&#x3D;time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, local) lo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python之time模块">
 <meta property="og:url" content="https://liusir.me/2016/01/24/Python-time%E6%A8%A1%E5%9D%97/index.html">
 <meta property="og:site_name" content="liusir.me">
-<meta property="og:description" content="Python_报错：TypeError: Tuple or struct_time argument required.  1234567891011121314import timets &#x3D; time.time()local &#x3D; time.localtime(ts)#转换成时间元祖format_time&#x3D;time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,">
+<meta property="og:description" content="Python_报错：TypeError: Tuple or struct_time argument required.  1234567891011121314import timets &#x3D; time.time()local &#x3D; time.localtime(ts)#转换成时间元祖format_time&#x3D;time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, local) lo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-01-24T12:46:14.000Z">
 <meta property="article:modified_time" content="2024-09-03T07:26:18.288Z">
@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -393,7 +395,7 @@
         <script src="\assets\js\APlayer.min.js"> </script><blockquote>
 <p>Python_报错：<code>TypeError: Tuple or struct_time argument required.</code></p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">ts = time.time()</span><br><span class="line"></span><br><span class="line">local = time.localtime(ts)#转换成时间元祖</span><br><span class="line"></span><br><span class="line">format_time=time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, local) </span><br><span class="line"></span><br><span class="line">localtime = time.asctime(local)</span><br><span class="line"></span><br><span class="line">print(format_time)</span><br><span class="line"></span><br><span class="line">print(localtime)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">ts = time.time()</span><br><span class="line"></span><br><span class="line">local = time.localtime(ts)#转换成时间元祖</span><br><span class="line"></span><br><span class="line">format_time=time.strftime("%Y-%m-%d %H:%M:%S", local) </span><br><span class="line"></span><br><span class="line">localtime = time.asctime(local)</span><br><span class="line"></span><br><span class="line">print(format_time)</span><br><span class="line"></span><br><span class="line">print(localtime)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
     </div>
 
     
@@ -587,7 +589,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

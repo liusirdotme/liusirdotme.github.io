@@ -205,6 +205,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -400,7 +402,7 @@
 
 
 
-<h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a><center><font color=red>Java数据类型</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a><center><font color="red">Java数据类型</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
 <li><p>基本数据类型</p>
 <ul>
 <li>整型：byte、short、int、long，如35，默认什么也不加就是int型，35B表示是byte型，35S表示short型，35L表示long型的</li>
@@ -417,7 +419,7 @@
 <p>③基本类型的优势：数据存储相对简单，运算效率比较高</p>
 <p>包装类的优势：有的容易，比如集合的元素必须是对象类型，满足了java一切皆是对象的思想。</p>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
-<h1 id="Java构造函数"><a href="#Java构造函数" class="headerlink" title="Java构造函数"></a><center><font color=red>Java构造函数</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java构造函数，也叫构造方法，是java中一种特殊的函数。函数名与类名相同，无返回值，一般用来初始化成员属性和成员方法的，即new对象产生后，就调用了对象了属性和方法，在对象创建时即被调用。</p>
+<h1 id="Java构造函数"><a href="#Java构造函数" class="headerlink" title="Java构造函数"></a><center><font color="red">Java构造函数</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java构造函数，也叫构造方法，是java中一种特殊的函数。函数名与类名相同，无返回值，一般用来初始化成员属性和成员方法的，即new对象产生后，就调用了对象了属性和方法，在对象创建时即被调用。</p>
 <blockquote>
 <p>特点</p>
 </blockquote>
@@ -439,10 +441,10 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ibelieve618/p/6364541.html">参考一</a></li>
 </ol>
 <hr>
-<h1 id="Java包"><a href="#Java包" class="headerlink" title="Java包"></a><center><font color=red>Java包</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在编写Java程序时，随着程序架构越来越大，类的个数也越来越多，这时就会发现管理程序中维护类名称也是一件很麻烦的事，尤其是一些同名问题的发生。另一方面，有时开发人员还可能需要将处理同一方面的问题的类放在同一个目录下，以便于管理。基于以上原因，Java引入了包(package)机制，提供了类的多层命名空间，用于解决类的命名冲突、类文件管理等问题。</p>
+<h1 id="Java包"><a href="#Java包" class="headerlink" title="Java包"></a><center><font color="red">Java包</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在编写Java程序时，随着程序架构越来越大，类的个数也越来越多，这时就会发现管理程序中维护类名称也是一件很麻烦的事，尤其是一些同名问题的发生。另一方面，有时开发人员还可能需要将处理同一方面的问题的类放在同一个目录下，以便于管理。基于以上原因，Java引入了包(package)机制，提供了类的多层命名空间，用于解决类的命名冲突、类文件管理等问题。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java使用包(package)这种机制是为了防止命名冲突，同时可以进行访问控制，提供搜索和定位类、接口、枚举和注释等。</p>
 <ol>
-<li><p>语法<code>package &#123;package_name&#125;</code></p>
+<li><p>语法<code>package {package_name}</code></p>
 <ul>
 <li>包声明应该在源文件的第一行(无import关键字的情况)且每个源文件只能有一个包声明<ul>
 <li>如果一个源文件中没有使用包声明，那么其中的类、函数、枚举、注释等将被放在一个无名的包(unnamed package)中。</li>
@@ -494,7 +496,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/technologies/java-se-api-doc.html">参考三</a></li>
 </ol>
 <hr>
-<h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a><center><font color=red>Java注解</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java注解(Annotation)又称Java标注，是JDK5.0引入的一种注释机制。Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。Java虚拟机可以保留标注内容，在运行时可以获取到标注内容。当然它也支持自定义Java标注。</p>
+<h1 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a><center><font color="red">Java注解</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java注解(Annotation)又称Java标注，是JDK5.0引入的一种注释机制。Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。Java虚拟机可以保留标注内容，在运行时可以获取到标注内容。当然它也支持自定义Java标注。</p>
 <ol>
 <li><p>分类</p>
 <ul>
@@ -645,7 +647,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/whyaza/p/11081590.html">参考二</a></li>
 </ol>
 <hr>
-<h1 id="Java泛型"><a href="#Java泛型" class="headerlink" title="Java泛型"></a><center><font color=red>Java泛型</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泛型程序设计(generic programming)是程序设计语言的一种风格或范式。泛型允许程序员在强类型程序设计语言中编写代码时使用一些以后才指定的类型，在实例化时作为参数指明这些类型。</p>
+<h1 id="Java泛型"><a href="#Java泛型" class="headerlink" title="Java泛型"></a><center><font color="red">Java泛型</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泛型程序设计(generic programming)是程序设计语言的一种风格或范式。泛型允许程序员在强类型程序设计语言中编写代码时使用一些以后才指定的类型，在实例化时作为参数指明这些类型。</p>
 <p>Java泛型(generics)是<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/oracle-java-archive-downloads.html"><code>JDK5</code></a>中引入的一个新特性，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型(只在编译阶段有效)。泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java早期使用Object类型来接收任意的对象类型，但是在实际的使用中会有类型转换的问题，即：向上转型没有任何问题，但是向下转型时其实隐含了类型转换的问题，这就是程序不安全的原因。也就是因为存在这种安全隐患，所以Java在JDK5以后就提供了泛型来解决这个安全问题。</p>
 <blockquote>
@@ -679,7 +681,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#Generic.java</span><br><span class="line">public class Generic&lt;T&gt;&#123; </span><br><span class="line">    private T key;</span><br><span class="line"></span><br><span class="line">    public Generic(T key) &#123;</span><br><span class="line">        this.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getKey()&#123;</span><br><span class="line">        return key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#MainClass.java</span><br><span class="line">public class MainClass &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Generic&lt;Integer&gt; genericInteger = new Generic&lt;Integer&gt;(123456);</span><br><span class="line">        Generic&lt;String&gt; genericString = new Generic&lt;String&gt;(&quot;abc&quot;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;key的值:&quot; + genericInteger.getKey());</span><br><span class="line">        System.out.println(&quot;key的值:&quot; + genericString.getKey());</span><br><span class="line"></span><br><span class="line">        System.out.printf(&quot;key的值:%d\n&quot;, genericInteger.getKey());</span><br><span class="line">        System.out.printf(&quot;key的值:%s\n&quot;, genericString.getKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#Generic.java</span><br><span class="line">public class Generic&lt;T&gt;{ </span><br><span class="line">    private T key;</span><br><span class="line"></span><br><span class="line">    public Generic(T key) {</span><br><span class="line">        this.key = key;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public T getKey(){</span><br><span class="line">        return key;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">#MainClass.java</span><br><span class="line">public class MainClass {</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        Generic&lt;Integer&gt; genericInteger = new Generic&lt;Integer&gt;(123456);</span><br><span class="line">        Generic&lt;String&gt; genericString = new Generic&lt;String&gt;("abc");</span><br><span class="line"></span><br><span class="line">        System.out.println("key的值:" + genericInteger.getKey());</span><br><span class="line">        System.out.println("key的值:" + genericString.getKey());</span><br><span class="line"></span><br><span class="line">        System.out.printf("key的值:%d\n", genericInteger.getKey());</span><br><span class="line">        System.out.printf("key的值:%s\n", genericString.getKey());</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li><p>泛型方法</p>
@@ -694,15 +696,15 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guoyansi19900907/p/12127931.html">参考二</a></li>
 </ol>
 <hr>
-<h1 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a><center><font color=red>Java反射</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射(Reflection)是Java的特征之一，它允许运行中的Java程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
+<h1 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a><center><font color="red">Java反射</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反射(Reflection)是Java的特征之一，它允许运行中的Java程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Java里有一句话：万物皆对象，而一个对象必然有一个与之对应的类。具体到代码层面，Java中每个类都有一个与之对应的类对象(Class对象)，这个类对象由JVM生成并保存了对应类的相关信息，而类对象所对应的类就是<code>java.lang.Class</code>，它是所有反射API的入口点。</p>
 <blockquote>
 <p>获取Class类对象的三种方法</p>
 </blockquote>
 <ul>
-<li>使用<code>Class.forName</code>静态方法，如<code>Class clz = Class.forName(&quot;java.lang.String&quot;);</code></li>
+<li>使用<code>Class.forName</code>静态方法，如<code>Class clz = Class.forName("java.lang.String");</code></li>
 <li>使用<code>.class</code>方法，如<code>Class clz = String.class;</code></li>
-<li>使用类对象的<code>getClass()</code>方法，如<code>String str = new String(&quot;Hello&quot;); Class clz = str.getClass();</code></li>
+<li>使用类对象的<code>getClass()</code>方法，如<code>String str = new String("Hello"); Class clz = str.getClass();</code></li>
 </ul>
 <blockquote>
 <p>反射的用法</p>
@@ -759,12 +761,12 @@
 <li><p>简单例子</p>
 <ul>
 <li><p>code</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;reflect/Fruit.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">class Fruit &#123;</span><br><span class="line">    public String name;</span><br><span class="line">    protected int num;</span><br><span class="line">    private int price;</span><br><span class="line"></span><br><span class="line">    public Fruit(String name, int price) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;reflect/FruitMain.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.*;</span><br><span class="line"></span><br><span class="line">class FruitMain &#123;</span><br><span class="line">    // @SuppressWarnings(&quot;rawtypes&quot;)</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 正常的调用</span><br><span class="line">        Fruit apple = new Fruit(&quot;Apple&quot;, 15);</span><br><span class="line">        System.out.println(&quot;Apple Init Price:&quot; + apple.getPrice());</span><br><span class="line">        apple.setPrice(5);</span><br><span class="line">        System.out.println(&quot;Apple Set Price:&quot; + apple.getPrice());</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName(&quot;reflect.Fruit&quot;);</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(String.class, int.class);</span><br><span class="line">            Method getPriceMethod = clz.getMethod(&quot;getPrice&quot;);</span><br><span class="line">            Fruit pearObj = (Fruit)con.newInstance(&quot;Pear&quot;, 10);</span><br><span class="line">            System.out.println(&quot;Pear Init Price:&quot; + getPriceMethod.invoke(pearObj));</span><br><span class="line">            Method setPriceMethod = clz.getMethod(&quot;setPrice&quot;, int.class);</span><br><span class="line">            setPriceMethod.invoke(pearObj, 14);</span><br><span class="line">            System.out.println(&quot;Pear Set Price:&quot; + getPriceMethod.invoke(pearObj));</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (InstantiationException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName(&quot;reflect.Fruit&quot;);</span><br><span class="line">            Method method = clz.getMethod(&quot;setPrice&quot;, int.class);</span><br><span class="line">            Method method1 = clz.getMethod(&quot;getPrice&quot;);</span><br><span class="line">            Class&lt;?&gt;[] parTypes = new Class&lt;?&gt;[2];</span><br><span class="line">            parTypes[0] = String.class;</span><br><span class="line">            parTypes[1] = int.class;</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(parTypes);</span><br><span class="line">            Object[] pars = new Object[2];</span><br><span class="line">            pars[0] = &quot;Banana&quot;;</span><br><span class="line">            pars[1] = 11;</span><br><span class="line">            Object obj = con.newInstance(pars);</span><br><span class="line">            System.out.println(&quot;Banana Init Price:&quot; + method1.invoke(obj));</span><br><span class="line">            method.invoke(obj, 8);</span><br><span class="line">            System.out.println(&quot;Banana Set Price:&quot; + method1.invoke(obj));</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;reflect/Fruit.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">class Fruit {</span><br><span class="line">    public String name;</span><br><span class="line">    protected int num;</span><br><span class="line">    private int price;</span><br><span class="line"></span><br><span class="line">    public Fruit(String name, int price) {</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.price = price;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getPrice() {</span><br><span class="line">        return price;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setPrice(int price) {</span><br><span class="line">        this.price = price;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;reflect/FruitMain.java</span><br><span class="line"></span><br><span class="line">package reflect;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.*;</span><br><span class="line"></span><br><span class="line">class FruitMain {</span><br><span class="line">    // @SuppressWarnings("rawtypes")</span><br><span class="line">    public static void main(String[] args) {</span><br><span class="line">        // 正常的调用</span><br><span class="line">        Fruit apple = new Fruit("Apple", 15);</span><br><span class="line">        System.out.println("Apple Init Price:" + apple.getPrice());</span><br><span class="line">        apple.setPrice(5);</span><br><span class="line">        System.out.println("Apple Set Price:" + apple.getPrice());</span><br><span class="line"></span><br><span class="line">        try {</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName("reflect.Fruit");</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(String.class, int.class);</span><br><span class="line">            Method getPriceMethod = clz.getMethod("getPrice");</span><br><span class="line">            Fruit pearObj = (Fruit)con.newInstance("Pear", 10);</span><br><span class="line">            System.out.println("Pear Init Price:" + getPriceMethod.invoke(pearObj));</span><br><span class="line">            Method setPriceMethod = clz.getMethod("setPrice", int.class);</span><br><span class="line">            setPriceMethod.invoke(pearObj, 14);</span><br><span class="line">            System.out.println("Pear Set Price:" + getPriceMethod.invoke(pearObj));</span><br><span class="line">        } catch (ClassNotFoundException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        } catch (InstantiationException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        } catch (IllegalAccessException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        } catch (Exception e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        try {</span><br><span class="line">            // 使用反射调用</span><br><span class="line">            Class&lt;?&gt; clz = Class.forName("reflect.Fruit");</span><br><span class="line">            Method method = clz.getMethod("setPrice", int.class);</span><br><span class="line">            Method method1 = clz.getMethod("getPrice");</span><br><span class="line">            Class&lt;?&gt;[] parTypes = new Class&lt;?&gt;[2];</span><br><span class="line">            parTypes[0] = String.class;</span><br><span class="line">            parTypes[1] = int.class;</span><br><span class="line">            Constructor&lt;?&gt; con = clz.getConstructor(parTypes);</span><br><span class="line">            Object[] pars = new Object[2];</span><br><span class="line">            pars[0] = "Banana";</span><br><span class="line">            pars[1] = 11;</span><br><span class="line">            Object obj = con.newInstance(pars);</span><br><span class="line">            System.out.println("Banana Init Price:" + method1.invoke(obj));</span><br><span class="line">            method.invoke(obj, 8);</span><br><span class="line">            System.out.println("Banana Set Price:" + method1.invoke(obj));</span><br><span class="line">        } catch (Exception e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>javac reflect/Main.java </p>
 </li>
 <li><p>java reflect.Main</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Apple Init Price:15</span><br><span class="line">Apple Set Price:5</span><br><span class="line">Pear Init Price:10</span><br><span class="line">Pear Set Price:14</span><br><span class="line">Banana Init Price:11</span><br><span class="line">Banana Set Price:8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Apple Init Price:15</span><br><span class="line">Apple Set Price:5</span><br><span class="line">Pear Init Price:10</span><br><span class="line">Pear Set Price:14</span><br><span class="line">Banana Init Price:11</span><br><span class="line">Banana Set Price:8</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -781,20 +783,20 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html">参考八</a></li>
 </ol>
 <hr>
-<h1 id="Java三大器"><a href="#Java三大器" class="headerlink" title="Java三大器"></a><center><font color=red>Java三大器</font></center></h1><ol>
+<h1 id="Java三大器"><a href="#Java三大器" class="headerlink" title="Java三大器"></a><center><font color="red">Java三大器</font></center></h1><ol>
 <li>过滤器</li>
 <li>拦截器</li>
 <li>监听器</li>
 </ol>
 <hr>
-<h1 id="Java四大域"><a href="#Java四大域" class="headerlink" title="Java四大域"></a><center><font color=red>Java四大域</font></center></h1><ol>
+<h1 id="Java四大域"><a href="#Java四大域" class="headerlink" title="Java四大域"></a><center><font color="red">Java四大域</font></center></h1><ol>
 <li>ServletContext域</li>
 <li>Request域</li>
 <li>Session域</li>
 <li>PageContext域</li>
 </ol>
 <hr>
-<h1 id="Java九大隐式对象"><a href="#Java九大隐式对象" class="headerlink" title="Java九大隐式对象"></a><center><font color=red>Java九大隐式对象</font></center></h1><p>jsp被翻译成servlet之后，service方法中有9个对象定义并初始化完毕，在jsp脚本中可以直接使用这9个对象。</p>
+<h1 id="Java九大隐式对象"><a href="#Java九大隐式对象" class="headerlink" title="Java九大隐式对象"></a><center><font color="red">Java九大隐式对象</font></center></h1><p>jsp被翻译成servlet之后，service方法中有9个对象定义并初始化完毕，在jsp脚本中可以直接使用这9个对象。</p>
 <ol>
 <li>page</li>
 <li>confing</li>
@@ -807,7 +809,7 @@
 <li>pageContext</li>
 </ol>
 <hr>
-<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a><center><font color=red>Tomcat</font></center></h1><ol>
+<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a><center><font color="red">Tomcat</font></center></h1><ol>
 <li><p>Tomcat服务器是一个免费的开放源代码的Web应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache服务器，可利用它响应HTML(标准通用标记语言下的一个应用)页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
 </li>
 <li><p>安装</p>
@@ -823,7 +825,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a><center><font color=red>Maven</font></center></h1><ol>
+<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a><center><font color="red">Maven</font></center></h1><ol>
 <li><p>Maven是一个项目管理工具，它包含了一个项目对象模型(Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，以及用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
 <ul>
 <li>maven是java的包管理工具，相当于是nodejs中的npm，php中的composer，python中的pip等，通过maven可以方便地引入各种java的第三方类库(包括Spring、Struts、junit等)和插件(如tomcat等)。</li>
@@ -853,7 +855,7 @@
 <li><code>source ~/.bash_profile</code>立即生效</li>
 <li>查看安装是否成功<code>mvn -v</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)</span><br><span class="line">Maven home: /usr/local/apache-maven-3.6.3</span><br><span class="line">Java version: 14, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: &quot;mac os x&quot;, version: &quot;10.15.5&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)</span><br><span class="line">Maven home: /usr/local/apache-maven-3.6.3</span><br><span class="line">Java version: 14, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home</span><br><span class="line">Default locale: zh_CN_#Hans, platform encoding: UTF-8</span><br><span class="line">OS name: "mac os x", version: "10.15.5", arch: "x86_64", family: "mac"</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 </li>
@@ -915,14 +917,14 @@
 </li>
 </ol>
 <hr>
-<h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a><center><font color=red>Netty</font></center></h1><ol>
+<h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a><center><font color="red">Netty</font></center></h1><ol>
 <li>Netty是由JBOSS提供的一个java开源框架，现为 Github上的独立项目。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。也就是说，Netty 是一个基于NIO的客户、服务器端编程框架，使用Netty 可以确保你快速和简单的开发出一个网络应用，例如实现了某种协议的客户、服务端应用。Netty相当于简化和流线化了网络应用的编程开发过程，例如：基于TCP和UDP的socket服务开发。<ul>
 <li>简单来说有了Netty你可以实现自己的HTTP服务器，FTP服务器，UDP服务器，RPC服务器，WebSocket服务器，Redis的Proxy服务器，MySQL的Proxy服务器等。</li>
 </ul>
 </li>
 </ol>
 <hr>
-<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a><center><font color=red>Spring</font></center></h1><ol>
+<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a><center><font color="red">Spring</font></center></h1><ol>
 <li><p>spring 是一个开源框架，处于mvc的控制层，能应对需求的快速变化，主要原因是它有一种面向切面编程(aop)的优势，其次它提升了系统性能，是因为通过依赖倒置机制(ioc)，系统中用到的对象不是在系统加载时就全部实例化，而是在调用到这个类时才会实例化该对象。</p>
 <ul>
 <li>轻量：从大小到开销来说都是轻量的，spring框架开源字啊一个只有1m大小的jar文件中发布，而且spring所处理的开销也是微不足道的</li>
@@ -992,7 +994,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="Java九大隐式对象-1"><a href="#Java九大隐式对象-1" class="headerlink" title="Java九大隐式对象"></a><center><font color=red>Java九大隐式对象</font></center></h1>
+<h1 id="Java九大隐式对象-1"><a href="#Java九大隐式对象-1" class="headerlink" title="Java九大隐式对象"></a><center><font color="red">Java九大隐式对象</font></center></h1>
     </div>
 
     
@@ -1190,7 +1192,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

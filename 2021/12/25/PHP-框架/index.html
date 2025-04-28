@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -399,7 +401,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a><center><font color=red>Laravel</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laravel是一个免费的开放源代码PHP Web框架，由Taylor Otwell创建，旨在遵循模型-视图-控制器(MVC)架构模式开发Web应用程序。</p>
+<h1 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a><center><font color="red">Laravel</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laravel是一个免费的开放源代码PHP Web框架，由Taylor Otwell创建，旨在遵循模型-视图-控制器(MVC)架构模式开发Web应用程序。</p>
 <ol>
 <li><p>特点</p>
 <ul>
@@ -432,7 +434,7 @@
 <ol start="3">
 <li>Request Lifecycle：Laravel的生命周期从public\index.php开始，从public\index.php结束，以下是public\index.php全部代码：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">require __DIR__.&#x27;/../bootstrap/autoload.php&#x27;;</span><br><span class="line"></span><br><span class="line">$app = require_once __DIR__.&#x27;/../bootstrap/app.php&#x27;;</span><br><span class="line">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</span><br><span class="line"></span><br><span class="line">$response = $kernel-&gt;handle(</span><br><span class="line">    $request = Illuminate\Http\Request::capture()</span><br><span class="line">);</span><br><span class="line">$response-&gt;send();</span><br><span class="line"></span><br><span class="line">$kernel-&gt;terminate($request, $response);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">require __DIR__.'/../bootstrap/autoload.php';</span><br><span class="line"></span><br><span class="line">$app = require_once __DIR__.'/../bootstrap/app.php';</span><br><span class="line">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</span><br><span class="line"></span><br><span class="line">$response = $kernel-&gt;handle(</span><br><span class="line">    $request = Illuminate\Http\Request::capture()</span><br><span class="line">);</span><br><span class="line">$response-&gt;send();</span><br><span class="line"></span><br><span class="line">$kernel-&gt;terminate($request, $response);</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>加载项目依赖，注册加载composer自动生成的class loader，也就是加载初始化第三方依赖(包括项目自带和手动require)。</li>
@@ -503,7 +505,7 @@
 </ul>
 </li>
 <li>使用Docker Desktop(MacOS)<ul>
-<li><code>curl -s &quot;https://laravel.build/example-app&quot; | bash</code></li>
+<li><code>curl -s "https://laravel.build/example-app" | bash</code></li>
 <li><code>cd example-app</code></li>
 <li><code>./vendor/bin/sail up</code></li>
 </ul>
@@ -523,7 +525,7 @@
 </li>
 <li><p>提交表单419错误码</p>
 <ul>
-<li>表单加<code>&#123;&#123;csrf_field()&#125;&#125;</code></li>
+<li>表单加<code>{{csrf_field()}}</code></li>
 </ul>
 </li>
 <li><p>Requests对象</p>
@@ -571,7 +573,7 @@
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040421959">参考四</a></li>
 </ol>
 <hr>
-<h1 id="ThinkPHP"><a href="#ThinkPHP" class="headerlink" title="ThinkPHP"></a><center><font color=red>ThinkPHP</font></center></h1><ol>
+<h1 id="ThinkPHP"><a href="#ThinkPHP" class="headerlink" title="ThinkPHP"></a><center><font color="red">ThinkPHP</font></center></h1><ol>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037653">助手函数</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037599">模型关联</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037617">调试</a></li>
@@ -581,10 +583,10 @@
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037479">ThinkPHP6.0完全开发手册</a></li>
 </ol>
 <hr>
-<h1 id="CodeIgniter-CI"><a href="#CodeIgniter-CI" class="headerlink" title="CodeIgniter(CI)"></a><center><font color=red>CodeIgniter(CI)</font></center></h1><hr>
-<h1 id="Yii"><a href="#Yii" class="headerlink" title="Yii"></a><center><font color=red>Yii</font></center></h1><hr>
-<h1 id="Symfony"><a href="#Symfony" class="headerlink" title="Symfony"></a><center><font color=red>Symfony</font></center></h1><hr>
-<h1 id="Zend-Framework"><a href="#Zend-Framework" class="headerlink" title="Zend Framework"></a><center><font color=red>Zend Framework</font></center></h1>
+<h1 id="CodeIgniter-CI"><a href="#CodeIgniter-CI" class="headerlink" title="CodeIgniter(CI)"></a><center><font color="red">CodeIgniter(CI)</font></center></h1><hr>
+<h1 id="Yii"><a href="#Yii" class="headerlink" title="Yii"></a><center><font color="red">Yii</font></center></h1><hr>
+<h1 id="Symfony"><a href="#Symfony" class="headerlink" title="Symfony"></a><center><font color="red">Symfony</font></center></h1><hr>
+<h1 id="Zend-Framework"><a href="#Zend-Framework" class="headerlink" title="Zend Framework"></a><center><font color="red">Zend Framework</font></center></h1>
     </div>
 
     
@@ -783,7 +785,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

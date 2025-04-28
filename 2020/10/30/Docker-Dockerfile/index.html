@@ -201,6 +201,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -408,7 +410,7 @@
 <li><p>格式</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Comment</span><br><span class="line">INSTRUCTION arguments</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Comment</span><br><span class="line">INSTRUCTION arguments</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li><p>常用指令</p>
@@ -439,7 +441,7 @@
 <li><p>ADD：把文件复制到镜像中</p>
 <ul>
 <li>ADD <code>&lt;src&gt;...&lt;dest&gt;</code></li>
-<li>ADD <code>[&quot;&lt;src&gt;&quot;...&quot;&lt;dest&gt;&quot;]</code></li>
+<li>ADD <code>["&lt;src&gt;"..."&lt;dest&gt;"]</code></li>
 <li>路径的填写可以是容器内的绝对路径，也可以是相对于工作目录的相对路径，推荐写成绝对路径</li>
 <li>可以是一个本地文件或者是一个本地压缩文件，还可以是一个url</li>
 <li>如果把src写成一个url，那么ADD就类似于wget命令</li>
@@ -450,13 +452,13 @@
 <li><p>COPY：复制命令</p>
 <ul>
 <li><code>COPY &lt;src&gt;...&lt;dest&gt;</code></li>
-<li><code>COPY [&quot;&lt;src&gt;&quot;...&quot;&lt;dest&gt;&quot;]</code></li>
+<li><code>COPY ["&lt;src&gt;"..."&lt;dest&gt;"]</code></li>
 <li>COPY的只能是本地文件</li>
 </ul>
 </li>
 <li><p>EXPOSE：暴漏容器运行时的监听端口给外部，不会使容器访问主机的端口</p>
 <ul>
-<li>EXPOSE <port>/&lt;tcp/udp&gt;</li>
+<li>EXPOSE <port>/&lt;tcp/udp&gt;</port></li>
 <li>如果想使得容器与主机的端口有映射关系，必须在容器启动的时候加上-P参数</li>
 </ul>
 </li>
@@ -476,19 +478,19 @@
 <li><p>RUN：构件容器时运行的命令</p>
 <ul>
 <li><code>RUN &lt;command&gt;</code></li>
-<li><code>RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</code></li>
+<li><code>RUN ["executable", "param1", "param2"]</code></li>
 </ul>
 </li>
 <li><p>CMD：容器启动时运行的命令或参数</p>
 <ul>
-<li><code>CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code></li>
-<li><code>CMD [&quot;param1&quot;,&quot;param2&quot;]</code></li>
+<li><code>CMD ["executable","param1","param2"]</code></li>
+<li><code>CMD ["param1","param2"]</code></li>
 <li><code>CMD command param1 param2</code></li>
 </ul>
 </li>
 <li><p>ENTRYPOINT：容器启动时运行得启动命令</p>
 <ul>
-<li><code>ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</code></li>
+<li><code>ENTRYPOINT ["executable", "param1", "param2"]</code></li>
 <li><code>ENTRYPOINT command param1 param2</code></li>
 <li>和CMD对比<ul>
 <li>都是只能写一条，如果写了多条，那么只有最后一条生效</li>
@@ -502,7 +504,7 @@
 </li>
 <li><p>VOLUME：可以将宿主机目录挂载到容器中</p>
 <ul>
-<li><code>VOLUME [&quot;/data&quot;]</code></li>
+<li><code>VOLUME ["/data"]</code></li>
 </ul>
 </li>
 <li><p>USER：启动容器的用户，可以是用户名或UID</p>
@@ -726,7 +728,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

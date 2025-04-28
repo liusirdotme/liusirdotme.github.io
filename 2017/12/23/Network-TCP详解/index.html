@@ -218,6 +218,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -411,7 +413,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a><center><font color=red>TCP/IP</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TCP，即传输控制协议(Transmission Control Protocol)是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义。在简化的计算机网络OSI模型中，它完成第四层传输层所指定的功能。用户数据报协议(UDP)是同一层内另一个重要的传输协议。</p>
+<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a><center><font color="red">TCP/IP</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TCP，即传输控制协议(Transmission Control Protocol)是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义。在简化的计算机网络OSI模型中，它完成第四层传输层所指定的功能。用户数据报协议(UDP)是同一层内另一个重要的传输协议。</p>
 <h2 id="二、TCP的首部格式"><a href="#二、TCP的首部格式" class="headerlink" title="二、TCP的首部格式"></a>二、TCP的首部格式</h2><ul>
 <li>来源连接端口(16位长)－识别发送连接端口</li>
 <li>目的连接端口(16位长)－识别接收连接端口</li>
@@ -456,14 +458,14 @@
 </ul>
 <p><img src="tcp.png" alt="tcp"></p>
 <hr>
-<h1 id="三次握手和四次挥手"><a href="#三次握手和四次挥手" class="headerlink" title="三次握手和四次挥手"></a><center><font color=red>三次握手和四次挥手</font></center></h1><h2 id="一、状态参考"><a href="#一、状态参考" class="headerlink" title="一、状态参考"></a>一、状态参考</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CLOSED:关闭状态 </span><br><span class="line">LISTEN:收听状态 </span><br><span class="line">SYN-SENT:同步已发送 </span><br><span class="line">SYN-RCVD:同步收到</span><br><span class="line">ESTAB-LISHED：连接已建立</span><br><span class="line"></span><br><span class="line">seq(序号):指的是本报文段所发送数据部分第一个字节的序号。</span><br><span class="line">ack(确认号):表示期望收到的下一个报文段数据部分的第一个字节的编号</span><br><span class="line"> </span><br><span class="line">SYN：当本字段为1时，表示这是一个连接请求或者连接接受报文</span><br><span class="line">ACK：仅当本字段为1时，确认号ack=seq+1     </span><br><span class="line">FIN：用来释放一个连接</span><br></pre></td></tr></table></figure>
+<h1 id="三次握手和四次挥手"><a href="#三次握手和四次挥手" class="headerlink" title="三次握手和四次挥手"></a><center><font color="red">三次握手和四次挥手</font></center></h1><h2 id="一、状态参考"><a href="#一、状态参考" class="headerlink" title="一、状态参考"></a>一、状态参考</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CLOSED:关闭状态 </span><br><span class="line">LISTEN:收听状态 </span><br><span class="line">SYN-SENT:同步已发送 </span><br><span class="line">SYN-RCVD:同步收到</span><br><span class="line">ESTAB-LISHED：连接已建立</span><br><span class="line"></span><br><span class="line">seq(序号):指的是本报文段所发送数据部分第一个字节的序号。</span><br><span class="line">ack(确认号):表示期望收到的下一个报文段数据部分的第一个字节的编号</span><br><span class="line"> </span><br><span class="line">SYN：当本字段为1时，表示这是一个连接请求或者连接接受报文</span><br><span class="line">ACK：仅当本字段为1时，确认号ack=seq+1     </span><br><span class="line">FIN：用来释放一个连接</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="二、三次握手过程"><a href="#二、三次握手过程" class="headerlink" title="二、三次握手过程"></a>二、三次握手过程</h2><p><img src="1.png" alt="三次握手"></p>
 <ol>
 <li>第一次握手：起初两端都处于CLOSED关闭状态，Client将标志位SYN置为1，随机产生一个值seq=x，并将该数据包发送给Server，Client进入SYN-SENT状态，等待Server确认；</li>
 <li>第二次握手：Server收到数据包后由标志位SYN=1得知Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=x+1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，Server进入SYN-RCVD状态，此时操作系统为该TCP连接分配TCP缓存和变量；</li>
 <li>第三次握手：Client收到确认后，检查ack是否为x+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=y+1，并且此时操作系统为该TCP连接分配TCP缓存和变量，并将该数据包发送给Server，Server检查ack是否为y+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client和Server就可以开始传输数据。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">①客户机首先向服务器的TCP发送SYN=1，表示一个连接请求报文段，随机选择一个起始序号seq=x</span><br><span class="line">②服务器的TCP收到连接请求报文段，如果同意建立连接，就像客户机发回确认ACK=1,并为该TCP连接分配TCP缓存和变量，并随机产生起始序号seq=y</span><br><span class="line">③当客户机收到确认报文后，还要想服务器给出确认，并且也要给连接分配缓存和变量</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">①客户机首先向服务器的TCP发送SYN=1，表示一个连接请求报文段，随机选择一个起始序号seq=x</span><br><span class="line">②服务器的TCP收到连接请求报文段，如果同意建立连接，就像客户机发回确认ACK=1,并为该TCP连接分配TCP缓存和变量，并随机产生起始序号seq=y</span><br><span class="line">③当客户机收到确认报文后，还要想服务器给出确认，并且也要给连接分配缓存和变量</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>服务端资源是在完成第二次握手分配的，而客户端资源是在完成第三次握手分配的，使得服务器易于收到SYN洪泛攻击。</p>
@@ -475,7 +477,7 @@
 <li>第三次挥手：服务器端所有的数据度发送完了，认为可以关闭连接了，状态变为被动关闭，所以向客户端发送释放连接报文，发完之后自己变为LAST_WAIT状态，也就是等待客户端确认状态</li>
 <li>第四次挥手：客户端接到释放连接报文后，发送一个确认报文，然后自己变为TIME_WAIT,而不是立马关闭，因为客户端发送的确认报文可能会丢失，丢失的话服务器就会重传一个FIN，也就是释放连接报文，这个时候客户端必须还没关闭。当服务器接受到确认报文后，服务器就进入CLOSE状态，也就是关闭了。但是由于上面说的这个原因，客户端必须等待一定的时间才能够进入CLOSE状态。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">①客户机打算关闭连接，向TCP发送`FIN=1`标志位的连接释放报文段，并停止再发送数据，`seq=u`等于前面已传送过的数据的最后一个字节的序号加1</span><br><span class="line">②服务器疏导释放报文段，发出确认号`ack=u+1`，此时从客户机到服务器这个方向的连接就释放了，TCP连接处于半关闭状态。但服务器若发送数据，客户机仍要接收，即从服务器到客户机这个方向的连接并未关闭</span><br><span class="line">③若服务器已经没有向客户机发送的数据，就通知TCP释放连接，此时发送`FIN=1`的连接释放报文段</span><br><span class="line">④客户机收到连接释放报文段后，必须发出确认`ACK=1`，确认号`ack=w+1`，序号`seq=u+1`。此时TCP连接还没有释放掉，必须经过时间等待计时器设置的时间`2MSL`(`MSL=maxinum segment lifetime`，最长报文生存时间)后才进入到连接关闭状态</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">①客户机打算关闭连接，向TCP发送`FIN=1`标志位的连接释放报文段，并停止再发送数据，`seq=u`等于前面已传送过的数据的最后一个字节的序号加1</span><br><span class="line">②服务器疏导释放报文段，发出确认号`ack=u+1`，此时从客户机到服务器这个方向的连接就释放了，TCP连接处于半关闭状态。但服务器若发送数据，客户机仍要接收，即从服务器到客户机这个方向的连接并未关闭</span><br><span class="line">③若服务器已经没有向客户机发送的数据，就通知TCP释放连接，此时发送`FIN=1`的连接释放报文段</span><br><span class="line">④客户机收到连接释放报文段后，必须发出确认`ACK=1`，确认号`ack=w+1`，序号`seq=u+1`。此时TCP连接还没有释放掉，必须经过时间等待计时器设置的时间`2MSL`(`MSL=maxinum segment lifetime`，最长报文生存时间)后才进入到连接关闭状态</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="四、扩展"><a href="#四、扩展" class="headerlink" title="四、扩展"></a>四、扩展</h2><ol>
 <li><p>TCP连接管理：TCP是面向连接的协议，每一个TCP连接都会经过三个阶段：连接建立、数据传送和连接释放。TCP连接的两个端口叫做套接字或插口，连接的建立采用客户/服务器方式，即C/S模式，主动发送连接建立的应用进程叫做客户机(client)，而被动等待连接建立的应用程序叫做服务器(server)。</p>
@@ -500,7 +502,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="TCP报文"><a href="#TCP报文" class="headerlink" title="TCP报文"></a><center><font color=red>TCP报文</font></center></h1><p><img src="tcp%E6%8A%A5%E6%96%87.jpg" alt="TCP报文"></p>
+<h1 id="TCP报文"><a href="#TCP报文" class="headerlink" title="TCP报文"></a><center><font color="red">TCP报文</font></center></h1><p><img src="tcp%E6%8A%A5%E6%96%87.jpg" alt="TCP报文"></p>
 <p><img src="tcp%E6%8A%A5%E6%96%871.jpg" alt="TCP报文"></p>
 <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
 <li><p>TCP报文是TCP层传输的数据单元，也叫报文段。</p>
@@ -583,7 +585,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/feng9exe/p/8058891.html">TCP报文</a></li>
 </ol>
 <hr>
-<h1 id="流量控制和拥塞控制"><a href="#流量控制和拥塞控制" class="headerlink" title="流量控制和拥塞控制"></a><center><font color=red>流量控制和拥塞控制</font></center></h1><h2 id="一、流量控制"><a href="#一、流量控制" class="headerlink" title="一、流量控制"></a>一、流量控制</h2><ol>
+<h1 id="流量控制和拥塞控制"><a href="#流量控制和拥塞控制" class="headerlink" title="流量控制和拥塞控制"></a><center><font color="red">流量控制和拥塞控制</font></center></h1><h2 id="一、流量控制"><a href="#一、流量控制" class="headerlink" title="一、流量控制"></a>一、流量控制</h2><ol>
 <li>接收端处理数据的速度是有限的，如果发送方的速度太快就会把缓冲区u打满。这个时候如果继续发送数据，就会导致丢包等一系列连锁反应。所以TCP支持根据接收端能力来决定发送端的发送速度，这个机制叫做流量控制。<ul>
 <li>流量控制就是让发送方的发送速率不要太快，要让接收方来得及接收</li>
 <li>也就是说流量控制是一个速度匹配服务，匹配发送方的发送速率和接收方的接收速率</li>
@@ -645,23 +647,23 @@
 <li>快速重传</li>
 </ol>
 <hr>
-<h1 id="TCP协议的计时器"><a href="#TCP协议的计时器" class="headerlink" title="TCP协议的计时器"></a><center><font color=red>TCP协议的计时器</font></center></h1><ol>
+<h1 id="TCP协议的计时器"><a href="#TCP协议的计时器" class="headerlink" title="TCP协议的计时器"></a><center><font color="red">TCP协议的计时器</font></center></h1><ol>
 <li>重传计时器 </li>
 <li>持续计时器</li>
 <li>保活计时器</li>
 <li>时间等待计时器</li>
 </ol>
 <hr>
-<h1 id="封包拆包粘包"><a href="#封包拆包粘包" class="headerlink" title="封包拆包粘包"></a><center><font color=red>封包拆包粘包</font></center></h1><h2 id="一、封包"><a href="#一、封包" class="headerlink" title="一、封包"></a>一、封包</h2><ol>
+<h1 id="封包拆包粘包"><a href="#封包拆包粘包" class="headerlink" title="封包拆包粘包"></a><center><font color="red">封包拆包粘包</font></center></h1><h2 id="一、封包"><a href="#一、封包" class="headerlink" title="一、封包"></a>一、封包</h2><ol>
 <li>定义：给一段数据加上包头或者包尾。</li>
 </ol>
 <h2 id="二、拆包"><a href="#二、拆包" class="headerlink" title="二、拆包"></a>二、拆包</h2><h2 id="三、粘包"><a href="#三、粘包" class="headerlink" title="三、粘包"></a>三、粘包</h2><ol>
 <li>定义：多个独立的数据包连到一块儿。</li>
 </ol>
 <hr>
-<h1 id="Window-Scale"><a href="#Window-Scale" class="headerlink" title="Window Scale"></a><center><font color=red>Window Scale</font></center></h1><hr>
-<h1 id="seq回绕"><a href="#seq回绕" class="headerlink" title="seq回绕"></a><center><font color=red>seq回绕</font></center></h1><hr>
-<h1 id="包迷路"><a href="#包迷路" class="headerlink" title="包迷路"></a><center><font color=red>包迷路</font></center></h1>
+<h1 id="Window-Scale"><a href="#Window-Scale" class="headerlink" title="Window Scale"></a><center><font color="red">Window Scale</font></center></h1><hr>
+<h1 id="seq回绕"><a href="#seq回绕" class="headerlink" title="seq回绕"></a><center><font color="red">seq回绕</font></center></h1><hr>
+<h1 id="包迷路"><a href="#包迷路" class="headerlink" title="包迷路"></a><center><font color="red">包迷路</font></center></h1>
     </div>
 
     
@@ -863,7 +865,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

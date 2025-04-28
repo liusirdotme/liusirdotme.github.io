@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -399,7 +401,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="foreach问题"><a href="#foreach问题" class="headerlink" title="foreach问题"></a><center><font color=red>foreach问题</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="foreach问题"><a href="#foreach问题" class="headerlink" title="foreach问题"></a><center><font color="red">foreach问题</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li><code>php4</code>中引入了<code>foreach</code>结构，这是一种遍历数组的简单方式。相比传统的<code>for</code>循环，<code>foreach</code>能够更加便捷的获取键/值对。在<code>php5</code>之前，<code>foreach</code>仅能用于数组；<code>php5</code>之后，利用<code>foreach</code>还能遍历对象。<ul>
 <li>当<code>foreach</code>开始执行时，数组内部的指针会自动指向第一个单元，这意味着不需要在<code>foreach</code>循环之前调用<code>reset()</code>。</li>
 <li>由于<code>foreach</code>依赖内部数组指针，在循环中修改其值将可能导致意外的行为(可以很容易地通过在<code>$value</code>之前加上<code>&amp;</code>来修改数组的元素)。</li>
@@ -409,7 +411,7 @@
 </ol>
 <h2 id="二、demo"><a href="#二、demo" class="headerlink" title="二、demo"></a>二、demo</h2><ol>
 <li><p>例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$arr = [1, 2, 3];</span><br><span class="line">foreach($arr as &amp;$val);</span><br><span class="line">foreach($arr as $val);</span><br><span class="line">print_r($arr);</span><br><span class="line">期望结果：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1</span><br><span class="line">    [1] =&gt; 2</span><br><span class="line">    [2] =&gt; 3</span><br><span class="line">)</span><br><span class="line">实际结果：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1</span><br><span class="line">    [1] =&gt; 2</span><br><span class="line">    [2] =&gt; 2</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$arr = [1, 2, 3];</span><br><span class="line">foreach($arr as &amp;$val);</span><br><span class="line">foreach($arr as $val);</span><br><span class="line">print_r($arr);</span><br><span class="line">期望结果：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1</span><br><span class="line">    [1] =&gt; 2</span><br><span class="line">    [2] =&gt; 3</span><br><span class="line">)</span><br><span class="line">实际结果：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1</span><br><span class="line">    [1] =&gt; 2</span><br><span class="line">    [2] =&gt; 2</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>分析</p>
 <blockquote>
@@ -417,7 +419,7 @@
 </blockquote>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foreach($arr as $k =&gt; $v)&#123;</span><br><span class="line">    $v = currentVal();</span><br><span class="line">    $k = currentKey();</span><br><span class="line">    //TODO code</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foreach($arr as $k =&gt; $v){</span><br><span class="line">    $v = currentVal();</span><br><span class="line">    $k = currentKey();</span><br><span class="line">    //TODO code</span><br><span class="line">    ……</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <blockquote>
@@ -450,7 +452,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/control-structures.foreach.php">参考二</a></li>
 </ol>
 <hr>
-<h1 id="Guzzle"><a href="#Guzzle" class="headerlink" title="Guzzle"></a><center><font color=red>Guzzle</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
+<h1 id="Guzzle"><a href="#Guzzle" class="headerlink" title="Guzzle"></a><center><font color="red">Guzzle</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://guzzle-cn.readthedocs.io/zh_CN/latest/">Guzzle</a>是一个PHP的HTTP客户端，用来轻而易举地发送请求，并集成到我们的WEB服务上。<ul>
 <li>接口简单：构建查询语句、POST请求、分流上传下载大文件、使用HTTP cookies、上传JSON数据等等。</li>
 <li>发送同步或异步的请求均使用相同的接口。</li>
@@ -475,7 +477,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="PHPUnit"><a href="#PHPUnit" class="headerlink" title="PHPUnit"></a><center><font color=red>PHPUnit</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHPUnit是用于PHP编程语言的单元测试框架。它是xUnit体系结构的一个实例，用于单元测试框架，该框架起源于SUnit并在JUnit中流行。PHPUnit由Sebastian Bergmann创建，其开发托管在GitHub上。</p>
+<h1 id="PHPUnit"><a href="#PHPUnit" class="headerlink" title="PHPUnit"></a><center><font color="red">PHPUnit</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHPUnit是用于PHP编程语言的单元测试框架。它是xUnit体系结构的一个实例，用于单元测试框架，该框架起源于SUnit并在JUnit中流行。PHPUnit由Sebastian Bergmann创建，其开发托管在GitHub上。</p>
 <blockquote>
 <p>作用</p>
 </blockquote>
@@ -509,7 +511,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP Fatal error:  Uncaught PharException: phar &quot;/usr/local/bin/phpunit&quot; has a broken signature in /usr/local/bin/phpunit:27</span><br><span class="line">Stack trace:</span><br><span class="line">#0 /usr/local/bin/phpunit(27): Phar::mapPhar(&#x27;phpunit-6.5.3.p...&#x27;)</span><br><span class="line">#1 &#123;main&#125;</span><br><span class="line">  thrown in /usr/local/bin/phpunit on line 27</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP Fatal error:  Uncaught PharException: phar "/usr/local/bin/phpunit" has a broken signature in /usr/local/bin/phpunit:27</span><br><span class="line">Stack trace:</span><br><span class="line">#0 /usr/local/bin/phpunit(27): Phar::mapPhar('phpunit-6.5.3.p...')</span><br><span class="line">#1 {main}</span><br><span class="line">  thrown in /usr/local/bin/phpunit on line 27</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>通过composer安装</p>
 <ul>
@@ -523,12 +525,12 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;phpunit bootstrap=&quot;vendor/autoload.php&quot;&gt;</span><br><span class="line">    &lt;testsuites&gt;</span><br><span class="line">        &lt;testsuite name=&quot;service&quot;&gt;</span><br><span class="line">            &lt;directory&gt;tests&lt;/directory&gt;</span><br><span class="line">        &lt;/testsuite&gt;</span><br><span class="line">    &lt;/testsuites&gt;</span><br><span class="line">&lt;/phpunit&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;phpunit bootstrap="vendor/autoload.php"&gt;</span><br><span class="line">    &lt;testsuites&gt;</span><br><span class="line">        &lt;testsuite name="service"&gt;</span><br><span class="line">            &lt;directory&gt;tests&lt;/directory&gt;</span><br><span class="line">        &lt;/testsuite&gt;</span><br><span class="line">    &lt;/testsuites&gt;</span><br><span class="line">&lt;/phpunit&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>新建测试脚本EqualsTest.php</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use PHPUnit\Framework\TestCase;</span><br><span class="line"></span><br><span class="line">class EqualsTest extends TestCase &#123;</span><br><span class="line">    public function testFailure()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(1, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function testFailure2()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(&#x27;bar&#x27;, &#x27;baz&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function testFailure3()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;assertEquals(&quot;foo\nbar\nbaz\n&quot;, &quot;foo\nbah\nbaz\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">use PHPUnit\Framework\TestCase;</span><br><span class="line"></span><br><span class="line">class EqualsTest extends TestCase {</span><br><span class="line">    public function testFailure()</span><br><span class="line">    {</span><br><span class="line">        $this-&gt;assertEquals(1, 0);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public function testFailure2()</span><br><span class="line">    {</span><br><span class="line">        $this-&gt;assertEquals('bar', 'baz');</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public function testFailure3()</span><br><span class="line">    {</span><br><span class="line">        $this-&gt;assertEquals("foo\nbar\nbaz\n", "foo\nbah\nbaz\n");</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>执行 <code>../vendor/bin/phpunit EqualsTest.php</code><ul>
@@ -542,7 +544,7 @@
 <li><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903541136424967">参考三</a></li>
 </ol>
 <hr>
-<h1 id="Workerman"><a href="#Workerman" class="headerlink" title="Workerman"></a><center><font color=red>Workerman</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<h1 id="Workerman"><a href="#Workerman" class="headerlink" title="Workerman"></a><center><font color="red">Workerman</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
 <li>Workerman是纯PHP开发框架，需要依赖很多额外的第三方PHP扩展来实现。它是一款开源高性能异步PHP socket即时通讯框架。支持高并发，超高稳定性，被广泛的用于手机app、移动通讯，微信小程序，手游服务端、网络游戏、PHP聊天室、硬件通讯、智能家居、车联网、物联网等领域的开发。支持TCP长连接，支持Websocket、HTTP等协议，支持自定义协议。拥有异步Mysql、异步Redis、异步Http、MQTT物联网客户端、异步消息队列等众多高性能组件。</li>
 </ol>
 <h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
@@ -747,7 +749,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -217,6 +217,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -410,7 +412,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="一、事务基础"><a href="#一、事务基础" class="headerlink" title="一、事务基础"></a><center><font color=red>一、事务基础</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;事务是一组原子性的SQL查询，或者说一个独立的工作单元。如果数据库引擎能够成功地对数据库应用该组查询的全部语句，那么就执行该组查询；如果其中任何一条语句因为崩溃或其他原因无法执行，那么所有的语句都不会执行。也就是说，事务内的语句，要么全部执行成功，要么全部执行失败。</p>
+<h1 id="一、事务基础"><a href="#一、事务基础" class="headerlink" title="一、事务基础"></a><center><font color="red">一、事务基础</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事务是一组原子性的SQL查询，或者说一个独立的工作单元。如果数据库引擎能够成功地对数据库应用该组查询的全部语句，那么就执行该组查询；如果其中任何一条语句因为崩溃或其他原因无法执行，那么所有的语句都不会执行。也就是说，事务内的语句，要么全部执行成功，要么全部执行失败。</p>
 <ol>
 <li>启动方式<ul>
 <li>方式一：<code>begin OR start transaction</code>，一致性视图是在执行第一个快照读语句时创建</li>
@@ -430,13 +432,13 @@
 <li><b>可重复读(repeatable read):</b>MySQL 默认的事务隔离级别，多次读取同一范围的数据会返回第一次查询的快照，不会返回不同的数据行，但是可能发生幻读(Phantom Read)。InnoDB 和 XtraDB 存储引擎通过多版本并发控制（MVCC）解决了幻读的问题。</li>
 <li><b>串行化(Serializable):</b> 最高的隔离级别，强制事务串行执行，将全部的查询语句加上共享锁，可能导致大量的超时和锁争用的问题。</li>
 </ol>
-<h2 id="四、死锁"><a href="#四、死锁" class="headerlink" title="四、死锁"></a>四、死锁</h2><p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;死锁是指两个事务或者多个事务在同一资源的相互占用，并请求锁定对方占用的资源，从而导致恶性循环的现象。当多个事务试图以不同的顺序锁定资源时，就可能会产生死锁。</p>
+<h2 id="四、死锁"><a href="#四、死锁" class="headerlink" title="四、死锁"></a>四、死锁</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;死锁是指两个事务或者多个事务在同一资源的相互占用，并请求锁定对方占用的资源，从而导致恶性循环的现象。当多个事务试图以不同的顺序锁定资源时，就可能会产生死锁。</p>
 <ol>
 <li>锁等待超时 <code>innodb_lock_wait_timeout</code></li>
 <li>主动死锁检测 <code>innodb_deadlock_detect</code></li>
 </ol>
 <h2 id="五、两阶段提交"><a href="#五、两阶段提交" class="headerlink" title="五、两阶段提交"></a>五、两阶段提交</h2><ol>
-<li>写一条更新语句：<code>update student set name = &#39;张三&#39; where id = 2;</code></li>
+<li>写一条更新语句：<code>update student set name = '张三' where id = 2;</code></li>
 <li>执行流程<ul>
 <li>第一步，执行器先找引擎取<code>id=2</code>这一行。其中<code>id</code>是主键，引擎直接用树搜索找到这一行。如果<code>id=2</code>这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</li>
 <li>第二步，执行器拿到引擎给的行数据，把<code>name</code>值更新成张三得到新的一行数据，再调用引擎接口写入这行新数据。</li>
@@ -459,7 +461,7 @@
 <li>GTID的全称是<code>Global Transaction Identifier</code>，也就是全局事务ID，是一个事务在提交的时候生成的，是这个事务的唯一标识。</li>
 <li>它由两部分组成，格式是：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GTID=server_uuid:gno</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GTID=server_uuid:gno</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>server_uuid 是一个实例第一次启动时自动生成的，是一个全局唯一的值；</li>
@@ -495,7 +497,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="二、事务隔离级别"><a href="#二、事务隔离级别" class="headerlink" title="二、事务隔离级别"></a><center><font color=red>二、事务隔离级别</font></center></h1><h2 id="一、事务隔离级别"><a href="#一、事务隔离级别" class="headerlink" title="一、事务隔离级别"></a>一、事务隔离级别</h2><ol>
+<h1 id="二、事务隔离级别"><a href="#二、事务隔离级别" class="headerlink" title="二、事务隔离级别"></a><center><font color="red">二、事务隔离级别</font></center></h1><h2 id="一、事务隔离级别"><a href="#一、事务隔离级别" class="headerlink" title="一、事务隔离级别"></a>一、事务隔离级别</h2><ol>
 <li><p>READ UNCOMMITTED(读未提交)：解决更新丢失问题。如果一个事务已经开始写操作，那么其他事务则不允许同时进行写操作，但允许其他事务读此行数据。该隔离级别可以通过“排他写锁”实现，即事务需要对某些数据进行修改必须对这些数据加X锁，读数据不需要加S锁。</p>
 <ul>
 <li>当前事务中的修改即使没有提交，对其他事务也是可见的，会产生脏读现象</li>
@@ -534,7 +536,7 @@
 <blockquote>
 <p>demo</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     |   100.00 |</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     |   100.00 |</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <blockquote>
@@ -545,13 +547,13 @@
 <li><p>开两个客户端A和B，分别设置<code>set transaction isolation level read uncommitted;</code></p>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端B</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line">此事务未提交，去客户端A</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line">此事务未提交，去客户端A</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">|  10.00 |</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">|  10.00 |</span><br><span class="line">+-------+</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -564,13 +566,13 @@
 <li><p>开两个客户端A和B，分别设置<code>set transaction isolation level read committed;</code></p>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端B</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line"></span><br><span class="line">// 此事务未提交，去客户端A</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line"></span><br><span class="line">// 此事务未提交，去客户端A</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 100.00|</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 100.00|</span><br><span class="line">+-------+</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端B</p>
 <ul>
@@ -578,7 +580,7 @@
 </ul>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 10.00 |</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 10.00 |</span><br><span class="line">+-------+</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -591,13 +593,13 @@
 <li><p>开两个客户端A和B，分别设置<code>set transaction isolation level repeatable read;</code></p>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端B</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line"></span><br><span class="line">// 此事务未提交，去客户端A</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line"></span><br><span class="line">// 此事务未提交，去客户端A</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 100.00|</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 100.00|</span><br><span class="line">+-------+</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端B</p>
 <ul>
@@ -605,7 +607,7 @@
 </ul>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 100.00|</span><br><span class="line">+-------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select score from student where id = 1;</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| score |</span><br><span class="line">+-------+</span><br><span class="line">| 100.00|</span><br><span class="line">+-------+</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -618,10 +620,10 @@
 <li><p>开两个客户端A和B，分别设置<code>set transaction isolation level serializable;</code></p>
 </li>
 <li><p>客户端A</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br><span class="line"></span><br><span class="line">update student set score = 88 where id = 1;</span><br><span class="line"></span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 88.00 |    </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br><span class="line"></span><br><span class="line">update student set score = 88 where id = 1;</span><br><span class="line"></span><br><span class="line">select score from student where id = 1; </span><br><span class="line"></span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 88.00 |    </span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>客户端B</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"> </span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line"></span><br><span class="line">ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">begin；</span><br><span class="line">select score from student where id = 1; </span><br><span class="line"> </span><br><span class="line">+--------+</span><br><span class="line">| score  |</span><br><span class="line">+--------+</span><br><span class="line">| 100.00 |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">update student set score = 10 where id = 1;</span><br><span class="line"></span><br><span class="line">ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -677,7 +679,7 @@
 <li><p>修改事务隔离级别为读已提交 <code>set global transaction isolation level read committed</code></p>
 </li>
 <li><p>初始化表和数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table table_phontom(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    name varchar(60) not null,</span><br><span class="line">    phone varchar(11) unsigned not null key</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">alter table table_phontom add index(phone);</span><br><span class="line"></span><br><span class="line">insert into table_phontom(name,phone) values(&#x27;tom&#x27;,&#x27;15555555555&#x27;),(&#x27;jack&#x27;,&#x27;15666666666&#x27;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table table_phontom(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    name varchar(60) not null,</span><br><span class="line">    phone varchar(11) unsigned not null key</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">alter table table_phontom add index(phone);</span><br><span class="line"></span><br><span class="line">insert into table_phontom(name,phone) values('tom','15555555555'),('jack','15666666666');</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>查询</p>
 <ul>
@@ -706,7 +708,7 @@
 </thead>
 <tbody><tr>
 <td align="center">T1</td>
-<td align="center">begin;<br/> select * from table_phontom where phone=’15555555555’;</td>
+<td align="center">begin;<br> select * from table_phontom where phone=’15555555555’;</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
@@ -752,7 +754,7 @@
 <li><p>修改事务隔离级别为可重复读<code>set global transaction isolation level repeatable read</code></p>
 </li>
 <li><p>初始化表和数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    name varchar(100) not null</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">insert into dept(name) values(&#x27;后勤部&#x27;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">    id int(11) unsigned not null primary key auto_increment,</span><br><span class="line">    name varchar(100) not null</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">insert into dept(name) values('后勤部');</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>查询开始</p>
 <ul>
@@ -773,7 +775,7 @@
 </thead>
 <tbody><tr>
 <td align="center">T1</td>
-<td align="center">begin;<br/> select * from dept;</td>
+<td align="center">begin;<br> select * from dept;</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -822,7 +824,7 @@
 </thead>
 <tbody><tr>
 <td align="center">T1</td>
-<td align="center">begin;<br/> select * from table_phontom where id=1;</td>
+<td align="center">begin;<br> select * from table_phontom where id=1;</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -846,7 +848,7 @@
 <blockquote>
 <p>幻读针对于插入操作，不可重复读针对于更新操作</p>
 </blockquote>
-<h2 id="四、一致性读"><a href="#四、一致性读" class="headerlink" title="四、一致性读"></a>四、一致性读</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `transaction_test` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `k` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB;</span><br><span class="line"></span><br><span class="line">insert into t(id, k) values(1,1),(2,2);</span><br></pre></td></tr></table></figure>
+<h2 id="四、一致性读"><a href="#四、一致性读" class="headerlink" title="四、一致性读"></a>四、一致性读</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `transaction_test` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `k` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB;</span><br><span class="line"></span><br><span class="line">insert into t(id, k) values(1,1),(2,2);</span><br></pre></td></tr></tbody></table></figure>
 
 
 <blockquote>
@@ -958,7 +960,7 @@
 <blockquote>
 <p>其实，除了 update 语句外，select 语句如果加锁，也是当前读，如：</p>
 </blockquote>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select k from t where id=1 lock in share mode;//读锁（S 锁，共享锁）</span><br><span class="line"></span><br><span class="line">select k from t where id=1 for update;//写锁（X 锁，排他锁）</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select k from t where id=1 lock in share mode;//读锁（S 锁，共享锁）</span><br><span class="line"></span><br><span class="line">select k from t where id=1 for update;//写锁（X 锁，排他锁）</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>再往前一步，假设事务 C 不是马上提交的，而是变成了下面的事务 C’，会怎么样呢？</p>
@@ -1004,7 +1006,7 @@
 <li>当前读的规则，就是要能读到所有已经提交的记录的最新值</li>
 </ol>
 <hr>
-<h1 id="三、MVCC"><a href="#三、MVCC" class="headerlink" title="三、MVCC"></a><center><font color=red>三、MVCC</font></center></h1><h2 id="一、幻读"><a href="#一、幻读" class="headerlink" title="一、幻读"></a>一、幻读</h2><ol>
+<h1 id="三、MVCC"><a href="#三、MVCC" class="headerlink" title="三、MVCC"></a><center><font color="red">三、MVCC</font></center></h1><h2 id="一、幻读"><a href="#一、幻读" class="headerlink" title="一、幻读"></a>一、幻读</h2><ol>
 <li>幻读：多次读取一个范围内的记录(包括直接查询所有记录结果或者做聚合统计)，发现结果不一致(标准档案一般指记录增多，记录的减少应该也算是幻读)。<ul>
 <li>对于幻读，MySQL的InnoDB引擎默认的RR级别已经通过MVCC自动帮我们解决了，所以在该级别下不好模拟出幻读的情况。</li>
 </ul>
@@ -1012,23 +1014,23 @@
 </ol>
 <h2 id="二、模拟幻读"><a href="#二、模拟幻读" class="headerlink" title="二、模拟幻读"></a>二、模拟幻读</h2><ol>
 <li><p>参考别人</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     |   100.00 |</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     |   100.00 |</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>开两个客户端A和B，分别设置<code>set transaction isolation level repeatable read;</code></li>
 <li>客户端B</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin;</span><br><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     |   100.00 |</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin;</span><br><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     |   100.00 |</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>客户端A</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">insert into student(id,name,hobby,score) value(2,&#x27;张三&#x27;,&#x27;吹牛&#x27;,&#x27;120&#x27;);</span><br><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     | 100.00 |</span><br><span class="line">|  2 | 张三    | 吹牛         | 120.00 |</span><br><span class="line">+----+---------+--------------+--------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">insert into student(id,name,hobby,score) value(2,'张三','吹牛','120');</span><br><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     | 100.00 |</span><br><span class="line">|  2 | 张三    | 吹牛         | 120.00 |</span><br><span class="line">+----+---------+--------------+--------+</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>客户端B</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     | 100.00   |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line"></span><br><span class="line">insert into student(id,name,hobby,score) value(2,&#x27;张三&#x27;,&#x27;吹牛&#x27;,&#x27;120&#x27;);</span><br><span class="line"></span><br><span class="line">ERROR 1062 (23000): Duplicate entry &#x27;2&#x27; for key &#x27;PRIMARY&#x27; //select时没有id为2的记录，执行插入时却提示主键重复出现幻读</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select * from student;</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">| id | name    | hobby        | score  |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line">|  1 | 尼格1   | 测试测试     | 100.00   |</span><br><span class="line">+----+---------+--------------+--------+</span><br><span class="line"></span><br><span class="line">insert into student(id,name,hobby,score) value(2,'张三','吹牛','120');</span><br><span class="line"></span><br><span class="line">ERROR 1062 (23000): Duplicate entry '2' for key 'PRIMARY' //select时没有id为2的记录，执行插入时却提示主键重复出现幻读</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
@@ -1278,7 +1280,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

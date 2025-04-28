@@ -209,6 +209,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -403,7 +405,7 @@
 <span id="more"></span>
 
 
-<h1 id="缓存DB一致性方案"><a href="#缓存DB一致性方案" class="headerlink" title="缓存DB一致性方案"></a><center><font color=red>缓存DB一致性方案</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在高并发的业务场景下，数据库大多数情况都是用户并发访问最薄弱的环节。所以，就需要使用缓存如Redis做一个缓冲操作，让请求先访问到Redis，而不是直接访问MySQL等数据库。引入缓存后，一旦涉及到数据库更新，在高并发场景下就会出现数据库和缓存不一致的情况。</p>
+<h1 id="缓存DB一致性方案"><a href="#缓存DB一致性方案" class="headerlink" title="缓存DB一致性方案"></a><center><font color="red">缓存DB一致性方案</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在高并发的业务场景下，数据库大多数情况都是用户并发访问最薄弱的环节。所以，就需要使用缓存如Redis做一个缓冲操作，让请求先访问到Redis，而不是直接访问MySQL等数据库。引入缓存后，一旦涉及到数据库更新，在高并发场景下就会出现数据库和缓存不一致的情况。</p>
 <h2 id="二、方案"><a href="#二、方案" class="headerlink" title="二、方案"></a>二、方案</h2><ol>
 <li><p>延时双删 + 过期时间</p>
 <ul>
@@ -439,8 +441,8 @@
 </li>
 </ol>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
-<h1 id="数据库中间件"><a href="#数据库中间件" class="headerlink" title="数据库中间件"></a><center><font color=red>数据库中间件</font></center></h1><h2 id="一、Canal"><a href="#一、Canal" class="headerlink" title="一、Canal"></a>一、Canal</h2><ol>
-<li>canal，发音<code>[kə&#39;næl]</code>，原意为水道/管道/沟渠等。它是阿里巴巴旗下的一款开源项目，纯Java开发，主要用途是基于MySQL数据库增量日志解析，提供增量数据订阅和消费。早期阿里巴巴因为杭州和美国双机房部署，存在跨机房同步的业务需求，实现方式主要是基于业务trigger获取增量变更。从2010年开始，业务逐步尝试数据库日志解析获取增量变更进行同步，由此衍生出了大量的数据库增量订阅和消费业务。</li>
+<h1 id="数据库中间件"><a href="#数据库中间件" class="headerlink" title="数据库中间件"></a><center><font color="red">数据库中间件</font></center></h1><h2 id="一、Canal"><a href="#一、Canal" class="headerlink" title="一、Canal"></a>一、Canal</h2><ol>
+<li>canal，发音<code>[kə'næl]</code>，原意为水道/管道/沟渠等。它是阿里巴巴旗下的一款开源项目，纯Java开发，主要用途是基于MySQL数据库增量日志解析，提供增量数据订阅和消费。早期阿里巴巴因为杭州和美国双机房部署，存在跨机房同步的业务需求，实现方式主要是基于业务trigger获取增量变更。从2010年开始，业务逐步尝试数据库日志解析获取增量变更进行同步，由此衍生出了大量的数据库增量订阅和消费业务。</li>
 </ol>
 <p><img src="canal.png" alt="canal"></p>
 <blockquote>
@@ -545,19 +547,19 @@
 </li>
 </ol>
 <hr>
-<h1 id="自增ID"><a href="#自增ID" class="headerlink" title="自增ID"></a><center><font color=red>自增ID</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
+<h1 id="自增ID"><a href="#自增ID" class="headerlink" title="自增ID"></a><center><font color="red">自增ID</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
 <li>创建测试数据库<code>show create database auto_test;</code></li>
 <li>切换数据库<code>use auto_test;</code></li>
 <li>创建测试数据表<code>create table test1(id int primary key auto_increment);</code></li>
 <li>插入测试数据</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into test1 value();</span><br><span class="line">insert into test1 value();</span><br><span class="line">insert into test1 value();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into test1 value();</span><br><span class="line">insert into test1 value();</span><br><span class="line">insert into test1 value();</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li>查看数据<code>select * from test1;</code></li>
 <li>查看自增信息<ul>
 <li>方式一：<code>show create table test1;</code></li>
-<li>方式二：<code>select * from information_schema.tables where table_schema=&#39;auto_test&#39; and table_name=&#39;test1&#39;;</code></li>
+<li>方式二：<code>select * from information_schema.tables where table_schema='auto_test' and table_name='test1';</code></li>
 </ul>
 </li>
 <li>修改自增信息<code>alter table test1 auto_increment=1000;</code></li>
@@ -577,7 +579,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a><center><font color=red>连接池</font></center></h1><ol>
+<h1 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a><center><font color="red">连接池</font></center></h1><ol>
 <li><p>定义：数据库连接池(Connection pooling)是指程序启动时建立足够的数据库连接，并将这些连接组成一个连接池，由程序动态地对连接池中的连接进行申请、使用、释放。</p>
 </li>
 <li><p>过程：数据库连接池在初始化时将创建一定数量的数据库连接放到连接池中，连接的数量是由最小数据库连接数来设定的。无论这些数据库连接是否被使用，连接池都将一直保证至少拥有这么多的连接数量。连接池的最大数据库连接数量限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。</p>
@@ -651,7 +653,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="线上数据迁移"><a href="#线上数据迁移" class="headerlink" title="线上数据迁移"></a><center><font color=red>线上数据迁移</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="线上数据迁移"><a href="#线上数据迁移" class="headerlink" title="线上数据迁移"></a><center><font color="red">线上数据迁移</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li>注意<ul>
 <li>是否停机维护</li>
 <li>选用正确的工具，方便快捷<ul>
@@ -879,7 +881,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

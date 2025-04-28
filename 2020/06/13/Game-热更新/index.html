@@ -205,6 +205,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -401,7 +403,7 @@
 <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li>关于appstore禁用热更新的通知</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Dear Developer,In March of this year we notified you that your app contains code </span><br><span class="line">designed explicitly with the capability to change your app’s behavior or </span><br><span class="line">functionality after App Store Review approval, which is not in compliance with </span><br><span class="line">section 3.3.2 of the Apple Developer Program License Agreement and App Store </span><br><span class="line">Review Guideline 2.5.2. We requested that you remove any code, frameworks, </span><br><span class="line">or SDKs that fall in line with the functionality described above before </span><br><span class="line">submitting the next update for your app for review.</span><br><span class="line">As of this message, we have not received a compliant update for your app.</span><br><span class="line">To ensure there is no interruption of the availability of your app, </span><br><span class="line">please submit an update by June 12th, 2017. If we do not receive an update </span><br><span class="line">by that date, your app may be removed from the App Store.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Dear Developer,In March of this year we notified you that your app contains code </span><br><span class="line">designed explicitly with the capability to change your app’s behavior or </span><br><span class="line">functionality after App Store Review approval, which is not in compliance with </span><br><span class="line">section 3.3.2 of the Apple Developer Program License Agreement and App Store </span><br><span class="line">Review Guideline 2.5.2. We requested that you remove any code, frameworks, </span><br><span class="line">or SDKs that fall in line with the functionality described above before </span><br><span class="line">submitting the next update for your app for review.</span><br><span class="line">As of this message, we have not received a compliant update for your app.</span><br><span class="line">To ensure there is no interruption of the availability of your app, </span><br><span class="line">please submit an update by June 12th, 2017. If we do not receive an update </span><br><span class="line">by that date, your app may be removed from the App Store.</span><br></pre></td></tr></tbody></table></figure>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;翻译过来也没太大意思，根据大部分开发者的反应以及官方的说法，appstore此次禁用的主要是几种热更新框架和技术，如dlopen、dlsym、respondingToSelector、 performSelector、method_exchangeImplementationsd、JSPatch等，做过app开发的同学应该都知道，通过远程下载的脚本使用这些函数进而改变app行为，显然与appstore的封闭、安全等理念相违背(相信这也是大部分果粉选择ios的原因)。</p>
 <blockquote>
@@ -436,43 +438,43 @@
 </blockquote>
 </blockquote>
 <h2 id="二、一次热更新过程"><a href="#二、一次热更新过程" class="headerlink" title="二、一次热更新过程"></a>二、一次热更新过程</h2><ol>
-<li>快速开发一个游戏app并编译成一个安装包(如apk)上架，我们把这种完整的安装包称为母包。为了方便描述，我们把这个母包称为<font color=red>母包1</font>，这时候的客户端版本，记作<font color=red>1.0</font>。</li>
+<li>快速开发一个游戏app并编译成一个安装包(如apk)上架，我们把这种完整的安装包称为母包。为了方便描述，我们把这个母包称为<font color="red">母包1</font>，这时候的客户端版本，记作<font color="red">1.0</font>。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4</span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4</span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>比方说我们的母包1包含了这么些东西，然后我们把这个1.0客户端给放在了应用商店，提供给用户下载使用。</p>
 </blockquote>
 <ol start="2">
-<li>游戏app的特点就是快，热门的游戏一般每周都会发版本(其中可能有bug修复、玩法升级等)。比如我们这次新加了玩法以及新手引导(修改1.mp4，增加4.lua)，客户端版本记为<font color=red>1.1</font>，包含的内容如下：</li>
+<li>游戏app的特点就是快，热门的游戏一般每周都会发版本(其中可能有bug修复、玩法升级等)。比如我们这次新加了玩法以及新手引导(修改1.mp4，增加4.lua)，客户端版本记为<font color="red">1.1</font>，包含的内容如下：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4 # 修改</span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br><span class="line">4.lua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4 # 修改</span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br><span class="line">4.lua</span><br></pre></td></tr></tbody></table></figure>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在1.0版本的基础上，修改了一个文件又增加了一个文件。这时候我们希望玩家的游戏都同步到这个新版本来，改该怎么办呢？最传统的方法就是我再编译一个安装包，扔给应用商店。但是这样做就有问题了，比如说一个安装包有10G，但是就修改了10kb的内容，每次更新完后都让玩家下载10个G的安装包，这显然是不合理的。这时候，就该补丁包出场了。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们制作了一个补丁包，它包含此次修改的文件和增加的文件，然后放在我们的服务器上。玩家进入游戏后的会自动下载这个补丁文件(具体实现不同的游戏有不同的实现方式，大体就是检查当前客户端的版本号和服务器上的版本号，通过对比差异来进行更新)，下载完成后把这两个改动的文件更新到原来的客户端中(脚本语言解释执行)，这样一来玩家手里的客户端就是今天的最新版本了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## 补丁1</span><br><span class="line">1.mp4</span><br><span class="line">4.lua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## 补丁1</span><br><span class="line">1.mp4</span><br><span class="line">4.lua</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
-<li>下周版本又修改了一些内容(增加5.lua)，版本记为<font color=red>1.2</font>，内容如下：</li>
+<li>下周版本又修改了一些内容(增加5.lua)，版本记为<font color="red">1.2</font>，内容如下：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4</span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br><span class="line">4.lua</span><br><span class="line">5.lua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4</span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br><span class="line">4.lua</span><br><span class="line">5.lua</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>现在想把这个最新版本同步更新给玩家，需要再打个补丁包叫<code>补丁2</code>，此时有两种方式</p>
 </blockquote>
 <ul>
 <li><p>方式1：把相对于<code>1.0</code>版本的所有变动内容都放在补丁2中，即<code>版本1.2 = 母包1.0 + 始终最新版本的一个补丁</code>，补丁2内容如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.mp4</span><br><span class="line">4.lua</span><br><span class="line">5.lua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.mp4</span><br><span class="line">4.lua</span><br><span class="line">5.lua</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>方式2：在补丁1(版本1.1)的基础上，制作补丁2(版本1.2)，即<code>版本1.2 = 母包1.0 + 补丁1 + 补丁2(依次)</code>，补丁2内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.lua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.lua</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
 <ol start="4">
-<li>继上个版本<font color=red>1.2</font>之后，此次没有修改任何东西但重新编译了一个安装包，记作<font color=red>母包2</font>，版本记为<font color=red>2.0</font>，包含内容如下：</li>
+<li>继上个版本<font color="red">1.2</font>之后，此次没有修改任何东西但重新编译了一个安装包，记作<font color="red">母包2</font>，版本记为<font color="red">2.0</font>，包含内容如下：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4 </span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br><span class="line">4.lua</span><br><span class="line">5.lua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## 基础部分</span><br><span class="line">a.cs</span><br><span class="line">b.cs</span><br><span class="line">c.cs</span><br><span class="line"></span><br><span class="line">## 可热更部分</span><br><span class="line">1.mp4 </span><br><span class="line">2.lua</span><br><span class="line">3.txt</span><br><span class="line">4.lua</span><br><span class="line">5.lua</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p><code>母包2</code>中的内容和<code>母包1加两补丁的1.2</code>版本的内容是一模一样的。这时候把母包2放在应用商店中给新来的用户下载，那么下载了母包2的用户打开就直接能玩了，不需要再下载补丁来更新客户端。与此同时，之前下载了我们母包1并且通过补丁更新到1.2版本的玩家，也不需要重新去下载一个母包2就可以获得一致的游戏内容。</p>
@@ -681,7 +683,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

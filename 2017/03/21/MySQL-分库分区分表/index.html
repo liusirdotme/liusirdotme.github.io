@@ -203,6 +203,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -396,7 +398,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="分库"><a href="#分库" class="headerlink" title="分库"></a><center><font color=red>分库</font></center></h1><h2 id="一、分库"><a href="#一、分库" class="headerlink" title="一、分库"></a>一、分库</h2><ol>
+<h1 id="分库"><a href="#分库" class="headerlink" title="分库"></a><center><font color="red">分库</font></center></h1><h2 id="一、分库"><a href="#一、分库" class="headerlink" title="一、分库"></a>一、分库</h2><ol>
 <li><p>show engines\G;</p>
 </li>
 <li><p>概念：把原本存储于一个库的数据分块存储到多个库(不同主机)上。</p>
@@ -425,7 +427,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="分表"><a href="#分表" class="headerlink" title="分表"></a><center><font color=red>分表</font></center></h1><h2 id="二、分表"><a href="#二、分表" class="headerlink" title="二、分表"></a>二、分表</h2><ol>
+<h1 id="分表"><a href="#分表" class="headerlink" title="分表"></a><center><font color="red">分表</font></center></h1><h2 id="二、分表"><a href="#二、分表" class="headerlink" title="二、分表"></a>二、分表</h2><ol>
 <li><p>概念：把一张表按一定的规则分解成N个具有独立存储空间的实体表。系统读写时需要根据定义好的规则得到对应的字表明，然后操作它。</p>
 </li>
 <li><p>分类</p>
@@ -463,7 +465,7 @@
 <p>分库分表存在的问题：跨库事务、连接查询、横向扩容、结果集合并、排序问题等</p>
 </blockquote>
 <hr>
-<h1 id="分区"><a href="#分区" class="headerlink" title="分区"></a><center><font color=red>分区</font></center></h1><h2 id="三、分区"><a href="#三、分区" class="headerlink" title="三、分区"></a>三、分区</h2><ol>
+<h1 id="分区"><a href="#分区" class="headerlink" title="分区"></a><center><font color="red">分区</font></center></h1><h2 id="三、分区"><a href="#三、分区" class="headerlink" title="三、分区"></a>三、分区</h2><ol>
 <li><p>概念：把一张表的数据按一定的逻辑规则分成N个区块，在逻辑上看最终只是一张表，但底层是由N个物理区块组成的。</p>
 </li>
 <li><p>分类</p>
@@ -503,7 +505,7 @@
 <blockquote>
 <p>分区和分表的区别和联系</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">•分区和分表的目的都是减少数据库的负担，提高增删改查效率。</span><br><span class="line">•分区只是一张表中的数据的存储位置发生改变，对用户来说感知不到；分表是将一张表分成多张表，用户能直接看到。</span><br><span class="line">•当访问量大且数据量都比较大时，两种方式可以互相配合使用。</span><br><span class="line">•当访问量不大但数据量较大时，可以只进行分区。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">•分区和分表的目的都是减少数据库的负担，提高增删改查效率。</span><br><span class="line">•分区只是一张表中的数据的存储位置发生改变，对用户来说感知不到；分表是将一张表分成多张表，用户能直接看到。</span><br><span class="line">•当访问量大且数据量都比较大时，两种方式可以互相配合使用。</span><br><span class="line">•当访问量不大但数据量较大时，可以只进行分区。</span><br></pre></td></tr></tbody></table></figure>
 
 
     </div>
@@ -701,7 +703,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

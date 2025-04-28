@@ -201,6 +201,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -394,7 +396,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a><center><font color=red>常用</font></center></h1><ol>
+<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a><center><font color="red">常用</font></center></h1><ol>
 <li><p>ping</p>
 <ul>
 <li>ping <a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a></li>
@@ -511,38 +513,38 @@
 </li>
 </ol>
 <hr>
-<h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a><center><font color=red>cut</font></center></h1><ol>
+<h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a><center><font color="red">cut</font></center></h1><ol>
 <li>作用：从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。</li>
 <li>语法</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">用法：cut [选项]... [文件]...</span><br><span class="line">从每个文件中输出指定部分到标准输出。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">  -b, --bytes=列表		只选中指定的这些字节</span><br><span class="line">  -c, --characters=列表		只选中指定的这些字符</span><br><span class="line">  -d, --delimiter=分界符	使用指定分界符代替制表符作为区域分界</span><br><span class="line">  -f, --fields=LIST       select only these fields;  also print any line that contains no delimiter character, unless the -s option is                      specified</span><br><span class="line">  -n                      with -b: don&#x27;t split multibyte characters</span><br><span class="line">      --complement		补全选中的字节、字符或域</span><br><span class="line">  -s, --only-delimited		不打印没有包含分界符的行</span><br><span class="line">      --output-delimiter=字符串	使用指定的字符串作为输出分界符，默认采用输入</span><br><span class="line">				的分界符</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br><span class="line"></span><br><span class="line">仅使用f -b, -c 或-f 中的一个。每一个列表都是专门为一个类别作出的，或者您可以用逗号隔开要同时显示的不同类别。您的输入顺序将作为读取顺序，每个仅能输入一次。</span><br><span class="line"></span><br><span class="line">每种参数格式表示范围如下：</span><br><span class="line">N	从第1 个开始数的第N 个字节、字符或域</span><br><span class="line">N-	从第N 个开始到所在行结束的所有字符、字节或域</span><br><span class="line">N-M	从第N 个开始到第M 个之间(包括第M 个)的所有字符、字节或域</span><br><span class="line">-M	从第1 个开始到第M 个之间(包括第M 个)的所有字符、字节或域</span><br><span class="line"></span><br><span class="line">当没有文件参数，或者文件不存在时，从标准输入读取</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">用法：cut [选项]... [文件]...</span><br><span class="line">从每个文件中输出指定部分到标准输出。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">  -b, --bytes=列表		只选中指定的这些字节</span><br><span class="line">  -c, --characters=列表		只选中指定的这些字符</span><br><span class="line">  -d, --delimiter=分界符	使用指定分界符代替制表符作为区域分界</span><br><span class="line">  -f, --fields=LIST       select only these fields;  also print any line that contains no delimiter character, unless the -s option is                      specified</span><br><span class="line">  -n                      with -b: don't split multibyte characters</span><br><span class="line">      --complement		补全选中的字节、字符或域</span><br><span class="line">  -s, --only-delimited		不打印没有包含分界符的行</span><br><span class="line">      --output-delimiter=字符串	使用指定的字符串作为输出分界符，默认采用输入</span><br><span class="line">				的分界符</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br><span class="line"></span><br><span class="line">仅使用f -b, -c 或-f 中的一个。每一个列表都是专门为一个类别作出的，或者您可以用逗号隔开要同时显示的不同类别。您的输入顺序将作为读取顺序，每个仅能输入一次。</span><br><span class="line"></span><br><span class="line">每种参数格式表示范围如下：</span><br><span class="line">N	从第1 个开始数的第N 个字节、字符或域</span><br><span class="line">N-	从第N 个开始到所在行结束的所有字符、字节或域</span><br><span class="line">N-M	从第N 个开始到第M 个之间(包括第M 个)的所有字符、字节或域</span><br><span class="line">-M	从第1 个开始到第M 个之间(包括第M 个)的所有字符、字节或域</span><br><span class="line"></span><br><span class="line">当没有文件参数，或者文件不存在时，从标准输入读取</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>准备文件a.json</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">id name age addr</span><br><span class="line">1 liu 10 bj</span><br><span class="line">2 ma 11 sh</span><br><span class="line">3 li 10 tj</span><br><span class="line">4 zhang 11 sz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">id name age addr</span><br><span class="line">1 liu 10 bj</span><br><span class="line">2 ma 11 sh</span><br><span class="line">3 li 10 tj</span><br><span class="line">4 zhang 11 sz</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li><p>使用</p>
 <ul>
-<li><code>cut -d &#39; &#39; -f3,4 a.txt</code></li>
+<li><code>cut -d ' ' -f3,4 a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">age addr</span><br><span class="line">10 bj</span><br><span class="line">11 sh</span><br><span class="line">10 tj</span><br><span class="line">11 sz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">age addr</span><br><span class="line">10 bj</span><br><span class="line">11 sh</span><br><span class="line">10 tj</span><br><span class="line">11 sz</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>cut -b1 a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>cut -c -2 a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">id</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">id</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>cut -c 2- a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d name age addr</span><br><span class="line"> liu 10 bj</span><br><span class="line"> ma 11 sh</span><br><span class="line"> li 10 tj</span><br><span class="line"> zhang 11 sz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d name age addr</span><br><span class="line"> liu 10 bj</span><br><span class="line"> ma 11 sh</span><br><span class="line"> li 10 tj</span><br><span class="line"> zhang 11 sz</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
@@ -550,120 +552,120 @@
 <p>cut只允许间隔符是一个字符</p>
 </blockquote>
 <hr>
-<h1 id="sort"><a href="#sort" class="headerlink" title="sort"></a><center><font color=red>sort</font></center></h1><ol>
+<h1 id="sort"><a href="#sort" class="headerlink" title="sort"></a><center><font color="red">sort</font></center></h1><ol>
 <li>作用：将文件的每一行作为一个单位相互比较，比较原则是从首字符向后依次按ASCII码值进行比较，最后将他们按升序输出。</li>
 <li>语法</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">sort [选项]... [文件]...</span><br><span class="line">或：</span><br><span class="line">sort [选项]... --files0-from=F</span><br><span class="line">串联排序所有指定文件并将结果写到标准输出。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">排序选项：</span><br><span class="line"></span><br><span class="line">  -b, --ignore-leading-blanks	忽略前导的空白区域</span><br><span class="line">  -d, --dictionary-order	只考虑空白区域和字母字符</span><br><span class="line">  -f, --ignore-case		忽略字母大小写</span><br><span class="line">  -g, --general-numeric-sort	按照常规数值排序</span><br><span class="line">  -i, --ignore-nonprinting	只排序可打印字符</span><br><span class="line">  -M, --month-sort		比较 (未知) &lt; &quot;一月&quot; &lt; ... &lt; &quot;十二月&quot;在LC_ALL=C 时为(unknown) &lt; `JAN&#x27; &lt; ... &lt; `DEC&#x27;</span><br><span class="line">  -h, --human-numeric-sort    使用易读性数字(例如： 2K 1G)</span><br><span class="line">  -n, --numeric-sort		根据字符串数值比较</span><br><span class="line">  -R, --random-sort		根据随机hash 排序</span><br><span class="line">      --random-source=文件	从指定文件中获得随机字节</span><br><span class="line">  -r, --reverse			逆序输出排序结果</span><br><span class="line">      --sort=WORD		按照WORD 指定的格式排序：一般数字-g，高可读性-h，月份-M，数字-n，随机-R，版本-V</span><br><span class="line">  -V, --version-sort		在文本内进行自然版本排序</span><br><span class="line"></span><br><span class="line">其他选项：</span><br><span class="line"></span><br><span class="line">      --batch-size=NMERGE	一次最多合并NMERGE 个输入；如果输入更多则使用临时文件</span><br><span class="line">  -c, --check, --check=diagnose-first	检查输入是否已排序，若已有序则不进行操作</span><br><span class="line">  -C, --check=quiet, --check=silent	类似-c，但不报告第一个无序行</span><br><span class="line">      --compress-program=程序	使用指定程序压缩临时文件；使用该程序的-d 参数解压缩文件</span><br><span class="line">      --files0-from=文件	从指定文件读取以NUL 终止的名称，如果该文件被指定为&quot;-&quot;则从标准输入读文件名</span><br><span class="line">  -k, --key=位置1[,位置2]	在位置1 开始一个key，在位置2 终止(默认为行尾)</span><br><span class="line">  -m, --merge			合并已排序的文件，不再进行排序</span><br><span class="line">  -o, --output=文件		将结果写入到文件而非标准输出</span><br><span class="line">  -s, --stable			禁用last-resort 比较以稳定比较算法</span><br><span class="line">  -S, --buffer-size=大小	指定主内存缓存大小</span><br><span class="line">  -t, --field-separator=分隔符	使用指定的分隔符代替非空格到空格的转换</span><br><span class="line">  -T, --temporary-directory=目录	使用指定目录而非$TMPDIR 或/tmp 作为临时目录，可用多个选项指定多个目录</span><br><span class="line">  -u, --unique		配合-c，严格校验排序；不配合-c，则只输出一次排序结果</span><br><span class="line">  -z, --zero-terminated	以0 字节而非新行作为行尾标志</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">sort [选项]... [文件]...</span><br><span class="line">或：</span><br><span class="line">sort [选项]... --files0-from=F</span><br><span class="line">串联排序所有指定文件并将结果写到标准输出。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">排序选项：</span><br><span class="line"></span><br><span class="line">  -b, --ignore-leading-blanks	忽略前导的空白区域</span><br><span class="line">  -d, --dictionary-order	只考虑空白区域和字母字符</span><br><span class="line">  -f, --ignore-case		忽略字母大小写</span><br><span class="line">  -g, --general-numeric-sort	按照常规数值排序</span><br><span class="line">  -i, --ignore-nonprinting	只排序可打印字符</span><br><span class="line">  -M, --month-sort		比较 (未知) &lt; "一月" &lt; ... &lt; "十二月"在LC_ALL=C 时为(unknown) &lt; `JAN' &lt; ... &lt; `DEC'</span><br><span class="line">  -h, --human-numeric-sort    使用易读性数字(例如： 2K 1G)</span><br><span class="line">  -n, --numeric-sort		根据字符串数值比较</span><br><span class="line">  -R, --random-sort		根据随机hash 排序</span><br><span class="line">      --random-source=文件	从指定文件中获得随机字节</span><br><span class="line">  -r, --reverse			逆序输出排序结果</span><br><span class="line">      --sort=WORD		按照WORD 指定的格式排序：一般数字-g，高可读性-h，月份-M，数字-n，随机-R，版本-V</span><br><span class="line">  -V, --version-sort		在文本内进行自然版本排序</span><br><span class="line"></span><br><span class="line">其他选项：</span><br><span class="line"></span><br><span class="line">      --batch-size=NMERGE	一次最多合并NMERGE 个输入；如果输入更多则使用临时文件</span><br><span class="line">  -c, --check, --check=diagnose-first	检查输入是否已排序，若已有序则不进行操作</span><br><span class="line">  -C, --check=quiet, --check=silent	类似-c，但不报告第一个无序行</span><br><span class="line">      --compress-program=程序	使用指定程序压缩临时文件；使用该程序的-d 参数解压缩文件</span><br><span class="line">      --files0-from=文件	从指定文件读取以NUL 终止的名称，如果该文件被指定为"-"则从标准输入读文件名</span><br><span class="line">  -k, --key=位置1[,位置2]	在位置1 开始一个key，在位置2 终止(默认为行尾)</span><br><span class="line">  -m, --merge			合并已排序的文件，不再进行排序</span><br><span class="line">  -o, --output=文件		将结果写入到文件而非标准输出</span><br><span class="line">  -s, --stable			禁用last-resort 比较以稳定比较算法</span><br><span class="line">  -S, --buffer-size=大小	指定主内存缓存大小</span><br><span class="line">  -t, --field-separator=分隔符	使用指定的分隔符代替非空格到空格的转换</span><br><span class="line">  -T, --temporary-directory=目录	使用指定目录而非$TMPDIR 或/tmp 作为临时目录，可用多个选项指定多个目录</span><br><span class="line">  -u, --unique		配合-c，严格校验排序；不配合-c，则只输出一次排序结果</span><br><span class="line">  -z, --zero-terminated	以0 字节而非新行作为行尾标志</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>准备文件a.txt</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">ddd</span><br><span class="line">bbb</span><br><span class="line">aaa</span><br><span class="line">fff</span><br><span class="line">ccc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">ddd</span><br><span class="line">bbb</span><br><span class="line">aaa</span><br><span class="line">fff</span><br><span class="line">ccc</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li><p>使用</p>
 <ul>
 <li><code>sort a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">fff</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">fff</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>sort -u a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">fff</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br><span class="line">fff</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>sort -ru a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fff</span><br><span class="line">ddd</span><br><span class="line">ccc</span><br><span class="line">bbb</span><br><span class="line">aaa</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fff</span><br><span class="line">ddd</span><br><span class="line">ccc</span><br><span class="line">bbb</span><br><span class="line">aaa</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
 <blockquote>
 <p>准备a.txt</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">11</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">11</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p><code>sort a.txt</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">11</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">11</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p><code>sort -n a.txt</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">5</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">11</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
 <blockquote>
 <p>准备文件a.txt</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p><code>sort a.txt</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa:10:3</span><br><span class="line">bbb:30:2</span><br><span class="line">ccc:20:4</span><br><span class="line">ddd:1:3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa:10:3</span><br><span class="line">bbb:30:2</span><br><span class="line">ccc:20:4</span><br><span class="line">ddd:1:3</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><code>sort -n -k2 -t &#39;:&#39; a.txt</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ddd:1:3</span><br><span class="line">aaa:10:3</span><br><span class="line">ccc:20:4</span><br><span class="line">bbb:30:2</span><br></pre></td></tr></table></figure>
+<li><p><code>sort -n -k2 -t ':' a.txt</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ddd:1:3</span><br><span class="line">aaa:10:3</span><br><span class="line">ccc:20:4</span><br><span class="line">bbb:30:2</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
 <hr>
-<h1 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a><center><font color=red>uniq</font></center></h1><ol>
+<h1 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a><center><font color="red">uniq</font></center></h1><ol>
 <li>作用：将输入文件(或标准输入)中邻近的重复行写入到输出文件(或标准输出)中。</li>
 <li>语法</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">uniq [选项]... [文件]</span><br><span class="line">从输入文件或者标准输入中筛选相邻的匹配行并写入到输出文件或标准输出。</span><br><span class="line"></span><br><span class="line">不附加任何选项时匹配行将在首次出现处被合并。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">  -c, --count		在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">  -d, --repeated	只输出重复的行</span><br><span class="line">  -D, --all-repeated[=delimit-method	显示所有重复的行</span><br><span class="line">			delimit-method=&#123;none(default),prepend,separate&#125;</span><br><span class="line">			以空行为界限</span><br><span class="line">  -f, --skip-fields=N	比较时跳过前N 列</span><br><span class="line">  -i, --ignore-case	在比较的时候不区分大小写</span><br><span class="line">  -s, --skip-chars=N	比较时跳过前N 个字符</span><br><span class="line">  -u, --unique		只显示唯一的行</span><br><span class="line">  -z, --zero-terminated	使用&#x27;\0&#x27;作为行结束符，而不是新换行</span><br><span class="line">  -w, --check-chars=N	对每行第N 个字符以后的内容不作对照</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">uniq [选项]... [文件]</span><br><span class="line">从输入文件或者标准输入中筛选相邻的匹配行并写入到输出文件或标准输出。</span><br><span class="line"></span><br><span class="line">不附加任何选项时匹配行将在首次出现处被合并。</span><br><span class="line"></span><br><span class="line">长选项必须使用的参数对于短选项时也是必需使用的。</span><br><span class="line">  -c, --count		在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">  -d, --repeated	只输出重复的行</span><br><span class="line">  -D, --all-repeated[=delimit-method	显示所有重复的行</span><br><span class="line">			delimit-method={none(default),prepend,separate}</span><br><span class="line">			以空行为界限</span><br><span class="line">  -f, --skip-fields=N	比较时跳过前N 列</span><br><span class="line">  -i, --ignore-case	在比较的时候不区分大小写</span><br><span class="line">  -s, --skip-chars=N	比较时跳过前N 个字符</span><br><span class="line">  -u, --unique		只显示唯一的行</span><br><span class="line">  -z, --zero-terminated	使用'\0'作为行结束符，而不是新换行</span><br><span class="line">  -w, --check-chars=N	对每行第N 个字符以后的内容不作对照</span><br><span class="line">      --help		显示此帮助信息并退出</span><br><span class="line">      --version		显示版本信息并退出</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>准备文件a.txt</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li><p>使用1</p>
 <ul>
 <li><code>uniq a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br><span class="line">ccc:20:4</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>sort a.txt | uniq</code>，等同于<code>sort -u a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa:10:3</span><br><span class="line">bbb:30:2</span><br><span class="line">ccc:20:4</span><br><span class="line">ddd:1:3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa:10:3</span><br><span class="line">bbb:30:2</span><br><span class="line">ccc:20:4</span><br><span class="line">ddd:1:3</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>uniq -u a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bbb:30:2</span><br><span class="line">aaa:10:3</span><br><span class="line">ddd:1:3</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>uniq -c a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 bbb:30:2</span><br><span class="line">1 aaa:10:3</span><br><span class="line">1 ddd:1:3</span><br><span class="line">2 ccc:20:4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 bbb:30:2</span><br><span class="line">1 aaa:10:3</span><br><span class="line">1 ddd:1:3</span><br><span class="line">2 ccc:20:4</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>uniq -d a.txt</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ccc:20:4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ccc:20:4</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>使用2 </p>
 <ul>
 <li>test.txt</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">this is a test</span><br><span class="line">this is a test</span><br><span class="line">this is a test</span><br><span class="line">this is a Test  </span><br><span class="line">i am tank</span><br><span class="line">i love tank</span><br><span class="line">i love tank</span><br><span class="line">this is a test </span><br><span class="line">whom have a try  </span><br><span class="line">WhoM have a try  </span><br><span class="line">you  have a try  </span><br><span class="line">i want to abroad  </span><br><span class="line">those are good men  </span><br><span class="line">we are good men</span><br><span class="line">this is a test</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">this is a test</span><br><span class="line">this is a test</span><br><span class="line">this is a test</span><br><span class="line">this is a Test  </span><br><span class="line">i am tank</span><br><span class="line">i love tank</span><br><span class="line">i love tank</span><br><span class="line">this is a test </span><br><span class="line">whom have a try  </span><br><span class="line">WhoM have a try  </span><br><span class="line">you  have a try  </span><br><span class="line">i want to abroad  </span><br><span class="line">those are good men  </span><br><span class="line">we are good men</span><br><span class="line">this is a test</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>测试</p>
 <ul>
 <li>去除相邻重复的行并统计输出重复的次数 uniq -c test.txt</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">3 this is a test</span><br><span class="line">1 this is a Test</span><br><span class="line">1 i am tank</span><br><span class="line">2 i love tank</span><br><span class="line">1 this is a test</span><br><span class="line">1 whom have a try</span><br><span class="line">1 WhoM have a try</span><br><span class="line">1 you  have a try</span><br><span class="line">1 i want to abroad</span><br><span class="line">1 those are good men</span><br><span class="line">1 we are good men</span><br><span class="line">1 this is a test</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">3 this is a test</span><br><span class="line">1 this is a Test</span><br><span class="line">1 i am tank</span><br><span class="line">2 i love tank</span><br><span class="line">1 this is a test</span><br><span class="line">1 whom have a try</span><br><span class="line">1 WhoM have a try</span><br><span class="line">1 you  have a try</span><br><span class="line">1 i want to abroad</span><br><span class="line">1 those are good men</span><br><span class="line">1 we are good men</span><br><span class="line">1 this is a test</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>去除文本重复的行并统计输出重复的次数 sort test.txt | uniq -c</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1 i am tank</span><br><span class="line">2 i love tank</span><br><span class="line">1 i want to abroad</span><br><span class="line">5 this is a test</span><br><span class="line">1 this is a Test</span><br><span class="line">1 those are good men</span><br><span class="line">1 we are good men</span><br><span class="line">1 whom have a try</span><br><span class="line">1 WhoM have a try</span><br><span class="line">1 you  have a try</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1 i am tank</span><br><span class="line">2 i love tank</span><br><span class="line">1 i want to abroad</span><br><span class="line">5 this is a test</span><br><span class="line">1 this is a Test</span><br><span class="line">1 those are good men</span><br><span class="line">1 we are good men</span><br><span class="line">1 whom have a try</span><br><span class="line">1 WhoM have a try</span><br><span class="line">1 you  have a try</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -673,7 +675,7 @@
 <p>uniq只检测邻近的行是否重复，<code>sort -u</code>将输入文件先排序然后再处理重复行。</p>
 </blockquote>
 <hr>
-<h1 id="find"><a href="#find" class="headerlink" title="find"></a><center><font color=red>find</font></center></h1><ol>
+<h1 id="find"><a href="#find" class="headerlink" title="find"></a><center><font color="red">find</font></center></h1><ol>
 <li><p>find: paths must precede expression，多文件的查找的时候需要增加单引号</p>
 </li>
 <li><p>使用</p>
@@ -682,7 +684,7 @@
 <li>查找当前路径下文件大小大于800M的文件:<code>find . -type f -size +800M</code></li>
 <li><code>find . -type f -size +20M -print0 | xargs -0 ls -l --block-size=m</code></li>
 <li><code>find . -type f -size +20M -print0 | xargs -0 du -h | sort -nr</code></li>
-<li>查找黄金 <code>find ./ -type f -name &quot;*.csv&quot; | xargs grep &quot;gold&quot;</code></li>
+<li>查找黄金 <code>find ./ -type f -name "*.csv" | xargs grep "gold"</code></li>
 </ul>
 </li>
 <li><p>参考</p>
@@ -693,7 +695,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a><center><font color=red>scp</font></center></h1><ol>
+<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a><center><font color="red">scp</font></center></h1><ol>
 <li>scp命令用于Linux之间复制文件和目录<ul>
 <li>secure copy的缩写</li>
 <li>Linux系统下基于ssh登陆进行安全的远程文件拷贝命令</li>
@@ -800,7 +802,7 @@
 <p>在本地使用此命令从服务器拷贝文件到本次目录，需要退出已登录的服务器</p>
 </blockquote>
 <hr>
-<h1 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a><center><font color=red>xargs</font></center></h1><ol>
+<h1 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a><center><font color="red">xargs</font></center></h1><ol>
 <li><p>介绍<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xargs是给命令传递参数的一个过滤器，也是组合多个命令的一个工具。它可以将管道或标准输入(stdin)数据转换成命令行参数，也能够从文件的输出中读取数据，还可以将单行或多行文本输入转换为其他格式，例如多行变单行，单行变多行。</p>
 <ul>
 <li>xargs默认的命令是echo，这意味着通过管道传递给xargs的输入将会包含换行和空白，不过通过xargs的处理换行和空白将被空格取代。</li>
@@ -812,23 +814,23 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /Users/your_name/Desktop/xargs</span><br><span class="line">cd /Users/your_name/Desktop/xargs</span><br><span class="line">touch 1.txt 2.txt 3.txt 4.txt</span><br><span class="line">cd ~ # 这一步很重要，如果还是在当前目录操作，差异不是那么明显</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /Users/your_name/Desktop/xargs</span><br><span class="line">cd /Users/your_name/Desktop/xargs</span><br><span class="line">touch 1.txt 2.txt 3.txt 4.txt</span><br><span class="line">cd ~ # 这一步很重要，如果还是在当前目录操作，差异不是那么明显</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>命令对比</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name &#x27;*.txt&#x27; | ls -l</span><br><span class="line"></span><br><span class="line">-rwxrwxrwx    1 playcrab  staff      11 11 18 17:11 README.md</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff    3162 11 25 14:51 _config.yml</span><br><span class="line">-rw-r--r--    1 playcrab  staff     174  3  8 01:03 db.json</span><br><span class="line">drwxrwxrwx  320 playcrab  staff   10240 11 25 15:10 node_modules</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff  145778 11 25 15:10 package-lock.json</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     749 11 25 15:10 package.json</span><br><span class="line">drwxr-xr-x   18 playcrab  staff     576 11 25 15:08 public</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     194 11 25 13:57 release.sh</span><br><span class="line">drwxrwxrwx    5 playcrab  staff     160 11 18 17:11 scaffolds</span><br><span class="line">drwxrwxrwx    9 playcrab  staff     288 11 18 17:18 source</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name '*.txt' | ls -l</span><br><span class="line"></span><br><span class="line">-rwxrwxrwx    1 playcrab  staff      11 11 18 17:11 README.md</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff    3162 11 25 14:51 _config.yml</span><br><span class="line">-rw-r--r--    1 playcrab  staff     174  3  8 01:03 db.json</span><br><span class="line">drwxrwxrwx  320 playcrab  staff   10240 11 25 15:10 node_modules</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff  145778 11 25 15:10 package-lock.json</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     749 11 25 15:10 package.json</span><br><span class="line">drwxr-xr-x   18 playcrab  staff     576 11 25 15:08 public</span><br><span class="line">-rwxrwxrwx    1 playcrab  staff     194 11 25 13:57 release.sh</span><br><span class="line">drwxrwxrwx    5 playcrab  staff     160 11 18 17:11 scaffolds</span><br><span class="line">drwxrwxrwx    9 playcrab  staff     288 11 18 17:18 source</span><br></pre></td></tr></tbody></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name &#x27;*.txt&#x27; | xargs ls -l</span><br><span class="line"></span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/1.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/2.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/3.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/t.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find /Users/your_name/Desktop/xargs -name '*.txt' | xargs ls -l</span><br><span class="line"></span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/1.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/2.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/3.txt</span><br><span class="line">-rw-r--r--  1 playcrab  staff  0  3 12 00:03 /Users/playcrab/Desktop/xargs/t.txt</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
-<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a><center><font color=red>管道</font></center></h1><ol>
+<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a><center><font color="red">管道</font></center></h1><ol>
 <li><p>概念<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在类Unix操作系统(以及一些其他借用了这个设计的操作系统，如Windows)中，管道(英语：Pipeline)是一系列将标准输入输出链接起来的进程，其中每一个进程的输出被直接作为下一个进程的输入。 每一个链接都由匿名管道实现。管道中的组成元素也被称作过滤程序。这个概念是由道格拉斯·麦克罗伊为Unix 命令行发明的，因与物理上的管道相似而得名。</p>
 </li>
 <li><p>使用</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkfifo test</span><br><span class="line">echo 123 &gt; test</span><br><span class="line">cat &lt; test </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkfifo test</span><br><span class="line">echo 123 &gt; test</span><br><span class="line">cat &lt; test </span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>如果想将一个命令或文件的内容作为另一个命令的参数而不是输入，管道线是不能实现的，三种常见的解决办法是：</p>
@@ -840,18 +842,18 @@
 <li><a target="_blank" rel="noopener" href="http://cn.linux.vbird.org/">参考</a></li>
 </ol>
 <hr>
-<h1 id="top"><a href="#top" class="headerlink" title="top"></a><center><font color=red>top</font></center></h1><blockquote>
+<h1 id="top"><a href="#top" class="headerlink" title="top"></a><center><font color="red">top</font></center></h1><blockquote>
 <p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器(以下所有实验均基于CentOS6.2版本)。</p>
 </blockquote>
 <ol>
 <li>top -h</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -hv | -abcHimMsS -d delay -n iterations [-u user | -U user] -p pid [,pid ...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -hv | -abcHimMsS -d delay -n iterations [-u user | -U user] -p pid [,pid ...]</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>常用</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top   //每隔5秒显式所有进程的资源占用情况</span><br><span class="line">top -d 2  //每隔2秒显式所有进程的资源占用情况</span><br><span class="line">top -c  //每隔5秒显式进程的资源占用情况，并显示进程的命令行参数(默认只有进程名)</span><br><span class="line">top -p 12345 -p 6789//每隔5秒显示pid是12345和pid是6789的两个进程的资源占用情况</span><br><span class="line">top -d 2 -c -p 123456 //每隔2秒显示pid是12345的进程的资源使用情况，并显式该进程启动的命令行参数</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top   //每隔5秒显式所有进程的资源占用情况</span><br><span class="line">top -d 2  //每隔2秒显式所有进程的资源占用情况</span><br><span class="line">top -c  //每隔5秒显式进程的资源占用情况，并显示进程的命令行参数(默认只有进程名)</span><br><span class="line">top -p 12345 -p 6789//每隔5秒显示pid是12345和pid是6789的两个进程的资源占用情况</span><br><span class="line">top -d 2 -c -p 123456 //每隔2秒显示pid是12345的进程的资源使用情况，并显式该进程启动的命令行参数</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>默认情况下仅PID、USER、PR、NI、VIRT、RES、SHR、S、%CPU、%MEM、TIME+、COMMAND列，可通过输入相应参数</p>
@@ -866,7 +868,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top - 20:14:08 up 1570 days,  9:16,  2 users,  load average: 0.25, 0.22, 0.27</span><br><span class="line">Tasks: 331 total,   3 running, 327 sleeping,   0 stopped,   1 zombie</span><br><span class="line">Cpu(s):  4.3%us,  3.1%sy,  0.0%ni, 92.2%id,  0.1%wa,  0.0%hi,  0.3%si,  0.0%st</span><br><span class="line">Mem:  16331772k total, 16135152k used,   196620k free,   784104k buffers</span><br><span class="line">Swap:        0k total,        0k used,        0k free,  7094008k cached</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top - 20:14:08 up 1570 days,  9:16,  2 users,  load average: 0.25, 0.22, 0.27</span><br><span class="line">Tasks: 331 total,   3 running, 327 sleeping,   0 stopped,   1 zombie</span><br><span class="line">Cpu(s):  4.3%us,  3.1%sy,  0.0%ni, 92.2%id,  0.1%wa,  0.0%hi,  0.3%si,  0.0%st</span><br><span class="line">Mem:  16331772k total, 16135152k used,   196620k free,   784104k buffers</span><br><span class="line">Swap:        0k total,        0k used,        0k free,  7094008k cached</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>前五行是系统整体的统计信息。</p>
@@ -874,40 +876,40 @@
 <p>第一行是任务队列信息，同<code>uptime</code>命令的执行结果，其内容如下：</p>
 </blockquote>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">20:14:08 #当前时间</span><br><span class="line">up 1570 days, 9:16, #系统运行时间，格式为 天，时:分  </span><br><span class="line">2 users, #当前登录用户数</span><br><span class="line">load average: 0.25, 0.22, 0.27 # 系统负载，即任务队列的平均长度。三个数值分别为 1分钟、5分钟、15分钟前到现在的平均值。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">20:14:08 #当前时间</span><br><span class="line">up 1570 days, 9:16, #系统运行时间，格式为 天，时:分  </span><br><span class="line">2 users, #当前登录用户数</span><br><span class="line">load average: 0.25, 0.22, 0.27 # 系统负载，即任务队列的平均长度。三个数值分别为 1分钟、5分钟、15分钟前到现在的平均值。</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <blockquote>
 <p>第二为进程信息：</p>
 </blockquote>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">total 进程总数</span><br><span class="line">running 正在运行的进程数</span><br><span class="line">sleeping 睡眠的进程数</span><br><span class="line">stopped 停止的进程数</span><br><span class="line">zombie 僵尸进程数</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">total 进程总数</span><br><span class="line">running 正在运行的进程数</span><br><span class="line">sleeping 睡眠的进程数</span><br><span class="line">stopped 停止的进程数</span><br><span class="line">zombie 僵尸进程数</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <blockquote>
 <p>第三行为CPU信息：</p>
 </blockquote>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0.3% us 用户空间占用CPU百分比</span><br><span class="line">1.0% sy 内核空间占用CPU百分比</span><br><span class="line">0.0% ni 用户进程空间内改变过优先级的进程占用CPU百分比</span><br><span class="line">98.7% id 空闲CPU百分比</span><br><span class="line">0.0% wa 等待输入输出的CPU时间百分比</span><br><span class="line">0.0%hi：硬中断占用百分比</span><br><span class="line">0.0%si：软中断占用百分比</span><br><span class="line">0.0%st：虚拟机占用百分比</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0.3% us 用户空间占用CPU百分比</span><br><span class="line">1.0% sy 内核空间占用CPU百分比</span><br><span class="line">0.0% ni 用户进程空间内改变过优先级的进程占用CPU百分比</span><br><span class="line">98.7% id 空闲CPU百分比</span><br><span class="line">0.0% wa 等待输入输出的CPU时间百分比</span><br><span class="line">0.0%hi：硬中断占用百分比</span><br><span class="line">0.0%si：软中断占用百分比</span><br><span class="line">0.0%st：虚拟机占用百分比</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <blockquote>
 <p>最后两行为内存和Swap信息：</p>
 </blockquote>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Mem:</span><br><span class="line">191272k total    物理内存总量</span><br><span class="line">173656k used    使用的物理内存总量</span><br><span class="line">17616k free    空闲内存总量</span><br><span class="line">22052k buffers    用作内核缓存的内存量</span><br><span class="line"></span><br><span class="line">Swap: </span><br><span class="line">192772k total    交换区总量</span><br><span class="line">0k used    使用的交换区总量</span><br><span class="line">192772k free    空闲交换区总量</span><br><span class="line">123988k cached    缓冲的交换区总量，内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖，该数值即为这些内容已存在于内存中的交换区的大小，相应的内存再次被换出时可不必再对交换区写入。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Mem:</span><br><span class="line">191272k total    物理内存总量</span><br><span class="line">173656k used    使用的物理内存总量</span><br><span class="line">17616k free    空闲内存总量</span><br><span class="line">22052k buffers    用作内核缓存的内存量</span><br><span class="line"></span><br><span class="line">Swap: </span><br><span class="line">192772k total    交换区总量</span><br><span class="line">0k used    使用的交换区总量</span><br><span class="line">192772k free    空闲交换区总量</span><br><span class="line">123988k cached    缓冲的交换区总量，内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖，该数值即为这些内容已存在于内存中的交换区的大小，相应的内存再次被换出时可不必再对交换区写入。</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>content部分</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">序号  列名    含义</span><br><span class="line">a    PID     进程id</span><br><span class="line">b    PPID    父进程id</span><br><span class="line">c    RUSER   Real user name</span><br><span class="line">d    UID     进程所有者的用户id</span><br><span class="line">e    USER    进程所有者的用户名</span><br><span class="line">f    GROUP   进程所有者的组名</span><br><span class="line">g    TTY     启动进程的终端名。不是从终端启动的进程则显示为 ?</span><br><span class="line">h    PR      优先级</span><br><span class="line">i    NI      nice值。负值表示高优先级，正值表示低优先级</span><br><span class="line">j    P       最后使用的CPU，仅在多CPU环境下有意义</span><br><span class="line">k    %CPU    上次更新到现在的CPU时间占用百分比</span><br><span class="line">l    TIME    进程使用的CPU时间总计，单位秒</span><br><span class="line">m    TIME+   进程使用的CPU时间总计，单位1/100秒</span><br><span class="line">n    %MEM    进程使用的物理内存百分比</span><br><span class="line">o    VIRT    进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES</span><br><span class="line">p    SWAP    进程使用的虚拟内存中，被换出的大小，单位kb。</span><br><span class="line">q    RES     进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA</span><br><span class="line">r    CODE    可执行代码占用的物理内存大小，单位kb</span><br><span class="line">s    DATA    可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb</span><br><span class="line">t    SHR     共享内存大小，单位kb</span><br><span class="line">u    nFLT    页面错误次数</span><br><span class="line">v    nDRT    最后一次写入到现在，被修改过的页面数。</span><br><span class="line">w    S       进程状态(D=不可中断的睡眠状态,R=运行,S=睡眠,T=跟踪/停止,Z=僵尸进程)</span><br><span class="line">x    COMMAND 命令名/命令行</span><br><span class="line">y    WCHAN   若该进程在睡眠，则显示睡眠中的系统函数名</span><br><span class="line">z    Flags   任务标志，参考 sched.h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">序号  列名    含义</span><br><span class="line">a    PID     进程id</span><br><span class="line">b    PPID    父进程id</span><br><span class="line">c    RUSER   Real user name</span><br><span class="line">d    UID     进程所有者的用户id</span><br><span class="line">e    USER    进程所有者的用户名</span><br><span class="line">f    GROUP   进程所有者的组名</span><br><span class="line">g    TTY     启动进程的终端名。不是从终端启动的进程则显示为 ?</span><br><span class="line">h    PR      优先级</span><br><span class="line">i    NI      nice值。负值表示高优先级，正值表示低优先级</span><br><span class="line">j    P       最后使用的CPU，仅在多CPU环境下有意义</span><br><span class="line">k    %CPU    上次更新到现在的CPU时间占用百分比</span><br><span class="line">l    TIME    进程使用的CPU时间总计，单位秒</span><br><span class="line">m    TIME+   进程使用的CPU时间总计，单位1/100秒</span><br><span class="line">n    %MEM    进程使用的物理内存百分比</span><br><span class="line">o    VIRT    进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES</span><br><span class="line">p    SWAP    进程使用的虚拟内存中，被换出的大小，单位kb。</span><br><span class="line">q    RES     进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA</span><br><span class="line">r    CODE    可执行代码占用的物理内存大小，单位kb</span><br><span class="line">s    DATA    可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb</span><br><span class="line">t    SHR     共享内存大小，单位kb</span><br><span class="line">u    nFLT    页面错误次数</span><br><span class="line">v    nDRT    最后一次写入到现在，被修改过的页面数。</span><br><span class="line">w    S       进程状态(D=不可中断的睡眠状态,R=运行,S=睡眠,T=跟踪/停止,Z=僵尸进程)</span><br><span class="line">x    COMMAND 命令名/命令行</span><br><span class="line">y    WCHAN   若该进程在睡眠，则显示睡眠中的系统函数名</span><br><span class="line">z    Flags   任务标志，参考 sched.h</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316399.html">参考</a></li>
 </ol>
 <hr>
-<h1 id="alias"><a href="#alias" class="headerlink" title="alias"></a><center><font color=red>alias</font></center></h1><hr>
-<h1 id="cat"><a href="#cat" class="headerlink" title="cat"></a><center><font color=red>cat</font></center></h1><ol>
+<h1 id="alias"><a href="#alias" class="headerlink" title="alias"></a><center><font color="red">alias</font></center></h1><hr>
+<h1 id="cat"><a href="#cat" class="headerlink" title="cat"></a><center><font color="red">cat</font></center></h1><ol>
 <li><p>cat命令用于连接文件并打印到标准输出设备上，strings命令在对象文件或二进制文件中查找可打印的字符串。</p>
 </li>
 <li><p>语法<code>cat -h</code>或<code>cat --help</code></p>
@@ -936,7 +938,7 @@
 <li><p>使用</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">1234</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p><code>cat 1.txt | grep 123 | grep 1234 |xargs echo &gt;&gt; 2.txt</code></p>
@@ -944,19 +946,19 @@
 <li><p>shell脚本</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `ls ./online_Money`</span><br><span class="line">do</span><br><span class="line">    tar -zxvf ./online_Money/$i</span><br><span class="line">    for j in `ls ./data/userData/log/20140401/623205`</span><br><span class="line">    do</span><br><span class="line">        cat ./data/userData/log/20140401/623205/$j | grep 8300 | grep 623205_101_x | xargs printf &quot;%s\n&quot; &gt;&gt; ./2.log</span><br><span class="line">    done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `ls ./online_Money`</span><br><span class="line">do</span><br><span class="line">    tar -zxvf ./online_Money/$i</span><br><span class="line">    for j in `ls ./data/userData/log/20140401/623205`</span><br><span class="line">    do</span><br><span class="line">        cat ./data/userData/log/20140401/623205/$j | grep 8300 | grep 623205_101_x | xargs printf "%s\n" &gt;&gt; ./2.log</span><br><span class="line">    done</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="5">
 <li><a target="_blank" rel="noopener" href="https://man.linuxde.net/strings">参考</a></li>
 </ol>
 <hr>
-<h1 id="column"><a href="#column" class="headerlink" title="column"></a><center><font color=red>column</font></center></h1><ol>
+<h1 id="column"><a href="#column" class="headerlink" title="column"></a><center><font color="red">column</font></center></h1><ol>
 <li><p>column命令用于格式化输出信息。</p>
 </li>
 <li><p>语法<code>cat -h</code>或<code>cat --help</code></p>
 <ul>
 <li><code>-c 字符数</code>：  指定显示的列宽</li>
-<li><code>-s &quot;分隔符&quot;</code>： 使用-t选项时，指定分隔符（允许指定多个分隔符）</li>
+<li><code>-s "分隔符"</code>： 使用-t选项时，指定分隔符（允许指定多个分隔符）</li>
 <li><code>-t</code>：判断输入行的列数来创建一个表。分隔符是使用在-s中指定的字符。如果没有指定分隔符，默认是空格</li>
 <li><code>-x</code>：更改排列顺序（左→右）。默认的顺序为（上→下）</li>
 </ul>
@@ -964,33 +966,33 @@
 <li><p>使用</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>cat a.txt</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111</span><br><span class="line">abc:def:fgh:iii</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>cat a.txt | column -c 80</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>cat a.txt | column -s “:”</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123:456:789:111	abc:def:fgh:iii</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>cat a.txt | column -s “:” -t</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123  456  789  111</span><br><span class="line">abc  def  fgh  iii</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123  456  789  111</span><br><span class="line">abc  def  fgh  iii</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>go tool dist list | column -c 75</li>
 </ul>
 <hr>
-<h1 id="curl"><a href="#curl" class="headerlink" title="curl"></a><center><font color=red>curl</font></center></h1><blockquote>
+<h1 id="curl"><a href="#curl" class="headerlink" title="curl"></a><center><font color="red">curl</font></center></h1><blockquote>
 <p>curl是常用的命令行工具，用来请求Web服务器。它的名字就是客户端(client)的URL工具的意思。它的功能非常强大，命令行参数多达几十种。如果熟练的话完全可以取代Postman这一类的图形界面工具。</p>
 </blockquote>
 <ol>
@@ -1015,7 +1017,7 @@
 <li>可以使用curl的内置-O(大写)保存网页中的具体文件 <code>curl -O http://study.com/hello.sh</code></li>
 </ul>
 </li>
-<li>测试网页返回值 <code>curl -o /dev/null -s -w %&#123;http_code&#125; www.linux.com</code></li>
+<li>测试网页返回值 <code>curl -o /dev/null -s -w %{http_code} www.linux.com</code></li>
 <li>指定proxy服务器以及其端口通过使用-x <code>curl -x 192.168.100.100:1080 http://study.com</code></li>
 <li>cookie的使用<ul>
 <li>保存http的response里面的cookie信息到cookiec.txt，使用内置-c(小写)，<code>curl -c cookiec.txt  http://study.com</code></li>
@@ -1023,15 +1025,15 @@
 <li>使用cookie通过内置<code>-b</code>，即<code>curl -b cookiec.txt http://study.com</code></li>
 </ul>
 </li>
-<li>模仿浏览器通过<code>-A</code>设定header信息 <code>curl -A &quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)&quot; http://study.com</code></li>
-<li>伪造referer通过<code>-e</code>设定<code>curl -e &quot;www.linux.com&quot; http://mail.linux.com</code></li>
+<li>模仿浏览器通过<code>-A</code>设定header信息 <code>curl -A "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)" http://study.com</code></li>
+<li>伪造referer通过<code>-e</code>设定<code>curl -e "www.linux.com" http://mail.linux.com</code></li>
 <li>下载文件<ul>
 <li>使用内置-o(小写)<code>curl -o dodo1.jpg http:www.linux.com/dodo1.JPG</code></li>
 <li>使用内置-O(大写)<code>curl -O http://study.com/dodo1.JPG</code></li>
 <li>循环下载 <code>curl -O http://study.com/dodo[1-5].JPG</code>，这样就会把dodo[1-5].JPG全部保存下来</li>
 <li>下载重命名 <ul>
-<li><code>curl -O http://study.com/&#123;hello,bb&#125;/dodo[1-5].JPG</code></li>
-<li><code>curl -o #1_#2.JPG http://study.com/&#123;hello,bb&#125;/dodo[1-5].JPG</code></li>
+<li><code>curl -O http://study.com/{hello,bb}/dodo[1-5].JPG</code></li>
+<li><code>curl -o #1_#2.JPG http://study.com/{hello,bb}/dodo[1-5].JPG</code></li>
 </ul>
 </li>
 <li>分块下载使用内置-r<ul>
@@ -1057,7 +1059,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="declare"><a href="#declare" class="headerlink" title="declare"></a><center><font color=red>declare</font></center></h1><ol>
+<h1 id="declare"><a href="#declare" class="headerlink" title="declare"></a><center><font color="red">declare</font></center></h1><ol>
 <li><p>语法：<code>declare [选项] [name[=value]]</code></p>
 <ul>
 <li><p>选项</p>
@@ -1135,14 +1137,14 @@
 </li>
 </ol>
 <hr>
-<h1 id="echo"><a href="#echo" class="headerlink" title="echo"></a><center><font color=red>echo</font></center></h1><blockquote>
+<h1 id="echo"><a href="#echo" class="headerlink" title="echo"></a><center><font color="red">echo</font></center></h1><blockquote>
 <p>echo:Shell的echo指令与PHP的echo指令类似，都是用于字符串的输出，命令格式：<code>echo string</code>.</p>
 </blockquote>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell-echo.html">参考一</a></li>
 </ol>
 <hr>
-<h1 id="expect"><a href="#expect" class="headerlink" title="expect"></a><center><font color=red>expect</font></center></h1><ol>
+<h1 id="expect"><a href="#expect" class="headerlink" title="expect"></a><center><font color="red">expect</font></center></h1><ol>
 <li>expect是由<code>Don Libes</code>基于<code>Tcl</code>(全称<code>Tool Command Language</code>)语言开发的，主要应用于自动化交互式操作的场景，借助expect处理交互的命令可以将交互过程如<code>ssh</code>登录，<code>ftp</code>登录等写在一个脚本上，使之自动化完成。它尤其适用于需要对多台服务器执行相同操作的环境中，可以大大提高系统管理人员的工作效率。</li>
 </ol>
 <blockquote>
@@ -1187,17 +1189,17 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip1:username1:password1:22:connect1</span><br><span class="line">ip2:username2:password2:22:connect2</span><br><span class="line">ip3:username3:password3:22:connect3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip1:username1:password1:22:connect1</span><br><span class="line">ip2:username2:password2:22:connect2</span><br><span class="line">ip3:username3:password3:22:connect3</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>登录脚本<code>login.sh</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">oIFS=&quot;$IFS&quot;</span><br><span class="line"></span><br><span class="line">j=1</span><br><span class="line">for i in `cat config`</span><br><span class="line">do</span><br><span class="line">   IFS=&quot;:&quot;</span><br><span class="line">   #echo $i</span><br><span class="line">   str=($i) #初始化数组</span><br><span class="line">   echo $j  $&#123;str[1]&#125;---$&#123;str[2]&#125;</span><br><span class="line">   let j++</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">IFS=&quot;$oIFS&quot;</span><br><span class="line"></span><br><span class="line">read num</span><br><span class="line"></span><br><span class="line">filter=`sed -n &quot;$num p&quot; config`</span><br><span class="line">#echo $filter</span><br><span class="line"></span><br><span class="line">IFS=&quot;:&quot;</span><br><span class="line">str=($filter)</span><br><span class="line">echo $&#123;str[@]&#125;</span><br><span class="line">host=$&#123;str[0]&#125;</span><br><span class="line">username=$&#123;str[1]&#125;</span><br><span class="line">password=$&#123;str[2]&#125;</span><br><span class="line">port=$&#123;str[3]&#125;</span><br><span class="line"></span><br><span class="line">./expect.sh $host $username $password $port</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">oIFS="$IFS"</span><br><span class="line"></span><br><span class="line">j=1</span><br><span class="line">for i in `cat config`</span><br><span class="line">do</span><br><span class="line">   IFS=":"</span><br><span class="line">   #echo $i</span><br><span class="line">   str=($i) #初始化数组</span><br><span class="line">   echo $j  ${str[1]}---${str[2]}</span><br><span class="line">   let j++</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">IFS="$oIFS"</span><br><span class="line"></span><br><span class="line">read num</span><br><span class="line"></span><br><span class="line">filter=`sed -n "$num p" config`</span><br><span class="line">#echo $filter</span><br><span class="line"></span><br><span class="line">IFS=":"</span><br><span class="line">str=($filter)</span><br><span class="line">echo ${str[@]}</span><br><span class="line">host=${str[0]}</span><br><span class="line">username=${str[1]}</span><br><span class="line">password=${str[2]}</span><br><span class="line">port=${str[3]}</span><br><span class="line"></span><br><span class="line">./expect.sh $host $username $password $port</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>交互脚本<code>expect.sh</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line"></span><br><span class="line">set timeout 30</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set username [lindex $argv 1]</span><br><span class="line">set password [lindex $argv 2]</span><br><span class="line">set port [lindex $argv 3]</span><br><span class="line"></span><br><span class="line">spawn ssh -p $port $username@$host</span><br><span class="line">expect &quot;password&quot; &#123;send &quot;$password\r&quot;&#125;</span><br><span class="line"></span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line"></span><br><span class="line">set timeout 30</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set username [lindex $argv 1]</span><br><span class="line">set password [lindex $argv 2]</span><br><span class="line">set port [lindex $argv 3]</span><br><span class="line"></span><br><span class="line">spawn ssh -p $port $username@$host</span><br><span class="line">expect "password" {send "$password\r"}</span><br><span class="line"></span><br><span class="line">interact</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>执行<code>./login.sh</code>，输入数字即可登录对应的服务器</li>
@@ -1206,7 +1208,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lzrabbit/p/4298794.html">参考</a></li>
 </ol>
 <hr>
-<h1 id="export"><a href="#export" class="headerlink" title="export"></a><center><font color=red>export</font></center></h1><ol>
+<h1 id="export"><a href="#export" class="headerlink" title="export"></a><center><font color="red">export</font></center></h1><ol>
 <li><p>export命令用于设置或显示环境变量。</p>
 <ul>
 <li>可新增、修改、删除环境变量</li>
@@ -1219,12 +1221,12 @@
 <ul>
 <li>举个例子</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">①在终端中键入以下命令</span><br><span class="line">my_name=liusir</span><br><span class="line"></span><br><span class="line">②新建echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line"></span><br><span class="line">③运行echo.sh：`bash echo.sh`，无任何输出</span><br><span class="line"></span><br><span class="line">④在终端中键入以下命令</span><br><span class="line">export another_name=liuliu</span><br><span class="line"></span><br><span class="line">⑤修改echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line">echo $another_name</span><br><span class="line"></span><br><span class="line">⑥运行echo.sh：`bash echo.sh`，可以看到liuliu正常输出</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">①在终端中键入以下命令</span><br><span class="line">my_name=liusir</span><br><span class="line"></span><br><span class="line">②新建echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line"></span><br><span class="line">③运行echo.sh：`bash echo.sh`，无任何输出</span><br><span class="line"></span><br><span class="line">④在终端中键入以下命令</span><br><span class="line">export another_name=liuliu</span><br><span class="line"></span><br><span class="line">⑤修改echo.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo $my_name</span><br><span class="line">echo $another_name</span><br><span class="line"></span><br><span class="line">⑥运行echo.sh：`bash echo.sh`，可以看到liuliu正常输出</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>再举个例子</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">①销毁之前例子的变量unset my_name another_name</span><br><span class="line"></span><br><span class="line">②创建脚本parent.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">my_name=liusir</span><br><span class="line">echo &quot;parent shell: $my_name&quot; </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">③创建脚本child.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;child shell: $my_name&quot;</span><br><span class="line"></span><br><span class="line">④运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:</span><br><span class="line"></span><br><span class="line">⑤修改parent.sh，变量前增加export</span><br><span class="line">#!/bin/bash</span><br><span class="line">export my_name=liusir</span><br><span class="line">echo &quot;parent shell: $my_name&quot; </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">⑥运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:liuliuliu</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">①销毁之前例子的变量unset my_name another_name</span><br><span class="line"></span><br><span class="line">②创建脚本parent.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">my_name=liusir</span><br><span class="line">echo "parent shell: $my_name" </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">③创建脚本child.sh</span><br><span class="line">#!/bin/bash</span><br><span class="line">echo "child shell: $my_name"</span><br><span class="line"></span><br><span class="line">④运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:</span><br><span class="line"></span><br><span class="line">⑤修改parent.sh，变量前增加export</span><br><span class="line">#!/bin/bash</span><br><span class="line">export my_name=liusir</span><br><span class="line">echo "parent shell: $my_name" </span><br><span class="line">bash child.sh</span><br><span class="line"></span><br><span class="line">⑥运行parent.sh：`bash parent.sh`，得到结果如下</span><br><span class="line">parent shell:liuliuliu</span><br><span class="line">child shell:liuliuliu</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>直接输入export会将显示bash下的所有环境变量</p>
 <ul>
@@ -1245,7 +1247,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="kill"><a href="#kill" class="headerlink" title="kill"></a><center><font color=red>kill</font></center></h1><blockquote>
+<h1 id="kill"><a href="#kill" class="headerlink" title="kill"></a><center><font color="red">kill</font></center></h1><blockquote>
 <p>Mac</p>
 </blockquote>
 <ol>
@@ -1262,7 +1264,7 @@
 <li><p>查看所有信号<code>kill -l</code></p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HUP  INT    QUIT  ILL   TRAP  ABRT  EMT   FPE </span><br><span class="line">KILL BUS    SEGV  SYS   PIPE  ALRM  TERM  URG </span><br><span class="line">STOP TSTP   CONT  CHLD  TTIN  TTOU  IO    XCPU </span><br><span class="line">XFSZ VTALRM PROF  WINCH INFO  USR1  USR2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HUP  INT    QUIT  ILL   TRAP  ABRT  EMT   FPE </span><br><span class="line">KILL BUS    SEGV  SYS   PIPE  ALRM  TERM  URG </span><br><span class="line">STOP TSTP   CONT  CHLD  TTIN  TTOU  IO    XCPU </span><br><span class="line">XFSZ VTALRM PROF  WINCH INFO  USR1  USR2</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>常用信号</p>
@@ -1291,7 +1293,7 @@
 <li><p>查看所有信号<code>kill -l</code></p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1) SIGHUP	     2) SIGINT	     3) SIGQUIT	     4) SIGILL	     5) SIGTRAP</span><br><span class="line"> 6) SIGABRT	     7) SIGBUS	     8) SIGFPE	     9) SIGKILL	    10) SIGUSR1</span><br><span class="line">11) SIGSEGV	    12) SIGUSR2	    13) SIGPIPE	    14) SIGALRM	    15) SIGTERM</span><br><span class="line">16) SIGSTKFLT	17) SIGCHLD	    18) SIGCONT	    19) SIGSTOP	    20) SIGTSTP</span><br><span class="line">21) SIGTTIN	    22) SIGTTOU	    23) SIGURG	    24) SIGXCPU	    25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM	27) SIGPROF	    28) SIGWINCH	29) SIGIO	    30) SIGPWR</span><br><span class="line">31) SIGSYS	    34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1	64) SIGRTMAX</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> 1) SIGHUP	     2) SIGINT	     3) SIGQUIT	     4) SIGILL	     5) SIGTRAP</span><br><span class="line"> 6) SIGABRT	     7) SIGBUS	     8) SIGFPE	     9) SIGKILL	    10) SIGUSR1</span><br><span class="line">11) SIGSEGV	    12) SIGUSR2	    13) SIGPIPE	    14) SIGALRM	    15) SIGTERM</span><br><span class="line">16) SIGSTKFLT	17) SIGCHLD	    18) SIGCONT	    19) SIGSTOP	    20) SIGTSTP</span><br><span class="line">21) SIGTTIN	    22) SIGTTOU	    23) SIGURG	    24) SIGXCPU	    25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM	27) SIGPROF	    28) SIGWINCH	29) SIGIO	    30) SIGPWR</span><br><span class="line">31) SIGSYS	    34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1	64) SIGRTMAX</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略。</p>
@@ -1330,19 +1332,19 @@
 </li>
 </ol>
 <hr>
-<h1 id="ln"><a href="#ln" class="headerlink" title="ln"></a><center><font color=red>ln</font></center></h1><ol>
+<h1 id="ln"><a href="#ln" class="headerlink" title="ln"></a><center><font color="red">ln</font></center></h1><ol>
 <li><p>语法  <code>ln [参数][源文件或目录][目标文件或目录]</code></p>
 </li>
 <li><p>参数说明</p>
 <ul>
 <li>必要参数</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-b 删除，覆盖以前建立的链接</span><br><span class="line">-d 允许超级用户制作目录的硬链接</span><br><span class="line">-f 强制执行</span><br><span class="line">-i 交互模式，文件存在则提示用户是否覆盖</span><br><span class="line">-n 把符号链接视为一般目录</span><br><span class="line">-s 软链接(符号链接)</span><br><span class="line">-v 显示详细的处理过程</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-b 删除，覆盖以前建立的链接</span><br><span class="line">-d 允许超级用户制作目录的硬链接</span><br><span class="line">-f 强制执行</span><br><span class="line">-i 交互模式，文件存在则提示用户是否覆盖</span><br><span class="line">-n 把符号链接视为一般目录</span><br><span class="line">-s 软链接(符号链接)</span><br><span class="line">-v 显示详细的处理过程</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>可选参数</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-S &quot;-S&lt;字尾备份字符串&gt; &quot;或 &quot;--suffix=&lt;字尾备份字符串&gt;&quot;</span><br><span class="line">-V &quot;-V&lt;备份方式&gt;&quot;或&quot;--version-control=&lt;备份方式&gt;&quot;</span><br><span class="line">--help 显示帮助信息</span><br><span class="line">--version 显示版本信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-S "-S&lt;字尾备份字符串&gt; "或 "--suffix=&lt;字尾备份字符串&gt;"</span><br><span class="line">-V "-V&lt;备份方式&gt;"或"--version-control=&lt;备份方式&gt;"</span><br><span class="line">--help 显示帮助信息</span><br><span class="line">--version 显示版本信息</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>demo</p>
 <ul>
@@ -1368,7 +1370,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a><center><font color=red>lsof</font></center></h1><ol>
+<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a><center><font color="red">lsof</font></center></h1><ol>
 <li>lsof(<code>list open files</code>)是一个列出当前系统打开文件的工具。</li>
 </ol>
 <blockquote>
@@ -1442,11 +1444,11 @@
 </li>
 </ol>
 <hr>
-<h1 id="split"><a href="#split" class="headerlink" title="split"></a><center><font color=red>split</font></center></h1><blockquote>
+<h1 id="split"><a href="#split" class="headerlink" title="split"></a><center><font color="red">split</font></center></h1><blockquote>
 <p>split:一个100G的文件，内存只有4G，那么问题来了，如何对其进行全排序？</p>
 </blockquote>
 <hr>
-<h1 id="test"><a href="#test" class="headerlink" title="test"></a><center><font color=red>test</font></center></h1><ol>
+<h1 id="test"><a href="#test" class="headerlink" title="test"></a><center><font color="red">test</font></center></h1><ol>
 <li><p>Shell中的<code>test</code>命令用于检查某个条件是否成立，它可以进行数值、字符和文件以及逻辑运算等方面的测试。<code>[]</code>功能和test命令一样，只是不同的写法，同时<code>[[]]</code>也可在部分情况下代替<code>[]</code>。</p>
 </li>
 <li><p>使用</p>
@@ -1525,11 +1527,11 @@
 </li>
 </ol>
 <hr>
-<h1 id="ssh-keygen"><a href="#ssh-keygen" class="headerlink" title="ssh-keygen"></a><center><font color=red>ssh-keygen</font></center></h1><ol>
+<h1 id="ssh-keygen"><a href="#ssh-keygen" class="headerlink" title="ssh-keygen"></a><center><font color="red">ssh-keygen</font></center></h1><ol>
 <li>Secure Shell(安全外壳协议，简称SSH)是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。SSH通过在网络中创建安全隧道来实现SSH客户端与服务器之间的连接，其最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令。在设计上，SSH是Telnet和非安全shell的替代品。Telnet和Berkeley rlogin、rsh、rexec等协议采用明文传输，使用不可靠的密码，容易遭到监听、嗅探和中间人攻击。SSH旨在保证非安全网络环境(例如互联网)中信息加密完整可靠。</li>
 <li>ssh-keygen命令用于为ssh生成、管理和转换认证密钥，Linux下可通过<code>ssh-keygen /?</code>方式查看其具体用法：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">usage: ssh-keygen [options]</span><br><span class="line">Options:</span><br><span class="line">  -a trials   Number of trials for screening DH-GEX moduli.</span><br><span class="line">  -B          Show bubblebabble digest of key file.</span><br><span class="line">  -b bits     Number of bits in the key to create.</span><br><span class="line">  -C comment  Provide new comment.</span><br><span class="line">  -c          Change comment in private and public key files.</span><br><span class="line">  -D pkcs11   Download public key from pkcs11 token.</span><br><span class="line">  -e          Convert OpenSSH to RFC 4716 key file.</span><br><span class="line">  -F hostname Find hostname in known hosts file.</span><br><span class="line">  -f filename Filename of the key file.</span><br><span class="line">  -G file     Generate candidates for DH-GEX moduli.</span><br><span class="line">  -g          Use generic DNS resource record format.</span><br><span class="line">  -H          Hash names in known_hosts file.</span><br><span class="line">  -h          Generate host certificate instead of a user certificate.</span><br><span class="line">  -I key_id   Key identifier to include in certificate.</span><br><span class="line">  -i          Convert RFC 4716 to OpenSSH key file.</span><br><span class="line">  -L          Print the contents of a certificate.</span><br><span class="line">  -l          Show fingerprint of key file.</span><br><span class="line">  -M memory   Amount of memory (MB) to use for generating DH-GEX moduli.</span><br><span class="line">  -N phrase   Provide new passphrase.</span><br><span class="line">  -O option   Specify a certificate option.</span><br><span class="line">  -P phrase   Provide old passphrase.</span><br><span class="line">  -p          Change passphrase of private key file.</span><br><span class="line">  -q          Quiet.</span><br><span class="line">  -R hostname Remove host from known_hosts file.</span><br><span class="line">  -r hostname Print DNS resource record.</span><br><span class="line">  -S start    Start point (hex) for generating DH-GEX moduli.</span><br><span class="line">  -s ca_key   Certify keys with CA key.</span><br><span class="line">  -T file     Screen candidates for DH-GEX moduli.</span><br><span class="line">  -t type     Specify type of key to create.</span><br><span class="line">  -V from:to  Specify certificate validity interval.</span><br><span class="line">  -v          Verbose.</span><br><span class="line">  -W gen      Generator to use for generating DH-GEX moduli.</span><br><span class="line">  -y          Read private key file and print public key.</span><br><span class="line">  -Z name,... User/host principal names to include in certificate</span><br><span class="line">  -z serial   Specify a serial number.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">usage: ssh-keygen [options]</span><br><span class="line">Options:</span><br><span class="line">  -a trials   Number of trials for screening DH-GEX moduli.</span><br><span class="line">  -B          Show bubblebabble digest of key file.</span><br><span class="line">  -b bits     Number of bits in the key to create.</span><br><span class="line">  -C comment  Provide new comment.</span><br><span class="line">  -c          Change comment in private and public key files.</span><br><span class="line">  -D pkcs11   Download public key from pkcs11 token.</span><br><span class="line">  -e          Convert OpenSSH to RFC 4716 key file.</span><br><span class="line">  -F hostname Find hostname in known hosts file.</span><br><span class="line">  -f filename Filename of the key file.</span><br><span class="line">  -G file     Generate candidates for DH-GEX moduli.</span><br><span class="line">  -g          Use generic DNS resource record format.</span><br><span class="line">  -H          Hash names in known_hosts file.</span><br><span class="line">  -h          Generate host certificate instead of a user certificate.</span><br><span class="line">  -I key_id   Key identifier to include in certificate.</span><br><span class="line">  -i          Convert RFC 4716 to OpenSSH key file.</span><br><span class="line">  -L          Print the contents of a certificate.</span><br><span class="line">  -l          Show fingerprint of key file.</span><br><span class="line">  -M memory   Amount of memory (MB) to use for generating DH-GEX moduli.</span><br><span class="line">  -N phrase   Provide new passphrase.</span><br><span class="line">  -O option   Specify a certificate option.</span><br><span class="line">  -P phrase   Provide old passphrase.</span><br><span class="line">  -p          Change passphrase of private key file.</span><br><span class="line">  -q          Quiet.</span><br><span class="line">  -R hostname Remove host from known_hosts file.</span><br><span class="line">  -r hostname Print DNS resource record.</span><br><span class="line">  -S start    Start point (hex) for generating DH-GEX moduli.</span><br><span class="line">  -s ca_key   Certify keys with CA key.</span><br><span class="line">  -T file     Screen candidates for DH-GEX moduli.</span><br><span class="line">  -t type     Specify type of key to create.</span><br><span class="line">  -V from:to  Specify certificate validity interval.</span><br><span class="line">  -v          Verbose.</span><br><span class="line">  -W gen      Generator to use for generating DH-GEX moduli.</span><br><span class="line">  -y          Read private key file and print public key.</span><br><span class="line">  -Z name,... User/host principal names to include in certificate</span><br><span class="line">  -z serial   Specify a serial number.</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>ssh用法，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ftl1012/p/ssh.html">传送门</a></p>
@@ -1541,7 +1543,7 @@
 <ul>
 <li><p><code>cd ~/.ssh</code></p>
 </li>
-<li><p><code>ssh-keygen -t rsa -C &quot;186********@173.com&quot;</code></p>
+<li><p><code>ssh-keygen -t rsa -C "186********@173.com"</code></p>
 </li>
 <li><p><code>cat id_rsa.pub</code>，复制其内容</p>
 </li>
@@ -1554,7 +1556,7 @@
 <li>自定义一个名字，并将复制的内容粘贴到文本框，保存退出</li>
 <li><code>ssh -vT git@github.com</code>，成功后会有类似如下输出：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi liusirdotme! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi liusirdotme! You've successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>以上只是最基础的操作，是在没有更改过<code>~/.ssh/config</code>的基础上进行的，更高阶的操作是修改config，等有需求的时候再说这种情况。</p>
@@ -1573,7 +1575,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="strace和dtruss"><a href="#strace和dtruss" class="headerlink" title="strace和dtruss"></a><center><font color=red>strace和dtruss</font></center></h1><ol>
+<h1 id="strace和dtruss"><a href="#strace和dtruss" class="headerlink" title="strace和dtruss"></a><center><font color="red">strace和dtruss</font></center></h1><ol>
 <li><p>strace常用来跟踪进程执行时的系统调用和所接收的信号。在Linux世界，进程不能直接访问硬件设备，当进程需要访问硬件设备(比如读取磁盘文件，接收网络数据等等)时，必须由用户态模式切换至内核态模式，通过系统调用访问硬件设备。strace可以跟踪到一个进程产生的系统调用，包括参数，返回值，执行消耗的时间。</p>
 </li>
 <li><p>使用，可通过命令<code>man dtruss</code>来查看</p>
@@ -1614,7 +1616,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="dtruss"><a href="#dtruss" class="headerlink" title="dtruss"></a><center><font color=red>dtruss</font></center></h1><ol>
+<h1 id="dtruss"><a href="#dtruss" class="headerlink" title="dtruss"></a><center><font color="red">dtruss</font></center></h1><ol>
 <li><p>dtruss：使用DTrace来监视系统调用，在进程进行系统调用的时候进行输出。它就像DTrace版的truss，和truss相比，它插入一些信息。值得注意的是只有在有root权限的终端下才可以使用DTrace(Mac下需要关闭SIP，即<code>csrutil disable</code>)。</p>
 </li>
 <li><p>使用，可通过命令<code>man dtruss</code>来查看</p>
@@ -1641,7 +1643,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="dtrace"><a href="#dtrace" class="headerlink" title="dtrace"></a><center><font color=red>dtrace</font></center></h1><ol>
+<h1 id="dtrace"><a href="#dtrace" class="headerlink" title="dtrace"></a><center><font color="red">dtrace</font></center></h1><ol>
 <li>dtrace：全称Dynamic Tracing，译为动态跟踪，是由<code>Sun™</code>开发的一个用来在生产和试验性生产系统上找出系统瓶颈的工具，可以对内核(kernel)和用户应用程序(user application)进行动态跟踪并且对系统运行不构成任何危险的技术。</li>
 </ol>
 <blockquote>
@@ -1651,7 +1653,7 @@
 <li><a target="_blank" rel="noopener" href="https://shadowdragons.github.io/2018/10/07/strace-dtruss/">参考</a></li>
 </ol>
 <hr>
-<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a><center><font color=red>tar</font></center></h1><ol>
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a><center><font color="red">tar</font></center></h1><ol>
 <li><p>tar命令可以为linux的文件和目录创建档案。利用tar，可以为某一特定文件创建档案（备份文件），也可以在档案中改变文件，或者向档案中加入新的文件。</p>
 <ul>
 <li>五个独立命令<ul>
@@ -1707,10 +1709,10 @@
 </li>
 </ol>
 <hr>
-<h1 id="脚本收集"><a href="#脚本收集" class="headerlink" title="脚本收集"></a><center><font color=red>脚本收集</font></center></h1><ol>
+<h1 id="脚本收集"><a href="#脚本收集" class="headerlink" title="脚本收集"></a><center><font color="red">脚本收集</font></center></h1><ol>
 <li>查询大文件和目录</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">dir1=`du -m /* |sort -n |tail -1 |awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">cd $dir1</span><br><span class="line">while :</span><br><span class="line">do</span><br><span class="line">   dir2=`du -m ./* |sort -n |tail -1 |awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   if [ -d $dir2 ]</span><br><span class="line">   then</span><br><span class="line">      cd $dir2</span><br><span class="line">   else</span><br><span class="line">      dir3=`pwd`</span><br><span class="line">      break</span><br><span class="line">   fi</span><br><span class="line">done</span><br><span class="line">file=`du -m ./* |sort -n |tail -1 |awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">echo &quot;The max_size_dir is :  $dir3&quot;</span><br><span class="line">echo &quot;The size is : `du -m $dir3 | awk &#x27;&#123;print $1&#125;&#x27;`M&quot;</span><br><span class="line">echo &quot;The max_size_file is: `which $file`&quot;</span><br><span class="line">echo &quot;The size is : `du -m $dir2 | awk &#x27;&#123;print $1&#125;&#x27;`M”</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">dir1=`du -m /* |sort -n |tail -1 |awk '{print $2}'`</span><br><span class="line">cd $dir1</span><br><span class="line">while :</span><br><span class="line">do</span><br><span class="line">   dir2=`du -m ./* |sort -n |tail -1 |awk '{print $2}'`</span><br><span class="line">   if [ -d $dir2 ]</span><br><span class="line">   then</span><br><span class="line">      cd $dir2</span><br><span class="line">   else</span><br><span class="line">      dir3=`pwd`</span><br><span class="line">      break</span><br><span class="line">   fi</span><br><span class="line">done</span><br><span class="line">file=`du -m ./* |sort -n |tail -1 |awk '{print $2}'`</span><br><span class="line">echo "The max_size_dir is :  $dir3"</span><br><span class="line">echo "The size is : `du -m $dir3 | awk '{print $1}'`M"</span><br><span class="line">echo "The max_size_file is: `which $file`"</span><br><span class="line">echo "The size is : `du -m $dir2 | awk '{print $1}'`M”</span><br></pre></td></tr></tbody></table></figure>
     </div>
 
     
@@ -1904,7 +1906,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

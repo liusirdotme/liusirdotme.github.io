@@ -203,6 +203,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -412,7 +414,7 @@
 <li>避免循环查询数据，可一次性查询然后使用PHP处理</li>
 <li>使用连接查询代替子查询</li>
 <li><code>EXPLAIN</code>索引是否命中<ul>
-<li>模糊查询使用<code>like &#39;xx%&#39;</code>而不是<code>like &#39;%xx%&#39;</code></li>
+<li>模糊查询使用<code>like 'xx%'</code>而不是<code>like '%xx%'</code></li>
 <li>关联查询时字段属性、长度是否一致</li>
 <li>字段属性是<code>char</code>查询时无引号</li>
 <li>查询语句中有<code>or</code>时请注意</li>
@@ -435,7 +437,7 @@
 <li>复合索引最左匹配原则，尽量命中每一个字段 </li>
 <li>应尽量避免在where子句中对字段进行null值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：<code>select id from t where num is null</code>可以在num上设置默认值0，确保表中num列没有null值，然后这样查询<code>select id from t where num=0</code></li>
 <li>应尽量避免在where子句中使用or来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，如：<code>select id from t where num=10 or num=20</code> 可以这样查询<code>select id from t where num=10 union all select id from t where num=20</code></li>
-<li>下面的查询也将导致全表扫描：<code>select id from t where name like &#39;%abc%&#39;</code>，若要提高效率，可以考虑全文检索。 </li>
+<li>下面的查询也将导致全表扫描：<code>select id from t where name like '%abc%'</code>，若要提高效率，可以考虑全文检索。 </li>
 <li>in和 not in也要慎用，否则会导致全表扫描，如<code>select id from t where num in(1,2,3)</code>对于连续的数值，能用 between就不用in <code>select id from t where num between 1 and 3</code></li>
 <li>如果在<code>where</code>子句中使用参数也会导致全表扫描。因为SQL只有在运行时才会解析局部变量，但优化程序不能将访问计划的选择推迟到运行时，它必须在编译时进行选择。如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。<ul>
 <li><code>select id from t where num=@num</code>可以改为强制查询使用索引<code>select id from t with(index(索引名)) where num=@num</code></li>
@@ -446,7 +448,7 @@
 <li>数据类型转换</li>
 <li>隐式字符类型转换</li>
 <li><code>select id from t where num/2=100</code>应改为<code>select id from t where num=100*2</code></li>
-<li><code>select id from t where substring(name,1,3)=&#39;abc&#39;</code>应该为<code>select id from t where name like &#39;abc%&#39;</code></li>
+<li><code>select id from t where substring(name,1,3)='abc'</code>应该为<code>select id from t where name like 'abc%'</code></li>
 </ul>
 </li>
 </ol>
@@ -687,7 +689,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

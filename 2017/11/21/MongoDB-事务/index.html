@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -442,7 +444,7 @@
 </ul>
 </li>
 <li><p>示例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">writeConcern: &#123;</span><br><span class="line">    w:&quot;majority&quot; // 大多数原则</span><br><span class="line">    j:true,</span><br><span class="line">    wtimeout: 5000,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">writeConcern: {</span><br><span class="line">    w:"majority" // 大多数原则</span><br><span class="line">    j:true,</span><br><span class="line">    wtimeout: 5000,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 </li>
@@ -485,8 +487,8 @@
 <ul>
 <li>获取会话：<code>session = db.getMongo().startSession()</code></li>
 <li>开启事务：<code>session.startTransaction()</code></li>
-<li>获得集合：<code>user = session.getDatabase(&quot;study&quot;).user</code></li>
-<li>操作文档：<code>user.insert(&#123;name:&quot;测试&quot;&#125;)</code></li>
+<li>获得集合：<code>user = session.getDatabase("study").user</code></li>
+<li>操作文档：<code>user.insert({name:"测试"})</code></li>
 <li>提交事务：<code>session.commitTransaction</code></li>
 <li>回滚事务：<code>session.abortTransaction()</code></li>
 </ul>
@@ -715,7 +717,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

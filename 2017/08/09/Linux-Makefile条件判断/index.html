@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -399,7 +401,7 @@
 <ol>
 <li>语法</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li><p>条件常用格式</p>
@@ -441,12 +443,12 @@
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
 <li>定义makefile文件</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 := 123</span><br><span class="line">var2 := $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 := 123</span><br><span class="line">var2 := $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
 </li>
-<li><p><font color=red>注意：</font></p>
+<li><p><font color="red">注意：</font></p>
 <ul>
 <li><code>ifxxx</code> 后面有个空格</li>
 <li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
@@ -654,7 +656,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -207,6 +207,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -509,7 +511,7 @@
 <li>解压文件<code>sudo tar -zxvf redis-5.0.7.tar.gz -C /usr/local</code></li>
 <li>切换目录<code>cd /usr/local/redis-5.0.7</code></li>
 <li>安装<code>sudo make</code></li>
-<li>复制可执行文件 <code>cd src &amp;&amp; cp &#123;redis-server,redis-cli,redis-sentinel&#125; ../</code></li>
+<li>复制可执行文件 <code>cd src &amp;&amp; cp {redis-server,redis-cli,redis-sentinel} ../</code></li>
 <li>修改配置文件<code>daemonize yes</code></li>
 <li>启动redis服务 <code>./redis-server redis.conf</code><ul>
 <li>kill不掉进程，一般是权限问题导致的</li>
@@ -538,7 +540,7 @@
 </li>
 <li>sudo make &amp;&amp; make install，结果可能报错：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Installing shared extensions:     /usr/lib/php/extensions/no-debug-non-zts-20160303/</span><br><span class="line">cp: /usr/lib/php/extensions/no-debug-non-zts-20160303/#INST@2076#: Operation not permitted</span><br><span class="line">make: *** [install-modules] Error 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Installing shared extensions:     /usr/lib/php/extensions/no-debug-non-zts-20160303/</span><br><span class="line">cp: /usr/lib/php/extensions/no-debug-non-zts-20160303/#INST@2076#: Operation not permitted</span><br><span class="line">make: *** [install-modules] Error 1</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>手动复制 sudo cp redis.so /usr/lib/php/extensions/no-debug-non-zts-20160303/redis.so</li>
@@ -552,19 +554,19 @@
 <li>切换目录 <code>cd /usr/local/redis-5.0.4</code></li>
 <li>安装 <code>make</code></li>
 <li>切换目录 <code>cd src</code></li>
-<li>复制相关文件以全局运行 <code>cp &#123;redis-cli,redis-server,redis-sentinel&#125; /usr/local/bin/</code></li>
+<li>复制相关文件以全局运行 <code>cp {redis-cli,redis-server,redis-sentinel} /usr/local/bin/</code></li>
 <li>修改redsi.conf，以后台进程方式运行 <code>daemonize yes</code></li>
 <li>启动服务 <code>redis-server redis.conf</code></li>
 <li>查看<code>redis</code>进程 <code>ps -ef|grep redis</code></li>
 <li>测试</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;redis-cli</span><br><span class="line"></span><br><span class="line">&gt;set name &quot;张三&quot;</span><br><span class="line"></span><br><span class="line">&gt;get name</span><br><span class="line">&quot;\xe5\xbc\xa0\xe4\xb8\x89&quot; //中文乱码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;redis-cli</span><br><span class="line"></span><br><span class="line">&gt;set name "张三"</span><br><span class="line"></span><br><span class="line">&gt;get name</span><br><span class="line">"\xe5\xbc\xa0\xe4\xb8\x89" //中文乱码</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>redis-cli --raw</code> // 解决中文乱码</li>
 <li>进程kill不掉，一般是目录权限问题，对redis目录加一下权限</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">808:M 18 Dec 2019 14:29:48.639 # User requested shutdown...</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 * Saving the final RDB snapshot before exiting.</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 # Failed opening the RDB file dump.rdb (in server root dir /usr/local/redis-5.0.7) for saving: Permission denied</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 # Error trying to save the DB, can&#x27;t exit.</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 # SIGTERM received but errors trying to shut down the server, check the logs for more information</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">808:M 18 Dec 2019 14:29:48.639 # User requested shutdown...</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 * Saving the final RDB snapshot before exiting.</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 # Failed opening the RDB file dump.rdb (in server root dir /usr/local/redis-5.0.7) for saving: Permission denied</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 # Error trying to save the DB, can't exit.</span><br><span class="line">808:M 18 Dec 2019 14:29:48.639 # SIGTERM received but errors trying to shut down the server, check the logs for more information</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>版本列表：Redis官网有默认最新稳定版本，想要下载旧版本，<a target="_blank" rel="noopener" href="https://download.redis.io/releases/">传送门</a>，每个版本更新了什么内容，即<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/redis/redis/2.2/00-RELEASENOTES">release notes</a>，目前最早的只能查到2.2版本。</p>
 <ul>
@@ -722,7 +724,7 @@
 </li>
 <li><p>./configure –with-php-config=/path/php-config</p>
 <ul>
-<li>configure: error: memcached support requires libmemcached. Use –with-libmemcached-dir=<DIR> to specify the prefix where libmemcached headers and library are located</li>
+<li>configure: error: memcached support requires libmemcached. Use –with-libmemcached-dir=<dir> to specify the prefix where libmemcached headers and library are located</dir></li>
 </ul>
 </li>
 <li><p>brew install libmemcached，macOS 10.14.4安装完一般都在<code>/usr/local/Cellar</code>目录下对应的扩展下面</p>
@@ -1002,7 +1004,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

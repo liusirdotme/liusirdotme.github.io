@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -400,7 +402,7 @@
 <span id="more"></span>
 
 <h2 id="一、收集"><a href="#一、收集" class="headerlink" title="一、收集"></a>一、收集</h2><ol>
-<li><p><code>String a = &quot;abc&quot;</code>和<code>String b = new String(&quot;abc&quot;)</code></p>
+<li><p><code>String a = "abc"</code>和<code>String b = new String("abc")</code></p>
 <ul>
 <li>String a = “abc”是指在栈中创建一个string类的对象引用变量，然后查找栈中有没有存放”abc”，如果没有则将”abc”放入栈，并令a指向abc。</li>
 <li>new String(“abc”)是在堆中存放，每次new都会在堆中存放一个。</li>
@@ -478,17 +480,17 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">	private volatile static Singleton singleton;</span><br><span class="line">	private Singleton()&#123;&#125;;</span><br><span class="line">	public static Singleton getInstance()&#123;</span><br><span class="line">		if(null==singleton)&#123;</span><br><span class="line">			synchronized(Singleton.class)&#123;</span><br><span class="line">			    if( null == singleton)&#123;</span><br><span class="line">			    	singleton = new Singleton();</span><br><span class="line">			    &#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return singleton;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton{</span><br><span class="line">	private volatile static Singleton singleton;</span><br><span class="line">	private Singleton(){};</span><br><span class="line">	public static Singleton getInstance(){</span><br><span class="line">		if(null==singleton){</span><br><span class="line">			synchronized(Singleton.class){</span><br><span class="line">			    if( null == singleton){</span><br><span class="line">			    	singleton = new Singleton();</span><br><span class="line">			    }</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		return singleton;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>登记式/静态内部类</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">	private static class SingletonHolder&#123;</span><br><span class="line">			private static final Singleton INSTANCE = new Singleton();</span><br><span class="line">	&#125;</span><br><span class="line">	private Singleton()&#123;&#125;</span><br><span class="line">	public static final Singleton getInstance()&#123;</span><br><span class="line">			return SingletonHolder.INSTANCE;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton{</span><br><span class="line">	private static class SingletonHolder{</span><br><span class="line">			private static final Singleton INSTANCE = new Singleton();</span><br><span class="line">	}</span><br><span class="line">	private Singleton(){}</span><br><span class="line">	public static final Singleton getInstance(){</span><br><span class="line">			return SingletonHolder.INSTANCE;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>枚举</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public enum Singleton&#123;</span><br><span class="line">	INSTANCE;</span><br><span class="line">	public void whatEverMethod()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public enum Singleton{</span><br><span class="line">	INSTANCE;</span><br><span class="line">	public void whatEverMethod(){}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="9">
 <li><p>ArrayList就是一个数组列表，主要用来状态数据，如果装在的是基本数据类型（int、long、boolean、short、byte、double、char、float）的时候，只能存储他们对应的包装类,它的主要底层实现是数组与它类似是LinkedList、和LinkedList相比，它的查找和访问元素的速度较快，但是增删慢。</p>
@@ -514,7 +516,7 @@
 <ul>
 <li>①继承不同。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class Hashtable extends Dictionary implements Map</span><br><span class="line">public class HashMap extends AbstractMap implements Map</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class Hashtable extends Dictionary implements Map</span><br><span class="line">public class HashMap extends AbstractMap implements Map</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>②Hashtable中的方法是同步的，而HashMap中的方法在缺省情况下是非同步的。在多线程并发的环境下，可以直接使用Hashtable，但是要使用HashMap的话就要自己增加同步处理了。</li>
@@ -533,7 +535,7 @@
 <ul>
 <li>字节码是Java源文件由Java编译器编译后生成的目标代码文件，是一种和任何具体机器环境及操作系统环境无关的中间代码(一次编译到处运行)，它是一种二进制文件。</li>
 <li><code>javac -h</code>可查看其用法，常用：<ul>
-<li><code>javac -d &#123;path&#125; Test.java</code> 指定class生成路径</li>
+<li><code>javac -d {path} Test.java</code> 指定class生成路径</li>
 </ul>
 </li>
 </ul>
@@ -1113,7 +1115,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

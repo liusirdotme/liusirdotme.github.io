@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -413,7 +415,7 @@
 <li>①登录开发机2，查看系统资源是否达到上限，暂未发现异常 <img src="3.jpg" alt="top"> <img src="4.jpg" alt="df"></li>
 <li>②查看php-fpm慢日志，问题其实已经很明显，正常只需要看一下方法的调用链就能追踪到具体哪一步一起的，推荐<a target="_blank" rel="noopener" href="http://pecl.php.net/package/xhprof">PHP性能测试扩展xhprof</a>，碍于没有权限，只能继续别的方式。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script_filename = /you_know/secret/path/index.php</span><br><span class="line">[0x00007fceeae13b20] exec() /you_know/secret/path/app/controller/AAA.php:436</span><br><span class="line">[0x00007fceeae137d0] clearConfig() /you_know/secret/path/inc/coreBBB:104</span><br><span class="line">[0x00007fceeae13230] dispatch() /you_know/secret/path/app/util/CCC.php:140</span><br><span class="line">[0x00007fceeae130c0] run() /you_know/secret/path/index.php:4</span><br><span class="line">[0x00007fceeae13030] /you_know/secret/path/index.php() unknown:0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script_filename = /you_know/secret/path/index.php</span><br><span class="line">[0x00007fceeae13b20] exec() /you_know/secret/path/app/controller/AAA.php:436</span><br><span class="line">[0x00007fceeae137d0] clearConfig() /you_know/secret/path/inc/coreBBB:104</span><br><span class="line">[0x00007fceeae13230] dispatch() /you_know/secret/path/app/util/CCC.php:140</span><br><span class="line">[0x00007fceeae130c0] run() /you_know/secret/path/index.php:4</span><br><span class="line">[0x00007fceeae13030] /you_know/secret/path/index.php() unknown:0</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>③查看nginx日志(access.log和error.log)，暂未发现异常</li>
@@ -426,23 +428,23 @@
 <h2 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h2><ol>
 <li><p>监控php-fpm的状态</p>
 <ul>
-<li>修改对应的vhost，在server内加入以下配置<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/status$ &#123;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>修改对应的vhost，在server内加入以下配置<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/status$ {</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 <li>修改php-fpm.conf，打开以下选项：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm.status_path = /status</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm.status_path = /status</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>访问http://域名/status以查看当前的php情况，</li>
 <li>结果说明</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pool: www php运行的组</span><br><span class="line">process manager: dynamic php-fpm运行的方式</span><br><span class="line">start time: 04/Jun/2012:16:05:32 +0800 开始时间</span><br><span class="line">start since: 5932</span><br><span class="line">accepted conn: 65678 接受链接</span><br><span class="line">listen queue: 0 监听队列</span><br><span class="line">max listen queue: 1 最大监听队列</span><br><span class="line">listen queue len: 128 监听队列len</span><br><span class="line">idle processes: 82 空闲进程</span><br><span class="line">active processes: 4 活动进程</span><br><span class="line">total processes: 86 总进程</span><br><span class="line">max active processes: 25 最大活动进程</span><br><span class="line">max children reached: 0 最大的子进程达到</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pool: www php运行的组</span><br><span class="line">process manager: dynamic php-fpm运行的方式</span><br><span class="line">start time: 04/Jun/2012:16:05:32 +0800 开始时间</span><br><span class="line">start since: 5932</span><br><span class="line">accepted conn: 65678 接受链接</span><br><span class="line">listen queue: 0 监听队列</span><br><span class="line">max listen queue: 1 最大监听队列</span><br><span class="line">listen queue len: 128 监听队列len</span><br><span class="line">idle processes: 82 空闲进程</span><br><span class="line">active processes: 4 活动进程</span><br><span class="line">total processes: 86 总进程</span><br><span class="line">max active processes: 25 最大活动进程</span><br><span class="line">max children reached: 0 最大的子进程达到</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>按上面的步骤弄完并看不出来什么问题，查看对应的日志，报了一堆<code>upstream timed out (60: Operation timed out)</code></p>
 </li>
 <li><p>在server内加入以下配置</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">large_client_header_buffers 4 16k;</span><br><span class="line">client_max_body_size 30m;</span><br><span class="line">client_body_buffer_size 128k;</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_buffer_size 64k;</span><br><span class="line">fastcgi_buffers   4 32k;</span><br><span class="line">fastcgi_busy_buffers_size 64k;</span><br><span class="line">fastcgi_temp_file_write_size 64k;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">large_client_header_buffers 4 16k;</span><br><span class="line">client_max_body_size 30m;</span><br><span class="line">client_body_buffer_size 128k;</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_buffer_size 64k;</span><br><span class="line">fastcgi_buffers   4 32k;</span><br><span class="line">fastcgi_busy_buffers_size 64k;</span><br><span class="line">fastcgi_temp_file_write_size 64k;</span><br></pre></td></tr></tbody></table></figure>
 <ol start="4">
 <li>重启ngix，响应速度并没有快多少，只是不再报<code>upstream timed out (60: Operation timed out)</code>了</li>
 </ol>
@@ -644,7 +646,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

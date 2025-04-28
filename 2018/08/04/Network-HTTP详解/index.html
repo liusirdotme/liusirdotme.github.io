@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -410,8 +412,8 @@
 <ul>
 <li>工作原理：浏览器发起一次请求到服务器，如果需要记录该用户状态，服务器就会在响应头中通过设置<code>set-cookie:name=tom</code>字段生成<code>cookie</code>信息返回到浏览器，浏览器会把这些信息保存下来。当浏览器再请求该网站时会读取本地的<code>cookie</code>信息，把<code>cookie</code>信息通过在请求头设置<code>cookie:name=tom</code>字段发送到服务器，服务器验证<code>cookie</code>信息并响应。</li>
 <li>cookie的内容<ul>
-<li>cookie 名：<code>$_COOKIE[&#39;name&#39;] = &#39;value&#39;</code> 中的 <code>name</code></li>
-<li>cookie 值：<code>$_COOKIE[&#39;name&#39;] = &#39;value&#39;</code> 中的 <code>value</code></li>
+<li>cookie 名：<code>$_COOKIE['name'] = 'value'</code> 中的 <code>name</code></li>
+<li>cookie 值：<code>$_COOKIE['name'] = 'value'</code> 中的 <code>value</code></li>
 <li>过期时间：若不设置，此时<code>cookie</code>生命期为浏览器会话期间，关闭浏览器窗口<code>cookie</code>消失,被称为会话<code>cookie</code>，一般存储在内存里；若设置则浏览器会把<code>cookie</code>保存到硬盘上，关闭后再次打开浏览器<code>cookie</code>仍然有效直到超过设定的过期时间，被称为持久化<code>cookie</code>。</li>
 <li>所属域名：告诉浏览器当前要添加的<code>cookie</code>的域名归属，无明确指出默认当前域名</li>
 <li>生效路径：告诉浏览器当前要添加的<code>cookie</code>的路径归属，无明确指出默认当前路径</li>
@@ -419,7 +421,7 @@
 </li>
 <li>作用域</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.当前域名或父域名下的 cookie</span><br><span class="line">2.当前路径或父路径下的 cookie</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.当前域名或父域名下的 cookie</span><br><span class="line">2.当前路径或父路径下的 cookie</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>session：一种在服务端记录用户信息的技术</p>
 <ul>
@@ -950,7 +952,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

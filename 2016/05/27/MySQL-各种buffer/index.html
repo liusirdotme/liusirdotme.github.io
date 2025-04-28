@@ -204,6 +204,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -397,7 +399,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="buffer-pool"><a href="#buffer-pool" class="headerlink" title="buffer pool"></a><center><font color=red>buffer pool</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即使只需要访问某个数据页中的一条记录，InnoDB也会把该记录所在的整个页中的所有数据加载到内存中，查询完成之后也并不急于释放该内存，而是将该页的数据缓存起来。在缓存该数据页时，InnoDB会向操作系统申请一块连续的内存空间作为缓存区，该缓存区就叫作Buffer Pool（中文名：缓冲池）。硬盘在读写速度上相比内存有着数量级差距，如果每次读写都要从磁盘加载相应数据页，DB的效率就上不来，因而为了化解这个困局，几乎所有的DB都会把缓存池当做标配（在内存中开辟的一整块空间，由引擎利用一些命中算法和淘汰算法负责维护和管理）。</p>
+<h1 id="buffer-pool"><a href="#buffer-pool" class="headerlink" title="buffer pool"></a><center><font color="red">buffer pool</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即使只需要访问某个数据页中的一条记录，InnoDB也会把该记录所在的整个页中的所有数据加载到内存中，查询完成之后也并不急于释放该内存，而是将该页的数据缓存起来。在缓存该数据页时，InnoDB会向操作系统申请一块连续的内存空间作为缓存区，该缓存区就叫作Buffer Pool（中文名：缓冲池）。硬盘在读写速度上相比内存有着数量级差距，如果每次读写都要从磁盘加载相应数据页，DB的效率就上不来，因而为了化解这个困局，几乎所有的DB都会把缓存池当做标配（在内存中开辟的一整块空间，由引擎利用一些命中算法和淘汰算法负责维护和管理）。</p>
 <blockquote>
 <p>change buffer则更进一步，把在内存中更新就能可以立即返回执行结果并且满足一致性约束（显式或隐式定义的约束条件）的记录也暂时放在缓存池中，这样大大减少了磁盘IO操作的几率。</p>
 </blockquote>
@@ -426,7 +428,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有时后台线程刷新脏页的进度比较慢，导致用户线程在准备加载一个数据页到Buffer Pool中时没有缓存页可用，此时用户线程会查看lru链表尾部中有没有未修改的页面（即不是脏页，脏页不能直接释放）可以直接释放，如果没有（即LRU链表尾部的缓存页都是脏页），用户线程会先将LRU链表尾部的单个脏页同步刷新到磁盘然后释放该脏页所占用的缓存页空间，最后再将要访问的数据页加载到该释放的缓存页中，这样的一个过程会导致用户线程的速度特别慢，因为用户线程同步刷新脏页到磁盘需要与磁盘进行交互，和磁盘交互的速度特别慢。</p>
 <p>当需要更新一个数据页时，如果数据页在内存中就直接更新，同时还要记下redo log；而如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，<code>InooDB</code>会将这些更新操作缓存在<code>change buffer</code>中，同样要记下<code>redo log</code>，这样就不需要从磁盘中读入这个数据页了。</p>
 <hr>
-<h1 id="change-buffer"><a href="#change-buffer" class="headerlink" title="change buffer"></a><center><font color=red>change buffer</font></center></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当需要更新一个数据页时，如果数据页在内存中就直接更新，同时还要记下redo log；而如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，<code>InooDB</code>会将这些更新操作缓存在<code>change buffer</code>中，同样要记下<code>redo log</code>，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行<code>change buffer</code>中与这个页有关的操作。通过这种方式就能保证这个数据逻辑的正确性。</p>
+<h1 id="change-buffer"><a href="#change-buffer" class="headerlink" title="change buffer"></a><center><font color="red">change buffer</font></center></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当需要更新一个数据页时，如果数据页在内存中就直接更新，同时还要记下redo log；而如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，<code>InooDB</code>会将这些更新操作缓存在<code>change buffer</code>中，同样要记下<code>redo log</code>，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行<code>change buffer</code>中与这个页有关的操作。通过这种方式就能保证这个数据逻辑的正确性。</p>
 <blockquote>
 <p>虽然名字叫作<code>change buffer</code>，实际上它是可以持久化的数据。也就是说，<code>change buffer</code>在内存中有拷贝，也会被写入到磁盘上。</p>
 </blockquote>
@@ -634,7 +636,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

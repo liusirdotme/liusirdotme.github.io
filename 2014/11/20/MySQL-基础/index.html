@@ -207,6 +207,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -421,7 +423,7 @@
 <li>当使用 DELIMITER 命令时，应该避免使用反斜杠“\”字符，因为它是 MySQL 的转义字符。</li>
 </ul>
 </li>
-<li>2.5 查看存储过程 <code>SHOW PROCEDURE STATUS LIKE &#39;存储过程名称&#39;</code></li>
+<li>2.5 查看存储过程 <code>SHOW PROCEDURE STATUS LIKE '存储过程名称'</code></li>
 <li>2.6 删除存储过程 <code>DROP PROCEDURE 存储过程名称</code></li>
 </ul>
 <ol start="3">
@@ -432,7 +434,7 @@
 <li><code>DECLARE age INT DEFAULT 20; -- 指定默认值，若没有DEFAULT子句，初始值为NULL</code></li>
 </ul>
 </li>
-<li>为变量赋值<code>SET name = &#39;zhangsan&#39;;</code></li>
+<li>为变量赋值<code>SET name = 'zhangsan';</code></li>
 <li>变量自增<code>SET i=i+1</code>;</li>
 </ul>
 </li>
@@ -442,12 +444,12 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line">create procedure pro1()</span><br><span class="line">begin</span><br><span class="line">	select * from user_info;</span><br><span class="line">end //</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call pro1();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line">create procedure pro1()</span><br><span class="line">begin</span><br><span class="line">	select * from user_info;</span><br><span class="line">end //</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call pro1();</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>定义有参数存储过程</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line">create procedure pro2(IN id INT, OUT result varchar)</span><br><span class="line">begin</span><br><span class="line">	declare tmp;</span><br><span class="line">	select field into tmp from user_info;</span><br><span class="line">	set result = tmp;</span><br><span class="line">end //</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call pro2();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line">create procedure pro2(IN id INT, OUT result varchar)</span><br><span class="line">begin</span><br><span class="line">	declare tmp;</span><br><span class="line">	select field into tmp from user_info;</span><br><span class="line">	set result = tmp;</span><br><span class="line">end //</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call pro2();</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="三、外键"><a href="#三、外键" class="headerlink" title="三、外键"></a>三、外键</h2><h2 id="四、视图"><a href="#四、视图" class="headerlink" title="四、视图"></a>四、视图</h2><ol>
 <li><p>视图(view)是一种虚拟存在的表，是一个逻辑表，本身并不包含数据，作为一个select语句保存在数据字典中的。</p>
@@ -460,7 +462,7 @@
 <ul>
 <li>创建视图</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE [OR REPLACE] [ALGORITHM = &#123;UNDEFINED | MERGE | TEMPTABLE&#125;]</span><br><span class="line">VIEW view_name [(column_list)]</span><br><span class="line">AS select_statement</span><br><span class="line">[WITH [CASCADED | LOCAL] CHECK OPTION]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]</span><br><span class="line">VIEW view_name [(column_list)]</span><br><span class="line">AS select_statement</span><br><span class="line">[WITH [CASCADED | LOCAL] CHECK OPTION]</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>删除视图  drop view view_name</li>
@@ -739,12 +741,12 @@
 <li><p>char-varchar-text</p>
 <ul>
 <li>基础<ul>
-<li>char是定长格式，长度范围是0~255字符，如果超过则报<code>1074 - Column length too big for column &#39;school&#39; (max = 255); use BLOB or TEXT instead</code><ul>
+<li>char是定长格式，长度范围是0~255字符，如果超过则报<code>1074 - Column length too big for column 'school' (max = 255); use BLOB or TEXT instead</code><ul>
 <li>当储存一个长度不足255的<strong>字符</strong>时，MySQL会用空格来填充剩下的字符，如定义char(20)，存储一个占2字符的字符串,会在字符串右边填充空格以达到指定的长度，占的字符长度仍为20字符</li>
 <li>读取数据时char类型的数据会把后面的空格去除</li>
 </ul>
 </li>
-<li>varchar类型在<code>mysql5.0.3</code>以下的版本中的最大长度限制为255，而在<code>mysql5.0.3</code>及以上的版本中varchar数据类型的长度支持到了65535(2^16 - 1)<strong>字节</strong>，也就是说可以存放65532个字节的数据（起始位和结束位占去了3个字节），如果超过则报<code>1074 - Column length too big for column &#39;address&#39; (max = 21845); use BLOB or TEXT instead</code><ul>
+<li>varchar类型在<code>mysql5.0.3</code>以下的版本中的最大长度限制为255，而在<code>mysql5.0.3</code>及以上的版本中varchar数据类型的长度支持到了65535(2^16 - 1)<strong>字节</strong>，也就是说可以存放65532个字节的数据（起始位和结束位占去了3个字节），如果超过则报<code>1074 - Column length too big for column 'address' (max = 21845); use BLOB or TEXT instead</code><ul>
 <li>UTF8：一个汉字 = 3个字节，英文是一个字节，最多存 65532/3 个字符</li>
 <li>GBK： 一个汉字 = 2个字节，英文是一个字节，最多存 65532/2 个字符</li>
 <li>varchar类型的实际长度是它的值的实际长度+1，这个“1”代表1字节用于保存实际使用了多大的长度</li>
@@ -1030,7 +1032,7 @@
 <li>定义</li>
 <li>语法</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE</span><br><span class="line">[DEFINER = &#123; user | CURRENT_USER &#125;]</span><br><span class="line">[aggregate]</span><br><span class="line">FUNCTION func_name ([func_parameter [,…]])</span><br><span class="line">RETURNS type</span><br><span class="line">[begin]</span><br><span class="line">body</span><br><span class="line">[end]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE</span><br><span class="line">[DEFINER = { user | CURRENT_USER }]</span><br><span class="line">[aggregate]</span><br><span class="line">FUNCTION func_name ([func_parameter [,…]])</span><br><span class="line">RETURNS type</span><br><span class="line">[begin]</span><br><span class="line">body</span><br><span class="line">[end]</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>aggregate：指定创建的函数是普通的自定义函数，还是聚合(AGGREGATE)函数</li>
@@ -1053,7 +1055,7 @@
 <li><p>实战</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE DEFINER=`root`@`localhost` FUNCTION `func2`() </span><br><span class="line">RETURNS int(11)</span><br><span class="line">begin</span><br><span class="line">declare a int;</span><br><span class="line">declare b int;</span><br><span class="line">set a=rand();</span><br><span class="line">set b=a*100;</span><br><span class="line">return b;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE DEFINER=`root`@`localhost` FUNCTION `func2`() </span><br><span class="line">RETURNS int(11)</span><br><span class="line">begin</span><br><span class="line">declare a int;</span><br><span class="line">declare b int;</span><br><span class="line">set a=rand();</span><br><span class="line">set b=a*100;</span><br><span class="line">return b;</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 
 
     </div>
@@ -1255,7 +1257,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -203,6 +203,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -400,7 +402,7 @@
 <h2 id="二、Makefile"><a href="#二、Makefile" class="headerlink" title="二、Makefile"></a>二、Makefile</h2><ol>
 <li><code>Makefile</code>文件由一系列规则<code>rules</code>构成，每条规则就明确两件事：构建目标的前置条件是什么，以及如何构建。每条规则的形式如下</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;target&gt; : &lt;prerequisites&gt; </span><br><span class="line">[tab]  &lt;commands&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;target&gt; : &lt;prerequisites&gt; </span><br><span class="line">[tab]  &lt;commands&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>目标<code>target</code>：一个目标<code>target</code>就构成一条规则，它通常是文件名(一个或多个，多个用空格分开)，指明<code>Make</code>命令所要构建的对象目标是一/多个文件名。<ul>
@@ -447,7 +449,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VARIABLE = value # 在执行时扩展，允许递归扩展</span><br><span class="line">VARIABLE := value # 在定义时扩展</span><br><span class="line">VARIABLE ?= value # 只有在该变量为空时才设置值</span><br><span class="line">VARIABLE += value # 将值追加到变量的尾端</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VARIABLE = value # 在执行时扩展，允许递归扩展</span><br><span class="line">VARIABLE := value # 在定义时扩展</span><br><span class="line">VARIABLE ?= value # 只有在该变量为空时才设置值</span><br><span class="line">VARIABLE += value # 将值追加到变量的尾端</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>内置变量<code>Implicit Variables</code>：Make命令提供一系列内置变量，比如<code>$(CC)</code>指向当前使用的编译器，<code>$(MAKE)</code>指向当前使用的Make工具。</li>
@@ -465,7 +467,7 @@
 </ul>
 <ul>
 <li>判断和循环：<code>Makefile</code>使用<code>Bash</code>语法完成判断和循环。</li>
-<li>函数：<code>Makefile</code>还可以使用函数，格式为：<code>$(function arguments)或$&#123;function arguments&#125;</code>，一些常用的函数如下：<ul>
+<li>函数：<code>Makefile</code>还可以使用函数，格式为：<code>$(function arguments)或${function arguments}</code>，一些常用的函数如下：<ul>
 <li><code>shell</code>函数用来执行<code>shell</code>命令。</li>
 <li><code>wildcard</code>函数用来在<code>Makefile</code>中替换<code>Bash</code>的通配符。</li>
 <li><code>subst</code>函数用来文本替换。</li>
@@ -676,7 +678,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

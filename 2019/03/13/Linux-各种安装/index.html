@@ -203,6 +203,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -455,10 +457,10 @@
 <li><a target="_blank" rel="noopener" href="https://www.opensuse.org/">openSUSE</a> produces Erlang packages for each distribution (openSUSE and SLES)</li>
 </ul>
 <p>具体步骤：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.切换至/etc/yum.repos.d目录，新建rabbitmq_erlang.repo并编辑：</span><br><span class="line"></span><br><span class="line">[rabbitmq-erlang]</span><br><span class="line">name=rabbitmq-erlang</span><br><span class="line">baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">2.执行命令 yum install erlang，一路yes等待安装</span><br><span class="line">3.测试安装成功与否 终端输入：erl，输出相关信息则成功</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.切换至/etc/yum.repos.d目录，新建rabbitmq_erlang.repo并编辑：</span><br><span class="line"></span><br><span class="line">[rabbitmq-erlang]</span><br><span class="line">name=rabbitmq-erlang</span><br><span class="line">baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">2.执行命令 yum install erlang，一路yes等待安装</span><br><span class="line">3.测试安装成功与否 终端输入：erl，输出相关信息则成功</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>安装rabbitmq</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1.导入key</span><br><span class="line">rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc</span><br><span class="line"></span><br><span class="line">2.配置源 cd /etc/yum.repos.d &amp;&amp; vim rabbitmq.repo</span><br><span class="line">[bintray-rabbitmq-server]</span><br><span class="line">name=bintray-rabbitmq-rpm</span><br><span class="line">baseurl=https://dl.bintray.com/rabbitmq/rpm/rabbitmq-server/v3.7.x/el/7/</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">3.yum install rabbitmq-server</span><br><span class="line"></span><br><span class="line">4.设置开机启动 chkconfig rabbitmq-server on</span><br><span class="line"></span><br><span class="line">5.启动服务 service rabbitmq-server start</span><br><span class="line"></span><br><span class="line">6.开启界面管理 rabbitmq-plugins enable rabbitmq_management</span><br><span class="line"></span><br><span class="line">7.开启远程访问</span><br><span class="line">cd /etc/rabbitmq  </span><br><span class="line">cp /usr/share/doc/rabbitmq-server-3.5.6/rabbitmq.config.example /etc/rabbitmq/   </span><br><span class="line">mv rabbitmq.config.example rabbitmq.config </span><br><span class="line">vim /etc/rabbitmq/rabbitmq.config</span><br><span class="line">将 %% &#123;loopback_users, []&#125;, 修改为 &#123;loopback_users, []&#125; **注意逗号**</span><br><span class="line">service rabbitmq-server reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1.导入key</span><br><span class="line">rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc</span><br><span class="line"></span><br><span class="line">2.配置源 cd /etc/yum.repos.d &amp;&amp; vim rabbitmq.repo</span><br><span class="line">[bintray-rabbitmq-server]</span><br><span class="line">name=bintray-rabbitmq-rpm</span><br><span class="line">baseurl=https://dl.bintray.com/rabbitmq/rpm/rabbitmq-server/v3.7.x/el/7/</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">3.yum install rabbitmq-server</span><br><span class="line"></span><br><span class="line">4.设置开机启动 chkconfig rabbitmq-server on</span><br><span class="line"></span><br><span class="line">5.启动服务 service rabbitmq-server start</span><br><span class="line"></span><br><span class="line">6.开启界面管理 rabbitmq-plugins enable rabbitmq_management</span><br><span class="line"></span><br><span class="line">7.开启远程访问</span><br><span class="line">cd /etc/rabbitmq  </span><br><span class="line">cp /usr/share/doc/rabbitmq-server-3.5.6/rabbitmq.config.example /etc/rabbitmq/   </span><br><span class="line">mv rabbitmq.config.example rabbitmq.config </span><br><span class="line">vim /etc/rabbitmq/rabbitmq.config</span><br><span class="line">将 %% {loopback_users, []}, 修改为 {loopback_users, []} **注意逗号**</span><br><span class="line">service rabbitmq-server reload</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
@@ -471,7 +473,7 @@
 <ul>
 <li>下载 <code>wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-8.0.0-ce.0.el7.x86_64.rpm</code></li>
 <li>安装 <code>rpm -i gitlab-ce-8.0.0-ce.0.el7.x86_64.rpm</code></li>
-<li>修改配置文件 <code>vim  /etc/gitlab/gitlab.rb</code>，将<code>external_url &#39;http://localhost&#39;</code>改为<code>external_url &#39;http://192.168.10.10:8082&#39;</code></li>
+<li>修改配置文件 <code>vim  /etc/gitlab/gitlab.rb</code>，将<code>external_url 'http://localhost'</code>改为<code>external_url 'http://192.168.10.10:8082'</code></li>
 <li>保存并重启 <code>gitlab-ctl reconfigure &amp;&amp; gitlab-ctl restart</code></li>
 </ul>
 </li>
@@ -513,9 +515,9 @@
 <li><p>安装 <code>sudo yum -y install jenkins</code></p>
 </li>
 <li><p>或安装stable版如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo</span><br><span class="line">sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key</span><br><span class="line">sudo yum install jenkins</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo</span><br><span class="line">sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key</span><br><span class="line">sudo yum install jenkins</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>或用rpm方式安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://prodjenkinsreleases.blob.core.windows.net/redhat-stable/jenkins-2.89.2-1.1.noarch.rpm</span><br><span class="line">rpm -ivh jenkins-2.89.2-1.1.noarch.rpm </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://prodjenkinsreleases.blob.core.windows.net/redhat-stable/jenkins-2.89.2-1.1.noarch.rpm</span><br><span class="line">rpm -ivh jenkins-2.89.2-1.1.noarch.rpm </span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 <li><p>更新Jenkins <code>yum update jenkins</code></p>
@@ -540,7 +542,7 @@
 <li><p>防火墙设置</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --new-service=jenkins</span><br><span class="line">firewall-cmd --permanent --service=jenkins --set-short=&quot;Jenkins Service Ports&quot;</span><br><span class="line">firewall-cmd --permanent --service=jenkins --set-description=&quot;Jenkins service firewalld port exceptions&quot;</span><br><span class="line">firewall-cmd --permanent --service=jenkins --add-port=8081/tcp</span><br><span class="line">firewall-cmd --permanent --add-service=jenkins</span><br><span class="line">firewall-cmd --zone=public --add-service=http --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --new-service=jenkins</span><br><span class="line">firewall-cmd --permanent --service=jenkins --set-short="Jenkins Service Ports"</span><br><span class="line">firewall-cmd --permanent --service=jenkins --set-description="Jenkins service firewalld port exceptions"</span><br><span class="line">firewall-cmd --permanent --service=jenkins --add-port=8081/tcp</span><br><span class="line">firewall-cmd --permanent --add-service=jenkins</span><br><span class="line">firewall-cmd --zone=public --add-service=http --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="8">
 <li>卸载</li>
@@ -564,13 +566,13 @@
 <li><p>添加nginx安装源<code>vim /etc/yum.repos.d/nginx.repo</code>，添加以下内容：</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line"></span><br><span class="line">[nginx-mainline]</span><br><span class="line">name=nginx mainline repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line"></span><br><span class="line">[nginx-mainline]</span><br><span class="line">name=nginx mainline repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>执行命令 sudo yum install nginx</li>
 <li>设置开机启动</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable nginx</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable nginx</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>安装mysql </p>
 <ul>
@@ -578,7 +580,7 @@
 <li>查看5.7版本是否已经启用<code>yum repolist all | grep mysql</code></li>
 <li>如果没有启用的话，我们可以修改源文件</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/</span><br><span class="line">enabled=1 #安装此版本则将此值改为1，其他的版本改为0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/</span><br><span class="line">enabled=1 #安装此版本则将此值改为1，其他的版本改为0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>修改完成之后查看可用的版本<code>yum repolist enabled | grep mysql</code></p>
@@ -590,20 +592,20 @@
 <li><p>设置开机启动</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
-<li><p>mysql安装完成之后会在LOG文件(/var/log/mysqld.log)中生成一个root的默认密码<code>grep &#39;temporary password&#39; /var/log/mysqld.log</code></p>
+<li><p>mysql安装完成之后会在LOG文件(/var/log/mysqld.log)中生成一个root的默认密码<code>grep 'temporary password' /var/log/mysqld.log</code></p>
 </li>
 <li><p>登录mySql并修改root密码</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">输入密码：aaaaaa</span><br><span class="line">mysql&gt;ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;bbbbbb&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">输入密码：aaaaaa</span><br><span class="line">mysql&gt;ALTER USER 'root'@'localhost' IDENTIFIED BY 'bbbbbb';</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>修改默认编码</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在/etc/my.cnf配置文件的[mysqld]下添加编码配置：</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect=&#x27;SET NAMES utf8&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在/etc/my.cnf配置文件的[mysqld]下添加编码配置：</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect='SET NAMES utf8'</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>重启mysql，是修改生效<code>systemctl restart mysqld</code></p>
@@ -611,14 +613,14 @@
 <li><p>设置远程用户登录</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON . TO &#x27;user&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;bbbbbb&#x27; WITH   GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON . TO 'user'@'%' IDENTIFIED BY 'bbbbbb' WITH   GRANT OPTION;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>安装php5.6</p>
 <ul>
 <li>安装依赖<code>yum install autoconf</code></li>
 <li>更新包</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>安装php5.6<code>yum install php56w.x86_64 php56w-cli.x86_64 php56w-common.x86_64 php56w-gd.x86_64 php56w-ldap.x86_64 php56w-mbstring.x86_64 php56w-mcrypt.x86_64 php56w-mysql.x86_64 php56w-pdo.x86_64</code></p>
@@ -630,7 +632,7 @@
 <li><p>开机启动设置</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable php-fpm</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable php-fpm</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>修改nginx配置文件，解析域名，转发请求等，网上一堆教程</p>
 </li>
@@ -639,7 +641,7 @@
 <li>查看nginx进程 ps -aux | grep nginx,若主进程和worker进程不一致，则修改nginx.conf</li>
 <li>关闭SELinux</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  * 查看当前selinux的状态。</span><br><span class="line">  /usr/sbin/sestatus</span><br><span class="line">  </span><br><span class="line">  * 将SELINUX=enforcing 修改为 SELINUX=disabled 状态。</span><br><span class="line">vim /etc/selinux/config</span><br><span class="line">  #SELINUX=enforcing</span><br><span class="line">  SELINUX=disabled</span><br><span class="line">  </span><br><span class="line">  * 重启生效</span><br><span class="line">  reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  * 查看当前selinux的状态。</span><br><span class="line">  /usr/sbin/sestatus</span><br><span class="line">  </span><br><span class="line">  * 将SELINUX=enforcing 修改为 SELINUX=disabled 状态。</span><br><span class="line">vim /etc/selinux/config</span><br><span class="line">  #SELINUX=enforcing</span><br><span class="line">  SELINUX=disabled</span><br><span class="line">  </span><br><span class="line">  * 重启生效</span><br><span class="line">  reboot</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/GitLab">参考一</a></p>
 </li>
@@ -844,7 +846,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

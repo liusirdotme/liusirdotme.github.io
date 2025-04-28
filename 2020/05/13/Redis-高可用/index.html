@@ -220,6 +220,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -414,7 +416,7 @@
 <span id="more"></span>
 
 
-<h1 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a><center><font color=red>主从复制</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<h1 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a><center><font color="red">主从复制</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
 <li>主从复制是指将一台Redis服务器的数据，复制到其他的Redis服务器。前者称为主节点(master)，后者称为从节点(slave)，数据的复制是单向的，只能由主节点到从节点。</li>
 <li>默认情况下每台Redis服务器都是主节点，且一个主节点可以有多个从节点(或没有从节点)，但一个从节点只能有一个主节点。</li>
 </ol>
@@ -435,7 +437,7 @@
 <li>权限验证通过后，进行数据同步，这是耗时最长的操作，主节点将把所有的数据全部发送给从节点。    </li>
 <li>当主节点把当前的数据同步给从节点后，便完成了复制的建立流程。接下来主节点就会持续的把写命令发送给从节点，保证主从数据一致性。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当一个Redis服务器接收到replicaof命令，开始对另一个服务器进行复制的时候，主从服务器会执行以下操作：</span><br><span class="line">主服务器执行bgsave命令，生成一个rdb文件，并使用缓冲区存储起在bgsave命令之后执行的所有写命令。</span><br><span class="line">当rdb文件创建完毕，主服务器会通过套接字将rdb文件传送给从服务器。</span><br><span class="line">从服务器在接收完主服务器传送过来的rdb文件之后，就会载入这个rdb文件，从而获得主服务器在执行bgsave命令时的所有数据。</span><br><span class="line">当从服务器完成RDB文件载入操作，并开始上线接受命令请求时，主服务器就会把之前存储在缓存区中的所有写命令发送给从服务器执行。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当一个Redis服务器接收到replicaof命令，开始对另一个服务器进行复制的时候，主从服务器会执行以下操作：</span><br><span class="line">主服务器执行bgsave命令，生成一个rdb文件，并使用缓冲区存储起在bgsave命令之后执行的所有写命令。</span><br><span class="line">当rdb文件创建完毕，主服务器会通过套接字将rdb文件传送给从服务器。</span><br><span class="line">从服务器在接收完主服务器传送过来的rdb文件之后，就会载入这个rdb文件，从而获得主服务器在执行bgsave命令时的所有数据。</span><br><span class="line">当从服务器完成RDB文件载入操作，并开始上线接受命令请求时，主服务器就会把之前存储在缓存区中的所有写命令发送给从服务器执行。</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>因为主服务器存储的写命令都是在执行bgsave命令之后执行的，所以当从服务器载入完rdb文件，并执行完主服务器存储在缓冲区中的所有写命令之后，主从服务器包含的数据库数据将完全相同。</p>
@@ -485,7 +487,7 @@
 <p>一般通过故障转移机制可以解决这个问题。</p>
 </blockquote>
 <ol start="7">
-<li>psync 命令的使用方式：<code>psync&#123;runId&#125;&#123;offset&#125;</code><ul>
+<li>psync 命令的使用方式：<code>psync{runId}{offset}</code><ul>
 <li>runId：从节点所复制主节点的运行id</li>
 <li>offset：当前从节点已复制的数据偏移量</li>
 </ul>
@@ -493,7 +495,7 @@
 <li>psync执行流程<br><img src="psync.jpg" alt="psync"><ul>
 <li>从节点发送 psync 命令给主节点，runId 就是目标主节点的 ID，如果没有默认为 -1，offset 是从节点保存的复制偏移量，如果是第一次复制则为 -1.</li>
 <li>主节点会根据runid和offset决定返回结果：<ul>
-<li>如果回复<code>+FULLRESYNC &#123;runId&#125; &#123;offset&#125;</code>，那么从节点将触发全量复制流程。      </li>
+<li>如果回复<code>+FULLRESYNC {runId} {offset}</code>，那么从节点将触发全量复制流程。      </li>
 <li>如果回复<code>+CONTINUE</code>，从节点将触发部分复制。        </li>
 <li>如果回复<code>+ERR</code>，说明主节点不支持2.8的psync命令，将使用sync执行全量复制。</li>
 </ul>
@@ -569,10 +571,10 @@
 <li><p>复制<code>redis.conf</code>为<code>6380.conf</code>和<code>6381.conf</code><br><code>cp redis.conf 6380.conf</code><br><code>cp redis.conf 6381.conf</code></p>
 </li>
 <li><p>分别修改<code>6380.conf</code>和<code>6381.conf</code>如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port 6380|6381</span><br><span class="line">slaveof 127.0.0.1 6379</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_6380|6381.pid</span><br><span class="line">logfile &quot;6380|6381.log&quot;</span><br><span class="line">dbfilename dump6380|6381.rdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">port 6380|6381</span><br><span class="line">slaveof 127.0.0.1 6379</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_6380|6381.pid</span><br><span class="line">logfile "6380|6381.log"</span><br><span class="line">dbfilename dump6380|6381.rdb</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>分别启动三个节点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-server 6379.conf</span><br><span class="line">redis-server 6380.conf</span><br><span class="line">redis-server 6381.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-server 6379.conf</span><br><span class="line">redis-server 6380.conf</span><br><span class="line">redis-server 6381.conf</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>查看主从节点信息</p>
 <ul>
@@ -589,7 +591,7 @@
 <p><img src="slave2.png" alt="6381"></p>
 </li>
 <li><p>测试主从复制</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## 在master节点设置name</span><br><span class="line">redis-cli</span><br><span class="line">set name master-node-name</span><br><span class="line"></span><br><span class="line">## 在6380节点获取name</span><br><span class="line">redis-cli -p 6380</span><br><span class="line">get name</span><br><span class="line"></span><br><span class="line">## 在6381节点获取name</span><br><span class="line">redis-cli -p 6381</span><br><span class="line">get name</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## 在master节点设置name</span><br><span class="line">redis-cli</span><br><span class="line">set name master-node-name</span><br><span class="line"></span><br><span class="line">## 在6380节点获取name</span><br><span class="line">redis-cli -p 6380</span><br><span class="line">get name</span><br><span class="line"></span><br><span class="line">## 在6381节点获取name</span><br><span class="line">redis-cli -p 6381</span><br><span class="line">get name</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
@@ -615,7 +617,7 @@
 <li><p><code>./redis-cli -p 6380</code></p>
 <ul>
 <li><p><code>slaveof 127.0.0.1 6379</code>，此命令无法输入主节点的password，执行后查看从节点复制状态<code>info replication</code>，可看到<code>master_link_status:down</code>是down状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Replication</span><br><span class="line">role:slave</span><br><span class="line">master_host:127.0.0.1</span><br><span class="line">master_port:6379</span><br><span class="line">master_link_status:down</span><br><span class="line">master_last_io_seconds_ago:-1</span><br><span class="line">master_sync_in_progress:0</span><br><span class="line">slave_repl_offset:1</span><br><span class="line">master_link_down_since_seconds:1617335714</span><br><span class="line">slave_priority:100</span><br><span class="line">slave_read_only:1</span><br><span class="line">connected_slaves:0</span><br><span class="line">master_replid:243a71fda37bb8d32ed300368a73305c78984c39</span><br><span class="line">master_replid2:0000000000000000000000000000000000000000</span><br><span class="line">master_repl_offset:0</span><br><span class="line">second_repl_offset:-1</span><br><span class="line">repl_backlog_active:0</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:0</span><br><span class="line">repl_backlog_histlen:0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Replication</span><br><span class="line">role:slave</span><br><span class="line">master_host:127.0.0.1</span><br><span class="line">master_port:6379</span><br><span class="line">master_link_status:down</span><br><span class="line">master_last_io_seconds_ago:-1</span><br><span class="line">master_sync_in_progress:0</span><br><span class="line">slave_repl_offset:1</span><br><span class="line">master_link_down_since_seconds:1617335714</span><br><span class="line">slave_priority:100</span><br><span class="line">slave_read_only:1</span><br><span class="line">connected_slaves:0</span><br><span class="line">master_replid:243a71fda37bb8d32ed300368a73305c78984c39</span><br><span class="line">master_replid2:0000000000000000000000000000000000000000</span><br><span class="line">master_repl_offset:0</span><br><span class="line">second_repl_offset:-1</span><br><span class="line">repl_backlog_active:0</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:0</span><br><span class="line">repl_backlog_histlen:0</span><br></pre></td></tr></tbody></table></figure>
 
 
 </li>
@@ -628,7 +630,7 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30697239/article/details/95011585">参考一</a></li>
 </ol>
 <hr>
-<h1 id="哨兵机制"><a href="#哨兵机制" class="headerlink" title="哨兵机制"></a><center><font color=red>哨兵机制</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Redis Sentinel</code>是一个分布式系统，你可以在一个架构中运行多个 <code>Sentinel</code>进程(<code>progress</code>)，这些进程使用流言协议(<code>gossip protocols</code>)来接收关于主服务器是否下线的信息，并使用投票协议(<code>agreement protocols</code>)来决定是否执行自动故障迁移，以及选择哪个从服务器作为新的主服务器。</p>
+<h1 id="哨兵机制"><a href="#哨兵机制" class="headerlink" title="哨兵机制"></a><center><font color="red">哨兵机制</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Redis Sentinel</code>是一个分布式系统，你可以在一个架构中运行多个 <code>Sentinel</code>进程(<code>progress</code>)，这些进程使用流言协议(<code>gossip protocols</code>)来接收关于主服务器是否下线的信息，并使用投票协议(<code>agreement protocols</code>)来决定是否执行自动故障迁移，以及选择哪个从服务器作为新的主服务器。</p>
 <p><img src="sentinel.png" alt="sentinel"></p>
 <h2 id="二、作用-1"><a href="#二、作用-1" class="headerlink" title="二、作用"></a>二、作用</h2><blockquote>
 <p>该系统执行以下三个任务：</p>
@@ -663,7 +665,7 @@
 <li>观察步骤2输出信息，并通过<code>info replication</code>查看节点角色</li>
 </ol>
 <hr>
-<h1 id="集群"><a href="#集群" class="headerlink" title="集群"></a><center><font color=red>集群</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓集群，就是一组相互独立的、通过高速网络互联的计算机，它们构成了一个组，并以单一系统的模式加以管理。通俗的说就是，多台物理计算机组成逻辑上的一台计算机以提升系统负载能力，对于用户来说是无感知的，Redis集群道理也是一样的。由于Redis是基于内存的高速缓存数据库，而单台实例的内存终归是有限的，一般都要引入Redis集群。</p>
+<h1 id="集群"><a href="#集群" class="headerlink" title="集群"></a><center><font color="red">集群</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓集群，就是一组相互独立的、通过高速网络互联的计算机，它们构成了一个组，并以单一系统的模式加以管理。通俗的说就是，多台物理计算机组成逻辑上的一台计算机以提升系统负载能力，对于用户来说是无感知的，Redis集群道理也是一样的。由于Redis是基于内存的高速缓存数据库，而单台实例的内存终归是有限的，一般都要引入Redis集群。</p>
 <ol>
 <li><p>Redis集群是一个提供在多个Redis间节点间共享数据的程序集。</p>
 </li>
@@ -692,7 +694,7 @@
 <li>创建集群目录 <code>mkdir 7000 7001 7002 7003 7004 7005</code></li>
 <li>创建配置文件redis.conf，添加以下内容</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 端口号，每个目录都不同</span><br><span class="line">port 700X</span><br><span class="line"># 开启集群模式</span><br><span class="line">cluster-enabled yes</span><br><span class="line">#节点超时实际，单位毫秒</span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line">#集群内部配置文件(默认为 nodes.conf)</span><br><span class="line">cluster-config-file nodes.conf</span><br><span class="line"># 启动 AOF</span><br><span class="line">appendonly yes</span><br><span class="line"># 后台运行</span><br><span class="line">daemonize yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 端口号，每个目录都不同</span><br><span class="line">port 700X</span><br><span class="line"># 开启集群模式</span><br><span class="line">cluster-enabled yes</span><br><span class="line">#节点超时实际，单位毫秒</span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line">#集群内部配置文件(默认为 nodes.conf)</span><br><span class="line">cluster-config-file nodes.conf</span><br><span class="line"># 启动 AOF</span><br><span class="line">appendonly yes</span><br><span class="line"># 后台运行</span><br><span class="line">daemonize yes</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>复制配置文件到每个目录下 cp redis.conf 700X/redis.conf</li>
@@ -700,22 +702,22 @@
 <li>关联所有节点 <code>redis-cli -p 7000</code>，然后依次执行 <code>cluster meet 127.0.0.1 7001/2/3/4/5</code></li>
 <li>分配slot </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 7000 cluster addslots &#123;0..5461&#125;</span><br><span class="line">redis-cli -p 7001 cluster addslots &#123;5462..10922&#125;</span><br><span class="line">redis-cli -p 7002 cluster addslots &#123;10923..16383&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 7000 cluster addslots {0..5461}</span><br><span class="line">redis-cli -p 7001 cluster addslots {5462..10922}</span><br><span class="line">redis-cli -p 7002 cluster addslots {10923..16383}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>查看节点状态 <code>redis-cli -p 7000 cluster nodes</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aaa6ee613e3dcd71b8fed855b21bb024756aee3d 127.0.0.1:7000@17000 myself,master - 0 1566358053000 1 connected 0-5461</span><br><span class="line">bbbecb53837913721b76742f4004ca76c36167c1 127.0.0.1:7001@17001 master - 0 1566358052406 4 connected 5462-10922</span><br><span class="line">43eebc86c309da5d24900b2affa30a62e8c0c5cb 127.0.0.1:7004@17004 master - 0 1566358052000 3 connected</span><br><span class="line">1cd86051e473f5f9527275f816deea3ec224e5e2 127.0.0.1:7002@17002 master - 0 1566358053516 2 connected 10923-16383</span><br><span class="line">b506e1f1ee1919879ca22d589c4ea0ad8ce5f6a1 127.0.0.1:7005@17005 master - 0 1566358052000 0 connected</span><br><span class="line">ccc9a55802e23eb576a69a2f93596e158077cda9 127.0.0.1:7003@17003 master - 0 1566358053415 5 connected</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aaa6ee613e3dcd71b8fed855b21bb024756aee3d 127.0.0.1:7000@17000 myself,master - 0 1566358053000 1 connected 0-5461</span><br><span class="line">bbbecb53837913721b76742f4004ca76c36167c1 127.0.0.1:7001@17001 master - 0 1566358052406 4 connected 5462-10922</span><br><span class="line">43eebc86c309da5d24900b2affa30a62e8c0c5cb 127.0.0.1:7004@17004 master - 0 1566358052000 3 connected</span><br><span class="line">1cd86051e473f5f9527275f816deea3ec224e5e2 127.0.0.1:7002@17002 master - 0 1566358053516 2 connected 10923-16383</span><br><span class="line">b506e1f1ee1919879ca22d589c4ea0ad8ce5f6a1 127.0.0.1:7005@17005 master - 0 1566358052000 0 connected</span><br><span class="line">ccc9a55802e23eb576a69a2f93596e158077cda9 127.0.0.1:7003@17003 master - 0 1566358053415 5 connected</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>设置主从复制 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 7003 cluster replicate 7000的NodeID(aaa6ee613e3dcd71b8fed855b21bb024756aee3d)</span><br><span class="line">redis-cli -p 7004 cluster replicate 7001的NodeID(bbbecb53837913721b76742f4004ca76c36167c1)</span><br><span class="line">redis-cli -p 7005 cluster replicate 7002的NodeID(ccc9a55802e23eb576a69a2f93596e158077cda9)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 7003 cluster replicate 7000的NodeID(aaa6ee613e3dcd71b8fed855b21bb024756aee3d)</span><br><span class="line">redis-cli -p 7004 cluster replicate 7001的NodeID(bbbecb53837913721b76742f4004ca76c36167c1)</span><br><span class="line">redis-cli -p 7005 cluster replicate 7002的NodeID(ccc9a55802e23eb576a69a2f93596e158077cda9)</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>测试</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -c -p 7000</span><br><span class="line"></span><br><span class="line">set name jack</span><br><span class="line">-&gt; Redirected to slot [5798] located at 127.0.0.1:7001</span><br><span class="line"></span><br><span class="line">redis-cli -c -p 7001 </span><br><span class="line">get name //jack</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -c -p 7000</span><br><span class="line"></span><br><span class="line">set name jack</span><br><span class="line">-&gt; Redirected to slot [5798] located at 127.0.0.1:7001</span><br><span class="line"></span><br><span class="line">redis-cli -c -p 7001 </span><br><span class="line">get name //jack</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>-c:集群模式，不加此选项执行set命令时会报错<code>(error) MOVED 5798 127.0.0.1:700X</code></li>
 </ul>
@@ -733,7 +735,7 @@
 <li>创建集群目录 <code>mkdir 6380 6381 6382 6383 6384 6385</code></li>
 <li>创建配置文件redis.conf，添加以下内容</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 端口号，每个目录都不同</span><br><span class="line">port 638x</span><br><span class="line"># 开启集群模式</span><br><span class="line">cluster-enabled yes</span><br><span class="line">#节点超时实际，单位毫秒</span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line">#集群内部配置文件(默认为 nodes.conf)</span><br><span class="line">cluster-config-file nodes.conf</span><br><span class="line"># 启动 AOF</span><br><span class="line">appendonly yes</span><br><span class="line"># 后台运行</span><br><span class="line">daemonize yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 端口号，每个目录都不同</span><br><span class="line">port 638x</span><br><span class="line"># 开启集群模式</span><br><span class="line">cluster-enabled yes</span><br><span class="line">#节点超时实际，单位毫秒</span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line">#集群内部配置文件(默认为 nodes.conf)</span><br><span class="line">cluster-config-file nodes.conf</span><br><span class="line"># 启动 AOF</span><br><span class="line">appendonly yes</span><br><span class="line"># 后台运行</span><br><span class="line">daemonize yes</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>复制配置文件到每个目录下 cp redis.conf 638X/redis.conf</li>
@@ -759,7 +761,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/caicz/p/10797167.html">参考四</a></li>
 </ol>
 <hr>
-<h1 id="哈希槽"><a href="#哈希槽" class="headerlink" title="哈希槽"></a><center><font color=red>哈希槽</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<h1 id="哈希槽"><a href="#哈希槽" class="headerlink" title="哈希槽"></a><center><font color="red">哈希槽</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
 <li><p><code>Redis</code>集群中内置了<code>2^14 = 16384</code>个哈希槽，当需要在<code>Redis</code>集群中放置一个 key-value时，<code>Redis</code>先对 key 使用<strong>crc16</strong>算法算出一个结果，然后把结果对<code>16384</code>取模，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，<code>Redis</code>会根据节点数量大致均等的将哈希槽映射到不同的节点。</p>
 </li>
 <li><p>基本思想：</p>
@@ -810,7 +812,7 @@
 <li><a target="_blank" rel="noopener" href="http://redis.cn/topics/cluster-tutorial.html">redis中文网</a></li>
 </ol>
 <hr>
-<h1 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a><center><font color=red>Gossip协议</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a><center><font color="red">Gossip协议</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><h2 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h2><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/naimao/p/13628697.html">参考一</a></li>
 </ol>
 
@@ -1015,7 +1017,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

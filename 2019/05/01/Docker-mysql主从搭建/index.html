@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -416,26 +418,26 @@
 <h2 id="三、主节点设置"><a href="#三、主节点设置" class="headerlink" title="三、主节点设置"></a>三、主节点设置</h2><ol>
 <li>编辑/etc/mysql/my.cnf，加入以下内容：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 同一局域网内注意要唯一</span><br><span class="line">server-id=100  </span><br><span class="line">## 开启二进制日志功能，可以随便取（关键）</span><br><span class="line">log-bin=mysql-bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 同一局域网内注意要唯一</span><br><span class="line">server-id=100  </span><br><span class="line">## 开启二进制日志功能，可以随便取（关键）</span><br><span class="line">log-bin=mysql-bin</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>重启mysql服务 <code>service mysql restart</code></li>
 <li>启动docker容器 <code>docker start mysql-master</code></li>
 <li>进入容器 <code>docker exec -it mysql-master /bin/bash</code></li>
-<li>新建主从复制用户 <code>CREATE USER &#39;slave&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;</code></li>
-<li>授予slave用户权限 <code>GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &#39;slave&#39;@&#39;%&#39;;</code></li>
+<li>新建主从复制用户 <code>CREATE USER 'slave'@'%' IDENTIFIED BY '123456';</code></li>
+<li>授予slave用户权限 <code>GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'slave'@'%';</code></li>
 <li>查看主节点状态 <code>show master status;</code></li>
 </ol>
 <h2 id="四、从节点设置"><a href="#四、从节点设置" class="headerlink" title="四、从节点设置"></a>四、从节点设置</h2><ol>
 <li>编辑/etc/mysql/my.cnf，加入以下内容：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 设置server_id,注意要唯一</span><br><span class="line">server-id=101  </span><br><span class="line">## 开启二进制日志功能，以备Slave作为其它Slave的Master时使用</span><br><span class="line">log-bin=mysql-slave-bin   </span><br><span class="line">## relay_log配置中继日志</span><br><span class="line">relay_log=edu-mysql-relay-bin  </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 设置server_id,注意要唯一</span><br><span class="line">server-id=101  </span><br><span class="line">## 开启二进制日志功能，以备Slave作为其它Slave的Master时使用</span><br><span class="line">log-bin=mysql-slave-bin   </span><br><span class="line">## relay_log配置中继日志</span><br><span class="line">relay_log=edu-mysql-relay-bin  </span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>重启mysql服务 <code>service mysql restart</code></li>
 <li>启动docker容器 <code>docker start mysql-slave</code></li>
 <li>进入容器 <code>docker exec -it mysql-slave /bin/bash</code></li>
-<li>复制准备 <code>change master to master_host=&#39;172.17.0.2&#39;, master_user=&#39;slave&#39;, master_password=&#39;123456&#39;, master_port=3306, master_log_file=&#39;mysql-bin.000001&#39;, master_log_pos= n, master_connect_retry=30;</code><ul>
+<li>复制准备 <code>change master to master_host='172.17.0.2', master_user='slave', master_password='123456', master_port=3306, master_log_file='mysql-bin.000001', master_log_pos= n, master_connect_retry=30;</code><ul>
 <li>master_log_pos=n，n值为<code>show master status</code>结果中Position值</li>
 </ul>
 </li>
@@ -466,7 +468,7 @@
 <ul>
 <li>停止从库复制 <code>stop slave;</code></li>
 <li>查看主库状态 <code>show master status;</code></li>
-<li>重新配置准备，修改File和Position对应的值 <code>change master to master_host=&#39;172.17.0.2&#39;, master_user=&#39;slave&#39;, master_password=&#39;123456&#39;, master_port=3306, master_log_file=&#39;mysql-bin.000001&#39;, master_log_pos= n, master_connect_retry=30;</code></li>
+<li>重新配置准备，修改File和Position对应的值 <code>change master to master_host='172.17.0.2', master_user='slave', master_password='123456', master_port=3306, master_log_file='mysql-bin.000001', master_log_pos= n, master_connect_retry=30;</code></li>
 </ul>
 
     </div>
@@ -664,7 +666,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

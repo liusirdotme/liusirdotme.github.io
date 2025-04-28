@@ -207,6 +207,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -400,7 +402,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="BASE原则和CAP原则"><a href="#BASE原则和CAP原则" class="headerlink" title="BASE原则和CAP原则"></a><center><font color=red>BASE原则和CAP原则</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="BASE原则和CAP原则"><a href="#BASE原则和CAP原则" class="headerlink" title="BASE原则和CAP原则"></a><center><font color="red">BASE原则和CAP原则</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li><p>BASE原则：BASE是Basically Available(基本可用)、Soft state(软状态)和Eventually consistent(最终一致性)的简写。BASE理论是对CAP原则中的一致性和可用性进行一个权衡的结果，它源于对大规模互联网系统分布式实践的总结，是基于CAP定理逐步演化而来的。BASE理论的核心思想就是：我们无法做到强一致，但每个应用都可以根据自身的业务特点，采用适当的方式来使系统达到最终一致性。</p>
 <ul>
 <li><p>基本可用：指分布式系统在出现不可预知故障的时候，允许损失部分可用性。比如：</p>
@@ -457,7 +459,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a><center><font color=red>分布式事务</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。简单来说就是一个大的操作由两个或者更多的小的操作共同完成，而这些小的操作又分布在不同的网络主机上。这些小的操作要么全部成功执行，要么全部不执行，以保证数据的一致性。</p>
+<h1 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a><center><font color="red">分布式事务</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分布式事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。简单来说就是一个大的操作由两个或者更多的小的操作共同完成，而这些小的操作又分布在不同的网络主机上。这些小的操作要么全部成功执行，要么全部不执行，以保证数据的一致性。</p>
 <ul>
 <li>基于两阶段提交(2PC)</li>
 <li>补偿事务(TCC)</li>
@@ -614,7 +616,7 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/bntx2jsqfehy7/article/details/81058746">参考</a></li>
 </ol>
 <hr>
-<h1 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a><center><font color=red>分布式锁</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分布式锁是控制分布式系统之间同步访问共享资源的一种方式。在分布式系统中，常常需要协调他们的动作。如果不同的系统或是同一个系统的不同主机之间共享了一个或一组资源，那么访问这些资源的时候，往往需要互斥来防止彼此干扰来保证一致性，在这种情况下便需要使用到分布式锁。</p>
+<h1 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a><center><font color="red">分布式锁</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分布式锁是控制分布式系统之间同步访问共享资源的一种方式。在分布式系统中，常常需要协调他们的动作。如果不同的系统或是同一个系统的不同主机之间共享了一个或一组资源，那么访问这些资源的时候，往往需要互斥来防止彼此干扰来保证一致性，在这种情况下便需要使用到分布式锁。</p>
 <ul>
 <li>分布式锁可以保证在分布式部署的应用集群中，同一个方法在同一时间只能被一台机器上的一个线程执行，设计时需考虑以下问题：<ul>
 <li>可重入性(避免死锁)</li>
@@ -631,12 +633,12 @@
 <ul>
 <li>创建表</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `methodLock`(</span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;主键&#x27;,</span><br><span class="line">    `method_name` varchar(64) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;锁定请求方法名&#x27;,</span><br><span class="line">    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &#x27;更新时间，默认当前时间戳&#x27;,</span><br><span class="line">    PRIMARY KEY (`id`),</span><br><span class="line">    UNIQUE KEY `uniq_method_name`(`method_name`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&#x27;锁定请求方法表&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `methodLock`(</span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',</span><br><span class="line">    `method_name` varchar(64) NOT NULL DEFAULT '' COMMENT '锁定请求方法名',</span><br><span class="line">    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间，默认当前时间戳',</span><br><span class="line">    PRIMARY KEY (`id`),</span><br><span class="line">    UNIQUE KEY `uniq_method_name`(`method_name`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='锁定请求方法表';</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>获取锁：请求到达时插入一条记录<code>insert into methodLock(method_name) values (‘method_name’)</code>，基于唯一索引的特性以达到分布式锁的   效果</p>
 </li>
-<li><p>释放锁：直接删除记录<code>delete from methodLock where method_name =&#39;method_name&#39;</code></p>
+<li><p>释放锁：直接删除记录<code>delete from methodLock where method_name ='method_name'</code></p>
 </li>
 </ul>
 </li>
@@ -644,12 +646,12 @@
 <ul>
 <li>创建表</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `methodLock` (</span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;主键&#x27;,</span><br><span class="line">    `method_name` varchar(64) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;锁定请求方法名&#x27;,</span><br><span class="line">    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &#x27;更新时间，默认当前时间戳&#x27;,</span><br><span class="line">    PRIMARY KEY (`id`),</span><br><span class="line">    UNIQUE KEY `uniq_method_name`(`method_name`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&#x27;锁定请求方法表&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `methodLock` (</span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',</span><br><span class="line">    `method_name` varchar(64) NOT NULL DEFAULT '' COMMENT '锁定请求方法名',</span><br><span class="line">    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间，默认当前时间戳',</span><br><span class="line">    PRIMARY KEY (`id`),</span><br><span class="line">    UNIQUE KEY `uniq_method_name`(`method_name`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='锁定请求方法表';</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>获取锁</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set autocommit = false;</span><br><span class="line">result = select * from methodLock where method_name=xxx for update;</span><br><span class="line">if(result==null)&#123;</span><br><span class="line">    return true;//get lock</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set autocommit = false;</span><br><span class="line">result = select * from methodLock where method_name=xxx for update;</span><br><span class="line">if(result==null){</span><br><span class="line">    return true;//get lock</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>释放锁 <code>commit</code></li>
@@ -659,7 +661,7 @@
 <ul>
 <li>创建表</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `methodLock` (</span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#x27;主键&#x27;,</span><br><span class="line">    `method_name` varchar(64) NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;锁定请求方法名&#x27;,</span><br><span class="line">    `version` int(11) NOT NULL COMMENT &#x27;版本号&#x27;,</span><br><span class="line">    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &#x27;更新时间，默认当前时间戳&#x27;,</span><br><span class="line">    PRIMARY KEY (`id`),</span><br><span class="line">    UNIQUE KEY `uniq_method_name`(`method_name`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&#x27;锁定请求方法表&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `methodLock` (</span><br><span class="line">    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',</span><br><span class="line">    `method_name` varchar(64) NOT NULL DEFAULT '' COMMENT '锁定请求方法名',</span><br><span class="line">    `version` int(11) NOT NULL COMMENT '版本号',</span><br><span class="line">    `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间，默认当前时间戳',</span><br><span class="line">    PRIMARY KEY (`id`),</span><br><span class="line">    UNIQUE KEY `uniq_method_name`(`method_name`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='锁定请求方法表';</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>图示说明</li>
@@ -710,7 +712,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="链路调用如何保证数据一致性-跨数据库"><a href="#链路调用如何保证数据一致性-跨数据库" class="headerlink" title="链路调用如何保证数据一致性(跨数据库)"></a><center><font color=red>链路调用如何保证数据一致性(跨数据库)</font></center></h1><h2 id="一、基础-3"><a href="#一、基础-3" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用微服务时，很多时候我们往往需要跨多个服务去更新多个数据库的数据，若其中有一步由于各种原因出现错误导致执行失败，就会造成数据的不一致，这是典型的分布式架构数据更新问题。</p>
+<h1 id="链路调用如何保证数据一致性-跨数据库"><a href="#链路调用如何保证数据一致性-跨数据库" class="headerlink" title="链路调用如何保证数据一致性(跨数据库)"></a><center><font color="red">链路调用如何保证数据一致性(跨数据库)</font></center></h1><h2 id="一、基础-3"><a href="#一、基础-3" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用微服务时，很多时候我们往往需要跨多个服务去更新多个数据库的数据，若其中有一步由于各种原因出现错误导致执行失败，就会造成数据的不一致，这是典型的分布式架构数据更新问题。</p>
 <h2 id="二、处理方案"><a href="#二、处理方案" class="headerlink" title="二、处理方案"></a>二、处理方案</h2><ol>
 <li><p>引入MQ，保证最终一致性，</p>
 <ul>
@@ -732,7 +734,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a><center><font color=red>扩展</font></center></h1><ol>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a><center><font color="red">扩展</font></center></h1><ol>
 <li>微服务<ul>
 <li>常见问题<ul>
 <li>服务降级</li>
@@ -976,7 +978,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

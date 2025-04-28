@@ -205,6 +205,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -414,14 +416,14 @@
 <li><code>touch log/error/2018/error.log</code></li>
 <li>执行shell生成log数据</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in `seq 1 5`</span><br><span class="line">do</span><br><span class="line">echo $i  &gt;&gt; log/error/2018/error.log</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in `seq 1 5`</span><br><span class="line">do</span><br><span class="line">echo $i  &gt;&gt; log/error/2018/error.log</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="6">
 <li><code>tar -zcvf 1.zip ./log</code>，生成1.zip压缩文件</li>
 <li><code>echo &gt; log/error/2018/error.log</code>，清空error.log</li>
 <li>同步骤5，执行脚本</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in $(seq 6 10)</span><br><span class="line">for&gt; do</span><br><span class="line">for&gt; echo $i &gt;&gt; log/error/2018/error.log</span><br><span class="line">for&gt; done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in $(seq 6 10)</span><br><span class="line">for&gt; do</span><br><span class="line">for&gt; echo $i &gt;&gt; log/error/2018/error.log</span><br><span class="line">for&gt; done</span><br></pre></td></tr></tbody></table></figure>
 <ol start="9">
 <li><p><code>tar -zcvf 2.zip ./log</code>，生成2.zip压缩文件</p>
 </li>
@@ -430,7 +432,7 @@
 <li><p>同步骤5，执行脚本</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;11..15&#125;</span><br><span class="line">for&gt; do</span><br><span class="line">for&gt; echo $i &gt;&gt; log/error/2018/error.log</span><br><span class="line">for&gt; done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in {11..15}</span><br><span class="line">for&gt; do</span><br><span class="line">for&gt; echo $i &gt;&gt; log/error/2018/error.log</span><br><span class="line">for&gt; done</span><br></pre></td></tr></tbody></table></figure>
 <ol start="12">
 <li><p><code>tar -zcvf 3.zip ./log</code>，生成3.zip压缩文件</p>
 </li>
@@ -439,7 +441,7 @@
 <li><p>终于到了正文了，将各个日志输出到res.txt</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">for i in *.zip</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i</span><br><span class="line">for j in `ls ./log/error/2018/`</span><br><span class="line">do</span><br><span class="line">cat ./log/error/2018/$j &gt;&gt; res.txt</span><br><span class="line">done</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line">tmpP=./log/error/2018</span><br><span class="line">for i in *.zip</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i</span><br><span class="line">for j in `ls $tmpP`</span><br><span class="line">do</span><br><span class="line">cat $tmpP/$j &gt;&gt; r.txt</span><br><span class="line">done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">for i in *.zip</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i</span><br><span class="line">for j in `ls ./log/error/2018/`</span><br><span class="line">do</span><br><span class="line">cat ./log/error/2018/$j &gt;&gt; res.txt</span><br><span class="line">done</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line">tmpP=./log/error/2018</span><br><span class="line">for i in *.zip</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i</span><br><span class="line">for j in `ls $tmpP`</span><br><span class="line">do</span><br><span class="line">cat $tmpP/$j &gt;&gt; r.txt</span><br><span class="line">done</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="15">
 <li>cat res.txt</li>
@@ -447,7 +449,7 @@
 <h2 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
 <li>清空文件的几种方式</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">: &gt; filename # 其中的 : 是一个占位符, 不产生任何输出.</span><br><span class="line">cat /dev/null &gt; filename</span><br><span class="line">cp /dev/null filename </span><br><span class="line">&gt; filename # Linux可以，Mac不可以</span><br><span class="line">echo &quot;&quot; &gt; filename # 多一个空行</span><br><span class="line">echo &gt; filename    # 多一个空行</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">: &gt; filename # 其中的 : 是一个占位符, 不产生任何输出.</span><br><span class="line">cat /dev/null &gt; filename</span><br><span class="line">cp /dev/null filename&nbsp;</span><br><span class="line">&gt; filename # Linux可以，Mac不可以</span><br><span class="line">echo "" &gt; filename # 多一个空行</span><br><span class="line">echo &gt; filename    # 多一个空行</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li><a href="https://liusir.me/2019/05/14/linux-tar%E5%91%BD%E4%BB%A4/">tar命令</a></li>
@@ -653,7 +655,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -398,7 +400,7 @@
 <h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MongoDB使用基于角色的访问控制(RBAC)来管理对MongoDB系统的访问，提供内置角色，也支持用户自定义的角色。通过授予用户一个或多个角色，这些角色确定用户对数据库资源和操作的访问权限，除角色分配外，用户无权访问系统。默认情况下不启用访问控制，可以使用–auth或security.authorization设置启用授权，启用内部身份验证也会启用客户端授权。</p>
 <ol>
 <li>角色相关命令<ul>
-<li>创建角色<code>db.createRole(&#123;arguments&#125;)</code></li>
+<li>创建角色<code>db.createRole({arguments})</code></li>
 <li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/built-in-roles/#all-database-roles">查看角色</a><code>show roles</code><ul>
 <li>__queryableBackup</li>
 <li>__system</li>
@@ -421,7 +423,7 @@
 <li>userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限。</li>
 </ul>
 </li>
-<li>查看角色权限<code>db.getRole(&quot;read&quot;, &#123;showPrivileges: true&#125;)</code></li>
+<li>查看角色权限<code>db.getRole("read", {showPrivileges: true})</code></li>
 </ul>
 </li>
 </ol>
@@ -432,13 +434,13 @@
 </blockquote>
 <ol start="2">
 <li>用户相关命令<ul>
-<li>创建用户<code>db.createUser(&#123;arguments&#125;)</code><ul>
-<li>验证用户<code>db.auth(&quot;username&quot;,&quot;password&quot;)</code>;</li>
+<li>创建用户<code>db.createUser({arguments})</code><ul>
+<li>验证用户<code>db.auth("username","password")</code>;</li>
 </ul>
 </li>
 <li>查看用户<code>show users</code></li>
-<li>删除用户<code>db.dropUser(&quot;username&quot;)</code></li>
-<li>查看用户所属角色<code>db.getUser(&quot;username&quot;)</code></li>
+<li>删除用户<code>db.dropUser("username")</code></li>
+<li>查看用户所属角色<code>db.getUser("username")</code></li>
 </ul>
 </li>
 </ol>
@@ -449,27 +451,27 @@
 <li><code>use admin</code></li>
 <li>创建</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    user:&quot;user123&quot;, </span><br><span class="line">    pwd:&quot;123456&quot;, </span><br><span class="line">    roles:[</span><br><span class="line">        &#123;role:&quot;userAdminAnyDatabase&quot;, db:&quot;admin&quot;&#125;,</span><br><span class="line">        &#123;role:&quot;read&quot;, db:&quot;test&quot;&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.createUser({</span><br><span class="line">    user:"user123", </span><br><span class="line">    pwd:"123456", </span><br><span class="line">    roles:[</span><br><span class="line">        {role:"userAdminAnyDatabase", db:"admin"},</span><br><span class="line">        {role:"read", db:"test"}</span><br><span class="line">    ]</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><code>show users</code>或<code>db.system.users.find().pretty()</code></li>
 <li>修改密码</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.changeUserPassword(&quot;user123&quot;,&quot;abc&quot;)</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">db.runCommand(&#123;</span><br><span class="line">   updateUser:&quot;user123&quot;,</span><br><span class="line">   pwd:&quot;abc&quot;,</span><br><span class="line">   customData:&#123;title:&quot;your title&quot;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.changeUserPassword("user123","abc")</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">db.runCommand({</span><br><span class="line">   updateUser:"user123",</span><br><span class="line">   pwd:"abc",</span><br><span class="line">   customData:{title:"your title"}</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>验证</p>
 <ul>
-<li><code>db.auth(&quot;user123&quot;,&quot;123456&quot;)</code></li>
+<li><code>db.auth("user123","123456")</code></li>
 <li><code>show users</code>或<code>db.system.users.find().pretty()</code></li>
 </ul>
 </li>
 <li><p>查看用户权限</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.runCommand(&#123;</span><br><span class="line">    usersInfo:&quot;user123&quot;,</span><br><span class="line">    showPrivileges:true</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.runCommand({</span><br><span class="line">    usersInfo:"user123",</span><br><span class="line">    showPrivileges:true</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
-<li>删除用户<code>db.system.users.remove(&#123;user:&quot;testUser&quot;&#125;)</code></li>
+<li>删除用户<code>db.system.users.remove({user:"testUser"})</code></li>
 </ol>
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/">参考一</a></li>
@@ -670,7 +672,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -395,8 +397,8 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要说清楚提交的概念，首先要清楚git的工作原理，最基本的要理解三个区：工作区、暂存区、本地仓库(其实还有一个远程仓库，暂时用不到)，<a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-Git-%E5%9F%BA%E7%A1%80">传送门</a>。假如你弄清楚了以上这些概念，那git提交其实就是把暂存区的内容提交到仓库，简单一个<code>git commit -m &#39;commit message&#39;</code>就够了，当然这不是此文的重点。Git每次提交代码，都要写<code>commit message</code>，否则就不允许提交，用过Git都知道这一点。可能因为各种原因比如公司硬性要求等，或者纯粹的就是为了能通过提交，很多人就按照自己的方式去那么干了。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;博主从毕业到现在5年多时间了，前后经历过几家大大小小的公司，见过五花八门各种各样的提交信息，说不上好坏对错，就只是觉得应该有一个相对来说比较规范的东西出来。GG一下关于git提交的文章太多了，大多都是相互<code>copy and paste</code>一下，包括此篇。好习惯是慢慢养成的，可以从很小的一件事情做起，比如简单的一次提交，<code>Let&#39;s do it ！</code></p>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要说清楚提交的概念，首先要清楚git的工作原理，最基本的要理解三个区：工作区、暂存区、本地仓库(其实还有一个远程仓库，暂时用不到)，<a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-Git-%E5%9F%BA%E7%A1%80">传送门</a>。假如你弄清楚了以上这些概念，那git提交其实就是把暂存区的内容提交到仓库，简单一个<code>git commit -m 'commit message'</code>就够了，当然这不是此文的重点。Git每次提交代码，都要写<code>commit message</code>，否则就不允许提交，用过Git都知道这一点。可能因为各种原因比如公司硬性要求等，或者纯粹的就是为了能通过提交，很多人就按照自己的方式去那么干了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;博主从毕业到现在5年多时间了，前后经历过几家大大小小的公司，见过五花八门各种各样的提交信息，说不上好坏对错，就只是觉得应该有一个相对来说比较规范的东西出来。GG一下关于git提交的文章太多了，大多都是相互<code>copy and paste</code>一下，包括此篇。好习惯是慢慢养成的，可以从很小的一件事情做起，比如简单的一次提交，<code>Let's do it ！</code></p>
 <h2 id="二、提交规范"><a href="#二、提交规范" class="headerlink" title="二、提交规范"></a>二、提交规范</h2><ol>
 <li><p><code>commit message</code>的作用</p>
 <ul>
@@ -411,7 +413,7 @@
 <blockquote>
 <p>每次提交，<code>commit message</code>都包括三个部分：header，body和footer，其中<code>header</code>是必需的，<code>body</code>和<code>footer</code>可以省略。另外，为了避免自动换行影响美观，不管是哪一个部分，任何一行都不得超过72个字符(或100个字符)。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">// 空一行</span><br><span class="line">&lt;body&gt;</span><br><span class="line">// 空一行</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span><br><span class="line">// 空一行</span><br><span class="line">&lt;body&gt;</span><br><span class="line">// 空一行</span><br><span class="line">&lt;footer&gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p><code>header</code>：这部分只有一行，包括三个字段：<code>type</code>(必需)、<code>scope</code>(可选)和<code>subject</code>(必需)。</p>
@@ -468,25 +470,25 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/commitizen/cz-cli">Commitizen</a>，用于撰写一个合格<code>commit message</code>的工具。</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/conventional-changelog-archived-repos/validate-commit-msg">validate-commit-msg</a>，用于检查<code>Node</code>项目的 <code>commit message</code>是否符合格式。</li>
 </ol>
-<h2 id="四、demo"><a href="#四、demo" class="headerlink" title="四、demo"></a>四、demo</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fix(ngRequired): set error correctly when inside ngRepeat and false by default</span><br><span class="line"></span><br><span class="line">Previously, in the required validator, we would read the required setting directly</span><br><span class="line">from attr.required, where it is set by ngRequired.</span><br><span class="line"></span><br><span class="line">However, when the control is inside ngRepeat, ngRequired sets it only after a another digest has</span><br><span class="line">passed, which means the initial validation run of ngModel does not include the correct required</span><br><span class="line">setting. (Before commit 0637a21 this would not have been a problem,</span><br><span class="line">as every observed value change triggered a validation).</span><br><span class="line"></span><br><span class="line">We now use the initially parsed value from ngRequired in the validator.</span><br><span class="line"></span><br><span class="line">Fixes #16814</span><br><span class="line">Closes #16820</span><br></pre></td></tr></table></figure>
+<h2 id="四、demo"><a href="#四、demo" class="headerlink" title="四、demo"></a>四、demo</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fix(ngRequired): set error correctly when inside ngRepeat and false by default</span><br><span class="line"></span><br><span class="line">Previously, in the required validator, we would read the required setting directly</span><br><span class="line">from attr.required, where it is set by ngRequired.</span><br><span class="line"></span><br><span class="line">However, when the control is inside ngRepeat, ngRequired sets it only after a another digest has</span><br><span class="line">passed, which means the initial validation run of ngModel does not include the correct required</span><br><span class="line">setting. (Before commit 0637a21 this would not have been a problem,</span><br><span class="line">as every observed value change triggered a validation).</span><br><span class="line"></span><br><span class="line">We now use the initially parsed value from ngRequired in the validator.</span><br><span class="line"></span><br><span class="line">Fixes #16814</span><br><span class="line">Closes #16820</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="五、自定义提交信息"><a href="#五、自定义提交信息" class="headerlink" title="五、自定义提交信息"></a>五、自定义提交信息</h2><ol>
-<li>切换到某个目录<code>cd ~ &amp;&amp; mkdir templates &amp;&amp; touch &#123;custom&#125;_template</code></li>
-<li>编辑模板<code>vim &#123;custom&#125;_template</code>，可根据项目情况自定义提交信息，如</li>
+<li>切换到某个目录<code>cd ~ &amp;&amp; mkdir templates &amp;&amp; touch {custom}_template</code></li>
+<li>编辑模板<code>vim {custom}_template</code>，可根据项目情况自定义提交信息，如</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Desc:本次提交的描述信息，一般建议50字以内</span><br><span class="line"></span><br><span class="line">Type:本次提交的核心信息，一般为固定几个之：add/update/delete/fix/optimize/refactor等</span><br><span class="line"></span><br><span class="line">Scope:本次提交的影响范围，如新增一个类文件，修改某个方法等</span><br><span class="line"></span><br><span class="line">Date:本次提交的事件</span><br><span class="line"></span><br><span class="line">Author:本次提交的坐着</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Desc:本次提交的描述信息，一般建议50字以内</span><br><span class="line"></span><br><span class="line">Type:本次提交的核心信息，一般为固定几个之：add/update/delete/fix/optimize/refactor等</span><br><span class="line"></span><br><span class="line">Scope:本次提交的影响范围，如新增一个类文件，修改某个方法等</span><br><span class="line"></span><br><span class="line">Date:本次提交的事件</span><br><span class="line"></span><br><span class="line">Author:本次提交的坐着</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li><p>切换到项目目录<code>cd your_project</code></p>
 </li>
-<li><p>设置提交模板<code>git config commit.template &#123;custom&#125;_template</code></p>
+<li><p>设置提交模板<code>git config commit.template {custom}_template</code></p>
 </li>
 <li><p>指定编辑器<code>git config core.editor vim</code></p>
 </li>
 <li><p>测试提交</p>
 <ul>
 <li><code>git commit</code>后会自动弹出vim编辑框</li>
-<li><code>git commit -m &#39;msg&#39;</code>，也可自定义提交信息</li>
+<li><code>git commit -m 'msg'</code>，也可自定义提交信息</li>
 </ul>
 </li>
 </ol>
@@ -690,7 +692,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

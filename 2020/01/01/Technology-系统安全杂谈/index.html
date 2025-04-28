@@ -219,6 +219,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -532,7 +534,7 @@
 <ul>
 <li>对HTML标签及一些特殊符号进行转义(php函数strip_tags()、htmlspecialchars())</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$text = &#x27;&lt;p&gt;Test paragraph.&lt;/p&gt;&lt;!-- Comment --&gt; &lt;a href=&quot;#fragment&quot;&gt;Other text&lt;/a&gt;&#x27;;</span><br><span class="line">echo strip_tags($text); // Test paragraph. Other text</span><br><span class="line">echo &quot;\n&quot;;</span><br><span class="line">   </span><br><span class="line">echo strip_tags($text, &#x27;&lt;p&gt;&lt;a&gt;&#x27;);// 允许&lt;p&gt;和&lt;a&gt;，输出&lt;p&gt;Test paragraph.&lt;/p&gt; &lt;a href=&quot;#fragment&quot;&gt;Other text&lt;/   a&gt;</span><br><span class="line">   </span><br><span class="line">$new = htmlspecialchars(&quot;&lt;a href=&#x27;test&#x27;&gt;Test&lt;/a&gt;&quot;, ENT_QUOTES);</span><br><span class="line">echo $new; // &amp;lt;a href=&amp;#039;test&amp;#039;&amp;gt;Test&amp;lt;/a&amp;gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$text = '&lt;p&gt;Test paragraph.&lt;/p&gt;&lt;!-- Comment --&gt; &lt;a href="#fragment"&gt;Other text&lt;/a&gt;';</span><br><span class="line">echo strip_tags($text); // Test paragraph. Other text</span><br><span class="line">echo "\n";</span><br><span class="line">   </span><br><span class="line">echo strip_tags($text, '&lt;p&gt;&lt;a&gt;');// 允许&lt;p&gt;和&lt;a&gt;，输出&lt;p&gt;Test paragraph.&lt;/p&gt; &lt;a href="#fragment"&gt;Other text&lt;/   a&gt;</span><br><span class="line">   </span><br><span class="line">$new = htmlspecialchars("&lt;a href='test'&gt;Test&lt;/a&gt;", ENT_QUOTES);</span><br><span class="line">echo $new; // &amp;lt;a href=&amp;#039;test&amp;#039;&amp;gt;Test&amp;lt;/a&amp;gt;</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>使用白名单、黑名单的方式进行过滤</li>
@@ -561,7 +563,7 @@
 <li>检查变量数据类型和格式</li>
 <li>过滤特殊符号(php函数addslashes)</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$str = &quot;Is your name O&#x27;reilly?&quot;;</span><br><span class="line">echo addslashes($str);// 输出： Is your name O\&#x27;reilly?</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$str = "Is your name O'reilly?";</span><br><span class="line">echo addslashes($str);// 输出： Is your name O\'reilly?</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>绑定变量，使用预编译语句</p>
 </li>
@@ -641,13 +643,13 @@
 </ul>
 </li>
 <li><p>demo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function saltHash($password) &#123;</span><br><span class="line">    $salt = md5(mcrypt_create_iv(32)); // 随机初始化加盐值</span><br><span class="line">    $password = md5($password).$salt;      // 把密码进行md5加密拼接salt值</span><br><span class="line">    $password = md5($password);  		   // 执行md5加密</span><br><span class="line">    return $password;  					   // 返回结果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function saltHash($password) {</span><br><span class="line">&nbsp;&nbsp;&nbsp;&nbsp;$salt = md5(mcrypt_create_iv(32)); // 随机初始化加盐值</span><br><span class="line">&nbsp;&nbsp;&nbsp; $password = md5($password).$salt;&nbsp;&nbsp;    // 把密码进行md5加密拼接salt值</span><br><span class="line">&nbsp;&nbsp;&nbsp; $password = md5($password);&nbsp;&nbsp;		   // 执行md5加密</span><br><span class="line">&nbsp;&nbsp;&nbsp; return $password;&nbsp;&nbsp;					   // 返回结果</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
 </li>
 </ol>
-<h2 id="三、demo"><a href="#三、demo" class="headerlink" title="三、demo"></a>三、demo</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$str = trim($_POST[&#x27;name&#x27;]);  //清理空格  </span><br><span class="line">$str = strip_tags($str);      //过滤html标签  </span><br><span class="line">$str = htmlspecialchars($str);//将字符内容转化为html实体  </span><br><span class="line">$str = addslashes($str);      //防止SQL注入</span><br></pre></td></tr></table></figure>
+<h2 id="三、demo"><a href="#三、demo" class="headerlink" title="三、demo"></a>三、demo</h2> <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$str = trim($_POST['name']);  //清理空格  </span><br><span class="line">$str = strip_tags($str);      //过滤html标签  </span><br><span class="line">$str = htmlspecialchars($str);//将字符内容转化为html实体  </span><br><span class="line">$str = addslashes($str);      //防止SQL注入</span><br></pre></td></tr></tbody></table></figure>
 
 
     </div>
@@ -853,7 +855,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

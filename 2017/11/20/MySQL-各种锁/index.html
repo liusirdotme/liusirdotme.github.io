@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -455,11 +457,11 @@
 </thead>
 <tbody><tr>
 <td align="center">共享锁，又称读锁，S锁</td>
-<td align="left">1.若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。<br/>2.这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改<br/>3.通过使用select … lock in share mode加共享锁</td>
+<td align="left">1.若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。<br>2.这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改<br>3.通过使用select … lock in share mode加共享锁</td>
 </tr>
 <tr>
 <td align="center">排他锁，又称写锁，X锁</td>
-<td align="left">1.若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁(共享锁/排他锁)，直到T释放A上的锁。<br/>2.这保证了其他事务在T释放A上的锁之前不能再读取和修改A<br/>3.InnoDB引擎默认的修改数据语句，update,delete,insert都会自动给涉及到的数据加上排他锁<br/>4.select语句默认不会加任何锁类型，通过select …for update加排它锁</td>
+<td align="left">1.若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁(共享锁/排他锁)，直到T释放A上的锁。<br>2.这保证了其他事务在T释放A上的锁之前不能再读取和修改A<br>3.InnoDB引擎默认的修改数据语句，update,delete,insert都会自动给涉及到的数据加上排他锁<br>4.select语句默认不会加任何锁类型，通过select …for update加排它锁</td>
 </tr>
 <tr>
 <td align="center">2. 行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁。</td>
@@ -495,7 +497,7 @@
 </li>
 </ol>
 <h2 id="八、锁时间"><a href="#八、锁时间" class="headerlink" title="八、锁时间"></a>八、锁时间</h2><ol>
-<li>查看锁时间 <code>show status like &#39;innodb_row_lock%&#39;</code></li>
+<li>查看锁时间 <code>show status like 'innodb_row_lock%'</code></li>
 </ol>
 <table>
 <thead>
@@ -555,12 +557,12 @@
 <ol>
 <li>初始化表</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `table_gap` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `name` varchar(50) DEFAULT NULL,</span><br><span class="line">  `age` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `name` (`name`)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `table_gap` (</span><br><span class="line">  `id` int(11) NOT NULL,</span><br><span class="line">  `name` varchar(50) DEFAULT NULL,</span><br><span class="line">  `age` int(11) DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `name` (`name`)</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>初始化记录</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into table_gap(id,name,age) values(1,1,1),(5,5,5),(10,10,10),(15,15,15),(19,19,10);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into table_gap(id,name,age) values(1,1,1),(5,5,5),(10,10,10),(15,15,15),(19,19,10);</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li><p>session A：<code>begin;select * from table_gap where age=10 for update;</code>，此语句会在(1,5],(5,10]加锁</p>
@@ -785,7 +787,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

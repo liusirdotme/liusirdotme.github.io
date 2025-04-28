@@ -217,6 +217,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -410,7 +412,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="ABC类地址"><a href="#ABC类地址" class="headerlink" title="ABC类地址"></a><center><font color=red>ABC类地址</font></center></h1><h2 id="一、ABC类地址"><a href="#一、ABC类地址" class="headerlink" title="一、ABC类地址"></a>一、ABC类地址</h2><blockquote>
+<h1 id="ABC类地址"><a href="#ABC类地址" class="headerlink" title="ABC类地址"></a><center><font color="red">ABC类地址</font></center></h1><h2 id="一、ABC类地址"><a href="#一、ABC类地址" class="headerlink" title="一、ABC类地址"></a>一、ABC类地址</h2><blockquote>
 <p>按照TCP/IP协议规定，IP地址用二进制来表示，每个IP地址长32bit即4个字节。一个采用二进制形式的IP地址是一串很长的数字，为了方便人们的理解和使用，IP地址经常被写成十进制的形式，中间使用符号“.”分开不同的字节。为了便于寻址和层次化的构造网络，IP地址被分为A、B、C、D、E五类，商业应用中只用到A、B、C三类。</p>
 </blockquote>
 <ol>
@@ -424,9 +426,9 @@
 </li>
 <li><p>A类地址有126个网段，每个网络大约允许有1670万(2^24 - 2)台主机，通常分配给拥有大量主机的网。</p>
 </li>
-<li><p><font color=red>10.X.X.X</font>是私有地址，范围：<code>10.0.0.0~10.255.255.255</code></p>
+<li><p><font color="red">10.X.X.X</font>是私有地址，范围：<code>10.0.0.0~10.255.255.255</code></p>
 </li>
-<li><p><font color=red>127.X.X.X</font>是保留地址，做循环测试使用。</p>
+<li><p><font color="red">127.X.X.X</font>是保留地址，做循环测试使用。</p>
 </li>
 </ul>
 </li>
@@ -435,8 +437,8 @@
 <li>特点是网络标识的前两位二进制数取值必须为“10”</li>
 <li>基于其特点可知第一个字节的范围是10000000<code>~</code>101111111，即128<code>~</code>191</li>
 <li>B类地址允许有16384(1011 1111 1111 1111 - 1000 0000 0000 0000) + 1个网段，每个网络允许有65533(2^16 - 2)台主机，适用于结点比较多的网络(如区域网)。</li>
-<li><font color=red>172.16.0.0<code>~</code>172.31.255.255</font>是私有地址。</li>
-<li><font color=red>169.254.X.X</font>是保留地址。<ul>
+<li><font color="red">172.16.0.0<code>~</code>172.31.255.255</font>是私有地址。</li>
+<li><font color="red">169.254.X.X</font>是保留地址。<ul>
 <li>如果你的IP地址是自动获取IP地址，而你在网络上有没有找到可用的DHCP服务器，就会得到其中一个IP地址。</li>
 </ul>
 </li>
@@ -447,7 +449,7 @@
 <li>特点是网络标识的前3位二进制数取值必须为“110”</li>
 <li>基于其特点可知第一个字节的范围是11000000<code>~</code>11011111，即192<code>~</code>223</li>
 <li>有(1101 1111 1111 1111 1111 1111 - 1100 0000 0000 0000 0000 0000) + 1个网段，有254(2^8 - 2)台主机，适用于结点比较少的网络(如校园网)</li>
-<li><font color=red>192.168.X.X</font>是私有地址，其范围：<code>192.168.0.0~192.168.255.255</code></li>
+<li><font color="red">192.168.X.X</font>是私有地址，其范围：<code>192.168.0.0~192.168.255.255</code></li>
 </ul>
 </li>
 </ol>
@@ -461,14 +463,14 @@
 <li>子网掩码(subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。<ul>
 <li>子网掩码的格式永远都是一个32位的2进制数，其对应网络地址的所有位都置为1(前面是一连串的1)，对应于主机地址的所有位都置为0(后面是一连串的0)</li>
 <li>子网掩码左边是网络标识位，均为二进制1，右边是主机标识位，均为二进制0。</li>
-<li>它目的是为了让掩码与IP地址做<font color=red><strong>按位与运算</strong></font>时用0遮住原主机数，而不改变原网络段数字，而且很容易通过0的位数确定子网的主机数</li>
+<li>它目的是为了让掩码与IP地址做<font color="red"><strong>按位与运算</strong></font>时用0遮住原主机数，而不改变原网络段数字，而且很容易通过0的位数确定子网的主机数</li>
 <li>子网掩码不能单独存在，它必须结合IP地址一起使用</li>
 <li>子网掩码的作用是将某个IP地址划分成网络地址和主机地址两部分，并说明该IP地址是在局域网上，还是在广域网上</li>
 </ul>
 </li>
 </ol>
 <blockquote>
-<p><font color=red>为了让人们直观的看到子网掩码，有一种方法只需要将一个斜线放在IP地址后面，接着用一个十进制的数字用以表示<strong>网络标识</strong>的位数，类似这样：192.0.2.12/30，这样就很容易知道子网掩码有30个1，2个0。</font></p>
+<p><font color="red">为了让人们直观的看到子网掩码，有一种方法只需要将一个斜线放在IP地址后面，接着用一个十进制的数字用以表示<strong>网络标识</strong>的位数，类似这样：192.0.2.12/30，这样就很容易知道子网掩码有30个1，2个0。</font></p>
 </blockquote>
 <h2 id="三、位运算"><a href="#三、位运算" class="headerlink" title="三、位运算"></a>三、位运算</h2><ol>
 <li>按位与<code>&amp;</code>：<code>0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1</code></li>
@@ -537,7 +539,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="ARP-DHCP-NAT-ICMP"><a href="#ARP-DHCP-NAT-ICMP" class="headerlink" title="ARP-DHCP-NAT-ICMP"></a><center><font color=red>ARP-DHCP-NAT-ICMP</font></center></h1><h2 id="一、ARP"><a href="#一、ARP" class="headerlink" title="一、ARP"></a>一、ARP</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ARP</code>协议，全称<code>Address Resolution Protocol</code>，即地址解析协议，作用是根据<code>IP</code>地址获取物理地址，也称<code>MAC</code>地址(唯一，通常由设备厂商分配)。源主机发送信息时，将包含目标<code>IP</code>地址的<code>ARP</code>请求广播到网络上的所有主机，并接收返回消息以此确定目标的物理地址。源主机收到返回消息后将该IP地址和物理地址存入本机<code>ARP</code>缓存中并保留一定时间(每台主机都会在自己的ARP缓冲区中简历一个ARP列表用于存储IP地址与MAC地址的对应关系)，下次请求时直接查询<code>ARP</code>缓存以节约资源。</p>
+<h1 id="ARP-DHCP-NAT-ICMP"><a href="#ARP-DHCP-NAT-ICMP" class="headerlink" title="ARP-DHCP-NAT-ICMP"></a><center><font color="red">ARP-DHCP-NAT-ICMP</font></center></h1><h2 id="一、ARP"><a href="#一、ARP" class="headerlink" title="一、ARP"></a>一、ARP</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ARP</code>协议，全称<code>Address Resolution Protocol</code>，即地址解析协议，作用是根据<code>IP</code>地址获取物理地址，也称<code>MAC</code>地址(唯一，通常由设备厂商分配)。源主机发送信息时，将包含目标<code>IP</code>地址的<code>ARP</code>请求广播到网络上的所有主机，并接收返回消息以此确定目标的物理地址。源主机收到返回消息后将该IP地址和物理地址存入本机<code>ARP</code>缓存中并保留一定时间(每台主机都会在自己的ARP缓冲区中简历一个ARP列表用于存储IP地址与MAC地址的对应关系)，下次请求时直接查询<code>ARP</code>缓存以节约资源。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>ARP</code>欺骗，又称<code>ARP</code>毒化、<code>ARP</code>攻击，是针对以太网<code>ARP</code>协议的一种攻击技术，通过欺骗局域网内访问者<code>PC</code>的网关<code>MAC</code>地址，使访问者<code>PC</code>错以为攻击者更改后的<code>MAC</code>地址是网关的<code>MAC</code>，导致网络不通。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址解析协议是建立在网络中各个主机互相信任的基础上的，网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存。由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。</p>
@@ -567,7 +569,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">? (10.2.182.1) at a4:4c:11:55:94:3f on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.16) at cc:66:a:e1:8d:58 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.23) at 88:11:96:26:23:55 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.26) at 8c:86:1e:94:68:79 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.48) at 1c:36:bb:11:e7:72 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.101) at 30:b4:9e:ac:83:86 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.102) at c0:9a:d0:d4:66:3d on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.161) at b8:7b:c5:db:db:eb on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.190) at f0:a3:5a:46:c3:a0 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.197) at cc:66:a:1f:a8:51 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.203) at 84:76:37:59:da:5a on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.204) at e8:fb:e9:a5:d5:d6 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.231) at 84:ad:8d:e7:2a:a9 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.232) at 8c:85:90:b0:58:8d on en0 ifscope [ethernet]</span><br><span class="line">? (169.254.15.192) at 8:f4:ab:ea:8d:f5 on en0 [ethernet]</span><br><span class="line">? (169.254.19.41) at 34:7c:25:9c:6d:7b on en0 [ethernet]</span><br><span class="line">? (169.254.41.115) at 14:9d:99:66:10:68 on en0 [ethernet]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">? (10.2.182.1) at a4:4c:11:55:94:3f on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.16) at cc:66:a:e1:8d:58 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.23) at 88:11:96:26:23:55 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.26) at 8c:86:1e:94:68:79 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.48) at 1c:36:bb:11:e7:72 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.101) at 30:b4:9e:ac:83:86 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.102) at c0:9a:d0:d4:66:3d on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.161) at b8:7b:c5:db:db:eb on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.190) at f0:a3:5a:46:c3:a0 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.197) at cc:66:a:1f:a8:51 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.203) at 84:76:37:59:da:5a on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.204) at e8:fb:e9:a5:d5:d6 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.231) at 84:ad:8d:e7:2a:a9 on en0 ifscope [ethernet]</span><br><span class="line">? (10.2.182.232) at 8c:85:90:b0:58:8d on en0 ifscope [ethernet]</span><br><span class="line">? (169.254.15.192) at 8:f4:ab:ea:8d:f5 on en0 [ethernet]</span><br><span class="line">? (169.254.19.41) at 34:7c:25:9c:6d:7b on en0 [ethernet]</span><br><span class="line">? (169.254.41.115) at 14:9d:99:66:10:68 on en0 [ethernet]</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>删除IP为<code>10.2.182.26</code>对应的ARP缓存<code>arp -d 10.2.182.26</code></p>
@@ -608,7 +610,7 @@
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1008158">参考二</a></li>
 </ol>
 <hr>
-<h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a><center><font color=red>CDN</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。</p>
+<h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a><center><font color="red">CDN</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的全称是<code>Content Delivery Network</code>，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN的关键技术主要包括了节点调度、节点负载均衡和内容存储、分发、管理技术。</p>
 <h2 id="二、原理解析"><a href="#二、原理解析" class="headerlink" title="二、原理解析"></a>二、原理解析</h2><ol>
 <li><p>传统web的访问过程</p>
@@ -648,7 +650,7 @@
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/44966787">参考一</a></li>
 </ol>
 <hr>
-<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a><center><font color=red>DNS</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DNS是域名系统(Domain Name System)的缩写，是根据提供的域名来查询相应的IP地址。在Internet上域名与IP地址之间是一一对应的，域名虽然便于人们记忆，但机器之间只能互相认识IP地址，它们之间的转换工作称为域名解析，域名解析需要由专门的域名解析服务器来完成，DNS就是进行域名解析的服务器。</p>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a><center><font color="red">DNS</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DNS是域名系统(Domain Name System)的缩写，是根据提供的域名来查询相应的IP地址。在Internet上域名与IP地址之间是一一对应的，域名虽然便于人们记忆，但机器之间只能互相认识IP地址，它们之间的转换工作称为域名解析，域名解析需要由专门的域名解析服务器来完成，DNS就是进行域名解析的服务器。</p>
 <h2 id="二、DNS服务器"><a href="#二、DNS服务器" class="headerlink" title="二、DNS服务器"></a>二、DNS服务器</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域名到IP地址的解析是由分布在因特网上的许多域名服务器程序共同完成的。域名服务器程序在专设的结点上运行，而人们也常把运行域名服务器程序的机器称为域名服务器。根据其所负责管辖的范围，又分为：</p>
 <ol>
 <li><p>根域名服务器：最高层次的域名服务器，所有的根域名服务器都知道所有的顶级域名服务器的域名和IP地址。</p>
@@ -698,7 +700,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a><center><font color=red>防火墙</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;防火墙一词来源于建筑学中，人们通过在建筑中砌起一道墙，一旦发生火灾，它能够防止火势蔓延到别的房间，从而起到一定的防护作用。</p>
+<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a><center><font color="red">防火墙</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;防火墙一词来源于建筑学中，人们通过在建筑中砌起一道墙，一旦发生火灾，它能够防止火势蔓延到别的房间，从而起到一定的防护作用。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在现代互联网技术中，防火墙已成为一种必不可少的安全组件(硬件、软件)。它通过在专有网络和公网之间搭建一道屏障，通过包过滤和其他技术对来自互联网安全未知的数据惊醒拦截防止恶意请求进入专有网络，或限制请求不明来源的超链接等防止内部用户数据泄露等，从而起到保护的作用。</p>
 <ol>
 <li><p>分类</p>
@@ -930,7 +932,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -213,6 +213,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -406,10 +408,10 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="各个发行版关系图"><a href="#各个发行版关系图" class="headerlink" title="各个发行版关系图"></a><center><font color=red>各个发行版关系图</font></center></h1><p><img src="linux.png?1200x" alt="Linux发行版"></p>
+<h1 id="各个发行版关系图"><a href="#各个发行版关系图" class="headerlink" title="各个发行版关系图"></a><center><font color="red">各个发行版关系图</font></center></h1><p><img src="linux.png?1200x" alt="Linux发行版"></p>
 <p><img src="distributions.png?1200x" alt="Linux发行版"></p>
 <hr>
-<h1 id="AliOS"><a href="#AliOS" class="headerlink" title="AliOS"></a><center><font color=red>AliOS</font></center></h1><h2 id="一、常用命令"><a href="#一、常用命令" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><h2 id="二、LNMP"><a href="#二、LNMP" class="headerlink" title="二、LNMP"></a>二、LNMP</h2><ol>
+<h1 id="AliOS"><a href="#AliOS" class="headerlink" title="AliOS"></a><center><font color="red">AliOS</font></center></h1><h2 id="一、常用命令"><a href="#一、常用命令" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><h2 id="二、LNMP"><a href="#二、LNMP" class="headerlink" title="二、LNMP"></a>二、LNMP</h2><ol>
 <li>yum update</li>
 <li>安装redis</li>
 </ol>
@@ -528,7 +530,7 @@
 </li>
 <li>配置nginx:/etc/nginx/</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name  your_domain;</span><br><span class="line">    #root /path/to/thinkcmf/public;</span><br><span class="line">    root /home/www/asdf/public; </span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        index  index.php index.html index.htm;</span><br><span class="line">	    if (!-e $request_filename)&#123;</span><br><span class="line">		    rewrite  ^(.*)$  /index.php?s=$1  last;   break;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	location /api/ &#123;</span><br><span class="line">        index  index.php index.html index.htm;</span><br><span class="line">         if (!-e $request_filename)</span><br><span class="line">         &#123;</span><br><span class="line">            #rewrite ^/(.*)$ /index.php?s=$1;</span><br><span class="line">            rewrite ^/api/(.*)$ /api/index.php?s=$1;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	location ~* ^\/upload\/.+\.(html|php)$ &#123;</span><br><span class="line">		return 404;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	location ~* ^\/plugins\/.+\.(html|php)$ &#123;</span><br><span class="line">		return 404;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	location ~* ^\/themes\/.+\.(html|php)$ &#123;</span><br><span class="line">		return 404;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    #proxy the php scripts to php-fpm</span><br><span class="line">    location ~ \.php &#123;</span><br><span class="line">            include fastcgi_params;</span><br><span class="line">            set $path_info &quot;&quot;;</span><br><span class="line">            set $real_script_name $fastcgi_script_name;</span><br><span class="line">            if ($fastcgi_script_name ~ &quot;^(.+?\.php)(/.+)$&quot;) &#123;</span><br><span class="line">                    set $real_script_name $1;</span><br><span class="line">                    set $path_info $2;</span><br><span class="line">            &#125;</span><br><span class="line">            fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;</span><br><span class="line">            fastcgi_param SCRIPT_NAME $real_script_name;</span><br><span class="line">            fastcgi_param PATH_INFO $path_info;</span><br><span class="line">        fastcgi_intercept_errors on;</span><br><span class="line"></span><br><span class="line">        #fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_pass unix:/run/php-fpm/www.sock;</span><br><span class="line">        # fastcgi_pass 如果是 sock形式，可能是下面的配置</span><br><span class="line">        # fastcgi_pass unix:/tmp/php-cgi.sock</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">server{</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name  your_domain;</span><br><span class="line">    #root /path/to/thinkcmf/public;</span><br><span class="line">    root /home/www/asdf/public; </span><br><span class="line"></span><br><span class="line">    location / {</span><br><span class="line">        index  index.php index.html index.htm;</span><br><span class="line">	    if (!-e $request_filename){</span><br><span class="line">		    rewrite  ^(.*)$  /index.php?s=$1  last;   break;</span><br><span class="line">	    }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">	location /api/ {</span><br><span class="line">        index  index.php index.html index.htm;</span><br><span class="line">         if (!-e $request_filename)</span><br><span class="line">         {</span><br><span class="line">            #rewrite ^/(.*)$ /index.php?s=$1;</span><br><span class="line">            rewrite ^/api/(.*)$ /api/index.php?s=$1;</span><br><span class="line">         }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">	location ~* ^\/upload\/.+\.(html|php)$ {</span><br><span class="line">		return 404;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	location ~* ^\/plugins\/.+\.(html|php)$ {</span><br><span class="line">		return 404;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	location ~* ^\/themes\/.+\.(html|php)$ {</span><br><span class="line">		return 404;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">    #proxy the php scripts to php-fpm</span><br><span class="line">    location ~ \.php {</span><br><span class="line">            include fastcgi_params;</span><br><span class="line">            set $path_info "";</span><br><span class="line">            set $real_script_name $fastcgi_script_name;</span><br><span class="line">            if ($fastcgi_script_name ~ "^(.+?\.php)(/.+)$") {</span><br><span class="line">                    set $real_script_name $1;</span><br><span class="line">                    set $path_info $2;</span><br><span class="line">            }</span><br><span class="line">            fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;</span><br><span class="line">            fastcgi_param SCRIPT_NAME $real_script_name;</span><br><span class="line">            fastcgi_param PATH_INFO $path_info;</span><br><span class="line">        fastcgi_intercept_errors on;</span><br><span class="line"></span><br><span class="line">        #fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_pass unix:/run/php-fpm/www.sock;</span><br><span class="line">        # fastcgi_pass 如果是 sock形式，可能是下面的配置</span><br><span class="line">        # fastcgi_pass unix:/tmp/php-cgi.sock</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>配置本地hosts</li>
@@ -571,12 +573,12 @@
 <li>sudo chmod 666 data/db data/log/</li>
 <li>touch mongodb.conf</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数据库数据存放目录</span><br><span class="line">dbpath=/usr/local/mongodb/data/db</span><br><span class="line"># 日志文件存放目录</span><br><span class="line">logpath=/usr/local/mongodb/data/log/mongodb.log</span><br><span class="line"># 日志追加方式</span><br><span class="line">logappend=true</span><br><span class="line"># 端口</span><br><span class="line">port=27017</span><br><span class="line"># 是否认证</span><br><span class="line">auth=true</span><br><span class="line"># 以守护进程方式在后台运行</span><br><span class="line">fork=true</span><br><span class="line"># 远程连接要指定ip，否则无法连接；0.0.0.0代表不限制ip访问</span><br><span class="line">bind_ip=0.0.0.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数据库数据存放目录</span><br><span class="line">dbpath=/usr/local/mongodb/data/db</span><br><span class="line"># 日志文件存放目录</span><br><span class="line">logpath=/usr/local/mongodb/data/log/mongodb.log</span><br><span class="line"># 日志追加方式</span><br><span class="line">logappend=true</span><br><span class="line"># 端口</span><br><span class="line">port=27017</span><br><span class="line"># 是否认证</span><br><span class="line">auth=true</span><br><span class="line"># 以守护进程方式在后台运行</span><br><span class="line">fork=true</span><br><span class="line"># 远程连接要指定ip，否则无法连接；0.0.0.0代表不限制ip访问</span><br><span class="line">bind_ip=0.0.0.0</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>sudo vi /etc/profile</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MONGODB_HOME=/usr/local/mongodb</span><br><span class="line">export PATH=$PATH:$MONGODB_HOME/bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MONGODB_HOME=/usr/local/mongodb</span><br><span class="line">export PATH=$PATH:$MONGODB_HOME/bin</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>source /etc/profile</li>
@@ -590,7 +592,7 @@
 </li>
 <li>sudo vi /etc/mongod.conf</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>重启服务，先kill进程，再启动：mongod -f /usr/local/mongodb/mongodb.conf</li>
 <li>登录：mongo -u abc -p 123 –authenticationDatabase admin</li>
@@ -654,7 +656,7 @@
 <li>sql-mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</li>
 </ul>
 <hr>
-<h1 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a><center><font color=red>CentOS</font></center></h1><h2 id="一、常用命令-1"><a href="#一、常用命令-1" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><ol>
+<h1 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a><center><font color="red">CentOS</font></center></h1><h2 id="一、常用命令-1"><a href="#一、常用命令-1" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><ol>
 <li>查找包：yum search package_name</li>
 <li>安装包：yum install package_name</li>
 <li>查看已安装</li>
@@ -693,7 +695,7 @@
 <ul>
 <li>yum remove package_name<br> *yum remove package_name –nodeps</li>
 <li>rpm -e package_name<ul>
-<li>rpm -e –nodeps <package_name></li>
+<li>rpm -e –nodeps <package_name></package_name></li>
 </ul>
 </li>
 <li>dnf remove package_name</li>
@@ -749,7 +751,7 @@
 <li>安装composer</li>
 </ol>
 <ul>
-<li>php -r “copy(‘<a target="_blank" rel="noopener" href="https://getcomposer.org/installer&#39;">https://getcomposer.org/installer&#39;</a>, ‘composer-setup.php’);”</li>
+<li>php -r “copy(‘<a target="_blank" rel="noopener" href="https://getcomposer.org/installer'">https://getcomposer.org/installer'</a>, ‘composer-setup.php’);”</li>
 <li>php -r “if (hash_file(‘sha384’, ‘composer-setup.php’) === ‘dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6’) { echo ‘Installer verified’; } else { echo ‘Installer corrupt’; unlink(‘composer-setup.php’); } echo PHP_EOL;”</li>
 <li>php composer-setup.php</li>
 <li>php -r “unlink(‘composer-setup.php’);”</li>
@@ -831,7 +833,7 @@
 <li>systemctl start redis.service</li>
 </ul>
 <hr>
-<h1 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a><center><font color=red>Ubuntu</font></center></h1><h2 id="一、常用命令-2"><a href="#一、常用命令-2" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><h2 id="二、MySQL安装"><a href="#二、MySQL安装" class="headerlink" title="二、MySQL安装"></a>二、MySQL安装</h2><ol>
+<h1 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a><center><font color="red">Ubuntu</font></center></h1><h2 id="一、常用命令-2"><a href="#一、常用命令-2" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><h2 id="二、MySQL安装"><a href="#二、MySQL安装" class="headerlink" title="二、MySQL安装"></a>二、MySQL安装</h2><ol>
 <li><p>apt-get update</p>
 </li>
 <li><p>apt-get install mysql-server</p>
@@ -884,8 +886,8 @@
 <li>mysql –help | grep “Default options”</li>
 </ul>
 <hr>
-<h1 id="OpenCloudOS"><a href="#OpenCloudOS" class="headerlink" title="OpenCloudOS"></a><center><font color=red>OpenCloudOS</font></center></h1><hr>
-<h1 id="各种OS官网地址"><a href="#各种OS官网地址" class="headerlink" title="各种OS官网地址"></a><center><font color=red>各种OS官网地址</font></center></h1><ol>
+<h1 id="OpenCloudOS"><a href="#OpenCloudOS" class="headerlink" title="OpenCloudOS"></a><center><font color="red">OpenCloudOS</font></center></h1><hr>
+<h1 id="各种OS官网地址"><a href="#各种OS官网地址" class="headerlink" title="各种OS官网地址"></a><center><font color="red">各种OS官网地址</font></center></h1><ol>
 <li><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/alinux/product-overview/alibaba-cloud-linux-overview">AlibabaCloudOS</a>，<a target="_blank" rel="noopener" href="https://openanolis.cn/">基于龙蜥</a></li>
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/213/70717">OpenCloudOS</a>，<a target="_blank" rel="noopener" href="https://opencloudos.org/">官网</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.centos.org/">CentOS</a></li>
@@ -1103,7 +1105,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

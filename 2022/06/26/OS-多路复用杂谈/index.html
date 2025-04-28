@@ -209,6 +209,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -443,7 +445,7 @@
 <li>select机制中有一种fd_set的数据结构，实际上是一个long类型的数组，每一个数组元素都能与一打开的文件句柄(Socket、文件、命名管道、设备等句柄)建立联系，建立联系的工作由程序员完成。当调用select()时，由内核根据IO状态修改fd_set的内容，由此来通知执行了select()的进程哪一Socket或文件可读。</li>
 <li>select本质上是通过设置或者轮询检查存放fd标志位的数据结构(fdset)来进行下一步处理</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FD_ZERO(fd_set *fdset);          // 将set清零使集合中不含任何fd</span><br><span class="line">FD_SET(int fd, fd_set *fdset);   // 将fd加入set集合</span><br><span class="line">FD_CLR(int fd, fd_set *fdset);   // 将fd从set集合中清除</span><br><span class="line">FD_ISSET(int fd, fd_set *fdset); // 检测fd是否在set集合中，不在则返回0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FD_ZERO(fd_set *fdset);          // 将set清零使集合中不含任何fd</span><br><span class="line">FD_SET(int fd, fd_set *fdset);   // 将fd加入set集合</span><br><span class="line">FD_CLR(int fd, fd_set *fdset);   // 将fd从set集合中清除</span><br><span class="line">FD_ISSET(int fd, fd_set *fdset); // 检测fd是否在set集合中，不在则返回0</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>select函数 <code>int select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, const struct timeval *timeout);</code></p>
 <ul>
@@ -484,7 +486,7 @@
 <li><p>poll实现原理基本和select相同，主要的区别是底层实现方式，poll采用了链表结构从而提高了select方式1024个文件描述符的限制，另外在轮训</p>
 </li>
 <li><p>poll函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int poll(struct pollfd *fds, nfds_t nfds, int timeout);</span><br><span class="line">typedef struct pollfd &#123;</span><br><span class="line">   int fd;        // 需要被检测或选择的文件描述符</span><br><span class="line">   short events;  // 对文件描述符fd上感兴趣的事件</span><br><span class="line">   short revents; // 文件描述符fd上当前实际发生的事件</span><br><span class="line">&#125; pollfd_t;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int poll(struct pollfd *fds, nfds_t nfds, int timeout);</span><br><span class="line">typedef struct pollfd {</span><br><span class="line">   int fd;        // 需要被检测或选择的文件描述符</span><br><span class="line">   short events;  // 对文件描述符fd上感兴趣的事件</span><br><span class="line">   short revents; // 文件描述符fd上当前实际发生的事件</span><br><span class="line">} pollfd_t;</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>参数<ul>
@@ -508,7 +510,7 @@
 <li><p>epoll方式</p>
 <ul>
 <li><p>相关函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int epoll_create(int size);</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);</span><br><span class="line">int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int epoll_create(int size);</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);</span><br><span class="line">int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>epoll_create函数创建一个epoll句柄，参数size表明内核要监听的描述符数量。调用成功时返回一个epoll句柄描述符，失败时返回-1。</p>
@@ -525,7 +527,7 @@
 <li>fd 是要监听的描述符</li>
 <li>event 表示要监听的事件，epoll_event 结构体定义如下：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct epoll_event &#123;</span><br><span class="line">    __uint32_t events;  /* Epoll events */</span><br><span class="line">    epoll_data_t data;  /* User data variable */</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">typedef union epoll_data &#123;</span><br><span class="line">    void *ptr;</span><br><span class="line">    int fd;</span><br><span class="line">    __uint32_t u32;</span><br><span class="line">    __uint64_t u64;</span><br><span class="line">&#125; epoll_data_t;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct epoll_event {</span><br><span class="line">    __uint32_t events;  /* Epoll events */</span><br><span class="line">    epoll_data_t data;  /* User data variable */</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">typedef union epoll_data {</span><br><span class="line">    void *ptr;</span><br><span class="line">    int fd;</span><br><span class="line">    __uint32_t u32;</span><br><span class="line">    __uint64_t u64;</span><br><span class="line">} epoll_data_t;</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>epoll_wait函数等待事件的就绪，成功时返回就绪的事件数目，调用失败时返回 -1，等待超时返回 0。</p>
 <ul>
@@ -661,12 +663,12 @@
 </ul>
 </li>
 <li><p>struct kevent就是kevent()操作的最基本的事件结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct kevent &#123; </span><br><span class="line">     uintptr_t ident;       /* 事件 ID */ </span><br><span class="line">     short     filter;       /* 事件过滤器 */ </span><br><span class="line">     u_short   flags;        /* 行为标识 */ </span><br><span class="line">     u_int     fflags;       /* 过滤器标识值 */ </span><br><span class="line">     intptr_t  data;         /* 过滤器数据 */ </span><br><span class="line">     void      *udata;       /* 应用透传数据 */ </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct kevent { </span><br><span class="line">     uintptr_t ident;       /* 事件 ID */ </span><br><span class="line">     short     filter;       /* 事件过滤器 */ </span><br><span class="line">     u_short   flags;        /* 行为标识 */ </span><br><span class="line">     u_int     fflags;       /* 过滤器标识值 */ </span><br><span class="line">     intptr_t  data;         /* 过滤器数据 */ </span><br><span class="line">     void      *udata;       /* 应用透传数据 */ </span><br><span class="line"> };</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>ident：事件的id，一般设置为文件描述符。</li>
 <li>filter：可以将kqueue filter看作事件。内核检测ident上注册的filter的状态，状态发生了变化，就通知应用程序。<blockquote>
-<p>在一个kqueue中，<code>&#123;ident, filter&#125;</code>确定一个唯一的事件</p>
+<p>在一个kqueue中，<code>{ident, filter}</code>确定一个唯一的事件</p>
 </blockquote>
 </li>
 <li>行为标志flags：<ul>
@@ -696,7 +698,7 @@
 <li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/duanxz/p/5155926.html">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.xmailserver.org/linux-patches/nio-improve.html">参考二</a></li>
 <li><a target="_blank" rel="noopener" href="https://my.oschina.net/xianggao/blog/663655">参考三</a></li>
-<li><a target="_blank" rel="noopener" href="http://baijiahao.baidu.com/s?id=1641172494287388070&wfr=spider&for=pc">参考四</a></li>
+<li><a target="_blank" rel="noopener" href="http://baijiahao.baidu.com/s?id=1641172494287388070&amp;wfr=spider&amp;for=pc">参考四</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/FG123/p/5256553.html">参考五</a></li>
 </ol>
 
@@ -899,7 +901,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

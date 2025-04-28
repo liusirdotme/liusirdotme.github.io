@@ -204,6 +204,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -414,12 +416,12 @@
 <h2 id="三、demo"><a href="#三、demo" class="headerlink" title="三、demo"></a>三、demo</h2><ol>
 <li>配置vhost</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">default_type text/plain;</span><br><span class="line">location = /test &#123;</span><br><span class="line">    echo $args;</span><br><span class="line">    echo $query_string;</span><br><span class="line">    echo $request_method;</span><br><span class="line">    echo $content_type;</span><br><span class="line">    echo $content_length;</span><br><span class="line">    echo $fastcgi_script_name;</span><br><span class="line">    echo $request_uri;</span><br><span class="line">    echo $document_uri;</span><br><span class="line">    echo $document_root;</span><br><span class="line">    echo $server_protocol;</span><br><span class="line">    echo $scheme;</span><br><span class="line">    echo $https if_not_empty;</span><br><span class="line">    echo CGI/1.1;</span><br><span class="line">    echo nginx/$nginx_version;</span><br><span class="line">    echo $remote_addr;</span><br><span class="line">    echo $remote_port;</span><br><span class="line">    echo $server_addr;</span><br><span class="line">    echo $server_port;</span><br><span class="line">    echo $server_name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">default_type text/plain;</span><br><span class="line">location = /test {</span><br><span class="line">    echo $args;</span><br><span class="line">    echo $query_string;</span><br><span class="line">    echo $request_method;</span><br><span class="line">    echo $content_type;</span><br><span class="line">    echo $content_length;</span><br><span class="line">    echo $fastcgi_script_name;</span><br><span class="line">    echo $request_uri;</span><br><span class="line">    echo $document_uri;</span><br><span class="line">    echo $document_root;</span><br><span class="line">    echo $server_protocol;</span><br><span class="line">    echo $scheme;</span><br><span class="line">    echo $https if_not_empty;</span><br><span class="line">    echo CGI/1.1;</span><br><span class="line">    echo nginx/$nginx_version;</span><br><span class="line">    echo $remote_addr;</span><br><span class="line">    echo $remote_port;</span><br><span class="line">    echo $server_addr;</span><br><span class="line">    echo $server_port;</span><br><span class="line">    echo $server_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>重启nginx</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo killall nginx</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx</span><br><span class="line">或</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo killall nginx</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx</span><br><span class="line">或</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>浏览器访问<code>http://localhost/echo?a=1&amp;b=2</code></li>
@@ -626,7 +628,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

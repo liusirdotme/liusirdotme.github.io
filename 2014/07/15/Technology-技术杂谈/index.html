@@ -226,6 +226,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -420,12 +422,12 @@
 <span id="more"></span>
 
 <hr>
-<h1 id="彩虹表"><a href="#彩虹表" class="headerlink" title="彩虹表"></a><center><font color=red>彩虹表</font></center></h1><h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;彩虹表是一个用于加密散列函数逆运算的预先计算好的表，为破解密码的散列值(或称哈希值、微缩图、摘要、指纹、哈希密文)而准备，是马丁·赫尔曼早期提出的简单算法的应用。 。一般主流的彩虹表都在100G以上，这样的表常常用于恢复由有限集字符组成的固定长度的纯文本密码。这是空间/时间替换的典型实践，比每一次尝试都计算哈希的暴力破解处理时间少而储存空间多，但却比简单的对每条输入散列翻查表的破解方式储存空间少而处理时间多。使用加salt的KDF函数可以使这种攻击难以实现。</p>
+<h1 id="彩虹表"><a href="#彩虹表" class="headerlink" title="彩虹表"></a><center><font color="red">彩虹表</font></center></h1><h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;彩虹表是一个用于加密散列函数逆运算的预先计算好的表，为破解密码的散列值(或称哈希值、微缩图、摘要、指纹、哈希密文)而准备，是马丁·赫尔曼早期提出的简单算法的应用。 。一般主流的彩虹表都在100G以上，这样的表常常用于恢复由有限集字符组成的固定长度的纯文本密码。这是空间/时间替换的典型实践，比每一次尝试都计算哈希的暴力破解处理时间少而储存空间多，但却比简单的对每条输入散列翻查表的破解方式储存空间少而处理时间多。使用加salt的KDF函数可以使这种攻击难以实现。</p>
 <h2 id="二、背景"><a href="#二、背景" class="headerlink" title="二、背景"></a>二、背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了保证后台数据安全，现在的做法都是使用哈希算法对明文密码进行加密后存储。由于哈希算法不可逆向，因此由密码逆向出明文运算就成了不可能。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起初黑客们通过字典穷举的方法进行破解，这对简单的密码和简单的密码系统是可行的，但对于复杂的密码和密码系统，则会产生无穷大的字典。为了解决逆向破解的难题，黑客们就产生了彩虹表的技术。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了减小规模太大的不足，黑客生成一个反查表仅存储一小部分哈希值，而每条哈希值可逆向产生一个密码长链(多个密码)。虽然在链表中反查单个密文时需要更多的计算时间，但反查表本身要小得多，因此可以存储更长密码的哈希值。Rainbow tables是此链条技术的一种改进，并提供一种对被称为“链碰撞”的问题的解决方案。其基于Martin Hellman理论(基于内存与时间的权重理论) 。</p>
 <hr>
-<h1 id="接口幂等性"><a href="#接口幂等性" class="headerlink" title="接口幂等性"></a><center><font color=red>接口幂等性</font></center></h1><h2 id="一、什么是幂等性"><a href="#一、什么是幂等性" class="headerlink" title="一、什么是幂等性"></a>一、什么是幂等性</h2><ol>
+<h1 id="接口幂等性"><a href="#接口幂等性" class="headerlink" title="接口幂等性"></a><center><font color="red">接口幂等性</font></center></h1><h2 id="一、什么是幂等性"><a href="#一、什么是幂等性" class="headerlink" title="一、什么是幂等性"></a>一、什么是幂等性</h2><ol>
 <li>HTTP/1.1中对幂等性的定义是：一次和多次请求某一个资源对于资源本身应该具有同样的结果（网络超时等问题除外）。也就是说，其任意多次执行对资源本身所产生的影响均与一次执行的影响相同。<ul>
 <li>幂等是一次或多次请求对资源没有副作用</li>
 <li>幂等还包括第一次请求的时候对资源产生了副作用，但是以后的多次请求都不会再对资源产生副作用</li>
@@ -476,7 +478,7 @@
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020172463">参考四</a></li>
 </ol>
 <hr>
-<h1 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a><center><font color=red>搜索引擎</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;搜索引擎是指根据一定的策略，运用特定的计算机程序从互联网上采集信息，在对信息进行组织和处理后，为用户提供检索服务，将检索的相关信息展示给用户的系统。它是工作于互联网上的一门检索技术，旨在提高人们获取搜集信息的速度，为人们提供更好的网络使用环境。搜索引擎依托于多种技术，如网络爬虫技术、检索排序技术、网页处理技术、大数据处理技术、自然语言处理技术等，为信息检索用户提供快速、高相关性的信息服务。搜索引擎技术的核心模块一般包括爬虫、索引、检索和排序等，同时可添加其他一系列辅助模块，以为用户创造更好的网络使用环境。</p>
+<h1 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a><center><font color="red">搜索引擎</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;搜索引擎是指根据一定的策略，运用特定的计算机程序从互联网上采集信息，在对信息进行组织和处理后，为用户提供检索服务，将检索的相关信息展示给用户的系统。它是工作于互联网上的一门检索技术，旨在提高人们获取搜集信息的速度，为人们提供更好的网络使用环境。搜索引擎依托于多种技术，如网络爬虫技术、检索排序技术、网页处理技术、大数据处理技术、自然语言处理技术等，为信息检索用户提供快速、高相关性的信息服务。搜索引擎技术的核心模块一般包括爬虫、索引、检索和排序等，同时可添加其他一系列辅助模块，以为用户创造更好的网络使用环境。</p>
 <h2 id="二、工作原理"><a href="#二、工作原理" class="headerlink" title="二、工作原理"></a>二、工作原理</h2><blockquote>
 <p>搜索引擎的工作原理是从互联网上抓取网页，建立索引数据库，在索引数据库中搜索排序。它的整个工作过程大体分为信息采集、信息分析、信息查询和用户接口四部分。倒排是搜索引擎常用的数据结构之一，倒排索引是指用记录的非主属性值(也叫副键)来查找记录而组织的文件叫倒排文件，简单可理解为用文档的关键词作为索引，文档作为索引目标的一种结构。</p>
 </blockquote>
@@ -492,7 +494,7 @@
 <li>目录搜索引擎：依赖人工收集处理数据并置于分类目录链接下的搜索方式。</li>
 </ol>
 <hr>
-<h1 id="字符集和字符编码"><a href="#字符集和字符编码" class="headerlink" title="字符集和字符编码"></a><center><font color=red>字符集和字符编码</font></center></h1><h2 id="一、字符"><a href="#一、字符" class="headerlink" title="一、字符"></a>一、字符</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符(Character)是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等，如：1、2、3、A、B、C、~！·#￥%……—*（）——+等。</p>
+<h1 id="字符集和字符编码"><a href="#字符集和字符编码" class="headerlink" title="字符集和字符编码"></a><center><font color="red">字符集和字符编码</font></center></h1><h2 id="一、字符"><a href="#一、字符" class="headerlink" title="一、字符"></a>一、字符</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符(Character)是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等，如：1、2、3、A、B、C、~！·#￥%……—*（）——+等。</p>
 <h2 id="二、字符集"><a href="#二、字符集" class="headerlink" title="二、字符集"></a>二、字符集</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符集(Character set)是多个字符的集合，字符集种类较多，每个字符集包含的字符个数不同，常见字符集名称：ASCII字符集、GB2312字符集、BIG5字符集、 GB18030字符集、Unicode字符集等。计算机要准确的处理各种字符集文字，就需要进行字符编码，以便计算机能够识别和存储各种文字。中文文字数目大，而且还分为简体中文和繁体中文两种不同书写规则的文字，而计算机最初是按英语单字节字符设计的，因此，对中文字符进行编码，是中文信息交流的技术基础。</p>
 <ol start="2">
 <li>分类<ul>
@@ -511,7 +513,7 @@
 </ol>
 <h2 id="三、字符编码"><a href="#三、字符编码" class="headerlink" title="三、字符编码"></a>三、字符编码</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符编码(Character encoding)也称字集码，是把字符集中的字符编码为指定集合中某一对象(例如：比特模式、自然数序列、8位组或者电脉冲)，以便文本在计算机中存储和通过通信网络的传递。它是一套法则，使用该法则能够对自然语言的字符集合(如字母表或音节表)与另一个集合(如号码或电脉冲)进行配对，即在符号集合与数字系统之间建立对应关系。它是信息处理的一项基本技术，通常人们用符号集合(如文字)来表达信息，而以计算机为基础的信息处理系统则是利用元件(硬件)不同状态的组合来存储和处理信息的，元件不同状态的组合能代表数字系统的数字，因此字符编码就是将符号转换为计算机可以接受的数字系统的数(称为数字代码)。常见的例子包括将拉丁字母表编码成摩斯电码和ASCII。</p>
 <hr>
-<h1 id="对象深-浅复制"><a href="#对象深-浅复制" class="headerlink" title="对象深/浅复制"></a><center><font color=red>对象深/浅复制</font></center></h1><h2 id="一、PHP"><a href="#一、PHP" class="headerlink" title="一、PHP"></a>一、PHP</h2><ol>
+<h1 id="对象深-浅复制"><a href="#对象深-浅复制" class="headerlink" title="对象深/浅复制"></a><center><font color="red">对象深/浅复制</font></center></h1><h2 id="一、PHP"><a href="#一、PHP" class="headerlink" title="一、PHP"></a>一、PHP</h2><ol>
 <li><p>定义</p>
 <ul>
 <li>浅复制：使用clone来复制对象，这种复制叫做“浅复制“，被复制对象的所有变量都还有与原来对象相同的值，而所有的对其他对象的引用都仍然指向原来的对象。通俗的说，赋值时引用赋值，相当于取了一个别名，对其中一个修改会影响另一个。</li>
@@ -519,18 +521,18 @@
 </ul>
 </li>
 <li><p>例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Test&#123;</span><br><span class="line"></span><br><span class="line">    public $name;</span><br><span class="line"></span><br><span class="line">    public function __construct($name)&#123;</span><br><span class="line">       $this-&gt;name = $name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj1 = new Test(&#x27;test1&#x27;);</span><br><span class="line">echo &quot;obj1的name值为：&quot;.$obj1-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line">$obj2 = $obj1;</span><br><span class="line">echo &quot;obj2的name值为：&quot;.$obj2-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line">$obj2-&gt;name = &#x27;test2&#x27;;</span><br><span class="line">echo &quot;修改后obj1的name值为：&quot;.$obj1-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo &quot;修改后obj2的name值为：&quot;.$obj2-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">obj1的name值为：test1</span><br><span class="line">obj2的name值为：test1</span><br><span class="line">修改后obj1的name值为：test2</span><br><span class="line">修改后obj2的name值为：test2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$obj1 = new Test(&#x27;test1&#x27;);</span><br><span class="line">echo &quot;obj1的name值为：&quot;.$obj1-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line">$obj2 = clone $obj1;</span><br><span class="line">echo &quot;obj2的name值为：&quot;.$obj2-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line">$obj2-&gt;name = &#x27;test2&#x27;;</span><br><span class="line">echo &quot;修改后obj1的name值为：&quot;.$obj1-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo &quot;修改后obj2的name值为：&quot;.$obj2-&gt;name.&quot;&lt;br/&gt;&quot;;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">obj1的name值为：test1</span><br><span class="line">obj2的name值为：test1</span><br><span class="line">修改后obj1的name值为：test1</span><br><span class="line">修改后obj2的name值为：test2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Test{</span><br><span class="line"></span><br><span class="line">    public $name;</span><br><span class="line"></span><br><span class="line">    public function __construct($name){</span><br><span class="line">       $this-&gt;name = $name;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">$obj1 = new Test('test1');</span><br><span class="line">echo "obj1的name值为：".$obj1-&gt;name."&lt;br/&gt;";</span><br><span class="line">$obj2 = $obj1;</span><br><span class="line">echo "obj2的name值为：".$obj2-&gt;name."&lt;br/&gt;";</span><br><span class="line">$obj2-&gt;name = 'test2';</span><br><span class="line">echo "修改后obj1的name值为：".$obj1-&gt;name."&lt;br/&gt;";</span><br><span class="line">echo "修改后obj2的name值为：".$obj2-&gt;name."&lt;br/&gt;";</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">obj1的name值为：test1</span><br><span class="line">obj2的name值为：test1</span><br><span class="line">修改后obj1的name值为：test2</span><br><span class="line">修改后obj2的name值为：test2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$obj1 = new Test('test1');</span><br><span class="line">echo "obj1的name值为：".$obj1-&gt;name."&lt;br/&gt;";</span><br><span class="line">$obj2 = clone $obj1;</span><br><span class="line">echo "obj2的name值为：".$obj2-&gt;name."&lt;br/&gt;";</span><br><span class="line">$obj2-&gt;name = 'test2';</span><br><span class="line">echo "修改后obj1的name值为：".$obj1-&gt;name."&lt;br/&gt;";</span><br><span class="line">echo "修改后obj2的name值为：".$obj2-&gt;name."&lt;br/&gt;";</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">obj1的name值为：test1</span><br><span class="line">obj2的name值为：test1</span><br><span class="line">修改后obj1的name值为：test1</span><br><span class="line">修改后obj2的name值为：test2</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>如何才能进行深复制</p>
 <ul>
 <li>方式一：利用__clone方法</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public function __clone()</span><br><span class="line">&#123;</span><br><span class="line">    $this-&gt;obj = new Obj();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public function __clone()</span><br><span class="line">{</span><br><span class="line">    $this-&gt;obj = new Obj();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>方式二：利用串行化(冷藏与解冻)</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$tmp = serialize($ex1);</span><br><span class="line">$ex2 = unserialize($tmp);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$tmp = serialize($ex1);</span><br><span class="line">$ex2 = unserialize($tmp);</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
@@ -542,7 +544,7 @@
 </li>
 </ol>
 <hr>
-<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><center><font color=red>哈希表</font></center></h1><h2 id="一、哈希表"><a href="#一、哈希表" class="headerlink" title="一、哈希表"></a>一、哈希表</h2><ol>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><center><font color="red">哈希表</font></center></h1><h2 id="一、哈希表"><a href="#一、哈希表" class="headerlink" title="一、哈希表"></a>一、哈希表</h2><ol>
 <li>哈希表(Hash table，也叫散列表)，是根据关键码值(key value)而直接进行访问的数据结构。它通过把关键码值映射到表中一个位置来访问记录以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。</li>
 </ol>
 <h2 id="二、哈希函数"><a href="#二、哈希函数" class="headerlink" title="二、哈希函数"></a>二、哈希函数</h2><ol>
@@ -648,7 +650,7 @@
 </li>
 </ul>
 <hr>
-<h1 id="快照"><a href="#快照" class="headerlink" title="快照"></a><center><font color=red>快照</font></center></h1><h2 id="一、引入"><a href="#一、引入" class="headerlink" title="一、引入"></a>一、引入</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传统地，人们一直采用数据复制、备份、恢复等技术来保护重要的数据信息。由于数据备份过程会影响应用性能并且非常耗时，因此数据备份通常被安排在系统负载较轻时进行(如夜间)。另外为了节省存储空间，通常结合全量和增量备份技术。显然，这种数据备份方式存在一个显著的不足————备份窗口问题。在数据备份期间，企业业务需要暂时停止对外提供服务。随着企业数据量和数据增长速度的加快，这个窗口可能会越来越长，这对于关键性业务系统来说是无法接受的。诸如银行、电信等机构，信息系统要求<code>24*7</code>不间断运行，短时的停机或者少量数据的丢失都会导致巨大的损失。随着对信息系统的依赖程度越来越高，即使不是银行、电信这类传统关键行业，在政府、教育、企业也越来越多的系统要求更小的备份窗口和更短的停机时间。降低数据保护的代价，提高数据保护过程中的应用感知能力，逐步成为客户的首要需求。因此，就需要将数据备份窗口尽可能地缩小，甚至缩小为零。数据快照(Snapshot)、持续数据保护(CDP，Continuous Data Protection)等技术，就是为了满足这样的需求而出现的数据保护技术。</p>
+<h1 id="快照"><a href="#快照" class="headerlink" title="快照"></a><center><font color="red">快照</font></center></h1><h2 id="一、引入"><a href="#一、引入" class="headerlink" title="一、引入"></a>一、引入</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传统地，人们一直采用数据复制、备份、恢复等技术来保护重要的数据信息。由于数据备份过程会影响应用性能并且非常耗时，因此数据备份通常被安排在系统负载较轻时进行(如夜间)。另外为了节省存储空间，通常结合全量和增量备份技术。显然，这种数据备份方式存在一个显著的不足————备份窗口问题。在数据备份期间，企业业务需要暂时停止对外提供服务。随着企业数据量和数据增长速度的加快，这个窗口可能会越来越长，这对于关键性业务系统来说是无法接受的。诸如银行、电信等机构，信息系统要求<code>24*7</code>不间断运行，短时的停机或者少量数据的丢失都会导致巨大的损失。随着对信息系统的依赖程度越来越高，即使不是银行、电信这类传统关键行业，在政府、教育、企业也越来越多的系统要求更小的备份窗口和更短的停机时间。降低数据保护的代价，提高数据保护过程中的应用感知能力，逐步成为客户的首要需求。因此，就需要将数据备份窗口尽可能地缩小，甚至缩小为零。数据快照(Snapshot)、持续数据保护(CDP，Continuous Data Protection)等技术，就是为了满足这样的需求而出现的数据保护技术。</p>
 <h2 id="二、快照技术"><a href="#二、快照技术" class="headerlink" title="二、快照技术"></a>二、快照技术</h2><blockquote>
 <p>SNIA(存储网络行业协会)对快照的定义是：关于指定数据集合的一个完全可用拷贝，该拷贝包含了相应数据在某个时间点的镜像。按照SNIA的定义，快照有<code>全量快照</code>和<code>增量快照</code>两种类型，其中又各自使用了不同的快照技术:</p>
 </blockquote>
@@ -717,19 +719,19 @@
 <li><a target="_blank" rel="noopener" href="https://juejin.im/post/5b4d5db16fb9a04f844abe44">参考二</a></li>
 </ol>
 <hr>
-<h1 id="Doxyfile"><a href="#Doxyfile" class="headerlink" title="Doxyfile"></a><center><font color=red>Doxyfile</font></center></h1><hr>
-<h1 id="MVC之MVVM"><a href="#MVC之MVVM" class="headerlink" title="MVC之MVVM"></a><center><font color=red>MVC之MVVM</font></center></h1><blockquote>
+<h1 id="Doxyfile"><a href="#Doxyfile" class="headerlink" title="Doxyfile"></a><center><font color="red">Doxyfile</font></center></h1><hr>
+<h1 id="MVC之MVVM"><a href="#MVC之MVVM" class="headerlink" title="MVC之MVVM"></a><center><font color="red">MVC之MVVM</font></center></h1><blockquote>
 <p>MVVM(Model–view–viewmodel)是一种软件架构模式。MVVM有助于将图形用户界面的开发与业务逻辑或后端逻辑(数据模型)的开发分离开来，这是通过置标语言或GUI代码实现的。</p>
 </blockquote>
 <hr>
-<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center><font color=red>闭包</font></center></h1><h2 id="一、PHP闭包"><a href="#一、PHP闭包" class="headerlink" title="一、PHP闭包"></a>一、PHP闭包</h2><ol>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center><font color="red">闭包</font></center></h1><h2 id="一、PHP闭包"><a href="#一、PHP闭包" class="headerlink" title="一、PHP闭包"></a>一、PHP闭包</h2><ol>
 <li><p>匿名函数</p>
 <p style="text-indent:2em">提到闭包就不得不说匿名函数(Anonymous functions)，也叫闭包函数(closures)，PHP闭包的实现主要就是靠它。</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$func = function ($param) &#123;</span><br><span class="line"> echo $param;</span><br><span class="line">&#125;;</span><br><span class="line">$func(&quot;Hello World !&quot;);</span><br><span class="line">输出：Hello World !</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$func = function ($param) {</span><br><span class="line"> echo $param;</span><br><span class="line">};</span><br><span class="line">$func("Hello World !");</span><br><span class="line">输出：Hello World !</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>闭包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">//方式一、在函数里定义一个匿名函数，并且调用它</span><br><span class="line">function printStr() &#123;</span><br><span class="line"> $func = function($str) &#123;</span><br><span class="line">     echo $str;</span><br><span class="line"> &#125;;</span><br><span class="line"> $func(&#x27;Hello World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">printStr();</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//方式二、在函数中把匿名函数返回，并且调用它</span><br><span class="line">function getPrintStrFunc() &#123;</span><br><span class="line">    $func = function($str) &#123;</span><br><span class="line">        echo $str;</span><br><span class="line">    &#125;;</span><br><span class="line">    return $func;</span><br><span class="line">&#125;</span><br><span class="line">$printStrFunc = getPrintStrFunc();</span><br><span class="line">$printStrFunc(&#x27;Hello World&#x27;);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//方式三、把匿名函数当做参数传递，并且调用它</span><br><span class="line">function callFunc($func) &#123;</span><br><span class="line"> $func(&#x27;Hello World&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">$printStrFunc = function($str) &#123;</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;;</span><br><span class="line">callFunc($printStrFunc);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//也可以直接将匿名函数进行传递(js写法)</span><br><span class="line">callFunc(function($str)&#123;</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//方式四、使用关键字 use 连接闭包和外界变量</span><br><span class="line">function getMoney() &#123;</span><br><span class="line"> $money = &#x27;10元&#x27;;</span><br><span class="line"> $func = function() use ($money) &#123;</span><br><span class="line">  echo $money;</span><br><span class="line"> &#125;;</span><br><span class="line"> $func();</span><br><span class="line">&#125;</span><br><span class="line">getMoney();</span><br><span class="line">输出：10元</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">//方式一、在函数里定义一个匿名函数，并且调用它</span><br><span class="line">function printStr() {</span><br><span class="line"> $func = function($str) {</span><br><span class="line">     echo $str;</span><br><span class="line"> };</span><br><span class="line"> $func('Hello World');</span><br><span class="line">}</span><br><span class="line">printStr();</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//方式二、在函数中把匿名函数返回，并且调用它</span><br><span class="line">function getPrintStrFunc() {</span><br><span class="line">    $func = function($str) {</span><br><span class="line">        echo $str;</span><br><span class="line">    };</span><br><span class="line">    return $func;</span><br><span class="line">}</span><br><span class="line">$printStrFunc = getPrintStrFunc();</span><br><span class="line">$printStrFunc('Hello World');</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//方式三、把匿名函数当做参数传递，并且调用它</span><br><span class="line">function callFunc($func) {</span><br><span class="line"> $func('Hello World');</span><br><span class="line">}</span><br><span class="line">$printStrFunc = function($str) {</span><br><span class="line">    echo $str;</span><br><span class="line">};</span><br><span class="line">callFunc($printStrFunc);</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//也可以直接将匿名函数进行传递(js写法)</span><br><span class="line">callFunc(function($str){</span><br><span class="line">    echo $str;</span><br><span class="line">});</span><br><span class="line">输出：Hello World</span><br><span class="line"></span><br><span class="line">//方式四、使用关键字 use 连接闭包和外界变量</span><br><span class="line">function getMoney() {</span><br><span class="line"> $money = '10元';</span><br><span class="line"> $func = function() use ($money) {</span><br><span class="line">  echo $money;</span><br><span class="line"> };</span><br><span class="line"> $func();</span><br><span class="line">}</span><br><span class="line">getMoney();</span><br><span class="line">输出：10元</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
@@ -743,13 +745,13 @@
 <li>闭包就是能够读取其他函数内部变量的函数，函数没有被释放，整条作用域链上的局部变量都将得到保留，本质上就是将函数内部和函数外部连接的一座桥梁，可以简单理解成“定义在一个函数内部的函数”。</li>
 <li>举例</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">  　var n = 999;</span><br><span class="line">　  nAdd = function()&#123; // 全局变量</span><br><span class="line">　　  　n += 1;</span><br><span class="line">　  &#125;</span><br><span class="line">　  function f2()&#123;</span><br><span class="line">　　  　console.log(n);</span><br><span class="line">　  &#125;</span><br><span class="line">　  return f2;</span><br><span class="line">&#125;</span><br><span class="line">var result = f1();</span><br><span class="line">result();　　// 从函数外部通过闭包f2获取到函数f1内部局部变量的值</span><br><span class="line">nAdd();　　  // 从函数外部通过闭包修改局部变量n的值</span><br><span class="line">result();　　// 再次通过闭包f2获取到函数f1内部局部变量的值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function f1(){</span><br><span class="line">  　var n = 999;</span><br><span class="line">　  nAdd = function(){ // 全局变量</span><br><span class="line">　　  　n += 1;</span><br><span class="line">　  }</span><br><span class="line">　  function f2(){</span><br><span class="line">　　  　console.log(n);</span><br><span class="line">　  }</span><br><span class="line">　  return f2;</span><br><span class="line">}</span><br><span class="line">var result = f1();</span><br><span class="line">result();　　// 从函数外部通过闭包f2获取到函数f1内部局部变量的值</span><br><span class="line">nAdd();　　  // 从函数外部通过闭包修改局部变量n的值</span><br><span class="line">result();　　// 再次通过闭包f2获取到函数f1内部局部变量的值</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li>未完待续… </li>
 </ol>
 <hr>
-<h1 id="NFS-RPC"><a href="#NFS-RPC" class="headerlink" title="NFS-RPC"></a><center><font color=red>NFS-RPC</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="NFS-RPC"><a href="#NFS-RPC" class="headerlink" title="NFS-RPC"></a><center><font color="red">NFS-RPC</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li>NFS<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>NFS（Network File System）</code>，即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过<code>TCP/IP</code>网络共享资源。在<code>NFS</code>的应用中，本地<code>NFS</code>的客户端应用可以透明地读写位于远端<code>NFS</code>服务器上的文件，就像访问本地文件一样。它最大的功能就是可以透过网络，让不同的机器、不同的操作系统可以彼此分享个别的档案 (<code>share files</code>)，可以简单的将它看做是一个文件服务器 (<code>file server</code>) 。这个<code>NFS</code>服务器可以让你的<code>PC</code>来将网络远程的<code>NFS</code>服务器分享的目录，挂载到本地端的机器当中，在本地的机器看起来那个远程主机的目录就好像是自己的一个磁盘分区槽一样 (<code>partition</code>)。</li>
 </ol>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS的基本原则是“容许不同的客户端及服务端通过一组RPC分享相同的文件系统”，它是独立于操作系统，容许不同硬件及操作系统的系统共同进行文件的分享。</p>
@@ -782,7 +784,7 @@
 <ul>
 <li>背景</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">节点一：ubuntu14</span><br><span class="line">ip：192.168.20.10</span><br><span class="line">cat /etc/issue</span><br><span class="line">Ubuntu 14.04.6 LTS \n \l</span><br><span class="line"></span><br><span class="line">节点二：centos7</span><br><span class="line">ip：192.168.10.10</span><br><span class="line">cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.6.1810 (Core)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">节点一：ubuntu14</span><br><span class="line">ip：192.168.20.10</span><br><span class="line">cat /etc/issue</span><br><span class="line">Ubuntu 14.04.6 LTS \n \l</span><br><span class="line"></span><br><span class="line">节点二：centos7</span><br><span class="line">ip：192.168.10.10</span><br><span class="line">cat /etc/centos-release</span><br><span class="line">CentOS Linux release 7.6.1810 (Core)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>nfs服务器部署在ubuntu14</p>
 <ul>
@@ -807,8 +809,8 @@
 <li>no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组</li>
 <li>root_squash（默认）：将来访的root用户映射为匿名用户或用户组</li>
 <li>no_root_squash：来访的root用户保持root帐号权限</li>
-<li>anonuid=<UID>：指定匿名访问用户的本地用户UID，默认为nfsnobody（65534）</li>
-<li>anongid=<GID>：指定匿名访问用户的本地用户组GID，默认为nfsnobody（65534）</li>
+<li>anonuid=<uid>：指定匿名访问用户的本地用户UID，默认为nfsnobody（65534）</uid></li>
+<li>anongid=<gid>：指定匿名访问用户的本地用户组GID，默认为nfsnobody（65534）</gid></li>
 <li>secure（默认）：限制客户端只能从小于1024的tcp/ip端口连接服务器</li>
 <li>insecure：允许客户端从大于1024的tcp/ip端口连接服务器</li>
 <li>sync：将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性</li>
@@ -841,7 +843,7 @@
 <ul>
 <li>ip为ubuntu14</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share 192.168.10.10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share 192.168.10.10</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>挂在目录 <code>sudo mount -t nfs 192.168.20.10:/home/nfs_share /mnt</code></p>
 <ul>
@@ -857,7 +859,7 @@
 <li><p>回到centos7，查看<code>showmount -e 192.168.20.10</code></p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share (everyone)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Export list for 192.168.20.10:</span><br><span class="line">/home/nfs_share (everyone)</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>重新挂载 <code>sudo mount -t nfs 192.168.20.10:/home/nfs_share /mnt</code>，无输出错误信息则成功</li>
@@ -926,7 +928,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/phper/note/76641">参考二</a></li>
 </ol>
 <hr>
-<h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a><center><font color=red>UML</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
+<h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a><center><font color="red">UML</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
 <h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
 <li>用例图：展现了一组用例、参与者以及它们之间的关系，描述系统的静态使用情况，说白了就是用户与各项操作之间的关系。</li>
 <li>类图：展示了一组类、接口和协作以及它们之间的关系，类图也是我们在建模中所建立的最常见的图。系统可以有多个类图，所以一个类图只表达了系统的一个方面。一般在高层给出主要职责，低层给出类的属性和操作，类图分三层:<ul>
@@ -1046,14 +1048,14 @@
 </ol>
 <p><img src="all.png" alt="类及累的关系表示图"></p>
 <hr>
-<h1 id="SVN"><a href="#SVN" class="headerlink" title="SVN"></a><center><font color=red>SVN</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
+<h1 id="SVN"><a href="#SVN" class="headerlink" title="SVN"></a><center><font color="red">SVN</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
 <li>检出版本库：<code>svn checkout path</code></li>
 <li>添加文件：<code>svn add file</code><ul>
 <li>支持正则，如添加所有的css文件：<code>svn add *.css</code></li>
 </ul>
 </li>
-<li>提交修改到版本库：<code>svn commit -m &#39;comments&#39;</code></li>
+<li>提交修改到版本库：<code>svn commit -m 'comments'</code></li>
 <li>查看当前版本库状态：<code>svn status</code></li>
 <li>查看当前版本库信息：<code>svn info</code></li>
 <li>恢复当前版本库修改：<code>svn revert path</code> <ul>
@@ -1069,7 +1071,7 @@
 <li><code>--force</code>选项可强制删除</li>
 </ul>
 </li>
-<li>给文件枷锁：<code>svn lock -m &#39;comments&#39; path</code><ul>
+<li>给文件枷锁：<code>svn lock -m 'comments' path</code><ul>
 <li>解锁：<code>svn unlock path</code></li>
 </ul>
 </li>
@@ -1087,7 +1089,7 @@
 <li><a target="_blank" rel="noopener" href="http://svnbook.red-bean.com/zh/1.8/svn.ref.svn.html">参考一</a></li>
 </ol>
 <hr>
-<h1 id="短链接"><a href="#短链接" class="headerlink" title="短链接"></a><center><font color=red>短链接</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="短链接"><a href="#短链接" class="headerlink" title="短链接"></a><center><font color="red">短链接</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li><p>优点</p>
 <ul>
 <li>链接变短，可增加编辑字数，如短信、有长度限制的平台等</li>
@@ -1325,7 +1327,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

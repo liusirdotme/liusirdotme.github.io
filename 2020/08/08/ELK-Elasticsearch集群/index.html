@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -420,7 +422,7 @@
 <li>复制多份elasticsearch安装目录，可以端口号来去区分</li>
 <li>分别修改配置elasticsearch.yml</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#cluster.name: my-application</span><br><span class="line">node.name: node-9200/9201/9202</span><br><span class="line">http.port: 9200/9201/9202</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#cluster.name: my-application</span><br><span class="line">node.name: node-9200/9201/9202</span><br><span class="line">http.port: 9200/9201/9202</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>依次启动多个节点(首先启动的节点为主节点)</li>
@@ -429,7 +431,7 @@
 <li><p>命令行模式(同一个目录下执行即可)</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bin/elasticsearch -E node.name=node9200 -E cluster.name=singleTest -E path.data=data9200 -d</span><br><span class="line">bin/elasticsearch -E node.name=node9201 -E cluster.name=singleTest -E path.data=data9201 -d</span><br><span class="line">bin/elasticsearch -E node.name=node9202 -E cluster.name=singleTest -E path.data=data9202 -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bin/elasticsearch -E node.name=node9200 -E cluster.name=singleTest -E path.data=data9200 -d</span><br><span class="line">bin/elasticsearch -E node.name=node9201 -E cluster.name=singleTest -E path.data=data9201 -d</span><br><span class="line">bin/elasticsearch -E node.name=node9202 -E cluster.name=singleTest -E path.data=data9202 -d</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>查看<code>http://localhost:9200/_cat/health?v</code></p>
 <ul>
@@ -665,7 +667,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

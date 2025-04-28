@@ -203,6 +203,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -432,7 +434,7 @@
 <li>从数据库批量的获取自增ID如1~1000并缓存在本地，减少数据库请求次数</li>
 <li></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE id_generator (</span><br><span class="line">  id int(10) NOT NULL,</span><br><span class="line">  max_id bigint(20) NOT NULL COMMENT &#x27;当前最大id&#x27;,</span><br><span class="line">  step int(20) NOT NULL COMMENT &#x27;号段的布长&#x27;,</span><br><span class="line">  biz_type    int(20) NOT NULL COMMENT &#x27;业务类型&#x27;,</span><br><span class="line">  version int(20) NOT NULL COMMENT &#x27;版本号&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">)</span><br><span class="line">biz_type：不同业务类型</span><br><span class="line">max_id：当前最大的可用id</span><br><span class="line">step：号段的长度</span><br><span class="line">version：乐观锁</span><br><span class="line"></span><br><span class="line">update id_generator set max_id = #&#123;max_id+step&#125;, version = version + 1 where version = # &#123;version&#125; and biz_type = XXX</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE id_generator (</span><br><span class="line">  id int(10) NOT NULL,</span><br><span class="line">  max_id bigint(20) NOT NULL COMMENT '当前最大id',</span><br><span class="line">  step int(20) NOT NULL COMMENT '号段的布长',</span><br><span class="line">  biz_type    int(20) NOT NULL COMMENT '业务类型',</span><br><span class="line">  version int(20) NOT NULL COMMENT '版本号',</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">)</span><br><span class="line">biz_type：不同业务类型</span><br><span class="line">max_id：当前最大的可用id</span><br><span class="line">step：号段的长度</span><br><span class="line">version：乐观锁</span><br><span class="line"></span><br><span class="line">update id_generator set max_id = #{max_id+step}, version = version + 1 where version = # {version} and biz_type = XXX</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>Redis</p>
 <ul>
@@ -442,7 +444,7 @@
 <li><p>Mongo</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getUniqId() &#123;</span><br><span class="line">    if (!class_exists(&#x27;MongoDB\BSON\ObjectId&#x27;)) &#123;</span><br><span class="line">        throw new Exception(&quot;mongodb extension no exists&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return (string)(new MongoDB\BSON\ObjectId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getUniqId() {</span><br><span class="line">    if (!class_exists('MongoDB\BSON\ObjectId')) {</span><br><span class="line">        throw new Exception("mongodb extension no exists");</span><br><span class="line">    }</span><br><span class="line">    return (string)(new MongoDB\BSON\ObjectId());</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="7">
 <li>雪花算法<ul>
@@ -652,7 +654,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

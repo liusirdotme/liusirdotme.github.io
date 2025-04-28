@@ -204,6 +204,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -398,7 +400,7 @@
 <span id="more"></span>
 
 <hr>
-<h1 id="二、做事方式"><a href="#二、做事方式" class="headerlink" title="二、做事方式"></a><center><font color=red>二、做事方式</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua是一个小巧的脚本语言。它是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo三人所组成的研究小组于1993年开发的。 其设计目的是为了通过灵活嵌入应用程序中从而为应用程序提供灵活的扩展和定制功能。Lua由标准C编写而成，几乎在所有操作系统和平台上都可以编译，运行。Lua并没有提供强大的库，这是由它的定位决定的。所以Lua不适合作为开发独立应用程序的语言。Lua 有一个同时进行的JIT项目，提供在特定平台上的即时编译功能。</p>
+<h1 id="二、做事方式"><a href="#二、做事方式" class="headerlink" title="二、做事方式"></a><center><font color="red">二、做事方式</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua是一个小巧的脚本语言。它是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo三人所组成的研究小组于1993年开发的。 其设计目的是为了通过灵活嵌入应用程序中从而为应用程序提供灵活的扩展和定制功能。Lua由标准C编写而成，几乎在所有操作系统和平台上都可以编译，运行。Lua并没有提供强大的库，这是由它的定位决定的。所以Lua不适合作为开发独立应用程序的语言。Lua 有一个同时进行的JIT项目，提供在特定平台上的即时编译功能。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua脚本可以很容易的被C/C++ 代码调用，也可以反过来调用C/C++的函数，这使得Lua在应用程序中可以被广泛应用。不仅仅作为扩展脚本，也可以作为普通的配置文件，代替XML,ini等文件格式，并且更容易理解和维护。Lua由标准C编写而成，代码简洁优美，几乎在所有操作系统和平台上都可以编译，运行。一个完整的Lua解释器不过200k，在目前所有脚本引擎中，Lua的速度是最快的。这一切都决定了Lua是作为嵌入式脚本的最佳选择。</p>
 <h2 id="二、介绍"><a href="#二、介绍" class="headerlink" title="二、介绍"></a>二、介绍</h2><ol>
 <li>数据类型</li>
@@ -474,7 +476,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="三、垃圾回收"><a href="#三、垃圾回收" class="headerlink" title="三、垃圾回收"></a>三、垃圾回收</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和大多开发语言一样，Lua也采用了自动内存管理，它运行了一个垃圾收集器来收集所有死对象(即在Lua中不可能再访问到的对象)来完成自动内存管理的工作。具体就是Lua实现了一个增量标记-扫描收集器，它使用这两个数字来控制垃圾收集循环：<font color=red>垃圾收集器间歇率和垃圾收集器步进倍率</font>，这两个数字都使用百分数为单位。</p>
+<h2 id="三、垃圾回收"><a href="#三、垃圾回收" class="headerlink" title="三、垃圾回收"></a>三、垃圾回收</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和大多开发语言一样，Lua也采用了自动内存管理，它运行了一个垃圾收集器来收集所有死对象(即在Lua中不可能再访问到的对象)来完成自动内存管理的工作。具体就是Lua实现了一个增量标记-扫描收集器，它使用这两个数字来控制垃圾收集循环：<font color="red">垃圾收集器间歇率和垃圾收集器步进倍率</font>，这两个数字都使用百分数为单位。</p>
 <ul>
 <li>垃圾收集器间歇率控制着收集器需要在开启新的循环前要等待多久。增大这个值会减少收集器的积极性。当这个值比100小的时候，收集器在开启新的循环前不会有等待。设置这个值为200就会让收集器等到总内存使用量达到 之前的两倍时才开始新的循环</li>
 <li>垃圾收集器步进倍率控制着收集器运作速度相对于内存分配速度的倍率。增大这个值不仅会让收集器更加积极，还会增加每个增量步骤的长度。不要把这个值设得小于100，那样的话收集器就工作的太慢了以至于永远都干不完一个循环。默认值是 200，这表示收集器以内存分配的”两倍”速工作</li>
@@ -489,7 +491,7 @@
 <li>下载源码 curl -R -O <a target="_blank" rel="noopener" href="http://www.lua.org/ftp/lua-5.3.5.tar.gz">http://www.lua.org/ftp/lua-5.3.5.tar.gz</a></li>
 <li>安装</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar zxf lua-5.3.5.tar.gz</span><br><span class="line">cd lua-5.3.5</span><br><span class="line">make linux test</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar zxf lua-5.3.5.tar.gz</span><br><span class="line">cd lua-5.3.5</span><br><span class="line">make linux test</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>查看安装是否完成 lua -v</li>
@@ -511,7 +513,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.lua.org/">参考一</a></li>
 </ol>
 <hr>
-<h1 id="热更框架xLua"><a href="#热更框架xLua" class="headerlink" title="热更框架xLua"></a><center><font color=red>热更框架xLua</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热更新是一种各大手游App常用的更新方式，简单来说就是在用户通下载安装APP之后，打开App时遇到的即时更新。热更新就是动态下发代码，它可以使开发者在不发布新版本的情况下修复BUG和发布功能，让开发者得以绕开苹果的审核机制，避免长时间的审核等待以及多次被拒造成的成本。</p>
+<h1 id="热更框架xLua"><a href="#热更框架xLua" class="headerlink" title="热更框架xLua"></a><center><font color="red">热更框架xLua</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热更新是一种各大手游App常用的更新方式，简单来说就是在用户通下载安装APP之后，打开App时遇到的即时更新。热更新就是动态下发代码，它可以使开发者在不发布新版本的情况下修复BUG和发布功能，让开发者得以绕开苹果的审核机制，避免长时间的审核等待以及多次被拒造成的成本。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>xLua</code>是当下最流行的<code>unity</code>热更方案之一，作者是腾讯的车雄生前辈。自2016年初推出以来，已经在腾讯的多款游戏项目上应用，目前xLua已经开源到了GitHub。xLua最大的特色是不仅支持纯lua脚本热更，更是可以做<code>C#</code>代码的<code>bug hotfix</code>，即平时开发时使用<code>C#</code>，项目上线后如果突然发现有<code>bug</code>，可以直接用<code>lua</code>去修复出<code>bug</code>的地方，原理就是通过<code>[Hotfix]</code>特性标记然后在IL逻辑层判断修改逻辑，使程序去执行更新后的<code>lua</code>逻辑代码而不是走之前的C#逻辑。</p>
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
 <p>待补充</p>
@@ -717,7 +719,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

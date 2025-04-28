@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -423,7 +425,7 @@
 </li>
 <li><p>PHP Intelephense，安装过程不再赘述</p>
 <ul>
-<li>php安装的扩展，如redis、mongodb等，写代码时会标红错误，提示如<code>Undefined type &#39;MongoDB\Driver\Manager&#39;.intelephense(1009)</code>等<ul>
+<li>php安装的扩展，如redis、mongodb等，写代码时会标红错误，提示如<code>Undefined type 'MongoDB\Driver\Manager'.intelephense(1009)</code>等<ul>
 <li>点开已安装的PHP Intelephense扩展主页</li>
 <li>点击齿轮⚙小图标</li>
 <li>选择扩展设置</li>
@@ -513,7 +515,7 @@
 <li><p>例子</p>
 <ul>
 <li><code>command + shift + p</code>打开命令面板</li>
-<li>输入<code>shell command:install &#39;code&#39;...</code></li>
+<li>输入<code>shell command:install 'code'...</code></li>
 </ul>
 </li>
 </ol>
@@ -539,7 +541,7 @@
 <li>找到validate:Executable Path</li>
 <li>编辑，分别加入两个版本的可执行文件路径</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;php.validate.executablePath&quot;: &quot;/usr/local/php/5.6/bin/php&quot;,</span><br><span class="line">&quot;php.validate.executablePath&quot;: &quot;/usr/local/php/7.3/bin/php&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"php.validate.executablePath": "/usr/local/php/5.6/bin/php",</span><br><span class="line">"php.validate.executablePath": "/usr/local/php/7.3/bin/php"</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="5">
 <li>保存就可以了</li>
@@ -765,7 +767,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

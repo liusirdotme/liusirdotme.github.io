@@ -206,6 +206,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -433,9 +435,9 @@
 </ol>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址中凡是以<code>11110</code>开头的E类IP地址都保留用于将来和实验使用，即十进制的<code>240.0.0.0</code>到<code>247.255.255.255</code></p>
 <blockquote>
-<p><font color=red>网络号和主机号全0和全1的地址用于特殊目的，不允许使用；D类地址不标识网络；E类地址用于某些实验和将来使用，暂时保留。</font></p>
+<p><font color="red">网络号和主机号全0和全1的地址用于特殊目的，不允许使用；D类地址不标识网络；E类地址用于某些实验和将来使用，暂时保留。</font></p>
 </blockquote>
-<h2 id="三、子网与子网掩码"><a href="#三、子网与子网掩码" class="headerlink" title="三、子网与子网掩码"></a>三、子网与子网掩码</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址是以网络号和主机号来表示网络上的主机的，<font color=red>只有在一个网络号下的计算机之间才能直接互通</font>，即网络号必须相同，不同网络号的计算机要通过网关(Gateway)才能互通。但这样的划分在某些情况下显得并不十分灵活，如一个A类地址可容纳的主机数是<code>2^24 - 2</code>个，如果网络的每次通信都将消息广播到这么多主机是多么可怕的事情。为此IP网络还允许划分成更小的网络，称为子网(Subnet)，与此同时也就产生了子网掩码。<font color=red>子网掩码的作用就是用来判断任意两个IP地址是否属于同一子网络(网络号是否相同)</font>。</p>
+<h2 id="三、子网与子网掩码"><a href="#三、子网与子网掩码" class="headerlink" title="三、子网与子网掩码"></a>三、子网与子网掩码</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址是以网络号和主机号来表示网络上的主机的，<font color="red">只有在一个网络号下的计算机之间才能直接互通</font>，即网络号必须相同，不同网络号的计算机要通过网关(Gateway)才能互通。但这样的划分在某些情况下显得并不十分灵活，如一个A类地址可容纳的主机数是<code>2^24 - 2</code>个，如果网络的每次通信都将消息广播到这么多主机是多么可怕的事情。为此IP网络还允许划分成更小的网络，称为子网(Subnet)，与此同时也就产生了子网掩码。<font color="red">子网掩码的作用就是用来判断任意两个IP地址是否属于同一子网络(网络号是否相同)</font>。</p>
 <blockquote>
 <p>通俗的说，就是把IP地址的主机号拿出来一部分当做子网号，主机号剩余的部分当做子网主机号，即<code>包含子网的IP地址 = 网络号 + 子网号 + 子网主机号</code>。</p>
 </blockquote>
@@ -679,7 +681,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

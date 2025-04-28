@@ -213,6 +213,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -428,24 +430,24 @@
 <li>while</li>
 <li>shell中自增实现</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">i=1</span><br><span class="line"></span><br><span class="line">i=`expr $i + 1`</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">let i+=1 或 let &quot;i++&quot;</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">((i++))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i=$[$i+1]</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i=$(($i+1))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">还有一种写法：</span><br><span class="line">for i in $(seq 1 5)</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">i=1</span><br><span class="line"></span><br><span class="line">i=`expr $i + 1`</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">let i+=1 或 let "i++"</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">((i++))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i=$[$i+1]</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i=$(($i+1))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">还有一种写法：</span><br><span class="line">for i in $(seq 1 5)</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li><p>if分支结构</p>
 <ul>
 <li>单if结构</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>if else结构</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">else</span><br><span class="line">    command2</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">else</span><br><span class="line">    command2</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>if else-if else结构</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if condition1</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">elif condition2 </span><br><span class="line">then </span><br><span class="line">    command2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">elif #可多个elif</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">    commandN</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if condition1</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">elif condition2 </span><br><span class="line">then </span><br><span class="line">    command2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">elif #可多个elif</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">    commandN</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>case分支结构</p>
 <ul>
@@ -453,11 +455,11 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">case 值 in</span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"> ...)</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">case 值 in</span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"> ...)</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li><p>demo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo 请输入数字</span><br><span class="line">read num</span><br><span class="line">case $num in</span><br><span class="line">    1)</span><br><span class="line">    echo &quot;你输入了1&quot;</span><br><span class="line">    ;;</span><br><span class="line">    2)</span><br><span class="line">    echo &quot;你输入了2&quot;</span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">    echo &quot;无法识别的数字$num&quot;</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo 请输入数字</span><br><span class="line">read num</span><br><span class="line">case $num in</span><br><span class="line">    1)</span><br><span class="line">    echo "你输入了1"</span><br><span class="line">    ;;</span><br><span class="line">    2)</span><br><span class="line">    echo "你输入了2"</span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">    echo "无法识别的数字$num"</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
@@ -475,7 +477,7 @@
 <li><p><code>BASH_SOURCE[0]</code>等价于<code>BASH_SOURCE</code> ，用于取得当前执行的shell文件所在的路径及文件名。<code>dirname</code>去除文件名中的非目录部分，仅显示与目录有关的部分。</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TODO</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TODO</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="8">
 <li><p>curl和wget的对比</p>
@@ -499,7 +501,7 @@
 <li><p>清空文件内容的几种方式</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">: &gt; filename # 其中的 : 是一个占位符, 不产生任何输出.</span><br><span class="line">cat /dev/null &gt; filename</span><br><span class="line">cp /dev/null filename </span><br><span class="line">&gt; filename # Linux可以，Mac不可以</span><br><span class="line">echo &quot;&quot; &gt; filename # 多一个空行</span><br><span class="line">echo &gt; filename    # 多一个空行</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">: &gt; filename # 其中的 : 是一个占位符, 不产生任何输出.</span><br><span class="line">cat /dev/null &gt; filename</span><br><span class="line">cp /dev/null filename&nbsp;</span><br><span class="line">&gt; filename # Linux可以，Mac不可以</span><br><span class="line">echo "" &gt; filename # 多一个空行</span><br><span class="line">echo &gt; filename    # 多一个空行</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="11">
 <li><p>查看文件的几种方式</p>
@@ -521,13 +523,13 @@
 </li>
 <li><p>查找包含指定字符串的文件</p>
 <ul>
-<li><code>grep -rn &quot;Hello&quot; ./</code></li>
+<li><code>grep -rn "Hello" ./</code></li>
 <li>r表示递归</li>
 <li>n表示查询结果显示行号</li>
-<li><code>find ./ -name &quot;*.*&quot; | xargs grep  &quot;Hello&quot;</code></li>
-<li><code>find . | xargs grep -ri &quot;Hello&quot;</code>或<code>find . | xargs grep -ri &quot;Hello&quot; -l</code></li>
+<li><code>find ./ -name "*.*" | xargs grep  "Hello"</code></li>
+<li><code>find . | xargs grep -ri "Hello"</code>或<code>find . | xargs grep -ri "Hello" -l</code></li>
 <li>-l 表示只显示文件名</li>
-<li><code>find / -type f -name &quot;*.txt&quot; | xargs grep &quot;Hello&quot;</code></li>
+<li><code>find / -type f -name "*.txt" | xargs grep "Hello"</code></li>
 </ul>
 </li>
 <li><p>rm -rf删除文件后不释放空间</p>
@@ -536,7 +538,7 @@
 <li>登录服务器手动<code>svn up</code>，提示空间满了</li>
 <li>查看空间使用情况<code>df -h</code></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">/dev/vda1       197G   41G  197G  100% /data</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">/dev/vda1       197G   41G  197G  100% /data</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>查找大于800M的大文件</li>
@@ -587,7 +589,7 @@
 </tr>
 <tr>
 <td align="center">/usr</td>
-<td align="left">用于存放系统应用程序，比较重要的目录/usr/local 本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录,具体如下: <br/>/usr/x11r6 存放x window的目录 <br/>/usr/bin 众多的应用程序  <br/>/usr/sbin 超级用户的一些管理程序  <br/>/usr/doc linux文档  <br/>/usr/include linux下开发和编译应用程序所需要的头文件  <br/>/usr/lib 常用的动态链接库和软件包的配置文件  <br/>/usr/man 帮助文档  <br/>/usr/src 源代码，linux内核的源代码就放在/usr/src/linux里  <br/>/usr/local/bin 本地增加的命令  <br/>/usr/local/lib 本地增加的库 <br/>/usr/locat/etc  目录里面是程序的配置文件</td>
+<td align="left">用于存放系统应用程序，比较重要的目录/usr/local 本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录,具体如下: <br>/usr/x11r6 存放x window的目录 <br>/usr/bin 众多的应用程序  <br>/usr/sbin 超级用户的一些管理程序  <br>/usr/doc linux文档  <br>/usr/include linux下开发和编译应用程序所需要的头文件  <br>/usr/lib 常用的动态链接库和软件包的配置文件  <br>/usr/man 帮助文档  <br>/usr/src 源代码，linux内核的源代码就放在/usr/src/linux里  <br>/usr/local/bin 本地增加的命令  <br>/usr/local/lib 本地增加的库 <br>/usr/locat/etc  目录里面是程序的配置文件</td>
 </tr>
 <tr>
 <td align="center">/opt</td>
@@ -660,16 +662,16 @@
 <li><p>删除已安装的mariadb   <code>rpm -e packagename</code></p>
 </li>
 <li><p>从<a href="mysql.com">mysql官网</a>下载bundle包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm package:某个特定的包，比如server,client,shared lib等,可以单独安装</span><br><span class="line">rpm bundle:该版本所有包的集合,是把服务器端要用的都安装上，其他的不带，尤其是开发包</span><br><span class="line">Compressed TAR Archive:源码，必须用源码方式安装</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm package:某个特定的包，比如server,client,shared lib等,可以单独安装</span><br><span class="line">rpm bundle:该版本所有包的集合,是把服务器端要用的都安装上，其他的不带，尤其是开发包</span><br><span class="line">Compressed TAR Archive:源码，必须用源码方式安装</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>依次安装各个rpm(common/libs/libs/server)，顺序错了会有提示 <code>rpm -ivh packagename</code></p>
 </li>
-<li><p>查看临时密码 <code>sudo grep &#39;temporary password&#39; /var/log/mysqld.log</code></p>
+<li><p>查看临时密码 <code>sudo grep 'temporary password' /var/log/mysqld.log</code></p>
 </li>
 <li><p>登入mysql <code>mysql -u root -p</code> 回车 输入刚获取的密码</p>
 </li>
 <li><p>修改密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#修改密码最小长度策略</span><br><span class="line">set global validate_password_length=0;</span><br><span class="line"></span><br><span class="line">#密码强度检查等级策略，0/LOW、1/MEDIUM、2/STRONG</span><br><span class="line">set global validate_password_policy=0;</span><br><span class="line">   </span><br><span class="line">#修改密码</span><br><span class="line">set password for &#x27;root&#x27;@&#x27;localhost&#x27; = password(&#x27;root123&#x27;)；</span><br><span class="line"></span><br><span class="line">#开启mysql的root用户远程连接服务(%号即远程连接，IDENTIFIED BY后面跟的密码)</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;密码&#x27; WITH GRANT OPTION;</span><br><span class="line">   </span><br><span class="line">#刷新以生效</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#修改密码最小长度策略</span><br><span class="line">set global validate_password_length=0;</span><br><span class="line"></span><br><span class="line">#密码强度检查等级策略，0/LOW、1/MEDIUM、2/STRONG</span><br><span class="line">set global validate_password_policy=0;</span><br><span class="line">   </span><br><span class="line">#修改密码</span><br><span class="line">set password for 'root'@'localhost' = password('root123')；</span><br><span class="line"></span><br><span class="line">#开启mysql的root用户远程连接服务(%号即远程连接，IDENTIFIED BY后面跟的密码)</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '密码' WITH GRANT OPTION;</span><br><span class="line">   </span><br><span class="line">#刷新以生效</span><br><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>报错<code>Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘</code>,权限问题，修改 <code>sudo chown -R mysql用户组:mysql用户 /var/lib/mysql</code></p>
@@ -726,10 +728,10 @@
 <ol start="19">
 <li><p>ls-grep-wc使用</p>
 <ul>
-<li>统计当前目录下文件的个数(不包括目录)：<code>ls -l | grep &quot;^-&quot; | wc -l</code></li>
+<li>统计当前目录下文件的个数(不包括目录)：<code>ls -l | grep "^-" | wc -l</code></li>
 <li><code>argument list too long: ls</code></li>
-<li>统计当前目录下文件的个数(包括子目录)：<code>ls -lR | grep &quot;^-&quot; | wc -l</code></li>
-<li>查看某目录下文件夹(目录)的个数(包括子目录)：<code>ls -lR | grep &quot;^d&quot; | wc -l</code></li>
+<li>统计当前目录下文件的个数(包括子目录)：<code>ls -lR | grep "^-" | wc -l</code></li>
+<li>查看某目录下文件夹(目录)的个数(包括子目录)：<code>ls -lR | grep "^d" | wc -l</code></li>
 </ul>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017213655">挂载分区扩容</a></p>
@@ -751,7 +753,7 @@
 <li><p>批量解压到某个固定目录</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in `ls *.tgz`</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i -C ../tar/</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in `ls *.tgz`</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i -C ../tar/</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="23">
 <li>iptables<ul>
@@ -986,7 +988,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

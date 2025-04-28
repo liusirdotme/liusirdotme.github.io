@@ -202,6 +202,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -414,12 +416,12 @@
 </li>
 <li>使用柔性数组成员</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stddef.h&gt;</span><br><span class="line"></span><br><span class="line">// #pragma pack(32);</span><br><span class="line"></span><br><span class="line">typedef struct Test &#123;</span><br><span class="line">    long double b;</span><br><span class="line">    int a;</span><br><span class="line">    char *p;</span><br><span class="line">&#125; Test;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Test *t = (Test *)malloc(sizeof(Test));</span><br><span class="line"></span><br><span class="line">    char *str = (char *)malloc(sizeof(char) * 10);</span><br><span class="line">    strcpy(str, &quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    t-&gt;p = str;</span><br><span class="line"></span><br><span class="line">    printf(&quot;指针p的内容：%s\n&quot;, (t-&gt;p));</span><br><span class="line">    printf(&quot;t的地址为：%p\n&quot;, t);</span><br><span class="line"></span><br><span class="line">    printf(&quot;char *大小为：%d\n&quot;, sizeof(char *));</span><br><span class="line">    </span><br><span class="line">    printf(&quot;t.b的地址为：\t%p\n&quot;, &amp;(t-&gt;b));</span><br><span class="line">    printf(&quot;t.a的地址为：\t%p\n&quot;, &amp;(t-&gt;a));</span><br><span class="line">    printf(&quot;t.p本身的地址为：%p\n&quot;, &amp;(t-&gt;p));</span><br><span class="line">    printf(&quot;t.p内容的地址为：%p\n&quot;, (t-&gt;p));</span><br><span class="line">    </span><br><span class="line">    printf(&quot;t.b的偏移量为：%d\n&quot;, offsetof(struct Test, b));</span><br><span class="line">    printf(&quot;t.a的偏移量为：%d\n&quot;, offsetof(struct Test, a));</span><br><span class="line">    printf(&quot;t.p的偏移量为：%d\n&quot;, offsetof(struct Test, p));//64位机器指针固定占8个字节</span><br><span class="line"></span><br><span class="line">    printf(&quot;t的内存大小为：%lu&quot;, sizeof(Test));</span><br><span class="line"></span><br><span class="line">    free(t);</span><br><span class="line">    free(t-&gt;p);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stddef.h&gt;</span><br><span class="line"></span><br><span class="line">// #pragma pack(32);</span><br><span class="line"></span><br><span class="line">typedef struct Test {</span><br><span class="line">    long double b;</span><br><span class="line">    int a;</span><br><span class="line">    char *p;</span><br><span class="line">} Test;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">{</span><br><span class="line">    Test *t = (Test *)malloc(sizeof(Test));</span><br><span class="line"></span><br><span class="line">    char *str = (char *)malloc(sizeof(char) * 10);</span><br><span class="line">    strcpy(str, "hello");</span><br><span class="line"></span><br><span class="line">    t-&gt;p = str;</span><br><span class="line"></span><br><span class="line">    printf("指针p的内容：%s\n", (t-&gt;p));</span><br><span class="line">    printf("t的地址为：%p\n", t);</span><br><span class="line"></span><br><span class="line">    printf("char *大小为：%d\n", sizeof(char *));</span><br><span class="line">    </span><br><span class="line">    printf("t.b的地址为：\t%p\n", &amp;(t-&gt;b));</span><br><span class="line">    printf("t.a的地址为：\t%p\n", &amp;(t-&gt;a));</span><br><span class="line">    printf("t.p本身的地址为：%p\n", &amp;(t-&gt;p));</span><br><span class="line">    printf("t.p内容的地址为：%p\n", (t-&gt;p));</span><br><span class="line">    </span><br><span class="line">    printf("t.b的偏移量为：%d\n", offsetof(struct Test, b));</span><br><span class="line">    printf("t.a的偏移量为：%d\n", offsetof(struct Test, a));</span><br><span class="line">    printf("t.p的偏移量为：%d\n", offsetof(struct Test, p));//64位机器指针固定占8个字节</span><br><span class="line"></span><br><span class="line">    printf("t的内存大小为：%lu", sizeof(Test));</span><br><span class="line"></span><br><span class="line">    free(t);</span><br><span class="line">    free(t-&gt;p);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 </li>
 </ol>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef struct Test &#123;</span><br><span class="line">    int a;</span><br><span class="line">    char p[];</span><br><span class="line">&#125; Test;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    Test *t = (Test*)malloc(sizeof(Test) + sizeof(char) * (10+1));</span><br><span class="line">    strcpy(t-&gt;p, &quot;hello&quot;);</span><br><span class="line"></span><br><span class="line">    printf(&quot;%s\n&quot;, (t-&gt;p));</span><br><span class="line">    printf(&quot;Address:\n&quot;);</span><br><span class="line">    printf(&quot;t\t %p\n&quot;, t);</span><br><span class="line">    printf(&quot;t.a\t %p\n&quot;, &amp;(t-&gt;a));</span><br><span class="line">    printf(&quot;t.p\t %p\n&quot;, (t-&gt;p));</span><br><span class="line">    free(t);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+   <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef struct Test {</span><br><span class="line">    int a;</span><br><span class="line">    char p[];</span><br><span class="line">} Test;</span><br><span class="line"></span><br><span class="line">int main() {</span><br><span class="line">    Test *t = (Test*)malloc(sizeof(Test) + sizeof(char) * (10+1));</span><br><span class="line">    strcpy(t-&gt;p, "hello");</span><br><span class="line"></span><br><span class="line">    printf("%s\n", (t-&gt;p));</span><br><span class="line">    printf("Address:\n");</span><br><span class="line">    printf("t\t %p\n", t);</span><br><span class="line">    printf("t.a\t %p\n", &amp;(t-&gt;a));</span><br><span class="line">    printf("t.p\t %p\n", (t-&gt;p));</span><br><span class="line">    free(t);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>参考<ul>
@@ -431,7 +433,7 @@
 <h2 id="三、声明数组的几种方式"><a href="#三、声明数组的几种方式" class="headerlink" title="三、声明数组的几种方式"></a>三、声明数组的几种方式</h2><blockquote>
 <p>定义数组的标准语法：</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type arrayName [ arraySize ];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type arrayName [ arraySize ];</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>type可以是任意有效的C数据类型</li>
@@ -441,7 +443,7 @@
 <ol>
 <li>第一种：只声明数组名和数组大小</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int arr[10];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int arr[10];</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
 <li>第二种：声明并初始化数组元素<ul>
@@ -449,15 +451,15 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int arr[] = &#123;1,2,4&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int arr[] = {1,2,4};</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="3">
 <li>第三种：声明并初始化部分数组元素<ul>
-<li>大括号<code>&#123;&#125;</code>之间的值的数目不能大于方括号<code>[]</code>中指定的元素数目。</li>
+<li>大括号<code>{}</code>之间的值的数目不能大于方括号<code>[]</code>中指定的元素数目。</li>
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int arr[10] = &#123;1,2&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int arr[10] = {1,2};</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="4">
 <li>第四种：通过<code>new</code>关键字<ul>
@@ -465,7 +467,7 @@
 </ul>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *arr  = new int[10];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *arr  = new int[10];</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-arrays.html">参考一</a></li>
@@ -665,7 +667,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

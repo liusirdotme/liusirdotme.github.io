@@ -201,6 +201,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -413,7 +415,7 @@
 </li>
 <li>元字符<ul>
 <li>在模式中方括号外使用(<code>\</code>,<code>^</code>,<code>-</code>)</li>
-<li>在模式中方括号内使用(<code>\</code>,<code>^</code>,<code>$</code>,<code>.</code>,<code>[]</code>,<code>|</code>,<code>()</code>,<code>&#123;&#125;</code>,<code>?</code>,<code>*</code>,<code>+</code>)</li>
+<li>在模式中方括号内使用(<code>\</code>,<code>^</code>,<code>$</code>,<code>.</code>,<code>[]</code>,<code>|</code>,<code>()</code>,<code>{}</code>,<code>?</code>,<code>*</code>,<code>+</code>)</li>
 </ul>
 </li>
 </ol>
@@ -421,7 +423,7 @@
 <li><p>转义字符(<code>\</code>)，有<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/regexp.reference.escape.php">多种用法</a></p>
 <ul>
 <li>第一种用法是紧接着是一个非字母数字字符，表明取消该字符所代表的特殊涵义。<em>将反斜线作为转义字符的用法在字符类内部和外部都可用</em></li>
-<li>如匹配一个 <code>&quot;*&quot;</code> 字符，就需要在模式中写为<code>&quot;\*&quot;</code></li>
+<li>如匹配一个 <code>"*"</code> 字符，就需要在模式中写为<code>"\*"</code></li>
 <li>如匹配一个反斜线，那么在模式中使用<code>”\\”</code></li>
 <li>第二种用法是提供了一种对非打印字符进行可见编码的控制手段</li>
 <li>第三种用法是用来描述特定的字符类</li>
@@ -449,7 +451,7 @@
 <li>“^”表示行开始</li>
 <li>“$”表示行结尾</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">例一：</span><br><span class="line">$str    = &#x27;abcdddddef124f&#x27;;</span><br><span class="line">$search = &#x27;/^abc([^xyz]*)$/&#x27;;</span><br><span class="line">$result = preg_match_all($search, $str, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; abcdddddef124f</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [1] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; dddddef124f</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">例二：</span><br><span class="line">$s = &#x27;abcddd&#x27;;</span><br><span class="line">$p = &#x27;/^abc/&#x27;;</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; abc</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">例一：</span><br><span class="line">$str    = 'abcdddddef124f';</span><br><span class="line">$search = '/^abc([^xyz]*)$/';</span><br><span class="line">$result = preg_match_all($search, $str, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; abcdddddef124f</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    [1] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; dddddef124f</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">例二：</span><br><span class="line">$s = 'abcddd';</span><br><span class="line">$p = '/^abc/';</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; abc</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/regexp.reference.dot.php">句点(<code>.</code>)</a></p>
 <ul>
@@ -474,7 +476,7 @@
 <li>匹配的处理从左到右尝试每一个可选路径，并且使用第一个成功匹配的</li>
 <li><em>如果可选路径在子组(下面定义)中， 则”成功匹配”表示同时匹配了子模式中的分支以及主模式中的其他部分</em></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$s = &#x27;AaaAbAa&#x27;;</span><br><span class="line">$p = &#x27;/Aa|aA/&#x27;;</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; Aa</span><br><span class="line">            [1] =&gt; aA</span><br><span class="line">            [2] =&gt; Aa</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$s = 'AaaAbAa';</span><br><span class="line">$p = '/Aa|aA/';</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; Aa</span><br><span class="line">            [1] =&gt; aA</span><br><span class="line">            [2] =&gt; Aa</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/regexp.reference.subpatterns.php">子组(子模式)</a></p>
 <ul>
@@ -487,9 +489,9 @@
 <li><code>?</code>：零次或一次，等价于 {0,1}</li>
 <li><code>*</code>：零次或多次，等价于 {0,}</li>
 <li><code>+</code>：一次或多次，等价于 {1,}</li>
-<li><code>&#123;n&#125;</code>：n次</li>
-<li><code>&#123;n,&#125;</code>：至少n次</li>
-<li><code>&#123;n,m&#125;</code>：n到m次</li>
+<li><code>{n}</code>：n次</li>
+<li><code>{n,}</code>：至少n次</li>
+<li><code>{n,m}</code>：n到m次</li>
 </ul>
 </li>
 <li><p>排除字符(^)</p>
@@ -497,7 +499,7 @@
 <li>表示排除不符合的字符</li>
 <li><code>^</code>一般放在<code>[]</code>中，如<code>[^1-5]</code>，该字符不是1~5之间的数字</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$s = &#x27;6789&#x27;;</span><br><span class="line">$p = &#x27;/[^1-5]/&#x27;;</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; 6</span><br><span class="line">            [1] =&gt; 7</span><br><span class="line">            [2] =&gt; 8</span><br><span class="line">            [3] =&gt; 9</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$s = '6789';</span><br><span class="line">$p = '/[^1-5]/';</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; 6</span><br><span class="line">            [1] =&gt; 7</span><br><span class="line">            [2] =&gt; 8</span><br><span class="line">            [3] =&gt; 9</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 
     </div>
@@ -693,7 +695,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

@@ -203,6 +203,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -402,7 +404,7 @@
 <li>默认的持久化方式，这种方式是就是将内存中数据以快照的方式写入到二进制文件中,默认的文件名为dump.rdb。</li>
 <li>可以配置redis在n秒内如果超过m个key被修改就自动做快照:</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1     #900秒内如果超过1个key被修改，则发起快照保存</span><br><span class="line">save 300 10    #300秒内容如超过10个key被修改，则发起快照保存</span><br><span class="line">save 60 10000  #60秒内容如超过10k个key被修改，则发起快照保存</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1     #900秒内如果超过1个key被修改，则发起快照保存</span><br><span class="line">save 300 10    #300秒内容如超过10个key被修改，则发起快照保存</span><br><span class="line">save 60 10000  #60秒内容如超过10k个key被修改，则发起快照保存</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>RDB文件保存过程</p>
 <ul>
@@ -467,7 +469,7 @@
 <ul>
 <li>在Redis的配置文件中存在三种同步方式，它们分别是：</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">appendfsync always     #每次有数据修改发生时都会写入AOF文件。</span><br><span class="line">appendfsync everysec   #每秒钟同步一次，该策略为AOF的缺省策略。</span><br><span class="line">appendfsync no         #从不同步。高效但是数据不会被持久化。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">appendfsync always     #每次有数据修改发生时都会写入AOF文件。</span><br><span class="line">appendfsync everysec   #每秒钟同步一次，该策略为AOF的缺省策略。</span><br><span class="line">appendfsync no         #从不同步。高效但是数据不会被持久化。</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>AOF文件保存过程</p>
 <ul>
@@ -482,14 +484,14 @@
 <blockquote>
 <p>举个栗子：</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set count 1  // 初始值1 </span><br><span class="line">incr count   // 加1 </span><br><span class="line">incr count   // 加1 </span><br><span class="line">decr count   // 减1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set count 1  // 初始值1 </span><br><span class="line">incr count   // 加1 </span><br><span class="line">incr count   // 加1 </span><br><span class="line">decr count   // 减1</span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ol>
 <blockquote>
 <p>这个时候获取count的值：</p>
 </blockquote>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get count </span><br><span class="line">“2”</span><br></pre></td></tr></table></figure>
+   <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get count </span><br><span class="line">“2”</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <blockquote>
@@ -794,7 +796,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         

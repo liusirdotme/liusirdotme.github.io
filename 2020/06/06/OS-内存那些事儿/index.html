@@ -204,6 +204,8 @@
   </style>
 </noscript>
 
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -488,12 +490,12 @@
 <li><p>这四个情形涵盖了四个I/O事件：缓冲区满，缓冲区空，缓冲区非空，缓冲区非满，这四个I/O事件是进行阻塞同步的根本。阻塞I/O模式下一个线程只能处理一个流的I/O事件，如果想要同时处理多个流，要么多进程(fork)，要么多线程(pthread_create)，这两种方法效率都不高。阻塞模式下，内核对于I/O事件的处理是阻塞或者唤醒，而非阻塞模式下则把I/O事件交给其他对象。</p>
 </li>
 <li><p>于是再来考虑非阻塞忙轮询的I/O方式，我们发现可以同时处理多个流了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while true &#123;</span><br><span class="line">    for i in stream[]; &#123;</span><br><span class="line">        if i has data</span><br><span class="line">            read until unavailable</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while true {</span><br><span class="line">    for i in stream[]; {</span><br><span class="line">        if i has data</span><br><span class="line">            read until unavailable</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>我们只要不停的把所有流从头到尾问一遍就可以处理多个流了。但这样的做法显然不好，因为如果所有的流都没有数据，那么只会白白浪费CPU。为了避免CPU空转，可以引进了一个代理，它可以同时观察许多流的I/O事件，在空闲的时候会把当前线程阻塞掉，当有一个或多个流有I/O事件时就从阻塞态中醒来，于是我们的程序就会轮询一遍所有的流。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while true &#123;</span><br><span class="line">    select(streams[])</span><br><span class="line">        for i in streams[] &#123;</span><br><span class="line">            if i has data</span><br><span class="line">                read until unavailable</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while true {</span><br><span class="line">    select(streams[])</span><br><span class="line">        for i in streams[] {</span><br><span class="line">            if i has data</span><br><span class="line">                read until unavailable</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>如果没有I/O事件产生，程序就会阻塞在select处。但是依然有个问题，我们从select那里仅仅知道了有I/O事件发生了，但却并不知道是哪几个流(可能有一个，多个，甚至全部)，我们只能无差别轮询所有流，找出能读出数据或写入数据的流，对他们进行操作。使用select有O(n)的无差别轮询复杂度，同时处理的流越多，每一次无差别轮询时间就越长。</li>
@@ -704,7 +706,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:26</span>
+    <span title="站点阅读时长">13:27</span>
 </div>
 
         
