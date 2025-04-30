@@ -149,7 +149,7 @@
 <meta property="og:description" content="Windows Subsystem for Linux(简称WSL)是一个在Windows 10\11上能够运行原生Linux二进制可执行文件(ELF格式)的兼容层。它是由微软与Canonical公司合作开发，开发人员可以在 Windows计算机上同时访问 Windows和Linux的强大功能。通过适用于Linux的Windows子系统(WSL)，开发人员可以安装Linux发行版(例如 Ubun">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-10T11:47:48.000Z">
-<meta property="article:modified_time" content="2025-04-30T09:17:51.235Z">
+<meta property="article:modified_time" content="2025-04-30T10:23:06.091Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Windows">
 <meta property="article:tag" content="WSL">
@@ -373,7 +373,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>2.1k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -550,12 +550,61 @@
 <li>报错：<code>[ERROR] The distro "Ubuntu-24.04-02" already exists.</code></li>
 <li>解决：wsl –unregister Ubuntu-24.04-02，卸载后重新复制</li>
 </ul>
+<ol start="4">
+<li>修改hostname：/etc/hostname</li>
+</ol>
+<ul>
+<li>sudo hostnamectl set-hostname ubuntu-01</li>
+<li>sudo hostnamectl set-hostname ubuntu-02</li>
+</ul>
+<ol start="5">
+<li>修改hosts：/etc/hosts</li>
+</ol>
+<ul>
+<li>127.0.1.1       ubuntu-01</li>
+<li>127.0.1.1       ubuntu-02</li>
+</ul>
+<ol start="6">
+<li>退出重进</li>
+</ol>
 <h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
-<li><p>复制报错，多半为参数问题呢</p>
+<li><p>复制报错，多半为参数问题</p>
 </li>
-<li><p>复制后ip什么的都一样</p>
+<li><p>复制后ip/mac什么的都一样</p>
 </li>
 </ol>
+<ul>
+<li><p>修改IP地址和MAC地址</p>
+<ul>
+<li><p>sudo ifconfig eth0 192.168.1.2 netmask 255.255.255.0</p>
+</li>
+<li><p>sudo route add default gw 192.168.1.1 dev eth0</p>
+</li>
+<li><p>sudo ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE</p>
+<ul>
+<li>报错：SIOCSIFHWADDR: Device or resource busy - you may need to down the interface</li>
+<li>处理<ul>
+<li>sudo ifconfig eth0 down</li>
+<li>sudo ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE</li>
+<li>sudo ifconfig eth0 up</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>sudo ifconfig eth0 192.168.1.3 netmask 255.255.255.0</p>
+</li>
+<li><p>sudo route add default gw 192.168.1.1 dev eth0</p>
+</li>
+<li><p>sudo ifconfig eth0 hw ether 00:A1:B1:C1:D1:E1</p>
+<ul>
+<li>sudo ifconfig eth0 down</li>
+<li>sudo ifconfig eth0 hw ether 00:A1:B1:C1:D1:E1</li>
+<li>sudo ifconfig eth0 up</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline">https://github.com/DDoSolitary/LxRunOffline</a></li>
 </ol>
@@ -748,12 +797,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">889k</span>
+    <span title="站点总字数">890k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:28</span>
+    <span title="站点阅读时长">13:29</span>
 </div>
 
         
