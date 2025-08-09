@@ -323,6 +323,87 @@
       </tags>
   </entry>
   <entry>
+    <title>Jira搭建使用</title>
+    <url>/2025/05/18/Technology-Jira/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://www.atlassian.com/">参考一</a></li>
+<li><a href="https://www.atlassian.com/zh/software/jira">参考二</a></li>
+<li><a href="https://www.atlassian.com/zh/software/jira/pricing">参考三</a></li>
+<li><a href="https://www.redmine.org/">参考四</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>Technology</tag>
+        <tag>Jira</tag>
+        <tag>Redmine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JumpServer搭建使用</title>
+    <url>/2025/05/12/DevOps-JumpServer/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>JumpServer是一款开源的运维安全审计系统，采用Python/Django开发，支持身份验证、授权控制、账号管理、安全审计等功能，主要帮助企业管控运维访问权限并实现操作审计。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JumpServer是一款开源的运维安全审计系统，采用Python/Django开发，支持身份验证、授权控制、账号管理、安全审计等功能，主要帮助企业管控运维访问权限并实现操作审计。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>cd /opt/jumpserver-installer-v4.10.3</p>
+<ul>
+<li>./jmsctl.sh start</li>
+</ul>
+</li>
+<li><p>Other management commands</p>
+<ul>
+<li>./jmsctl.sh stop</li>
+<li>./jmsctl.sh restart</li>
+<li>./jmsctl.sh backup</li>
+<li>./jmsctl.sh upgrade</li>
+<li>For more commands, you can enter ./jmsctl.sh –help to understand</li>
+</ul>
+</li>
+<li><p>Web access</p>
+<ul>
+<li><a href="http://172.19.xxx.237:80">http://172.19.xxx.237:80</a></li>
+<li>Default username: admin  Default password: ChangeMe</li>
+</ul>
+</li>
+<li><p>More information</p>
+<ul>
+<li>Official Website: <a href="https://www.jumpserver.com/">https://www.jumpserver.com/</a></li>
+<li>Documentation: <a href="https://www.jumpserver.com/docs">https://www.jumpserver.com/docs</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h2><ol>
+<li>failed to bind port 0.0.0.0:80/tcp: Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use<ul>
+<li>其他服务占用了80端口，如gitlab：gitlab-ctl stop</li>
+<li>或者修改绑定的端口，如8080</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://jumpserver.org/">参考一</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>DevOps</tag>
+        <tag>JumpServer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>algolia搜索</title>
     <url>/2025/04/11/Hexo-algolia%E6%90%9C%E7%B4%A2/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -434,10 +515,10 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="WSL安装"><a href="#WSL安装" class="headerlink" title="WSL安装"></a><center><font color="red">WSL安装</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
+<h1 id="WSL安装使用"><a href="#WSL安装使用" class="headerlink" title="WSL安装使用"></a><center><font color="red">WSL安装使用</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
 <li><a href="https://learn.microsoft.com/zh-cn/windows/terminal/">安装Terminal(非必须)</a></li>
 <li><a href="https://learn.microsoft.com/zh-cn/windows/wsl/install">安装WSL(win10自带)</a></li>
-<li>安装虚拟平台(启用WSL功能)：wsl –install</li>
+<li>安装虚拟平台(启用WSL功能)：<code>wsl --install</code></li>
 </ol>
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
 <p>wsl –hep</p>
@@ -447,16 +528,29 @@
 <li>安装系统</li>
 </ol>
 <ul>
-<li>Mircosoft store模式</li>
+<li>Mircosoft store模式<ul>
+<li>打开Mircosoft store</li>
+<li>首页搜索ubuntu、debian等</li>
+<li>选择版本安装，如：Ubuntu 22.04.5 LTS</li>
+<li>启动Linux系统，点击上一步安装完成的系统即可，等待安装完成</li>
+</ul>
+</li>
 <li>命令行模式<ul>
 <li>查看支持的系统：wsl –list –online</li>
-<li>安装指定的系统：wsl –install Ubuntu-24.04</li>
+<li>安装指定的系统：wsl –install Ubuntu-24.04<ul>
+<li>报错：无法从“<a href="https://raw.githubusercontent.com/microsoft/WSL/master/distributions/DistributionInfo.json”中提取列表分发。操作超时">https://raw.githubusercontent.com/microsoft/WSL/master/distributions/DistributionInfo.json”中提取列表分发。操作超时</a></li>
+<li>打开vpn</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <ol start="3">
 <li>进入系统：wsl -d Debian</li>
-<li>关闭系统：wsl –shutdown</li>
+<li>关闭系统：wsl –shutdown<ul>
+<li>wsl -d Ubuntu-22.04 –shutdown</li>
+</ul>
+</li>
 <li>设置默认：wsl -s Debian</li>
 <li>设置代理</li>
 </ol>
@@ -478,7 +572,14 @@
 <ol start="8">
 <li>卸载系统：wsl –unregister Ubuntu-24.04</li>
 </ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
+<h2 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h2><ol>
+<li>安装多个相同版本的Linux</li>
+<li>安装多个Linux发行版，ip地址一样</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://github.com/microsoft/WSL/issues">issues</a></li>
+</ol>
+<hr>
 <h1 id="以Ubuntu-24-04为例"><a href="#以Ubuntu-24-04为例" class="headerlink" title="以Ubuntu-24.04为例"></a><center><font color="red">以Ubuntu-24.04为例</font></center></h1><ol>
 <li><p>wsl –install Ubuntu-24.04</p>
 </li>
@@ -549,6 +650,8 @@
 </li>
 <li><p>useradd liusir</p>
 </li>
+<li><p>passwd liusir</p>
+</li>
 <li><p>useradd liuyulong </p>
 </li>
 </ol>
@@ -572,7 +675,7 @@
 </ul>
 </li>
 </ul>
-<ol start="16">
+<ol start="17">
 <li>卸载Ubuntu-24.04： wsl –unregister Ubuntu-24.04</li>
 </ol>
 <hr>
@@ -643,8 +746,105 @@
 </ul>
 </li>
 </ul>
-<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://github.com/DDoSolitary/LxRunOffline">https://github.com/DDoSolitary/LxRunOffline</a></li>
+</ol>
+<hr>
+<h1 id="Ubuntu-安装MySQL"><a href="#Ubuntu-安装MySQL" class="headerlink" title="Ubuntu-安装MySQL"></a><center><font color="red">Ubuntu-安装MySQL</font></center></h1><ol>
+<li><p>目录规划</p>
+<ul>
+<li>安装目录：/usr/local/mysql</li>
+<li>数据目录：/mysql/data</li>
+<li>错误日志：/tmp/mysql/</li>
+<li>慢查询日志：/tmp/mysql/</li>
+<li>socks目录：/var/run/mysqld/</li>
+</ul>
+</li>
+<li><p>用户设置和目录设置</p>
+<ul>
+<li>groupadd mysql</li>
+<li>useradd -r -g mysql mysql</li>
+<li>准备数据目录 mkdir -p /data/mysql</li>
+<li>赋予权限 chown mysql.mysql /data/mysql</li>
+</ul>
+</li>
+<li><p>安装</p>
+<ul>
+<li>apt-get update </li>
+<li>apt-get install cmake openssl libssl-dev  libncurses5-dev libncursesw5-dev build-essential pkg-config git net-tools -f build-essential libncurses5-dev libncurses5</li>
+<li>wget <a href="https://downloads.mysql.com/archives/get/p/23/file/mysql-boost-5.7.44.tar.gz">https://downloads.mysql.com/archives/get/p/23/file/mysql-boost-5.7.44.tar.gz</a></li>
+<li>解压源码至/usr/local/mysql-5.7.44</li>
+<li>cmake . -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/mysql-5.7.44/boost/boost_1_59_0</li>
+<li>make &amp;&amp; make install<ul>
+<li>有时候安装失败或想更换安装选项，重新设置后make clean</li>
+</ul>
+</li>
+<li>切换到安装目录 cd /usr/local/mysql</li>
+<li>sudo cp support-files/mysql.server /etc/init.d/mysqld</li>
+<li>sudo chmod 700 /etc/init.d/mysqld</li>
+<li>sudo chown -R mysql:mysql /usr/local/mysql</li>
+<li>修改配置文件，默认/etc/mysql/conf.d/mysql.cnf</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">port = 3306</span><br><span class="line">socket = /var/run/mysqld/mysql.sock #有坑</span><br><span class="line">pid-file = /tmp/mysql/mysql.pid</span><br><span class="line">basedir = /usr/local/mysql</span><br><span class="line">datadir = /data/mysql</span><br><span class="line">tmpdir = /tmp/mysql</span><br><span class="line">character_set_server = utf8mb4</span><br><span class="line">collation_server = utf8mb4_bin</span><br><span class="line">log-error=/tmp/mysql/error.log</span><br><span class="line">secure-file-priv = /tmp/mysql/</span><br><span class="line"># bind-address=localhost    # MySQL绑定IP</span><br><span class="line">wait_timeout = 86400</span><br><span class="line">binlog_cache_size = 16M</span><br><span class="line">slow_query_log = true</span><br><span class="line">slow_query_log_file = /tmp/mysql/slow_query_log.log</span><br><span class="line">long_query_time = 1</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>sudo mysqld –defaults-file=/etc/mysql/my.cnf  –user=root –initialize，初始化数据库并得到初始密码：gae&gt;=TdlA3Ff</li>
+<li>启动MySQL：sudo service mysqld start/sudo systemctl start mysql.service</li>
+<li>关闭MySQL：sudo service mysqld stop/sudo systemctl stop mysql.service</li>
+<li>登录客户端：mysql -h 127.0.0.1 -uroot -p</li>
+<li>修改root密码：alter user ‘root’@’localhost’ identified by ‘root’;</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="搭建MySQL主从"><a href="#搭建MySQL主从" class="headerlink" title="搭建MySQL主从"></a><center><font color="red">搭建MySQL主从</font></center></h1><h2 id="一、主库"><a href="#一、主库" class="headerlink" title="一、主库"></a>一、主库</h2><h2 id="二、从库"><a href="#二、从库" class="headerlink" title="二、从库"></a>二、从库</h2><hr>
+<h1 id="Ubuntu-搭建GitLab"><a href="#Ubuntu-搭建GitLab" class="headerlink" title="Ubuntu-搭建GitLab"></a><center><font color="red">Ubuntu-搭建GitLab</font></center></h1><h2 id="一、操作-1"><a href="#一、操作-1" class="headerlink" title="一、操作"></a>一、操作</h2><ol>
+<li><p>sudo apt-get update</p>
+</li>
+<li><p>sudo apt-get install -y curl openssh-server ca-certificates tzdata perl</p>
+</li>
+<li><p>curl -L get.gitlab.cn | bash</p>
+</li>
+<li><p>sudo EXTERNAL_URL=”<a href="https://gitlab.liusir.me&quot;">https://gitlab.liusir.me"</a> apt-get install -y gitlab-jh</p>
+</li>
+<li><p>修改hosts：172.19.158.177 gitlab.liusir.me</p>
+<ul>
+<li>172.19.158.177是安装的Linux地址</li>
+</ul>
+</li>
+<li><p>安装成功，访问：<a href="https://gitlab.liusir.me">https://gitlab.liusir.me</a></p>
+<ul>
+<li>默认用户：root</li>
+<li>默认密码：/etc/gitlab/initial_root_password</li>
+</ul>
+</li>
+<li><p>卸载：sudo gitlab-ctl stop &amp;&amp; sudo gitlab-ctl remove-accounts</p>
+</li>
+<li><p>登录gitlab后台</p>
+</li>
+<li><p>修改密码</p>
+</li>
+<li><p>新建群组</p>
+</li>
+<li><p>新建项目</p>
+</li>
+</ol>
+<h2 id="二、问题-1"><a href="#二、问题-1" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li><p>gitlab-ctl reconfigure</p>
+</li>
+<li><p>SSL certificate problem: self-signed certificate</p>
+<ul>
+<li>export GIT_SSL_NO_VERIFY=true<ul>
+<li>Windows: set GIT_SSL_NO_VERIFY=true git clone</li>
+<li>Linux：env GIT_SSL_NO_VERIFY=true git push</li>
+</ul>
+</li>
+<li>git config –global http.sslVerify “false”</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://gitlab.cn/docs/omnibus/installation/">参考一</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -2906,9 +3106,9 @@
         <category>Technology</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>Redis</tag>
         <tag>RabbitMQ</tag>
+        <tag>技术</tag>
         <tag>MongoDB</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
@@ -5828,8 +6028,8 @@
       <tags>
         <tag>基准测试</tag>
         <tag>压力测试</tag>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>TPCC</tag>
       </tags>
   </entry>
@@ -5964,6 +6164,30 @@
         <tag>性能测试</tag>
         <tag>样例测试</tag>
         <tag>模糊测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker三剑客</title>
+    <url>/2021/11/09/Docker-%E4%B8%89%E5%89%91%E5%AE%A2/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、Docker-Compose"><a href="#一、Docker-Compose" class="headerlink" title="一、Docker Compose"></a>一、Docker Compose</h2><p>Compose是用来定义和运行一个或多个容器应用的工具。使用compaose可以简化容器镜像的建立及容器的运行。</p>
+<p><a href="https://github.com/docker/compose">https://github.com/docker/compose</a></p>
+<h2 id="二、Docker-Machine"><a href="#二、Docker-Machine" class="headerlink" title="二、Docker Machine"></a>二、Docker Machine</h2><p>Docker Machine是Docker官方编排（Orchestration）项目之一，负责在多种平台上快速安装Docker环境。Docker Machine项目基于Go语言实现，目前在Github上进行维护。</p>
+<p><a href="https://github.com/docker-archive-public/docker.machine">https://github.com/docker-archive-public/docker.machine</a></p>
+<h2 id="三、Docker-Swarm"><a href="#三、Docker-Swarm" class="headerlink" title="三、Docker Swarm"></a>三、Docker Swarm</h2><p>Docker Swarm是Docker官方三剑客项目之一，提供Docker容器集群服务，是Docker官方对容器云生态进行支持的核心方案。使用它用户可以将多个Docker主机封装为单个大型的虚拟Docker主机，快速打造一套容器云平台。</p>
+<p>Docker 1.12 Swarm mode 已经内嵌入 Docker 引擎，成为了 docker 子命令 docker swarm。请注意与旧的 Docker Swarm 区分开来。</p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Compose</tag>
+        <tag>Machine</tag>
+        <tag>Swarm</tag>
       </tags>
   </entry>
   <entry>
@@ -7321,6 +7545,59 @@
       </tags>
   </entry>
   <entry>
+    <title>docker-compose.yml文件</title>
+    <url>/2021/08/30/Docker-docker-compose/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>docker-compose.yml文件是用来定义和运行多容器Docker应用程序的配置文件。通过这个文件，你可以轻松地启动、停止和重启应用程序中的所有容器。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docker-compose.yml文件是用来定义和运行多容器Docker应用程序的配置文件。通过这个文件，你可以轻松地启动、停止和重启应用程序中的所有容器。</p>
+<ol>
+<li>文件基础结构<ul>
+<li>version</li>
+<li>services</li>
+<li>networks</li>
+<li>volumes</li>
+<li>configs</li>
+<li>secrets</li>
+</ul>
+</li>
+<li>常用命令<ul>
+<li>docker-compose pull：拉取定义在 docker-compose.yml 文件中的所有服务所需的镜像，但不会启动容器。</li>
+<li>docker-compose up：启动应用程序。它会创建和启动定义在docker-compose.yml文件中的所有服务。<ul>
+<li>docker-compose up -d：以后台模式启动应用程序，即不会在终端上显示日志输出。</li>
+</ul>
+</li>
+<li>docker-compose down：停止并移除应用程序的所有容器、网络和卷。<ul>
+<li>docker-compose down -v：停止并移除应用程序的所有容器、网络、卷以及关联的数据卷。谨慎使用，它会删除数据。</li>
+</ul>
+</li>
+<li>docker-compose ps：列出正在运行的容器。</li>
+<li>docker-compose logs：查看应用程序的日志输出。</li>
+<li>docker-compose build：构建在 docker-compose.yml 文件中定义的服务。如果你修改了 Dockerfile 或应用程序代码，需要重新构建镜像。</li>
+<li>docker-compose stop：停止运行中的应用程序，但不会移除容器。</li>
+<li>docker-compose start：启动停止的应用程序。</li>
+<li>docker-compose restart：重新启动应用程序的容器。</li>
+<li>docker-compose exec <service> <command>：在指定的服务容器内执行命令。例如：docker-compose exec app bash可以在app服务容器内打开一个Bash终端。</command></service></li>
+</ul>
+</li>
+</ol>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://docs.docker.com/">参考一</a></li>
+<li><a href="https://www.cnblogs.com/pokess/p/18920696">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>docker-compose</tag>
+        <tag>yml</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis管道pipeline</title>
     <url>/2021/08/21/Redis-%E7%AE%A1%E9%81%93pipeline/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -8634,8 +8911,8 @@
       </categories>
       <tags>
         <tag>教育</tag>
-        <tag>宝宝</tag>
         <tag>新手爸妈</tag>
+        <tag>宝宝</tag>
         <tag>疫苗</tag>
         <tag>衣服</tag>
         <tag>奶粉</tag>
@@ -10178,10 +10455,10 @@
         <category>Technology</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>MySQL</tag>
         <tag>Elasticsearch</tag>
         <tag>Redis</tag>
+        <tag>技术</tag>
         <tag>MongoDB</tag>
         <tag>主从复制</tag>
         <tag>Hbase</tag>
@@ -10413,8 +10690,8 @@
       <tags>
         <tag>DevOps</tag>
         <tag>自动化运维</tag>
-        <tag>rsync</tag>
         <tag>ansible</tag>
+        <tag>rsync</tag>
       </tags>
   </entry>
   <entry>
@@ -10487,8 +10764,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>使用规范</tag>
         <tag>bson</tag>
         <tag>json</tag>
@@ -11191,8 +11468,8 @@
         <category>Game</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>游戏</tag>
+        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
@@ -11226,9 +11503,9 @@
         <category>Tools</category>
       </categories>
       <tags>
-        <tag>工具</tag>
-        <tag>rsync</tag>
         <tag>ansible</tag>
+        <tag>rsync</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -12652,8 +12929,8 @@
       </categories>
       <tags>
         <tag>Mac</tag>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>Sharding</tag>
         <tag>分片</tag>
       </tags>
@@ -12966,8 +13243,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>Replication</tag>
         <tag>复制</tag>
         <tag>Primary节点</tag>
@@ -13871,8 +14148,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>mongodump</tag>
         <tag>mongorestore</tag>
         <tag>mongoexport</tag>
@@ -14126,8 +14403,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>存储引擎</tag>
         <tag>LSM</tag>
       </tags>
@@ -14356,7 +14633,7 @@
   </entry>
   <entry>
     <title>K8S入门</title>
-    <url>/2020/02/16/Docker-K8S%E5%85%A5%E9%97%A8/</url>
+    <url>/2020/02/16/K8S-K8S%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
 <p>逻辑思维是指将思维内容联结、组织在一起的方式或形式。思维是以概念、范畴为工具去反映认识对象的。这些概念和范畴是以某种框架形式存在于人的大脑之中，即思维结构。这些框架能够把不同的范畴、概念组织在一起，从而形成一个相对完整的思想，加以理解和掌握，达到认识的目的。因此，思维结构既是人的一种认知结构，又是人运用范畴、概念去把握客体的能力结构。</p>
 </blockquote>
@@ -14392,7 +14669,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Docker</category>
+        <category>K8S</category>
       </categories>
       <tags>
         <tag>Docker</tag>
@@ -16423,10 +16700,10 @@
         <category>Go</category>
       </categories>
       <tags>
-        <tag>OOP</tag>
         <tag>收集</tag>
         <tag>结构体</tag>
         <tag>struct</tag>
+        <tag>OOP</tag>
         <tag>Nginx</tag>
         <tag>Go</tag>
         <tag>接口</tag>
@@ -17376,8 +17653,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>索引</tag>
       </tags>
   </entry>
@@ -19743,14 +20020,14 @@
         <tag>垃圾回收</tag>
         <tag>堆</tag>
         <tag>数组</tag>
-        <tag>502</tag>
-        <tag>504</tag>
         <tag>PHP</tag>
         <tag>内存</tag>
-        <tag>后期静态绑定</tag>
         <tag>SPL</tag>
         <tag>yield</tag>
         <tag>预定义接口</tag>
+        <tag>后期静态绑定</tag>
+        <tag>502</tag>
+        <tag>504</tag>
         <tag>引用计数</tag>
         <tag>对象</tag>
         <tag>栈</tag>
@@ -20278,9 +20555,9 @@
       <tags>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
+        <tag>info</tag>
         <tag>eval</tag>
         <tag>memory</tag>
-        <tag>info</tag>
         <tag>slowlog</tag>
         <tag>config</tag>
         <tag>client</tag>
@@ -21539,6 +21816,7 @@
 <li>git config –global unset http.proxy</li>
 </ul>
 </li>
+<li>git branch -M main，将当前分支重命名为main</li>
 </ol>
 <h2 id="四、将本地代码托管到github"><a href="#四、将本地代码托管到github" class="headerlink" title="四、将本地代码托管到github"></a>四、将本地代码托管到github</h2><ol>
 <li>注册github账号、配置SSH-KEY、添加仓库repo等略过</li>
@@ -22124,8 +22402,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>RBAC</tag>
       </tags>
   </entry>
@@ -24779,10 +25057,10 @@
         <category>Go</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>结构体</tag>
         <tag>struct</tag>
         <tag>Go</tag>
+        <tag>数组</tag>
         <tag>多返回值</tag>
         <tag>env</tag>
         <tag>交叉编译</tag>
@@ -26401,7 +26679,8 @@
 </li>
 </ol>
 <ol start="9">
-<li>高并发nginx调优<ul>
+<li><p>高并发nginx调优</p>
+<ul>
 <li>调整worker_processes数量<ul>
 <li>意为生成的worker数量，最佳实践是每个CPU运行1个工作worker。</li>
 </ul>
@@ -26439,6 +26718,8 @@
 </li>
 <li>关闭access_logs</li>
 </ul>
+</li>
+<li><p>x509: certificate signed by unknown authority</p>
 </li>
 </ol>
 <hr>
@@ -26692,8 +26973,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>MapReduce</tag>
         <tag>Map</tag>
         <tag>Reduce</tag>
@@ -27396,8 +27677,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>聚合查询</tag>
         <tag>Python</tag>
         <tag>pip</tag>
@@ -27675,8 +27956,8 @@
       </categories>
       <tags>
         <tag>事务</tag>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>WiredTiger</tag>
         <tag>ACID</tag>
         <tag>Write Concern</tag>
@@ -28062,13 +28343,13 @@
         <tag>MQ</tag>
         <tag>vhost</tag>
         <tag>延时消费</tag>
-        <tag>常驻进程</tag>
-        <tag>平滑重启</tag>
-        <tag>消费模式</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
         <tag>消息堆积</tag>
+        <tag>常驻进程</tag>
+        <tag>平滑重启</tag>
+        <tag>消费模式</tag>
         <tag>RocketMQ</tag>
         <tag>ActiveMQ</tag>
       </tags>
@@ -28311,21 +28592,21 @@
       </categories>
       <tags>
         <tag>操作系统</tag>
-        <tag>原码</tag>
-        <tag>反码</tag>
-        <tag>补码</tag>
-        <tag>大端</tag>
-        <tag>小端</tag>
-        <tag>字节序</tag>
         <tag>快照</tag>
+        <tag>写时复制</tag>
         <tag>虚拟机</tag>
         <tag>零拷贝</tag>
         <tag>DMA</tag>
         <tag>mmap</tag>
         <tag>sendfile</tag>
+        <tag>大端</tag>
+        <tag>小端</tag>
+        <tag>字节序</tag>
+        <tag>原码</tag>
+        <tag>反码</tag>
+        <tag>补码</tag>
         <tag>静态链接</tag>
         <tag>动态链接</tag>
-        <tag>写时复制</tag>
       </tags>
   </entry>
   <entry>
@@ -29537,8 +29818,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>命令行</tag>
       </tags>
   </entry>
@@ -30714,8 +30995,8 @@ read_xlsx(name, sheet)
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
       </tags>
   </entry>
   <entry>
@@ -31961,8 +32242,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>数据结构</tag>
-        <tag>柔性数组</tag>
         <tag>Redis</tag>
+        <tag>柔性数组</tag>
         <tag>NoSQL</tag>
         <tag>简单动态字符串</tag>
         <tag>SDS</tag>
@@ -34813,8 +35094,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Redis</tag>
-        <tag>MongoDB</tag>
         <tag>NoSQL</tag>
+        <tag>MongoDB</tag>
         <tag>migrate</tag>
         <tag>memcached</tag>
         <tag>move</tag>
@@ -44217,12 +44498,12 @@ read_xlsx(name, sheet)
         <category>Technology</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>倒排索引</tag>
+        <tag>技术</tag>
         <tag>幂等性</tag>
+        <tag>闭包</tag>
         <tag>IPC</tag>
         <tag>RPC</tag>
-        <tag>闭包</tag>
         <tag>LPC</tag>
         <tag>彩虹表</tag>
         <tag>搜索引擎</tag>
@@ -46922,45 +47203,45 @@ read_xlsx(name, sheet)
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>Redis</tag>
         <tag>RabbitMQ</tag>
         <tag>GitHub</tag>
+        <tag>数组</tag>
         <tag>make</tag>
-        <tag>MongoDB</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
+        <tag>MongoDB</tag>
         <tag>json</tag>
         <tag>POST</tag>
-        <tag>curl</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
+        <tag>后期静态绑定</tag>
+        <tag>phalcon</tag>
+        <tag>composer</tag>
+        <tag>phpize</tag>
+        <tag>模拟请求</tag>
+        <tag>curl</tag>
+        <tag>file_get_contents</tag>
+        <tag>引用返回</tag>
+        <tag>Yaf</tag>
+        <tag>Yar</tag>
+        <tag>Yac</tag>
         <tag>Guzzle</tag>
         <tag>PHPUnit</tag>
         <tag>Workerman</tag>
         <tag>foreach</tag>
         <tag>引用</tag>
+        <tag>断点上传</tag>
+        <tag>断点续传</tag>
+        <tag>OAuth2.0</tag>
+        <tag>packagist</tag>
+        <tag>psr</tag>
+        <tag>异步任务</tag>
         <tag>函数</tag>
         <tag>字符串</tag>
         <tag>ob</tag>
         <tag>debug_backtrace</tag>
         <tag>str_replace</tag>
-        <tag>phpize</tag>
-        <tag>Yaf</tag>
-        <tag>Yar</tag>
-        <tag>Yac</tag>
-        <tag>断点上传</tag>
-        <tag>断点续传</tag>
-        <tag>OAuth2.0</tag>
-        <tag>composer</tag>
-        <tag>packagist</tag>
-        <tag>psr</tag>
-        <tag>异步任务</tag>
-        <tag>phalcon</tag>
-        <tag>后期静态绑定</tag>
-        <tag>模拟请求</tag>
-        <tag>file_get_contents</tag>
-        <tag>引用返回</tag>
       </tags>
   </entry>
   <entry>
