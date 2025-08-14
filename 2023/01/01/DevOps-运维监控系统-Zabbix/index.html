@@ -149,7 +149,7 @@
 <meta property="og:description" content="Zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视功能的企业级的开源解决方案，另一个常用的为Nagios。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-01T14:39:35.000Z">
-<meta property="article:modified_time" content="2025-04-25T10:18:07.652Z">
+<meta property="article:modified_time" content="2025-08-14T06:12:05.589Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="DevOps">
 <meta property="article:tag" content="运维">
@@ -381,13 +381,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.4k</span>
+              <span>4.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -464,7 +464,171 @@
 </ul>
 </li>
 </ol>
-<h2 id="二、实战-Zabbix"><a href="#二、实战-Zabbix" class="headerlink" title="二、实战(Zabbix)"></a>二、实战(Zabbix)</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h2 id="二、安装Zabbix-Server"><a href="#二、安装Zabbix-Server" class="headerlink" title="二、安装Zabbix-Server"></a>二、安装Zabbix-Server</h2><ol>
+<li><p>登录实例</p>
+</li>
+<li><p>sudo -s</p>
+</li>
+<li><p>wget <a target="_blank" rel="noopener" href="https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb">https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb</a></p>
+</li>
+<li><p>dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb</p>
+</li>
+<li><p>apt update</p>
+</li>
+<li><p>apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent</p>
+</li>
+<li><p>查看进程</p>
+<ul>
+<li>ps -ef|grep php</li>
+<li>ps -ef|grep nginx</li>
+<li>ps -ef|grep mysql，没有进程</li>
+<li>dpkg -l | grep mysql，显示已经安装zabbix-server-mysql</li>
+<li>systemctl list-unit-files | grep mysql，没有找到启动项</li>
+<li>dpkg -I zabbix-release_latest_7.0+ubuntu22.04_all.deb</li>
+</ul>
+</li>
+<li><p>安装MySQL</p>
+<ul>
+<li>apt install -y mysql-server</li>
+<li>mysql –version</li>
+<li>mysql_secure_installation，进行基础设置</li>
+<li>登录MySQL：mysql -uroot -p，默认空密码</li>
+<li>修改密码：<ul>
+<li>ALTER USER ‘root’@’localhost’ IDENTIFIED BY  ‘xxx’;</li>
+<li>flush privileges;</li>
+<li>发现修改密码没生效<ul>
+<li>重启服务：systemctl restart mysql，还是不行</li>
+<li>网上搜索：ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY  ‘xxx’;</li>
+<li>搞定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进行zabbix数据库设置</p>
+<ul>
+<li>create database zabbix character set utf8mb4 collate utf8mb4_bin;</li>
+<li>create user zabbix@localhost identified by ‘yyy’;</li>
+<li>grant all privileges on zabbix.* to zabbix@localhost;</li>
+<li>set global log_bin_trust_function_creators = 1;</li>
+<li>quit;</li>
+</ul>
+</li>
+<li><p>导入数据库</p>
+<ul>
+<li>zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql –default-character-set=utf8mb4 -uzabbix -p zabbix</li>
+<li>输入zabbix账号的密码：yyy</li>
+</ul>
+</li>
+<li><p>关闭选项</p>
+<ul>
+<li>set global log_bin_trust_function_creators = 0;</li>
+<li>quit;</li>
+</ul>
+</li>
+<li><p>设置zabbix</p>
+<ul>
+<li>vim /etc/zabbix/zabbix_server.conf</li>
+<li>DBPassword=yyy</li>
+</ul>
+</li>
+<li><p>设置nginx</p>
+<ul>
+<li>vim /etc/zabbix/nginx.conf</li>
+<li>listen          80;</li>
+<li>server_name     your_domain;</li>
+</ul>
+</li>
+<li><p>添加dns解析：sub_domain ip</p>
+</li>
+<li><p>开启zabbix服务</p>
+<ul>
+<li>systemctl restart zabbix-server zabbix-agent nginx php8.1-fpm</li>
+<li>systemctl enable zabbix-server zabbix-agent nginx php8.1-fpm</li>
+</ul>
+</li>
+<li><p>访问：<a target="_blank" rel="noopener" href="http://your_domain/">http://your_domain/</a></p>
+<ul>
+<li>访问异常，安全组开启80端口再次访问</li>
+<li>根据安装指引进行安装即可</li>
+</ul>
+</li>
+<li><p>安装完成，访问：<a target="_blank" rel="noopener" href="http://your_domain/index.php">http://your_domain/index.php</a></p>
+<ul>
+<li>Admin/zabbix</li>
+</ul>
+</li>
+<li><p>设置中文</p>
+<ul>
+<li>sudo apt install language-pack-zh-hans language-pack-zh-hans-base</li>
+<li>sudo locale-gen zh_CN.UTF-8</li>
+<li>sudo update-locale</li>
+<li>locale -a | grep zh_CN</li>
+<li>vim /etc/default/locale</li>
+<li>LANG=zh_CN.UTF-8</li>
+<li>systemctl restart zabbix-server zabbix-agent nginx php8.1-fpm</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、安装Zabbix-Agent"><a href="#三、安装Zabbix-Agent" class="headerlink" title="三、安装Zabbix-Agent"></a>三、安装Zabbix-Agent</h2><ol>
+<li><p>选择好系统版本、Zabbix版本、Agent</p>
+</li>
+<li><p>sudo -s</p>
+</li>
+<li><p>wget <a target="_blank" rel="noopener" href="https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb">https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb</a></p>
+</li>
+<li><p>dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb</p>
+<ul>
+<li>dpkg -I zabbix-release_latest_7.0+ubuntu22.04_all.deb</li>
+</ul>
+</li>
+<li><p>apt-cache madison zabbix-agent</p>
+</li>
+<li><p>apt update</p>
+<ul>
+<li>apt list –upgradable</li>
+</ul>
+</li>
+<li><p>apt-cache madison zabbix-agent</p>
+<ul>
+<li>zabbix-agent | 1:5.0.17+dfsg-1 | <a target="_blank" rel="noopener" href="http://mirrors.cloud.aliyuncs.com/ubuntu">http://mirrors.cloud.aliyuncs.com/ubuntu</a> jammy/universe amd64 Packages</li>
+</ul>
+</li>
+<li><p>apt install zabbix-agent</p>
+<ul>
+<li>指定版本(有公网IP的情况)：apt install zabbix-agent=1:7.0.16-1+ubuntu22.04</li>
+<li>systemctl restart atd.service chrony.service cloudmonitor.service containerd.service cron.service fwupd-refresh.service multipathd.service packagekit.service polkit.service rsyslog.service <a href="mailto:serial-getty@ttyS0.service">serial-getty@ttyS0.service</a> ssh.service systemd-journald.service systemd-networkd.service systemd-resolved.service tuned.service udisks2.service</li>
+</ul>
+</li>
+<li><p>systemctl restart zabbix-agent</p>
+</li>
+<li><p>systemctl enable zabbix-agent</p>
+</li>
+<li><p>zabbix_agentd -V</p>
+</li>
+<li><p>vim /etc/zabbix/zabbix_agentd.conf</p>
+<ul>
+<li>Server=your_server_ip</li>
+</ul>
+</li>
+<li><p>systemctl restart zabbix-agent</p>
+</li>
+<li><p>在Zabbix后台添加主机，配置zabbix-agent信息</p>
+</li>
+<li><p>卸载</p>
+<ul>
+<li>sudo systemctl stop zabbix-agent</li>
+<li>sudo apt-get remove –purge zabbix-agent</li>
+<li>sudo apt-get autoremove</li>
+<li>sudo rm -rf /etc/zabbix/zabbix_agentd.conf</li>
+<li>sudo rm -rf /etc/zabbix/zabbix_agentd.d/</li>
+<li>zabbix_agentd -V</li>
+<li>apt-cache madison zabbix-agent</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.zabbix.com/">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.nagios.com/">参考二</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cacti.net/">参考三</a></li>
@@ -548,7 +712,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98-Zabbix"><span class="nav-number">2.</span> <span class="nav-text">二、实战(Zabbix)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85Zabbix-Server"><span class="nav-number">2.</span> <span class="nav-text">二、安装Zabbix-Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85Zabbix-Agent"><span class="nav-number">3.</span> <span class="nav-text">三、安装Zabbix-Agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">四、参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -671,12 +835,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">891k</span>
+    <span title="站点总字数">895k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:30</span>
+    <span title="站点阅读时长">13:34</span>
 </div>
 
         
