@@ -1791,6 +1791,10 @@
 <li>sudo yum install -y <a href="https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0-1.x86_64.rpm">https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0-1.x86_64.rpm</a></li>
 <li>systemctl enable grafana-server</li>
 <li>systemctl start grafana-server</li>
+<li>systemctl status grafana-server<ul>
+<li>未启动成功，修改/usr/lib/systemd/system/grafana.service：User=root Group=root</li>
+</ul>
+</li>
 <li>systemctl restart grafana-server</li>
 <li>systemctl stop grafana-server</li>
 <li>访问：<a href="http://101.200.15.11:3000">http://101.200.15.11:3000</a><ul>
@@ -1812,6 +1816,8 @@
 <li>Create dashboard</li>
 <li>Import a dashboard</li>
 <li>输入：8919，<a href="https://grafana.com/grafana/dashboards/">详见</a></li>
+<li><a href="https://grafana.com/grafana/dashboards/1860-node-exporter-full/">https://grafana.com/grafana/dashboards/1860-node-exporter-full/</a></li>
+<li></li>
 </ul>
 </li>
 </ul>
@@ -1828,6 +1834,7 @@
 <li><a href="https://grafana.com/">https://grafana.com/</a></li>
 <li><a href="https://grafana.com/docs/grafana/latest/setup-grafana/installation/">https://grafana.com/docs/grafana/latest/setup-grafana/installation/</a></li>
 <li><a href="https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/">https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/</a></li>
+<li><a href="https://grafana.com/grafana/dashboards/">https://grafana.com/grafana/dashboards/</a></li>
 </ol>
 ]]></content>
       <categories>
