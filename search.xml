@@ -3505,6 +3505,19 @@
 <ul>
 <li>pip install PyQt5</li>
 <li>python Client.py</li>
+<li>打包为可执行文件<ul>
+<li>安装Pyinstaller库：pip install pyinstaller</li>
+<li>打包为单独可执行文件：pyinstaller -F Client.py</li>
+<li>其他参数：pyinstaller –help<ul>
+<li>-w：不带控制台窗口</li>
+<li>-i：设置图标</li>
+<li>-name：可执行文件名称</li>
+<li>-add-data：将外部文件添加到可执行文件中</li>
+<li>-clean：清理上次构建过程中产生的临时文件</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -3564,6 +3577,7 @@
         <tag>交叉编译</tag>
         <tag>Python</tag>
         <tag>pip</tag>
+        <tag>pyinstaller</tag>
         <tag>聊天室</tag>
       </tags>
   </entry>
