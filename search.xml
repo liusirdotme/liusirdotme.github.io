@@ -4139,14 +4139,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Go语言Gin框架</title>
-    <url>/2022/06/12/Go-Gin%E6%A1%86%E6%9E%B6/</url>
+    <title>Go框架</title>
+    <url>/2022/06/12/Go-%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
 <p>宁欺白须公，莫欺少年穷。终须有日龙穿凤，唔信一世裤穿窿。—— 清·吴敬梓《儒林外史》</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Go语言开发的Web框架中，有两款著名Web框架分别是Martini和Gin，两款Web框架相比较的话，Gin自己说它比Martini要强很多(速度最高可达40倍)。它是Go语言写的一个Web框架，它具有运行速度快，分组的路由器，良好的崩溃捕获和错误处理，友好的支持中间件，支持丰富的数据格式如json、xml等。</p>
+<h1 id="Gin框架"><a href="#Gin框架" class="headerlink" title="Gin框架"></a><center><font color="red">Gin框架</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Go语言开发的Web框架中，有两款著名Web框架分别是Martini和Gin，两款Web框架相比较的话，Gin自己说它比Martini要强很多(速度最高可达40倍)。它是Go语言写的一个Web框架，它具有运行速度快，分组的路由器，良好的崩溃捕获和错误处理，友好的支持中间件，支持丰富的数据格式如json、xml等。</p>
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
 <li><p>安装<code>$ go get -u github.com/gin-gonic/gin</code></p>
 </li>
@@ -4175,6 +4175,26 @@
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://github.com/gin-gonic/gin">参考一</a></li>
 </ol>
+<hr>
+<h1 id="Beego框架"><a href="#Beego框架" class="headerlink" title="Beego框架"></a><center><font color="red">Beego框架</font></center></h1><h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://github.com/beego/beego">https://github.com/beego/beego</a></li>
+</ol>
+<hr>
+<h1 id="Echo框架"><a href="#Echo框架" class="headerlink" title="Echo框架"></a><center><font color="red">Echo框架</font></center></h1><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://echo.labstack.com/">https://echo.labstack.com/</a></li>
+</ol>
+<hr>
+<h1 id="Buffalo框架"><a href="#Buffalo框架" class="headerlink" title="Buffalo框架"></a><center><font color="red">Buffalo框架</font></center></h1><h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://gobuffalo.io/">https://gobuffalo.io/</a></li>
+</ol>
+<hr>
+<h1 id="GORM框架"><a href="#GORM框架" class="headerlink" title="GORM框架"></a><center><font color="red">GORM框架</font></center></h1><h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://gorm.io/zh_CN/docs/index.html">https://gorm.io/zh_CN/docs/index.html</a></li>
+</ol>
+<hr>
+<h1 id="Iris框架"><a href="#Iris框架" class="headerlink" title="Iris框架"></a><center><font color="red">Iris框架</font></center></h1><h2 id="三、参考-5"><a href="#三、参考-5" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://iris-go.com/">https://iris-go.com/</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Go</category>
@@ -4182,6 +4202,11 @@
       <tags>
         <tag>Go</tag>
         <tag>Gin</tag>
+        <tag>Echo</tag>
+        <tag>GORM</tag>
+        <tag>Beego</tag>
+        <tag>Buffalo</tag>
+        <tag>Iris</tag>
       </tags>
   </entry>
   <entry>
