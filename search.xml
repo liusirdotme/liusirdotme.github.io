@@ -53251,4 +53251,53 @@ read_xlsx(name, sheet)
         <tag>Martini</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Node进阶</title>
+    <url>/2026/07/01/Node-%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>大部分版本控制系统以文件变更列表的方式存储信息，将它们存储的信息看作是一组基本文件和每个文件随时间逐步累积的差异。Git则把数据看作是对小型文件系统的一系列快照，每当有提交更新或保存项目状态时它就会对当时的全部文件创建一个快照并保存这个快照的索引。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="npm设置代理"><a href="#npm设置代理" class="headerlink" title="npm设置代理"></a><center><font color="red">npm设置代理</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li>查看代理</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># 查看http代理</span><br><span class="line">npm config get proxy</span><br><span class="line"># 查看https代理</span><br><span class="line">npm config get https-proxy</span><br><span class="line"># 查看socks代理</span><br><span class="line">npm config get socks-proxy</span><br><span class="line"># 查看全局全部配置</span><br><span class="line">npm config list</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>设置代理</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># 设置http代理</span><br><span class="line">npm config set proxy http://127.0.0.1:7890</span><br><span class="line"># 设置https代理</span><br><span class="line">npm config set https-proxy http://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">npm config set socks-proxy socks://127.0.0.1:7890</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>删除代理</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">npm config delete proxy</span><br><span class="line">npm config delete https-proxy</span><br><span class="line">npm config delete socks-proxy</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>Windows CMD操作</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">echo %HTTP_PROXY%</span><br><span class="line">echo %HTTPS_PROXY%</span><br><span class="line">echo %ALL_PROXY%</span><br><span class="line"></span><br><span class="line">set HTTP_PROXY=</span><br><span class="line">set HTTPS_PROXY=</span><br><span class="line">set ALL_PROXY=</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>git代理</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">git config --global --get http.proxy</span><br><span class="line">git config --global --get https.proxy</span><br><span class="line"></span><br><span class="line"># http代理</span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br><span class="line"># socks5代理</span><br><span class="line">git config --global http.proxy socks5://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy socks5://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="6">
+<li>npm加速</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># 设置淘宝镜像源</span><br><span class="line">npm config set registry https://registry.npmmirror.com</span><br><span class="line"># 查看源是否生效</span><br><span class="line">npm config get registry</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
+<h1 id="Go语言select语句"><a href="#Go语言select语句" class="headerlink" title="Go语言select语句"></a><center><font color="red">Go语言select语句</font></center></h1>]]></content>
+      <categories>
+        <category>Node</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+        <tag>npm</tag>
+        <tag>proxy</tag>
+      </tags>
+  </entry>
 </search>
