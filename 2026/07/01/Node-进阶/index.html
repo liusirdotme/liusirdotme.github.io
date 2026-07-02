@@ -149,7 +149,7 @@
 <meta property="og:description" content="大部分版本控制系统以文件变更列表的方式存储信息，将它们存储的信息看作是一组基本文件和每个文件随时间逐步累积的差异。Git则把数据看作是对小型文件系统的一系列快照，每当有提交更新或保存项目状态时它就会对当时的全部文件创建一个快照并保存这个快照的索引。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-01T13:08:06.000Z">
-<meta property="article:modified_time" content="2026-07-02T06:42:13.882Z">
+<meta property="article:modified_time" content="2026-07-02T07:16:05.327Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Node">
 <meta property="article:tag" content="npm">
@@ -374,7 +374,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>189</span>
+              <span>354</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -427,7 +427,23 @@
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 设置淘宝镜像源</span><br><span class="line">npm config set registry https://registry.npmmirror.com</span><br><span class="line"># 查看源是否生效</span><br><span class="line">npm config get registry</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>修改npm代理<ul>
+<li>npm config delete proxy</li>
+</ul>
+</li>
+<li>修改hexo博客git代理<ul>
+<li>git config –unset http.proxy</li>
+<li>git config –unset https.proxy</li>
+</ul>
+</li>
+<li>修改hexo博客.deploy_git目录代理<ul>
+<li>git config –unset http.proxy</li>
+<li>git config –unset https.proxy</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
 <h1 id="Go语言select语句"><a href="#Go语言select语句" class="headerlink" title="Go语言select语句"></a><center><font color="red">Go语言select语句</font></center></h1>
     </div>
 

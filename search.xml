@@ -360,7 +360,23 @@
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># 设置淘宝镜像源</span><br><span class="line">npm config set registry https://registry.npmmirror.com</span><br><span class="line"># 查看源是否生效</span><br><span class="line">npm config get registry</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>修改npm代理<ul>
+<li>npm config delete proxy</li>
+</ul>
+</li>
+<li>修改hexo博客git代理<ul>
+<li>git config –unset http.proxy</li>
+<li>git config –unset https.proxy</li>
+</ul>
+</li>
+<li>修改hexo博客.deploy_git目录代理<ul>
+<li>git config –unset http.proxy</li>
+<li>git config –unset https.proxy</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><hr>
 <h1 id="Go语言select语句"><a href="#Go语言select语句" class="headerlink" title="Go语言select语句"></a><center><font color="red">Go语言select语句</font></center></h1>]]></content>
       <categories>
         <category>Node</category>
@@ -4183,8 +4199,8 @@
       <tags>
         <tag>select</tag>
         <tag>操作系统</tag>
-        <tag>多路复用</tag>
         <tag>IO</tag>
+        <tag>多路复用</tag>
         <tag>poll</tag>
         <tag>epoll</tag>
         <tag>kqueue</tag>
@@ -5890,8 +5906,8 @@
         <category>Tools</category>
       </categories>
       <tags>
-        <tag>supervisor</tag>
         <tag>快捷键</tag>
+        <tag>supervisor</tag>
         <tag>宝塔</tag>
       </tags>
   </entry>
@@ -9361,8 +9377,8 @@
       </categories>
       <tags>
         <tag>教育</tag>
-        <tag>新手爸妈</tag>
         <tag>宝宝</tag>
+        <tag>新手爸妈</tag>
         <tag>疫苗</tag>
         <tag>衣服</tag>
         <tag>奶粉</tag>
@@ -22255,9 +22271,9 @@
       <tags>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
+        <tag>info</tag>
         <tag>eval</tag>
         <tag>memory</tag>
-        <tag>info</tag>
         <tag>slowlog</tag>
         <tag>config</tag>
         <tag>client</tag>
@@ -28823,11 +28839,11 @@
         <tag>RabbitMQ</tag>
         <tag>MQ</tag>
         <tag>vhost</tag>
+        <tag>延时消费</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
         <tag>消息堆积</tag>
-        <tag>延时消费</tag>
         <tag>常驻进程</tag>
         <tag>平滑重启</tag>
         <tag>消费模式</tag>
@@ -32911,7 +32927,6 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>工具</tag>
-        <tag>supervisor</tag>
         <tag>sketchbook</tag>
         <tag>gimp</tag>
         <tag>libiconv</tag>
@@ -32922,6 +32937,7 @@ read_xlsx(name, sheet)
         <tag>钉钉</tag>
         <tag>gitmind</tag>
         <tag>飞书</tag>
+        <tag>supervisor</tag>
       </tags>
   </entry>
   <entry>
@@ -35903,8 +35919,8 @@ read_xlsx(name, sheet)
         <category>Tools</category>
       </categories>
       <tags>
-        <tag>快捷键</tag>
         <tag>Vim</tag>
+        <tag>快捷键</tag>
       </tags>
   </entry>
   <entry>
@@ -47729,9 +47745,9 @@ read_xlsx(name, sheet)
         <tag>GitHub</tag>
         <tag>make</tag>
         <tag>MongoDB</tag>
-        <tag>json</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
+        <tag>json</tag>
         <tag>POST</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
