@@ -144,21 +144,21 @@
   <meta name="description" content="王国维在《人间词话》中说：“古之成大事业、大学问者必经过三种之境界。第一境界：昨夜西风凋碧树，独上高楼，望尽天涯路。第二境界：衣带渐宽终不悔，为伊消得人憔悴。第三境界：众里寻他千百度过，蓦然回首，那人却在灯火阑珊处。”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker入门">
-<meta property="og:url" content="https://liusir.me/2018/06/09/Docker-%E5%85%A5%E9%97%A8/index.html">
-<meta property="og:site_name" content="liusir.me">
+<meta property="og:url" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="王国维在《人间词话》中说：“古之成大事业、大学问者必经过三种之境界。第一境界：昨夜西风凋碧树，独上高楼，望尽天涯路。第二境界：衣带渐宽终不悔，为伊消得人憔悴。第三境界：众里寻他千百度过，蓦然回首，那人却在灯火阑珊处。”">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://liusir.me/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
+<meta property="og:image" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
 <meta property="article:published_time" content="2018-06-09T09:32:53.000Z">
-<meta property="article:modified_time" content="2025-08-19T07:39:57.395Z">
+<meta property="article:modified_time" content="2025-09-02T10:27:52.803Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="镜像">
 <meta property="article:tag" content="容器">
 <meta property="article:tag" content="仓库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liusir.me/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
-  <link rel="canonical" href="https://liusir.me/2018/06/09/Docker-%E5%85%A5%E9%97%A8/">
+<meta name="twitter:image" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
+  <link rel="canonical" href="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/">
 
 
 <script id="page-configurations">
@@ -172,7 +172,7 @@
   };
 </script>
 
-  <title>docker入门 | liusir.me</title>
+  <title>docker入门 | liusir.net</title>
   
 
 
@@ -221,7 +221,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">liusir.me</span>
+        <span class="site-title">liusir.net</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -333,7 +333,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liusir.me/2018/06/09/Docker-%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kid.jpg">
@@ -342,7 +342,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liusir.me">
+      <meta itemprop="name" content="liusir.net">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -377,7 +377,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>4.7k</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -400,7 +400,20 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器或Windows机器上，也可以实现虚拟化，容器是完全使用沙箱机制，相互之间不会有任何接口。它是一种Linux容器技术，容器有效的将由单个操作系统挂管理的资源划分到孤立的组中，以便更好的在组之间平衡有冲突的资源使用需求，可简单理解为一种沙盒。每个容器内运行一个应用，不同的容器之间相互隔离，容器之间也可以建立通信机制。容器的创建和停止都十分快速，资源需求远远低于虚拟机。</p>
+<h1 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a><center><font color="red">Docker安装</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
+<li>方式<ul>
+<li>使用桌面版</li>
+<li>使用apt源</li>
+<li>手动安装</li>
+<li>使用官方脚本</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></li>
+</ol>
+<hr>
+<h1 id="Docker基础"><a href="#Docker基础" class="headerlink" title="Docker基础"></a><center><font color="red">Docker基础</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器或Windows机器上，也可以实现虚拟化，容器是完全使用沙箱机制，相互之间不会有任何接口。它是一种Linux容器技术，容器有效的将由单个操作系统挂管理的资源划分到孤立的组中，以便更好的在组之间平衡有冲突的资源使用需求，可简单理解为一种沙盒。每个容器内运行一个应用，不同的容器之间相互隔离，容器之间也可以建立通信机制。容器的创建和停止都十分快速，资源需求远远低于虚拟机。</p>
 <ol>
 <li><p>一个完整的Docker有以下几个部分组成：</p>
 <ul>
@@ -715,7 +728,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">二、常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">三、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">四、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Docker基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">二、常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.3.</span> <span class="nav-text">三、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -829,7 +842,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
