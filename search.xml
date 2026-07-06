@@ -6975,8 +6975,8 @@
       </categories>
       <tags>
         <tag>Go</tag>
-        <tag>Context</tag>
         <tag>协程</tag>
+        <tag>Context</tag>
         <tag>channel</tag>
         <tag>通道</tag>
         <tag>select</tag>
@@ -10890,10 +10890,10 @@
       </categories>
       <tags>
         <tag>Go</tag>
-        <tag>协程</tag>
         <tag>GMP</tag>
         <tag>进程</tag>
         <tag>线程</tag>
+        <tag>协程</tag>
         <tag>MMU</tag>
         <tag>页表</tag>
         <tag>褚时健</tag>
@@ -11372,8 +11372,8 @@
       <tags>
         <tag>DevOps</tag>
         <tag>自动化运维</tag>
-        <tag>rsync</tag>
         <tag>ansible</tag>
+        <tag>rsync</tag>
       </tags>
   </entry>
   <entry>
@@ -12150,8 +12150,8 @@
         <category>Game</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>游戏</tag>
+        <tag>技术</tag>
       </tags>
   </entry>
   <entry>
@@ -12206,9 +12206,9 @@
         <category>Tools</category>
       </categories>
       <tags>
-        <tag>工具</tag>
-        <tag>rsync</tag>
         <tag>ansible</tag>
+        <tag>rsync</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -15355,8 +15355,8 @@
         <category>PL</category>
       </categories>
       <tags>
-        <tag>镜像</tag>
         <tag>Mac</tag>
+        <tag>镜像</tag>
         <tag>MongoDB</tag>
         <tag>非阻塞</tag>
         <tag>JS</tag>
@@ -19135,10 +19135,10 @@
         <tag>struct</tag>
         <tag>数组</tag>
         <tag>Go</tag>
-        <tag>自举</tag>
         <tag>多返回值</tag>
         <tag>env</tag>
         <tag>交叉编译</tag>
+        <tag>自举</tag>
         <tag>CGO</tag>
         <tag>接口</tag>
         <tag>interface</tag>
@@ -20818,13 +20818,13 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>标准输入</tag>
-        <tag>标准输出</tag>
-        <tag>标准错误输出</tag>
         <tag>文件描述符</tag>
         <tag>stdin</tag>
+        <tag>标准输入</tag>
         <tag>stdout</tag>
+        <tag>标准输出</tag>
         <tag>stderr</tag>
+        <tag>标准错误输出</tag>
         <tag>文件重定向</tag>
         <tag>标准输入输出重定向</tag>
       </tags>
@@ -22525,9 +22525,9 @@
       <tags>
         <tag>Redis</tag>
         <tag>NoSQL</tag>
+        <tag>info</tag>
         <tag>eval</tag>
         <tag>memory</tag>
-        <tag>info</tag>
         <tag>slowlog</tag>
         <tag>config</tag>
         <tag>client</tag>
@@ -23032,9 +23032,9 @@
         <category>OS</category>
       </categories>
       <tags>
-        <tag>协程</tag>
         <tag>进程</tag>
         <tag>线程</tag>
+        <tag>协程</tag>
         <tag>操作系统</tag>
         <tag>挂起</tag>
         <tag>fork</tag>
@@ -24271,8 +24271,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>reset</tag>
         <tag>merge</tag>
+        <tag>reset</tag>
         <tag>ssh</tag>
         <tag>gitk</tag>
         <tag>stash</tag>
@@ -29092,12 +29092,12 @@
         <tag>Kafka</tag>
         <tag>RabbitMQ</tag>
         <tag>MQ</tag>
+        <tag>延时消费</tag>
         <tag>vhost</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
         <tag>消息堆积</tag>
-        <tag>延时消费</tag>
         <tag>常驻进程</tag>
         <tag>平滑重启</tag>
         <tag>消费模式</tag>
@@ -33181,6 +33181,7 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>工具</tag>
+        <tag>supervisor</tag>
         <tag>sketchbook</tag>
         <tag>gimp</tag>
         <tag>libiconv</tag>
@@ -33191,7 +33192,6 @@ read_xlsx(name, sheet)
         <tag>钉钉</tag>
         <tag>gitmind</tag>
         <tag>飞书</tag>
-        <tag>supervisor</tag>
       </tags>
   </entry>
   <entry>
@@ -44530,6 +44530,9 @@ read_xlsx(name, sheet)
       <tags>
         <tag>变量</tag>
         <tag>Linux</tag>
+        <tag>标准输入</tag>
+        <tag>标准输出</tag>
+        <tag>标准错误输出</tag>
         <tag>shell</tag>
         <tag>let</tag>
         <tag>source</tag>
@@ -44537,9 +44540,6 @@ read_xlsx(name, sheet)
         <tag>declare</tag>
         <tag>local</tag>
         <tag>特殊变量</tag>
-        <tag>标准输入</tag>
-        <tag>标准输出</tag>
-        <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
       </tags>
@@ -45249,8 +45249,8 @@ read_xlsx(name, sheet)
         <category>Technology</category>
       </categories>
       <tags>
-        <tag>技术</tag>
         <tag>倒排索引</tag>
+        <tag>技术</tag>
         <tag>幂等性</tag>
         <tag>IPC</tag>
         <tag>RPC</tag>
@@ -47999,9 +47999,9 @@ read_xlsx(name, sheet)
         <tag>GitHub</tag>
         <tag>make</tag>
         <tag>MongoDB</tag>
+        <tag>json</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
-        <tag>json</tag>
         <tag>POST</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
