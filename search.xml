@@ -1,151 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AI工作流</title>
-    <url>/2026/07/09/AI-AI%E5%B7%A5%E4%BD%9C%E6%B5%81/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>AI 工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库 RAG、API 调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化 AI 任务闭环。</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="AI工作流"><a href="#AI工作流" class="headerlink" title="AI工作流"></a><center><font color="red">AI工作流</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
-<li><p>定义：AI 工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库 RAG、API 调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化 AI 任务闭环。</p>
-</li>
-<li><p>对比</p>
-</li>
-</ol>
-<ul>
-<li>传统 RPA：纯固定规则，只能点击、填表，无理解推理能力；</li>
-<li>AI 工作流：人定死整体步骤，AI 只负责单节点内推理，流程路径固定可控，适合标准化重复业务；</li>
-<li>AI Agent/多智能体：只给最终目标，AI 自主拆解步骤、动态选工具、调整执行顺序，适合开放、不确定复杂任务。</li>
-</ul>
-<ol start="3">
-<li>三层技术架构</li>
-</ol>
-<ul>
-<li>编排层（画布引擎）：流程调度核心，可视化拖拽 / 代码定义 DAG 有向无环图，支持：<ul>
-<li>基础逻辑：顺序、并行、条件分支、循环、异常重试、人工拦截节点；</li>
-<li>触发方式：定时、表单提交、API 回调、文件上传、消息队列；</li>
-<li>运维能力：日志、执行记录、失败断点续跑、版本保存。</li>
-</ul>
-</li>
-<li>节点能力层（可复用模块）：所有可拖拽单元，分为 5 大类：<ul>
-<li>大模型节点：文生文、文生图、多模态解析、意图分类、摘要、翻译；</li>
-<li>RAG 知识库节点：文档切片、向量检索、知识库问答、事实校验；</li>
-<li>工具调用节点：数据库读写、企业 API、Excel/CSV 处理、邮件 / 消息推送、爬虫；</li>
-<li>逻辑控制节点：判断分支、循环、数据清洗、格式转换；</li>
-<li>人工节点：审核、人工输入、驳回重跑（人机协同关键）。</li>
-</ul>
-</li>
-<li>底层能力层：提供基础算力与资源：各类大模型 API、向量数据库、文件存储、权限鉴权、LLM 监控面板。</li>
-</ul>
-<ol start="4">
-<li>三大主流工作流执行模式</li>
-</ol>
-<ul>
-<li><p>顺序串行工作流（最常用）</p>
-<ul>
-<li>上一步输出作为下一步输入，线性流转。</li>
-<li>适用：内容生产、报告撰写、工单处理、多阶段质检；</li>
-<li>优点：逻辑清晰、结果可控、便于分步调优 Prompt；</li>
-<li>缺点：串行耗时</li>
-</ul>
-</li>
-<li><p>并行分支工作流</p>
-<ul>
-<li>同一输入同时触发多条独立子流程，完成后合并结果。</li>
-<li>适用：多模型对比输出、多渠道数据同步、图文同时生成。</li>
-</ul>
-</li>
-<li><p>评估优化闭环工作流（Eval-Ops）</p>
-<ul>
-<li>执行完成后自动打分校验，不合格自动回退重跑 / 调整参数。</li>
-<li>适用：企业客服、合规文案、数据抽取，保障输出准确率。</li>
-</ul>
-</li>
-</ul>
-<h2 id="二、完整落地全流程（6大阶段）"><a href="#二、完整落地全流程（6大阶段）" class="headerlink" title="二、完整落地全流程（6大阶段）"></a>二、完整落地全流程（6大阶段）</h2><ol>
-<li>阶段 1：需求拆解</li>
-</ol>
-<ul>
-<li>把业务目标拆成分步可执行节点，明确：触发条件、输入数据源、每一步输出格式、验收标准、异常兜底规则。</li>
-<li>示例：自媒体内容流 —— 输入关键词→选题生成→文案撰写→配图生成→封面标题→导出打包。</li>
-</ul>
-<ol start="2">
-<li>阶段 2：流程编排搭建：可视化画布拖拽节点，配置参数：</li>
-</ol>
-<ul>
-<li>大模型：绑定 API、编写标准化 Prompt；</li>
-<li>数据工具：配置数据库 / 接口凭证、字段映射；</li>
-<li>控制逻辑：设置判断条件、失败重试次数、超时规则；</li>
-<li>人机节点：设置审核人、驳回后重跑节点。</li>
-</ul>
-<ol start="3">
-<li>阶段 3：知识库 / 数据底座配置</li>
-</ol>
-<ul>
-<li>业务类工作流必备 RAG：上传行业文档、政策、历史案例，用于事实校验，减少 AI 幻觉。</li>
-</ul>
-<ol start="4">
-<li>阶段 4：流程测试调优：单节点调试→完整链路试运行：</li>
-</ol>
-<ul>
-<li>检查数据流转是否丢失；</li>
-<li>优化 Prompt 减少输出偏差；</li>
-<li>测试异常场景（接口超时、无匹配知识库、空输入）。</li>
-</ul>
-<ol start="5">
-<li>阶段 5：上线定时 / 对外调用</li>
-</ol>
-<ul>
-<li>内部自动化：设置每日定时触发；</li>
-<li>业务集成：对外暴露 API，嵌入 ERP、CRM、官网、后台系统。</li>
-</ul>
-<ol start="6">
-<li>阶段 6：监控迭代运维：记录每次执行日志、错误统计、人工驳回率，定期优化节点逻辑、更新知识库，形成持续迭代闭环。</li>
-</ol>
-<h2 id="三、典型应用场景"><a href="#三、典型应用场景" class="headerlink" title="三、典型应用场景"></a>三、典型应用场景</h2><ol>
-<li>内容自动化（自媒体 / 企业新媒体）</li>
-</ol>
-<ul>
-<li>关键词→多选题→正文初稿→AI 配图→多版本标题→自动排版导出→推送公众号。</li>
-</ul>
-<ol start="2">
-<li>企业客服工单处理</li>
-</ol>
-<ul>
-<li>用户消息→意图分类→知识库检索自动回复→无法解答自动流转人工→对话总结归档。</li>
-</ul>
-<ol start="3">
-<li>金融信贷初审</li>
-</ol>
-<ul>
-<li>拉取客户征信 / 订单数据→检索信贷政策→LLM 综合风险打分→生成审批报告→高风险人工复核。</li>
-</ul>
-<ol start="4">
-<li>研发文档自动化</li>
-</ol>
-<ul>
-<li>接口日志→自动生成接口文档→代码注释补充→生成测试用例→推送至知识库。</li>
-</ul>
-<ol start="5">
-<li>市场数据分析</li>
-</ol>
-<ul>
-<li>每日爬虫竞品数据→清洗统计→AI 生成分析简报→定时推送企业微信群。</li>
-</ul>
-<hr>
-<h1 id="国内AI工具"><a href="#国内AI工具" class="headerlink" title="国内AI工具"></a><center><font color="red">国内AI工具</font></center></h1>]]></content>
-      <categories>
-        <category>AI</category>
-      </categories>
-      <tags>
-        <tag>工作流</tag>
-        <tag>AI</tag>
-        <tag>agent</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AI工具大全</title>
     <url>/2026/07/01/AI-AI%E5%B7%A5%E5%85%B7%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -934,6 +789,151 @@
         <tag>迷茫</tag>
         <tag>抉择</tag>
         <tag>自省</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI工作流</title>
+    <url>/2026/07/09/AI-AI%E5%B7%A5%E4%BD%9C%E6%B5%81/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>AI工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库RAG、API调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化AI任务闭环。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="AI工作流"><a href="#AI工作流" class="headerlink" title="AI工作流"></a><center><font color="red">AI工作流</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li><p>定义：AI 工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库 RAG、API 调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化 AI 任务闭环。</p>
+</li>
+<li><p>对比</p>
+</li>
+</ol>
+<ul>
+<li>传统 RPA：纯固定规则，只能点击、填表，无理解推理能力；</li>
+<li>AI 工作流：人定死整体步骤，AI 只负责单节点内推理，流程路径固定可控，适合标准化重复业务；</li>
+<li>AI Agent/多智能体：只给最终目标，AI 自主拆解步骤、动态选工具、调整执行顺序，适合开放、不确定复杂任务。</li>
+</ul>
+<ol start="3">
+<li>三层技术架构</li>
+</ol>
+<ul>
+<li>编排层（画布引擎）：流程调度核心，可视化拖拽 / 代码定义 DAG 有向无环图，支持：<ul>
+<li>基础逻辑：顺序、并行、条件分支、循环、异常重试、人工拦截节点；</li>
+<li>触发方式：定时、表单提交、API 回调、文件上传、消息队列；</li>
+<li>运维能力：日志、执行记录、失败断点续跑、版本保存。</li>
+</ul>
+</li>
+<li>节点能力层（可复用模块）：所有可拖拽单元，分为 5 大类：<ul>
+<li>大模型节点：文生文、文生图、多模态解析、意图分类、摘要、翻译；</li>
+<li>RAG 知识库节点：文档切片、向量检索、知识库问答、事实校验；</li>
+<li>工具调用节点：数据库读写、企业 API、Excel/CSV 处理、邮件 / 消息推送、爬虫；</li>
+<li>逻辑控制节点：判断分支、循环、数据清洗、格式转换；</li>
+<li>人工节点：审核、人工输入、驳回重跑（人机协同关键）。</li>
+</ul>
+</li>
+<li>底层能力层：提供基础算力与资源：各类大模型 API、向量数据库、文件存储、权限鉴权、LLM 监控面板。</li>
+</ul>
+<ol start="4">
+<li>三大主流工作流执行模式</li>
+</ol>
+<ul>
+<li><p>顺序串行工作流（最常用）</p>
+<ul>
+<li>上一步输出作为下一步输入，线性流转。</li>
+<li>适用：内容生产、报告撰写、工单处理、多阶段质检；</li>
+<li>优点：逻辑清晰、结果可控、便于分步调优 Prompt；</li>
+<li>缺点：串行耗时</li>
+</ul>
+</li>
+<li><p>并行分支工作流</p>
+<ul>
+<li>同一输入同时触发多条独立子流程，完成后合并结果。</li>
+<li>适用：多模型对比输出、多渠道数据同步、图文同时生成。</li>
+</ul>
+</li>
+<li><p>评估优化闭环工作流（Eval-Ops）</p>
+<ul>
+<li>执行完成后自动打分校验，不合格自动回退重跑 / 调整参数。</li>
+<li>适用：企业客服、合规文案、数据抽取，保障输出准确率。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、完整落地全流程（6大阶段）"><a href="#二、完整落地全流程（6大阶段）" class="headerlink" title="二、完整落地全流程（6大阶段）"></a>二、完整落地全流程（6大阶段）</h2><ol>
+<li>阶段 1：需求拆解</li>
+</ol>
+<ul>
+<li>把业务目标拆成分步可执行节点，明确：触发条件、输入数据源、每一步输出格式、验收标准、异常兜底规则。</li>
+<li>示例：自媒体内容流 —— 输入关键词→选题生成→文案撰写→配图生成→封面标题→导出打包。</li>
+</ul>
+<ol start="2">
+<li>阶段 2：流程编排搭建：可视化画布拖拽节点，配置参数：</li>
+</ol>
+<ul>
+<li>大模型：绑定 API、编写标准化 Prompt；</li>
+<li>数据工具：配置数据库 / 接口凭证、字段映射；</li>
+<li>控制逻辑：设置判断条件、失败重试次数、超时规则；</li>
+<li>人机节点：设置审核人、驳回后重跑节点。</li>
+</ul>
+<ol start="3">
+<li>阶段 3：知识库 / 数据底座配置</li>
+</ol>
+<ul>
+<li>业务类工作流必备 RAG：上传行业文档、政策、历史案例，用于事实校验，减少 AI 幻觉。</li>
+</ul>
+<ol start="4">
+<li>阶段 4：流程测试调优：单节点调试→完整链路试运行：</li>
+</ol>
+<ul>
+<li>检查数据流转是否丢失；</li>
+<li>优化 Prompt 减少输出偏差；</li>
+<li>测试异常场景（接口超时、无匹配知识库、空输入）。</li>
+</ul>
+<ol start="5">
+<li>阶段 5：上线定时 / 对外调用</li>
+</ol>
+<ul>
+<li>内部自动化：设置每日定时触发；</li>
+<li>业务集成：对外暴露 API，嵌入 ERP、CRM、官网、后台系统。</li>
+</ul>
+<ol start="6">
+<li>阶段 6：监控迭代运维：记录每次执行日志、错误统计、人工驳回率，定期优化节点逻辑、更新知识库，形成持续迭代闭环。</li>
+</ol>
+<h2 id="三、典型应用场景"><a href="#三、典型应用场景" class="headerlink" title="三、典型应用场景"></a>三、典型应用场景</h2><ol>
+<li>内容自动化（自媒体 / 企业新媒体）</li>
+</ol>
+<ul>
+<li>关键词→多选题→正文初稿→AI 配图→多版本标题→自动排版导出→推送公众号。</li>
+</ul>
+<ol start="2">
+<li>企业客服工单处理</li>
+</ol>
+<ul>
+<li>用户消息→意图分类→知识库检索自动回复→无法解答自动流转人工→对话总结归档。</li>
+</ul>
+<ol start="3">
+<li>金融信贷初审</li>
+</ol>
+<ul>
+<li>拉取客户征信 / 订单数据→检索信贷政策→LLM 综合风险打分→生成审批报告→高风险人工复核。</li>
+</ul>
+<ol start="4">
+<li>研发文档自动化</li>
+</ol>
+<ul>
+<li>接口日志→自动生成接口文档→代码注释补充→生成测试用例→推送至知识库。</li>
+</ul>
+<ol start="5">
+<li>市场数据分析</li>
+</ol>
+<ul>
+<li>每日爬虫竞品数据→清洗统计→AI 生成分析简报→定时推送企业微信群。</li>
+</ul>
+<hr>
+<h1 id="国内AI工具"><a href="#国内AI工具" class="headerlink" title="国内AI工具"></a><center><font color="red">国内AI工具</font></center></h1>]]></content>
+      <categories>
+        <category>AI</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>工作流</tag>
+        <tag>agent</tag>
       </tags>
   </entry>
   <entry>
@@ -16121,8 +16121,8 @@
         <category>PL</category>
       </categories>
       <tags>
-        <tag>Mac</tag>
         <tag>镜像</tag>
+        <tag>Mac</tag>
         <tag>MongoDB</tag>
         <tag>非阻塞</tag>
         <tag>JS</tag>
@@ -20737,8 +20737,8 @@
         <category>Git</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>工作流</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -25435,11 +25435,11 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>merge</tag>
         <tag>reset</tag>
         <tag>ssh</tag>
         <tag>gitk</tag>
         <tag>stash</tag>
+        <tag>merge</tag>
         <tag>GitHub</tag>
       </tags>
   </entry>
@@ -30256,12 +30256,12 @@
         <tag>Kafka</tag>
         <tag>RabbitMQ</tag>
         <tag>MQ</tag>
-        <tag>延时消费</tag>
         <tag>vhost</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
         <tag>消息堆积</tag>
+        <tag>延时消费</tag>
         <tag>常驻进程</tag>
         <tag>平滑重启</tag>
         <tag>消费模式</tag>
@@ -32162,8 +32162,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>合并</tag>
         <tag>merge</tag>
+        <tag>合并</tag>
         <tag>王小波</tag>
       </tags>
   </entry>
@@ -49162,10 +49162,10 @@ read_xlsx(name, sheet)
         <tag>RabbitMQ</tag>
         <tag>GitHub</tag>
         <tag>make</tag>
-        <tag>MongoDB</tag>
-        <tag>json</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
+        <tag>MongoDB</tag>
+        <tag>json</tag>
         <tag>POST</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
@@ -51586,8 +51586,8 @@ read_xlsx(name, sheet)
         <category>Hobby</category>
       </categories>
       <tags>
-        <tag>王小波</tag>
         <tag>褚时健</tag>
+        <tag>王小波</tag>
         <tag>文学</tag>
         <tag>发现潜力</tag>
         <tag>发展能力</tag>
