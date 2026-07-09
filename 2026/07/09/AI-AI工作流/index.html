@@ -149,7 +149,7 @@
 <meta property="og:description" content="AI工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库RAG、API调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化AI任务闭环。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-09T01:37:21.000Z">
-<meta property="article:modified_time" content="2026-07-09T09:04:45.994Z">
+<meta property="article:modified_time" content="2026-07-09T10:22:08.857Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="工作流">
@@ -374,13 +374,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.7k</span>
+              <span>3.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -524,7 +524,216 @@
 <li>每日爬虫竞品数据→清洗统计→AI 生成分析简报→定时推送企业微信群。</li>
 </ul>
 <hr>
-<h1 id="国内AI工具"><a href="#国内AI工具" class="headerlink" title="国内AI工具"></a><center><font color="red">国内AI工具</font></center></h1>
+<h1 id="AI工作流-1"><a href="#AI工作流-1" class="headerlink" title="AI工作流"></a><center><font color="red">AI工作流</font></center></h1><h2 id="一、-国内AI工作流服务商"><a href="#一、-国内AI工作流服务商" class="headerlink" title="一、 国内AI工作流服务商"></a>一、 国内AI工作流服务商</h2><h3 id="1-开源可视化AI工作流平台（私有化部署优先）"><a href="#1-开源可视化AI工作流平台（私有化部署优先）" class="headerlink" title="1.开源可视化AI工作流平台（私有化部署优先）"></a>1.开源可视化AI工作流平台（私有化部署优先）</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>运营主体</th>
+<th>核心定位</th>
+<th>核心能力</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dify</td>
+<td>Dify官方开源社区</td>
+<td>全栈LLMOps/Agent工作流引擎</td>
+<td>可视化拖拽编排、RAG知识库、多模型兼容、API发布、私有部署、多Agent协作</td>
+<td>企业内部AI工具、私有化智能客服、知识库问答、政企数据隔离场景</td>
+</tr>
+<tr>
+<td>FastGPT</td>
+<td>开源社区</td>
+<td>知识库导向AI工作流</td>
+<td>自定义流程节点、文档向量解析、批量问答、插件扩展、私有化</td>
+<td>企业文档库、行业知识库、内部检索机器人</td>
+</tr>
+<tr>
+<td>LangFlow（国产适配分支）</td>
+<td>国内二次开源社区</td>
+<td>LangChain可视化编排</td>
+<td>链式LLM流程、Prompt调试、子工作流、本地模型对接</td>
+<td>开发者快速调试Agent链路、算法原型验证</td>
+</tr>
+</tbody></table>
+<h3 id="2-互联网大厂SaaS-AI工作流-智能体平台"><a href="#2-互联网大厂SaaS-AI工作流-智能体平台" class="headerlink" title="2 互联网大厂SaaS AI工作流/智能体平台"></a>2 互联网大厂SaaS AI工作流/智能体平台</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>所属企业</th>
+<th>核心定位</th>
+<th>生态优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coze 扣子</td>
+<td>字节跳动</td>
+<td>零代码对话Bot工作流</td>
+<td>飞书/豆包/抖音/微信多渠道发布、海量中文插件、低门槛拖拽流程</td>
+</tr>
+<tr>
+<td>腾讯元器 WorkBuddy</td>
+<td>腾讯</td>
+<td>微信生态AI工作流</td>
+<td>企业微信/公众号打通、办公审批流、微信客服自动化、文档解析Agent</td>
+</tr>
+<tr>
+<td>通义FlowLab</td>
+<td>阿里通义实验室</td>
+<td>通义模型专属工作流</td>
+<td>阿里云无缝集成、电商业务流程、多模态图文视频流水线</td>
+</tr>
+<tr>
+<td>千帆AppBuilder</td>
+<td>百度文心</td>
+<td>企业级低代码AI应用编排</td>
+<td>文心全系模型、行业模板、政企私有化、文档/合同处理工作流</td>
+</tr>
+<tr>
+<td>ModelArts Versatile</td>
+<td>华为云</td>
+<td>政企AI流程中台</td>
+<td>昇腾硬件适配、信创兼容、100+行业流程模板、数据安全管控</td>
+</tr>
+<tr>
+<td>Hi Agent</td>
+<td>火山引擎（字节云）</td>
+<td>企业AI Agent DevOps工作流</td>
+<td>私有部署、多智能体协同、数据资产沉淀、内部业务自动化</td>
+</tr>
+<tr>
+<td>科大讯飞星辰Agent</td>
+<td>科大讯飞</td>
+<td>语音+文本融合工作流</td>
+<td>会议转写、教育题库流程、政务语音审批、MCP工具生态集成</td>
+</tr>
+<tr>
+<td>天工SkyAgents</td>
+<td>昆仑万维</td>
+<td>Office全链路AI工作流</td>
+<td>PPT/表格/文档批量处理、办公自动化、多模态内容生产流水线</td>
+</tr>
+</tbody></table>
+<h3 id="3-独立商业化SaaS-企业级AI工作流厂商"><a href="#3-独立商业化SaaS-企业级AI工作流厂商" class="headerlink" title="3 独立商业化SaaS/企业级AI工作流厂商"></a>3 独立商业化SaaS/企业级AI工作流厂商</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>厂商</th>
+<th>核心特色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PMTSoul AI</td>
+<td>酷特智能</td>
+<td>企业多数字员工协同OS，全业务端到端流程自动化</td>
+</tr>
+<tr>
+<td>实在Agent</td>
+<td>实在智能</td>
+<td>RPA+AI融合工作流，钉钉/企微深度办公自动化</td>
+</tr>
+<tr>
+<td>智谱Agent平台</td>
+<td>智谱AI</td>
+<td>GLM大模型原生编排、网页自主操作、决策分析工作流</td>
+</tr>
+</tbody></table>
+<h3 id="4-国内RPA-AI融合工作流厂商（业务流程自动化）"><a href="#4-国内RPA-AI融合工作流厂商（业务流程自动化）" class="headerlink" title="4 国内RPA+AI融合工作流厂商（业务流程自动化）"></a>4 国内RPA+AI融合工作流厂商（业务流程自动化）</h3><p>金智维Ki-AgentS、艺赛旗iS-RPA、弘玑Cyclone、达观数据、影刀RPA、UiBot、容智信息、阿里云RPA、腾讯云智RPA</p>
+<h2 id="二、海外AI工作流服务商"><a href="#二、海外AI工作流服务商" class="headerlink" title="二、海外AI工作流服务商"></a>二、海外AI工作流服务商</h2><h3 id="1-通用无代码-低代码自动化（AI增强）"><a href="#1-通用无代码-低代码自动化（AI增强）" class="headerlink" title="1 通用无代码/低代码自动化（AI增强）"></a>1 通用无代码/低代码自动化（AI增强）</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>厂商</th>
+<th>定位</th>
+<th>优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>n8n</td>
+<td>n8n.io</td>
+<td>开源全链路流程编排</td>
+<td>支持私有化、千级第三方节点、LangChain原生集成、AI自定义节点</td>
+</tr>
+<tr>
+<td>Zapier</td>
+<td>Zapier Inc.</td>
+<td>小白级SaaS自动化</td>
+<td>8000+应用连接器、一键AI流程、轻量跨工具数据流转</td>
+</tr>
+<tr>
+<td>Make(原Integromat)</td>
+<td>Celonis旗下</td>
+<td>高级可视化工作流</td>
+<td>复杂分支、子流程、批量数据处理、多LLM接入</td>
+</tr>
+<tr>
+<td>Workato</td>
+<td>Workato Inc.</td>
+<td>大型企业级混合云流程</td>
+<td>强合规治理、ERP/CRM深度打通、大规模AI业务流水线</td>
+</tr>
+<tr>
+<td>Tray.io</td>
+<td>Tray</td>
+<td>云原生SaaS集成+AI编排</td>
+<td>700+连接器、营销/销售自动化AI工作流</td>
+</tr>
+</tbody></table>
+<h3 id="2-LLM-Agent专用可视化工作流平台"><a href="#2-LLM-Agent专用可视化工作流平台" class="headerlink" title="2 LLM/Agent专用可视化工作流平台"></a>2 LLM/Agent专用可视化工作流平台</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>厂商</th>
+<th>核心场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LangFlow</td>
+<td>LangChain官方</td>
+<td>开发者LLM链式流程调试、Prompt工程可视化</td>
+</tr>
+<tr>
+<td>Vellum AI</td>
+<td>Vellum</td>
+<td>企业级模型编排、多版本Prompt管理、生产级AI Pipeline</td>
+</tr>
+<tr>
+<td>Gumloop</td>
+<td>Gumloop</td>
+<td>轻量化多模型聚合工作流，面向非技术团队</td>
+</tr>
+<tr>
+<td>Lindy.ai</td>
+<td>Lindy</td>
+<td>具备长期记忆自主AI Agent流程，个人办公自动化</td>
+</tr>
+</tbody></table>
+<h3 id="3-微软生态AI工作流体系"><a href="#3-微软生态AI工作流体系" class="headerlink" title="3 微软生态AI工作流体系"></a>3 微软生态AI工作流体系</h3><ol>
+<li>Microsoft Copilot Studio：低代码AI智能体、Teams/Office 365流程打通</li>
+<li>Power Automate：微软全平台自动化，原生集成Copilot大模型节点</li>
+<li>Azure AI Foundry：开发者级模型流水线、企业复杂AI工作流编排</li>
+</ol>
+<h3 id="4-企业级RPA-AI海外厂商"><a href="#4-企业级RPA-AI海外厂商" class="headerlink" title="4 企业级RPA+AI海外厂商"></a>4 企业级RPA+AI海外厂商</h3><p>UiPath Automation Cloud、Pega Platform、SnapLogic、Agentforce(Salesforce原生AI流程)</p>
+<h3 id="5-开源AI底层编排工具（开发者自用）"><a href="#5-开源AI底层编排工具（开发者自用）" class="headerlink" title="5 开源AI底层编排工具（开发者自用）"></a>5 开源AI底层编排工具（开发者自用）</h3><p>Hugging Face Transformers Workflow、Airflow（可自定义AI任务节点）</p>
+<h2 id="三-平台分类说明"><a href="#三-平台分类说明" class="headerlink" title="三 平台分类说明"></a>三 平台分类说明</h2><ol>
+<li><strong>开源私有化类</strong>：Dify、FastGPT、n8n、LangFlow<ul>
+<li>适合：数据敏感、政企、自有服务器部署、深度二次开发</li>
+</ul>
+</li>
+<li><strong>大厂SaaS对话类</strong>：Coze、腾讯元器、千帆AppBuilder<ul>
+<li>适合：快速搭建聊天机器人、对内对外客服、社交渠道分发</li>
+</ul>
+</li>
+<li><strong>通用自动化类</strong>：Zapier、Make、实在Agent、UiBot<ul>
+<li>适合：跨软件数据同步、办公/营销重复性流程、RPA+AI落地</li>
+</ul>
+</li>
+<li><strong>企业重型中台类</strong>：ModelArts、Workato、Azure AI Foundry、PMTSoul AI<ul>
+<li>适合：集团多业务线、多智能体协同、强合规审计、大规模生产流水线</li>
+</ul>
+</li>
+</ol>
+
     </div>
 
     
@@ -589,7 +798,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">AI工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E6%95%B4%E8%90%BD%E5%9C%B0%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BC%886%E5%A4%A7%E9%98%B6%E6%AE%B5%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">二、完整落地全流程（6大阶段）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">三、典型应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BD%E5%86%85AI%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">国内AI工具</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">AI工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E6%95%B4%E8%90%BD%E5%9C%B0%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BC%886%E5%A4%A7%E9%98%B6%E6%AE%B5%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">二、完整落地全流程（6大阶段）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">三、典型应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%B7%A5%E4%BD%9C%E6%B5%81-1"><span class="nav-number">2.</span> <span class="nav-text">AI工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E5%9B%BD%E5%86%85AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%95%86"><span class="nav-number">2.1.</span> <span class="nav-text">一、 国内AI工作流服务商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E6%BA%90%E5%8F%AF%E8%A7%86%E5%8C%96AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%EF%BC%88%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%BC%98%E5%85%88%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.开源可视化AI工作流平台（私有化部署优先）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82SaaS-AI%E5%B7%A5%E4%BD%9C%E6%B5%81-%E6%99%BA%E8%83%BD%E4%BD%93%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">2 互联网大厂SaaS AI工作流&#x2F;智能体平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%8B%AC%E7%AB%8B%E5%95%86%E4%B8%9A%E5%8C%96SaaS-%E4%BC%81%E4%B8%9A%E7%BA%A7AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%8E%82%E5%95%86"><span class="nav-number">2.1.3.</span> <span class="nav-text">3 独立商业化SaaS&#x2F;企业级AI工作流厂商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%9B%BD%E5%86%85RPA-AI%E8%9E%8D%E5%90%88%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%8E%82%E5%95%86%EF%BC%88%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%89"><span class="nav-number">2.1.4.</span> <span class="nav-text">4 国内RPA+AI融合工作流厂商（业务流程自动化）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%B7%E5%A4%96AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%95%86"><span class="nav-number">2.2.</span> <span class="nav-text">二、海外AI工作流服务商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E7%94%A8%E6%97%A0%E4%BB%A3%E7%A0%81-%E4%BD%8E%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%88AI%E5%A2%9E%E5%BC%BA%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">1 通用无代码&#x2F;低代码自动化（AI增强）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LLM-Agent%E4%B8%93%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">2 LLM&#x2F;Agent专用可视化工作流平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BE%AE%E8%BD%AF%E7%94%9F%E6%80%81AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BD%93%E7%B3%BB"><span class="nav-number">2.2.3.</span> <span class="nav-text">3 微软生态AI工作流体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%BC%81%E4%B8%9A%E7%BA%A7RPA-AI%E6%B5%B7%E5%A4%96%E5%8E%82%E5%95%86"><span class="nav-number">2.2.4.</span> <span class="nav-text">4 企业级RPA+AI海外厂商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%BC%80%E6%BA%90AI%E5%BA%95%E5%B1%82%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7%EF%BC%88%E5%BC%80%E5%8F%91%E8%80%85%E8%87%AA%E7%94%A8%EF%BC%89"><span class="nav-number">2.2.5.</span> <span class="nav-text">5 开源AI底层编排工具（开发者自用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%B9%B3%E5%8F%B0%E5%88%86%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">三 平台分类说明</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -712,12 +921,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">914k</span>
+    <span title="站点总字数">916k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:51</span>
+    <span title="站点阅读时长">13:53</span>
 </div>
 
         
