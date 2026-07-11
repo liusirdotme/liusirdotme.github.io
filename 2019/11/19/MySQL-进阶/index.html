@@ -150,7 +150,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.net/2019/11/19/MySQL-%E8%BF%9B%E9%98%B6/canal.png">
 <meta property="article:published_time" content="2019-11-19T05:11:52.000Z">
-<meta property="article:modified_time" content="2024-09-03T07:26:18.221Z">
+<meta property="article:modified_time" content="2026-07-11T09:51:19.379Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="MySQL">
 <meta property="article:tag" content="缓存">
@@ -381,13 +381,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>4.2k</span>
+              <span>7.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>4 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -681,6 +681,206 @@
 </ul>
 </li>
 </ol>
+<hr>
+<h1 id="MySQL-utf8mb4排序规则选择完整指南"><a href="#MySQL-utf8mb4排序规则选择完整指南" class="headerlink" title="MySQL utf8mb4排序规则选择完整指南"></a><center><font color="red">MySQL utf8mb4排序规则选择完整指南</font></center></h1><h2 id="一、先搞懂后缀含义"><a href="#一、先搞懂后缀含义" class="headerlink" title="一、先搞懂后缀含义"></a>一、先搞懂后缀含义</h2><h3 id="1-后缀-ci-cs-bin"><a href="#1-后缀-ci-cs-bin" class="headerlink" title="1. 后缀 ci / cs / bin"></a>1. 后缀 <code>ci</code> / <code>cs</code> / <code>bin</code></h3><ul>
+<li><strong>ci = case insensitive（不区分大小写）</strong><br><code>A=a</code>、<code>Abc=ABC</code>，日常业务最常用</li>
+<li><strong>cs = case sensitive（区分大小写）</strong><br><code>A≠a</code>，账号、验证码、密码明文存储场景用</li>
+<li><strong>bin = binary（二进制逐字节比较）</strong><br>完全按字节码对比，区分大小写、区分重音、区分全半角，<strong>严格匹配</strong></li>
+</ul>
+<h3 id="2-中间段-general-0900-unicode"><a href="#2-中间段-general-0900-unicode" class="headerlink" title="2. 中间段 general / 0900 / unicode"></a>2. 中间段 <code>general</code> / <code>0900</code> / <code>unicode</code></h3><ol>
+<li><strong>utf8mb4_general_ci</strong><br>老通用校对规则，兼容性极强，MySQL5.5/5.7 默认；<br>排序精度一般，部分特殊字符、多国语言排序不准，速度略快。</li>
+<li><strong>utf8mb4_unicode_ci</strong><br>基于 Unicode 4.0 标准，多语言排序更标准，5.7 推荐替代 general。</li>
+<li><strong>utf8mb4_0900_xxx</strong><br>MySQL8.0新增，基于 Unicode 9.0，支持最全 emoji、生僻字、少数民族文字、全新汉字排序，<strong>8.0 最优选择</strong>。</li>
+</ol>
+<h2 id="二、三种常用规则对比"><a href="#二、三种常用规则对比" class="headerlink" title="二、三种常用规则对比"></a>二、三种常用规则对比</h2><table>
+<thead>
+<tr>
+<th>规则</th>
+<th>区分大小写</th>
+<th>区分重音</th>
+<th>适用MySQL版本</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>utf8mb4_general_ci</td>
+<td>❌ 不区分</td>
+<td>❌</td>
+<td>5.7 / 8.0 通用</td>
+<td>老项目、仅中文简单业务、兼容低版本</td>
+</tr>
+<tr>
+<td>utf8mb4_unicode_ci</td>
+<td>❌ 不区分</td>
+<td>✅</td>
+<td>5.7/8.0</td>
+<td>多语言海外业务、需要标准文字排序</td>
+</tr>
+<tr>
+<td>utf8mb4_0900_ai_ci</td>
+<td>❌ 不区分</td>
+<td>❌</td>
+<td>仅8.0+</td>
+<td>新项目8.0首选，最全emoji/汉字支持</td>
+</tr>
+<tr>
+<td>utf8mb4_0900_bin</td>
+<td>✅ 区分大小写</td>
+<td>✅ 严格二进制</td>
+<td>仅8.0+</td>
+<td>唯一值校验、验证码、密钥、敏感编码</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ai = accent insensitive（不区分重音）<br>as = accent sensitive（区分重音）</p>
+</blockquote>
+<h2 id="三、什么时候选-utf8mb4-0900-bin"><a href="#三、什么时候选-utf8mb4-0900-bin" class="headerlink" title="三、什么时候选 utf8mb4_0900_bin"></a>三、什么时候选 utf8mb4_0900_bin</h2><h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li>字段需要<strong>严格区分大小写</strong>：用户名、邀请码、token、订单编号、密钥<ul>
+<li><code>ABC123</code> 和 <code>abc123</code> 视为两个不同值，不会重复冲突</li>
+</ul>
+</li>
+<li>需要区分全角/半角、特殊符号、大小写混合唯一索引</li>
+<li>存储哈希值、UUID、加密串、编码字符串，必须精准匹配</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>查询模糊匹配时大小写敏感，<code>like 'A%'</code> 查不到 <code>a123</code></li>
+<li>排序按二进制码，中文排序顺序不符合日常拼音</li>
+</ul>
+<h2 id="四、什么时候选-utf8mb4-general-ci"><a href="#四、什么时候选-utf8mb4-general-ci" class="headerlink" title="四、什么时候选 utf8mb4_general_ci"></a>四、什么时候选 utf8mb4_general_ci</h2><h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li>项目使用 <strong>MySQL5.7</strong>（无0900系列规则）</li>
+<li>老旧系统、第三方插件强制要求 general 兼容</li>
+<li>纯中文后台，不需要复杂多国文字排序</li>
+</ol>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>生僻汉字、韩文、阿拉伯文排序错乱，部分emoji兼容差。</p>
+<h2 id="五、通用标准最佳实践（直接照抄）"><a href="#五、通用标准最佳实践（直接照抄）" class="headerlink" title="五、通用标准最佳实践（直接照抄）"></a>五、通用标准最佳实践（直接照抄）</h2><h3 id="1-MySQL-8-0-新项目（推荐）"><a href="#1-MySQL-8-0-新项目（推荐）" class="headerlink" title="1. MySQL 8.0 新项目（推荐）"></a>1. MySQL 8.0 新项目（推荐）</h3><h4 id="数据库-表默认（绝大多数业务：姓名、标题、内容、手机号）"><a href="#数据库-表默认（绝大多数业务：姓名、标题、内容、手机号）" class="headerlink" title="数据库/表默认（绝大多数业务：姓名、标题、内容、手机号）"></a>数据库/表默认（绝大多数业务：姓名、标题、内容、手机号）</h4><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE test <span class="keyword">DEFAULT</span> <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">DEFAULT</span> <span class="keyword">COLLATE</span> utf8mb4_0900_ai_ci;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>不区分大小写，不区分拼音重音，汉字、emoji支持最全</li>
+</ul>
+<h4 id="特殊唯一字段（账号、验证码、token）单独指定bin"><a href="#特殊唯一字段（账号、验证码、token）单独指定bin" class="headerlink" title="特殊唯一字段（账号、验证码、token）单独指定bin"></a>特殊唯一字段（账号、验证码、token）单独指定bin</h4><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">COLLATE</span> utf8mb4_0900_bin <span class="keyword">UNIQUE</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-MySQL-5-7-项目（无0900）"><a href="#2-MySQL-5-7-项目（无0900）" class="headerlink" title="2. MySQL 5.7 项目（无0900）"></a>2. MySQL 5.7 项目（无0900）</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE test <span class="keyword">DEFAULT</span> <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">DEFAULT</span> <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br></pre></td></tr></tbody></table></figure>
+<p>老系统兼容兜底用 general_ci：<code>utf8mb4_general_ci</code></p>
+<h2 id="六、避坑重点"><a href="#六、避坑重点" class="headerlink" title="六、避坑重点"></a>六、避坑重点</h2><ol>
+<li><strong>不要用 utf8</strong>，MySQL 的 utf8 是阉割版，存不了emoji，一律 utf8mb4</li>
+<li>不要全库统一用 bin：日常姓名、商品名模糊查询会非常难用，只给特殊字段单独设置bin</li>
+<li>同一库下表、字段排序规则要统一，否则关联查询会报校对规则冲突</li>
+<li>0900 系列只能在 MySQL8.0 使用，5.7 执行会直接报错</li>
+</ol>
+<h2 id="七、快速总结一句话"><a href="#七、快速总结一句话" class="headerlink" title="七、快速总结一句话"></a>七、快速总结一句话</h2><ul>
+<li><p>8.0 普通业务库：<code>utf8mb4_0900_ai_ci</code></p>
+</li>
+<li><p>8.0 账号/编码唯一字段：单独 <code>utf8mb4_0900_bin</code></p>
+</li>
+<li><p>5.7 新项目：<code>utf8mb4_unicode_ci</code></p>
+</li>
+<li><p>5.7 老旧兼容项目：<code>utf8mb4_general_ci</code></p>
+<hr>
+</li>
+</ul>
+<h1 id="MySQL-8-4-新项目排序规则完整方案"><a href="#MySQL-8-4-新项目排序规则完整方案" class="headerlink" title="MySQL 8.4 新项目排序规则完整方案"></a><center><font color="red">MySQL 8.4 新项目排序规则完整方案</font></center></h1><blockquote>
+<p>MySQL 8.4全系内置 <code>utf8mb4_0900</code>系列，<strong>官方默认、新项目唯一首选基准规则</strong>，彻底抛弃 <code>general_ci / unicode_ci</code>。</p>
+</blockquote>
+<h2 id="一、先看懂后缀含义（8-4专用）"><a href="#一、先看懂后缀含义（8-4专用）" class="headerlink" title="一、先看懂后缀含义（8.4专用）"></a>一、先看懂后缀含义（8.4专用）</h2><ol>
+<li><p><strong><code>utf8mb4_0900_ai_ci</code>（库/表全局默认）</strong></p>
+<ul>
+<li>0900 = Unicode 9.0 最新标准，生僻字、emoji、多国文字排序最标准</li>
+<li>ai = accent-insensitive 不区分拼音重音</li>
+<li>ci = case-insensitive 不区分大小写</li>
+<li>绝大多数业务：姓名、标题、商品、手机号、普通用户名、文本描述统一用这个</li>
+</ul>
+</li>
+<li><p><strong><code>utf8mb4_0900_bin</code>（仅特殊字段单独指定）</strong><br>二进制逐字节对比：<strong>区分大小写、区分重音、区分全半角</strong>，严格精准匹配。<br>适用：token、API密钥、验证码、哈希密码、邀请码、大小写敏感账号、唯一编码。</p>
+</li>
+<li><p>补充极少用细分（业务几乎不用）</p>
+<ul>
+<li><code>utf8mb4_0900_as_ci</code>：区分重音、不区分大小写（地名、外文姓名）</li>
+<li><code>utf8mb4_0900_as_cs</code>：区分重音+区分大小写（极少场景）</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、8-4-建库标准SQL（直接复制）"><a href="#二、8-4-建库标准SQL（直接复制）" class="headerlink" title="二、8.4 建库标准SQL（直接复制）"></a>二、8.4 建库标准SQL（直接复制）</h2><h3 id="1-通用业务库（99-项目用这个）"><a href="#1-通用业务库（99-项目用这个）" class="headerlink" title="1. 通用业务库（99%项目用这个）"></a>1. 通用业务库（99%项目用这个）</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> business_db</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8mb4</span><br><span class="line"><span class="keyword">DEFAULT</span> <span class="keyword">COLLATE</span> utf8mb4_0900_ai_ci;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>库、表默认全部走 <code>0900_ai_ci</code>，模糊查询、排序、中文拼音匹配最友好。</li>
+</ul>
+<h3 id="2-特殊区分大小写字段写法（建表示例）"><a href="#2-特殊区分大小写字段写法（建表示例）" class="headerlink" title="2. 特殊区分大小写字段写法（建表示例）"></a>2. 特殊区分大小写字段写法（建表示例）</h3><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `<span class="keyword">user</span>` (</span><br><span class="line">  id <span class="type">BIGINT</span> <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT,</span><br><span class="line">  username <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">'登录名，不区分大小写'</span>,</span><br><span class="line">  api_key <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">COLLATE</span> utf8mb4_0900_bin COMMENT <span class="string">'密钥，严格区分大小写'</span>,</span><br><span class="line">  invite_code <span class="type">VARCHAR</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">COLLATE</span> utf8mb4_0900_bin <span class="keyword">UNIQUE</span> COMMENT <span class="string">'邀请码大小写唯一'</span></span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8mb4_0900_ai_ci;</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>规则：<strong>库/表统一 ai_ci，只有需要严格二进制匹配的字段单独加 COLLATE bin</strong>，不要全库用 bin。</p>
+</blockquote>
+<h2 id="三、为什么8-4不要用-general-ci-unicode-ci"><a href="#三、为什么8-4不要用-general-ci-unicode-ci" class="headerlink" title="三、为什么8.4不要用 general_ci / unicode_ci"></a>三、为什么8.4不要用 general_ci / unicode_ci</h2><ol>
+<li><code>utf8mb4_general_ci</code>：老旧简化算法，生僻汉字、日韩文、emoji排序错乱，8.x官方已不推荐新项目使用。</li>
+<li><code>utf8mb4_unicode_ci</code>：基于 Unicode 4.0，标准老旧，性能、字符兼容都不如 0900 系列。</li>
+<li><code>0900_ai_ci</code> 优势：<ul>
+<li>原生支持全部4字节emoji、罕见生僻汉字、少数民族文字</li>
+<li>排序符合现代Unicode规范，中英文混合分页排序更合理</li>
+<li>8.4内核优化，对比、索引查询性能优于旧规则</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、场景速查表（8-4直接对照选）"><a href="#四、场景速查表（8-4直接对照选）" class="headerlink" title="四、场景速查表（8.4直接对照选）"></a>四、场景速查表（8.4直接对照选）</h2><table>
+<thead>
+<tr>
+<th>业务字段类型</th>
+<th>排序规则</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>商品名称、标题、备注、简介</td>
+<td>utf8mb4_0900_ai_ci</td>
+<td>模糊搜索不区分大小写，中文排序正常</td>
+</tr>
+<tr>
+<td>普通登录账号、邮箱</td>
+<td>utf8mb4_0900_ai_ci</td>
+<td>用户登录输入大写/小写都能匹配</td>
+</tr>
+<tr>
+<td>密码哈希、Token、API Key、UUID</td>
+<td>utf8mb4_0900_bin</td>
+<td>大小写不同视为不同值，防止校验漏洞</td>
+</tr>
+<tr>
+<td>邀请码、订单编码、设备ID</td>
+<td>utf8mb4_0900_bin</td>
+<td>大小写唯一，避免重复冲突</td>
+</tr>
+<tr>
+<td>外文带重音人名/地名</td>
+<td>utf8mb4_0900_as_ci</td>
+<td>需要区分音调</td>
+</tr>
+</tbody></table>
+<h2 id="五、避坑要点"><a href="#五、避坑要点" class="headerlink" title="五、避坑要点"></a>五、避坑要点</h2><ol>
+<li><strong>禁止使用 utf8（utf8mb3）</strong>：仅3字节，无法存储emoji，全程统一 <code>utf8mb4</code>。</li>
+<li>不要整张表/整个库设置 <code>_bin</code>：会导致 <code>LIKE 'A%'</code> 查不到小写数据，前端搜索体验极差。</li>
+<li>同库所有表默认排序规则保持一致（<code>0900_ai_ci</code>），否则联表查询报<strong>校对规则不兼容</strong>报错。</li>
+<li>8.4不存在版本兼容问题，<code>0900</code> 系列完整支持，不用降级到 general。</li>
+</ol>
+<h2 id="六、一句话总结-MySQL8-4-规范"><a href="#六、一句话总结-MySQL8-4-规范" class="headerlink" title="六、一句话总结 MySQL8.4 规范"></a>六、一句话总结 MySQL8.4 规范</h2><ul>
+<li>创建数据库默认：<strong>utf8mb4_0900_ai_ci</strong></li>
+<li>密钥、验证码、大小写唯一字段：单独字段指定 <strong>utf8mb4_0900_bin</strong></li>
+<li>彻底放弃 general_ci、unicode_ci。</li>
+</ul>
+<hr>
+<h1 id="Windows查看MySQL服务是否运行"><a href="#Windows查看MySQL服务是否运行" class="headerlink" title="Windows查看MySQL服务是否运行"></a><center><font color="red">Windows查看MySQL服务是否运行</font></center></h1><h2 id="一、方案"><a href="#一、方案" class="headerlink" title="一、方案"></a>一、方案</h2><ol>
+<li><p>Win+R，输入services.msc，打开服务管理器，查看有没有MySQL相关服务、</p>
+</li>
+<li><p>CMD/PowerShell</p>
+</li>
+</ol>
+<ul>
+<li>先查出本机所有 MySQL 服务名（通用）：sc queryex type=service state=all | findstr /i mysql</li>
+<li>单独查询指定服务状态：sc query mysql-8.4</li>
+<li>筛选所有：net start | findstr /i mysql</li>
+<li>启动：net start mysql-8.4   # 启动</li>
+<li>停止：net stop mysql-8.4    # 停止</li>
+</ul>
+<ol start="3">
+<li><p>通过任务管理器查看：Ctrl+Shift+Esc，查看mysqld.exe服务</p>
+</li>
+<li><p>通过集成环境查看，如phpstudy/Laragon</p>
+</li>
+</ol>
 
     </div>
 
@@ -754,7 +954,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%93%E5%AD%98DB%E4%B8%80%E8%87%B4%E6%80%A7%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">缓存DB一致性方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">二、方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">数据库中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Canal"><span class="nav-number">2.1.</span> <span class="nav-text">一、Canal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Cobar"><span class="nav-number">2.2.</span> <span class="nav-text">二、Cobar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Mycat"><span class="nav-number">2.3.</span> <span class="nav-text">三、Mycat</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%A2%9EID"><span class="nav-number">3.</span> <span class="nav-text">自增ID</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">3.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">3.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">3.3.</span> <span class="nav-text">三、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-number">4.</span> <span class="nav-text">连接池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">5.</span> <span class="nav-text">线上数据迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">5.1.</span> <span class="nav-text">一、基础</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%93%E5%AD%98DB%E4%B8%80%E8%87%B4%E6%80%A7%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">缓存DB一致性方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">二、方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">数据库中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Canal"><span class="nav-number">2.1.</span> <span class="nav-text">一、Canal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Cobar"><span class="nav-number">2.2.</span> <span class="nav-text">二、Cobar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Mycat"><span class="nav-number">2.3.</span> <span class="nav-text">三、Mycat</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%A2%9EID"><span class="nav-number">3.</span> <span class="nav-text">自增ID</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">3.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">3.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">3.3.</span> <span class="nav-text">三、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-number">4.</span> <span class="nav-text">连接池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">5.</span> <span class="nav-text">线上数据迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">5.1.</span> <span class="nav-text">一、基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-utf8mb4%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%E9%80%89%E6%8B%A9%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97"><span class="nav-number">6.</span> <span class="nav-text">MySQL utf8mb4排序规则选择完整指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%90%9E%E6%87%82%E5%90%8E%E7%BC%80%E5%90%AB%E4%B9%89"><span class="nav-number">6.1.</span> <span class="nav-text">一、先搞懂后缀含义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%90%8E%E7%BC%80-ci-cs-bin"><span class="nav-number">6.1.1.</span> <span class="nav-text">1. 后缀 ci &#x2F; cs &#x2F; bin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%AD%E9%97%B4%E6%AE%B5-general-0900-unicode"><span class="nav-number">6.1.2.</span> <span class="nav-text">2. 中间段 general &#x2F; 0900 &#x2F; unicode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%89%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%A7%84%E5%88%99%E5%AF%B9%E6%AF%94"><span class="nav-number">6.2.</span> <span class="nav-text">二、三种常用规则对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%89-utf8mb4-0900-bin"><span class="nav-number">6.3.</span> <span class="nav-text">三、什么时候选 utf8mb4_0900_bin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">6.3.1.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">6.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%89-utf8mb4-general-ci"><span class="nav-number">6.4.</span> <span class="nav-text">四、什么时候选 utf8mb4_general_ci</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">6.4.1.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="nav-number">6.4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%80%9A%E7%94%A8%E6%A0%87%E5%87%86%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%88%E7%9B%B4%E6%8E%A5%E7%85%A7%E6%8A%84%EF%BC%89"><span class="nav-number">6.5.</span> <span class="nav-text">五、通用标准最佳实践（直接照抄）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MySQL-8-0-%E6%96%B0%E9%A1%B9%E7%9B%AE%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">6.5.1.</span> <span class="nav-text">1. MySQL 8.0 新项目（推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-%E8%A1%A8%E9%BB%98%E8%AE%A4%EF%BC%88%E7%BB%9D%E5%A4%A7%E5%A4%9A%E6%95%B0%E4%B8%9A%E5%8A%A1%EF%BC%9A%E5%A7%93%E5%90%8D%E3%80%81%E6%A0%87%E9%A2%98%E3%80%81%E5%86%85%E5%AE%B9%E3%80%81%E6%89%8B%E6%9C%BA%E5%8F%B7%EF%BC%89"><span class="nav-number">6.5.1.1.</span> <span class="nav-text">数据库&#x2F;表默认（绝大多数业务：姓名、标题、内容、手机号）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%94%AF%E4%B8%80%E5%AD%97%E6%AE%B5%EF%BC%88%E8%B4%A6%E5%8F%B7%E3%80%81%E9%AA%8C%E8%AF%81%E7%A0%81%E3%80%81token%EF%BC%89%E5%8D%95%E7%8B%AC%E6%8C%87%E5%AE%9Abin"><span class="nav-number">6.5.1.2.</span> <span class="nav-text">特殊唯一字段（账号、验证码、token）单独指定bin</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MySQL-5-7-%E9%A1%B9%E7%9B%AE%EF%BC%88%E6%97%A00900%EF%BC%89"><span class="nav-number">6.5.2.</span> <span class="nav-text">2. MySQL 5.7 项目（无0900）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%81%BF%E5%9D%91%E9%87%8D%E7%82%B9"><span class="nav-number">6.6.</span> <span class="nav-text">六、避坑重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%BF%AB%E9%80%9F%E6%80%BB%E7%BB%93%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="nav-number">6.7.</span> <span class="nav-text">七、快速总结一句话</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-8-4-%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%E5%AE%8C%E6%95%B4%E6%96%B9%E6%A1%88"><span class="nav-number">7.</span> <span class="nav-text">MySQL 8.4 新项目排序规则完整方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E7%9C%8B%E6%87%82%E5%90%8E%E7%BC%80%E5%90%AB%E4%B9%89%EF%BC%888-4%E4%B8%93%E7%94%A8%EF%BC%89"><span class="nav-number">7.1.</span> <span class="nav-text">一、先看懂后缀含义（8.4专用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%818-4-%E5%BB%BA%E5%BA%93%E6%A0%87%E5%87%86SQL%EF%BC%88%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%EF%BC%89"><span class="nav-number">7.2.</span> <span class="nav-text">二、8.4 建库标准SQL（直接复制）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E7%94%A8%E4%B8%9A%E5%8A%A1%E5%BA%93%EF%BC%8899-%E9%A1%B9%E7%9B%AE%E7%94%A8%E8%BF%99%E4%B8%AA%EF%BC%89"><span class="nav-number">7.2.1.</span> <span class="nav-text">1. 通用业务库（99%项目用这个）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%89%B9%E6%AE%8A%E5%8C%BA%E5%88%86%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AE%B5%E5%86%99%E6%B3%95%EF%BC%88%E5%BB%BA%E8%A1%A8%E7%A4%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">7.2.2.</span> <span class="nav-text">2. 特殊区分大小写字段写法（建表示例）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%888-4%E4%B8%8D%E8%A6%81%E7%94%A8-general-ci-unicode-ci"><span class="nav-number">7.3.</span> <span class="nav-text">三、为什么8.4不要用 general_ci &#x2F; unicode_ci</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9C%BA%E6%99%AF%E9%80%9F%E6%9F%A5%E8%A1%A8%EF%BC%888-4%E7%9B%B4%E6%8E%A5%E5%AF%B9%E7%85%A7%E9%80%89%EF%BC%89"><span class="nav-number">7.4.</span> <span class="nav-text">四、场景速查表（8.4直接对照选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%81%BF%E5%9D%91%E8%A6%81%E7%82%B9"><span class="nav-number">7.5.</span> <span class="nav-text">五、避坑要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93-MySQL8-4-%E8%A7%84%E8%8C%83"><span class="nav-number">7.6.</span> <span class="nav-text">六、一句话总结 MySQL8.4 规范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows%E6%9F%A5%E7%9C%8BMySQL%E6%9C%8D%E5%8A%A1%E6%98%AF%E5%90%A6%E8%BF%90%E8%A1%8C"><span class="nav-number">8.</span> <span class="nav-text">Windows查看MySQL服务是否运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%96%B9%E6%A1%88"><span class="nav-number">8.1.</span> <span class="nav-text">一、方案</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -877,12 +1077,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">919k</span>
+    <span title="站点总字数">926k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:56</span>
+    <span title="站点阅读时长">14:01</span>
 </div>
 
         
