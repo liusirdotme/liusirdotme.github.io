@@ -22419,13 +22419,13 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+        <tag>标准输入</tag>
+        <tag>标准输出</tag>
+        <tag>标准错误输出</tag>
         <tag>文件描述符</tag>
         <tag>stdin</tag>
-        <tag>标准输入</tag>
         <tag>stdout</tag>
-        <tag>标准输出</tag>
         <tag>stderr</tag>
-        <tag>标准错误输出</tag>
         <tag>文件重定向</tag>
         <tag>标准输入输出重定向</tag>
       </tags>
@@ -26270,11 +26270,11 @@
       </categories>
       <tags>
         <tag>Git</tag>
+        <tag>merge</tag>
         <tag>reset</tag>
         <tag>ssh</tag>
         <tag>gitk</tag>
         <tag>stash</tag>
-        <tag>merge</tag>
         <tag>GitHub</tag>
       </tags>
   </entry>
@@ -31092,11 +31092,11 @@
         <tag>RabbitMQ</tag>
         <tag>MQ</tag>
         <tag>vhost</tag>
+        <tag>延时消费</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
         <tag>消息堆积</tag>
-        <tag>延时消费</tag>
         <tag>常驻进程</tag>
         <tag>平滑重启</tag>
         <tag>消费模式</tag>
@@ -32997,8 +32997,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>merge</tag>
         <tag>合并</tag>
+        <tag>merge</tag>
         <tag>王小波</tag>
       </tags>
   </entry>
@@ -35540,17 +35540,148 @@ read_xlsx(name, sheet)
 </blockquote>
 <hr>
 <h1 id="七、行政级别"><a href="#七、行政级别" class="headerlink" title="七、行政级别"></a><center><font color="red">七、行政级别</font></center></h1><ol>
-<li>国家级正职(如总理)</li>
-<li>国家级副职(如副总理、国务委员)</li>
-<li>省部级正职(如部长、省长)</li>
-<li>省部级副职(如副部长、副省长)</li>
-<li>厅局级正职(如司长、厅长、市长)</li>
-<li>厅局级副职(如副司长、副厅长、副市长)</li>
-<li>县处级正职(如处长、县长)</li>
-<li>县处级副职(如副处长、副县长)</li>
-<li>乡科级正职(如科长、乡长)</li>
-<li>乡科级副职(如副科长，副乡长)</li>
+<li>正国级：总书记、国家主席、总理、军委主席</li>
+<li>副国级：国家副主席、副总理、军委副主席</li>
+<li>正部级：省委书记、省长、军长、部长</li>
+<li>副部级：省委副书记、副省长、副军长</li>
+<li>正厅级：市委书记、市长、师长、厅长</li>
+<li>副厅级：市委副书记、副市长、副师长</li>
+<li>正处级：县委书记、县长、团长、处长</li>
+<li>副处级：县委副书记、副县长、副团长</li>
+<li>正科级：乡党委书记、乡长、营长、科长</li>
+<li>副科级：乡党委副书记、副乡长、副营长</li>
+<li>科员：非领导职务的人员</li>
 </ol>
+<hr>
+<h1 id="八、公务员-事业编-国企"><a href="#八、公务员-事业编-国企" class="headerlink" title="八、公务员-事业编-国企"></a><center><font color="red">八、公务员-事业编-国企</font></center></h1><h2 id="一、区分"><a href="#一、区分" class="headerlink" title="一、区分"></a>一、区分</h2><ol>
+<li>公务员 = 党政机关（行政编制）</li>
+<li>事业单位 = 公益一类/二类（事业编）</li>
+<li>国企 = 县属国有公司。</li>
+<li>垂直单位 = 上级条线管理，地方协管。</li>
+</ol>
+<h2 id="二、举例-南乐县"><a href="#二、举例-南乐县" class="headerlink" title="二、举例-南乐县"></a>二、举例-南乐县</h2><ol>
+<li>公务员</li>
+</ol>
+<ul>
+<li>县委机关（公务员行政编）<ul>
+<li>县委办公室</li>
+<li>县纪委监委（含派驻纪检监察组）</li>
+<li>县委组织部</li>
+<li>县委宣传部</li>
+<li>县委统一战线工作部</li>
+<li>县委政法委员会</li>
+<li>县委机构编制委员会办公室</li>
+<li>县委党校（机关行政编 + 事业编）</li>
+<li>共青团南乐县委、县妇联、县工商联（群团组织，行政编制</li>
+</ul>
+</li>
+<li>县人大、县政协（公务员）<ul>
+<li>南乐县人大常委会</li>
+<li>南乐县政协委员会</li>
+</ul>
+</li>
+<li>县政府组成部门（公务员行政编制）<ul>
+<li>县政府办公室</li>
+<li>发展和改革委员会</li>
+<li>教育局</li>
+<li>科学技术局</li>
+<li>工业和信息化局</li>
+<li>公安局</li>
+<li>民政局</li>
+<li>司法局</li>
+<li>财政局</li>
+<li>人力资源和社会保障局</li>
+<li>自然资源和规划局</li>
+<li>生态环境局</li>
+<li>住房和城乡建设局</li>
+<li>交通运输局</li>
+<li>水利局</li>
+<li>农业农村局</li>
+<li>商务局</li>
+<li>文化广电体育旅游局</li>
+<li>卫生健康委员会</li>
+<li>退役军人事务局</li>
+<li>应急管理局</li>
+<li>审计局</li>
+<li>市场监督管理局</li>
+<li>统计局</li>
+<li>医疗保障局</li>
+<li>城市管理局</li>
+<li>信访局</li>
+<li>行政审批和政务信息管理局</li>
+<li>先进制造业开发区管委会</li>
+</ul>
+</li>
+<li>法检两院（公务员，司法专项编制）<ul>
+<li>南乐县人民法院</li>
+<li>南乐县人民检察院<ul>
+<li>乡镇机关（公务员）</li>
+</ul>
+</li>
+<li>共12个乡镇：城关镇、杨村镇、张果屯镇、韩张镇、千口镇、福堪镇、谷金楼镇、西邵乡、寺庄乡、梁村乡、元村镇、近德固镇。每个乡镇设：党委、人大、政府；内设乡镇综合行政执法大队；派驻机构：派出所、司法所、市场监管所、财政所等。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>主要事业单位（事业编制，公益一类 / 二类）</li>
+</ol>
+<ul>
+<li>县直重点事业单位<ul>
+<li>政务服务中心</li>
+<li>金融服务中心</li>
+<li>人防事务中心</li>
+<li>生态环境综合服务中心</li>
+<li>城市管理服务中心</li>
+<li>林业发展中心</li>
+<li>农业技术推广中心</li>
+<li>公共资源交易中心</li>
+<li>融媒体中心（电视台、广播）</li>
+</ul>
+</li>
+<li>教育系统（事业编大头）<ul>
+<li>南乐县第一高级中学</li>
+<li>南乐县第二高级中学</li>
+<li>职业中等专业学校</li>
+<li>各乡镇初中、中心小学、公办幼儿园。</li>
+</ul>
+</li>
+<li>卫健系统<ul>
+<li>南乐县人民医院</li>
+<li>南乐县中医院</li>
+<li>疾控中心</li>
+<li>妇幼保健院</li>
+<li>各乡镇卫生院</li>
+</ul>
+</li>
+<li>文广旅体<ul>
+<li>文化馆</li>
+<li>图书馆</li>
+<li>博物馆</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><p>垂直管理单位（编制不归南乐县，上级主管）</p>
+<ul>
+<li>国家税务总局南乐县税务局</li>
+<li>南乐县烟草专卖局</li>
+<li>濮阳市住房公积金管理中心南乐分中心</li>
+<li>南乐县邮政分公司</li>
+<li>人行南乐县支行、各国有商业银行分支机构（工行、农行、中行、建行、农信农商行）</li>
+</ul>
+</li>
+<li><p>县属国有企业（南乐县国资运营管理集团体系）</p>
+</li>
+</ol>
+<ul>
+<li><strong>南乐县国资运营管理集团有限公司</strong>（县财政局 100% 持股，县平台母公司）</li>
+<li>南乐投资集团有限公司</li>
+<li>南乐县中豫基础设施投资有限公司</li>
+<li>南乐县乐投交通能源发展有限公司</li>
+<li>南乐县志达文化教育有限公司</li>
+<li>南乐县全域拓维资源开发管理有限公司</li>
+<li>南乐县万晟资产运营有限公司</li>
+</ul>
 ]]></content>
       <categories>
         <category>Hobby</category>
@@ -35564,6 +35695,10 @@ read_xlsx(name, sheet)
         <tag>派出所</tag>
         <tag>直辖市</tag>
         <tag>地级市</tag>
+        <tag>公务员</tag>
+        <tag>行政编</tag>
+        <tag>事业编</tag>
+        <tag>南乐县</tag>
       </tags>
   </entry>
   <entry>
@@ -46529,9 +46664,6 @@ read_xlsx(name, sheet)
       <tags>
         <tag>变量</tag>
         <tag>Linux</tag>
-        <tag>标准输入</tag>
-        <tag>标准输出</tag>
-        <tag>标准错误输出</tag>
         <tag>shell</tag>
         <tag>let</tag>
         <tag>source</tag>
@@ -46539,6 +46671,9 @@ read_xlsx(name, sheet)
         <tag>declare</tag>
         <tag>local</tag>
         <tag>特殊变量</tag>
+        <tag>标准输入</tag>
+        <tag>标准输出</tag>
+        <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
       </tags>
@@ -52421,8 +52556,8 @@ read_xlsx(name, sheet)
         <category>Hobby</category>
       </categories>
       <tags>
-        <tag>褚时健</tag>
         <tag>王小波</tag>
+        <tag>褚时健</tag>
         <tag>文学</tag>
         <tag>发现潜力</tag>
         <tag>发展能力</tag>
@@ -55228,7 +55363,7 @@ read_xlsx(name, sheet)
 <h2 id="二、参考-2"><a href="#二、参考-2" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
 <li><a href="https://blog.csdn.net/Aoman_Hao/article/details/89416634">参考一</a></li>
 <li><a href="https://github.com/MikeCoder/hexo-tag-cloud">参考二</a></li>
-<li>[参考三](<a href="https://github.com/D0n9X1n/hexo-tag-cloud">https://github.com/D0n9X1n/hexo-tag-cloud</a>_</li>
+<li><a href="https://github.com/D0n9X1n/hexo-tag-cloud">参考三</a></li>
 </ol>
 <h2 id="三、后续"><a href="#三、后续" class="headerlink" title="三、后续"></a>三、后续</h2><blockquote>
 <p>安装上面的步骤操作正常情况下是没有问题的，<code>hexo g</code>的时候提示内存爆了，类似这样的提示<code>FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory</code>。</p>
