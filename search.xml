@@ -57649,9 +57649,14 @@ read_xlsx(name, sheet)
 <p>list_tags()这块儿依据个人情况而定，我的有近千个tag，最后出来的效果让人看了头皮发麻，BZ改成了list_categories()</p>
 </blockquote>
 <ol start="4">
-<li>修改主配置文件_config.yml，加入一下内容</li>
+<li>修改主配置文件_config.yml，加入一下内容(错的，需要修改主题下的配置文件)</li>
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># hexo-tag-cloud</span><br><span class="line">tag_cloud:</span><br><span class="line">    textFont: Trebuchet MS, Helvetica</span><br><span class="line">    textColor: '#333'</span><br><span class="line">    textHeight: 25</span><br><span class="line">    outlineColor: '#E2E1D1'</span><br><span class="line">    maxSpeed: 0.1 </span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>修改主题配置文件_config.yml</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line"># themes/next/_config.yml</span><br><span class="line">tagcloud:</span><br><span class="line">  textFont: Trebuchet MS, Helvetica</span><br><span class="line">  textColor: '#555'</span><br><span class="line">  textHeight: 16</span><br><span class="line">  outlineColor: '#ececec'</span><br><span class="line">  maxSpeed: 0.05</span><br><span class="line">  pauseOnSelected: true</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="二、参考-2"><a href="#二、参考-2" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
 <li><a href="https://blog.csdn.net/Aoman_Hao/article/details/89416634">参考一</a></li>
