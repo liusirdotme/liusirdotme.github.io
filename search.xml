@@ -35786,8 +35786,8 @@ read_xlsx(name, sheet)
 <h1 id="一、机关单位和事业单位"><a href="#一、机关单位和事业单位" class="headerlink" title="一、机关单位和事业单位"></a><center><font color="red">一、机关单位和事业单位</font></center></h1><table>
 <thead>
 <tr>
+<th>名词</th>
 <th>单位/人</th>
-<th>类别</th>
 <th>性质</th>
 <th>编制类型</th>
 <th>人员身份说明</th>
@@ -35797,8 +35797,8 @@ read_xlsx(name, sheet)
 </tr>
 </thead>
 <tbody><tr>
-<td>单位</td>
 <td>机关单位</td>
+<td>单位</td>
 <td>党政机关（国家行政/司法/权力机构）</td>
 <td>行政编制</td>
 <td>正式在岗人员为公务员</td>
@@ -35807,8 +35807,8 @@ read_xlsx(name, sheet)
 <td>行使国家公权力；无事业编，仅少量编外合同工、临时工</td>
 </tr>
 <tr>
-<td>单位</td>
 <td>事业单位</td>
+<td>单位</td>
 <td>社会公益服务机构，非政府机关、非企业</td>
 <td>事业编制</td>
 <td>正式在岗人员为事业编人员</td>
@@ -35817,8 +35817,8 @@ read_xlsx(name, sheet)
 <td>无行政执法权；分管理岗、专技岗、工勤岗，存在大量编外人员</td>
 </tr>
 <tr>
-<td>人员</td>
 <td>公务员</td>
+<td>人员</td>
 <td>机关正式在编公职人员</td>
 <td>行政编制（核心身份）</td>
 <td>就职于党政机关，行使公职权力</td>
@@ -35827,8 +35827,8 @@ read_xlsx(name, sheet)
 <td>需国考/省考招录；待遇稳定、晋升体系完善，行政级别明确</td>
 </tr>
 <tr>
-<td>人员</td>
 <td>事业编</td>
+<td>人员</td>
 <td>事业单位正式在编公职人员</td>
 <td>事业编制</td>
 <td>就职于事业单位，从事公益服务工作</td>
@@ -35837,8 +35837,8 @@ read_xlsx(name, sheet)
 <td>≠公务员，普通事业编无法直接转行政编，可通过遴选、调任晋升</td>
 </tr>
 <tr>
-<td>单位</td>
 <td>国企</td>
+<td>单位</td>
 <td>全民所有制国有企业（企业性质）</td>
 <td>无编制，全员劳动合同制</td>
 <td>企业职工，非公职人员</td>
@@ -35847,8 +35847,8 @@ read_xlsx(name, sheet)
 <td>不属于体制内机关事业；仅少数高管可调任党政机关任职</td>
 </tr>
 <tr>
-<td>单位</td>
 <td>央企</td>
+<td>单位</td>
 <td>中央直属国有企业（国企子集）</td>
 <td>无编制，全员劳动合同制</td>
 <td>央企正式职工，市场化用工</td>
