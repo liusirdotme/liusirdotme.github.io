@@ -14,11 +14,11 @@ addLoadEvent(function() {
     console.log('tag cloud plugin rock and roll!');
 
     try {
-        TagCanvas.textFont = "Trebuchet MS, Helvetica";
-        TagCanvas.textColour = "#555";
-        TagCanvas.textHeight = 16;
-        TagCanvas.outlineColour = "#ececec";
-        TagCanvas.maxSpeed = 0.05;
+        TagCanvas.textFont = "Helvetica, Arial, \"PingFang SC\", \"Microsoft YaHei\", \"Hiragino Sans GB\", \"Source Han Sans CN\", \"Noto Sans CJK SC\", sans-serif";
+        TagCanvas.textColour = "#333";
+        TagCanvas.textHeight = 15;
+        TagCanvas.outlineColour = "#E2E1C1";
+        TagCanvas.maxSpeed = 0.03;
         TagCanvas.freezeActive = true;
         TagCanvas.outlineMethod = 'block';
         TagCanvas.minBrightness = 0.2;
