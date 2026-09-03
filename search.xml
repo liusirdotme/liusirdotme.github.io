@@ -32974,103 +32974,10 @@
       </tags>
   </entry>
   <entry>
-    <title>正则表达式之断言</title>
-    <url>/2017/09/29/RegExp-%E6%96%AD%E8%A8%80/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>断言是编程术语，表示为一些布尔表达式，程序员相信在程序中的某个特定点该表达式值为真，可以在任何时候启用和禁用断言验证，因此可以在测试时启用断言而在部署时禁用断言。同样，程序投入运行后，最终用户在遇到问题时可以重新启用断言。</p>
-</blockquote>
-<span id="more"></span>
-
-]]></content>
-      <categories>
-        <category>RegExp</category>
-      </categories>
-      <tags>
-        <tag>正则表达式</tag>
-        <tag>断言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正则表达式之反向引用</title>
-    <url>/2017/09/24/RegExp-%E5%8F%8D%E5%90%91%E5%BC%95%E7%94%A8/</url>
+    <title>正则表达</title>
+    <url>/2017/09/03/PHP-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
 <p>夏商与西周，东周分两段。春秋和战国，一统秦两汉。三分魏楚吴，二晋前后沿。南北朝并立，隋唐五代传。宋元明清后，皇朝至此完。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li>在一个字符类外面，反斜线紧跟一个大于0(可能还有一位数)的数字就是一个到模式中之前出现的某个捕获子组的后向引用，也称反向引用。<ul>
-<li></li>
-</ul>
-</li>
-</ol>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
-<li>例1</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$str = "aaa.bbb.ccc.ddd.com.cn";</span><br><span class="line">$p   = "/(a{3})\.(b{3})(.*)/";</span><br><span class="line">$new = preg_replace($p, '\2.\1\3', $str);</span><br><span class="line">echo $new;// bbb.aaa.ccc.ddd.com.cn</span><br></pre></td></tr></tbody></table></figure>]]></content>
-      <categories>
-        <category>RegExp</category>
-      </categories>
-      <tags>
-        <tag>正则表达式</tag>
-        <tag>反向引用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正则表达式之库函数</title>
-    <url>/2017/09/20/RegExp-%E5%BA%93%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>现象级是一个外来形容词，由英文phenomenal直译过来，意思是指卓越的，一般是形容超级优秀的人或事件。So，詹姆斯是NBA现役最优秀的现象级球星，没毛病。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、PCRE-兼容Perl"><a href="#一、PCRE-兼容Perl" class="headerlink" title="一、PCRE(兼容Perl)"></a>一、PCRE(兼容Perl)</h2><ol>
-<li>preg_filter — 执行一个正则表达式搜索和替换</li>
-<li>preg_grep — 返回匹配模式的数组条目</li>
-<li>preg_last_error — 返回最后一个PCRE正则执行产生的错误代码</li>
-<li>preg_match_all — 执行一个全局正则表达式匹配</li>
-<li>preg_match — 执行匹配正则表达式</li>
-<li>preg_quote — 转义正则表达式字符</li>
-<li>preg_replace_callback_array — Perform a regular expression search and replace using callbacks</li>
-<li>preg_replace_callback — 执行一个正则表达式搜索并且使用一个回调进行替换</li>
-<li>preg_replace — 执行一个正则表达式的搜索和替换</li>
-<li>preg_split — 通过一个正则表达式分隔字符串</li>
-</ol>
-<h2 id="二、POSIX"><a href="#二、POSIX" class="headerlink" title="二、POSIX"></a>二、POSIX</h2><ol>
-<li>ereg_replace — 正则表达式替换</li>
-<li>ereg — 正则表达式匹配</li>
-<li>eregi_replace — 不区分大小写的正则表达式替换</li>
-<li>eregi — 不区分大小写的正则表达式匹配</li>
-<li>split — 用正则表达式将字符串分割到数组中</li>
-<li>spliti — 用正则表达式不区分大小写将字符串分割到数组中</li>
-<li>sql_regcase — 产生用于不区分大小的匹配的正则表达式</li>
-</ol>
-<h2 id="三、PCRE和POXIS对比"><a href="#三、PCRE和POXIS对比" class="headerlink" title="三、PCRE和POXIS对比"></a>三、PCRE和POXIS对比</h2><ol>
-<li>PCRE函数需要模式以分隔符闭合。</li>
-<li>不像POSIX，PCRE扩展没有专门用于大小写不敏感匹配的函数。取而代之的是，支持使用i(PCRE_CASELESS)模式修饰符完成同样的工作。<ul>
-<li>其他模式修饰符同样可用于改变匹配策略。</li>
-</ul>
-</li>
-<li>POSIX函数从最左面开始寻找最长的匹配，但是 PCRE 在第一个合法匹配后停止。<ul>
-<li>使用模式 one(self)?(selfsufficient)? 在字符串oneselfsufficient上匹配，PCRE会匹配到oneself，但是使用POSIX，结果将是整个字符串oneselfsufficient。</li>
-<li>两个子串都匹配原始字符串，但是 POSIX 将 最长的作为结果。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>RegExp</category>
-      </categories>
-      <tags>
-        <tag>正则表达式</tag>
-        <tag>库函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正则表达式之入门</title>
-    <url>/2017/09/03/RegExp-%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>东南亚(SEA)位于亚洲东南部，包括中南半岛和马来群岛两大部分。中南半岛因位于中国以南而得名，南部的细长部分叫马来半岛。马来群岛散布在太平洋和印度洋之间的广阔海域，是世界最大的群岛，共有两万多个岛屿，分属印度尼西亚、马来西亚、东帝汶、文莱和菲律宾等国。东南亚地区共有11个国家：越南、老挝、柬埔寨、泰国、缅甸、马来西亚、新加坡、印度尼西亚、文莱、菲律宾、东帝汶，面积约457万平方千米。其中老挝是东南亚唯一的内陆国，越南、老挝、缅甸与中华人民共和国陆上接壤，仅东帝汶不是东盟成员。 </p>
 </blockquote>
 <span id="more"></span>
 
@@ -33177,15 +33084,71 @@
 <li>表示排除不符合的字符</li>
 <li><code>^</code>一般放在<code>[]</code>中，如<code>[^1-5]</code>，该字符不是1~5之间的数字</li>
 </ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$s = '6789';</span><br><span class="line">$p = '/[^1-5]/';</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; 6</span><br><span class="line">            [1] =&gt; 7</span><br><span class="line">            [2] =&gt; 8</span><br><span class="line">            [3] =&gt; 9</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure></li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$s = '6789';</span><br><span class="line">$p = '/[^1-5]/';</span><br><span class="line">$r = preg_match_all($p, $s, $match);</span><br><span class="line">print_r($match);</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; Array</span><br><span class="line">        (</span><br><span class="line">            [0] =&gt; 6</span><br><span class="line">            [1] =&gt; 7</span><br><span class="line">            [2] =&gt; 8</span><br><span class="line">            [3] =&gt; 9</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+</ol>
+<hr>
+<h1 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a><center><font color="red">库函数</font></center></h1><h2 id="一、PCRE-兼容Perl"><a href="#一、PCRE-兼容Perl" class="headerlink" title="一、PCRE(兼容Perl)"></a>一、PCRE(兼容Perl)</h2><ol>
+<li>preg_filter — 执行一个正则表达式搜索和替换</li>
+<li>preg_grep — 返回匹配模式的数组条目</li>
+<li>preg_last_error — 返回最后一个PCRE正则执行产生的错误代码</li>
+<li>preg_match_all — 执行一个全局正则表达式匹配</li>
+<li>preg_match — 执行匹配正则表达式</li>
+<li>preg_quote — 转义正则表达式字符</li>
+<li>preg_replace_callback_array — Perform a regular expression search and replace using callbacks</li>
+<li>preg_replace_callback — 执行一个正则表达式搜索并且使用一个回调进行替换</li>
+<li>preg_replace — 执行一个正则表达式的搜索和替换</li>
+<li>preg_split — 通过一个正则表达式分隔字符串</li>
+</ol>
+<h2 id="二、POSIX"><a href="#二、POSIX" class="headerlink" title="二、POSIX"></a>二、POSIX</h2><ol>
+<li>ereg_replace — 正则表达式替换</li>
+<li>ereg — 正则表达式匹配</li>
+<li>eregi_replace — 不区分大小写的正则表达式替换</li>
+<li>eregi — 不区分大小写的正则表达式匹配</li>
+<li>split — 用正则表达式将字符串分割到数组中</li>
+<li>spliti — 用正则表达式不区分大小写将字符串分割到数组中</li>
+<li>sql_regcase — 产生用于不区分大小的匹配的正则表达式</li>
+</ol>
+<h2 id="三、PCRE和POXIS对比"><a href="#三、PCRE和POXIS对比" class="headerlink" title="三、PCRE和POXIS对比"></a>三、PCRE和POXIS对比</h2><ol>
+<li>PCRE函数需要模式以分隔符闭合。</li>
+<li>不像POSIX，PCRE扩展没有专门用于大小写不敏感匹配的函数。取而代之的是，支持使用i(PCRE_CASELESS)模式修饰符完成同样的工作。<ul>
+<li>其他模式修饰符同样可用于改变匹配策略。</li>
+</ul>
+</li>
+<li>POSIX函数从最左面开始寻找最长的匹配，但是 PCRE 在第一个合法匹配后停止。<ul>
+<li>使用模式 one(self)?(selfsufficient)? 在字符串oneselfsufficient上匹配，PCRE会匹配到oneself，但是使用POSIX，结果将是整个字符串oneselfsufficient。</li>
+<li>两个子串都匹配原始字符串，但是 POSIX 将 最长的作为结果。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a><center><font color="red">反向引用</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>在一个字符类外面，反斜线紧跟一个大于0(可能还有一位数)的数字就是一个到模式中之前出现的某个捕获子组的后向引用，也称反向引用。<ul>
+<li></li>
+</ul>
+</li>
+</ol>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>例1</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$str = "aaa.bbb.ccc.ddd.com.cn";</span><br><span class="line">$p   = "/(a{3})\.(b{3})(.*)/";</span><br><span class="line">$new = preg_replace($p, '\2.\1\3', $str);</span><br><span class="line">echo $new;// bbb.aaa.ccc.ddd.com.cn</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h1 id="断言"><a href="#断言" class="headerlink" title="断言"></a><center><font color="red">断言</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>断言是编程术语，表示为一些布尔表达式，程序员相信在程序中的某个特定点该表达式值为真，可以在任何时候启用和禁用断言验证，因此可以在测试时启用断言而在部署时禁用断言。同样，程序投入运行后，最终用户在遇到问题时可以重新启用断言。</li>
 </ol>
 ]]></content>
       <categories>
-        <category>RegExp</category>
+        <category>PHP</category>
       </categories>
       <tags>
         <tag>正则表达式</tag>
-        <tag>入门</tag>
+        <tag>断言</tag>
+        <tag>PHP</tag>
+        <tag>反向引用</tag>
+        <tag>库函数</tag>
       </tags>
   </entry>
   <entry>
