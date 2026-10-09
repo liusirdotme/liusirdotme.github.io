@@ -22565,39 +22565,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git工作流</title>
-    <url>/2019/08/22/Git-%E5%B7%A5%E4%BD%9C%E6%B5%81/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>Gitlab CI/CD是一款用于持续集成(CI)，持续交付(CD)的工具，相似的工具有Jenkins、Travis CI、GoCD等。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工作流(Workflow)指业务过程的部分或整体在计算机应用环境下的自动化，是对工作流程及其各操作步骤之间业务规则的抽象、概括描述。在计算机中，工作流属于计算机支持的协同工作(CSCW)的一部分。后者是普遍地研究一个群体如何在计算机的帮助下实现协同工作的。工作流主要解决的主要问题是：为了实现某个业务目标，利用计算机在多个参与者之间按某种预定规则自动传递文档、信息或者任务。</p>
-<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
-<li><p>中心化的工作流：和Subversion一样，中心化的工作流将中央仓库作为项目中所有修改的唯一入口，默认的开发分支叫做master，所有更改都被提交到这个分支，这种工作流不需要master之外的其它分支。开发者将中央仓库克隆到本地后开始工作，在本地项目副本中可以像SVN一样修改文件和提交更改；不过，这些新的提交被保存在本地，它们和中央仓库完全隔离。为了向官方项目发布修改，开发者将他们的本地master分支推送到中央仓库，这一步等同于svn commit。</p>
-</li>
-<li><p>基于功能分支的工作流：Feature分支工作流同样使用中央仓库，master同样代表官方的项目历史，和中心化的工作流不同的是开发者每次进行新的工作时创建一个新的分支。Feature分支应该包含描述性的名称，比如animated-menu-items或issue-#1061，每个分支都应该有一个清晰、高度集中的目的。</p>
-</li>
-<li><p>Gitflow工作流：GitFlow工作流仍然使用中央仓库作为开发者沟通的中心。和其他工作流一样，开发者在本地工作，将分支推送到中央仓库，唯一的区别在于项目的分支结构，可以分为历史分支、功能分支、发布分支、维护分支。</p>
-</li>
-<li><p>Fork工作流：Fork工作流其它工作流不同，它不是使用唯一的服务端仓库作为中央代码库，而是给予每个开发者一个服务端仓库。也就是说每个贡献者都有两个Git仓库：一个私有的本地仓库和一个公开的服务端仓库。开发者通过执行克隆操作将远程公共仓库复制到本地，这是有的开发环境。做完修改后准备提交时，代码将被推送到自己的公开仓库而非官方仓库，然后向主仓库发起一个Pull Request，项目维护者审查没问题后进而合并到官方仓库。</p>
-</li>
-<li><p>dev=&gt;test=&gt;pre=&gt;master=&gt;release </p>
-</li>
-</ol>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://www.cnblogs.com/aligege/p/9603198.html">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>工作流</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>selenium</title>
     <url>/2019/08/21/Tools-selenium/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -27264,6 +27231,15 @@
 </li>
 <li>刷新DNS：ipconfig/flushdns</li>
 <li><a href="https://cloud.tencent.com/developer/article/1835785">参考链接</a></li>
+</ul>
+<ol start="37">
+<li>git报错</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">"git log"失败，错误代码 128:fatal:detected dubious ownership in</span><br><span class="line">repository at d:/phpstudy_pro/www/abandon/abyss weixin_pc'</span><br><span class="line">d:/phpstudy_pro/www/abandon/abyss weixin_pc' is owned by:</span><br><span class="line">builtin/administrators (s-1-5-32-544)</span><br><span class="line">but the current user is:</span><br><span class="line">liusir/administrator</span><br><span class="line">(s-1-5-21-1136792711-3309325150-3176985401-500)</span><br><span class="line">to add an exception for this directory,call:</span><br><span class="line">git config --global--add safe.directory</span><br><span class="line">d://phpstudy_pro/www/abandon/abyss_weixin_pc</span><br><span class="line">(d:/phpstudy_pro/wwwwabandonlabyss weixin_pc)</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>git config –global –add safe.directory D:/phpstudy_pro/WWW/abandon/abyss_weixin_pc</li>
+<li>git config –global –add safe.directory “*”</li>
 </ul>
 <h2 id="十、修改commit-message"><a href="#十、修改commit-message" class="headerlink" title="十、修改commit message"></a>十、修改commit message</h2><ol>
 <li><p>修改已commit未push最近的提交</p>
@@ -34544,7 +34520,7 @@ read_xlsx(name, sheet)
 </blockquote>
 <span id="more"></span>
 
-<blockquote>
+<h1 id="合并"><a href="#合并" class="headerlink" title="合并"></a><center><font color="red">合并</font></center></h1><blockquote>
 <p>在Git中整合来自不同分支的修改主要有两种方法：<code>merge</code>以及 <code>rebase</code>。</p>
 </blockquote>
 <h2 id="一、merge"><a href="#一、merge" class="headerlink" title="一、merge"></a>一、merge</h2><ol>
@@ -34562,15 +34538,272 @@ read_xlsx(name, sheet)
 <h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA">参考一</a></li>
 </ol>
+<hr>
+<h1 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a><center><font color="red">回滚</font></center></h1><h2 id="一、reset"><a href="#一、reset" class="headerlink" title="一、reset"></a>一、reset</h2><ol>
+<li>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</li>
+</ol>
+<h2 id="二、revert"><a href="#二、revert" class="headerlink" title="二、revert"></a>二、revert</h2><ol>
+<li><p>git revert是用于“反做”某一个版本，以达到撤销该版本的修改的目的。</p>
+<blockquote>
+<p>比如，我们commit了三个版本（版本一、版本二、 版本三），突然发现版本二不行（如：有bug），想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 git revert 命令来反做版本二，生成新的版本四，这个版本四里会保留版本三的东西，但撤销了版本二的东西。</p>
+</blockquote>
+</li>
+<li><p>作用</p>
+<blockquote>
+<p>通过反做创建一个新的版本，这个版本的内容与我们要回退到的目标版本一样，但是HEAD指针是指向这个新生成的版本而不是目标版本</p>
+</blockquote>
+</li>
+<li><p>实现</p>
+<ul>
+<li>git revert -n commit-id</li>
+<li>git commit -m 版本名</li>
+<li>git push </li>
+</ul>
+</li>
+</ol>
+<h2 id="三、各种恢复"><a href="#三、各种恢复" class="headerlink" title="三、各种恢复"></a>三、各种恢复</h2><ol>
+<li><p>未add</p>
+<ul>
+<li>撤销某个文件<code>git checkout -- filename</code></li>
+<li>撤销所有修改<code>git checkout .</code><ul>
+<li>放弃掉所有还没有加入到缓存区的修改：内容修改与整个文件删除</li>
+<li>不会删除刚新建的文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>已add</p>
+<ul>
+<li>撤销某个文件<code>git reset HEAD filename</code></li>
+<li>撤销所有修改<code>git reset HEAD .</code><ul>
+<li>用来清除<code>git</code>对于文件修改的缓存，相当于撤销<code>git add</code>命令</li>
+<li>继续撤销则参看未<code>add</code>情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>已commit</p>
+<ul>
+<li>撤销到上一个状态<code>git reset --hard HEAD^</code></li>
+<li>撤销到任一个状态<code>git reset --hard  commit_id</code></li>
+<li>强推<code>git push -f</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="变基"><a href="#变基" class="headerlink" title="变基"></a><center><font color="red">变基</font></center></h1><blockquote>
+<p>⚠️ 前置红线：<strong>rebase 会重写 commit 哈希</strong>，只用于本地未推送 / 自己私有分支；公共分支、别人已经拉取过的提交严禁 rebase！</p>
+</blockquote>
+<h2 id="一、修改提交信息（2种场景）"><a href="#一、修改提交信息（2种场景）" class="headerlink" title="一、修改提交信息（2种场景）"></a>一、修改提交信息（2种场景）</h2><h3 id="场景1：只修改【最近1次】提交备注（不需要rebase）"><a href="#场景1：只修改【最近1次】提交备注（不需要rebase）" class="headerlink" title="场景1：只修改【最近1次】提交备注（不需要rebase）"></a>场景1：只修改【最近1次】提交备注（不需要rebase）</h3><p>命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></tbody></table></figure>
+<p>作用：覆盖上一次 commit；如有新 add 的文件，会一并并入本次提交。<br>操作：</p>
+<ol>
+<li>执行命令，进入vim</li>
+<li><code>i</code> 编辑注释</li>
+<li><code>Esc</code> → <code>:wq</code> 保存退出</li>
+</ol>
+<h3 id="场景2：修改【历史某一条-多条】commit备注（交互式rebase）"><a href="#场景2：修改【历史某一条-多条】commit备注（交互式rebase）" class="headerlink" title="场景2：修改【历史某一条/多条】commit备注（交互式rebase）"></a>场景2：修改【历史某一条/多条】commit备注（交互式rebase）</h3><p>命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 方式1：指定父哈希</span></span><br><span class="line">git rebase -i &lt;目标commit_hash&gt;^</span><br><span class="line"><span class="comment"># 方式2：简写，最近n条提交，例如最近3条</span></span><br><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></tbody></table></figure>
+<p>作用：进入交互式编辑列表<br>操作：</p>
+<ol>
+<li>把目标 commit 前面 <code>pick</code> → <code>reword</code>（简写r）</li>
+<li><code>:wq</code> 保存退出，依次修改每条commit备注</li>
+<li>无需 git commit –amend，改完自动完成</li>
+</ol>
+<h2 id="二、修改历史提交的【代码内容】（交互式rebase-edit）"><a href="#二、修改历史提交的【代码内容】（交互式rebase-edit）" class="headerlink" title="二、修改历史提交的【代码内容】（交互式rebase edit）"></a>二、修改历史提交的【代码内容】（交互式rebase edit）</h2><p>场景：很久以前的commit写错代码，需要回溯修改代码+提交信息</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git rebase -i &lt;目标commit_hash&gt;^</span><br><span class="line"><span class="comment"># 或者 git rebase -i HEAD~n</span></span><br></pre></td></tr></tbody></table></figure>
+<p>作用：停留在目标commit节点，允许修改源码<br>操作：</p>
+<ol>
+<li>将目标 commit 的 <code>pick</code> → <code>edit</code>（简写e）</li>
+<li><code>:wq</code> 保存退出</li>
+<li>修改代码 → <code>git add</code></li>
+<li>修改提交备注：<code>git commit --amend</code></li>
+<li>继续下一个待edit提交：<code>git rebase --continue</code><blockquote>
+<p>多个edit会逐个暂停，重复3~5步骤；中途不想改：<code>git rebase --abort</code></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="三、合并多条历史提交（squash-fixup）"><a href="#三、合并多条历史提交（squash-fixup）" class="headerlink" title="三、合并多条历史提交（squash / fixup）"></a>三、合并多条历史提交（squash / fixup）</h2><p>场景：本地一堆零散小commit，合并成一条干净提交，再推远程</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git rebase -i HEAD~n</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>squash(s)</code>：把当前commit合并到上一条；<strong>保留两条commit注释，可以编辑汇总</strong></li>
+<li><code>fixup(f)</code>：把当前commit合并到上一条；<strong>丢弃当前commit注释，只保留上一条</strong><br>操作：</li>
+</ul>
+<ol>
+<li>把要被合并的commit前面改为 s / f（保留第一条为pick）</li>
+<li><code>:wq</code> 保存，squash会弹出编辑器合并备注</li>
+<li>确认后完成合并</li>
+</ol>
+<h2 id="四、删除历史提交记录-drop"><a href="#四、删除历史提交记录-drop" class="headerlink" title="四、删除历史提交记录 drop"></a>四、删除历史提交记录 drop</h2><p>场景：本地提交里有一条错误提交，直接删掉这条记录</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git rebase -i HEAD~n</span><br></pre></td></tr></tbody></table></figure>
+<p>操作：</p>
+<ol>
+<li>目标commit前面 <code>pick</code> → <code>drop(d)</code></li>
+<li><code>:wq</code> 保存，该提交直接从历史移除</li>
+</ol>
+<h2 id="五、分支变基（非交互式-rebase，常用在合并分支）"><a href="#五、分支变基（非交互式-rebase，常用在合并分支）" class="headerlink" title="五、分支变基（非交互式 rebase，常用在合并分支）"></a>五、分支变基（非交互式 rebase，常用在合并分支）</h2><p>场景：基于旧main分支开发，main有新提交，把当前分支所有提交移到main最新节点后面，代替merge，提交线更整洁</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git rebase main</span><br></pre></td></tr></tbody></table></figure>
+<p>作用：把当前分支的提交，逐个在main最新代码上重演<br>冲突处理：</p>
+<ol>
+<li>出现冲突 → 修改冲突文件 → <code>git add</code></li>
+<li>继续变基：<code>git rebase --continue</code></li>
+<li>放弃本次变基，恢复原样：<code>git rebase --abort</code></li>
+</ol>
+<h2 id="六、rebase-通用中断命令（所有交互式-分支rebase都适用）"><a href="#六、rebase-通用中断命令（所有交互式-分支rebase都适用）" class="headerlink" title="六、rebase 通用中断命令（所有交互式/分支rebase都适用）"></a>六、rebase 通用中断命令（所有交互式/分支rebase都适用）</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git rebase --continue</code></td>
+<td>继续执行rebase</td>
+<td>解决冲突后 / edit模式修改完commit后</td>
+</tr>
+<tr>
+<td><code>git rebase --abort</code></td>
+<td>放弃本次rebase，完全回滚到rebase之前状态</td>
+<td>rebase操作一半，不想继续了、冲突解决不了</td>
+</tr>
+</tbody></table>
+<h2 id="七、补充：rebase-交互式指令速查"><a href="#七、补充：rebase-交互式指令速查" class="headerlink" title="七、补充：rebase 交互式指令速查"></a>七、补充：rebase 交互式指令速查</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>简写</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pick</td>
+<td>p</td>
+<td>使用该提交，不作任何修改</td>
+</tr>
+<tr>
+<td>reword</td>
+<td>r</td>
+<td>仅修改commit备注，不改代码</td>
+</tr>
+<tr>
+<td>edit</td>
+<td>e</td>
+<td>修改提交代码/备注</td>
+</tr>
+<tr>
+<td>squash</td>
+<td>s</td>
+<td>合并到上一条，保留注释可编辑</td>
+</tr>
+<tr>
+<td>fixup</td>
+<td>f</td>
+<td>合并到上一条，丢弃当前注释</td>
+</tr>
+<tr>
+<td>drop</td>
+<td>d</td>
+<td>删除这条提交</td>
+</tr>
+</tbody></table>
+<h2 id="八、风险清单"><a href="#八、风险清单" class="headerlink" title="八、风险清单"></a>八、风险清单</h2><ol>
+<li>已经push到公共远程分支，不要rebase，哈希改变会导致团队历史错乱</li>
+<li>强行推送重写后的历史（慎用，私有分支可用）<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">git push --force-with-lease</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>–force-with-lease 比 –force 安全，会校验远程有没有别人新增提交</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h1 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a><center><font color="red">工作流</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工作流(Workflow)指业务过程的部分或整体在计算机应用环境下的自动化，是对工作流程及其各操作步骤之间业务规则的抽象、概括描述。在计算机中，工作流属于计算机支持的协同工作(CSCW)的一部分。后者是普遍地研究一个群体如何在计算机的帮助下实现协同工作的。工作流主要解决的主要问题是：为了实现某个业务目标，利用计算机在多个参与者之间按某种预定规则自动传递文档、信息或者任务。</p>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<li><p>中心化的工作流：和Subversion一样，中心化的工作流将中央仓库作为项目中所有修改的唯一入口，默认的开发分支叫做master，所有更改都被提交到这个分支，这种工作流不需要master之外的其它分支。开发者将中央仓库克隆到本地后开始工作，在本地项目副本中可以像SVN一样修改文件和提交更改；不过，这些新的提交被保存在本地，它们和中央仓库完全隔离。为了向官方项目发布修改，开发者将他们的本地master分支推送到中央仓库，这一步等同于svn commit。</p>
+</li>
+<li><p>基于功能分支的工作流：Feature分支工作流同样使用中央仓库，master同样代表官方的项目历史，和中心化的工作流不同的是开发者每次进行新的工作时创建一个新的分支。Feature分支应该包含描述性的名称，比如animated-menu-items或issue-#1061，每个分支都应该有一个清晰、高度集中的目的。</p>
+</li>
+<li><p>Gitflow工作流：GitFlow工作流仍然使用中央仓库作为开发者沟通的中心。和其他工作流一样，开发者在本地工作，将分支推送到中央仓库，唯一的区别在于项目的分支结构，可以分为历史分支、功能分支、发布分支、维护分支。</p>
+</li>
+<li><p>Fork工作流：Fork工作流其它工作流不同，它不是使用唯一的服务端仓库作为中央代码库，而是给予每个开发者一个服务端仓库。也就是说每个贡献者都有两个Git仓库：一个私有的本地仓库和一个公开的服务端仓库。开发者通过执行克隆操作将远程公共仓库复制到本地，这是有的开发环境。做完修改后准备提交时，代码将被推送到自己的公开仓库而非官方仓库，然后向主仓库发起一个Pull Request，项目维护者审查没问题后进而合并到官方仓库。</p>
+</li>
+<li><p>dev=&gt;test=&gt;pre=&gt;master=&gt;release </p>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://www.cnblogs.com/aligege/p/9603198.html">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Git和GitLab对比"><a href="#Git和GitLab对比" class="headerlink" title="Git和GitLab对比"></a><center><font color="red">Git和GitLab对比</font></center></h1><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>裸 Git 仓库（bare）</th>
+<th>GitLab</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>底层</td>
+<td>原生 Git，无额外程序</td>
+<td>底层就是裸 Git 仓库，外加 Ruby/Go 服务</td>
+</tr>
+<tr>
+<td>Web 界面</td>
+<td>❌ 没有，纯命令行</td>
+<td>✅ 完整 Web UI，浏览代码、提交历史</td>
+</tr>
+<tr>
+<td>用户权限</td>
+<td>仅依赖服务器系统账号（ssh / 文件权限），权限粗糙</td>
+<td>✅ 精细权限：项目 / 组级别，guest/reporter/developer/maintainer/owner</td>
+</tr>
+<tr>
+<td>代码评审</td>
+<td>❌ 原生不支持，只能 push 代码</td>
+<td>✅ Merge Request，评论、代码行批注、评审流程</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>❌ 无</td>
+<td>✅ 内置 GitLab CI 流水线</td>
+</tr>
+<tr>
+<td>Issue/Wiki/看板</td>
+<td>❌ 无</td>
+<td>✅ 全部内置</td>
+</tr>
+<tr>
+<td>WebHook</td>
+<td>需要自己写脚本监听</td>
+<td>✅ 内置 Webhook 配置界面</td>
+</tr>
+<tr>
+<td>操作方式</td>
+<td>ssh /git 协议，命令行 git push/pull</td>
+<td>git 协议 + ssh+https，命令行 + Web 操作</td>
+</tr>
+<tr>
+<td>部署成本</td>
+<td>极低，只需要安装 git</td>
+<td>高，需要数据库、Redis、Runner，资源占用大</td>
+</tr>
+<tr>
+<td>适合场景</td>
+<td>小团队简单代码托管，只需要 git 推拉代码</td>
+<td>企业 / 团队完整研发协同</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>Git</category>
       </categories>
       <tags>
+        <tag>GitLab</tag>
         <tag>Git</tag>
         <tag>合并</tag>
         <tag>merge</tag>
         <tag>王小波</tag>
+        <tag>回滚</tag>
+        <tag>变基</tag>
       </tags>
   </entry>
   <entry>
@@ -34799,75 +35032,6 @@ read_xlsx(name, sheet)
         <tag>二叉树</tag>
         <tag>深度优先</tag>
         <tag>广度优先</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git回滚</title>
-    <url>/2017/03/08/Git-%E5%9B%9E%E6%BB%9A/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>将欲取之，必故与之。—— 春秋时期·老子 《道德经》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、reset"><a href="#一、reset" class="headerlink" title="一、reset"></a>一、reset</h2><ol>
-<li>作用：修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本</li>
-</ol>
-<h2 id="二、revert"><a href="#二、revert" class="headerlink" title="二、revert"></a>二、revert</h2><ol>
-<li><p>git revert是用于“反做”某一个版本，以达到撤销该版本的修改的目的。</p>
-<blockquote>
-<p>比如，我们commit了三个版本（版本一、版本二、 版本三），突然发现版本二不行（如：有bug），想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 git revert 命令来反做版本二，生成新的版本四，这个版本四里会保留版本三的东西，但撤销了版本二的东西。</p>
-</blockquote>
-</li>
-<li><p>作用</p>
-<blockquote>
-<p>通过反做创建一个新的版本，这个版本的内容与我们要回退到的目标版本一样，但是HEAD指针是指向这个新生成的版本而不是目标版本</p>
-</blockquote>
-</li>
-<li><p>实现</p>
-<ul>
-<li>git revert -n commit-id</li>
-<li>git commit -m 版本名</li>
-<li>git push </li>
-</ul>
-</li>
-</ol>
-<h2 id="三、各种恢复"><a href="#三、各种恢复" class="headerlink" title="三、各种恢复"></a>三、各种恢复</h2><ol>
-<li><p>未add</p>
-<ul>
-<li>撤销某个文件<code>git checkout -- filename</code></li>
-<li>撤销所有修改<code>git checkout .</code><ul>
-<li>放弃掉所有还没有加入到缓存区的修改：内容修改与整个文件删除</li>
-<li>不会删除刚新建的文件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>已add</p>
-<ul>
-<li>撤销某个文件<code>git reset HEAD filename</code></li>
-<li>撤销所有修改<code>git reset HEAD .</code><ul>
-<li>用来清除<code>git</code>对于文件修改的缓存，相当于撤销<code>git add</code>命令</li>
-<li>继续撤销则参看未<code>add</code>情况</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>已commit</p>
-<ul>
-<li>撤销到上一个状态<code>git reset --hard HEAD^</code></li>
-<li>撤销到任一个状态<code>git reset --hard  commit_id</code></li>
-<li>强推<code>git push -f</code></li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>reset</tag>
-        <tag>回滚</tag>
       </tags>
   </entry>
   <entry>
