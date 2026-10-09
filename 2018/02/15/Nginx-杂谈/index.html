@@ -141,19 +141,23 @@
   };
 </script>
 
-  <meta name="description" content="Nginx的模块从功能上分为如下三类：Handlers处理器模块、Filters过滤器模块、Proxies代理类模块。">
+  <meta name="description" content="夏后殷商西东周，春秋战国秦皇收，西汉东汉魏蜀吴，西晋东晋兼五胡。匈奴羯氏羌慕容，拓跋代北后称雄。宋齐梁陈是南朝，北魏齐周称北朝。北周灭齐传於隋，隋又灭陈再统一。隋灭唐兴称富强，五代十国各称王。契丹兴起在北方，建号为辽入汴梁。五代梁唐晋汉周，宋朝建国陈桥头。女真建金先灭辽，打破汴京北宋消。南宋偏安在江南，蒙古兴起国号元。灭金灭宋归一统，元朝统治九十年。明代共传十六君，满洲初起号后金。后金国号改为清">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx杂谈">
 <meta property="og:url" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/index.html">
 <meta property="og:site_name" content="liusir.net">
-<meta property="og:description" content="Nginx的模块从功能上分为如下三类：Handlers处理器模块、Filters过滤器模块、Proxies代理类模块。">
+<meta property="og:description" content="夏后殷商西东周，春秋战国秦皇收，西汉东汉魏蜀吴，西晋东晋兼五胡。匈奴羯氏羌慕容，拓跋代北后称雄。宋齐梁陈是南朝，北魏齐周称北朝。北周灭齐传於隋，隋又灭陈再统一。隋灭唐兴称富强，五代十国各称王。契丹兴起在北方，建号为辽入汴梁。五代梁唐晋汉周，宋朝建国陈桥头。女真建金先灭辽，打破汴京北宋消。南宋偏安在江南，蒙古兴起国号元。灭金灭宋归一统，元朝统治九十年。明代共传十六君，满洲初起号后金。后金国号改为清">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/http%E8%AF%B7%E6%B1%82.png">
+<meta property="og:image" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/web.jpeg">
+<meta property="og:image" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/OSI.jpeg">
+<meta property="og:image" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/L1.jpeg">
+<meta property="og:image" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/N1.jpeg">
 <meta property="article:published_time" content="2018-02-15T08:40:47.000Z">
-<meta property="article:modified_time" content="2025-07-30T07:01:40.459Z">
+<meta property="article:modified_time" content="2026-10-09T10:24:55.057Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Nginx">
-<meta property="article:tag" content="状态码 - 499 - curl">
+<meta property="article:tag" content="状态码 - 499 - curl - echo - 负载均衡 - 反向代理 - Openresty - Lua - LVS - HAProxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/http%E8%AF%B7%E6%B1%82.png">
   <link rel="canonical" href="https://liusir.net/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/">
@@ -375,13 +379,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.1k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>3 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -394,7 +398,7 @@
 
       
         <script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>Nginx的模块从功能上分为如下三类：Handlers处理器模块、Filters过滤器模块、Proxies代理类模块。</p>
+<p>夏后殷商西东周，春秋战国秦皇收，西汉东汉魏蜀吴，西晋东晋兼五胡。匈奴羯氏羌慕容，拓跋代北后称雄。宋齐梁陈是南朝，北魏齐周称北朝。北周灭齐传於隋，隋又灭陈再统一。隋灭唐兴称富强，五代十国各称王。契丹兴起在北方，建号为辽入汴梁。五代梁唐晋汉周，宋朝建国陈桥头。女真建金先灭辽，打破汴京北宋消。南宋偏安在江南，蒙古兴起国号元。灭金灭宋归一统，元朝统治九十年。明代共传十六君，满洲初起号后金。后金国号改为清，入关称帝都北京。人民觉悟革命起，清帝退位民国立。人民民主再胜利，齐心奔向共产国。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -600,6 +604,315 @@
 <li><a target="_blank" rel="noopener" href="https://nginx.org/en/docs/">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.nginx.com/nginx-wiki/build/dirhtml/extending/api/http/">参考二</a></li>
 </ol>
+<hr>
+<h1 id="echo模块"><a href="#echo模块" class="headerlink" title="echo模块"></a><center><font color="red">echo模块</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nginx由内核和模块组成：内核的设计非常微小和简洁，完成的工作也非常简单，仅仅通过查找配置文件将客户端请求映射到一个location block，而在这个location中所配置的每个指令将会启动不同的模块去完成相应的工作；Nginx的功能如此强大是因为它有非常多的模块来支撑，Nginx本身包含很多模块，用户也可以根据自己的需求开发模块。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nginx模块从结构上分为：基础模块、核心模块和第三方模块。核心模块包含HTTP模块、EVENT模块和MAIL模块等；基础模块包含HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块等；第三方模块包含HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块等。第三方模块从功能上又可以分为Handlers处理器模块：直接处理请求，并进行输出内容和修改headers信息等操作，一般只有一个；Filters过滤器模块：主要对其他处理器模块输出的内容进行修改操作，最后由Nginx输出；Proxies代理类模块：此类模块是Nginx的HTTP Up-stream之类的模块，主要与后端一些服务比如FastCGI等进行交互，实现服务代理和负载均衡等功能。用户根据自己的需要开发的模块都属于第三方模块。正是有了这么多模块的支撑，Nginx的功能才会如此强大。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nginx echo模块是在nginx程序上扩展了echo输出字符的功能，对于调试很方便，<a target="_blank" rel="noopener" href="https://github.com/openresty/echo-nginx-module">传送门</a>。</p>
+<h2 id="二、开干"><a href="#二、开干" class="headerlink" title="二、开干"></a>二、开干</h2><ol>
+<li>进入nginx目录<strong>这一步可选</strong></li>
+<li>下载echo模块<code>git clone https://github.com/openresty/echo-nginx-module</code></li>
+<li>查看nginx相关信息，主要为了取configure信息<code>/usr/local/nginx1.17.5/sbin/nginx -V</code></li>
+<li>复制上一步中的<code>configure arguments:</code>后面的信息，即上一次编译时的参数</li>
+<li>环境验证并生成Makefile<code>sudo ./configure --prefix=/usr/local/nginx1.17.5 --add-module=/usr/local/src/nginx-1.17.5/echo-nginx-module</code></li>
+<li>重新编译<code>make</code>，<strong>千万不要</strong><code>make install</code>，否则会把原先安装的都覆盖掉</li>
+<li>备份<code>sudo mv /usr/local/nginx1.17.5/sbin/nginx /usr/local/nginx1.17.5/sbin/nginx.bak</code> </li>
+<li>替换<code>sudo cp /usr/local/src/nginx-1.17.5/objs/nginx /usr/local/nginx1.17.5/sbin/</code></li>
+<li>重启<code>sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</code></li>
+</ol>
+<h2 id="三、demo"><a href="#三、demo" class="headerlink" title="三、demo"></a>三、demo</h2><ol>
+<li>配置vhost</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">default_type text/plain;</span><br><span class="line">location = /test {</span><br><span class="line">    echo $args;</span><br><span class="line">    echo $query_string;</span><br><span class="line">    echo $request_method;</span><br><span class="line">    echo $content_type;</span><br><span class="line">    echo $content_length;</span><br><span class="line">    echo $fastcgi_script_name;</span><br><span class="line">    echo $request_uri;</span><br><span class="line">    echo $document_uri;</span><br><span class="line">    echo $document_root;</span><br><span class="line">    echo $server_protocol;</span><br><span class="line">    echo $scheme;</span><br><span class="line">    echo $https if_not_empty;</span><br><span class="line">    echo CGI/1.1;</span><br><span class="line">    echo nginx/$nginx_version;</span><br><span class="line">    echo $remote_addr;</span><br><span class="line">    echo $remote_port;</span><br><span class="line">    echo $server_addr;</span><br><span class="line">    echo $server_port;</span><br><span class="line">    echo $server_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>重启nginx</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo killall nginx</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx</span><br><span class="line">或</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>浏览器访问<code>http://localhost/echo?a=1&amp;b=2</code></li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/openresty/echo-nginx-module">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cuber/ngx_http_google_filter_module">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/openresty/echo-nginx-module/issues/12">参考三</a></li>
+</ol>
+<hr>
+<h1 id="负载均衡与反向代理"><a href="#负载均衡与反向代理" class="headerlink" title="负载均衡与反向代理"></a><center><font color="red">负载均衡与反向代理</font></center></h1><h2 id="一、反向代理"><a href="#一、反向代理" class="headerlink" title="一、反向代理"></a>一、反向代理</h2><ol>
+<li><p>核心定义：反向代理是介于客户端与后端业务服务器之间的中间代理服务，客户端所有请求统一发送至反向代理服务器，再由代理服务器转发请求至对应的后端真实服务器，并将后端服务器的响应结果返回给客户端。整个过程中，客户端始终只与代理服务器交互，无法感知后端真实服务器的存在。</p>
+</li>
+<li><p>核心作用</p>
+</li>
+</ol>
+<ul>
+<li><p><strong>隐藏后端服务</strong>：屏蔽真实服务器IP、端口及架构信息，避免后端服务器直接暴露在公网，有效抵御攻击，提升服务安全性。</p>
+</li>
+<li><p><strong>统一入口管理</strong>：将多个后端服务统一聚合，客户端仅需访问统一代理地址，简化客户端访问配置。</p>
+</li>
+<li><p><strong>实现动静分离</strong>：可单独代理静态资源（图片、CSS、JS、静态页面），将动态请求转发至业务服务器，减轻后端服务器压力。</p>
+</li>
+<li><p><strong>基础缓存加速</strong>：对高频访问的静态资源、接口数据进行缓存，减少重复请求转发，提升访问响应速度。</p>
+</li>
+<li><p><strong>权限与流量管控</strong>：统一实现请求鉴权、限流、黑名单、HTTPS加密等功能，统一管控全网请求流量。</p>
+</li>
+</ul>
+<ol start="3">
+<li><p>常见应用场景：Web网站服务、微服务网关转发、多服务统一域名访问、公网服务安全防护、HTTPS证书统一部署等。</p>
+</li>
+<li><p>主流实现工具：Nginx、Apache、Squid、Traefik、OpenResty等，其中Nginx是目前最常用的反向代理工具。</p>
+</li>
+</ol>
+<h2 id="二、负载均衡"><a href="#二、负载均衡" class="headerlink" title="二、负载均衡"></a>二、负载均衡</h2><ol>
+<li>核心定义：负载均衡（Load Balance）是建立在现有网络架构之上的流量分发技术，是对反向代理能力的进阶延伸。其核心思想是将客户端海量的网络请求、业务访问流量，合理分摊到多台后端业务服务器（Web服务器、FTP服务器、应用服务器等）协同处理，避免单台服务器负载过高、性能瓶颈、单点故障问题。</li>
+</ol>
+<blockquote>
+<p>该技术能够低成本、高效、透明地扩展网络设备与服务器的带宽、提升数据吞吐量、强化网络数据处理能力，最终提升整个服务集群的灵活性、可用性与并发承载能力，保障服务稳定运行。</p>
+</blockquote>
+<ol start="2">
+<li>核心价值</li>
+</ol>
+<ul>
+<li><p><strong>分担服务压力</strong>：将并发流量分散至多台服务器，解决单服务器性能上限问题，提升集群并发能力。</p>
+</li>
+<li><p><strong>实现高可用</strong>：单台后端服务器故障时，负载均衡器可自动剔除故障节点，将流量分发至正常服务器，避免服务中断。</p>
+</li>
+<li><p><strong>弹性扩容</strong>：业务流量增长时，可直接新增后端服务器接入集群，无需修改整体架构，扩容灵活。</p>
+</li>
+<li><p><strong>提升资源利用率</strong>：合理分配流量，避免部分服务器负载过高、部分服务器闲置的资源浪费问题。</p>
+</li>
+</ul>
+<ol start="3">
+<li>六大核心分发算法（原理+优缺点+适用场景）</li>
+</ol>
+<ul>
+<li>轮询法</li>
+</ul>
+<p><strong>核心原理</strong>：将客户端请求按照固定顺序，依次轮流分配给后端每一台服务器，平等对待所有后端节点，不区分服务器的当前负载、连接数、硬件配置差异。</p>
+<p><strong>优点</strong>：算法简单、无计算开销、流量分配绝对均匀，部署维护便捷。</p>
+<p><strong>缺点</strong>：无法适配服务器性能差异，也不感知实时负载。若部分服务器配置低、负载高，依然会被分配等量请求，易导致服务响应不均、部分节点过载。</p>
+<p><strong>适用场景</strong>：后端服务器硬件配置、性能一致，业务请求流量均匀、无特殊差异的场景。</p>
+<ul>
+<li>随机法</li>
+</ul>
+<p><strong>核心原理</strong>：基于系统随机算法，根据后端服务器集群的节点总数，随机选取一台服务器处理当前客户端请求。服务器节点数量越多，流量分配越趋近均匀。</p>
+<p><strong>优点</strong>：算法极简、运算速度快，高并发场景下流量整体分布均衡。</p>
+<p><strong>缺点</strong>：流量分配存在随机性，无法精准均衡负载；不感知服务器性能和实时负载，可能出现性能差的服务器被频繁分配请求的情况。</p>
+<p><strong>适用场景</strong>：后端服务器性能一致、瞬时并发量大，对流量分配精准度要求不高的场景。</p>
+<ul>
+<li>源地址哈希法</li>
+</ul>
+<p><strong>核心原理</strong>：获取客户端访问的IP地址，通过哈希函数计算出固定数值，再用该数值对后端服务器列表节点数做取模运算，最终确定当前请求对应的后端服务器序号。只要后端服务器集群节点列表不变，同一客户端IP的每次请求，都会固定映射到同一台后端服务器。</p>
+<p><strong>优点</strong>：实现客户端会话绑定，同一用户始终访问同一台服务器，有效保留会话信息、缓存数据，避免会话丢失。</p>
+<p><strong>缺点</strong>：存在流量倾斜问题，若大量用户IP哈希结果集中在某几台节点上，会导致部分服务器负载过高；集群节点变更时，哈希映射关系会失效，会话会重新分配。</p>
+<p><strong>适用场景</strong>：需要保持会话一致性、用户登录态持久化的业务场景（如用户中心、购物车系统）。</p>
+<ul>
+<li>加权轮询法</li>
+</ul>
+<p><strong>核心原理</strong>：在基础轮询的基础上引入权重配置，根据后端服务器的硬件配置、性能、负载能力差异化分配权重。配置高、负载承受能力强的服务器设置更高权重，分配更多请求；配置低、性能较弱的服务器设置低权重，减少请求分配量，按权重顺序轮流分发流量。</p>
+<p><strong>优点</strong>：适配服务器性能差异，充分利用高性能服务器资源，避免低配置服务器过载，流量分配更贴合实际服务能力。</p>
+<p><strong>缺点</strong>：属于静态分配算法，无法实时感知服务器动态负载，仅依靠固定权重分配，无法适配服务器运行中的负载波动。</p>
+<p><strong>适用场景</strong>：后端服务器硬件配置、性能不一致，且服务器负载相对稳定的场景。</p>
+<ul>
+<li>加权随机法</li>
+</ul>
+<p><strong>核心原理</strong>：结合随机法与权重机制，不再按顺序分配流量，而是根据后端服务器的性能、负载配置差异化权重，通过加权随机算法选取服务器处理请求，权重越高的服务器，被选中的概率越大。</p>
+<p><strong>优点</strong>：兼顾随机性与差异化，相比纯随机法，能优先利用高性能服务器资源，适配不同配置的服务节点。</p>
+<p><strong>缺点</strong>：同样为静态算法，无实时负载感知能力，无法根据服务器实时运行状态调整流量分配。</p>
+<p><strong>适用场景</strong>：后端服务器性能不均、瞬时并发波动大，无需严格顺序分发流量的场景。</p>
+<ul>
+<li>最小连接数法</li>
+</ul>
+<p><strong>核心原理</strong>：属于动态负载均衡算法，负载均衡器实时统计每台后端服务器的当前活跃连接数，动态选取连接数最少、当前负载最轻的服务器处理新的客户端请求。</p>
+<p><strong>优点</strong>：实时感知服务器负载状态，动态适配流量波动，精准规避高负载节点，最大化均衡集群负载，资源利用率最高。</p>
+<p><strong>缺点</strong>：需要实时统计、计算各服务器连接数，算法开销高于静态算法；长连接业务场景下负载统计精度会受影响。</p>
+<p><strong>适用场景</strong>：服务器配置差异小、业务请求处理时长不均、流量波动大的场景（如接口服务、长连接业务）。</p>
+<ol start="4">
+<li>负载均衡分类</li>
+</ol>
+<ul>
+<li><p><strong>四层负载均衡</strong>：基于TCP/IP协议、IP+端口转发流量，转发速度快、性能高，适合通用网络流量分发，代表工具：Nginx、LVS。</p>
+</li>
+<li><p><strong>七层负载均衡</strong>：基于HTTP/HTTPS应用层协议，可识别URL、Cookie、请求头信息，支持精细化流量分发，代表工具：Nginx、Apache。</p>
+</li>
+</ul>
+<h2 id="三、反向代理与负载均衡的关联与区别"><a href="#三、反向代理与负载均衡的关联与区别" class="headerlink" title="三、反向代理与负载均衡的关联与区别"></a>三、反向代理与负载均衡的关联与区别</h2><ol>
+<li><p>关联：负载均衡是反向代理的核心延伸功能，绝大多数反向代理工具都集成了负载均衡能力；二者均通过代理服务器转发请求，屏蔽后端真实服务，统一流量入口。</p>
+</li>
+<li><p>核心区别：<code>反向代理侧重</code><strong><code>请求转发、安全防护、统一入口</code></strong><code>，解决服务暴露、访问统一化问题；负载均衡侧重</code><strong><code>流量分发、负载分摊、高可用</code></strong><code>，解决单服务性能瓶颈、集群压力均衡问题。</code></p>
+</li>
+</ol>
+<hr>
+<h1 id="Openresty"><a href="#Openresty" class="headerlink" title="Openresty"></a><center><font color="red">Openresty</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>Openresty是一个基于Nginx与Lua的高性能Web平台，其内部集成了大量精良的Lua库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态Web应用、Web服务和动态网关。可以使用Lua脚本调用Ngnix支持的C以及Lua模块，快速构建10K～1000K单机并发连接的高性能web应用系统。OpenResty的目标是让web服务直接运行在Nginx服务内部，利用Ngnix的非阻塞IO模型，对HTTP客户端请求和后端DB进行一致的高性能响应。</p>
+</li>
+<li><p>Openresty通过汇聚各种设计精良的Nginx模块(主要由Openresty团队自主开发)，从而将Nginx有效地变成一个强大的通用Web应用平台。这样，Web开发人员和系统工程师可以使用Lua脚本语言调动Nginx支持的各种C以及Lua模块，快速构造出足以胜任10K乃至1000K以上单机并发连接的高性能Web应用系统。</p>
+</li>
+<li><p>Openresty的目标是让你的Web服务直接跑在Nginx服务内部，充分利用Nginx的非阻塞I/O模型，不仅仅对HTTP客户端请求,甚至于对远程后端诸如MySQL、PostgreSQL、Memcached以及Redis等都进行一致的高性能响应。</p>
+</li>
+</ol>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ol>
+<li><p>使用源码安装</p>
+<ul>
+<li><code>sudo wget https://openresty.org/download/openresty-1.15.8.2.tar.gz</code></li>
+<li><code>sudo tar -zxvf openresty-1.15.8.2.tar.gz</code></li>
+<li><code>cd openresty-1.15.8.2</code></li>
+<li><code>sudo ./configure</code>，默认安装到<code>/usr/local/openresty</code></li>
+<li></li>
+</ul>
+</li>
+<li><p>homebrew安装</p>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://openresty.org/cn/">Openresty中文站</a></li>
+<li><a target="_blank" rel="noopener" href="http://openresty.org/en/">Openresty英文站</a></li>
+</ol>
+<hr>
+<h1 id="LVS-Nginx-HAProxy"><a href="#LVS-Nginx-HAProxy" class="headerlink" title="LVS-Nginx-HAProxy"></a><center><font color="red">LVS-Nginx-HAProxy</font></center></h1><h2 id="一、核心概念"><a href="#一、核心概念" class="headerlink" title="一、核心概念"></a>一、核心概念</h2><p>当前主流互联网系统普遍采用<strong>服务器集群技术</strong>，将相同业务服务部署在多台服务器上，组成集群统一对外提供服务，涵盖Web应用、数据库、分布式缓存等各类服务集群。单纯扩容单台服务器硬件，无法解决高并发访问下的CPU、I/O性能瓶颈，因此必须依托<strong>负载均衡技术</strong>分发流量、分摊服务压力。</p>
+<p>负载均衡设备作为服务集群的流量入口，可智能筛选最优后端服务器，透明转发客户端请求，实现流量均匀分配、服务高可用与性能扩容。目前企业生产环境中，<strong>LVS、Nginx、HAProxy</strong>是应用最广泛的三款软件负载均衡工具，三者分属不同网络层级，核心能力、适用场景差异显著。</p>
+<p><img src="web.jpeg" alt="web"></p>
+<h2 id="二、基础层级与核心定位对比"><a href="#二、基础层级与核心定位对比" class="headerlink" title="二、基础层级与核心定位对比"></a>二、基础层级与核心定位对比</h2><p><img src="OSI.jpeg" alt="OSI"></p>
+<h3 id="1-LVS（Linux-Virtual-Server，Linux虚拟服务器）"><a href="#1-LVS（Linux-Virtual-Server，Linux虚拟服务器）" class="headerlink" title="1. LVS（Linux Virtual Server，Linux虚拟服务器）"></a>1. LVS（Linux Virtual Server，Linux虚拟服务器）</h3><p>LVS由章文嵩博士于1998年研发，是国内首个知名自由软件项目，目前已完全集成进Linux内核（2.4及以上版本），无需打补丁、无需额外部署依赖，原生支持高性能负载均衡。</p>
+<p><img src="L1.jpeg" alt="LVS"></p>
+<h4 id="（1）集群三层核心架构"><a href="#（1）集群三层核心架构" class="headerlink" title="（1）集群三层核心架构"></a>（1）集群三层核心架构</h4><p>LVS集群架构对客户端完全透明，用户仅感知一台虚拟服务器，无法看到后端真实服务集群，核心分为三层：</p>
+<ul>
+<li><p><strong>负载调度器（LB/Director）</strong>：前端核心入口，配置虚拟IP（VIP），负责接收客户端请求，通过调度算法和转发规则分发流量至后端真实服务器，是整个集群的流量调度核心。</p>
+</li>
+<li><p><strong>真实服务器池（RS集群）</strong>：后端业务服务集群，实际处理客户端请求，可部署Web、FTP、DNS、数据库等各类服务，服务器之间可通过局域网/广域网组网。</p>
+</li>
+<li><p><strong>共享存储</strong>：为后端RS集群提供统一存储，保证所有服务器服务内容一致，实现无状态服务，适配流量分发需求。</p>
+</li>
+</ul>
+<h4 id="（2）负载均衡层级与机制"><a href="#（2）负载均衡层级与机制" class="headerlink" title="（2）负载均衡层级与机制"></a>（2）负载均衡层级与机制</h4><p>LVS是<strong>纯四层负载均衡</strong>（工作在OSI传输层），仅基于TCP/UDP协议工作，不解析应用层协议，无法处理HTTP URL、请求头、Cookie等应用层内容。</p>
+<p>核心转发原理：依托Linux内核IPVS模块工作，用户空间工具ipvsadm定义流量转发规则，内核空间IPVS模块匹配数据包的目的IP、端口，通过修改数据包IP、MAC地址或封装IP报文实现流量转发，转发效率极高。</p>
+<h3 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2. Nginx"></a>2. Nginx</h3><p>Nginx是一款高性能、轻量级的HTTP反向代理服务器，同时支持IMAP/POP3/SMTP邮件代理服务，凭借多路复用、事件驱动模型，具备低内存消耗、高并发处理的优势，是目前最主流的Web服务与七层负载均衡工具。</p>
+<p><img src="N1.jpeg" alt="反向代理"></p>
+<h4 id="（1）进程工作模型"><a href="#（1）进程工作模型" class="headerlink" title="（1）进程工作模型"></a>（1）进程工作模型</h4><p>Nginx以守护进程后台运行，采用<strong>单主线程多进程模型</strong>，架构稳定高效：包含1个Master主进程和N个Worker工作进程（N≥1），所有进程均为单线程，进程间通过共享内存通信。</p>
+<ul>
+<li><p><strong>Master进程</strong>：负责监听系统信号、管理Worker进程，监控Worker运行状态，实现服务重启、配置热更新、故障自愈等管控能力，不处理具体业务请求。</p>
+</li>
+<li><p><strong>Worker进程</strong>：实际处理客户端请求，多个Worker独立竞争请求，单Worker同一时间仅处理一个请求，避免线程竞争开销，保证服务稳定性。</p>
+</li>
+</ul>
+<h4 id="（2）负载均衡层级与机制-1"><a href="#（2）负载均衡层级与机制-1" class="headerlink" title="（2）负载均衡层级与机制"></a>（2）负载均衡层级与机制</h4><p>Nginx以<strong>七层负载均衡（应用层）</strong>为主、四层负载均衡为辅，核心基于反向代理实现流量分发。可深度解析HTTP/HTTPS协议内容，支持基于URL、Cookie、请求头、域名等应用层规则精准转发流量，功能灵活性极强。</p>
+<p>反向代理核心逻辑：客户端仅访问Nginx代理服务器，由Nginx接收所有连接请求，转发至后端真实业务服务器，再将服务器响应结果回传给客户端，全程隐藏后端服务真实地址，兼顾负载均衡与安全防护。</p>
+<h3 id="3-HAProxy"><a href="#3-HAProxy" class="headerlink" title="3. HAProxy"></a>3. HAProxy</h3><p>HAProxy是C语言开源开发的高性能代理工具，同时支持<strong>四层（TCP/UDP）和七层（HTTP/HTTPS）负载均衡</strong>，兼顾LVS的高性能和Nginx的灵活规则能力。专为大并发、高可用Web场景设计，可支撑数万级并发连接，能有效隔离后端服务器，避免内网服务直接暴露公网，广泛应用于大型网站、高可用集群架构。</p>
+<p>核心优势：支持会话保持、七层精细规则、健康检查、故障自动剔除，兼顾四层转发的高效性与七层调度的灵活性，是中型、大型集群的优选负载均衡工具。</p>
+<h2 id="三、LVS核心转发模型（补全关键原理与特性）"><a href="#三、LVS核心转发模型（补全关键原理与特性）" class="headerlink" title="三、LVS核心转发模型（补全关键原理与特性）"></a>三、LVS核心转发模型（补全关键原理与特性）</h2><p>LVS作为四层负载均衡，核心通过三种数据包转发模型实现流量分发，三种模型组网方式、性能、适用场景差异极大，且均有专属部署约束：</p>
+<h3 id="1-NAT模型（网络地址转换）"><a href="#1-NAT模型（网络地址转换）" class="headerlink" title="1. NAT模型（网络地址转换）"></a>1. NAT模型（网络地址转换）</h3><p>转发流程：①客户端请求报文源地址为客户端IP（CIP）、目的地址为LVS虚拟IP（VIP）；②LVS匹配规则后，修改报文目的IP为后端RS真实IP（RIP），转发至对应服务器；③RS处理请求后，响应报文回传至LVS；④LVS修改响应报文源IP为VIP，回传给客户端。</p>
+<p><strong>关键约束</strong>：后端所有RS的网关必须指向LVS，否则响应报文无法回传至LVS，导致请求失败。</p>
+<p><strong>特点</strong>：配置简单、支持跨网段组网，所有流量均经过LVS，瓶颈集中在调度器，并发性能相对较低。</p>
+<h3 id="2-DR模型（直接路由，生产最常用）"><a href="#2-DR模型（直接路由，生产最常用）" class="headerlink" title="2. DR模型（直接路由，生产最常用）"></a>2. DR模型（直接路由，生产最常用）</h3><p>转发流程：①客户端请求报文（CIP→VIP）到达LVS；②LVS仅修改报文源MAC、目的MAC地址，将报文转发至对应RS；③RS直接解析报文、处理请求，响应报文不经过LVS，直接通过自身网卡回传给客户端。</p>
+<p><strong>关键约束</strong>：后端RS需在lo回环网卡绑定VIP，且关闭VIP的ARP响应，避免局域网内IP冲突。</p>
+<p><strong>特点</strong>：仅请求流量经过LVS，响应流量直出，LVS压力极小、并发性能极高，仅支持同网段服务器组网，是高性能集群首选。</p>
+<h3 id="3-TUN模型（IP隧道模式）"><a href="#3-TUN模型（IP隧道模式）" class="headerlink" title="3. TUN模型（IP隧道模式）"></a>3. TUN模型（IP隧道模式）</h3><p>转发流程：①客户端发送CIP→VIP的请求报文至LVS；②LVS在原有报文外层新增一层IP封装，修改外层报文源地址为LVS物理IP（DIP）、目的地址为RS的RIP；③RS拆解外层IP封装，解析内层VIP请求并处理；④响应报文直接回传给客户端，不经过LVS。</p>
+<p><strong>关键约束</strong>：后端RS需开启IP隧道功能，lo网卡绑定的VIP不对外网广播。</p>
+<p><strong>特点</strong>：支持跨公网、跨网段组网，突破局域网限制，适合异地多活集群场景，配置复杂度最高。</p>
+<h2 id="四、三大工具调度算法（补全核心差异）"><a href="#四、三大工具调度算法（补全核心差异）" class="headerlink" title="四、三大工具调度算法（补全核心差异）"></a>四、三大工具调度算法（补全核心差异）</h2><h3 id="1-LVS-调度算法（静态-动态，内核级调度，性能最优）"><a href="#1-LVS-调度算法（静态-动态，内核级调度，性能最优）" class="headerlink" title="1. LVS 调度算法（静态+动态，内核级调度，性能最优）"></a>1. LVS 调度算法（静态+动态，内核级调度，性能最优）</h3><p>LVS算法分为静态、动态两类，静态不感知服务器负载，动态实时适配后端服务器连接压力：</p>
+<h4 id="（1）静态算法（4种）"><a href="#（1）静态算法（4种）" class="headerlink" title="（1）静态算法（4种）"></a>（1）静态算法（4种）</h4><ul>
+<li><p><strong>RR轮询</strong>：请求按顺序均匀分发至所有RS，不考虑服务器负载、连接数，适用于服务器性能一致的集群。</p>
+</li>
+<li><p><strong>WRR加权轮询</strong>：为不同性能服务器配置不同权重，性能高的服务器承载更多流量，适配服务器性能差异化场景。</p>
+</li>
+<li><p><strong>DH目标地址哈希</strong>：基于请求目标IP哈希固定分配服务器，实现目标IP请求的定点分发。</p>
+</li>
+<li><p><strong>SH源地址哈希</strong>：基于客户端源IP哈希分配服务器，实现同一客户端请求固定访问同一RS，简易实现会话保持。</p>
+</li>
+</ul>
+<h4 id="（2）动态算法（6种，默认WLC）"><a href="#（2）动态算法（6种，默认WLC）" class="headerlink" title="（2）动态算法（6种，默认WLC）"></a>（2）动态算法（6种，默认WLC）</h4><ul>
+<li><p><strong>LC最少连接</strong>：动态将请求分发至当前连接数最少的服务器，均衡实时负载。</p>
+</li>
+<li><p><strong>WLC加权最少连接（默认）</strong>：结合权重与实时连接数，高权重服务器承载更多连接，适配差异化性能集群，负载均衡效果最优。</p>
+</li>
+<li><p><strong>SED最短延迟</strong>：优化WLC缺陷，仅核算活动连接，优先分发至响应延迟最短的服务器。</p>
+</li>
+<li><p><strong>NQ永不排队</strong>：空闲无连接的服务器优先接收请求，避免服务器长期闲置，弥补SED调度短板。</p>
+</li>
+<li><p><strong>LBLC基于局部性最少连接</strong>：适配缓存集群，目标IP固定访问最近使用的服务器，超载时重新匹配最少连接节点。</p>
+</li>
+<li><p><strong>LBLCR带复制局部性最少连接</strong>：维护目标IP与服务器组的映射，支持节点复制，适配高并发缓存集群。</p>
+</li>
+</ul>
+<h3 id="2-Nginx-调度算法（七层应用级调度）"><a href="#2-Nginx-调度算法（七层应用级调度）" class="headerlink" title="2. Nginx 调度算法（七层应用级调度）"></a>2. Nginx 调度算法（七层应用级调度）</h3><p>核心适配HTTP/HTTPS场景，常用算法：轮询、加权轮询、ip_hash（会话保持）、least_conn（最少连接）、url_hash、fair（动态响应权重），支持基于应用层规则自定义调度，灵活性远超LVS。</p>
+<h3 id="3-HAProxy-调度算法（四七层通用）"><a href="#3-HAProxy-调度算法（四七层通用）" class="headerlink" title="3. HAProxy 调度算法（四七层通用）"></a>3. HAProxy 调度算法（四七层通用）</h3><p>兼容LVS、Nginx核心算法，支持轮询、加权轮询、最少连接、源IP哈希，额外支持精准的会话保持、故障熔断、权重动态调整，兼顾性能与灵活性。</p>
+<h2 id="五、三大工具优缺点与适用场景（补全修正核心差异）"><a href="#五、三大工具优缺点与适用场景（补全修正核心差异）" class="headerlink" title="五、三大工具优缺点与适用场景（补全修正核心差异）"></a>五、三大工具优缺点与适用场景（补全修正核心差异）</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>负载层级</th>
+<th>核心优点</th>
+<th>核心缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LVS</td>
+<td>四层（传输层）</td>
+<td>内核级转发，性能极高、并发量大、资源消耗少、稳定性强；支持TCP/UDP所有四层协议</td>
+<td>无七层处理能力，无法解析HTTP协议、不能做URL/ Cookie转发、规则灵活性差；部署有专属组网约束</td>
+<td>高并发大流量入口层负载均衡、TCP/UDP服务集群、需要极致转发性能的场景</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>七层为主、四层为辅</td>
+<td>应用层规则灵活，支持URL、Cookie、域名精准转发；配置简单、部署便捷、支持HTTPS、静态资源缓存</td>
+<td>单节点并发性能低于LVS；仅原生支持HTTP相关协议，四层转发能力较弱</td>
+<td>Web服务集群、静态资源代理、中小型业务负载均衡、需要精细化流量管控的场景</td>
+</tr>
+<tr>
+<td>HAProxy</td>
+<td>四层+七层双支持</td>
+<td>兼顾高性能与高灵活度；支持完善的健康检查、会话保持、故障熔断；适配TCP与HTTP双场景</td>
+<td>性能略低于LVS；配置复杂度高于Nginx</td>
+<td>中大型业务集群、需要同时兼容四层和七层负载、高可用高稳定性要求的场景</td>
+</tr>
+</tbody></table>
+<h2 id="六、企业常用架构组合（新增实战落地内容）"><a href="#六、企业常用架构组合（新增实战落地内容）" class="headerlink" title="六、企业常用架构组合（新增实战落地内容）"></a>六、企业常用架构组合（新增实战落地内容）</h2><blockquote>
+<p>生产环境中常采用<strong>LVS+Nginx/HAProxy分层架构</strong>，结合三者优势：</p>
+</blockquote>
+<ol>
+<li><p>前端入口：LVS部署四层负载均衡，承接全网大流量，实现高并发流量分发，保障入口性能与稳定性；</p>
+</li>
+<li><p>中层代理：Nginx/HAProxy做七层精细化调度，完成URL路由、HTTPS解密、会话保持、缓存优化等业务层管控；</p>
+</li>
+<li><p>后端服务：真实业务服务器集群处理具体请求，实现性能、灵活性、高可用的完美兼顾。</p>
+</li>
+</ol>
+<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1115533">参考一</a></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>工作层级</th>
+<th>核心优点</th>
+<th>核心缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>LVS</strong></td>
+<td>四层 (传输层，内核 IPVS)</td>
+<td>性能最强、并发高、资源消耗低，支持 TCP/UDP</td>
+<td>无七层能力，不能解析 HTTP，组网部署复杂</td>
+<td>大流量入口，TCP/UDP 集群，追求极致转发性能</td>
+</tr>
+<tr>
+<td><strong>Nginx</strong></td>
+<td>七层为主，四层为辅</td>
+<td>配置简单、七层规则灵活（URL/Cookie/ 域名），支持 HTTPS、静态缓存</td>
+<td>四层弱，单节点性能弱于 LVS，侧重 HTTP</td>
+<td>Web 集群、静态资源、中小型业务、七层路由</td>
+</tr>
+<tr>
+<td><strong>HAProxy</strong></td>
+<td>四层 + 七层双支持</td>
+<td>兼顾性能与七层能力，健康检查 / 会话保持完善</td>
+<td>性能弱于 LVS，配置比 Nginx 复杂</td>
+<td>中大型 Web 集群，同时需要 TCP+HTTP 负载均衡</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -611,7 +924,7 @@
           
           <div class="post-tags">
               <a href="/tags/Nginx/" rel="tag"><i class="fa fa-tag"></i> Nginx</a>
-              <a href="/tags/%E7%8A%B6%E6%80%81%E7%A0%81-499-curl/" rel="tag"><i class="fa fa-tag"></i> 状态码 - 499 - curl</a>
+              <a href="/tags/%E7%8A%B6%E6%80%81%E7%A0%81-499-curl-echo-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-Openresty-Lua-LVS-HAProxy/" rel="tag"><i class="fa fa-tag"></i> 状态码 - 499 - curl - echo - 负载均衡 - 反向代理 - Openresty - Lua - LVS - HAProxy</a>
           </div>
 
         
@@ -667,7 +980,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">Nginx收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%97%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">一、列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">Nginx状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">二、常见错误码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">Nginx收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%97%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">一、列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">Nginx状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">二、常见错误码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echo%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">echo模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">3.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E5%B9%B2"><span class="nav-number">3.2.</span> <span class="nav-text">二、开干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81demo"><span class="nav-number">3.3.</span> <span class="nav-text">三、demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">负载均衡与反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">4.1.</span> <span class="nav-text">一、反向代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">4.2.</span> <span class="nav-text">二、负载均衡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%9A%84%E5%85%B3%E8%81%94%E4%B8%8E%E5%8C%BA%E5%88%AB"><span class="nav-number">4.3.</span> <span class="nav-text">三、反向代理与负载均衡的关联与区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Openresty"><span class="nav-number">5.</span> <span class="nav-text">Openresty</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">二、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">5.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LVS-Nginx-HAProxy"><span class="nav-number">6.</span> <span class="nav-text">LVS-Nginx-HAProxy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">6.1.</span> <span class="nav-text">一、核心概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E7%A1%80%E5%B1%82%E7%BA%A7%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%BD%8D%E5%AF%B9%E6%AF%94"><span class="nav-number">6.2.</span> <span class="nav-text">二、基础层级与核心定位对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-LVS%EF%BC%88Linux-Virtual-Server%EF%BC%8CLinux%E8%99%9A%E6%8B%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="nav-number">6.2.1.</span> <span class="nav-text">1. LVS（Linux Virtual Server，Linux虚拟服务器）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%9B%86%E7%BE%A4%E4%B8%89%E5%B1%82%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">（1）集群三层核心架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%B1%82%E7%BA%A7%E4%B8%8E%E6%9C%BA%E5%88%B6"><span class="nav-number">6.2.1.2.</span> <span class="nav-text">（2）负载均衡层级与机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Nginx"><span class="nav-number">6.2.2.</span> <span class="nav-text">2. Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%BF%9B%E7%A8%8B%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.2.2.1.</span> <span class="nav-text">（1）进程工作模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%B1%82%E7%BA%A7%E4%B8%8E%E6%9C%BA%E5%88%B6-1"><span class="nav-number">6.2.2.2.</span> <span class="nav-text">（2）负载均衡层级与机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-HAProxy"><span class="nav-number">6.2.3.</span> <span class="nav-text">3. HAProxy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81LVS%E6%A0%B8%E5%BF%83%E8%BD%AC%E5%8F%91%E6%A8%A1%E5%9E%8B%EF%BC%88%E8%A1%A5%E5%85%A8%E5%85%B3%E9%94%AE%E5%8E%9F%E7%90%86%E4%B8%8E%E7%89%B9%E6%80%A7%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">三、LVS核心转发模型（补全关键原理与特性）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-NAT%E6%A8%A1%E5%9E%8B%EF%BC%88%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="nav-number">6.3.1.</span> <span class="nav-text">1. NAT模型（网络地址转换）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DR%E6%A8%A1%E5%9E%8B%EF%BC%88%E7%9B%B4%E6%8E%A5%E8%B7%AF%E7%94%B1%EF%BC%8C%E7%94%9F%E4%BA%A7%E6%9C%80%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="nav-number">6.3.2.</span> <span class="nav-text">2. DR模型（直接路由，生产最常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-TUN%E6%A8%A1%E5%9E%8B%EF%BC%88IP%E9%9A%A7%E9%81%93%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">6.3.3.</span> <span class="nav-text">3. TUN模型（IP隧道模式）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%89%E5%A4%A7%E5%B7%A5%E5%85%B7%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E8%A1%A5%E5%85%A8%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">四、三大工具调度算法（补全核心差异）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-LVS-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E9%9D%99%E6%80%81-%E5%8A%A8%E6%80%81%EF%BC%8C%E5%86%85%E6%A0%B8%E7%BA%A7%E8%B0%83%E5%BA%A6%EF%BC%8C%E6%80%A7%E8%83%BD%E6%9C%80%E4%BC%98%EF%BC%89"><span class="nav-number">6.4.1.</span> <span class="nav-text">1. LVS 调度算法（静态+动态，内核级调度，性能最优）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E9%9D%99%E6%80%81%E7%AE%97%E6%B3%95%EF%BC%884%E7%A7%8D%EF%BC%89"><span class="nav-number">6.4.1.1.</span> <span class="nav-text">（1）静态算法（4种）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%8A%A8%E6%80%81%E7%AE%97%E6%B3%95%EF%BC%886%E7%A7%8D%EF%BC%8C%E9%BB%98%E8%AE%A4WLC%EF%BC%89"><span class="nav-number">6.4.1.2.</span> <span class="nav-text">（2）动态算法（6种，默认WLC）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Nginx-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%83%E5%B1%82%E5%BA%94%E7%94%A8%E7%BA%A7%E8%B0%83%E5%BA%A6%EF%BC%89"><span class="nav-number">6.4.2.</span> <span class="nav-text">2. Nginx 调度算法（七层应用级调度）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-HAProxy-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E5%9B%9B%E4%B8%83%E5%B1%82%E9%80%9A%E7%94%A8%EF%BC%89"><span class="nav-number">6.4.3.</span> <span class="nav-text">3. HAProxy 调度算法（四七层通用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%89%E5%A4%A7%E5%B7%A5%E5%85%B7%E4%BC%98%E7%BC%BA%E7%82%B9%E4%B8%8E%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%88%E8%A1%A5%E5%85%A8%E4%BF%AE%E6%AD%A3%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%EF%BC%89"><span class="nav-number">6.5.</span> <span class="nav-text">五、三大工具优缺点与适用场景（补全修正核心差异）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BC%81%E4%B8%9A%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84%E7%BB%84%E5%90%88%EF%BC%88%E6%96%B0%E5%A2%9E%E5%AE%9E%E6%88%98%E8%90%BD%E5%9C%B0%E5%86%85%E5%AE%B9%EF%BC%89"><span class="nav-number">6.6.</span> <span class="nav-text">六、企业常用架构组合（新增实战落地内容）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.7.</span> <span class="nav-text">七、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -683,7 +996,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">285</span>
+          <span class="site-state-item-count">281</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -696,7 +1009,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1020</span>
+        <span class="site-state-item-count">1013</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -723,7 +1036,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -789,12 +1102,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">936k</span>
+    <span title="站点总字数">941k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:11</span>
+    <span title="站点阅读时长">14:16</span>
 </div>
 
         
