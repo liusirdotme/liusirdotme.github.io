@@ -8264,8 +8264,8 @@
       <tags>
         <tag>基准测试</tag>
         <tag>压力测试</tag>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>TPCC</tag>
       </tags>
   </entry>
@@ -8543,8 +8543,8 @@
       </categories>
       <tags>
         <tag>Go</tag>
-        <tag>协程</tag>
         <tag>Context</tag>
+        <tag>协程</tag>
         <tag>channel</tag>
         <tag>通道</tag>
         <tag>select</tag>
@@ -12482,10 +12482,10 @@
       </categories>
       <tags>
         <tag>Go</tag>
+        <tag>协程</tag>
         <tag>GMP</tag>
         <tag>进程</tag>
         <tag>线程</tag>
-        <tag>协程</tag>
         <tag>MMU</tag>
         <tag>页表</tag>
         <tag>褚时健</tag>
@@ -13038,11 +13038,11 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
+        <tag>json</tag>
         <tag>使用规范</tag>
         <tag>bson</tag>
-        <tag>json</tag>
       </tags>
   </entry>
   <entry>
@@ -15152,8 +15152,8 @@
       </categories>
       <tags>
         <tag>Mac</tag>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>Sharding</tag>
         <tag>分片</tag>
       </tags>
@@ -15466,8 +15466,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>Replication</tag>
         <tag>复制</tag>
         <tag>Primary节点</tag>
@@ -17133,8 +17133,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>mongodump</tag>
         <tag>mongorestore</tag>
         <tag>mongoexport</tag>
@@ -17388,8 +17388,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>存储引擎</tag>
         <tag>LSM</tag>
       </tags>
@@ -17637,8 +17637,8 @@
         <category>PL</category>
       </categories>
       <tags>
-        <tag>镜像</tag>
         <tag>Mac</tag>
+        <tag>镜像</tag>
         <tag>MongoDB</tag>
         <tag>非阻塞</tag>
         <tag>JS</tag>
@@ -21561,9 +21561,9 @@
         <category>Go</category>
       </categories>
       <tags>
-        <tag>数组</tag>
-        <tag>struct</tag>
         <tag>结构体</tag>
+        <tag>struct</tag>
+        <tag>数组</tag>
         <tag>Go</tag>
         <tag>多返回值</tag>
         <tag>env</tag>
@@ -22053,8 +22053,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>索引</tag>
       </tags>
   </entry>
@@ -25784,9 +25784,9 @@
         <category>OS</category>
       </categories>
       <tags>
+        <tag>协程</tag>
         <tag>进程</tag>
         <tag>线程</tag>
-        <tag>协程</tag>
         <tag>操作系统</tag>
         <tag>挂起</tag>
         <tag>fork</tag>
@@ -27234,8 +27234,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>RBAC</tag>
       </tags>
   </entry>
@@ -30954,8 +30954,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>MapReduce</tag>
         <tag>Map</tag>
         <tag>Reduce</tag>
@@ -31660,8 +31660,8 @@
       <tags>
         <tag>Python</tag>
         <tag>pip</tag>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>聚合查询</tag>
       </tags>
   </entry>
@@ -31937,8 +31937,8 @@
       </categories>
       <tags>
         <tag>事务</tag>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>WiredTiger</tag>
         <tag>ACID</tag>
         <tag>Write Concern</tag>
@@ -32322,8 +32322,8 @@
         <tag>Kafka</tag>
         <tag>RabbitMQ</tag>
         <tag>MQ</tag>
-        <tag>vhost</tag>
         <tag>延时消费</tag>
+        <tag>vhost</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
@@ -32885,26 +32885,20 @@
         <category>Nginx</category>
       </categories>
       <tags>
-        <tag>操作系统</tag>
-        <tag>快照</tag>
-        <tag>写时复制</tag>
-        <tag>虚拟机</tag>
-        <tag>零拷贝</tag>
-        <tag>DMA</tag>
-        <tag>mmap</tag>
-        <tag>sendfile</tag>
-        <tag>大端</tag>
-        <tag>小端</tag>
-        <tag>字节序</tag>
-        <tag>原码</tag>
-        <tag>反码</tag>
-        <tag>补码</tag>
-        <tag>静态链接</tag>
-        <tag>动态链接</tag>
+        <tag>HAProxy</tag>
+        <tag>负载均衡</tag>
+        <tag>状态码</tag>
+        <tag>499</tag>
+        <tag>curl</tag>
+        <tag>echo</tag>
+        <tag>反向代理</tag>
+        <tag>OpenResty</tag>
+        <tag>Lua</tag>
+        <tag>LVS</tag>
       </tags>
   </entry>
   <entry>
-    <title>杂谈</title>
+    <title>OS杂谈</title>
     <url>/2017/11/12/OS-%E6%9D%82%E8%B0%88/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
 <p>有些人闯进你的生活，只是为了给你上一课，然后转身离开。</p>
@@ -34330,8 +34324,8 @@
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>命令行</tag>
       </tags>
   </entry>
@@ -35695,8 +35689,8 @@ read_xlsx(name, sheet)
         <category>MongoDB</category>
       </categories>
       <tags>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -40805,8 +40799,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>Redis</tag>
-        <tag>NoSQL</tag>
         <tag>MongoDB</tag>
+        <tag>NoSQL</tag>
         <tag>migrate</tag>
         <tag>memcached</tag>
         <tag>move</tag>
@@ -52958,11 +52952,12 @@ read_xlsx(name, sheet)
         <tag>RabbitMQ</tag>
         <tag>GitHub</tag>
         <tag>make</tag>
-        <tag>MongoDB</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
+        <tag>MongoDB</tag>
         <tag>json</tag>
         <tag>POST</tag>
+        <tag>curl</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
         <tag>phalcon</tag>
@@ -52970,7 +52965,6 @@ read_xlsx(name, sheet)
         <tag>phpize</tag>
         <tag>后期静态绑定</tag>
         <tag>模拟请求</tag>
-        <tag>curl</tag>
         <tag>file_get_contents</tag>
         <tag>引用返回</tag>
         <tag>Yaf</tag>
@@ -56665,8 +56659,8 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>C</tag>
-        <tag>struct</tag>
         <tag>结构体</tag>
+        <tag>struct</tag>
         <tag>union</tag>
         <tag>联合体</tag>
         <tag>内存对齐</tag>
@@ -56881,9 +56875,9 @@ read_xlsx(name, sheet)
       </categories>
       <tags>
         <tag>C</tag>
-        <tag>struct</tag>
-        <tag>结构体</tag>
         <tag>收集</tag>
+        <tag>结构体</tag>
+        <tag>struct</tag>
       </tags>
   </entry>
   <entry>
