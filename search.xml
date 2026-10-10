@@ -12964,8 +12964,8 @@
       <tags>
         <tag>DevOps</tag>
         <tag>自动化运维</tag>
-        <tag>rsync</tag>
         <tag>ansible</tag>
+        <tag>rsync</tag>
       </tags>
   </entry>
   <entry>
@@ -13798,9 +13798,9 @@
         <category>Tools</category>
       </categories>
       <tags>
-        <tag>工具</tag>
-        <tag>rsync</tag>
         <tag>ansible</tag>
+        <tag>rsync</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -23172,13 +23172,13 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>标准输入</tag>
-        <tag>标准输出</tag>
-        <tag>标准错误输出</tag>
         <tag>文件描述符</tag>
         <tag>stdin</tag>
+        <tag>标准输入</tag>
         <tag>stdout</tag>
+        <tag>标准输出</tag>
         <tag>stderr</tag>
+        <tag>标准错误输出</tag>
         <tag>文件重定向</tag>
         <tag>标准输入输出重定向</tag>
       </tags>
@@ -24742,12 +24742,12 @@
         <tag>垃圾回收</tag>
         <tag>堆</tag>
         <tag>数组</tag>
-        <tag>PHP</tag>
         <tag>内存</tag>
-        <tag>后期静态绑定</tag>
+        <tag>PHP</tag>
         <tag>SPL</tag>
         <tag>yield</tag>
         <tag>预定义接口</tag>
+        <tag>后期静态绑定</tag>
         <tag>502</tag>
         <tag>504</tag>
         <tag>引用计数</tag>
@@ -27133,11 +27133,11 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>merge</tag>
-        <tag>reset</tag>
         <tag>ssh</tag>
         <tag>gitk</tag>
         <tag>stash</tag>
+        <tag>merge</tag>
+        <tag>reset</tag>
         <tag>GitHub</tag>
       </tags>
   </entry>
@@ -30783,560 +30783,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx杂谈</title>
-    <url>/2018/02/15/Nginx-%E6%9D%82%E8%B0%88/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>夏后殷商西东周，春秋战国秦皇收，西汉东汉魏蜀吴，西晋东晋兼五胡。匈奴羯氏羌慕容，拓跋代北后称雄。宋齐梁陈是南朝，北魏齐周称北朝。北周灭齐传於隋，隋又灭陈再统一。隋灭唐兴称富强，五代十国各称王。契丹兴起在北方，建号为辽入汴梁。五代梁唐晋汉周，宋朝建国陈桥头。女真建金先灭辽，打破汴京北宋消。南宋偏安在江南，蒙古兴起国号元。灭金灭宋归一统，元朝统治九十年。明代共传十六君，满洲初起号后金。后金国号改为清，入关称帝都北京。人民觉悟革命起，清帝退位民国立。人民民主再胜利，齐心奔向共产国。</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="Nginx收集"><a href="#Nginx收集" class="headerlink" title="Nginx收集"></a><center><font color="red">Nginx收集</font></center></h1><h2 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、列表</h2><ol>
-<li><p><a href="https://www.cnblogs.com/xueweihan/p/5969592.html">Max retries exceeded with url</a></p>
-<ul>
-<li>可能原因<ul>
-<li>http连接太多没有关闭导致的。</li>
-<li>机器的内存不够了。</li>
-<li>由于请求频率过快，被目标网站封IP了</li>
-<li>请求的url地址错误</li>
-</ul>
-</li>
-<li>解决方案<ul>
-<li>增加重试连接次数：<code>requests.adapters.DEFAULT_RETRIES = 5</code></li>
-<li>关闭多余的连接：requests使用了urllib3库，默认的http connection是keep-alive的，requests设置False关闭。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a href="https://my.oschina.net/linland/blog/373315">upstream response is buffered to a temporary file</a></p>
-</li>
-<li><p>FastCGI sent in stderr: “Unable to open primary script</p>
-</li>
-<li><p>配置</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#字符集</span><br><span class="line">charset utf-8;</span><br><span class="line">#域名长度限制加长</span><br><span class="line">server_names_hash_bucket_size 128;</span><br><span class="line">#client 报头和包体设置</span><br><span class="line">client_header_buffer_size 2k;</span><br><span class="line">large_client_header_buffers 4 4k;</span><br><span class="line">client_max_body_size 20m;</span><br><span class="line">#出错时调起报错邮件发送</span><br><span class="line">sendfile        off;</span><br><span class="line">#设置超时</span><br><span class="line">keepalive_timeout  180;</span><br><span class="line">tcp_nodelay        on;</span><br><span class="line">#开启压宿</span><br><span class="line">gzip  on;</span><br><span class="line">gzip_disable "MSIE [1-6]\.(?!.*SV1)";</span><br><span class="line">gzip_min_length  1k;</span><br><span class="line">gzip_buffers     4 16k;</span><br><span class="line">gzip_http_version 1.0;</span><br><span class="line">gzip_comp_level 2;</span><br><span class="line">gzip_types       text/plain application/x-javascript text/css</span><br><span class="line">#fastcgi的相关设置</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="5">
-<li><p>常见日志处理</p>
-<ul>
-<li>统计每个ip访问的次数<code>awk '{i=$1;a[i]+=1;}END{for(i in a)printf("%d %s \n",a[i],i)}' access.log</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">2093 192.168.10.1</span><br><span class="line">2 192.168.10.2</span><br><span class="line">2 192.168.10.3</span><br><span class="line">1 127.0.0.1</span><br><span class="line">1259 127.0.0.1</span><br><span class="line">1 192.168.10.10</span><br><span class="line">2 192.168.10.4</span><br><span class="line">2 192.168.10.5</span><br><span class="line">2 192.168.10.6</span><br><span class="line">2 192.168.10.7</span><br><span class="line">2 192.168.10.8</span><br><span class="line">1 192.168.10.9</span><br><span class="line">1 192.168.10.18</span><br><span class="line">1 192.168.10.0</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>统计访问最多的前10个ip<code>awk '{i=$1;a[i]+=1;}END{for(i in a)printf("%d %s \n",a[i],i)}' access.log | sort -nr |head -n 10</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">2093 192.168.10.1</span><br><span class="line">1259 127.0.0.1</span><br><span class="line">2 192.168.10.8</span><br><span class="line">2 192.168.10.7</span><br><span class="line">2 192.168.10.6</span><br><span class="line">2 192.168.10.5</span><br><span class="line">2 192.168.10.4</span><br><span class="line">2 192.168.10.3</span><br><span class="line">2 192.168.10.2</span><br><span class="line">1 192.168.10.9</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><p>获取具体时间段内的日志</p>
-<ul>
-<li>日志格式access.log((打印Jun15-20号的日志，不做年份的限制))</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">10.2.24.141 - - [19/Jun/2020:09:56:57 +0800] "POST /index.php?mod=api&amp;ver=0.1&amp;SESSION=%7B%22rid%22:%228201_186%22,    %22sec%22:%228201%22,%22pGroup%22:%22default%22,%22tls%22:0%7D HTTP/1.1" 200 121 "-" "-" "-"</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>处理脚本<code>awk '{split($4, a, "/"); d=substr(a[1],2); if(d&gt;=15 &amp;&amp; d&lt;=20 &amp;&amp; a[2]=="Jun") { print $0;} }' access.log</code></li>
-<li>日志格式打印Apr 26号的日志)</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">127.0.0.1 - - [26/Apr/2018:11:12:48 +0800] "GET /inc.php HTTP/1.1" 200 62437 "-" "Mozilla/5.0 (Macintosh; Intel    Mac OS X  10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>处理脚本<code>awk '{split($4, a, "/"); d=substr(a[1],2); if(d==26 &amp;&amp; a[2]=="Apr") { print $0;} }' access.log</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>502 upstream sent too big header while reading response header from upstream ...</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">fastcgi_intercept_errors off;</span><br><span class="line">fastcgi_buffer_size 16k;</span><br><span class="line">fastcgi_buffers 4 16k;</span><br><span class="line"></span><br><span class="line">proxy_buffer_size   128k;</span><br><span class="line">proxy_buffers   16 256k;</span><br><span class="line">proxy_busy_buffers_size   256k;</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>epoll：举个例子：假设进程有10万个TCP连接，且只有几百个连接是有事件需要处理的。那么在每一个时刻进程只需要处理这几百个有事件(即TCP连接上有数据需要交互)需要处理的连接即可。</p>
-<ul>
-<li>select和poll这样处理的：在某一时刻进程收集所有的连接，并把所有连接的套接字传给操作系统（这个过程其实是用户态内存到内核态内存的复制），而由操作系统内核寻找这那几百个有事件需要处理的连接并处理，然后返回数据给用户。<ul>
-<li>这个过程需要操作系统把全部的连接处理一边，极大浪费系统资源。</li>
-</ul>
-</li>
-<li>epoll是这样做的：<ul>
-<li>调用epoll_creat函数建立一个epoll对象（一颗红黑树，一个准备就绪list链表）。</li>
-<li>调用epoll_ctl函数把socket放到红黑树上，给内核中断处理程序注册一个回调函数，告诉内核如果这个句柄的中断到了，就把这个socket放到准备就绪list链表里。</li>
-<li>调用epoll_wait到准备就绪list链表中处理socket，并把数据返回给用户。<ul>
-<li>不需要把全部的连接处理一遍，只需要去list链表里处理socket。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>reported about an closed connection (54: Connection reset by peer)</p>
-<ul>
-<li>php内存设置过小导致运行过程中进程异常终止<ul>
-<li>php.ini设置：<code>memory_limit = 128M</code></li>
-<li><a href="http://www.conf设置：`php_admin_value[memory_limit]">www.conf设置：`php_admin_value[memory_limit]</a> = 32M`</li>
-</ul>
-</li>
-<li><a href="https://blog.csdn.net/zzhongcy/article/details/89090193">Connection reset by peer</a></li>
-</ul>
-</li>
-</ol>
-<ol start="9">
-<li><p>高并发nginx调优</p>
-<ul>
-<li>调整worker_processes数量<ul>
-<li>意为生成的worker数量，最佳实践是每个CPU运行1个工作worker。</li>
-</ul>
-</li>
-<li>调整worker_connections数量<ul>
-<li>意为同时提供服务的客户端数量，一般设为1024</li>
-</ul>
-</li>
-<li>启用Gzip压缩<ul>
-<li>压缩文件大小，减少了客户端HTTP请求的传输带宽，提高了加载速度</li>
-</ul>
-</li>
-<li>启用静态文件缓存<ul>
-<li>减少传输带宽提升速度</li>
-</ul>
-</li>
-<li>设置timeout<ul>
-<li>client_header_timeout：指定等待client发送一个请求头的超时时间<ul>
-<li>如果在超时时间内client没发送任何东西，nginx返回HTTP状态码408(“Request timed out”)</li>
-</ul>
-</li>
-<li>client_body_timeout：设置请求体的读超时时间。<ul>
-<li>超时后，nginx返回HTTP状态码408(“Request timed out”)</li>
-</ul>
-</li>
-<li>keepalive_timeout：指定client的keep-alive连接超时时间，服务器将会在这个时间后关闭连接。<ul>
-<li>keepalive可减少打开和关闭连接所需的CPU和网络开销</li>
-</ul>
-</li>
-<li>send_timeout：指定客户端的响应超时时间。<ul>
-<li>如果在这段时间内客户端没有读取任何数据，nginx就会关闭连接。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>关闭access_logs</li>
-</ul>
-</li>
-<li><p>x509: certificate signed by unknown authority</p>
-</li>
-</ol>
-<hr>
-<h1 id="Nginx状态码"><a href="#Nginx状态码" class="headerlink" title="Nginx状态码"></a><center><font color="red">Nginx状态码</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP状态码(英语：HTTP Status Code)是用以表示网页服务器超文本传输协议响应状态的3位数字代码。它由RFC 2616规范定义的，并得到RFC 2518、RFC 2817、RFC 2295、RFC 2774与RFC 4918等规范扩展。所有状态码的第一个数字代表了响应的五种状态之一。所示的消息短语是典型的，但是可以提供任何可读取的替代方案。除非另有说明，状态码是HTTP/1.1标准(RFC 7231)的一部分。HTTP状态码的官方注册表由互联网号码分配局(Internet Assigned Numbers Authority)维护。</p>
-<p><img src="http%E8%AF%B7%E6%B1%82.png" alt="http请求"></p>
-<h2 id="二、常见错误码"><a href="#二、常见错误码" class="headerlink" title="二、常见错误码"></a>二、常见错误码</h2><ol>
-<li><p>400</p>
-<ul>
-<li>Bad Request，往往因为语法错误而无法被服务端理解</li>
-</ul>
-</li>
-<li><p>413</p>
-<ul>
-<li><p>Request Entity Too Large，请求体过大，一般出现在上传大文件请求</p>
-</li>
-<li><p>解决办法</p>
-<ul>
-<li>修改nginx配置文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">client_max_body_size 8M; ## 设置客户端请求体最大值</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>修改php.ini</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">post_max_size = 8M       # 整个表单提交的最大限制</span><br><span class="line">upload_max_filesize = 2M # 上传单个文件的最大限制</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-</li>
-<li><p>499</p>
-<ul>
-<li><p>nginx独有，表示在收到客户端完整的HTTP request前，客户端试图关闭TCP连接导致</p>
-</li>
-<li><p>下载nginx-1.16.1.tar.gz，解压到nginx-1.16.1目录，打开<code>nginx-1.16.1/src/http/ngx_http_request.h</code>文件，见499定义：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * HTTP does not define the code for the case when a client closed</span><br><span class="line"> * the connection while we are processing its request so we introduce</span><br><span class="line"> * own code to log such situation when a client has closed the connection</span><br><span class="line"> * before we even try to send the HTTP header to it</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_CLIENT_CLOSED_REQUEST     499</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>复现</p>
-<ul>
-<li>定义处理请求脚本<code>index.php</code>，直接加入<code>sleep(10);</code></li>
-<li>通过curl请求 <code>curl -m 2 http://localhost/index.php</code></li>
-<li>查看访问日志 <code>tail -n 10 access.log</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>500</p>
-</li>
-<li><p>502：Bad Gateway是指错误网关，无效网关</p>
-<ul>
-<li>一般可通过是杀死php-fpm进程再请求web来复现</li>
-</ul>
-</li>
-<li><p>503<br>Service Temporarily Unavailable，即服务暂时不可用，一般由于临时的服务器维护或者过载，服务器当前无法处理请求。</p>
-</li>
-<li><p>504</p>
-</li>
-<li><p><a href="http://www.sohu.com/a/259965525_630789">403</a></p>
-<ul>
-<li>由于启动用户和nginx工作用户不一致所致</li>
-<li>缺少index.html或者index.php文件</li>
-<li>权限问题，如果nginx没有web目录的操作权限</li>
-<li>SELinux设置为开启状态（enabled）的原因</li>
-</ul>
-</li>
-<li><p>nginx状态码定义</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#define NGX_HTTP_CONTINUE                  100</span><br><span class="line">#define NGX_HTTP_SWITCHING_PROTOCOLS       101</span><br><span class="line">#define NGX_HTTP_PROCESSING                102</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_OK                        200</span><br><span class="line">#define NGX_HTTP_CREATED                   201</span><br><span class="line">#define NGX_HTTP_ACCEPTED                  202</span><br><span class="line">#define NGX_HTTP_NO_CONTENT                204</span><br><span class="line">#define NGX_HTTP_PARTIAL_CONTENT           206</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_SPECIAL_RESPONSE          300</span><br><span class="line">#define NGX_HTTP_MOVED_PERMANENTLY         301</span><br><span class="line">#define NGX_HTTP_MOVED_TEMPORARILY         302</span><br><span class="line">#define NGX_HTTP_SEE_OTHER                 303</span><br><span class="line">#define NGX_HTTP_NOT_MODIFIED              304</span><br><span class="line">#define NGX_HTTP_TEMPORARY_REDIRECT        307</span><br><span class="line">#define NGX_HTTP_PERMANENT_REDIRECT        308</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_BAD_REQUEST               400</span><br><span class="line">#define NGX_HTTP_UNAUTHORIZED              401</span><br><span class="line">#define NGX_HTTP_FORBIDDEN                 403</span><br><span class="line">#define NGX_HTTP_NOT_FOUND                 404</span><br><span class="line">#define NGX_HTTP_NOT_ALLOWED               405</span><br><span class="line">#define NGX_HTTP_REQUEST_TIME_OUT          408</span><br><span class="line">#define NGX_HTTP_CONFLICT                  409</span><br><span class="line">#define NGX_HTTP_LENGTH_REQUIRED           411</span><br><span class="line">#define NGX_HTTP_PRECONDITION_FAILED       412</span><br><span class="line">#define NGX_HTTP_REQUEST_ENTITY_TOO_LARGE  413</span><br><span class="line">#define NGX_HTTP_REQUEST_URI_TOO_LARGE     414</span><br><span class="line">#define NGX_HTTP_UNSUPPORTED_MEDIA_TYPE    415</span><br><span class="line">#define NGX_HTTP_RANGE_NOT_SATISFIABLE     416</span><br><span class="line">#define NGX_HTTP_MISDIRECTED_REQUEST       421</span><br><span class="line">#define NGX_HTTP_TOO_MANY_REQUESTS         429</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Our own HTTP codes */</span><br><span class="line"></span><br><span class="line">/* The special code to close connection without any response */</span><br><span class="line">#define NGX_HTTP_CLOSE                     444</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_NGINX_CODES               494</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_REQUEST_HEADER_TOO_LARGE  494</span><br><span class="line"></span><br><span class="line">#define NGX_HTTPS_CERT_ERROR               495</span><br><span class="line">#define NGX_HTTPS_NO_CERT                  496</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * We use the special code for the plain HTTP requests that are sent to</span><br><span class="line"> * HTTPS port to distinguish it from 4XX in an error page redirection</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_TO_HTTPS                  497</span><br><span class="line"></span><br><span class="line">/* 498 is the canceled code for the requests with invalid host name */</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * HTTP does not define the code for the case when a client closed</span><br><span class="line"> * the connection while we are processing its request so we introduce</span><br><span class="line"> * own code to log such situation when a client has closed the connection</span><br><span class="line"> * before we even try to send the HTTP header to it</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_CLIENT_CLOSED_REQUEST     499</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_INTERNAL_SERVER_ERROR     500</span><br><span class="line">#define NGX_HTTP_NOT_IMPLEMENTED           501</span><br><span class="line">#define NGX_HTTP_BAD_GATEWAY               502</span><br><span class="line">#define NGX_HTTP_SERVICE_UNAVAILABLE       503</span><br><span class="line">#define NGX_HTTP_GATEWAY_TIME_OUT          504</span><br><span class="line">#define NGX_HTTP_VERSION_NOT_SUPPORTED     505</span><br><span class="line">#define NGX_HTTP_INSUFFICIENT_STORAGE      507</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="https://nginx.org/en/docs/">参考一</a></li>
-<li><a href="https://www.nginx.com/nginx-wiki/build/dirhtml/extending/api/http/">参考二</a></li>
-</ol>
-<hr>
-<h1 id="echo模块"><a href="#echo模块" class="headerlink" title="echo模块"></a><center><font color="red">echo模块</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nginx由内核和模块组成：内核的设计非常微小和简洁，完成的工作也非常简单，仅仅通过查找配置文件将客户端请求映射到一个location block，而在这个location中所配置的每个指令将会启动不同的模块去完成相应的工作；Nginx的功能如此强大是因为它有非常多的模块来支撑，Nginx本身包含很多模块，用户也可以根据自己的需求开发模块。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nginx模块从结构上分为：基础模块、核心模块和第三方模块。核心模块包含HTTP模块、EVENT模块和MAIL模块等；基础模块包含HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块等；第三方模块包含HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块等。第三方模块从功能上又可以分为Handlers处理器模块：直接处理请求，并进行输出内容和修改headers信息等操作，一般只有一个；Filters过滤器模块：主要对其他处理器模块输出的内容进行修改操作，最后由Nginx输出；Proxies代理类模块：此类模块是Nginx的HTTP Up-stream之类的模块，主要与后端一些服务比如FastCGI等进行交互，实现服务代理和负载均衡等功能。用户根据自己的需要开发的模块都属于第三方模块。正是有了这么多模块的支撑，Nginx的功能才会如此强大。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nginx echo模块是在nginx程序上扩展了echo输出字符的功能，对于调试很方便，<a href="https://github.com/openresty/echo-nginx-module">传送门</a>。</p>
-<h2 id="二、开干"><a href="#二、开干" class="headerlink" title="二、开干"></a>二、开干</h2><ol>
-<li>进入nginx目录<strong>这一步可选</strong></li>
-<li>下载echo模块<code>git clone https://github.com/openresty/echo-nginx-module</code></li>
-<li>查看nginx相关信息，主要为了取configure信息<code>/usr/local/nginx1.17.5/sbin/nginx -V</code></li>
-<li>复制上一步中的<code>configure arguments:</code>后面的信息，即上一次编译时的参数</li>
-<li>环境验证并生成Makefile<code>sudo ./configure --prefix=/usr/local/nginx1.17.5 --add-module=/usr/local/src/nginx-1.17.5/echo-nginx-module</code></li>
-<li>重新编译<code>make</code>，<strong>千万不要</strong><code>make install</code>，否则会把原先安装的都覆盖掉</li>
-<li>备份<code>sudo mv /usr/local/nginx1.17.5/sbin/nginx /usr/local/nginx1.17.5/sbin/nginx.bak</code> </li>
-<li>替换<code>sudo cp /usr/local/src/nginx-1.17.5/objs/nginx /usr/local/nginx1.17.5/sbin/</code></li>
-<li>重启<code>sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</code></li>
-</ol>
-<h2 id="三、demo"><a href="#三、demo" class="headerlink" title="三、demo"></a>三、demo</h2><ol>
-<li>配置vhost</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">default_type text/plain;</span><br><span class="line">location = /test {</span><br><span class="line">    echo $args;</span><br><span class="line">    echo $query_string;</span><br><span class="line">    echo $request_method;</span><br><span class="line">    echo $content_type;</span><br><span class="line">    echo $content_length;</span><br><span class="line">    echo $fastcgi_script_name;</span><br><span class="line">    echo $request_uri;</span><br><span class="line">    echo $document_uri;</span><br><span class="line">    echo $document_root;</span><br><span class="line">    echo $server_protocol;</span><br><span class="line">    echo $scheme;</span><br><span class="line">    echo $https if_not_empty;</span><br><span class="line">    echo CGI/1.1;</span><br><span class="line">    echo nginx/$nginx_version;</span><br><span class="line">    echo $remote_addr;</span><br><span class="line">    echo $remote_port;</span><br><span class="line">    echo $server_addr;</span><br><span class="line">    echo $server_port;</span><br><span class="line">    echo $server_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="2">
-<li>重启nginx</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sudo killall nginx</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx</span><br><span class="line">或</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="3">
-<li>浏览器访问<code>http://localhost/echo?a=1&amp;b=2</code></li>
-</ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://github.com/openresty/echo-nginx-module">参考一</a></li>
-<li><a href="https://github.com/cuber/ngx_http_google_filter_module">参考二</a></li>
-<li><a href="https://github.com/openresty/echo-nginx-module/issues/12">参考三</a></li>
-</ol>
-<hr>
-<h1 id="负载均衡与反向代理"><a href="#负载均衡与反向代理" class="headerlink" title="负载均衡与反向代理"></a><center><font color="red">负载均衡与反向代理</font></center></h1><h2 id="一、反向代理"><a href="#一、反向代理" class="headerlink" title="一、反向代理"></a>一、反向代理</h2><ol>
-<li><p>核心定义：反向代理是介于客户端与后端业务服务器之间的中间代理服务，客户端所有请求统一发送至反向代理服务器，再由代理服务器转发请求至对应的后端真实服务器，并将后端服务器的响应结果返回给客户端。整个过程中，客户端始终只与代理服务器交互，无法感知后端真实服务器的存在。</p>
-</li>
-<li><p>核心作用</p>
-</li>
-</ol>
-<ul>
-<li><p><strong>隐藏后端服务</strong>：屏蔽真实服务器IP、端口及架构信息，避免后端服务器直接暴露在公网，有效抵御攻击，提升服务安全性。</p>
-</li>
-<li><p><strong>统一入口管理</strong>：将多个后端服务统一聚合，客户端仅需访问统一代理地址，简化客户端访问配置。</p>
-</li>
-<li><p><strong>实现动静分离</strong>：可单独代理静态资源（图片、CSS、JS、静态页面），将动态请求转发至业务服务器，减轻后端服务器压力。</p>
-</li>
-<li><p><strong>基础缓存加速</strong>：对高频访问的静态资源、接口数据进行缓存，减少重复请求转发，提升访问响应速度。</p>
-</li>
-<li><p><strong>权限与流量管控</strong>：统一实现请求鉴权、限流、黑名单、HTTPS加密等功能，统一管控全网请求流量。</p>
-</li>
-</ul>
-<ol start="3">
-<li><p>常见应用场景：Web网站服务、微服务网关转发、多服务统一域名访问、公网服务安全防护、HTTPS证书统一部署等。</p>
-</li>
-<li><p>主流实现工具：Nginx、Apache、Squid、Traefik、OpenResty等，其中Nginx是目前最常用的反向代理工具。</p>
-</li>
-</ol>
-<h2 id="二、负载均衡"><a href="#二、负载均衡" class="headerlink" title="二、负载均衡"></a>二、负载均衡</h2><ol>
-<li>核心定义：负载均衡（Load Balance）是建立在现有网络架构之上的流量分发技术，是对反向代理能力的进阶延伸。其核心思想是将客户端海量的网络请求、业务访问流量，合理分摊到多台后端业务服务器（Web服务器、FTP服务器、应用服务器等）协同处理，避免单台服务器负载过高、性能瓶颈、单点故障问题。</li>
-</ol>
-<blockquote>
-<p>该技术能够低成本、高效、透明地扩展网络设备与服务器的带宽、提升数据吞吐量、强化网络数据处理能力，最终提升整个服务集群的灵活性、可用性与并发承载能力，保障服务稳定运行。</p>
-</blockquote>
-<ol start="2">
-<li>核心价值</li>
-</ol>
-<ul>
-<li><p><strong>分担服务压力</strong>：将并发流量分散至多台服务器，解决单服务器性能上限问题，提升集群并发能力。</p>
-</li>
-<li><p><strong>实现高可用</strong>：单台后端服务器故障时，负载均衡器可自动剔除故障节点，将流量分发至正常服务器，避免服务中断。</p>
-</li>
-<li><p><strong>弹性扩容</strong>：业务流量增长时，可直接新增后端服务器接入集群，无需修改整体架构，扩容灵活。</p>
-</li>
-<li><p><strong>提升资源利用率</strong>：合理分配流量，避免部分服务器负载过高、部分服务器闲置的资源浪费问题。</p>
-</li>
-</ul>
-<ol start="3">
-<li>六大核心分发算法（原理+优缺点+适用场景）</li>
-</ol>
-<ul>
-<li>轮询法</li>
-</ul>
-<p><strong>核心原理</strong>：将客户端请求按照固定顺序，依次轮流分配给后端每一台服务器，平等对待所有后端节点，不区分服务器的当前负载、连接数、硬件配置差异。</p>
-<p><strong>优点</strong>：算法简单、无计算开销、流量分配绝对均匀，部署维护便捷。</p>
-<p><strong>缺点</strong>：无法适配服务器性能差异，也不感知实时负载。若部分服务器配置低、负载高，依然会被分配等量请求，易导致服务响应不均、部分节点过载。</p>
-<p><strong>适用场景</strong>：后端服务器硬件配置、性能一致，业务请求流量均匀、无特殊差异的场景。</p>
-<ul>
-<li>随机法</li>
-</ul>
-<p><strong>核心原理</strong>：基于系统随机算法，根据后端服务器集群的节点总数，随机选取一台服务器处理当前客户端请求。服务器节点数量越多，流量分配越趋近均匀。</p>
-<p><strong>优点</strong>：算法极简、运算速度快，高并发场景下流量整体分布均衡。</p>
-<p><strong>缺点</strong>：流量分配存在随机性，无法精准均衡负载；不感知服务器性能和实时负载，可能出现性能差的服务器被频繁分配请求的情况。</p>
-<p><strong>适用场景</strong>：后端服务器性能一致、瞬时并发量大，对流量分配精准度要求不高的场景。</p>
-<ul>
-<li>源地址哈希法</li>
-</ul>
-<p><strong>核心原理</strong>：获取客户端访问的IP地址，通过哈希函数计算出固定数值，再用该数值对后端服务器列表节点数做取模运算，最终确定当前请求对应的后端服务器序号。只要后端服务器集群节点列表不变，同一客户端IP的每次请求，都会固定映射到同一台后端服务器。</p>
-<p><strong>优点</strong>：实现客户端会话绑定，同一用户始终访问同一台服务器，有效保留会话信息、缓存数据，避免会话丢失。</p>
-<p><strong>缺点</strong>：存在流量倾斜问题，若大量用户IP哈希结果集中在某几台节点上，会导致部分服务器负载过高；集群节点变更时，哈希映射关系会失效，会话会重新分配。</p>
-<p><strong>适用场景</strong>：需要保持会话一致性、用户登录态持久化的业务场景（如用户中心、购物车系统）。</p>
-<ul>
-<li>加权轮询法</li>
-</ul>
-<p><strong>核心原理</strong>：在基础轮询的基础上引入权重配置，根据后端服务器的硬件配置、性能、负载能力差异化分配权重。配置高、负载承受能力强的服务器设置更高权重，分配更多请求；配置低、性能较弱的服务器设置低权重，减少请求分配量，按权重顺序轮流分发流量。</p>
-<p><strong>优点</strong>：适配服务器性能差异，充分利用高性能服务器资源，避免低配置服务器过载，流量分配更贴合实际服务能力。</p>
-<p><strong>缺点</strong>：属于静态分配算法，无法实时感知服务器动态负载，仅依靠固定权重分配，无法适配服务器运行中的负载波动。</p>
-<p><strong>适用场景</strong>：后端服务器硬件配置、性能不一致，且服务器负载相对稳定的场景。</p>
-<ul>
-<li>加权随机法</li>
-</ul>
-<p><strong>核心原理</strong>：结合随机法与权重机制，不再按顺序分配流量，而是根据后端服务器的性能、负载配置差异化权重，通过加权随机算法选取服务器处理请求，权重越高的服务器，被选中的概率越大。</p>
-<p><strong>优点</strong>：兼顾随机性与差异化，相比纯随机法，能优先利用高性能服务器资源，适配不同配置的服务节点。</p>
-<p><strong>缺点</strong>：同样为静态算法，无实时负载感知能力，无法根据服务器实时运行状态调整流量分配。</p>
-<p><strong>适用场景</strong>：后端服务器性能不均、瞬时并发波动大，无需严格顺序分发流量的场景。</p>
-<ul>
-<li>最小连接数法</li>
-</ul>
-<p><strong>核心原理</strong>：属于动态负载均衡算法，负载均衡器实时统计每台后端服务器的当前活跃连接数，动态选取连接数最少、当前负载最轻的服务器处理新的客户端请求。</p>
-<p><strong>优点</strong>：实时感知服务器负载状态，动态适配流量波动，精准规避高负载节点，最大化均衡集群负载，资源利用率最高。</p>
-<p><strong>缺点</strong>：需要实时统计、计算各服务器连接数，算法开销高于静态算法；长连接业务场景下负载统计精度会受影响。</p>
-<p><strong>适用场景</strong>：服务器配置差异小、业务请求处理时长不均、流量波动大的场景（如接口服务、长连接业务）。</p>
-<ol start="4">
-<li>负载均衡分类</li>
-</ol>
-<ul>
-<li><p><strong>四层负载均衡</strong>：基于TCP/IP协议、IP+端口转发流量，转发速度快、性能高，适合通用网络流量分发，代表工具：Nginx、LVS。</p>
-</li>
-<li><p><strong>七层负载均衡</strong>：基于HTTP/HTTPS应用层协议，可识别URL、Cookie、请求头信息，支持精细化流量分发，代表工具：Nginx、Apache。</p>
-</li>
-</ul>
-<h2 id="三、反向代理与负载均衡的关联与区别"><a href="#三、反向代理与负载均衡的关联与区别" class="headerlink" title="三、反向代理与负载均衡的关联与区别"></a>三、反向代理与负载均衡的关联与区别</h2><ol>
-<li><p>关联：负载均衡是反向代理的核心延伸功能，绝大多数反向代理工具都集成了负载均衡能力；二者均通过代理服务器转发请求，屏蔽后端真实服务，统一流量入口。</p>
-</li>
-<li><p>核心区别：<code>反向代理侧重</code><strong><code>请求转发、安全防护、统一入口</code></strong><code>，解决服务暴露、访问统一化问题；负载均衡侧重</code><strong><code>流量分发、负载分摊、高可用</code></strong><code>，解决单服务性能瓶颈、集群压力均衡问题。</code></p>
-</li>
-</ol>
-<hr>
-<h1 id="Openresty"><a href="#Openresty" class="headerlink" title="Openresty"></a><center><font color="red">Openresty</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
-<li><p>Openresty是一个基于Nginx与Lua的高性能Web平台，其内部集成了大量精良的Lua库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态Web应用、Web服务和动态网关。可以使用Lua脚本调用Ngnix支持的C以及Lua模块，快速构建10K～1000K单机并发连接的高性能web应用系统。OpenResty的目标是让web服务直接运行在Nginx服务内部，利用Ngnix的非阻塞IO模型，对HTTP客户端请求和后端DB进行一致的高性能响应。</p>
-</li>
-<li><p>Openresty通过汇聚各种设计精良的Nginx模块(主要由Openresty团队自主开发)，从而将Nginx有效地变成一个强大的通用Web应用平台。这样，Web开发人员和系统工程师可以使用Lua脚本语言调动Nginx支持的各种C以及Lua模块，快速构造出足以胜任10K乃至1000K以上单机并发连接的高性能Web应用系统。</p>
-</li>
-<li><p>Openresty的目标是让你的Web服务直接跑在Nginx服务内部，充分利用Nginx的非阻塞I/O模型，不仅仅对HTTP客户端请求,甚至于对远程后端诸如MySQL、PostgreSQL、Memcached以及Redis等都进行一致的高性能响应。</p>
-</li>
-</ol>
-<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ol>
-<li><p>使用源码安装</p>
-<ul>
-<li><code>sudo wget https://openresty.org/download/openresty-1.15.8.2.tar.gz</code></li>
-<li><code>sudo tar -zxvf openresty-1.15.8.2.tar.gz</code></li>
-<li><code>cd openresty-1.15.8.2</code></li>
-<li><code>sudo ./configure</code>，默认安装到<code>/usr/local/openresty</code></li>
-<li></li>
-</ul>
-</li>
-<li><p>homebrew安装</p>
-</li>
-</ol>
-<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a href="http://openresty.org/cn/">Openresty中文站</a></li>
-<li><a href="http://openresty.org/en/">Openresty英文站</a></li>
-</ol>
-<hr>
-<h1 id="LVS-Nginx-HAProxy"><a href="#LVS-Nginx-HAProxy" class="headerlink" title="LVS-Nginx-HAProxy"></a><center><font color="red">LVS-Nginx-HAProxy</font></center></h1><h2 id="一、核心概念"><a href="#一、核心概念" class="headerlink" title="一、核心概念"></a>一、核心概念</h2><p>当前主流互联网系统普遍采用<strong>服务器集群技术</strong>，将相同业务服务部署在多台服务器上，组成集群统一对外提供服务，涵盖Web应用、数据库、分布式缓存等各类服务集群。单纯扩容单台服务器硬件，无法解决高并发访问下的CPU、I/O性能瓶颈，因此必须依托<strong>负载均衡技术</strong>分发流量、分摊服务压力。</p>
-<p>负载均衡设备作为服务集群的流量入口，可智能筛选最优后端服务器，透明转发客户端请求，实现流量均匀分配、服务高可用与性能扩容。目前企业生产环境中，<strong>LVS、Nginx、HAProxy</strong>是应用最广泛的三款软件负载均衡工具，三者分属不同网络层级，核心能力、适用场景差异显著。</p>
-<p><img src="web.jpeg" alt="web"></p>
-<h2 id="二、基础层级与核心定位对比"><a href="#二、基础层级与核心定位对比" class="headerlink" title="二、基础层级与核心定位对比"></a>二、基础层级与核心定位对比</h2><p><img src="OSI.jpeg" alt="OSI"></p>
-<h3 id="1-LVS（Linux-Virtual-Server，Linux虚拟服务器）"><a href="#1-LVS（Linux-Virtual-Server，Linux虚拟服务器）" class="headerlink" title="1. LVS（Linux Virtual Server，Linux虚拟服务器）"></a>1. LVS（Linux Virtual Server，Linux虚拟服务器）</h3><p>LVS由章文嵩博士于1998年研发，是国内首个知名自由软件项目，目前已完全集成进Linux内核（2.4及以上版本），无需打补丁、无需额外部署依赖，原生支持高性能负载均衡。</p>
-<p><img src="L1.jpeg" alt="LVS"></p>
-<h4 id="（1）集群三层核心架构"><a href="#（1）集群三层核心架构" class="headerlink" title="（1）集群三层核心架构"></a>（1）集群三层核心架构</h4><p>LVS集群架构对客户端完全透明，用户仅感知一台虚拟服务器，无法看到后端真实服务集群，核心分为三层：</p>
-<ul>
-<li><p><strong>负载调度器（LB/Director）</strong>：前端核心入口，配置虚拟IP（VIP），负责接收客户端请求，通过调度算法和转发规则分发流量至后端真实服务器，是整个集群的流量调度核心。</p>
-</li>
-<li><p><strong>真实服务器池（RS集群）</strong>：后端业务服务集群，实际处理客户端请求，可部署Web、FTP、DNS、数据库等各类服务，服务器之间可通过局域网/广域网组网。</p>
-</li>
-<li><p><strong>共享存储</strong>：为后端RS集群提供统一存储，保证所有服务器服务内容一致，实现无状态服务，适配流量分发需求。</p>
-</li>
-</ul>
-<h4 id="（2）负载均衡层级与机制"><a href="#（2）负载均衡层级与机制" class="headerlink" title="（2）负载均衡层级与机制"></a>（2）负载均衡层级与机制</h4><p>LVS是<strong>纯四层负载均衡</strong>（工作在OSI传输层），仅基于TCP/UDP协议工作，不解析应用层协议，无法处理HTTP URL、请求头、Cookie等应用层内容。</p>
-<p>核心转发原理：依托Linux内核IPVS模块工作，用户空间工具ipvsadm定义流量转发规则，内核空间IPVS模块匹配数据包的目的IP、端口，通过修改数据包IP、MAC地址或封装IP报文实现流量转发，转发效率极高。</p>
-<h3 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2. Nginx"></a>2. Nginx</h3><p>Nginx是一款高性能、轻量级的HTTP反向代理服务器，同时支持IMAP/POP3/SMTP邮件代理服务，凭借多路复用、事件驱动模型，具备低内存消耗、高并发处理的优势，是目前最主流的Web服务与七层负载均衡工具。</p>
-<p><img src="N1.jpeg" alt="反向代理"></p>
-<h4 id="（1）进程工作模型"><a href="#（1）进程工作模型" class="headerlink" title="（1）进程工作模型"></a>（1）进程工作模型</h4><p>Nginx以守护进程后台运行，采用<strong>单主线程多进程模型</strong>，架构稳定高效：包含1个Master主进程和N个Worker工作进程（N≥1），所有进程均为单线程，进程间通过共享内存通信。</p>
-<ul>
-<li><p><strong>Master进程</strong>：负责监听系统信号、管理Worker进程，监控Worker运行状态，实现服务重启、配置热更新、故障自愈等管控能力，不处理具体业务请求。</p>
-</li>
-<li><p><strong>Worker进程</strong>：实际处理客户端请求，多个Worker独立竞争请求，单Worker同一时间仅处理一个请求，避免线程竞争开销，保证服务稳定性。</p>
-</li>
-</ul>
-<h4 id="（2）负载均衡层级与机制-1"><a href="#（2）负载均衡层级与机制-1" class="headerlink" title="（2）负载均衡层级与机制"></a>（2）负载均衡层级与机制</h4><p>Nginx以<strong>七层负载均衡（应用层）</strong>为主、四层负载均衡为辅，核心基于反向代理实现流量分发。可深度解析HTTP/HTTPS协议内容，支持基于URL、Cookie、请求头、域名等应用层规则精准转发流量，功能灵活性极强。</p>
-<p>反向代理核心逻辑：客户端仅访问Nginx代理服务器，由Nginx接收所有连接请求，转发至后端真实业务服务器，再将服务器响应结果回传给客户端，全程隐藏后端服务真实地址，兼顾负载均衡与安全防护。</p>
-<h3 id="3-HAProxy"><a href="#3-HAProxy" class="headerlink" title="3. HAProxy"></a>3. HAProxy</h3><p>HAProxy是C语言开源开发的高性能代理工具，同时支持<strong>四层（TCP/UDP）和七层（HTTP/HTTPS）负载均衡</strong>，兼顾LVS的高性能和Nginx的灵活规则能力。专为大并发、高可用Web场景设计，可支撑数万级并发连接，能有效隔离后端服务器，避免内网服务直接暴露公网，广泛应用于大型网站、高可用集群架构。</p>
-<p>核心优势：支持会话保持、七层精细规则、健康检查、故障自动剔除，兼顾四层转发的高效性与七层调度的灵活性，是中型、大型集群的优选负载均衡工具。</p>
-<h2 id="三、LVS核心转发模型（补全关键原理与特性）"><a href="#三、LVS核心转发模型（补全关键原理与特性）" class="headerlink" title="三、LVS核心转发模型（补全关键原理与特性）"></a>三、LVS核心转发模型（补全关键原理与特性）</h2><p>LVS作为四层负载均衡，核心通过三种数据包转发模型实现流量分发，三种模型组网方式、性能、适用场景差异极大，且均有专属部署约束：</p>
-<h3 id="1-NAT模型（网络地址转换）"><a href="#1-NAT模型（网络地址转换）" class="headerlink" title="1. NAT模型（网络地址转换）"></a>1. NAT模型（网络地址转换）</h3><p>转发流程：①客户端请求报文源地址为客户端IP（CIP）、目的地址为LVS虚拟IP（VIP）；②LVS匹配规则后，修改报文目的IP为后端RS真实IP（RIP），转发至对应服务器；③RS处理请求后，响应报文回传至LVS；④LVS修改响应报文源IP为VIP，回传给客户端。</p>
-<p><strong>关键约束</strong>：后端所有RS的网关必须指向LVS，否则响应报文无法回传至LVS，导致请求失败。</p>
-<p><strong>特点</strong>：配置简单、支持跨网段组网，所有流量均经过LVS，瓶颈集中在调度器，并发性能相对较低。</p>
-<h3 id="2-DR模型（直接路由，生产最常用）"><a href="#2-DR模型（直接路由，生产最常用）" class="headerlink" title="2. DR模型（直接路由，生产最常用）"></a>2. DR模型（直接路由，生产最常用）</h3><p>转发流程：①客户端请求报文（CIP→VIP）到达LVS；②LVS仅修改报文源MAC、目的MAC地址，将报文转发至对应RS；③RS直接解析报文、处理请求，响应报文不经过LVS，直接通过自身网卡回传给客户端。</p>
-<p><strong>关键约束</strong>：后端RS需在lo回环网卡绑定VIP，且关闭VIP的ARP响应，避免局域网内IP冲突。</p>
-<p><strong>特点</strong>：仅请求流量经过LVS，响应流量直出，LVS压力极小、并发性能极高，仅支持同网段服务器组网，是高性能集群首选。</p>
-<h3 id="3-TUN模型（IP隧道模式）"><a href="#3-TUN模型（IP隧道模式）" class="headerlink" title="3. TUN模型（IP隧道模式）"></a>3. TUN模型（IP隧道模式）</h3><p>转发流程：①客户端发送CIP→VIP的请求报文至LVS；②LVS在原有报文外层新增一层IP封装，修改外层报文源地址为LVS物理IP（DIP）、目的地址为RS的RIP；③RS拆解外层IP封装，解析内层VIP请求并处理；④响应报文直接回传给客户端，不经过LVS。</p>
-<p><strong>关键约束</strong>：后端RS需开启IP隧道功能，lo网卡绑定的VIP不对外网广播。</p>
-<p><strong>特点</strong>：支持跨公网、跨网段组网，突破局域网限制，适合异地多活集群场景，配置复杂度最高。</p>
-<h2 id="四、三大工具调度算法（补全核心差异）"><a href="#四、三大工具调度算法（补全核心差异）" class="headerlink" title="四、三大工具调度算法（补全核心差异）"></a>四、三大工具调度算法（补全核心差异）</h2><h3 id="1-LVS-调度算法（静态-动态，内核级调度，性能最优）"><a href="#1-LVS-调度算法（静态-动态，内核级调度，性能最优）" class="headerlink" title="1. LVS 调度算法（静态+动态，内核级调度，性能最优）"></a>1. LVS 调度算法（静态+动态，内核级调度，性能最优）</h3><p>LVS算法分为静态、动态两类，静态不感知服务器负载，动态实时适配后端服务器连接压力：</p>
-<h4 id="（1）静态算法（4种）"><a href="#（1）静态算法（4种）" class="headerlink" title="（1）静态算法（4种）"></a>（1）静态算法（4种）</h4><ul>
-<li><p><strong>RR轮询</strong>：请求按顺序均匀分发至所有RS，不考虑服务器负载、连接数，适用于服务器性能一致的集群。</p>
-</li>
-<li><p><strong>WRR加权轮询</strong>：为不同性能服务器配置不同权重，性能高的服务器承载更多流量，适配服务器性能差异化场景。</p>
-</li>
-<li><p><strong>DH目标地址哈希</strong>：基于请求目标IP哈希固定分配服务器，实现目标IP请求的定点分发。</p>
-</li>
-<li><p><strong>SH源地址哈希</strong>：基于客户端源IP哈希分配服务器，实现同一客户端请求固定访问同一RS，简易实现会话保持。</p>
-</li>
-</ul>
-<h4 id="（2）动态算法（6种，默认WLC）"><a href="#（2）动态算法（6种，默认WLC）" class="headerlink" title="（2）动态算法（6种，默认WLC）"></a>（2）动态算法（6种，默认WLC）</h4><ul>
-<li><p><strong>LC最少连接</strong>：动态将请求分发至当前连接数最少的服务器，均衡实时负载。</p>
-</li>
-<li><p><strong>WLC加权最少连接（默认）</strong>：结合权重与实时连接数，高权重服务器承载更多连接，适配差异化性能集群，负载均衡效果最优。</p>
-</li>
-<li><p><strong>SED最短延迟</strong>：优化WLC缺陷，仅核算活动连接，优先分发至响应延迟最短的服务器。</p>
-</li>
-<li><p><strong>NQ永不排队</strong>：空闲无连接的服务器优先接收请求，避免服务器长期闲置，弥补SED调度短板。</p>
-</li>
-<li><p><strong>LBLC基于局部性最少连接</strong>：适配缓存集群，目标IP固定访问最近使用的服务器，超载时重新匹配最少连接节点。</p>
-</li>
-<li><p><strong>LBLCR带复制局部性最少连接</strong>：维护目标IP与服务器组的映射，支持节点复制，适配高并发缓存集群。</p>
-</li>
-</ul>
-<h3 id="2-Nginx-调度算法（七层应用级调度）"><a href="#2-Nginx-调度算法（七层应用级调度）" class="headerlink" title="2. Nginx 调度算法（七层应用级调度）"></a>2. Nginx 调度算法（七层应用级调度）</h3><p>核心适配HTTP/HTTPS场景，常用算法：轮询、加权轮询、ip_hash（会话保持）、least_conn（最少连接）、url_hash、fair（动态响应权重），支持基于应用层规则自定义调度，灵活性远超LVS。</p>
-<h3 id="3-HAProxy-调度算法（四七层通用）"><a href="#3-HAProxy-调度算法（四七层通用）" class="headerlink" title="3. HAProxy 调度算法（四七层通用）"></a>3. HAProxy 调度算法（四七层通用）</h3><p>兼容LVS、Nginx核心算法，支持轮询、加权轮询、最少连接、源IP哈希，额外支持精准的会话保持、故障熔断、权重动态调整，兼顾性能与灵活性。</p>
-<h2 id="五、三大工具优缺点与适用场景（补全修正核心差异）"><a href="#五、三大工具优缺点与适用场景（补全修正核心差异）" class="headerlink" title="五、三大工具优缺点与适用场景（补全修正核心差异）"></a>五、三大工具优缺点与适用场景（补全修正核心差异）</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>负载层级</th>
-<th>核心优点</th>
-<th>核心缺点</th>
-<th>适用场景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>LVS</td>
-<td>四层（传输层）</td>
-<td>内核级转发，性能极高、并发量大、资源消耗少、稳定性强；支持TCP/UDP所有四层协议</td>
-<td>无七层处理能力，无法解析HTTP协议、不能做URL/ Cookie转发、规则灵活性差；部署有专属组网约束</td>
-<td>高并发大流量入口层负载均衡、TCP/UDP服务集群、需要极致转发性能的场景</td>
-</tr>
-<tr>
-<td>Nginx</td>
-<td>七层为主、四层为辅</td>
-<td>应用层规则灵活，支持URL、Cookie、域名精准转发；配置简单、部署便捷、支持HTTPS、静态资源缓存</td>
-<td>单节点并发性能低于LVS；仅原生支持HTTP相关协议，四层转发能力较弱</td>
-<td>Web服务集群、静态资源代理、中小型业务负载均衡、需要精细化流量管控的场景</td>
-</tr>
-<tr>
-<td>HAProxy</td>
-<td>四层+七层双支持</td>
-<td>兼顾高性能与高灵活度；支持完善的健康检查、会话保持、故障熔断；适配TCP与HTTP双场景</td>
-<td>性能略低于LVS；配置复杂度高于Nginx</td>
-<td>中大型业务集群、需要同时兼容四层和七层负载、高可用高稳定性要求的场景</td>
-</tr>
-</tbody></table>
-<h2 id="六、企业常用架构组合（新增实战落地内容）"><a href="#六、企业常用架构组合（新增实战落地内容）" class="headerlink" title="六、企业常用架构组合（新增实战落地内容）"></a>六、企业常用架构组合（新增实战落地内容）</h2><blockquote>
-<p>生产环境中常采用<strong>LVS+Nginx/HAProxy分层架构</strong>，结合三者优势：</p>
-</blockquote>
-<ol>
-<li><p>前端入口：LVS部署四层负载均衡，承接全网大流量，实现高并发流量分发，保障入口性能与稳定性；</p>
-</li>
-<li><p>中层代理：Nginx/HAProxy做七层精细化调度，完成URL路由、HTTPS解密、会话保持、缓存优化等业务层管控；</p>
-</li>
-<li><p>后端服务：真实业务服务器集群处理具体请求，实现性能、灵活性、高可用的完美兼顾。</p>
-</li>
-</ol>
-<h2 id="七、简单对比"><a href="#七、简单对比" class="headerlink" title="七、简单对比"></a>七、简单对比</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>工作层级</th>
-<th>核心优点</th>
-<th>核心缺点</th>
-<th>适用场景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>LVS</strong></td>
-<td>四层 (传输层，内核 IPVS)</td>
-<td>性能最强、并发高、资源消耗低，支持 TCP/UDP</td>
-<td>无七层能力，不能解析 HTTP，组网部署复杂</td>
-<td>大流量入口，TCP/UDP 集群，追求极致转发性能</td>
-</tr>
-<tr>
-<td><strong>Nginx</strong></td>
-<td>七层为主，四层为辅</td>
-<td>配置简单、七层规则灵活（URL/Cookie/ 域名），支持 HTTPS、静态缓存</td>
-<td>四层弱，单节点性能弱于 LVS，侧重 HTTP</td>
-<td>Web 集群、静态资源、中小型业务、七层路由</td>
-</tr>
-<tr>
-<td><strong>HAProxy</strong></td>
-<td>四层 + 七层双支持</td>
-<td>兼顾性能与七层能力，健康检查 / 会话保持完善</td>
-<td>性能弱于 LVS，配置比 Nginx 复杂</td>
-<td>中大型 Web 集群，同时需要 TCP+HTTP 负载均衡</td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="PHP-Nginx优化"><a href="#PHP-Nginx优化" class="headerlink" title="PHP+Nginx优化"></a><center><font color="red">PHP+Nginx优化</font></center></h1><h2 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h2><ol>
-<li><p>监控php-fpm的状态</p>
-<ul>
-<li>修改对应的vhost，在server内加入以下配置<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">location ~ ^/status$ {</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>修改php-fpm.conf，打开以下选项：</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pm.status_path = /status</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>访问http://域名/status以查看当前的php情况，</li>
-<li>结果说明</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pool: www php运行的组</span><br><span class="line">process manager: dynamic php-fpm运行的方式</span><br><span class="line">start time: 04/Jun/2012:16:05:32 +0800 开始时间</span><br><span class="line">start since: 5932</span><br><span class="line">accepted conn: 65678 接受链接</span><br><span class="line">listen queue: 0 监听队列</span><br><span class="line">max listen queue: 1 最大监听队列</span><br><span class="line">listen queue len: 128 监听队列len</span><br><span class="line">idle processes: 82 空闲进程</span><br><span class="line">active processes: 4 活动进程</span><br><span class="line">total processes: 86 总进程</span><br><span class="line">max active processes: 25 最大活动进程</span><br><span class="line">max children reached: 0 最大的子进程达到</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>按上面的步骤弄完并看不出来什么问题，查看对应的日志，报了一堆<code>upstream timed out (60: Operation timed out)</code></p>
-</li>
-<li><p>在server内加入以下配置</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">large_client_header_buffers 4 16k;</span><br><span class="line">client_max_body_size 30m;</span><br><span class="line">client_body_buffer_size 128k;</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_buffer_size 64k;</span><br><span class="line">fastcgi_buffers   4 32k;</span><br><span class="line">fastcgi_busy_buffers_size 64k;</span><br><span class="line">fastcgi_temp_file_write_size 64k;</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="4">
-<li>重启ngix，响应速度并没有快多少，只是不再报<code>upstream timed out (60: Operation timed out)</code>了</li>
-</ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
-<li><a href="https://www.imooc.com/article/38287">参考一</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1134895">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>状态码 - 499 - curl - echo - 负载均衡 - 反向代理 - Openresty - Lua - LVS - HAProxy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL各种优化</title>
     <url>/2018/01/27/MySQL-%E5%90%84%E7%A7%8D%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -32878,15 +32324,583 @@
         <tag>MQ</tag>
         <tag>vhost</tag>
         <tag>延时消费</tag>
-        <tag>常驻进程</tag>
-        <tag>平滑重启</tag>
-        <tag>消费模式</tag>
         <tag>消息丢失</tag>
         <tag>消息重复</tag>
         <tag>消息顺序</tag>
         <tag>消息堆积</tag>
+        <tag>常驻进程</tag>
+        <tag>平滑重启</tag>
+        <tag>消费模式</tag>
         <tag>RocketMQ</tag>
         <tag>ActiveMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx杂谈</title>
+    <url>/2017/11/12/Nginx-%E6%9D%82%E8%B0%88/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>夏后殷商西东周，春秋战国秦皇收，西汉东汉魏蜀吴，西晋东晋兼五胡。匈奴羯氏羌慕容，拓跋代北后称雄。宋齐梁陈是南朝，北魏齐周称北朝。北周灭齐传於隋，隋又灭陈再统一。隋灭唐兴称富强，五代十国各称王。契丹兴起在北方，建号为辽入汴梁。五代梁唐晋汉周，宋朝建国陈桥头。女真建金先灭辽，打破汴京北宋消。南宋偏安在江南，蒙古兴起国号元。灭金灭宋归一统，元朝统治九十年。明代共传十六君，满洲初起号后金。后金国号改为清，入关称帝都北京。人民觉悟革命起，清帝退位民国立。人民民主再胜利，齐心奔向共产国。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Nginx收集"><a href="#Nginx收集" class="headerlink" title="Nginx收集"></a><center><font color="red">Nginx收集</font></center></h1><h2 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、列表</h2><ol>
+<li><p><a href="https://www.cnblogs.com/xueweihan/p/5969592.html">Max retries exceeded with url</a></p>
+<ul>
+<li>可能原因<ul>
+<li>http连接太多没有关闭导致的。</li>
+<li>机器的内存不够了。</li>
+<li>由于请求频率过快，被目标网站封IP了</li>
+<li>请求的url地址错误</li>
+</ul>
+</li>
+<li>解决方案<ul>
+<li>增加重试连接次数：<code>requests.adapters.DEFAULT_RETRIES = 5</code></li>
+<li>关闭多余的连接：requests使用了urllib3库，默认的http connection是keep-alive的，requests设置False关闭。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://my.oschina.net/linland/blog/373315">upstream response is buffered to a temporary file</a></p>
+</li>
+<li><p>FastCGI sent in stderr: “Unable to open primary script</p>
+</li>
+<li><p>配置</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#字符集</span><br><span class="line">charset utf-8;</span><br><span class="line">#域名长度限制加长</span><br><span class="line">server_names_hash_bucket_size 128;</span><br><span class="line">#client 报头和包体设置</span><br><span class="line">client_header_buffer_size 2k;</span><br><span class="line">large_client_header_buffers 4 4k;</span><br><span class="line">client_max_body_size 20m;</span><br><span class="line">#出错时调起报错邮件发送</span><br><span class="line">sendfile        off;</span><br><span class="line">#设置超时</span><br><span class="line">keepalive_timeout  180;</span><br><span class="line">tcp_nodelay        on;</span><br><span class="line">#开启压宿</span><br><span class="line">gzip  on;</span><br><span class="line">gzip_disable "MSIE [1-6]\.(?!.*SV1)";</span><br><span class="line">gzip_min_length  1k;</span><br><span class="line">gzip_buffers     4 16k;</span><br><span class="line">gzip_http_version 1.0;</span><br><span class="line">gzip_comp_level 2;</span><br><span class="line">gzip_types       text/plain application/x-javascript text/css</span><br><span class="line">#fastcgi的相关设置</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li><p>常见日志处理</p>
+<ul>
+<li>统计每个ip访问的次数<code>awk '{i=$1;a[i]+=1;}END{for(i in a)printf("%d %s \n",a[i],i)}' access.log</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">2093 192.168.10.1</span><br><span class="line">2 192.168.10.2</span><br><span class="line">2 192.168.10.3</span><br><span class="line">1 127.0.0.1</span><br><span class="line">1259 127.0.0.1</span><br><span class="line">1 192.168.10.10</span><br><span class="line">2 192.168.10.4</span><br><span class="line">2 192.168.10.5</span><br><span class="line">2 192.168.10.6</span><br><span class="line">2 192.168.10.7</span><br><span class="line">2 192.168.10.8</span><br><span class="line">1 192.168.10.9</span><br><span class="line">1 192.168.10.18</span><br><span class="line">1 192.168.10.0</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>统计访问最多的前10个ip<code>awk '{i=$1;a[i]+=1;}END{for(i in a)printf("%d %s \n",a[i],i)}' access.log | sort -nr |head -n 10</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">2093 192.168.10.1</span><br><span class="line">1259 127.0.0.1</span><br><span class="line">2 192.168.10.8</span><br><span class="line">2 192.168.10.7</span><br><span class="line">2 192.168.10.6</span><br><span class="line">2 192.168.10.5</span><br><span class="line">2 192.168.10.4</span><br><span class="line">2 192.168.10.3</span><br><span class="line">2 192.168.10.2</span><br><span class="line">1 192.168.10.9</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>获取具体时间段内的日志</p>
+<ul>
+<li>日志格式access.log((打印Jun15-20号的日志，不做年份的限制))</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">10.2.24.141 - - [19/Jun/2020:09:56:57 +0800] "POST /index.php?mod=api&amp;ver=0.1&amp;SESSION=%7B%22rid%22:%228201_186%22,    %22sec%22:%228201%22,%22pGroup%22:%22default%22,%22tls%22:0%7D HTTP/1.1" 200 121 "-" "-" "-"</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>处理脚本<code>awk '{split($4, a, "/"); d=substr(a[1],2); if(d&gt;=15 &amp;&amp; d&lt;=20 &amp;&amp; a[2]=="Jun") { print $0;} }' access.log</code></li>
+<li>日志格式打印Apr 26号的日志)</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">127.0.0.1 - - [26/Apr/2018:11:12:48 +0800] "GET /inc.php HTTP/1.1" 200 62437 "-" "Mozilla/5.0 (Macintosh; Intel    Mac OS X  10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>处理脚本<code>awk '{split($4, a, "/"); d=substr(a[1],2); if(d==26 &amp;&amp; a[2]=="Apr") { print $0;} }' access.log</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>502 upstream sent too big header while reading response header from upstream ...</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">fastcgi_intercept_errors off;</span><br><span class="line">fastcgi_buffer_size 16k;</span><br><span class="line">fastcgi_buffers 4 16k;</span><br><span class="line"></span><br><span class="line">proxy_buffer_size   128k;</span><br><span class="line">proxy_buffers   16 256k;</span><br><span class="line">proxy_busy_buffers_size   256k;</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>epoll：举个例子：假设进程有10万个TCP连接，且只有几百个连接是有事件需要处理的。那么在每一个时刻进程只需要处理这几百个有事件(即TCP连接上有数据需要交互)需要处理的连接即可。</p>
+<ul>
+<li>select和poll这样处理的：在某一时刻进程收集所有的连接，并把所有连接的套接字传给操作系统（这个过程其实是用户态内存到内核态内存的复制），而由操作系统内核寻找这那几百个有事件需要处理的连接并处理，然后返回数据给用户。<ul>
+<li>这个过程需要操作系统把全部的连接处理一边，极大浪费系统资源。</li>
+</ul>
+</li>
+<li>epoll是这样做的：<ul>
+<li>调用epoll_creat函数建立一个epoll对象（一颗红黑树，一个准备就绪list链表）。</li>
+<li>调用epoll_ctl函数把socket放到红黑树上，给内核中断处理程序注册一个回调函数，告诉内核如果这个句柄的中断到了，就把这个socket放到准备就绪list链表里。</li>
+<li>调用epoll_wait到准备就绪list链表中处理socket，并把数据返回给用户。<ul>
+<li>不需要把全部的连接处理一遍，只需要去list链表里处理socket。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>reported about an closed connection (54: Connection reset by peer)</p>
+<ul>
+<li>php内存设置过小导致运行过程中进程异常终止<ul>
+<li>php.ini设置：<code>memory_limit = 128M</code></li>
+<li><a href="http://www.conf设置：`php_admin_value[memory_limit]">www.conf设置：`php_admin_value[memory_limit]</a> = 32M`</li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/zzhongcy/article/details/89090193">Connection reset by peer</a></li>
+</ul>
+</li>
+</ol>
+<ol start="9">
+<li><p>高并发nginx调优</p>
+<ul>
+<li>调整worker_processes数量<ul>
+<li>意为生成的worker数量，最佳实践是每个CPU运行1个工作worker。</li>
+</ul>
+</li>
+<li>调整worker_connections数量<ul>
+<li>意为同时提供服务的客户端数量，一般设为1024</li>
+</ul>
+</li>
+<li>启用Gzip压缩<ul>
+<li>压缩文件大小，减少了客户端HTTP请求的传输带宽，提高了加载速度</li>
+</ul>
+</li>
+<li>启用静态文件缓存<ul>
+<li>减少传输带宽提升速度</li>
+</ul>
+</li>
+<li>设置timeout<ul>
+<li>client_header_timeout：指定等待client发送一个请求头的超时时间<ul>
+<li>如果在超时时间内client没发送任何东西，nginx返回HTTP状态码408(“Request timed out”)</li>
+</ul>
+</li>
+<li>client_body_timeout：设置请求体的读超时时间。<ul>
+<li>超时后，nginx返回HTTP状态码408(“Request timed out”)</li>
+</ul>
+</li>
+<li>keepalive_timeout：指定client的keep-alive连接超时时间，服务器将会在这个时间后关闭连接。<ul>
+<li>keepalive可减少打开和关闭连接所需的CPU和网络开销</li>
+</ul>
+</li>
+<li>send_timeout：指定客户端的响应超时时间。<ul>
+<li>如果在这段时间内客户端没有读取任何数据，nginx就会关闭连接。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关闭access_logs</li>
+</ul>
+</li>
+<li><p>x509: certificate signed by unknown authority</p>
+</li>
+</ol>
+<hr>
+<h1 id="Nginx状态码"><a href="#Nginx状态码" class="headerlink" title="Nginx状态码"></a><center><font color="red">Nginx状态码</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP状态码(英语：HTTP Status Code)是用以表示网页服务器超文本传输协议响应状态的3位数字代码。它由RFC 2616规范定义的，并得到RFC 2518、RFC 2817、RFC 2295、RFC 2774与RFC 4918等规范扩展。所有状态码的第一个数字代表了响应的五种状态之一。所示的消息短语是典型的，但是可以提供任何可读取的替代方案。除非另有说明，状态码是HTTP/1.1标准(RFC 7231)的一部分。HTTP状态码的官方注册表由互联网号码分配局(Internet Assigned Numbers Authority)维护。</p>
+<p><img src="http%E8%AF%B7%E6%B1%82.png" alt="http请求"></p>
+<h2 id="二、常见错误码"><a href="#二、常见错误码" class="headerlink" title="二、常见错误码"></a>二、常见错误码</h2><ol>
+<li><p>400</p>
+<ul>
+<li>Bad Request，往往因为语法错误而无法被服务端理解</li>
+</ul>
+</li>
+<li><p>413</p>
+<ul>
+<li><p>Request Entity Too Large，请求体过大，一般出现在上传大文件请求</p>
+</li>
+<li><p>解决办法</p>
+<ul>
+<li>修改nginx配置文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">client_max_body_size 8M; ## 设置客户端请求体最大值</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>修改php.ini</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">post_max_size = 8M       # 整个表单提交的最大限制</span><br><span class="line">upload_max_filesize = 2M # 上传单个文件的最大限制</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+</li>
+<li><p>499</p>
+<ul>
+<li><p>nginx独有，表示在收到客户端完整的HTTP request前，客户端试图关闭TCP连接导致</p>
+</li>
+<li><p>下载nginx-1.16.1.tar.gz，解压到nginx-1.16.1目录，打开<code>nginx-1.16.1/src/http/ngx_http_request.h</code>文件，见499定义：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/*</span><br><span class="line"> * HTTP does not define the code for the case when a client closed</span><br><span class="line"> * the connection while we are processing its request so we introduce</span><br><span class="line"> * own code to log such situation when a client has closed the connection</span><br><span class="line"> * before we even try to send the HTTP header to it</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_CLIENT_CLOSED_REQUEST     499</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>复现</p>
+<ul>
+<li>定义处理请求脚本<code>index.php</code>，直接加入<code>sleep(10);</code></li>
+<li>通过curl请求 <code>curl -m 2 http://localhost/index.php</code></li>
+<li>查看访问日志 <code>tail -n 10 access.log</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>500</p>
+</li>
+<li><p>502：Bad Gateway是指错误网关，无效网关</p>
+<ul>
+<li>一般可通过是杀死php-fpm进程再请求web来复现</li>
+</ul>
+</li>
+<li><p>503<br>Service Temporarily Unavailable，即服务暂时不可用，一般由于临时的服务器维护或者过载，服务器当前无法处理请求。</p>
+</li>
+<li><p>504</p>
+</li>
+<li><p><a href="http://www.sohu.com/a/259965525_630789">403</a></p>
+<ul>
+<li>由于启动用户和nginx工作用户不一致所致</li>
+<li>缺少index.html或者index.php文件</li>
+<li>权限问题，如果nginx没有web目录的操作权限</li>
+<li>SELinux设置为开启状态（enabled）的原因</li>
+</ul>
+</li>
+<li><p>nginx状态码定义</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#define NGX_HTTP_CONTINUE                  100</span><br><span class="line">#define NGX_HTTP_SWITCHING_PROTOCOLS       101</span><br><span class="line">#define NGX_HTTP_PROCESSING                102</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_OK                        200</span><br><span class="line">#define NGX_HTTP_CREATED                   201</span><br><span class="line">#define NGX_HTTP_ACCEPTED                  202</span><br><span class="line">#define NGX_HTTP_NO_CONTENT                204</span><br><span class="line">#define NGX_HTTP_PARTIAL_CONTENT           206</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_SPECIAL_RESPONSE          300</span><br><span class="line">#define NGX_HTTP_MOVED_PERMANENTLY         301</span><br><span class="line">#define NGX_HTTP_MOVED_TEMPORARILY         302</span><br><span class="line">#define NGX_HTTP_SEE_OTHER                 303</span><br><span class="line">#define NGX_HTTP_NOT_MODIFIED              304</span><br><span class="line">#define NGX_HTTP_TEMPORARY_REDIRECT        307</span><br><span class="line">#define NGX_HTTP_PERMANENT_REDIRECT        308</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_BAD_REQUEST               400</span><br><span class="line">#define NGX_HTTP_UNAUTHORIZED              401</span><br><span class="line">#define NGX_HTTP_FORBIDDEN                 403</span><br><span class="line">#define NGX_HTTP_NOT_FOUND                 404</span><br><span class="line">#define NGX_HTTP_NOT_ALLOWED               405</span><br><span class="line">#define NGX_HTTP_REQUEST_TIME_OUT          408</span><br><span class="line">#define NGX_HTTP_CONFLICT                  409</span><br><span class="line">#define NGX_HTTP_LENGTH_REQUIRED           411</span><br><span class="line">#define NGX_HTTP_PRECONDITION_FAILED       412</span><br><span class="line">#define NGX_HTTP_REQUEST_ENTITY_TOO_LARGE  413</span><br><span class="line">#define NGX_HTTP_REQUEST_URI_TOO_LARGE     414</span><br><span class="line">#define NGX_HTTP_UNSUPPORTED_MEDIA_TYPE    415</span><br><span class="line">#define NGX_HTTP_RANGE_NOT_SATISFIABLE     416</span><br><span class="line">#define NGX_HTTP_MISDIRECTED_REQUEST       421</span><br><span class="line">#define NGX_HTTP_TOO_MANY_REQUESTS         429</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* Our own HTTP codes */</span><br><span class="line"></span><br><span class="line">/* The special code to close connection without any response */</span><br><span class="line">#define NGX_HTTP_CLOSE                     444</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_NGINX_CODES               494</span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_REQUEST_HEADER_TOO_LARGE  494</span><br><span class="line"></span><br><span class="line">#define NGX_HTTPS_CERT_ERROR               495</span><br><span class="line">#define NGX_HTTPS_NO_CERT                  496</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * We use the special code for the plain HTTP requests that are sent to</span><br><span class="line"> * HTTPS port to distinguish it from 4XX in an error page redirection</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_TO_HTTPS                  497</span><br><span class="line"></span><br><span class="line">/* 498 is the canceled code for the requests with invalid host name */</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * HTTP does not define the code for the case when a client closed</span><br><span class="line"> * the connection while we are processing its request so we introduce</span><br><span class="line"> * own code to log such situation when a client has closed the connection</span><br><span class="line"> * before we even try to send the HTTP header to it</span><br><span class="line"> */</span><br><span class="line">#define NGX_HTTP_CLIENT_CLOSED_REQUEST     499</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#define NGX_HTTP_INTERNAL_SERVER_ERROR     500</span><br><span class="line">#define NGX_HTTP_NOT_IMPLEMENTED           501</span><br><span class="line">#define NGX_HTTP_BAD_GATEWAY               502</span><br><span class="line">#define NGX_HTTP_SERVICE_UNAVAILABLE       503</span><br><span class="line">#define NGX_HTTP_GATEWAY_TIME_OUT          504</span><br><span class="line">#define NGX_HTTP_VERSION_NOT_SUPPORTED     505</span><br><span class="line">#define NGX_HTTP_INSUFFICIENT_STORAGE      507</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="https://nginx.org/en/docs/">参考一</a></li>
+<li><a href="https://www.nginx.com/nginx-wiki/build/dirhtml/extending/api/http/">参考二</a></li>
+</ol>
+<hr>
+<h1 id="echo模块"><a href="#echo模块" class="headerlink" title="echo模块"></a><center><font color="red">echo模块</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nginx由内核和模块组成：内核的设计非常微小和简洁，完成的工作也非常简单，仅仅通过查找配置文件将客户端请求映射到一个location block，而在这个location中所配置的每个指令将会启动不同的模块去完成相应的工作；Nginx的功能如此强大是因为它有非常多的模块来支撑，Nginx本身包含很多模块，用户也可以根据自己的需求开发模块。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nginx模块从结构上分为：基础模块、核心模块和第三方模块。核心模块包含HTTP模块、EVENT模块和MAIL模块等；基础模块包含HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块等；第三方模块包含HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块等。第三方模块从功能上又可以分为Handlers处理器模块：直接处理请求，并进行输出内容和修改headers信息等操作，一般只有一个；Filters过滤器模块：主要对其他处理器模块输出的内容进行修改操作，最后由Nginx输出；Proxies代理类模块：此类模块是Nginx的HTTP Up-stream之类的模块，主要与后端一些服务比如FastCGI等进行交互，实现服务代理和负载均衡等功能。用户根据自己的需要开发的模块都属于第三方模块。正是有了这么多模块的支撑，Nginx的功能才会如此强大。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nginx echo模块是在nginx程序上扩展了echo输出字符的功能，对于调试很方便，<a href="https://github.com/openresty/echo-nginx-module">传送门</a>。</p>
+<h2 id="二、开干"><a href="#二、开干" class="headerlink" title="二、开干"></a>二、开干</h2><ol>
+<li>进入nginx目录<strong>这一步可选</strong></li>
+<li>下载echo模块<code>git clone https://github.com/openresty/echo-nginx-module</code></li>
+<li>查看nginx相关信息，主要为了取configure信息<code>/usr/local/nginx1.17.5/sbin/nginx -V</code></li>
+<li>复制上一步中的<code>configure arguments:</code>后面的信息，即上一次编译时的参数</li>
+<li>环境验证并生成Makefile<code>sudo ./configure --prefix=/usr/local/nginx1.17.5 --add-module=/usr/local/src/nginx-1.17.5/echo-nginx-module</code></li>
+<li>重新编译<code>make</code>，<strong>千万不要</strong><code>make install</code>，否则会把原先安装的都覆盖掉</li>
+<li>备份<code>sudo mv /usr/local/nginx1.17.5/sbin/nginx /usr/local/nginx1.17.5/sbin/nginx.bak</code> </li>
+<li>替换<code>sudo cp /usr/local/src/nginx-1.17.5/objs/nginx /usr/local/nginx1.17.5/sbin/</code></li>
+<li>重启<code>sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</code></li>
+</ol>
+<h2 id="三、demo"><a href="#三、demo" class="headerlink" title="三、demo"></a>三、demo</h2><ol>
+<li>配置vhost</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">default_type text/plain;</span><br><span class="line">location = /test {</span><br><span class="line">    echo $args;</span><br><span class="line">    echo $query_string;</span><br><span class="line">    echo $request_method;</span><br><span class="line">    echo $content_type;</span><br><span class="line">    echo $content_length;</span><br><span class="line">    echo $fastcgi_script_name;</span><br><span class="line">    echo $request_uri;</span><br><span class="line">    echo $document_uri;</span><br><span class="line">    echo $document_root;</span><br><span class="line">    echo $server_protocol;</span><br><span class="line">    echo $scheme;</span><br><span class="line">    echo $https if_not_empty;</span><br><span class="line">    echo CGI/1.1;</span><br><span class="line">    echo nginx/$nginx_version;</span><br><span class="line">    echo $remote_addr;</span><br><span class="line">    echo $remote_port;</span><br><span class="line">    echo $server_addr;</span><br><span class="line">    echo $server_port;</span><br><span class="line">    echo $server_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>重启nginx</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sudo killall nginx</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx</span><br><span class="line">或</span><br><span class="line">sudo /usr/local/nginx1.17.5/sbin/nginx -s reload</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>浏览器访问<code>http://localhost/echo?a=1&amp;b=2</code></li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://github.com/openresty/echo-nginx-module">参考一</a></li>
+<li><a href="https://github.com/cuber/ngx_http_google_filter_module">参考二</a></li>
+<li><a href="https://github.com/openresty/echo-nginx-module/issues/12">参考三</a></li>
+</ol>
+<hr>
+<h1 id="负载均衡与反向代理"><a href="#负载均衡与反向代理" class="headerlink" title="负载均衡与反向代理"></a><center><font color="red">负载均衡与反向代理</font></center></h1><h2 id="一、反向代理"><a href="#一、反向代理" class="headerlink" title="一、反向代理"></a>一、反向代理</h2><ol>
+<li><p>核心定义：反向代理是介于客户端与后端业务服务器之间的中间代理服务，客户端所有请求统一发送至反向代理服务器，再由代理服务器转发请求至对应的后端真实服务器，并将后端服务器的响应结果返回给客户端。整个过程中，客户端始终只与代理服务器交互，无法感知后端真实服务器的存在。</p>
+</li>
+<li><p>核心作用</p>
+</li>
+</ol>
+<ul>
+<li><p><strong>隐藏后端服务</strong>：屏蔽真实服务器IP、端口及架构信息，避免后端服务器直接暴露在公网，有效抵御攻击，提升服务安全性。</p>
+</li>
+<li><p><strong>统一入口管理</strong>：将多个后端服务统一聚合，客户端仅需访问统一代理地址，简化客户端访问配置。</p>
+</li>
+<li><p><strong>实现动静分离</strong>：可单独代理静态资源（图片、CSS、JS、静态页面），将动态请求转发至业务服务器，减轻后端服务器压力。</p>
+</li>
+<li><p><strong>基础缓存加速</strong>：对高频访问的静态资源、接口数据进行缓存，减少重复请求转发，提升访问响应速度。</p>
+</li>
+<li><p><strong>权限与流量管控</strong>：统一实现请求鉴权、限流、黑名单、HTTPS加密等功能，统一管控全网请求流量。</p>
+</li>
+</ul>
+<ol start="3">
+<li><p>常见应用场景：Web网站服务、微服务网关转发、多服务统一域名访问、公网服务安全防护、HTTPS证书统一部署等。</p>
+</li>
+<li><p>主流实现工具：Nginx、Apache、Squid、Traefik、OpenResty等，其中Nginx是目前最常用的反向代理工具。</p>
+</li>
+</ol>
+<h2 id="二、负载均衡"><a href="#二、负载均衡" class="headerlink" title="二、负载均衡"></a>二、负载均衡</h2><ol>
+<li>核心定义：负载均衡（Load Balance）是建立在现有网络架构之上的流量分发技术，是对反向代理能力的进阶延伸。其核心思想是将客户端海量的网络请求、业务访问流量，合理分摊到多台后端业务服务器（Web服务器、FTP服务器、应用服务器等）协同处理，避免单台服务器负载过高、性能瓶颈、单点故障问题。</li>
+</ol>
+<blockquote>
+<p>该技术能够低成本、高效、透明地扩展网络设备与服务器的带宽、提升数据吞吐量、强化网络数据处理能力，最终提升整个服务集群的灵活性、可用性与并发承载能力，保障服务稳定运行。</p>
+</blockquote>
+<ol start="2">
+<li>核心价值</li>
+</ol>
+<ul>
+<li><p><strong>分担服务压力</strong>：将并发流量分散至多台服务器，解决单服务器性能上限问题，提升集群并发能力。</p>
+</li>
+<li><p><strong>实现高可用</strong>：单台后端服务器故障时，负载均衡器可自动剔除故障节点，将流量分发至正常服务器，避免服务中断。</p>
+</li>
+<li><p><strong>弹性扩容</strong>：业务流量增长时，可直接新增后端服务器接入集群，无需修改整体架构，扩容灵活。</p>
+</li>
+<li><p><strong>提升资源利用率</strong>：合理分配流量，避免部分服务器负载过高、部分服务器闲置的资源浪费问题。</p>
+</li>
+</ul>
+<ol start="3">
+<li>六大核心分发算法（原理+优缺点+适用场景）</li>
+</ol>
+<ul>
+<li>轮询法</li>
+</ul>
+<p><strong>核心原理</strong>：将客户端请求按照固定顺序，依次轮流分配给后端每一台服务器，平等对待所有后端节点，不区分服务器的当前负载、连接数、硬件配置差异。</p>
+<p><strong>优点</strong>：算法简单、无计算开销、流量分配绝对均匀，部署维护便捷。</p>
+<p><strong>缺点</strong>：无法适配服务器性能差异，也不感知实时负载。若部分服务器配置低、负载高，依然会被分配等量请求，易导致服务响应不均、部分节点过载。</p>
+<p><strong>适用场景</strong>：后端服务器硬件配置、性能一致，业务请求流量均匀、无特殊差异的场景。</p>
+<ul>
+<li>随机法</li>
+</ul>
+<p><strong>核心原理</strong>：基于系统随机算法，根据后端服务器集群的节点总数，随机选取一台服务器处理当前客户端请求。服务器节点数量越多，流量分配越趋近均匀。</p>
+<p><strong>优点</strong>：算法极简、运算速度快，高并发场景下流量整体分布均衡。</p>
+<p><strong>缺点</strong>：流量分配存在随机性，无法精准均衡负载；不感知服务器性能和实时负载，可能出现性能差的服务器被频繁分配请求的情况。</p>
+<p><strong>适用场景</strong>：后端服务器性能一致、瞬时并发量大，对流量分配精准度要求不高的场景。</p>
+<ul>
+<li>源地址哈希法</li>
+</ul>
+<p><strong>核心原理</strong>：获取客户端访问的IP地址，通过哈希函数计算出固定数值，再用该数值对后端服务器列表节点数做取模运算，最终确定当前请求对应的后端服务器序号。只要后端服务器集群节点列表不变，同一客户端IP的每次请求，都会固定映射到同一台后端服务器。</p>
+<p><strong>优点</strong>：实现客户端会话绑定，同一用户始终访问同一台服务器，有效保留会话信息、缓存数据，避免会话丢失。</p>
+<p><strong>缺点</strong>：存在流量倾斜问题，若大量用户IP哈希结果集中在某几台节点上，会导致部分服务器负载过高；集群节点变更时，哈希映射关系会失效，会话会重新分配。</p>
+<p><strong>适用场景</strong>：需要保持会话一致性、用户登录态持久化的业务场景（如用户中心、购物车系统）。</p>
+<ul>
+<li>加权轮询法</li>
+</ul>
+<p><strong>核心原理</strong>：在基础轮询的基础上引入权重配置，根据后端服务器的硬件配置、性能、负载能力差异化分配权重。配置高、负载承受能力强的服务器设置更高权重，分配更多请求；配置低、性能较弱的服务器设置低权重，减少请求分配量，按权重顺序轮流分发流量。</p>
+<p><strong>优点</strong>：适配服务器性能差异，充分利用高性能服务器资源，避免低配置服务器过载，流量分配更贴合实际服务能力。</p>
+<p><strong>缺点</strong>：属于静态分配算法，无法实时感知服务器动态负载，仅依靠固定权重分配，无法适配服务器运行中的负载波动。</p>
+<p><strong>适用场景</strong>：后端服务器硬件配置、性能不一致，且服务器负载相对稳定的场景。</p>
+<ul>
+<li>加权随机法</li>
+</ul>
+<p><strong>核心原理</strong>：结合随机法与权重机制，不再按顺序分配流量，而是根据后端服务器的性能、负载配置差异化权重，通过加权随机算法选取服务器处理请求，权重越高的服务器，被选中的概率越大。</p>
+<p><strong>优点</strong>：兼顾随机性与差异化，相比纯随机法，能优先利用高性能服务器资源，适配不同配置的服务节点。</p>
+<p><strong>缺点</strong>：同样为静态算法，无实时负载感知能力，无法根据服务器实时运行状态调整流量分配。</p>
+<p><strong>适用场景</strong>：后端服务器性能不均、瞬时并发波动大，无需严格顺序分发流量的场景。</p>
+<ul>
+<li>最小连接数法</li>
+</ul>
+<p><strong>核心原理</strong>：属于动态负载均衡算法，负载均衡器实时统计每台后端服务器的当前活跃连接数，动态选取连接数最少、当前负载最轻的服务器处理新的客户端请求。</p>
+<p><strong>优点</strong>：实时感知服务器负载状态，动态适配流量波动，精准规避高负载节点，最大化均衡集群负载，资源利用率最高。</p>
+<p><strong>缺点</strong>：需要实时统计、计算各服务器连接数，算法开销高于静态算法；长连接业务场景下负载统计精度会受影响。</p>
+<p><strong>适用场景</strong>：服务器配置差异小、业务请求处理时长不均、流量波动大的场景（如接口服务、长连接业务）。</p>
+<ol start="4">
+<li>负载均衡分类</li>
+</ol>
+<ul>
+<li><p><strong>四层负载均衡</strong>：基于TCP/IP协议、IP+端口转发流量，转发速度快、性能高，适合通用网络流量分发，代表工具：Nginx、LVS。</p>
+</li>
+<li><p><strong>七层负载均衡</strong>：基于HTTP/HTTPS应用层协议，可识别URL、Cookie、请求头信息，支持精细化流量分发，代表工具：Nginx、Apache。</p>
+</li>
+</ul>
+<h2 id="三、反向代理与负载均衡的关联与区别"><a href="#三、反向代理与负载均衡的关联与区别" class="headerlink" title="三、反向代理与负载均衡的关联与区别"></a>三、反向代理与负载均衡的关联与区别</h2><ol>
+<li><p>关联：负载均衡是反向代理的核心延伸功能，绝大多数反向代理工具都集成了负载均衡能力；二者均通过代理服务器转发请求，屏蔽后端真实服务，统一流量入口。</p>
+</li>
+<li><p>核心区别：<code>反向代理侧重</code><strong><code>请求转发、安全防护、统一入口</code></strong><code>，解决服务暴露、访问统一化问题；负载均衡侧重</code><strong><code>流量分发、负载分摊、高可用</code></strong><code>，解决单服务性能瓶颈、集群压力均衡问题。</code></p>
+</li>
+</ol>
+<hr>
+<h1 id="Openresty"><a href="#Openresty" class="headerlink" title="Openresty"></a><center><font color="red">Openresty</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li><p>Openresty是一个基于Nginx与Lua的高性能Web平台，其内部集成了大量精良的Lua库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态Web应用、Web服务和动态网关。可以使用Lua脚本调用Ngnix支持的C以及Lua模块，快速构建10K～1000K单机并发连接的高性能web应用系统。OpenResty的目标是让web服务直接运行在Nginx服务内部，利用Ngnix的非阻塞IO模型，对HTTP客户端请求和后端DB进行一致的高性能响应。</p>
+</li>
+<li><p>Openresty通过汇聚各种设计精良的Nginx模块(主要由Openresty团队自主开发)，从而将Nginx有效地变成一个强大的通用Web应用平台。这样，Web开发人员和系统工程师可以使用Lua脚本语言调动Nginx支持的各种C以及Lua模块，快速构造出足以胜任10K乃至1000K以上单机并发连接的高性能Web应用系统。</p>
+</li>
+<li><p>Openresty的目标是让你的Web服务直接跑在Nginx服务内部，充分利用Nginx的非阻塞I/O模型，不仅仅对HTTP客户端请求,甚至于对远程后端诸如MySQL、PostgreSQL、Memcached以及Redis等都进行一致的高性能响应。</p>
+</li>
+</ol>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><ol>
+<li><p>使用源码安装</p>
+<ul>
+<li><code>sudo wget https://openresty.org/download/openresty-1.15.8.2.tar.gz</code></li>
+<li><code>sudo tar -zxvf openresty-1.15.8.2.tar.gz</code></li>
+<li><code>cd openresty-1.15.8.2</code></li>
+<li><code>sudo ./configure</code>，默认安装到<code>/usr/local/openresty</code></li>
+<li></li>
+</ul>
+</li>
+<li><p>homebrew安装</p>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a href="http://openresty.org/cn/">Openresty中文站</a></li>
+<li><a href="http://openresty.org/en/">Openresty英文站</a></li>
+</ol>
+<hr>
+<h1 id="LVS-Nginx-HAProxy"><a href="#LVS-Nginx-HAProxy" class="headerlink" title="LVS-Nginx-HAProxy"></a><center><font color="red">LVS-Nginx-HAProxy</font></center></h1><h2 id="一、核心概念"><a href="#一、核心概念" class="headerlink" title="一、核心概念"></a>一、核心概念</h2><p>当前主流互联网系统普遍采用<strong>服务器集群技术</strong>，将相同业务服务部署在多台服务器上，组成集群统一对外提供服务，涵盖Web应用、数据库、分布式缓存等各类服务集群。单纯扩容单台服务器硬件，无法解决高并发访问下的CPU、I/O性能瓶颈，因此必须依托<strong>负载均衡技术</strong>分发流量、分摊服务压力。</p>
+<p>负载均衡设备作为服务集群的流量入口，可智能筛选最优后端服务器，透明转发客户端请求，实现流量均匀分配、服务高可用与性能扩容。目前企业生产环境中，<strong>LVS、Nginx、HAProxy</strong>是应用最广泛的三款软件负载均衡工具，三者分属不同网络层级，核心能力、适用场景差异显著。</p>
+<p><img src="web.jpeg" alt="web"></p>
+<h2 id="二、基础层级与核心定位对比"><a href="#二、基础层级与核心定位对比" class="headerlink" title="二、基础层级与核心定位对比"></a>二、基础层级与核心定位对比</h2><p><img src="OSI.jpeg" alt="OSI"></p>
+<h3 id="1-LVS（Linux-Virtual-Server，Linux虚拟服务器）"><a href="#1-LVS（Linux-Virtual-Server，Linux虚拟服务器）" class="headerlink" title="1. LVS（Linux Virtual Server，Linux虚拟服务器）"></a>1. LVS（Linux Virtual Server，Linux虚拟服务器）</h3><p>LVS由章文嵩博士于1998年研发，是国内首个知名自由软件项目，目前已完全集成进Linux内核（2.4及以上版本），无需打补丁、无需额外部署依赖，原生支持高性能负载均衡。</p>
+<p><img src="L1.jpeg" alt="LVS"></p>
+<h4 id="（1）集群三层核心架构"><a href="#（1）集群三层核心架构" class="headerlink" title="（1）集群三层核心架构"></a>（1）集群三层核心架构</h4><p>LVS集群架构对客户端完全透明，用户仅感知一台虚拟服务器，无法看到后端真实服务集群，核心分为三层：</p>
+<ul>
+<li><p><strong>负载调度器（LB/Director）</strong>：前端核心入口，配置虚拟IP（VIP），负责接收客户端请求，通过调度算法和转发规则分发流量至后端真实服务器，是整个集群的流量调度核心。</p>
+</li>
+<li><p><strong>真实服务器池（RS集群）</strong>：后端业务服务集群，实际处理客户端请求，可部署Web、FTP、DNS、数据库等各类服务，服务器之间可通过局域网/广域网组网。</p>
+</li>
+<li><p><strong>共享存储</strong>：为后端RS集群提供统一存储，保证所有服务器服务内容一致，实现无状态服务，适配流量分发需求。</p>
+</li>
+</ul>
+<h4 id="（2）负载均衡层级与机制"><a href="#（2）负载均衡层级与机制" class="headerlink" title="（2）负载均衡层级与机制"></a>（2）负载均衡层级与机制</h4><p>LVS是<strong>纯四层负载均衡</strong>（工作在OSI传输层），仅基于TCP/UDP协议工作，不解析应用层协议，无法处理HTTP URL、请求头、Cookie等应用层内容。</p>
+<p>核心转发原理：依托Linux内核IPVS模块工作，用户空间工具ipvsadm定义流量转发规则，内核空间IPVS模块匹配数据包的目的IP、端口，通过修改数据包IP、MAC地址或封装IP报文实现流量转发，转发效率极高。</p>
+<h3 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2. Nginx"></a>2. Nginx</h3><p>Nginx是一款高性能、轻量级的HTTP反向代理服务器，同时支持IMAP/POP3/SMTP邮件代理服务，凭借多路复用、事件驱动模型，具备低内存消耗、高并发处理的优势，是目前最主流的Web服务与七层负载均衡工具。</p>
+<p><img src="N1.jpeg" alt="反向代理"></p>
+<h4 id="（1）进程工作模型"><a href="#（1）进程工作模型" class="headerlink" title="（1）进程工作模型"></a>（1）进程工作模型</h4><p>Nginx以守护进程后台运行，采用<strong>单主线程多进程模型</strong>，架构稳定高效：包含1个Master主进程和N个Worker工作进程（N≥1），所有进程均为单线程，进程间通过共享内存通信。</p>
+<ul>
+<li><p><strong>Master进程</strong>：负责监听系统信号、管理Worker进程，监控Worker运行状态，实现服务重启、配置热更新、故障自愈等管控能力，不处理具体业务请求。</p>
+</li>
+<li><p><strong>Worker进程</strong>：实际处理客户端请求，多个Worker独立竞争请求，单Worker同一时间仅处理一个请求，避免线程竞争开销，保证服务稳定性。</p>
+</li>
+</ul>
+<h4 id="（2）负载均衡层级与机制-1"><a href="#（2）负载均衡层级与机制-1" class="headerlink" title="（2）负载均衡层级与机制"></a>（2）负载均衡层级与机制</h4><p>Nginx以<strong>七层负载均衡（应用层）</strong>为主、四层负载均衡为辅，核心基于反向代理实现流量分发。可深度解析HTTP/HTTPS协议内容，支持基于URL、Cookie、请求头、域名等应用层规则精准转发流量，功能灵活性极强。</p>
+<p>反向代理核心逻辑：客户端仅访问Nginx代理服务器，由Nginx接收所有连接请求，转发至后端真实业务服务器，再将服务器响应结果回传给客户端，全程隐藏后端服务真实地址，兼顾负载均衡与安全防护。</p>
+<h3 id="3-HAProxy"><a href="#3-HAProxy" class="headerlink" title="3. HAProxy"></a>3. HAProxy</h3><p>HAProxy是C语言开源开发的高性能代理工具，同时支持<strong>四层（TCP/UDP）和七层（HTTP/HTTPS）负载均衡</strong>，兼顾LVS的高性能和Nginx的灵活规则能力。专为大并发、高可用Web场景设计，可支撑数万级并发连接，能有效隔离后端服务器，避免内网服务直接暴露公网，广泛应用于大型网站、高可用集群架构。</p>
+<p>核心优势：支持会话保持、七层精细规则、健康检查、故障自动剔除，兼顾四层转发的高效性与七层调度的灵活性，是中型、大型集群的优选负载均衡工具。</p>
+<h2 id="三、LVS核心转发模型（补全关键原理与特性）"><a href="#三、LVS核心转发模型（补全关键原理与特性）" class="headerlink" title="三、LVS核心转发模型（补全关键原理与特性）"></a>三、LVS核心转发模型（补全关键原理与特性）</h2><p>LVS作为四层负载均衡，核心通过三种数据包转发模型实现流量分发，三种模型组网方式、性能、适用场景差异极大，且均有专属部署约束：</p>
+<h3 id="1-NAT模型（网络地址转换）"><a href="#1-NAT模型（网络地址转换）" class="headerlink" title="1. NAT模型（网络地址转换）"></a>1. NAT模型（网络地址转换）</h3><p>转发流程：①客户端请求报文源地址为客户端IP（CIP）、目的地址为LVS虚拟IP（VIP）；②LVS匹配规则后，修改报文目的IP为后端RS真实IP（RIP），转发至对应服务器；③RS处理请求后，响应报文回传至LVS；④LVS修改响应报文源IP为VIP，回传给客户端。</p>
+<p><strong>关键约束</strong>：后端所有RS的网关必须指向LVS，否则响应报文无法回传至LVS，导致请求失败。</p>
+<p><strong>特点</strong>：配置简单、支持跨网段组网，所有流量均经过LVS，瓶颈集中在调度器，并发性能相对较低。</p>
+<h3 id="2-DR模型（直接路由，生产最常用）"><a href="#2-DR模型（直接路由，生产最常用）" class="headerlink" title="2. DR模型（直接路由，生产最常用）"></a>2. DR模型（直接路由，生产最常用）</h3><p>转发流程：①客户端请求报文（CIP→VIP）到达LVS；②LVS仅修改报文源MAC、目的MAC地址，将报文转发至对应RS；③RS直接解析报文、处理请求，响应报文不经过LVS，直接通过自身网卡回传给客户端。</p>
+<p><strong>关键约束</strong>：后端RS需在lo回环网卡绑定VIP，且关闭VIP的ARP响应，避免局域网内IP冲突。</p>
+<p><strong>特点</strong>：仅请求流量经过LVS，响应流量直出，LVS压力极小、并发性能极高，仅支持同网段服务器组网，是高性能集群首选。</p>
+<h3 id="3-TUN模型（IP隧道模式）"><a href="#3-TUN模型（IP隧道模式）" class="headerlink" title="3. TUN模型（IP隧道模式）"></a>3. TUN模型（IP隧道模式）</h3><p>转发流程：①客户端发送CIP→VIP的请求报文至LVS；②LVS在原有报文外层新增一层IP封装，修改外层报文源地址为LVS物理IP（DIP）、目的地址为RS的RIP；③RS拆解外层IP封装，解析内层VIP请求并处理；④响应报文直接回传给客户端，不经过LVS。</p>
+<p><strong>关键约束</strong>：后端RS需开启IP隧道功能，lo网卡绑定的VIP不对外网广播。</p>
+<p><strong>特点</strong>：支持跨公网、跨网段组网，突破局域网限制，适合异地多活集群场景，配置复杂度最高。</p>
+<h2 id="四、三大工具调度算法（补全核心差异）"><a href="#四、三大工具调度算法（补全核心差异）" class="headerlink" title="四、三大工具调度算法（补全核心差异）"></a>四、三大工具调度算法（补全核心差异）</h2><h3 id="1-LVS-调度算法（静态-动态，内核级调度，性能最优）"><a href="#1-LVS-调度算法（静态-动态，内核级调度，性能最优）" class="headerlink" title="1. LVS 调度算法（静态+动态，内核级调度，性能最优）"></a>1. LVS 调度算法（静态+动态，内核级调度，性能最优）</h3><p>LVS算法分为静态、动态两类，静态不感知服务器负载，动态实时适配后端服务器连接压力：</p>
+<h4 id="（1）静态算法（4种）"><a href="#（1）静态算法（4种）" class="headerlink" title="（1）静态算法（4种）"></a>（1）静态算法（4种）</h4><ul>
+<li><p><strong>RR轮询</strong>：请求按顺序均匀分发至所有RS，不考虑服务器负载、连接数，适用于服务器性能一致的集群。</p>
+</li>
+<li><p><strong>WRR加权轮询</strong>：为不同性能服务器配置不同权重，性能高的服务器承载更多流量，适配服务器性能差异化场景。</p>
+</li>
+<li><p><strong>DH目标地址哈希</strong>：基于请求目标IP哈希固定分配服务器，实现目标IP请求的定点分发。</p>
+</li>
+<li><p><strong>SH源地址哈希</strong>：基于客户端源IP哈希分配服务器，实现同一客户端请求固定访问同一RS，简易实现会话保持。</p>
+</li>
+</ul>
+<h4 id="（2）动态算法（6种，默认WLC）"><a href="#（2）动态算法（6种，默认WLC）" class="headerlink" title="（2）动态算法（6种，默认WLC）"></a>（2）动态算法（6种，默认WLC）</h4><ul>
+<li><p><strong>LC最少连接</strong>：动态将请求分发至当前连接数最少的服务器，均衡实时负载。</p>
+</li>
+<li><p><strong>WLC加权最少连接（默认）</strong>：结合权重与实时连接数，高权重服务器承载更多连接，适配差异化性能集群，负载均衡效果最优。</p>
+</li>
+<li><p><strong>SED最短延迟</strong>：优化WLC缺陷，仅核算活动连接，优先分发至响应延迟最短的服务器。</p>
+</li>
+<li><p><strong>NQ永不排队</strong>：空闲无连接的服务器优先接收请求，避免服务器长期闲置，弥补SED调度短板。</p>
+</li>
+<li><p><strong>LBLC基于局部性最少连接</strong>：适配缓存集群，目标IP固定访问最近使用的服务器，超载时重新匹配最少连接节点。</p>
+</li>
+<li><p><strong>LBLCR带复制局部性最少连接</strong>：维护目标IP与服务器组的映射，支持节点复制，适配高并发缓存集群。</p>
+</li>
+</ul>
+<h3 id="2-Nginx-调度算法（七层应用级调度）"><a href="#2-Nginx-调度算法（七层应用级调度）" class="headerlink" title="2. Nginx 调度算法（七层应用级调度）"></a>2. Nginx 调度算法（七层应用级调度）</h3><p>核心适配HTTP/HTTPS场景，常用算法：轮询、加权轮询、ip_hash（会话保持）、least_conn（最少连接）、url_hash、fair（动态响应权重），支持基于应用层规则自定义调度，灵活性远超LVS。</p>
+<h3 id="3-HAProxy-调度算法（四七层通用）"><a href="#3-HAProxy-调度算法（四七层通用）" class="headerlink" title="3. HAProxy 调度算法（四七层通用）"></a>3. HAProxy 调度算法（四七层通用）</h3><p>兼容LVS、Nginx核心算法，支持轮询、加权轮询、最少连接、源IP哈希，额外支持精准的会话保持、故障熔断、权重动态调整，兼顾性能与灵活性。</p>
+<h2 id="五、三大工具优缺点与适用场景（补全修正核心差异）"><a href="#五、三大工具优缺点与适用场景（补全修正核心差异）" class="headerlink" title="五、三大工具优缺点与适用场景（补全修正核心差异）"></a>五、三大工具优缺点与适用场景（补全修正核心差异）</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>负载层级</th>
+<th>核心优点</th>
+<th>核心缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LVS</td>
+<td>四层（传输层）</td>
+<td>内核级转发，性能极高、并发量大、资源消耗少、稳定性强；支持TCP/UDP所有四层协议</td>
+<td>无七层处理能力，无法解析HTTP协议、不能做URL/ Cookie转发、规则灵活性差；部署有专属组网约束</td>
+<td>高并发大流量入口层负载均衡、TCP/UDP服务集群、需要极致转发性能的场景</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>七层为主、四层为辅</td>
+<td>应用层规则灵活，支持URL、Cookie、域名精准转发；配置简单、部署便捷、支持HTTPS、静态资源缓存</td>
+<td>单节点并发性能低于LVS；仅原生支持HTTP相关协议，四层转发能力较弱</td>
+<td>Web服务集群、静态资源代理、中小型业务负载均衡、需要精细化流量管控的场景</td>
+</tr>
+<tr>
+<td>HAProxy</td>
+<td>四层+七层双支持</td>
+<td>兼顾高性能与高灵活度；支持完善的健康检查、会话保持、故障熔断；适配TCP与HTTP双场景</td>
+<td>性能略低于LVS；配置复杂度高于Nginx</td>
+<td>中大型业务集群、需要同时兼容四层和七层负载、高可用高稳定性要求的场景</td>
+</tr>
+</tbody></table>
+<h2 id="六、企业常用架构组合（新增实战落地内容）"><a href="#六、企业常用架构组合（新增实战落地内容）" class="headerlink" title="六、企业常用架构组合（新增实战落地内容）"></a>六、企业常用架构组合（新增实战落地内容）</h2><blockquote>
+<p>生产环境中常采用<strong>LVS+Nginx/HAProxy分层架构</strong>，结合三者优势：</p>
+</blockquote>
+<ol>
+<li><p>前端入口：LVS部署四层负载均衡，承接全网大流量，实现高并发流量分发，保障入口性能与稳定性；</p>
+</li>
+<li><p>中层代理：Nginx/HAProxy做七层精细化调度，完成URL路由、HTTPS解密、会话保持、缓存优化等业务层管控；</p>
+</li>
+<li><p>后端服务：真实业务服务器集群处理具体请求，实现性能、灵活性、高可用的完美兼顾。</p>
+</li>
+</ol>
+<h2 id="七、简单对比"><a href="#七、简单对比" class="headerlink" title="七、简单对比"></a>七、简单对比</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>工作层级</th>
+<th>核心优点</th>
+<th>核心缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>LVS</strong></td>
+<td>四层 (传输层，内核 IPVS)</td>
+<td>性能最强、并发高、资源消耗低，支持 TCP/UDP</td>
+<td>无七层能力，不能解析 HTTP，组网部署复杂</td>
+<td>大流量入口，TCP/UDP 集群，追求极致转发性能</td>
+</tr>
+<tr>
+<td><strong>Nginx</strong></td>
+<td>七层为主，四层为辅</td>
+<td>配置简单、七层规则灵活（URL/Cookie/ 域名），支持 HTTPS、静态缓存</td>
+<td>四层弱，单节点性能弱于 LVS，侧重 HTTP</td>
+<td>Web 集群、静态资源、中小型业务、七层路由</td>
+</tr>
+<tr>
+<td><strong>HAProxy</strong></td>
+<td>四层 + 七层双支持</td>
+<td>兼顾性能与七层能力，健康检查 / 会话保持完善</td>
+<td>性能弱于 LVS，配置比 Nginx 复杂</td>
+<td>中大型 Web 集群，同时需要 TCP+HTTP 负载均衡</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="PHP-Nginx优化"><a href="#PHP-Nginx优化" class="headerlink" title="PHP+Nginx优化"></a><center><font color="red">PHP+Nginx优化</font></center></h1><h2 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h2><ol>
+<li><p>监控php-fpm的状态</p>
+<ul>
+<li>修改对应的vhost，在server内加入以下配置<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">location ~ ^/status$ {</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>修改php-fpm.conf，打开以下选项：</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pm.status_path = /status</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>访问http://域名/status以查看当前的php情况，</li>
+<li>结果说明</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pool: www php运行的组</span><br><span class="line">process manager: dynamic php-fpm运行的方式</span><br><span class="line">start time: 04/Jun/2012:16:05:32 +0800 开始时间</span><br><span class="line">start since: 5932</span><br><span class="line">accepted conn: 65678 接受链接</span><br><span class="line">listen queue: 0 监听队列</span><br><span class="line">max listen queue: 1 最大监听队列</span><br><span class="line">listen queue len: 128 监听队列len</span><br><span class="line">idle processes: 82 空闲进程</span><br><span class="line">active processes: 4 活动进程</span><br><span class="line">total processes: 86 总进程</span><br><span class="line">max active processes: 25 最大活动进程</span><br><span class="line">max children reached: 0 最大的子进程达到</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>按上面的步骤弄完并看不出来什么问题，查看对应的日志，报了一堆<code>upstream timed out (60: Operation timed out)</code></p>
+</li>
+<li><p>在server内加入以下配置</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">large_client_header_buffers 4 16k;</span><br><span class="line">client_max_body_size 30m;</span><br><span class="line">client_body_buffer_size 128k;</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_buffer_size 64k;</span><br><span class="line">fastcgi_buffers   4 32k;</span><br><span class="line">fastcgi_busy_buffers_size 64k;</span><br><span class="line">fastcgi_temp_file_write_size 64k;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>重启ngix，响应速度并没有快多少，只是不再报<code>upstream timed out (60: Operation timed out)</code>了</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href="https://www.imooc.com/article/38287">参考一</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1134895">参考二</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>OS</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>快照</tag>
+        <tag>写时复制</tag>
+        <tag>虚拟机</tag>
+        <tag>零拷贝</tag>
+        <tag>DMA</tag>
+        <tag>mmap</tag>
+        <tag>sendfile</tag>
+        <tag>大端</tag>
+        <tag>小端</tag>
+        <tag>字节序</tag>
+        <tag>原码</tag>
+        <tag>反码</tag>
+        <tag>补码</tag>
+        <tag>静态链接</tag>
+        <tag>动态链接</tag>
       </tags>
   </entry>
   <entry>
@@ -35000,11 +35014,11 @@ read_xlsx(name, sheet)
       <tags>
         <tag>GitLab</tag>
         <tag>Git</tag>
-        <tag>合并</tag>
         <tag>merge</tag>
-        <tag>王小波</tag>
+        <tag>合并</tag>
         <tag>回滚</tag>
         <tag>变基</tag>
+        <tag>王小波</tag>
       </tags>
   </entry>
   <entry>
@@ -49476,6 +49490,9 @@ read_xlsx(name, sheet)
       <tags>
         <tag>变量</tag>
         <tag>Linux</tag>
+        <tag>标准输入</tag>
+        <tag>标准输出</tag>
+        <tag>标准错误输出</tag>
         <tag>shell</tag>
         <tag>let</tag>
         <tag>source</tag>
@@ -49483,9 +49500,6 @@ read_xlsx(name, sheet)
         <tag>declare</tag>
         <tag>local</tag>
         <tag>特殊变量</tag>
-        <tag>标准输入</tag>
-        <tag>标准输出</tag>
-        <tag>标准错误输出</tag>
         <tag>重定向</tag>
         <tag>短路</tag>
       </tags>
@@ -52944,17 +52958,18 @@ read_xlsx(name, sheet)
         <tag>RabbitMQ</tag>
         <tag>GitHub</tag>
         <tag>make</tag>
+        <tag>MongoDB</tag>
         <tag>SIP</tag>
         <tag>csrutil</tag>
-        <tag>MongoDB</tag>
         <tag>json</tag>
         <tag>POST</tag>
         <tag>PHP</tag>
         <tag>Swoole</tag>
+        <tag>后期静态绑定</tag>
+        <tag>函数</tag>
         <tag>phalcon</tag>
         <tag>composer</tag>
         <tag>phpize</tag>
-        <tag>后期静态绑定</tag>
         <tag>模拟请求</tag>
         <tag>curl</tag>
         <tag>file_get_contents</tag>
@@ -52973,7 +52988,6 @@ read_xlsx(name, sheet)
         <tag>packagist</tag>
         <tag>psr</tag>
         <tag>异步任务</tag>
-        <tag>函数</tag>
         <tag>字符串</tag>
         <tag>ob</tag>
         <tag>debug_backtrace</tag>
