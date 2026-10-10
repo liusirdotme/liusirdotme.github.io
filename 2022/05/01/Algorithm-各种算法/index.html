@@ -148,17 +148,31 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="你时间花在哪里，就表示你重视哪里。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2022/05/01/Algorithm-%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95/sort-class.png">
+<meta property="og:image" content="https://liusir.net/2022/05/01/Algorithm-%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95/sort-time.png">
+<meta property="og:image" content="https://liusir.net/2022/05/01/Algorithm-%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png">
 <meta property="article:published_time" content="2022-05-01T15:15:40.000Z">
-<meta property="article:modified_time" content="2024-09-03T07:26:18.079Z">
+<meta property="article:modified_time" content="2026-10-10T09:51:11.347Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="算法">
+<meta property="article:tag" content="Paxos">
+<meta property="article:tag" content="Raft">
+<meta property="article:tag" content="ZAB">
+<meta property="article:tag" content="Gossip">
+<meta property="article:tag" content="分布式">
 <meta property="article:tag" content="AOI">
 <meta property="article:tag" content="红包算法">
 <meta property="article:tag" content="字符串匹配">
 <meta property="article:tag" content="LRU">
 <meta property="article:tag" content="FIFO">
 <meta property="article:tag" content="LFU">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="垃圾回收">
+<meta property="article:tag" content="GC">
+<meta property="article:tag" content="查找">
+<meta property="article:tag" content="一致性">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2022/05/01/Algorithm-%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95/sort-class.png">
   <link rel="canonical" href="https://liusir.net/2022/05/01/Algorithm-%E5%90%84%E7%A7%8D%E7%AE%97%E6%B3%95/">
 
 
@@ -378,13 +392,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>592</span>
+              <span>7.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -432,6 +446,427 @@
 <li>LFU：least frequently used，数据使用次数最少的，优先被淘汰。</li>
 </ol>
 <hr>
+<h1 id="分布式一致性算法"><a href="#分布式一致性算法" class="headerlink" title="分布式一致性算法"></a><center><font color="red">分布式一致性算法</font></center></h1><h2 id="一、核心概念"><a href="#一、核心概念" class="headerlink" title="一、核心概念"></a>一、核心概念</h2><p>在分布式系统中，网络延迟、节点宕机、消息丢失等异常情况普遍存在，<strong>一致性算法</strong>的核心作用是保障多个独立节点的数据最终统一、状态同步，解决分布式场景下的「数据分歧」问题。根据一致性强度、同步机制、适用场景的不同，主流分为强一致性算法（Paxos、Raft、ZAB）和最终一致性算法（Gossip）两大类。</p>
+<h3 id="1-1-分布式一致性分类"><a href="#1-1-分布式一致性分类" class="headerlink" title="1.1 分布式一致性分类"></a>1.1 分布式一致性分类</h3><ul>
+<li><p><strong>强一致性</strong>：客户端任意时刻访问任意节点，获取的数据都是最新且一致的，写入操作成功后，所有节点立即同步数据，牺牲部分可用性换取数据绝对准确。</p>
+</li>
+<li><p><strong>最终一致性</strong>：短暂时间内节点数据可能不一致，经过一段时间的异步同步后，所有节点数据最终达成统一，牺牲实时一致性换取高可用性、高扩展性。</p>
+</li>
+</ul>
+<h3 id="1-2-四大算法基础定义"><a href="#1-2-四大算法基础定义" class="headerlink" title="1.2 四大算法基础定义"></a>1.2 四大算法基础定义</h3><ul>
+<li><p><strong>Paxos</strong>：经典的分布式强一致性共识算法，是所有强一致性算法的理论基础，基于二阶段提交优化，解决分布式节点容错共识问题，理论严谨但实现复杂。</p>
+</li>
+<li><p><strong>Raft</strong>：Paxos的简化工程实现方案，将复杂的共识逻辑拆解为选举、日志复制、安全性三大模块，逻辑清晰、易于落地，是目前工业界主流的强一致性算法。</p>
+</li>
+<li><p><strong>ZAB</strong>：ZooKeeper专用的原子广播协议，基于Paxos优化改造，适配ZooKeeper的协调场景，侧重消息有序性、原子性，专为分布式协调服务设计。</p>
+</li>
+<li><p><strong>Gossip</strong>：又称谣言协议，去中心化的最终一致性同步算法，通过节点之间随机两两通信同步数据，无主节点、极致轻量，适配大规模集群。</p>
+</li>
+</ul>
+<h2 id="二、四大算法全方位对比"><a href="#二、四大算法全方位对比" class="headerlink" title="二、四大算法全方位对比"></a>二、四大算法全方位对比</h2><h3 id="2-1-核心特性对比"><a href="#2-1-核心特性对比" class="headerlink" title="2.1 核心特性对比"></a>2.1 核心特性对比</h3><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Paxos</th>
+<th>Raft</th>
+<th>ZAB</th>
+<th>Gossip</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>一致性级别</strong></td>
+<td>强一致性</td>
+<td>强一致性</td>
+<td>强一致性（有序一致性）</td>
+<td>最终一致性</td>
+</tr>
+<tr>
+<td><strong>节点架构</strong></td>
+<td>去中心化、无主节点</td>
+<td>中心化、领导者-追随者架构</td>
+<td>中心化、领导者-追随者架构</td>
+<td>完全去中心化</td>
+</tr>
+<tr>
+<td><strong>容错能力</strong></td>
+<td>容忍半数以下节点宕机</td>
+<td>容忍半数以下节点宕机</td>
+<td>容忍半数以下节点宕机</td>
+<td>无严格容错上限，集群规模越大越稳定</td>
+</tr>
+<tr>
+<td><strong>实现难度</strong></td>
+<td>极高，逻辑晦涩、分支复杂，工程落地成本大</td>
+<td>低，逻辑模块化、规则清晰，易实现、易维护</td>
+<td>中等，适配 ZK 场景，针对性优化但通用性弱</td>
+<td>极低，逻辑简单，无需复杂协商机制</td>
+</tr>
+<tr>
+<td><strong>同步方式</strong></td>
+<td>二阶段协商（准备+提交）</td>
+<td>领导者统一日志复制同步</td>
+<td>原子广播，分阶段消息推送同步</td>
+<td>节点随机两两异步同步</td>
+</tr>
+<tr>
+<td><strong>数据有序性</strong></td>
+<td>不保证全局有序</td>
+<td>保证全局日志有序</td>
+<td>严格保证事务有序性（核心特性）</td>
+<td>不保证有序，同步顺序随机</td>
+</tr>
+<tr>
+<td><strong>性能开销</strong></td>
+<td>高，两轮协商网络开销大</td>
+<td>中等，日志复制高效，开销可控</td>
+<td>中等，针对协调场景优化，开销稳定</td>
+<td>极低，异步轻量同步，无协商开销</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-各算法核心原理与优缺点"><a href="#2-2-各算法核心原理与优缺点" class="headerlink" title="2.2 各算法核心原理与优缺点"></a>2.2 各算法核心原理与优缺点</h3><h4 id="2-2-1-Paxos-算法"><a href="#2-2-1-Paxos-算法" class="headerlink" title="2.2.1 Paxos 算法"></a>2.2.1 Paxos 算法</h4><p>Paxos 是分布式一致性的基石算法，核心角色分为提案者、接受者、学习者，通过<strong>准备阶段</strong>和<strong>提交阶段</strong>的两轮协商，确保集群内多数节点认可同一提案，最终达成数据一致。</p>
+<p><strong>优点</strong>：理论完备、安全性极高、无主节点单点问题，容错性稳定，是分布式一致性的标准理论模型。</p>
+<p><strong>缺点</strong>：算法逻辑复杂，存在活锁问题（多个提案者竞争导致协商失败），没有日志有序机制，不适合直接落地工程项目。</p>
+<h4 id="2-2-2-Raft-算法"><a href="#2-2-2-Raft-算法" class="headerlink" title="2.2.2 Raft 算法"></a>2.2.2 Raft 算法</h4><p>Raft为解决Paxos工程落地难题而生，将复杂的共识逻辑拆分为<strong>领导者选举、日志复制、安全性校验</strong>三大独立模块。集群中仅有一个领导者，所有写入请求经领导者处理后，同步给所有追随者，简化协商流程。</p>
+<p><strong>优点</strong>：逻辑清晰、易于理解和实现，解决了 Paxos 活锁问题，保证日志全局有序，性能稳定，适配绝大多数分布式存储、注册中心场景。</p>
+<p><strong>缺点</strong>：依赖领导者节点，存在主节点单点故障风险（可通过重新选举快速恢复），极端场景下性能略低于优化后的 Paxos。</p>
+<h4 id="2-2-3-ZAB-算法"><a href="#2-2-3-ZAB-算法" class="headerlink" title="2.2.3 ZAB 算法"></a>2.2.3 ZAB 算法</h4><p>ZAB（ZooKeeper Atomic Broadcast）是专为ZooKeeper设计的原子广播协议，基于 Paxos 改良，核心目标是实现<strong>分布式协调的有序一致性</strong>。算法分为崩溃恢复、消息广播两个阶段，严格保证所有事务按照全局唯一顺序执行。</p>
+<p><strong>优点</strong>：事务严格有序、原子性极强，适配分布式锁、配置管理、服务注册等协调场景，崩溃恢复速度快，稳定性高。</p>
+<p><strong>缺点</strong>：通用性极差，仅适配 ZooKeeper 架构，无法通用在其他分布式系统中，扩展性有限。</p>
+<h4 id="2-2-4-Gossip-算法"><a href="#2-2-4-Gossip-算法" class="headerlink" title="2.2.4 Gossip 算法"></a>2.2.4 Gossip 算法</h4><p>Gossip是去中心化的异步同步算法，无主节点、无选举机制。集群中每个节点周期性随机选择其他节点，两两交换本地数据，通过多轮随机传播，最终让全集群数据达成一致，模拟谣言传播机制。</p>
+<p><strong>优点</strong>：架构极简、扩展性极强，支持上万节点大规模集群，容错性极高（部分节点故障不影响整体同步），性能开销极低。</p>
+<p><strong>缺点</strong>：无法保证实时一致性，数据同步存在延迟，不适合对数据实时性、准确性要求高的场景，仅适用于最终一致性业务。</p>
+<h3 id="2-3-适用场景总结"><a href="#2-3-适用场景总结" class="headerlink" title="2.3 适用场景总结"></a>2.3 适用场景总结</h3><ul>
+<li><p><strong>Paxos</strong>：底层理论研究、核心金融级强一致性系统（自研底层共识模块），极少直接用于普通工程开发。</p>
+</li>
+<li><p><strong>Raft</strong>：工业界主流方案，ETCD、Consul、Nacos 等中间件核心算法，适用于分布式配置中心、注册中心、分布式存储。</p>
+</li>
+<li><p><strong>ZAB</strong>：专属 ZooKeeper，仅用于分布式协调服务（分布式锁、集群管理、事务协调）。</p>
+</li>
+<li><p><strong>Gossip</strong>：大规模集群状态同步，如 Redis 集群、Cassandra、Elasticsearch 节点状态同步、服务发现、舆情同步等最终一致性场景。</p>
+</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/36648084">Paxos、Raft、ZAB、Gossip算法深度对比-知乎</a></li>
+</ol>
+<hr>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a><center><font color="red">排序算法</font></center></h1><h2 id="一、十大排序算法"><a href="#一、十大排序算法" class="headerlink" title="一、十大排序算法"></a>一、十大排序算法</h2><p> <img src="sort-class.png" alt="算法分类"></p>
+<p> <img src="sort-time.png" alt="复杂度"></p>
+<blockquote>
+<p>相关概念</p>
+</blockquote>
+<ul>
+<li>稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</li>
+<li>不稳定：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</li>
+<li>时间复杂度：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。</li>
+<li>空间复杂度：是指算法在计算机内执行时所需存储空间的度量，它也是数据规模n的函数。 </li>
+</ul>
+<h2 id="一、冒泡排序"><a href="#一、冒泡排序" class="headerlink" title="一、冒泡排序"></a>一、冒泡排序</h2><ol>
+<li>概念</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冒泡排序只会操作相邻的两个数据。每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就让它俩互换。一次冒泡会让至少一个元素移动到它应该在的位置，重复n次，就完成了n个数据的排序工作。</p>
+<ol start="2">
+<li>实现</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function bubbleSort($data)</span><br><span class="line">{</span><br><span class="line">    $len = count($data);</span><br><span class="line">    if ($len &lt;= 1) {</span><br><span class="line">        return $data;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    for($i = 0; $i &lt; $len; $i++) {</span><br><span class="line">        for($j = 0; $j&lt; $len - $i -1; $j++) {</span><br><span class="line">            $flag = false;</span><br><span class="line">            if ($data[$j] &gt; $data[$j+1]){</span><br><span class="line">                $temp       = $data[$j];</span><br><span class="line">                $data[$j]   = $data[$j+1];</span><br><span class="line">                $data[$j+1] = $temp;</span><br><span class="line">                $flag       = true;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if (!$flag) {</span><br><span class="line">            break;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    return $data;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、快速排序"><a href="#二、快速排序" class="headerlink" title="二、快速排序"></a>二、快速排序</h2><ol>
+<li>概念</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从数列中挑出一个元素，称为基准（pivot），依次取所有元素和基准对比，所有比基准小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面。然后基于递归(recursively)算法把小于基准值元素的子数列和大于基准值元素的子数列排序，最终得到结果。</p>
+<ol start="2">
+<li>实现</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function quickSort($data)</span><br><span class="line">{</span><br><span class="line">    $len = count($data);</span><br><span class="line">    if ($len &lt;= 1) {</span><br><span class="line">        return $data;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    $base  = $data[0];</span><br><span class="line">    $left  = [];</span><br><span class="line">    $right = [];</span><br><span class="line">    for($i=1; $i&lt;$len; $i++) {</span><br><span class="line">        if ($data[$i] &gt; $base) {</span><br><span class="line">            $left[] = $data[$i];</span><br><span class="line">        } else {</span><br><span class="line">            $right[] = $data[$i];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    $left  = quickSort($left);</span><br><span class="line">    $right = quickSort($right);</span><br><span class="line"></span><br><span class="line">    return array_merge($left, (array)$base, $right);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、插入排序"><a href="#三、插入排序" class="headerlink" title="三、插入排序"></a>三、插入排序</h2><ol>
+<li><p>概念<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将数组中的数据分为两个区间，已排序区间和未排序区间。初始已排序区间只有一个元素，就是数组的第一个元素。插入算法的核心思想是依次取未排序区间中的元素，在已排序区间中找到合适的插入位置将其插入，并保证已排序区间数据一直有序。重复这个过程，直到未排序区间中元素为空，算法结束。</p>
+<ul>
+<li>插入排序是一种基于比较的排序算法。</li>
+</ul>
+</li>
+<li><p>实现</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function insertionSort($data)</span><br><span class="line">{</span><br><span class="line">    $n = count($data);</span><br><span class="line">    if ($n &lt;= 1) {</span><br><span class="line">        return $data;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    for ($i = 1; $i &lt; $n; ++$i) {</span><br><span class="line">        $value = $data[$i];// 从下标为1开始，依次取后面的数和前面已排好序的数进行比较</span><br><span class="line"></span><br><span class="line">        // 查找插入的位置</span><br><span class="line">        $j = $i - 1;</span><br><span class="line">        for ($j; $j &gt;= 0; --$j) {</span><br><span class="line">            if ($data[$j] &gt; $value) {</span><br><span class="line">                $data[$j + 1] = $data[$j];// 数据移动</span><br><span class="line">            } else {</span><br><span class="line">                break;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        $data[$j + 1] = $value;// 插入数据</span><br><span class="line">    }</span><br><span class="line">    return $data;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、选择排序"><a href="#四、选择排序" class="headerlink" title="四、选择排序"></a>四、选择排序</h2><ol>
+<li><p>概念<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选择排序算法的实现思路有点类似插入排序，也分已排序区间和未排序区间。但是选择排序每次会从未排序区间中找到最小的元素，将其放到已排序区间的末<br>尾(升序时)。</p>
+</li>
+<li><p>实现</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function selectionSort($data)</span><br><span class="line">{</span><br><span class="line">    $len = count($data);</span><br><span class="line">    if ($len &lt;= 1) {</span><br><span class="line">        return $data;</span><br><span class="line">    }</span><br><span class="line">    for ($i = 0; $i &lt; $len - 1; $i++) {</span><br><span class="line">        $p = $i;//假设$i是最小的值的位置</span><br><span class="line">        for ($j = $i + 1; $j &lt; $len; $j++) {</span><br><span class="line">            if ($data[$p] &gt; $data[$j]) {</span><br><span class="line">                $p = $j;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        $tmp      = $data[$p];</span><br><span class="line">        $data[$p] = $data[$i];</span><br><span class="line">        $data[$i] = $tmp;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    return $data;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、希尔排序"><a href="#五、希尔排序" class="headerlink" title="五、希尔排序"></a>五、希尔排序</h2><ol>
+<li>概念<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希尔排序(Shell’s Sort)是插入排序的一种又称“缩小增量排序”(Diminishing Increment Sort)，是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法。该方法因D.L.Shell于1959年提出而得名。</li>
+<li>实现</li>
+</ol>
+<h2 id="六、归并排序"><a href="#六、归并排序" class="headerlink" title="六、归并排序"></a>六、归并排序</h2><ol>
+<li><p>给定一个待排序数组，先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
+</li>
+<li><p>归并排序使用的就是分治思想。</p>
+<ul>
+<li>分治算法一般都是用递归来实现的</li>
+<li>分治是一种解决问题的处理思想，递归是一种编程技巧，两者并不冲突</li>
+</ul>
+</li>
+<li><p>实现</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">function mergeSort($data)</span><br><span class="line">{</span><br><span class="line">    $len = count($data);</span><br><span class="line">    if ($len &lt;=1) {</span><br><span class="line">        return $data;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    $middle = intval($len/2);</span><br><span class="line">    $left   = mergeSort(array_slice($data, 0, $middle));</span><br><span class="line">    $right  = mergeSort(array_slice($data, $middle));</span><br><span class="line">    </span><br><span class="line">    $data   = mergeArr($left, $right);</span><br><span class="line">    // $data   = mergeArr1($left, $right);</span><br><span class="line">    return $data;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">function mergeArr($arr1, $arr2)</span><br><span class="line">{</span><br><span class="line">    $result = [];</span><br><span class="line">    // 合并两个数组的算法NB</span><br><span class="line">    while (count($arr1) &amp;&amp; count($arr2)) {</span><br><span class="line">        $result[] = $arr1[0] &lt; $arr2[0] ? array_shift($arr1) : array_shift($arr2);</span><br><span class="line">    }</span><br><span class="line">    return array_merge($result, $arr1, $arr2);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">function mergeArr1($arr1, $arr2)</span><br><span class="line">{</span><br><span class="line">    $i      = 0;</span><br><span class="line">    $j      = 0;</span><br><span class="line">    $result = array();</span><br><span class="line">    $len1   = count($arr1);</span><br><span class="line">    $len2   = count($arr2);</span><br><span class="line"></span><br><span class="line">    while ($i &lt; $len1 &amp;&amp; $j &lt; $len2) {</span><br><span class="line">        if ($arr1[$i] &lt; $arr2[$j]) {</span><br><span class="line">            $result[] = $arr1[$i];</span><br><span class="line">            $i++;</span><br><span class="line">        } else {</span><br><span class="line">            $result[] = $arr2[$j];</span><br><span class="line">            $j++;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    while ($i &lt; $len1) {</span><br><span class="line">        // $result[] = $arr1[$i++];</span><br><span class="line">        $result[] = $arr1[$i];</span><br><span class="line">        $i++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    while ($j &lt; $len2) {</span><br><span class="line">        // $result[] = $arr2[$j++];</span><br><span class="line">        $result[] = $arr2[$j];</span><br><span class="line">        $j++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    return $result;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="七、基数排序"><a href="#七、基数排序" class="headerlink" title="七、基数排序"></a>七、基数排序</h2><ol>
+<li>算法原理(以排序10万个手机号为例来说明)<ul>
+<li>比较两个手机号码a，b的大小，如果在前面几位中a已经比b大了，那后面几位就不用看了</li>
+<li>借助稳定排序算法的思想，可以先按照最后一位来排序手机号码，然后再按照倒数第二位来重新排序，以此类推，最后按照第一个位重新排序</li>
+<li>经过11次排序后，手机号码就变为有序的了</li>
+<li>每次排序有序数据范围较小，可以使用桶排序或计数排序来完成</li>
+</ul>
+</li>
+<li>使用条件<ul>
+<li>要求数据可以分割独立的“位”来比较</li>
+<li>位之间有递进关系，如果a数据的高位比b数据大，那么剩下的地位就不用比较了</li>
+<li>每一位的数据范围不能太大，要可以用线性排序，否则基数排序的时间复杂度无法做到O(n)</li>
+</ul>
+</li>
+</ol>
+<h2 id="八、计数排序"><a href="#八、计数排序" class="headerlink" title="八、计数排序"></a>八、计数排序</h2><ol>
+<li>算法原理<ul>
+<li>计数其实就是桶排序的一种特殊情况</li>
+<li>当要排序的n个数据所处范围并不大时，比如最大值为k，则分成k个桶</li>
+<li>每个桶内的数据值都是相同的，就省掉了桶内排序的时间</li>
+</ul>
+</li>
+</ol>
+<h2 id="九、桶排序"><a href="#九、桶排序" class="headerlink" title="九、桶排序"></a>九、桶排序</h2><ol>
+<li>算法原理:<ul>
+<li>将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行快速排序</li>
+<li>桶内排完序之后，再把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了</li>
+</ul>
+</li>
+<li>使用条件<ul>
+<li>要排序的数据需要很容易就能划分成m个桶，并且桶与桶之间有着天然的大小顺序</li>
+<li>数据在各个桶之间分布是均匀的。</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>桶排序比较适合用在外部排序中</li>
+<li>外部排序就是数据存储在外部磁盘且数据量大，但内存有限无法将整个数据全部加载到内存中。</li>
+</ul>
+</li>
+</ol>
+<h2 id="十、堆排序"><a href="#十、堆排序" class="headerlink" title="十、堆排序"></a>十、堆排序</h2><ol>
+<li>堆排序(英语：Heapsort)是指利用堆这种数据结构所设计的一种排序算法。堆是一个近似完全二叉树的结构，并同时满足堆积的性质：即子节点的键值或索引总是小于(或者大于)它的父节点。</li>
+</ol>
+<h2 id="十一、优先队列排序算法"><a href="#十一、优先队列排序算法" class="headerlink" title="十一、优先队列排序算法"></a>十一、优先队列排序算法</h2><ol>
+<li>问题：从10000个记录行中取随机取三个最小值</li>
+<li>过程如下<ul>
+<li>对于这 10000 个准备排序的 (R,rowid)，先取前三行，构造成一个堆；</li>
+<li>取下一个行 (R’,rowid’)，跟当前堆里面最大的 R 比较，如果 R’小于 R，把这个 (R,rowid) 从堆中去掉，换成 (R’,rowid’)；</li>
+<li>重复第 2 步，直到第 10000 个 (R’,rowid’) 完成比较。</li>
+</ul>
+</li>
+</ol>
+<p><img src="%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.png" alt="优先队列排序算法"></p>
+<hr>
+<h1 id="查找算法"><a href="#查找算法" class="headerlink" title="查找算法"></a><center><font color="red">查找算法</font></center></h1><h2 id="一、七大查找算法"><a href="#一、七大查找算法" class="headerlink" title="一、七大查找算法"></a>一、七大查找算法</h2><ol>
+<li>顺序查找</li>
+<li>二分查找</li>
+<li>插值查找</li>
+<li>斐波那契查找</li>
+<li>树表查找</li>
+<li>分块查找</li>
+<li>哈希查找</li>
+</ol>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
+<li><p>单链表取中间节点</p>
+<ul>
+<li><p>单向链表(单链表)是链表的一种，是由一系列的存储数据元素的单元(通常称为结点node)通过指针串接起来形成的，每个单元至少有两个域，一个域用于数据元素的存储，另一个域是指向其他单元的指针。</p>
+</li>
+<li><p>特性</p>
+<ul>
+<li>head指针指向第一个结点(表头结点)，最后一个节点的next指针为null</li>
+<li>在已知待操作结点位置的情况下，插入和删除的时间复杂度是O(1)</li>
+</ul>
+</li>
+<li><p>实现</p>
+<ul>
+<li>方案一：遍历整个单链表，得到链表的长度length，length/2即为单链表的中间结点。</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function getMiddleNode($head) {</span><br><span class="line">    if ($head == null || $head-&gt;next == null){</span><br><span class="line">        return $head;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    $prev = $head;</span><br><span class="line">    $size = 0;</span><br><span class="line">    while($prev) {</span><br><span class="line">        $size++;</span><br><span class="line">        $prev = $prev-&gt;next;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    $position = (int)($size/2);</span><br><span class="line">    while($position--) {</span><br><span class="line">        $head=$head-&gt;next;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    return $head;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>方案二：设置两个指针<code>i</code>和<code>j</code>，<code>i</code>一次走一步，<code>j</code>一次走两步，当<code>j</code>到达链表尾的时候，<code>i</code>所指向的结点就是单链表的中间结点。</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function getMiddleNode($head){</span><br><span class="line">    if ($head == null || $head-&gt;next == null){</span><br><span class="line">        return $head;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    $p1 = $head;</span><br><span class="line">    $p2 = $head;</span><br><span class="line"></span><br><span class="line">    while($p2-&gt;next != null &amp;&amp; $p2-&gt;next-&gt;next) {</span><br><span class="line">        $p2 = $p2-&gt;next-&gt;next</span><br><span class="line">        $p1 = $p1-&gt;next</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    return $p1;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a><center><font color="red">垃圾回收算法</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在计算机科学中，垃圾回收(Garbage Collection，缩写为GC)是指一种自动的存储器管理机制，当某个程序占用的一部分内存空间不再被这个程序访问时，这个程序会借助垃圾回收算法向操作系统归还这部分内存空间。垃圾回收器可以减轻程序员的负担，也减少程序中的错误。垃圾回收最早起源于<a target="_blank" rel="noopener" href="https://common-lisp.net/">LISP</a>语言，当前许多语言如Smalltalk、Java、PHP、Go、C#等都支持垃圾回收器。</p>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
+<li><p>引用计数法(最早也是最简单的垃圾回收实现方法，1960年由<code>George E. Collins</code>提出)</p>
+<ul>
+<li>原理：为对象附加一个计数器，当有其他对象引用这个对象时计数器加一，反之引用解除时减一。这种算法会定期检查尚未被回收的对象的计数器，为零的话则回收其所占物理空间，因为此时的对象已经无法访问。</li>
+<li>优点：<ul>
+<li>实时性较高，无需等到内存不够的时候才开始回收，运行时根据对象的计数器是否为0就可以直接回收。</li>
+<li>在垃圾回收过程中应用无需挂起。如果申请内存时，内存不足则立刻报<code>out of memory</code>错误。</li>
+<li>区域性(回收过程影响范围)，更新对象的计数器时只是影响到该对象，不会扫描全部对象。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>每次对象被引用时，都需要去更新计数器，有一点时间开销。</li>
+<li>浪费CPU资源，即使内存够用任然在运行时进行计数器的统计。</li>
+<li>无法解决循环引用问题(最大的缺点，已有<a target="_blank" rel="noopener" href="https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon01Concurrent.pdf">解决方案</a>，<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/features.gc.collecting-cycles.php">php5.3.0</a>即参考此文献解决了循环引用的问题)。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>标记－清除算法</p>
+<ul>
+<li>原理：暂停整个程序的全部运行线程，让回收线程以<strong>单线程</strong>进行扫描标记，将垃圾回收分为2个阶段————标记和清除。标记阶段从根节点开始标记引用的对象；清除阶段则是直接清理未被标记引用的对象，回收完成后恢复运行线程。</li>
+<li>优点：<ul>
+<li>解决了引用计数算法中的循环引用的问题</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>效率低，标记和清除两个动作都需要遍历所有的对象，并且在GC时，需要停止应用程序，对于交互性要求比较高的应用而言这个体验是非常差的。</li>
+<li>碎片化严重，从而使大容量对象不容易获得连续的内存空间，造成空间浪费。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>标记－压缩算法(优化了的标记——清除算法)，也称为标记-整理算法</p>
+<ul>
+<li>原理：标记阶段从根节点开始，对对象的引用进行标记；清理阶段并不是简单的清理未标记的对象，而是将存活的对象压缩到内存的一端，然后清理边界以外的垃圾，从而解决了碎片化的问题。</li>
+<li>优点：<ul>
+<li>解决了标记清除算法的碎片化的问题。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>标记压缩算法多了一步————对象移动内存位置，其效率也有一定的影响。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>标记-复制算法</p>
+<ul>
+<li>原理：将所拥有的内存空间分成两个部分。程序运行所需的存储对象先存储在其中一个分区(定义为“分区0”)。回收过程仍然是暂停整个程序的全部运行线程，进行标记后将保留的存储对象搬运汇集到另一个分区(定义为“分区1”)完成回收，程序在本次回收后将接下来产生的存储对象会存储到“分区1”。在下一次回收时，两个分区的角色对调。(简单理解：将原有的内存空间一分为二，每次只用其中的一块，在垃圾回收时，将正在使用的对象复制到另一个内存空间中，然后将该内存空间清空，交换两个内存的角色，完成垃圾的回收)</li>
+<li>优点：<ul>
+<li>如果内存中的垃圾对象较多，需要复制的对象就较少，这种情况下适合使用该方式并且效率比较高</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>同优点相反</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>增量回收器算法(增量GC名称的由来跟全量GC相对，就是每次只处理一小部分的对象)</p>
+<ul>
+<li>原理：将所有的内存空间分成若干分区，程序运行所需的存储对象会分布在这些分区中，每次只对其中一个分区进行回收操作，从而避免暂停所有正在运行的线程来进行回收，允许部分线程在不影响回收行为下保持运行，并且降低回收时间，增加程序响应速度。</li>
+<li>优点：<ul>
+<li>不会造成<code>stop the world</code></li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>实现过程复杂</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分代算法</p>
+<ul>
+<li>原理：由于复制算法对于存活时间长、大容量的储存对象需要耗费更多的移动时间，和存在储存对象的存活时间的差异。需要程序将所拥有的内存空间分成若干分区，并标记为年轻代空间和年老代空间。程序运行所需的存储对象会先存放在年轻代分区，年轻代分区会较为频密进行较为激进垃圾回收行为，每次回收完成幸存的存储对象内的寿命计数器加一。当年轻代分区存储对象的寿命计数器达到一定阈值或存储对象的占用空间超过一定阈值时，则被移动到年老代空间，年老代空间会较少运行垃圾回收行为。一般情况下，还有永久代的空间，用于涉及程序整个运行生命周期的对象存储，例如运行代码、数据常量等，该空间通常不进行垃圾回收的操作。通过分代，存活在局限域、小容量、寿命短的存储对象会被快速回收；存活在全局域、大容量、寿命长的存储对象就较少被回收行为处理干扰。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>如何判断一个对象是否应该回收</p>
+</blockquote>
+<ul>
+<li>引用计数，该对象每被一个地方引用，计数器就加+1，引用失效时，计数器-1，计数器为0时的对象就不能再被使用，很难解决循环引用的问题。</li>
+<li>可达性分析法，通过gc roots作为起点，从这些节点开始向下搜索，当一个对象到gc roots没有任何引用链十则代表这个对象就是不可用的。</li>
+</ul>
+<blockquote>
+<p>什么可以作为GC ROOT呢？</p>
+</blockquote>
+<ul>
+<li>类静态属性中引用的对象（方法区）</li>
+<li>常量引用的的对象（方法区）</li>
+<li>虚拟机栈中引用的对象（栈帧中的本地变量表）</li>
+<li>jni引用的对象（本地方法栈）</li>
+<li>除了垃圾回收，还有哪些工作会造成cpu负载过高，100%负载，并给出排查过程</li>
+</ul>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8">维基百科</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72802332">知乎专栏</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004674180">segmentfault</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1336613">腾讯云</a></li>
+</ol>
+<hr>
+<h1 id="全局唯一ID"><a href="#全局唯一ID" class="headerlink" title="全局唯一ID"></a><center><font color="red">全局唯一ID</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着应用业务的复杂，用户量的增长，单机部署已经不能满足现有的需求了，随之而来的就是在数据库层分库、分表，以及分布式部署应用等。全局唯一ID，其实就是在分布式应用中唯一标识某条记录的ID。生成全局唯一ID有两个基本要求：全局唯一性、趋势有序性。</p>
+<blockquote>
+<p>ID生成系统的需求</p>
+</blockquote>
+<ol>
+<li>全局唯一性：不能出现重复的ID，最基本的要求。</li>
+<li>趋势递增：MySQL InnoDB引擎使用的是聚集索引，由于多数RDBMS使用B-tree的数据结构来存储索引数据，在主键的选择上面我们应尽量使用有序的主键保证写入性能。</li>
+<li>单调递增：保证下一个ID一定大于上一个ID。</li>
+<li>信息安全：如果ID是连续递增的，恶意用户就可以很容易的窥见订单号的规则，从而猜出下一个订单号，如果是竞争对手，就可以直接知道我们一天的订单量。所以在某些场景下，需要ID无规则。</li>
+</ol>
+<h2 id="二、常见算法"><a href="#二、常见算法" class="headerlink" title="二、常见算法"></a>二、常见算法</h2><ol>
+<li><p>uuid</p>
+<ul>
+<li>生成足够简单，本地生成无网络消耗，具有唯一性</li>
+<li>无序的字符串，不具备趋势自增特性</li>
+<li>没有具体的业务含义</li>
+</ul>
+</li>
+<li><p>数据库自增id</p>
+<ul>
+<li>实现简单，ID单调自增，数值类型查询速度快</li>
+<li>DB单点存在宕机风险，无法扛住高并发场景</li>
+</ul>
+</li>
+<li><p>数据库多主模式</p>
+<ul>
+<li>分别设置起始值和自增步长</li>
+<li>可以解决DB单点问题</li>
+<li>不利于后续扩容，高并发下单个数据库自身压力大</li>
+</ul>
+</li>
+<li><p>号段模式</p>
+<ul>
+<li>从数据库批量的获取自增ID如1~1000并缓存在本地，减少数据库请求次数</li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE id_generator (</span><br><span class="line">  id int(10) NOT NULL,</span><br><span class="line">  max_id bigint(20) NOT NULL COMMENT '当前最大id',</span><br><span class="line">  step int(20) NOT NULL COMMENT '号段的布长',</span><br><span class="line">  biz_type    int(20) NOT NULL COMMENT '业务类型',</span><br><span class="line">  version int(20) NOT NULL COMMENT '版本号',</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">)</span><br><span class="line">biz_type：不同业务类型</span><br><span class="line">max_id：当前最大的可用id</span><br><span class="line">step：号段的长度</span><br><span class="line">version：乐观锁</span><br><span class="line"></span><br><span class="line">update id_generator set max_id = #{max_id+step}, version = version + 1 where version = # {version} and biz_type = XXX</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>Redis</p>
+<ul>
+<li>incr</li>
+</ul>
+</li>
+<li><p>Mongo</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getUniqId() {</span><br><span class="line">    if (!class_exists('MongoDB\BSON\ObjectId')) {</span><br><span class="line">        throw new Exception("mongodb extension no exists");</span><br><span class="line">    }</span><br><span class="line">    return (string)(new MongoDB\BSON\ObjectId());</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="7">
+<li>雪花算法<ul>
+<li>Snowflake ID组成结构：<code>正数位(1比特)+时间戳(41比特)+workId(10比特)+自增值(12比特)</code>，总共64比特组成的一个Long类型ID。</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/didi/tinyid">滴滴TinyId</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/baidu/uid-generator">百度UidGenerator</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Meituan-Dianping/Leaf">美团Leaf</a></li>
+</ol>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158954672">参考一</a></li>
+</ol>
 
     </div>
 
@@ -443,12 +878,22 @@
           
           <div class="post-tags">
               <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/Paxos/" rel="tag"><i class="fa fa-tag"></i> Paxos</a>
+              <a href="/tags/Raft/" rel="tag"><i class="fa fa-tag"></i> Raft</a>
+              <a href="/tags/ZAB/" rel="tag"><i class="fa fa-tag"></i> ZAB</a>
+              <a href="/tags/Gossip/" rel="tag"><i class="fa fa-tag"></i> Gossip</a>
+              <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
               <a href="/tags/AOI/" rel="tag"><i class="fa fa-tag"></i> AOI</a>
               <a href="/tags/%E7%BA%A2%E5%8C%85%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 红包算法</a>
               <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag"><i class="fa fa-tag"></i> 字符串匹配</a>
               <a href="/tags/LRU/" rel="tag"><i class="fa fa-tag"></i> LRU</a>
               <a href="/tags/FIFO/" rel="tag"><i class="fa fa-tag"></i> FIFO</a>
               <a href="/tags/LFU/" rel="tag"><i class="fa fa-tag"></i> LFU</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 排序</a>
+              <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="tag"><i class="fa fa-tag"></i> 垃圾回收</a>
+              <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
+              <a href="/tags/%E6%9F%A5%E6%89%BE/" rel="tag"><i class="fa fa-tag"></i> 查找</a>
+              <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7/" rel="tag"><i class="fa fa-tag"></i> 一致性</a>
           </div>
 
         
@@ -504,7 +949,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOI%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">AOI算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A2%E5%8C%85%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">红包算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">字符串匹配算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LRU"><span class="nav-number"></span> <span class="nav-text">LRU</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">二、实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E7%BC%93%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三、常见缓存淘汰算法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOI%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">AOI算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A2%E5%8C%85%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">红包算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">字符串匹配算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LRU"><span class="nav-number"></span> <span class="nav-text">LRU</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">二、实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E7%BC%93%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三、常见缓存淘汰算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">分布式一致性算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 分布式一致性分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%9B%9B%E5%A4%A7%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 四大算法基础定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9B%E5%A4%A7%E7%AE%97%E6%B3%95%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94"><span class="nav-number">2.</span> <span class="nav-text">二、四大算法全方位对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 核心特性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%90%84%E7%AE%97%E6%B3%95%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 各算法核心原理与优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Paxos-%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Paxos 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Raft-%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 Raft 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-ZAB-%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 ZAB 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-Gossip-%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4 Gossip 算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF%E6%80%BB%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 适用场景总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一、十大排序算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">一、冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">二、快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">三、插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">四、选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">五、希尔排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">7.</span> <span class="nav-text">六、归并排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">8.</span> <span class="nav-text">七、基数排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">9.</span> <span class="nav-text">八、计数排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E6%A1%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">10.</span> <span class="nav-text">九、桶排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="nav-number">11.</span> <span class="nav-text">十、堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">十一、优先队列排序算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">查找算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%83%E5%A4%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">一、七大查找算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">垃圾回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80ID"><span class="nav-number"></span> <span class="nav-text">全局唯一ID</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-3"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二、常见算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -520,7 +965,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">280</span>
+          <span class="site-state-item-count">275</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -533,7 +978,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1018</span>
+        <span class="site-state-item-count">1015</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -560,7 +1005,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -626,12 +1071,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">941k</span>
+    <span title="站点总字数">943k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:16</span>
+    <span title="站点阅读时长">14:17</span>
 </div>
 
         
