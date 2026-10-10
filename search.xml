@@ -17067,74 +17067,6 @@
       </tags>
   </entry>
   <entry>
-    <title>记一次排查web响应超级慢的过程</title>
-    <url>/2020/04/26/Nginx-%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%8E%92%E6%9F%A5web%E5%93%8D%E5%BA%94%E8%B6%85%E7%BA%A7%E6%85%A2%E7%9A%84%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>游戏策划是一个计划者，他需要做的事情是在内容还没有实现之前，先做好计划，通俗点讲也可以称为画饼，或者专业点讲类似于web端的产品经理。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;博主现就职于一家游戏公司，主要工作是用PHP写业务类的接口。众所周知PHP是面向短连接的，而游戏一般客户端和服务端建立长连接，后端只用PHP肯定是不行的，具体怎么实现的或者说整个游戏的架构在此就不多说了。一般的开发过程就是运营或策划提出需求，带着正式的需求文档，然后叫上各个部门的相关同学(美术、前端、后端、测试、运营等)去会议室听策划讲解整个文档，讲解结束后要评估各个部门的开发排期，接下来就按开发排期就行就OK了。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一般来说后端拿到需求就可以进行了，前提是策划已经把配表准备好。配表分为了研发、测试、预发布、正式等几种，整个功能开发过程中要不断的切换配置。后端用web接口的形式实现了切换配置，输入不同的参数切换不同的配表。本来一切都进行的好好的，某天测试的妹子说web接口切换配置好慢，让帮忙处理下，终于进入到今天的主题了。</p>
-<h2 id="二、处理过程"><a href="#二、处理过程" class="headerlink" title="二、处理过程"></a>二、处理过程</h2><ol>
-<li><p>现象复现，开发机1是正常的(虽然也消耗了1s多)，开发机2是测试妹子反应慢的</p>
-<ul>
-<li>开发机1切换配置 <img src="1.png" alt="正常切换"></li>
-<li>开发机2切换配置 <img src="2.png" alt="超级慢切换"></li>
-</ul>
-</li>
-<li><p>处理过程</p>
-<ul>
-<li>①登录开发机2，查看系统资源是否达到上限，暂未发现异常 <img src="3.jpg" alt="top"> <img src="4.jpg" alt="df"></li>
-<li>②查看php-fpm慢日志，问题其实已经很明显，正常只需要看一下方法的调用链就能追踪到具体哪一步一起的，推荐<a href="http://pecl.php.net/package/xhprof">PHP性能测试扩展xhprof</a>，碍于没有权限，只能继续别的方式。</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">script_filename = /you_know/secret/path/index.php</span><br><span class="line">[0x00007fceeae13b20] exec() /you_know/secret/path/app/controller/AAA.php:436</span><br><span class="line">[0x00007fceeae137d0] clearConfig() /you_know/secret/path/inc/coreBBB:104</span><br><span class="line">[0x00007fceeae13230] dispatch() /you_know/secret/path/app/util/CCC.php:140</span><br><span class="line">[0x00007fceeae130c0] run() /you_know/secret/path/index.php:4</span><br><span class="line">[0x00007fceeae13030] /you_know/secret/path/index.php() unknown:0</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>③查看nginx日志(access.log和error.log)，暂未发现异常</li>
-<li>④猜测是php文件过大导致，一个类文件写了9783行代码，遂重新复制了一个类文件，里面只包含一个方法，重试依然不行</li>
-<li>⑤看代码也没有问题，原有的逻辑一直没动，看到里面有个循环读取目录的逻辑，遂想着是不是配置文件本身有问题</li>
-<li>⑥查看配置文件，尼玛，果然有人多创建了一层目录，代码一直在循环遍历目录。。。</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h2><ol>
-<li><p>监控php-fpm的状态</p>
-<ul>
-<li>修改对应的vhost，在server内加入以下配置<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">location ~ ^/status$ {</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>修改php-fpm.conf，打开以下选项：</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pm.status_path = /status</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>访问http://域名/status以查看当前的php情况，</li>
-<li>结果说明</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pool: www php运行的组</span><br><span class="line">process manager: dynamic php-fpm运行的方式</span><br><span class="line">start time: 04/Jun/2012:16:05:32 +0800 开始时间</span><br><span class="line">start since: 5932</span><br><span class="line">accepted conn: 65678 接受链接</span><br><span class="line">listen queue: 0 监听队列</span><br><span class="line">max listen queue: 1 最大监听队列</span><br><span class="line">listen queue len: 128 监听队列len</span><br><span class="line">idle processes: 82 空闲进程</span><br><span class="line">active processes: 4 活动进程</span><br><span class="line">total processes: 86 总进程</span><br><span class="line">max active processes: 25 最大活动进程</span><br><span class="line">max children reached: 0 最大的子进程达到</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>按上面的步骤弄完并看不出来什么问题，查看对应的日志，报了一堆<code>upstream timed out (60: Operation timed out)</code></p>
-</li>
-<li><p>在server内加入以下配置</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">large_client_header_buffers 4 16k;</span><br><span class="line">client_max_body_size 30m;</span><br><span class="line">client_body_buffer_size 128k;</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_buffer_size 64k;</span><br><span class="line">fastcgi_buffers   4 32k;</span><br><span class="line">fastcgi_busy_buffers_size 64k;</span><br><span class="line">fastcgi_temp_file_write_size 64k;</span><br></pre></td></tr></tbody></table></figure>
-<ol start="4">
-<li>重启ngix，响应速度并没有快多少，只是不再报<code>upstream timed out (60: Operation timed out)</code>了</li>
-</ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://www.imooc.com/article/38287">参考一</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1134895">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-        <tag>PHP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MongoDB备份还原</title>
     <url>/2020/04/12/MongoDB-%E5%A4%87%E4%BB%BD%E8%BF%98%E5%8E%9F/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -31366,6 +31298,35 @@
 <td>中大型 Web 集群，同时需要 TCP+HTTP 负载均衡</td>
 </tr>
 </tbody></table>
+<hr>
+<h1 id="PHP-Nginx优化"><a href="#PHP-Nginx优化" class="headerlink" title="PHP+Nginx优化"></a><center><font color="red">PHP+Nginx优化</font></center></h1><h2 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h2><ol>
+<li><p>监控php-fpm的状态</p>
+<ul>
+<li>修改对应的vhost，在server内加入以下配置<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">location ~ ^/status$ {</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>修改php-fpm.conf，打开以下选项：</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pm.status_path = /status</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>访问http://域名/status以查看当前的php情况，</li>
+<li>结果说明</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pool: www php运行的组</span><br><span class="line">process manager: dynamic php-fpm运行的方式</span><br><span class="line">start time: 04/Jun/2012:16:05:32 +0800 开始时间</span><br><span class="line">start since: 5932</span><br><span class="line">accepted conn: 65678 接受链接</span><br><span class="line">listen queue: 0 监听队列</span><br><span class="line">max listen queue: 1 最大监听队列</span><br><span class="line">listen queue len: 128 监听队列len</span><br><span class="line">idle processes: 82 空闲进程</span><br><span class="line">active processes: 4 活动进程</span><br><span class="line">total processes: 86 总进程</span><br><span class="line">max active processes: 25 最大活动进程</span><br><span class="line">max children reached: 0 最大的子进程达到</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>按上面的步骤弄完并看不出来什么问题，查看对应的日志，报了一堆<code>upstream timed out (60: Operation timed out)</code></p>
+</li>
+<li><p>在server内加入以下配置</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">large_client_header_buffers 4 16k;</span><br><span class="line">client_max_body_size 30m;</span><br><span class="line">client_body_buffer_size 128k;</span><br><span class="line">fastcgi_connect_timeout 300;</span><br><span class="line">fastcgi_read_timeout 300;</span><br><span class="line">fastcgi_send_timeout 300;</span><br><span class="line">fastcgi_buffer_size 64k;</span><br><span class="line">fastcgi_buffers   4 32k;</span><br><span class="line">fastcgi_busy_buffers_size 64k;</span><br><span class="line">fastcgi_temp_file_write_size 64k;</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>重启ngix，响应速度并没有快多少，只是不再报<code>upstream timed out (60: Operation timed out)</code>了</li>
+</ol>
+<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<li><a href="https://www.imooc.com/article/38287">参考一</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1134895">参考二</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Nginx</category>
