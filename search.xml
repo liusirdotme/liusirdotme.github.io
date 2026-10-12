@@ -2073,12 +2073,144 @@
     <title>Jira搭建使用</title>
     <url>/2025/05/18/Technology-Jira/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
+<p>将欲歙之，必固张之；将欲弱之，必固强之；将欲废之，必固兴之；<strong>将欲取之，必固与之。</strong>是谓微明。柔弱胜刚强。鱼不可脱于渊，国之利器不可以示人。 ——出自《老子（道德经）・第三十六章》</p>
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
-<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h2 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h2><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
+<ol>
+<li><strong>产品定位</strong>：不仅是缺陷管理工具，也是敏捷项目管理平台；支持研发、产品、营销、HR、运营等跨职能团队使用，全球超35万团队在使用，83%财富500强企业采用Atlassian体系产品。</li>
+<li><strong>部署版本</strong><ul>
+<li>Cloud云版本：SaaS云端，主流版本，持续更新AI能力；免费版支持最多10人，高级功能需付费订阅。</li>
+<li>Data Center本地部署：企业自建服务器，官方宣布2029年终止支持，逐步淘汰。</li>
+</ul>
+</li>
+<li><strong>核心配套套件（Teamwork Collection协作套件）</strong><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jira</td>
+<td>任务、需求、缺陷、项目管理核心</td>
+</tr>
+<tr>
+<td>Confluence</td>
+<td>知识库、产品文档、会议纪要、白板协作</td>
+</tr>
+<tr>
+<td>Loom</td>
+<td>异步视频录制、AI生成会议笔记</td>
+</tr>
+<tr>
+<td>Rovo</td>
+<td>Atlassian原生AI助手（付费版可用）</td>
+</tr>
+</tbody></table>
+</li>
+<li><strong>AI时代新增核心概念（2026新版）</strong><ul>
+<li><strong>Teamwork Graph协作图谱</strong>：打通Jira、Confluence、第三方工具数据，给AI提供业务上下文，减少AI大模型Token消耗，支持MCP/CLI对接外部AI（Claude、GitHub Copilot等）。</li>
+<li><strong>Rovo智能体</strong>：Jira内置AI队友，完成调研、文档草拟、任务更新、报表生成；可直接将Jira任务分配给AI智能体执行，保留操作审计记录，做到可控的AI规模化使用。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><h3 id="2-1-核心基础概念"><a href="#2-1-核心基础概念" class="headerlink" title="2.1 核心基础概念"></a>2.1 核心基础概念</h3><ol>
+<li><strong>项目Project</strong>：工作的容器，分团队管理项目、公司管理项目；新建项目可直接选用模板。</li>
+<li><strong>工作项Issue（事务）</strong>：Jira最小工作单元，类型可自定义：故事Story、任务Task、缺陷Bug、子任务Sub‑task、需求、工单等。</li>
+<li><strong>看板Board</strong><ul>
+<li>Scrum看板：适配迭代冲刺Sprint模式，适合固定周期迭代开发；包含待办Backlog、迭代Sprint、燃尽图等。</li>
+<li>Kanban看板：流式持续交付，无固定迭代，适合运维、客服、持续需求流。</li>
+</ul>
+</li>
+<li><strong>工作流Workflow</strong>：定义事务状态流转（新建→处理中→待测试→已验收→关闭），支持自定义状态、校验、流转条件。</li>
+<li><strong>JQL查询语言</strong>：高级检索语法，可以按项目、经办人、状态、版本、自定义字段筛选事务，用于过滤器、报表、仪表板，示例：<code>project = "项目A" AND status != Done</code>。</li>
+<li><strong>仪表板&amp;报表</strong>：自定义数据面板；敏捷报表包含燃尽图、速率图、冲刺报告，用于复盘迭代进度。</li>
+<li><strong>自动化Automation</strong>：无代码配置规则，实现自动分配、状态流转、消息通知，减少重复人工操作。</li>
+</ol>
+<h3 id="2-2-标准上手流程"><a href="#2-2-标准上手流程" class="headerlink" title="2.2 标准上手流程"></a>2.2 标准上手流程</h3><ol>
+<li>创建项目，选择匹配团队模式的模板（Scrum / Kanban /业务项目模板）。</li>
+<li>配置工作流、自定义字段、看板列，适配团队真实业务流程。</li>
+<li>创建工作项，填写摘要、描述、经办人、优先级、版本、组件等信息；子任务拆解大任务。</li>
+<li>维护Backlog待办列表，对需求排序；Scrum团队规划Sprint迭代，将事务加入迭代。</li>
+<li>团队在看板拖拽卡片，推动事务状态流转；评论、上传附件、关联相关任务。</li>
+<li>使用JQL过滤器、仪表板查看进度；生成报表做迭代复盘。</li>
+<li>集成配套工具：对接Confluence文档、Git代码库、IM沟通工具、第三方插件市场应用。</li>
+</ol>
+<h3 id="2-3-AI新功能使用要点（新版）"><a href="#2-3-AI新功能使用要点（新版）" class="headerlink" title="2.3 AI新功能使用要点（新版）"></a>2.3 AI新功能使用要点（新版）</h3><ol>
+<li>Rovo AI搜索：跨Jira、Confluence检索，直接输出答案，不是单纯返回链接列表。</li>
+<li>分配任务给AI智能体：工作项指派选择Research Agent等智能体，AI完成工作后人工审核结果，全程有审计追踪。</li>
+<li>Teamwork Graph CLI：给外部编码AI提供项目上下文，打通AI编码与项目任务。</li>
+<li>自然语言生成项目空间：输入团队业务描述，Rovo自动生成项目、工作流、初始任务。</li>
+</ol>
+<h3 id="2-4-典型业务场景用法"><a href="#2-4-典型业务场景用法" class="headerlink" title="2.4 典型业务场景用法"></a>2.4 典型业务场景用法</h3><ol>
+<li><strong>软件研发</strong>：Bug提交追踪、用户故事管理、Sprint迭代、版本规划，对接Git提交自动更新任务状态。</li>
+<li><strong>测试缺陷管理</strong>：测试人员提交Bug，分配开发修复，修复后回归验证，闭环缺陷。</li>
+<li><strong>业务/营销团队</strong>：使用看板管理营销活动、需求工单，非研发团队也可使用敏捷Sprint模式管理业务工作。</li>
+<li><strong>客户服务工单</strong>：接收客户问题，流转对应负责人处理，跟踪闭环。</li>
+</ol>
+<h2 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h2><h3 id="3-1-优势"><a href="#3-1-优势" class="headerlink" title="3.1 优势"></a>3.1 优势</h3><ol>
+<li><strong>高度可定制</strong>：事务类型、字段、工作流、看板均可自定义，适配几乎所有团队流程，拥有庞大的Atlassian插件市场扩展能力。</li>
+<li><strong>敏捷原生能力强</strong>：Scrum、Kanban完整支持，迭代、报表、待办管理成熟，是行业敏捷项目管理标杆工具。</li>
+<li><strong>生态完整</strong>：和Confluence、Bitbucket深度打通；支持对接大量第三方工具；新版Rovo+Teamwork Graph提供成熟企业AI协作能力，支持对接外部大模型。</li>
+<li><strong>企业级能力</strong>：权限精细管控、全球合规、安全审计，适合大型企业跨部门协作，全球多地区团队使用。</li>
+<li><strong>数据可视化完善</strong>：仪表板、丰富报表，方便管理者跟踪项目进度、产出量化指标。</li>
+</ol>
+<h3 id="3-2-劣势与痛点"><a href="#3-2-劣势与痛点" class="headerlink" title="3.2 劣势与痛点"></a>3.2 劣势与痛点</h3><ol>
+<li><strong>上手门槛较高</strong>：配置项繁多，完全用好需要管理员学习；普通使用者也需要理解事务、工作流、JQL等概念，新团队学习成本高。</li>
+<li><strong>成本偏高</strong>：云版按用户数订阅；Confluence、Rovo AI等高级能力额外计费；免费版仅10人，功能受限。</li>
+<li><strong>性能问题</strong>：项目事务数量巨大时，查询、看板加载速度下降，需要做好项目规划与清理。</li>
+<li><strong>本地部署Data Center即将停止维护</strong>，长期企业需要向云端迁移，有迁移成本。</li>
+<li><strong>通知机制短板</strong>：原生很难直接监听整个项目全部事务变更，多需要插件辅助实现全局项目关注通知。</li>
+</ol>
+<h3 id="3-3-常见踩坑问题"><a href="#3-3-常见踩坑问题" class="headerlink" title="3.3 常见踩坑问题"></a>3.3 常见踩坑问题</h3><ol>
+<li>字段、工作流过度自定义，配置过于复杂，后续维护困难。</li>
+<li>事务随意创建，缺少规范，大量无效脏数据，导致看板和报表失真。</li>
+<li>不掌握JQL，只会基础界面筛选，复杂统计效率低下。</li>
+<li>权限配置错误，出现数据泄露或者成员看不到任务。</li>
+<li>AI智能体使用：免费版无Rovo；使用第三方MCP智能体时，务必开启审计追踪，管控AI操作权限。</li>
+</ol>
+<h3 id="3-4-Jira与Redmine简单对比（参考四）"><a href="#3-4-Jira与Redmine简单对比（参考四）" class="headerlink" title="3.4 Jira与Redmine简单对比（参考四）"></a>3.4 Jira与Redmine简单对比（参考四）</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Jira</th>
+<th>Redmine</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>授权模式</td>
+<td>商业付费，有10人免费云版</td>
+<td>开源免费，可自建部署</td>
+</tr>
+<tr>
+<td>敏捷支持</td>
+<td>原生Scrum/Kanban，报表完善</td>
+<td>需要插件实现敏捷看板，原生能力弱</td>
+</tr>
+<tr>
+<td>自定义能力</td>
+<td>极强，自定义字段丰富</td>
+<td>支持自定义，但能力弱于Jira</td>
+</tr>
+<tr>
+<td>AI能力</td>
+<td>Rovo+Teamwork Graph完整企业AI体系</td>
+<td>无原生AI，依赖第三方插件</td>
+</tr>
+<tr>
+<td>维护成本</td>
+<td>云版本维护简单；本地版即将停服</td>
+<td>需要自己维护服务器、Ruby环境，运维成本高</td>
+</tr>
+<tr>
+<td>适合场景</td>
+<td>中大型企业、重视敏捷与生态的团队</td>
+<td>预算有限、有运维能力、中小型简单事务跟踪</td>
+</tr>
+</tbody></table>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a href="https://www.atlassian.com/">参考一</a></li>
 <li><a href="https://www.atlassian.com/zh/software/jira">参考二</a></li>
 <li><a href="https://www.atlassian.com/zh/software/jira/pricing">参考三</a></li>
