@@ -37482,134 +37482,451 @@ read_xlsx(name, sheet)
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、工具"><a href="#一、工具" class="headerlink" title="一、工具"></a>一、工具</h2><ol>
-<li><p><a href="https://sketchbook.com/">sketchbook</a></p>
-</li>
-<li><p><a href="https://www.gimp.org/">gimp</a>，GNU Image Manipulation Program(GNU图像处理程序)的缩写，它是Peter Mattis和Spencer Kimhall开发的免费照片和图像处理和创作工具，功能十分强大。</p>
-</li>
-<li><p><a href="https://www.getpostman.com/">postman</a>，是一个API开发的协作平台，可以提升工作效率之类的，相信有过Postman使用经验的小伙伴肯定已经有所了解，广泛用于接口开发、调试、监控、自动化测试、文档生成与管理等各个方面。</p>
-</li>
-<li><p><a href="https://www.apipost.cn/">ApiPost</a></p>
-</li>
-<li><p><a href="http://docs.jinkan.org/">jinjia</a></p>
-</li>
-<li><p><a href="https://excalidraw.com/">excalidraw</a></p>
-</li>
-<li><p><a href="https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html">AnyConnect</a>，<a href="https://www.jianshu.com/p/b1bb49732d62">卸载后重装失败</a>，<a href="https://blog.csdn.net/weixin_42638711/article/details/108795677">卸载</a></p>
-</li>
-<li><p><a href="https://tunnelblick.net/">Tunnelblick</a></p>
-</li>
-<li><p><a href="https://gitmind.cn/">gitmind</a></p>
-</li>
-<li><p><a href="https://www.feishu.cn/">飞书</a></p>
-</li>
-<li><p><a href="https://app.diagrams.net/">draw.io</a></p>
-</li>
-<li><p><a href="https://www.diagrams.net/">Diagrams</a>，<a href="https://zhuanlan.zhihu.com/p/107253413">知乎</a></p>
-</li>
-</ol>
-<ol>
-<li><p><a href="https://lemon.qq.com/">lemon</a></p>
-</li>
-<li><p><a href="https://apps.apple.com/my/app/pixeur-get-screen-color/id1507890049?mt=12">Pixeur</a></p>
-</li>
-<li><p><a href="https://mac.softpedia.com/get/Utilities/Gas-Mask.shtml">Gas Mask</a></p>
-</li>
-<li><p><a href="http://freemacsoft.net/appcleaner/">AppCleaner</a></p>
-</li>
-<li><p><a href="https://www.macupdate.com/app/mac/60122/paper">Pap.er</a></p>
-</li>
-<li><p><a href="https://www.theunarchiver.com/">The Unarchiver</a></p>
-</li>
-<li><p><a href="https://www.stellarinfo.com/gdc/mac-data-recovery/">mac-data-retriever</a>，Mac数据恢复，拯救<code>rm -rf *</code></p>
-</li>
-<li><p><a href="https://crystalidea.com/macs-fan-control/download">Macs Fan Control</a>，Mac风扇风速控制</p>
-</li>
-<li><p><a href="https://www.macwk.com/">macwk</a></p>
-</li>
-<li><p><a href="https://sourceforge.net/projects/kdiff3/files/">kdiff3</a></p>
-</li>
-<li><p><a href="http://supervisord.org/">supervisor</a>，是用Python开发的一套通用的进程管理程序，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。</p>
-</li>
-</ol>
-<ol>
-<li><p><a href="https://www.scootersoftware.com/">Beyond Compare</a>，<a href="https://www.beyondcompare.cc/">中文</a></p>
-</li>
-<li><p><a href="https://www.psiphon3.com/zh/index.html">Psiphon</a></p>
-</li>
-<li><p><a href="https://www.sourcetreeapp.com/">Sourcetree</a>，Git客户端</p>
-</li>
-<li><p><a href="https://tortoisegit.org/">TortoiseGit</a></p>
-</li>
-<li><p><a href="https://tortoisesvn.net/index.zh.html">TortoiseSvn</a>，是可用于Windows系统的<code>Apache™ Subversion(SVN)®</code>版本控制客户端.TortoiseSVN无需使用Subversion命令行，是目前最方便的Subversion版本控制系统，其操作和使用非常直观和简洁。</p>
-</li>
-<li><p><a href="http://blog.bahraniapps.com/gifcam/">GifCam</a>，Windows下gif制作工具</p>
-</li>
-<li><p><a href="https://github.com/macvim-dev/macvim/releases">MacVim</a></p>
-</li>
-<li><p><a href="https://neovim.io/">NeoVim</a></p>
-</li>
-<li><p><a href="https://clickhouse.com/docs/zh/">ClickHouse</a></p>
-</li>
-<li><p><a href="https://iterm2.com/">iterm2</a></p>
-</li>
-<li><p><a href="https://ohmyz.sh/">ohmyz</a></p>
-</li>
-<li><p><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">tmux</a>，<a href="http://louiszhai.github.io/2017/09/30/tmux/">使用手册</a></p>
-</li>
-<li><p><a href="https://iperf.fr/">iperf</a>，<a href="https://www.cnblogs.com/cloudwas/p/13084815.html">使用</a></p>
-</li>
-<li><p><a href="https://robomongo.org/download">Robo 3T</a></p>
-</li>
-<li><p><a href="https://dbeaver.io/">DBeaver</a>，跨平台</p>
-</li>
-<li><p><a href="https://sequelpro.com/test-builds?utm_source=ld246.com">Sequel Pro</a>，<a href="https://ld246.com/article/1558755765625">崩溃修复</a>,<a href="http://www.sequelpro.com/">官网</a></p>
-<ul>
-<li>Mac OS X原生的应用工具Sequel Pro是一款管理 MySQL的工具，界面简洁易用，可以一次性连接多个数据库，允许快速访问。</li>
-</ul>
-</li>
-<li><p><a href="https://github.com/qishibo/AnotherRedisDesktopManager/">AnotherRedisDesktopManager</a></p>
-</li>
-<li><p><a href="https://www.sourceinsight.com/">Sourceinsight</a></p>
-</li>
-<li><p><a href="https://www.vandyke.com/products/securecrt/">SecureCRT</a></p>
-</li>
-<li><p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a></p>
-</li>
-<li><p><a href="https://httpie.io/">http客户端</a></p>
-</li>
-<li><p><a href="https://stedolan.github.io/jq/">jq</a></p>
-</li>
-<li><p><a href="https://github.com/antonmedv/fx">fx</a></p>
-</li>
-<li><p><a href="https://github.com/jonas/tig">tig</a></p>
-</li>
-<li><p><a href="https://github.com/ranger/ranger">ranger</a></p>
-</li>
-<li><p><a href="https://dev.yorhel.nl/ncdu">ncdu</a></p>
-</li>
-<li><p><a href="https://github.com/dbcli/mycli">mycli</a></p>
-</li>
-<li><p><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">FloatConverter</a></p>
-</li>
-<li><p><a href="https://swiftype.com/">swiftype搜索</a></p>
-</li>
-<li><p><a href="https://metacpan.org/pod/Graph::Easy">Graph-Easy</a></p>
-</li>
-<li><p><a href="https://www.aliyundrive.com/s/PdALTScJKt2">191本计算机黑皮书</a>，提取码: <code>57ch</code></p>
-</li>
-</ol>
-<h2 id="二、库"><a href="#二、库" class="headerlink" title="二、库"></a>二、库</h2><ol>
-<li><a href="http://www.gnu.org/software/libiconv/">libiconv</a></li>
-<li><a href="http://xmlsoft.org/">libxml2</a></li>
-</ol>
-<h2 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h2><ol>
-<li><a href="https://fouber.github.io/lottery/">lottery</a></li>
-<li><a href="https://developers.dingtalk.com/document/app/custom-robot-access">钉钉机器人</a></li>
-<li><a href="http://www.fontawesome.com.cn/">Font Awesome</a></li>
-<li><a href="https://www.bootcdn.cn/">BootCDN</a></li>
-<li><a href="https://github.com/yanue/V2rayU">v2ray</a></li>
-</ol>
+<h1 id="个人开发工具-amp-资源笔记"><a href="#个人开发工具-amp-资源笔记" class="headerlink" title="个人开发工具&amp;资源笔记"></a>个人开发工具&amp;资源笔记</h1><h2 id="一、图像-绘图-设计工具"><a href="#一、图像-绘图-设计工具" class="headerlink" title="一、图像/绘图/设计工具"></a>一、图像/绘图/设计工具</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sketchbook</td>
+<td>绘图工具</td>
+<td><a href="https://sketchbook.com/">https://sketchbook.com/</a></td>
+</tr>
+<tr>
+<td>GIMP</td>
+<td>免费开源图像处理创作工具</td>
+<td><a href="https://www.gimp.org/">https://www.gimp.org/</a></td>
+</tr>
+<tr>
+<td>Excalidraw</td>
+<td>手绘风格白板绘图</td>
+<td><a href="https://excalidraw.com/">https://excalidraw.com/</a></td>
+</tr>
+<tr>
+<td>Draw.io / Diagrams</td>
+<td>流程图、架构图绘制</td>
+<td><a href="https://app.diagrams.net/">https://app.diagrams.net/</a></td>
+</tr>
+<tr>
+<td>GitMind</td>
+<td>思维导图</td>
+<td><a href="https://gitmind.cn/">https://gitmind.cn/</a></td>
+</tr>
+<tr>
+<td>Pixeur</td>
+<td>Mac屏幕取色工具</td>
+<td><a href="https://apps.apple.com/my/app/pixeur-get-screen-color/id1507890049?mt=12">https://apps.apple.com/my/app/pixeur-get-screen-color/id1507890049?mt=12</a></td>
+</tr>
+<tr>
+<td>GifCam</td>
+<td>Windows GIF录制制作</td>
+<td><a href="http://blog.bahraniapps.com/gifcam/">http://blog.bahraniapps.com/gifcam/</a></td>
+</tr>
+</tbody></table>
+<h2 id="二、接口-amp-HTTP调试工具"><a href="#二、接口-amp-HTTP调试工具" class="headerlink" title="二、接口&amp;HTTP调试工具"></a>二、接口&amp;HTTP调试工具</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Postman</td>
+<td>API协作平台，接口调试、自动化测试、文档</td>
+<td><a href="https://www.getpostman.com/">https://www.getpostman.com/</a></td>
+</tr>
+<tr>
+<td>ApiPost</td>
+<td>国产API接口调试工具</td>
+<td><a href="https://www.apipost.cn/">https://www.apipost.cn/</a></td>
+</tr>
+<tr>
+<td>HTTPie</td>
+<td>命令行HTTP客户端</td>
+<td><a href="https://httpie.io/">https://httpie.io/</a></td>
+</tr>
+<tr>
+<td>jq</td>
+<td>命令行JSON解析处理</td>
+<td><a href="https://stedolan.github.io/jq/">https://stedolan.github.io/jq/</a></td>
+</tr>
+<tr>
+<td>fx</td>
+<td>交互式JSON查看工具</td>
+<td><a href="https://github.com/antonmedv/fx">https://github.com/antonmedv/fx</a></td>
+</tr>
+</tbody></table>
+<h2 id="三、版本控制-amp-Git-SVN"><a href="#三、版本控制-amp-Git-SVN" class="headerlink" title="三、版本控制 &amp; Git/SVN"></a>三、版本控制 &amp; Git/SVN</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sourcetree</td>
+<td>图形化Git客户端（Mac/Windows）</td>
+<td><a href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></td>
+</tr>
+<tr>
+<td>TortoiseGit</td>
+<td>Windows Git图形客户端</td>
+<td><a href="https://tortoisegit.org/">https://tortoisegit.org/</a></td>
+</tr>
+<tr>
+<td>TortoiseSVN</td>
+<td>Windows SVN图形客户端</td>
+<td><a href="https://tortoisesvn.net/index.zh.html">https://tortoisesvn.net/index.zh.html</a></td>
+</tr>
+<tr>
+<td>tig</td>
+<td>终端Git浏览器</td>
+<td><a href="https://github.com/jonas/tig">https://github.com/jonas/tig</a></td>
+</tr>
+</tbody></table>
+<h2 id="四、数据库客户端"><a href="#四、数据库客户端" class="headerlink" title="四、数据库客户端"></a>四、数据库客户端</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DBeaver</td>
+<td>跨平台通用数据库管理工具</td>
+<td><a href="https://dbeaver.io/">https://dbeaver.io/</a></td>
+</tr>
+<tr>
+<td>Sequel Pro</td>
+<td>Mac MySQL管理工具</td>
+<td><a href="https://sequelpro.com/test-builds">https://sequelpro.com/test-builds</a></td>
+</tr>
+<tr>
+<td>AnotherRedisDesktopManager</td>
+<td>Redis可视化客户端</td>
+<td><a href="https://github.com/qishibo/AnotherRedisDesktopManager/">https://github.com/qishibo/AnotherRedisDesktopManager/</a></td>
+</tr>
+<tr>
+<td>Robo 3T</td>
+<td>MongoDB可视化工具</td>
+<td><a href="https://robomongo.org/download">https://robomongo.org/download</a></td>
+</tr>
+<tr>
+<td>mycli</td>
+<td>终端MySQL客户端</td>
+<td><a href="https://github.com/dbcli/mycli">https://github.com/dbcli/mycli</a></td>
+</tr>
+<tr>
+<td>ClickHouse</td>
+<td>列式数据库，中文文档</td>
+<td><a href="https://clickhouse.com/docs/zh/">https://clickhouse.com/docs/zh/</a></td>
+</tr>
+</tbody></table>
+<h2 id="五、终端-SSH-远程连接"><a href="#五、终端-SSH-远程连接" class="headerlink" title="五、终端 / SSH / 远程连接"></a>五、终端 / SSH / 远程连接</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iTerm2</td>
+<td>Mac终端增强工具</td>
+<td><a href="https://iterm2.com/">https://iterm2.com/</a></td>
+</tr>
+<tr>
+<td>Oh My Zsh</td>
+<td>zsh终端美化&amp;插件框架</td>
+<td><a href="https://ohmyz.sh/">https://ohmyz.sh/</a></td>
+</tr>
+<tr>
+<td>tmux</td>
+<td>终端会话复用工具</td>
+<td><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">https://www.ruanyifeng.com/blog/2019/10/tmux.html</a></td>
+</tr>
+<tr>
+<td>SecureCRT</td>
+<td>SSH远程连接客户端</td>
+<td><a href="https://www.vandyke.com/products/securecrt/">https://www.vandyke.com/products/securecrt/</a></td>
+</tr>
+<tr>
+<td>PuTTY</td>
+<td>轻量Windows SSH工具</td>
+<td><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">https://www.chiark.greenend.org.uk/~sgtatham/putty/</a></td>
+</tr>
+<tr>
+<td>ranger</td>
+<td>终端文件管理器</td>
+<td><a href="https://github.com/ranger/ranger">https://github.com/ranger/ranger</a></td>
+</tr>
+<tr>
+<td>ncdu</td>
+<td>终端磁盘占用分析</td>
+<td><a href="https://dev.yorhel.nl/ncdu">https://dev.yorhel.nl/ncdu</a></td>
+</tr>
+</tbody></table>
+<h2 id="六、代码阅读-amp-Vim编辑器系列"><a href="#六、代码阅读-amp-Vim编辑器系列" class="headerlink" title="六、代码阅读 &amp; Vim编辑器系列"></a>六、代码阅读 &amp; Vim编辑器系列</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SourceInsight</td>
+<td>源码阅读工程工具</td>
+<td><a href="https://www.sourceinsight.com/">https://www.sourceinsight.com/</a></td>
+</tr>
+<tr>
+<td>MacVim</td>
+<td>Mac平台Vim</td>
+<td><a href="https://github.com/macvim-dev/macvim/releases">https://github.com/macvim-dev/macvim/releases</a></td>
+</tr>
+<tr>
+<td>NeoVim</td>
+<td>现代重构版Vim</td>
+<td><a href="https://neovim.io/">https://neovim.io/</a></td>
+</tr>
+</tbody></table>
+<h2 id="七、文件对比-amp-进程管理"><a href="#七、文件对比-amp-进程管理" class="headerlink" title="七、文件对比 &amp; 进程管理"></a>七、文件对比 &amp; 进程管理</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Beyond Compare</td>
+<td>文件/文件夹对比工具</td>
+<td><a href="https://www.scootersoftware.com/">https://www.scootersoftware.com/</a></td>
+</tr>
+<tr>
+<td>kdiff3</td>
+<td>开源文件差异对比</td>
+<td><a href="https://sourceforge.net/projects/kdiff3/files/">https://sourceforge.net/projects/kdiff3/files/</a></td>
+</tr>
+<tr>
+<td>supervisor</td>
+<td>Python编写进程守护，异常自动重启</td>
+<td><a href="http://supervisord.org/">http://supervisord.org/</a></td>
+</tr>
+</tbody></table>
+<h2 id="八、Mac-专用工具"><a href="#八、Mac-专用工具" class="headerlink" title="八、Mac 专用工具"></a>八、Mac 专用工具</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gas Mask</td>
+<td>Mac hosts管理工具</td>
+<td><a href="https://mac.softpedia.com/get/Utilities/Gas-Mask.shtml">https://mac.softpedia.com/get/Utilities/Gas-Mask.shtml</a></td>
+</tr>
+<tr>
+<td>AppCleaner</td>
+<td>Mac软件卸载清理残留</td>
+<td><a href="http://freemacsoft.net/appcleaner/">http://freemacsoft.net/appcleaner/</a></td>
+</tr>
+<tr>
+<td>The Unarchiver</td>
+<td>Mac解压工具</td>
+<td><a href="https://www.theunarchiver.com/">https://www.theunarchiver.com/</a></td>
+</tr>
+<tr>
+<td>Macs Fan Control</td>
+<td>Mac风扇转速控制</td>
+<td><a href="https://crystalidea.com/macs-fan-control/download">https://crystalidea.com/macs-fan-control/download</a></td>
+</tr>
+<tr>
+<td>mac-data-retriever</td>
+<td>Mac数据恢复，尝试拯救rm -rf误删</td>
+<td><a href="https://www.stellarinfo.com/gdc/mac-data-recovery/">https://www.stellarinfo.com/gdc/mac-data-recovery/</a></td>
+</tr>
+<tr>
+<td>macwk</td>
+<td>Mac软件资源站</td>
+<td><a href="https://www.macwk.com/">https://www.macwk.com/</a></td>
+</tr>
+<tr>
+<td>Lemon（腾讯柠檬清理）</td>
+<td>Mac系统清理工具</td>
+<td><a href="https://lemon.qq.com/">https://lemon.qq.com/</a></td>
+</tr>
+</tbody></table>
+<h2 id="九、网络测试-amp-VPN工具"><a href="#九、网络测试-amp-VPN工具" class="headerlink" title="九、网络测试 &amp; VPN工具"></a>九、网络测试 &amp; VPN工具</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iperf</td>
+<td>网络带宽性能测试工具</td>
+<td><a href="https://iperf.fr/">https://iperf.fr/</a></td>
+</tr>
+<tr>
+<td>AnyConnect</td>
+<td>Cisco VPN客户端</td>
+<td><a href="https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html">https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html</a></td>
+</tr>
+<tr>
+<td>Tunnelblick</td>
+<td>Mac OpenVPN客户端</td>
+<td><a href="https://tunnelblick.net/">https://tunnelblick.net/</a></td>
+</tr>
+<tr>
+<td>Psiphon</td>
+<td>网络工具</td>
+<td><a href="https://www.psiphon3.com/zh/index.html">https://www.psiphon3.com/zh/index.html</a></td>
+</tr>
+</tbody></table>
+<h2 id="十、开发类库"><a href="#十、开发类库" class="headerlink" title="十、开发类库"></a>十、开发类库</h2><table>
+<thead>
+<tr>
+<th>库名称</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>libiconv</td>
+<td>字符编码转换库</td>
+<td><a href="http://www.gnu.org/software/libiconv/">http://www.gnu.org/software/libiconv/</a></td>
+</tr>
+<tr>
+<td>libxml2</td>
+<td>XML解析库</td>
+<td><a href="http://xmlsoft.org/">http://xmlsoft.org/</a></td>
+</tr>
+</tbody></table>
+<h2 id="十一、在线小工具"><a href="#十一、在线小工具" class="headerlink" title="十一、在线小工具"></a>十一、在线小工具</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FloatConverter</td>
+<td>IEEE754浮点数在线计算器</td>
+<td><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">https://www.h-schmidt.net/FloatConverter/IEEE754.html</a></td>
+</tr>
+<tr>
+<td>lottery</td>
+<td>在线抽奖工具</td>
+<td>shturl.cc/I81XM6zb5wG5kYdiq5k9nCv</td>
+</tr>
+<tr>
+<td>Graph-Easy</td>
+<td>文本绘图，生成关系图</td>
+<td><a href="https://metacpan.org/pod/Graph::Easy">https://metacpan.org/pod/Graph::Easy</a></td>
+</tr>
+<tr>
+<td>Swiftype</td>
+<td>站内搜索服务</td>
+<td><a href="https://swiftype.com/">https://swiftype.com/</a></td>
+</tr>
+</tbody></table>
+<h2 id="十二、前端资源"><a href="#十二、前端资源" class="headerlink" title="十二、前端资源"></a>十二、前端资源</h2><table>
+<thead>
+<tr>
+<th>资源</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Font Awesome</td>
+<td>图标库</td>
+<td><a href="http://www.fontawesome.com.cn/">http://www.fontawesome.com.cn/</a></td>
+</tr>
+<tr>
+<td>BootCDN</td>
+<td>国内开源静态资源CDN</td>
+<td><a href="https://www.bootcdn.cn/">https://www.bootcdn.cn/</a></td>
+</tr>
+</tbody></table>
+<h2 id="十三、爬虫项目"><a href="#十三、爬虫项目" class="headerlink" title="十三、爬虫项目"></a>十三、爬虫项目</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>templatespider</td>
+<td>扒网站工具</td>
+<td><a href="https://github.com/xnx3/templatespider">https://github.com/xnx3/templatespider</a></td>
+</tr>
+<tr>
+<td>EasySpider</td>
+<td>可视化爬虫</td>
+<td><a href="https://github.com/NaiboWang/EasySpider">https://github.com/NaiboWang/EasySpider</a></td>
+</tr>
+<tr>
+<td>proxy_pool</td>
+<td>代理IP池</td>
+<td><a href="https://github.com/jhao104/proxy_pool">https://github.com/jhao104/proxy_pool</a></td>
+</tr>
+<tr>
+<td>python-spider</td>
+<td>Python爬虫项目</td>
+<td><a href="https://github.com/Jack-Cherish/python-spider">https://github.com/Jack-Cherish/python-spider</a></td>
+</tr>
+</tbody></table>
+<h2 id="十四、开发文档-amp-资料"><a href="#十四、开发文档-amp-资料" class="headerlink" title="十四、开发文档 &amp; 资料"></a>十四、开发文档 &amp; 资料</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>钉钉自定义机器人</td>
+<td>钉钉机器人开发文档</td>
+<td><a href="https://developers.dingtalk.com/document/app/custom-robot-access">https://developers.dingtalk.com/document/app/custom-robot-access</a></td>
+</tr>
+<tr>
+<td>191本计算机黑皮书</td>
+<td>计算机书籍资源，阿里云盘，提取码：57ch</td>
+<td><a href="https://www.aliyundrive.com/s/PdALTScJKt2">https://www.aliyundrive.com/s/PdALTScJKt2</a></td>
+</tr>
+</tbody></table>
+<h2 id="十五、其他"><a href="#十五、其他" class="headerlink" title="十五、其他"></a>十五、其他</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>简介</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jinja</td>
+<td>Jinja模板文档</td>
+<td><a href="http://docs.jinkan.org/">http://docs.jinkan.org/</a></td>
+</tr>
+<tr>
+<td>飞书</td>
+<td>协作办公平台</td>
+<td><a href="https://www.feishu.cn/">https://www.feishu.cn/</a></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>Tools</category>
@@ -37627,6 +37944,7 @@ read_xlsx(name, sheet)
         <tag>钉钉</tag>
         <tag>gitmind</tag>
         <tag>飞书</tag>
+        <tag>网站</tag>
       </tags>
   </entry>
   <entry>
