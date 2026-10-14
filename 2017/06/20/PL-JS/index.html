@@ -157,7 +157,7 @@
 <meta property="og:image" content="https://liusir.net/2017/06/20/PL-JS/04.jpeg">
 <meta property="og:image" content="https://liusir.net/2017/06/20/PL-JS/05.jpeg">
 <meta property="article:published_time" content="2017-06-20T07:34:43.000Z">
-<meta property="article:modified_time" content="2024-09-03T07:26:18.281Z">
+<meta property="article:modified_time" content="2026-10-13T10:19:37.946Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="let">
 <meta property="article:tag" content="前端">
@@ -169,6 +169,18 @@
 <meta property="article:tag" content="事件循环机制">
 <meta property="article:tag" content="var">
 <meta property="article:tag" content="this">
+<meta property="article:tag" content="Ajax">
+<meta property="article:tag" content="跨域">
+<meta property="article:tag" content="JSONP">
+<meta property="article:tag" content="CORS">
+<meta property="article:tag" content="同源策略">
+<meta property="article:tag" content="sass">
+<meta property="article:tag" content="less">
+<meta property="article:tag" content="ECMAScript">
+<meta property="article:tag" content="jQuery选择器">
+<meta property="article:tag" content="grunt">
+<meta property="article:tag" content="gulp">
+<meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liusir.net/2017/06/20/PL-JS/flow.png">
   <link rel="canonical" href="https://liusir.net/2017/06/20/PL-JS/">
@@ -390,13 +402,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>7.8k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>7 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -737,6 +749,326 @@
 <h1 id="Express"><a href="#Express" class="headerlink" title="Express"></a><center><font color="red">Express</font></center></h1><ol>
 <li><a target="_blank" rel="noopener" href="https://expressjs.com/zh-cn/guide/routing.html">Express路由</a></li>
 </ol>
+<hr>
+<h1 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a><center><font color="red">ECMAScript</font></center></h1><h2 id="一、ECMAScript-和-JavaScript-是什么关系？"><a href="#一、ECMAScript-和-JavaScript-是什么关系？" class="headerlink" title="一、ECMAScript 和 JavaScript 是什么关系？"></a>一、ECMAScript 和 JavaScript 是什么关系？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1996 年 11 月，JavaScript 的创造者 Netscape 公司，决定将 JavaScript 提交给标准化组织 ECMA，希望这种语言能够成为国际标准。次年，ECMA 发布 262 号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种语言称为 ECMAScript，这个版本就是 1.0 版。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该标准从一开始就是针对 JavaScript 语言制定的，但是之所以不叫 JavaScript，有两个原因。一是商标，Java 是 Sun 公司的商标，根据授权协议，只有 Netscape 公司可以合法地使用 JavaScript 这个名字，且 JavaScript 本身也已经被 Netscape 公司注册为商标。二是想体现这门语言的制定者是 ECMA，不是 Netscape，这样有利于保证这门语言的开放性和中立性。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现（另外的 ECMAScript 方言还有 JScript 和 ActionScript）。日常场合，这两个词是可以互换的。</p>
+<h2 id="二、ES6-与-ECMAScript-2015-的关系"><a href="#二、ES6-与-ECMAScript-2015-的关系" class="headerlink" title="二、ES6 与 ECMAScript 2015 的关系"></a>二、ES6 与 ECMAScript 2015 的关系</h2><ol>
+<li>2011 年，ECMAScript 5.1 版发布后，就开始制定 6.0 版了。因此，ES6 这个词的原意是指 JavaScript 语言的下一个版本。</li>
+<li>但是因为这个版本引入的语法功能太多，而且制定过程当中，还有很多组织和个人不断提交新功能。事情很快就变得清楚了，不可能在一个版本里面包括所有将要引入的功能。常规的做法是先发布 6.0 版，过一段时间再发 6.1 版，然后是 6.2 版、6.3 版等。但是标准的制定者不想这样做。他们想让标准的升级成为常规流程：任何人在任何时候，都可以向标准委员会提交新语法的提案，然后标准委员会每个月开一次会，评估这些提案是否可以接受，需要哪些改进。如果经过多次会议以后，一个提案足够成熟了，就可以正式进入标准了。这就是说，标准的版本升级成为了一个不断滚动的流程，每个月都会有变动。</li>
+<li>标准委员会最终决定，标准在每年的 6 月份正式发布一次，作为当年的正式版本。接下来的时间，就在这个版本的基础上做改动，直到下一年的 6 月份，草案就自然变成了新一年的版本。这样一来，就不需要以前的版本号了，只要用年份标记就可以了。</li>
+<li><strong>ES6 的第一个版本，就这样在 2015 年 6 月发布了，正式名称就是《ECMAScript 2015 标准》（简称 ES2015）。</strong> 2016 年 6 月，小幅修订的《ECMAScript 2016 标准》（简称 ES2016）如期发布，这个版本可以看作是 ES6.1 版，因为两者的差异非常小（只新增了数组实例的 <code>includes</code> 方法和指数运算符），基本上是同一个标准。</li>
+<li>因此，ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等等，而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/#docs/intro">ECMAScript 6 入门</a></li>
+</ol>
+<hr>
+<h1 id="null-和空字符串"><a href="#null-和空字符串" class="headerlink" title="null 和空字符串"></a><center><font color="red">null 和空字符串</font></center></h1><h2 id="一、类型"><a href="#一、类型" class="headerlink" title="一、类型"></a>一、类型</h2><ol>
+<li><code>null</code> 表示的是一个对象的值，而并不是一个字符串，如声明一个变量 <code>var str = null;</code></li>
+<li><code>""</code> 表示的是一个长度为 0 空字符串，如声明一个变量 <code>var str = "";</code></li>
+</ol>
+<h2 id="二、内存分配"><a href="#二、内存分配" class="headerlink" title="二、内存分配"></a>二、内存分配</h2><ol>
+<li><code>var str = null;</code> 表示声明一个字符串对象的引用，但指向为 null，也就是说还没有指向任何的内存空间；</li>
+<li><code>var str = "";</code> 表示声明一个字符串类型的引用，其值为 <code>""</code> 空字符串，这个 str 引用指向的是空字符串的内存空间；</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof null)  //object</span><br><span class="line">console.log(typeof "")    //string</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、等值判断"><a href="#三、等值判断" class="headerlink" title="三、等值判断"></a>三、等值判断</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log('' == null) // false</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、扩展"><a href="#四、扩展" class="headerlink" title="四、扩展"></a>四、扩展</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(0 == '')   //true </span><br><span class="line">console.log(0 == null) //false </span><br><span class="line"></span><br><span class="line">console.log(false == '')   //true</span><br><span class="line">console.log(false == null) //false </span><br><span class="line"></span><br><span class="line">console.log(undefined == '')   //false </span><br><span class="line">console.log(undefined == null) //true</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a><center><font color="red">Ajax</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Ajax</code>，异步 JavaScript 和 XML，全称 <code>Asynchronous Javascript And XML</code>，是指一种创建交互式网页应用的网页开发技术。它用于创建快速动态网页的技术，通过在后台与服务器进行少量数据交换，可以在无需重新加载整个网页的情况下异步更新部分网页的内容。</p>
+<h2 id="二、支持的方法"><a href="#二、支持的方法" class="headerlink" title="二、支持的方法"></a>二、支持的方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$.ajax()</code></td>
+<td>返回其创建的 XMLHttpRequest 对象</td>
+</tr>
+<tr>
+<td><code>$.get()</code></td>
+<td>通过远程 HTTP GET 请求载入信息</td>
+</tr>
+<tr>
+<td><code>$.post()</code></td>
+<td>通过远程 HTTP POST 请求载入信息</td>
+</tr>
+<tr>
+<td><code>$.getJSON()</code></td>
+<td>通过 HTTP GET 请求载入 JSON 数据</td>
+</tr>
+</tbody></table>
+<h2 id="三、请求失败排查"><a href="#三、请求失败排查" class="headerlink" title="三、请求失败排查"></a>三、请求失败排查</h2><ol>
+<li><code>dataType</code> 错误：后台返回的类型和前台写的不一致</li>
+<li><code>async</code> 同步异步问题：<code>async</code> 默认是 <code>true</code>（异步请求），如果想一个 ajax 执行完后再执行另一个 ajax，需要把 <code>async=false</code></li>
+<li><code>data</code> 不能不写，data 为空也一定要传 <code>{}</code></li>
+<li>传递的参数：必须是 ajax 支持的编码格式（xml、html、json、script、jsonp、text）</li>
+<li>URL 路径问题</li>
+</ol>
+<h2 id="四、常见问题"><a href="#四、常见问题" class="headerlink" title="四、常见问题"></a>四、常见问题</h2><ol>
+<li>ajax 跨域请求</li>
+<li>ajax 同步异步</li>
+<li>ajax 请求可以正常返回 json 数据，但弹窗没反应</li>
+</ol>
+<hr>
+<h1 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a><center><font color="red">跨域请求</font></center></h1><h2 id="一、同源策略"><a href="#一、同源策略" class="headerlink" title="一、同源策略"></a>一、同源策略</h2><ol>
+<li>浏览器同源策略：只有当协议、域名和端口号相同才成为同源。</li>
+<li>非同源限制<ul>
+<li>cookie、localStorage、indexDB 无法读取</li>
+<li>DOM 无法获得</li>
+<li>ajax 请求不能发送</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、跨域解决方案"><a href="#二、跨域解决方案" class="headerlink" title="二、跨域解决方案"></a>二、跨域解决方案</h2><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>原理</th>
+<th>适用场景</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JSONP</td>
+<td>利用 <code>&lt;script&gt;</code> 标签不受同源策略限制，服务端返回一段调用函数的 JS</td>
+<td>只发 GET 请求的老接口兼容</td>
+<td>仅支持 GET、无法获取 HTTP 状态码、错误捕获困难</td>
+</tr>
+<tr>
+<td>CORS</td>
+<td>服务端返回 <code>Access-Control-*</code> 响应头，浏览器据此放行</td>
+<td>现代前后端分离接口（首选）</td>
+<td>需服务端配合；复杂请求会多发一次 OPTIONS 预检</td>
+</tr>
+<tr>
+<td>反向代理</td>
+<td>由同源的 Web 服务器（nginx）转发到真实后端</td>
+<td>无法改造后端、前后端同域名部署</td>
+<td>需要运维配置；多一次内网转发</td>
+</tr>
+<tr>
+<td>代理服务器</td>
+<td>同反向代理思路，在开发环境由 webpack/vite devServer 转发</td>
+<td>本地联调</td>
+<td>仅开发期有效</td>
+</tr>
+<tr>
+<td><code>postMessage</code></td>
+<td>HTML5 API，跨窗口/跨 iframe 安全通信</td>
+<td>iframe、多窗口通信</td>
+<td>需双方约定消息格式</td>
+</tr>
+<tr>
+<td><code>document.domain</code></td>
+<td>子域之间将 <code>document.domain</code> 设为同一个主域</td>
+<td>同一主域下的子域互访</td>
+<td>已被浏览器逐步废弃</td>
+</tr>
+<tr>
+<td>WebSocket</td>
+<td>协议本身不受同源策略限制</td>
+<td>实时双向通信</td>
+<td>不是通用 HTTP 接口的替代</td>
+</tr>
+</tbody></table>
+<h2 id="三、JSONP-详解"><a href="#三、JSONP-详解" class="headerlink" title="三、JSONP 详解"></a>三、JSONP 详解</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSONP（JSON with Padding）是 JSON 的一种”使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 <code>server1.example.com</code> 的网页无法与不是 <code>server1.example.com</code> 的服务器沟通，而 <code>HTML</code> 的 <code>&lt;script&gt;</code> 元素是一个例外。利用 <code>&lt;script&gt;</code> 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的 JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。</p>
+<ul>
+<li>index.html</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">&lt;html&gt;  </span><br><span class="line">    &lt;head&gt;  </span><br><span class="line">        &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;  </span><br><span class="line">        &lt;title&gt;jsonp&lt;/title&gt;  </span><br><span class="line">        &lt;script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"&gt;&lt;/script&gt;</span><br><span class="line">    &lt;/head&gt;  </span><br><span class="line">    &lt;script type="text/javascript"&gt;  </span><br><span class="line">    $(function(){   </span><br><span class="line">        // 方式一  </span><br><span class="line">        // $.ajax({</span><br><span class="line">        //     url:"index.php",//将要请求的方式</span><br><span class="line">        //     type:'get',</span><br><span class="line">        //     data:"",</span><br><span class="line">        //     dataType:'jsonp',</span><br><span class="line">        //     jsonp: "callback",</span><br><span class="line">        //     contentType: "application/json",//contentTy类型</span><br><span class="line">        //     jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称</span><br><span class="line">        //     success: function(data) {</span><br><span class="line">        //         alert(data);</span><br><span class="line">        //     },</span><br><span class="line">        //     error: function() {</span><br><span class="line">        //         alert(0);</span><br><span class="line">        //     }</span><br><span class="line">        // });</span><br><span class="line">    });</span><br><span class="line">    // 方式二步骤1</span><br><span class="line">    function flightHandler(data) {</span><br><span class="line">        alert(data);</span><br><span class="line">    }</span><br><span class="line">    &lt;/script&gt;  </span><br><span class="line">    &lt;!-- 方式二步骤2 --&gt;</span><br><span class="line">    &lt;script src="index.php?callback=flightHandler"&gt;&lt;/script&gt;</span><br><span class="line">    &lt;body&gt;  </span><br><span class="line">        &lt;div id="showcontent"&gt;Result:&lt;/div&gt;  </span><br><span class="line">    &lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;  </span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>index.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$call = $_GET['callback'];</span><br><span class="line">$data = '["111","222"]';</span><br><span class="line">echo $call."(" . $data . ")";</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h1 id="sass-和-less"><a href="#sass-和-less" class="headerlink" title="sass 和 less"></a><center><font color="red">sass 和 less</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sass 和 less 都是 css 的预编译处理语言，他们引入了 mixins、参数、嵌套规则、运算、颜色、名字空间、作用域、JavaScript 赋值等，加快了 css 开发效率。</p>
+<h2 id="二、对比"><a href="#二、对比" class="headerlink" title="二、对比"></a>二、对比</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>less</th>
+<th>sass</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>底层实现</td>
+<td>基于 JavaScript</td>
+<td>基于 Ruby（dart-sass 后改为 Dart）</td>
+</tr>
+<tr>
+<td>编译时机</td>
+<td>在客户端处理</td>
+<td>在服务器处理</td>
+</tr>
+<tr>
+<td>安装方式</td>
+<td><code>npm install less</code></td>
+<td><code>gem install sass</code></td>
+</tr>
+<tr>
+<td>语法风格</td>
+<td>与原生 CSS 基本一致</td>
+<td>有 <code>.sass</code> 缩进式与 <code>.scss</code> 兼容式两种</td>
+</tr>
+<tr>
+<td>变量符号</td>
+<td><code>@var</code></td>
+<td><code>$var</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="包管理-grunt-gulp-webpack"><a href="#包管理-grunt-gulp-webpack" class="headerlink" title="包管理 grunt-gulp-webpack"></a><center><font color="red">包管理 grunt-gulp-webpack</font></center></h1><blockquote>
+<p>模块打包工具的演进：<strong>grunt（配置式）→ gulp（流式）→ webpack（模块化打包）</strong>。三者解决的问题有交集，但本质定位不同。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>grunt</th>
+<th>gulp</th>
+<th>webpack</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>任务运行器（Task Runner）</td>
+<td>任务运行器（Task Runner）</td>
+<td>静态模块打包器（Module Bundler）</td>
+</tr>
+<tr>
+<td>核心思想</td>
+<td>配置驱动，每个插件一个 task</td>
+<td>代码即配置，基于 Node Stream 管道</td>
+<td>一切皆模块，从入口递归构建依赖图</td>
+</tr>
+<tr>
+<td>配置方式</td>
+<td><code>Gruntfile.js</code> 里写大段配置</td>
+<td><code>gulpfile.js</code> 里写 <code>src().pipe().dest()</code></td>
+<td><code>webpack.config.js</code> 声明 entry/output/loader/plugin</td>
+</tr>
+<tr>
+<td>处理方式</td>
+<td>每一步都要读写磁盘，中间产物落地</td>
+<td>文件以流的形式在内存中传递，减少 IO</td>
+<td>依赖图在内存中构建，最终输出 bundle</td>
+</tr>
+<tr>
+<td>生态</td>
+<td>插件多但维护衰退</td>
+<td>插件丰富，构建小项目轻快</td>
+<td>生态最大，前端工程化事实标准</td>
+</tr>
+<tr>
+<td>擅长</td>
+<td>简单的批量文件处理</td>
+<td>灵活的自定义构建流程</td>
+<td>模块依赖处理、代码分割、按需加载、Tree Shaking</td>
+</tr>
+<tr>
+<td>短板</td>
+<td>慢、配置冗长</td>
+<td>大项目配置会变得冗长，对模块依赖理解弱</td>
+<td>学习曲线陡、配置复杂</td>
+</tr>
+</tbody></table>
+<p><strong>选型建议</strong>：新项目直接用 webpack（或 vite / rollup），不要再新起 grunt/gulp；已有 gulp 流水线且仅做文件搬运、压缩、加前缀时，没必要为迁移而迁移。</p>
+<hr>
+<h1 id="jQuery-选择器"><a href="#jQuery-选择器" class="headerlink" title="jQuery 选择器"></a><center><font color="red">jQuery 选择器</font></center></h1><h2 id="一、基本选择器"><a href="#一、基本选择器" class="headerlink" title="一、基本选择器"></a>一、基本选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>#id</code></td>
+<td>根据 id 匹配元素</td>
+</tr>
+<tr>
+<td><code>element</code></td>
+<td>根据标签名匹配元素</td>
+</tr>
+<tr>
+<td><code>.class</code></td>
+<td>根据 class 匹配元素</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>匹配所有元素</td>
+</tr>
+<tr>
+<td><code>selector1,selector2,selectorN</code></td>
+<td>将每一个选择器匹配到的元素合并后返回</td>
+</tr>
+</tbody></table>
+<h2 id="二、层级选择器"><a href="#二、层级选择器" class="headerlink" title="二、层级选择器"></a>二、层级选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ancestor descendant</code></td>
+<td>后代选择器</td>
+</tr>
+<tr>
+<td><code>parent&gt;child</code></td>
+<td>子元素选择器</td>
+</tr>
+<tr>
+<td><code>prev+next</code></td>
+<td>相邻兄弟选择器</td>
+</tr>
+<tr>
+<td><code>prev ~ siblings</code></td>
+<td>之后的所有兄弟选择器</td>
+</tr>
+</tbody></table>
+<h2 id="三、过滤选择器"><a href="#三、过滤选择器" class="headerlink" title="三、过滤选择器"></a>三、过滤选择器</h2><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基本过滤选择器</td>
+<td><code>:first</code> / <code>:last</code> / <code>:not</code> / <code>:even</code> / <code>:odd</code> / <code>:eq</code> / <code>:gt</code> / <code>:lt</code> / <code>:header</code> / <code>:animated</code></td>
+</tr>
+<tr>
+<td>内容过滤选择器</td>
+<td><code>:contains</code> / <code>:empty</code> / <code>:has</code> / <code>:parent</code></td>
+</tr>
+<tr>
+<td>可见性过滤选择器</td>
+<td><code>:hidden</code> / <code>:visible</code></td>
+</tr>
+<tr>
+<td>属性过滤选择器</td>
+<td><code>[attribute]</code> / <code>[attribute=value]</code> / <code>[attribute!=value]</code> / <code>[attribute^=value]</code> / <code>[attribute$=value]</code> / <code>[attribute*=value]</code> / <code>[selector][selector2]</code></td>
+</tr>
+<tr>
+<td>子元素过滤选择器</td>
+<td><code>:nth-child</code> / <code>:first-child</code> / <code>:last-child</code> / <code>:only-child</code></td>
+</tr>
+</tbody></table>
+<h2 id="四、表单对象属性过滤选择器"><a href="#四、表单对象属性过滤选择器" class="headerlink" title="四、表单对象属性过滤选择器"></a>四、表单对象属性过滤选择器</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:enabled、:disabled  :checked  :selected</span><br><span class="line">:input  :text、:password  :radio、:checkbox</span><br><span class="line">:submit、:image、:reset、:button、:file  :hidden</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h1 id="CSS-动效集锦"><a href="#CSS-动效集锦" class="headerlink" title="CSS 动效集锦"></a><center><font color="red">CSS 动效集锦</font></center></h1><ol>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/penghuwan/p/12239817.html">CSS 动效集锦</a></li>
+</ol>
 
     </div>
 
@@ -757,6 +1089,18 @@
               <a href="/tags/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6/" rel="tag"><i class="fa fa-tag"></i> 事件循环机制</a>
               <a href="/tags/var/" rel="tag"><i class="fa fa-tag"></i> var</a>
               <a href="/tags/this/" rel="tag"><i class="fa fa-tag"></i> this</a>
+              <a href="/tags/Ajax/" rel="tag"><i class="fa fa-tag"></i> Ajax</a>
+              <a href="/tags/%E8%B7%A8%E5%9F%9F/" rel="tag"><i class="fa fa-tag"></i> 跨域</a>
+              <a href="/tags/JSONP/" rel="tag"><i class="fa fa-tag"></i> JSONP</a>
+              <a href="/tags/CORS/" rel="tag"><i class="fa fa-tag"></i> CORS</a>
+              <a href="/tags/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5/" rel="tag"><i class="fa fa-tag"></i> 同源策略</a>
+              <a href="/tags/sass/" rel="tag"><i class="fa fa-tag"></i> sass</a>
+              <a href="/tags/less/" rel="tag"><i class="fa fa-tag"></i> less</a>
+              <a href="/tags/ECMAScript/" rel="tag"><i class="fa fa-tag"></i> ECMAScript</a>
+              <a href="/tags/jQuery%E9%80%89%E6%8B%A9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> jQuery选择器</a>
+              <a href="/tags/grunt/" rel="tag"><i class="fa fa-tag"></i> grunt</a>
+              <a href="/tags/gulp/" rel="tag"><i class="fa fa-tag"></i> gulp</a>
+              <a href="/tags/webpack/" rel="tag"><i class="fa fa-tag"></i> webpack</a>
           </div>
 
         
@@ -812,7 +1156,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">JS基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">函数防抖和节流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%98%B2%E6%8A%96-debounce"><span class="nav-number">2.2.</span> <span class="nav-text">二、防抖 debounce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%8A%82%E6%B5%81-throttle"><span class="nav-number">2.3.</span> <span class="nav-text">三、节流 throttle</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7-%E5%86%92%E6%B3%A1"><span class="nav-number">3.</span> <span class="nav-text">事件捕获&#x2F;冒泡</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7"><span class="nav-number">3.2.</span> <span class="nav-text">二、事件捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="nav-number">3.3.</span> <span class="nav-text">三、事件流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%BB%BC%E5%90%88"><span class="nav-number">3.4.</span> <span class="nav-text">四、综合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">3.5.</span> <span class="nav-text">五、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">事件循环机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81JavaScript-%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E5%8D%95%E5%B9%B6%E5%8F%91%E8%AF%AD%E8%A8%80"><span class="nav-number">4.1.</span> <span class="nav-text">一、JavaScript 是单线程单并发语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88Event-Loop%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">二、事件循环（Event Loop）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let%E5%92%8Cvar"><span class="nav-number">5.</span> <span class="nav-text">let和var</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">6.</span> <span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E5%85%A5"><span class="nav-number">6.1.</span> <span class="nav-text">一、引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%89%96%E6%9E%90"><span class="nav-number">6.2.</span> <span class="nav-text">二、剖析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Express"><span class="nav-number">7.</span> <span class="nav-text">Express</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">JS基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">函数防抖和节流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%98%B2%E6%8A%96-debounce"><span class="nav-number">2.2.</span> <span class="nav-text">二、防抖 debounce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%8A%82%E6%B5%81-throttle"><span class="nav-number">2.3.</span> <span class="nav-text">三、节流 throttle</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7-%E5%86%92%E6%B3%A1"><span class="nav-number">3.</span> <span class="nav-text">事件捕获&#x2F;冒泡</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7"><span class="nav-number">3.2.</span> <span class="nav-text">二、事件捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="nav-number">3.3.</span> <span class="nav-text">三、事件流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%BB%BC%E5%90%88"><span class="nav-number">3.4.</span> <span class="nav-text">四、综合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">3.5.</span> <span class="nav-text">五、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">事件循环机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81JavaScript-%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E5%8D%95%E5%B9%B6%E5%8F%91%E8%AF%AD%E8%A8%80"><span class="nav-number">4.1.</span> <span class="nav-text">一、JavaScript 是单线程单并发语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88Event-Loop%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">二、事件循环（Event Loop）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let%E5%92%8Cvar"><span class="nav-number">5.</span> <span class="nav-text">let和var</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">6.</span> <span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E5%85%A5"><span class="nav-number">6.1.</span> <span class="nav-text">一、引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%89%96%E6%9E%90"><span class="nav-number">6.2.</span> <span class="nav-text">二、剖析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Express"><span class="nav-number">7.</span> <span class="nav-text">Express</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript"><span class="nav-number">8.</span> <span class="nav-text">ECMAScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81ECMAScript-%E5%92%8C-JavaScript-%E6%98%AF%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="nav-number">8.1.</span> <span class="nav-text">一、ECMAScript 和 JavaScript 是什么关系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ES6-%E4%B8%8E-ECMAScript-2015-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">8.2.</span> <span class="nav-text">二、ES6 与 ECMAScript 2015 的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null-%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">9.</span> <span class="nav-text">null 和空字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%B1%BB%E5%9E%8B"><span class="nav-number">9.1.</span> <span class="nav-text">一、类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">9.2.</span> <span class="nav-text">二、内存分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%AD%89%E5%80%BC%E5%88%A4%E6%96%AD"><span class="nav-number">9.3.</span> <span class="nav-text">三、等值判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">9.4.</span> <span class="nav-text">四、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax"><span class="nav-number">10.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">10.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%94%AF%E6%8C%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">10.2.</span> <span class="nav-text">二、支持的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5%E6%8E%92%E6%9F%A5"><span class="nav-number">10.3.</span> <span class="nav-text">三、请求失败排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">10.4.</span> <span class="nav-text">四、常见问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82"><span class="nav-number">11.</span> <span class="nav-text">跨域请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="nav-number">11.1.</span> <span class="nav-text">一、同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">11.2.</span> <span class="nav-text">二、跨域解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81JSONP-%E8%AF%A6%E8%A7%A3"><span class="nav-number">11.3.</span> <span class="nav-text">三、JSONP 详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sass-%E5%92%8C-less"><span class="nav-number">12.</span> <span class="nav-text">sass 和 less</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">12.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AF%B9%E6%AF%94"><span class="nav-number">12.2.</span> <span class="nav-text">二、对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86-grunt-gulp-webpack"><span class="nav-number">13.</span> <span class="nav-text">包管理 grunt-gulp-webpack</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">14.</span> <span class="nav-text">jQuery 选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">14.1.</span> <span class="nav-text">一、基本选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">14.2.</span> <span class="nav-text">二、层级选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">14.3.</span> <span class="nav-text">三、过滤选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%A1%A8%E5%8D%95%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">14.4.</span> <span class="nav-text">四、表单对象属性过滤选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-%E5%8A%A8%E6%95%88%E9%9B%86%E9%94%A6"><span class="nav-number">15.</span> <span class="nav-text">CSS 动效集锦</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -828,7 +1172,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">275</span>
+          <span class="site-state-item-count">272</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -841,7 +1185,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1020</span>
+        <span class="site-state-item-count">1037</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -868,7 +1212,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -934,12 +1278,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">950k</span>
+    <span title="站点总字数">966k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:24</span>
+    <span title="站点阅读时长">14:38</span>
 </div>
 
         

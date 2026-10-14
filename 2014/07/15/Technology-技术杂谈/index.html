@@ -141,23 +141,24 @@
   };
 </script>
 
-  <meta name="description" content="网络掩码又叫子网掩码、地址掩码”、子网路遮罩(subnet mask)，它是一种用来指明一个IP地址的哪些位标识的是主机所在的网络地址以及哪些位标识的是主机地址的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用，它的作用就是将某个IP地址划分成网络地址和主机地址两部分。(IPv6中没有子网掩码的概念，也没有网络号与主机号的概念)">
+  <meta name="description" content="邓宁-克鲁格效应，又称达克效应、邓克效应，指的是能力欠缺的人在自己欠考虑的决定的基础上得出错误结论，但是无法正确认识到自身的不足，辨别错误行为，是一种认知偏差现象。这些能力欠缺者们沉浸在自我营造的虚幻的优势之中，常常高估自己的能力水平，却无法客观评价他人的能力。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="技术杂谈">
 <meta property="og:url" content="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/index.html">
 <meta property="og:site_name" content="liusir.net">
-<meta property="og:description" content="网络掩码又叫子网掩码、地址掩码”、子网路遮罩(subnet mask)，它是一种用来指明一个IP地址的哪些位标识的是主机所在的网络地址以及哪些位标识的是主机地址的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用，它的作用就是将某个IP地址划分成网络地址和主机地址两部分。(IPv6中没有子网掩码的概念，也没有网络号与主机号的概念)">
+<meta property="og:description" content="邓宁-克鲁格效应，又称达克效应、邓克效应，指的是能力欠缺的人在自己欠考虑的决定的基础上得出错误结论，但是无法正确认识到自身的不足，辨别错误行为，是一种认知偏差现象。这些能力欠缺者们沉浸在自我营造的虚幻的优势之中，常常高估自己的能力水平，却无法客观评价他人的能力。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/rpc.png">
 <meta property="og:image" content="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/frame.png">
 <meta property="og:image" content="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/relation.png">
 <meta property="og:image" content="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/all.png">
 <meta property="article:published_time" content="2014-07-14T16:36:05.000Z">
-<meta property="article:modified_time" content="2024-09-03T07:26:18.334Z">
+<meta property="article:modified_time" content="2026-10-13T10:20:27.136Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="倒排索引">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="幂等性">
+<meta property="article:tag" content="并发">
 <meta property="article:tag" content="IPC">
 <meta property="article:tag" content="RPC">
 <meta property="article:tag" content="闭包">
@@ -173,10 +174,15 @@
 <meta property="article:tag" content="哈希">
 <meta property="article:tag" content="MVC">
 <meta property="article:tag" content="MVVM">
+<meta property="article:tag" content="BS架构">
+<meta property="article:tag" content="CS架构">
 <meta property="article:tag" content="NFS">
 <meta property="article:tag" content="Dubbo">
 <meta property="article:tag" content="UML">
 <meta property="article:tag" content="SVN">
+<meta property="article:tag" content="达克效应">
+<meta property="article:tag" content="线上事故">
+<meta property="article:tag" content="反思">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/rpc.png">
   <link rel="canonical" href="https://liusir.net/2014/07/15/Technology-%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/">
@@ -398,13 +404,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>16k</span>
+              <span>18k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>14 分钟</span>
+              <span>17 分钟</span>
             </span>
 
         </div>
@@ -417,7 +423,7 @@
 
       
         <script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>网络掩码又叫子网掩码、地址掩码”、子网路遮罩(subnet mask)，它是一种用来指明一个IP地址的哪些位标识的是主机所在的网络地址以及哪些位标识的是主机地址的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用，它的作用就是将某个IP地址划分成网络地址和主机地址两部分。(IPv6中没有子网掩码的概念，也没有网络号与主机号的概念)</p>
+<p>邓宁-克鲁格效应，又称达克效应、邓克效应，指的是能力欠缺的人在自己欠考虑的决定的基础上得出错误结论，但是无法正确认识到自身的不足，辨别错误行为，是一种认知偏差现象。这些能力欠缺者们沉浸在自我营造的虚幻的优势之中，常常高估自己的能力水平，却无法客观评价他人的能力。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -723,6 +729,87 @@
 <h1 id="MVC之MVVM"><a href="#MVC之MVVM" class="headerlink" title="MVC之MVVM"></a><center><font color="red">MVC之MVVM</font></center></h1><blockquote>
 <p>MVVM(Model–view–viewmodel)是一种软件架构模式。MVVM有助于将图形用户界面的开发与业务逻辑或后端逻辑(数据模型)的开发分离开来，这是通过置标语言或GUI代码实现的。</p>
 </blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MVVM 源于 MVC，是 MVC 在<strong>前端/富客户端</strong>场景下的一种演进：MVC 中 Controller 承担了业务逻辑与视图协调的双重职责，在 UI 交互复杂的场景下会非常臃肿；MVVM 把「视图状态」从 Controller 中抽出来，交由 ViewModel 承载，并通过<strong>双向绑定</strong>让 View 与 ViewModel 自动同步。</p>
+<table>
+<thead>
+<tr>
+<th>架构</th>
+<th>分层</th>
+<th>通信方向</th>
+<th>典型代表</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MVC</td>
+<td>Model / View / Controller</td>
+<td>单向为主，Controller 协调</td>
+<td>Spring MVC、Rails、ThinkPHP</td>
+<td>服务端渲染、请求-响应式 Web</td>
+</tr>
+<tr>
+<td>MVVM</td>
+<td>Model / View / ViewModel</td>
+<td>View ↔ ViewModel 双向绑定</td>
+<td>Vue、Angular、WPF</td>
+<td>富客户端、单页应用、交互密集的界面</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="B-S-与-C-S-架构"><a href="#B-S-与-C-S-架构" class="headerlink" title="B/S 与 C/S 架构"></a><center><font color="red">B/S 与 C/S 架构</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C/S（Client/Server，客户机/服务器）架构需要在客户端安装专门的软件，客户端承担部分业务逻辑与界面渲染，服务端主要负责数据处理与存储。B/S（Browser/Server，浏览器/服务器）架构是 C/S 的一种特化形态：客户端统一为浏览器，业务逻辑全部集中在服务端，界面由浏览器渲染。</p>
+<h2 id="二、对比"><a href="#二、对比" class="headerlink" title="二、对比"></a>二、对比</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>C/S 架构</th>
+<th>B/S 架构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户端</td>
+<td>需安装专用客户端软件</td>
+<td>只需浏览器，无需安装</td>
+</tr>
+<tr>
+<td>升级维护</td>
+<td>每台客户端都要升级，成本高</td>
+<td>只改服务端，用户下次访问即生效</td>
+</tr>
+<tr>
+<td>性能与体验</td>
+<td>客户端可承担计算，界面响应快、体验好（适合图形、音视频、游戏）</td>
+<td>依赖浏览器与网络，复杂交互体验略弱</td>
+</tr>
+<tr>
+<td>跨平台</td>
+<td>需针对不同系统分别开发（Windows/Mac/Linux/移动端）</td>
+<td>天然跨平台，一次开发多端可用</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>可做较强的本地安全控制，但客户端暴露后易被逆向</td>
+<td>核心逻辑在服务端，但需重点防 Web 攻击（XSS、CSRF、SQL 注入）</td>
+</tr>
+<tr>
+<td>网络依赖</td>
+<td>可支持局域网/离线场景</td>
+<td>强依赖网络</td>
+</tr>
+<tr>
+<td>开发成本</td>
+<td>高，客户端与服务端都要做</td>
+<td>低，前后端分离后一套服务端可服务多端</td>
+</tr>
+<tr>
+<td>典型场景</td>
+<td>QQ、微信、企业 ERP 客户端、大型游戏</td>
+<td>官网、后台管理系统、电商、各类 SaaS</td>
+</tr>
+</tbody></table>
+<h2 id="三、结论"><a href="#三、结论" class="headerlink" title="三、结论"></a>三、结论</h2><ol>
+<li>B/S 与 C/S 并非互斥：现代应用常采用<strong>混合架构</strong>——核心功能用 B/S 覆盖，重计算/重体验的模块仍用 C/S（如微信的聊天是 C/S 思路，小程序是 B/S 思路）。</li>
+<li>选型判断标准：<strong>是否需要离线、是否有重客户端计算、升级迭代频率、目标用户的技术水平</strong>。</li>
+</ol>
 <hr>
 <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center><font color="red">闭包</font></center></h1><h2 id="一、PHP闭包"><a href="#一、PHP闭包" class="headerlink" title="一、PHP闭包"></a>一、PHP闭包</h2><ol>
 <li><p>匿名函数</p>
@@ -928,7 +1015,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/phper/note/76641">参考二</a></li>
 </ol>
 <hr>
-<h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a><center><font color="red">UML</font></center></h1><h2 id="一、概念-2"><a href="#一、概念-2" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
+<h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a><center><font color="red">UML</font></center></h1><h2 id="一、概念-3"><a href="#一、概念-3" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UML，统一建模语言(英语：Unified Modeling Language，缩写 UML)是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
 <h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><ol>
 <li>用例图：展现了一组用例、参与者以及它们之间的关系，描述系统的静态使用情况，说白了就是用户与各项操作之间的关系。</li>
 <li>类图：展示了一组类、接口和协作以及它们之间的关系，类图也是我们在建模中所建立的最常见的图。系统可以有多个类图，所以一个类图只表达了系统的一个方面。一般在高层给出主要职责，低层给出类的属性和操作，类图分三层:<ul>
@@ -1113,6 +1200,117 @@
 <h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29270034/answer/1679116463">参考一</a></li>
 </ol>
+<hr>
+<h1 id="业务理解能力"><a href="#业务理解能力" class="headerlink" title="业务理解能力"></a><center><font color="red">业务理解能力</font></center></h1><h2 id="一、基础-3"><a href="#一、基础-3" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业务理解能力是指能够深入理解所从事的业务，包括其特点、规律、流程、需求等方面的能力。在工作中，表现出良好的业务理解能力可以帮助员工更快速地适应工作，更好的完成任务，为企业创造更多价值。</p>
+<h2 id="二、特征"><a href="#二、特征" class="headerlink" title="二、特征"></a>二、特征</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表现出良好的业务理解能力，员工应该具备以下几个方面的特征：</p>
+<ol>
+<li>对业务的了解程度较高，能够清晰准确的描述业务流程和关键节点</li>
+<li>能够快速准确的分析业务问题，提出对应的解决方案，帮助企业避免或解决业务风险</li>
+<li>能够在日常工作中发现业务中存在的问题和平静，提出改进方案，优化业务流程，提升工作效率</li>
+<li>能够理解客户的需求和期望，为客户提供满意的解决方案</li>
+<li>对于新业务或新产品，能够快速了解其优缺点，为企业的决策提供有价值的参考</li>
+</ol>
+<h2 id="三、如何提升"><a href="#三、如何提升" class="headerlink" title="三、如何提升"></a>三、如何提升</h2><ol>
+<li><p>调整心态不断学习</p>
+</li>
+<li><p>加强业务知识储备，这是能够快速理解业务的基础</p>
+</li>
+<li><p>提升信息提取能力和信息转化能力</p>
+</li>
+<li><p>抓住问题的关键点</p>
+</li>
+<li><p>大而化小，分而治之</p>
+</li>
+<li><p>保持业务好奇心，至少三个为什么</p>
+</li>
+</ol>
+<h2 id="四、参考-3"><a href="#四、参考-3" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/153205903">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266789172">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/551191987/answer/2711034261">参考三</a></li>
+</ol>
+<hr>
+<h1 id="关于一次线上事故的反思"><a href="#关于一次线上事故的反思" class="headerlink" title="关于一次线上事故的反思"></a><center><font color="red">关于一次线上事故的反思</font></center></h1><h2 id="一、-暴露问题"><a href="#一、-暴露问题" class="headerlink" title="一、 暴露问题"></a>一、 暴露问题</h2><ol>
+<li>并发问题<code>code</code>时一定要考虑，哪怕是再小的应用也会有并发</li>
+<li>日志尽可能的多，尽可能的详细</li>
+<li>事故发生时第一时间查看日志是发现和解决问题的最快方式</li>
+<li>发现事故时不要犹豫，第一时间打<code>patch</code>或<code>hotfix</code>进行止损，减少影响范围</li>
+<li>不要怀疑现有大厂API的问题，如果发现API响应有问题，最大可能也是请求数据有问题导致的响应异常</li>
+<li>团队协作的重要性，事故发生时小组内协调好处理方式，各自处理好各自的部分，而不是相同的问题每个人处理一次</li>
+<li>多学几门语言，关键时刻能解决大问题</li>
+<li>工作中多写些常用的小工具，如查询线上用户信息等以便快速处理</li>
+<li>数据库缓存双写不一致问题</li>
+<li>不要以为代码稳了，哪怕是自己写的，哪怕是自己验证过了</li>
+<li>非研发人员的意见仅供参开，应更多的聚焦于事故本身，找到bug出处</li>
+<li>架构师的意见更多的是代码整体的合理性，对业务不熟</li>
+<li>第一时间公告，安抚受影响用户</li>
+<li>数据回滚与否，对研发来说是最便捷的方式，对用户来说是最糟糕的方式<ul>
+<li>如果回滚，确定数据是否回滚全面，如玩家数据回滚了，邮件未回滚，在后期实现算法时会有问题</li>
+</ul>
+</li>
+<li>代码执行异常一定要抛出来，串行执行逻辑越重要的逻辑越要靠前执行(如支付系统，一定是支付完成后才进行后续修改订单逻辑)<ul>
+<li>使用的NoSQL无法保证事务执行，且涉及数据和缓存双写问题</li>
+</ul>
+</li>
+<li>关于熬夜，真比不过年轻人了，有时间的话还是要多锻炼身体</li>
+</ol>
+<h2 id="二、事故-故障处理流程"><a href="#二、事故-故障处理流程" class="headerlink" title="二、事故/故障处理流程"></a>二、事故/故障处理流程</h2><ol>
+<li><p>事前</p>
+<ul>
+<li>标准化产品流程<ul>
+<li>产品环节控制风险，流程要考虑完整，了解该类系统常见的漏洞，把握系统中可能出现的风险点，反复推敲并设置监控机制，出现问题第一时间告知相关人；</li>
+<li>各环节评审产品经理都需要参加，了解每一步的细节；</li>
+<li>技术方案要严谨，分机房上线、压力测试、回滚方案都不可缺少；</li>
+<li>核心系统要注意上下游使用者，避免留坑。</li>
+</ul>
+</li>
+<li>企业定义好事故等级，并制定不同级别第一时间的应对策略，不同企业对等级定义不同，如：<ul>
+<li><code>P0</code>：核心业务重要功能不可用且大面积影响用户； 响应时间：立即</li>
+<li><code>P1</code>：核心业务重要功能不可用，但影响用户有限，如仅影响内部用户； 响应时间：小于15分钟</li>
+<li><code>P2</code>：核心业务周边功能不可用，持续故障将大面积影响用户体验； 响应时间：小于15分钟</li>
+<li><code>P3</code>：周边业务功能不可用，轻微影响用户体验； 响应时间：小于4小时</li>
+<li><code>P4</code>：周边业务功能不可用，但基本不影响用户正常使用。 响应时间：小于6小时</li>
+</ul>
+</li>
+<li>制定好预警方案，同步各风险环节需要介入的岗位同事和处理办法。<ul>
+<li>出现问题前端可进行patch，后端可进行hotfix，运维可暂停应用对外服务等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事中</p>
+<ul>
+<li>停服或hotfix屏蔽功能，减小影响范围</li>
+<li>预估影响范围，决定处理方案，如回档或脚本处理</li>
+<li>联系运维、DBA等相关人员，拿到玩家操作日志(自定义日志或数据库日志)</li>
+<li>明确事务原因，确定算法</li>
+<li>实现算法</li>
+<li>验证算法</li>
+<li>线上执行</li>
+</ul>
+</li>
+<li><p>事后</p>
+<ul>
+<li>定位损失，书写事故报告</li>
+<li>提升优化计划，规避事故</li>
+<li>严格执行团队<code>code review</code>流程，对问题代码进行解读</li>
+<li>根据事故影响进行不同的赏罚以儆效尤<ul>
+<li>企业的直接损失(游戏产品最为明显)</li>
+<li>企业股价的波动</li>
+<li>用户在产品不可用时所带来的经济损失</li>
+<li>潜在用户对产品的信心</li>
+<li>流失用户</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/chenhongen/note/1386439">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1b402201e23b">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/382359511">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dragonsuc/p/6937584.html">参考四</a></li>
+</ol>
 
     </div>
 
@@ -1126,6 +1324,7 @@
               <a href="/tags/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 倒排索引</a>
               <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
               <a href="/tags/%E5%B9%82%E7%AD%89%E6%80%A7/" rel="tag"><i class="fa fa-tag"></i> 幂等性</a>
+              <a href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
               <a href="/tags/IPC/" rel="tag"><i class="fa fa-tag"></i> IPC</a>
               <a href="/tags/RPC/" rel="tag"><i class="fa fa-tag"></i> RPC</a>
               <a href="/tags/%E9%97%AD%E5%8C%85/" rel="tag"><i class="fa fa-tag"></i> 闭包</a>
@@ -1141,10 +1340,15 @@
               <a href="/tags/%E5%93%88%E5%B8%8C/" rel="tag"><i class="fa fa-tag"></i> 哈希</a>
               <a href="/tags/MVC/" rel="tag"><i class="fa fa-tag"></i> MVC</a>
               <a href="/tags/MVVM/" rel="tag"><i class="fa fa-tag"></i> MVVM</a>
+              <a href="/tags/BS%E6%9E%B6%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> BS架构</a>
+              <a href="/tags/CS%E6%9E%B6%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> CS架构</a>
               <a href="/tags/NFS/" rel="tag"><i class="fa fa-tag"></i> NFS</a>
               <a href="/tags/Dubbo/" rel="tag"><i class="fa fa-tag"></i> Dubbo</a>
               <a href="/tags/UML/" rel="tag"><i class="fa fa-tag"></i> UML</a>
               <a href="/tags/SVN/" rel="tag"><i class="fa fa-tag"></i> SVN</a>
+              <a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/" rel="tag"><i class="fa fa-tag"></i> 达克效应</a>
+              <a href="/tags/%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/" rel="tag"><i class="fa fa-tag"></i> 线上事故</a>
+              <a href="/tags/%E5%8F%8D%E6%80%9D/" rel="tag"><i class="fa fa-tag"></i> 反思</a>
           </div>
 
         
@@ -1200,7 +1404,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A9%E8%99%B9%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">彩虹表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">一、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%83%8C%E6%99%AF"><span class="nav-number">2.1.</span> <span class="nav-text">二、背景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">接口幂等性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">一、什么是幂等性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">二、接口幂等性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81HOW"><span class="nav-number">3.3.</span> <span class="nav-text">三、HOW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">4.</span> <span class="nav-text">搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">二、工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">4.3.</span> <span class="nav-text">三、分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">字符集和字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6"><span class="nav-number">5.1.</span> <span class="nav-text">一、字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">5.2.</span> <span class="nav-text">二、字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">5.3.</span> <span class="nav-text">三、字符编码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B7%B1-%E6%B5%85%E5%A4%8D%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">对象深&#x2F;浅复制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81PHP"><span class="nav-number">6.1.</span> <span class="nav-text">一、PHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81js"><span class="nav-number">6.2.</span> <span class="nav-text">二、js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">7.1.</span> <span class="nav-text">一、哈希表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">7.2.</span> <span class="nav-text">二、哈希函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81"><span class="nav-number">7.3.</span> <span class="nav-text">三、哈希冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81rehash"><span class="nav-number">7.4.</span> <span class="nav-text">四、rehash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%93%88%E5%B8%8C-hash"><span class="nav-number">7.5.</span> <span class="nav-text">五、哈希 hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C-consistent-hash"><span class="nav-number">7.6.</span> <span class="nav-text">六、一致性哈希 consistent hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">7.7.</span> <span class="nav-text">七、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E7%85%A7"><span class="nav-number">8.</span> <span class="nav-text">快照</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E5%85%A5"><span class="nav-number">8.1.</span> <span class="nav-text">一、引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BF%AB%E7%85%A7%E6%8A%80%E6%9C%AF"><span class="nav-number">8.2.</span> <span class="nav-text">二、快照技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">8.3.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Doxyfile"><span class="nav-number">9.</span> <span class="nav-text">Doxyfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC%E4%B9%8BMVVM"><span class="nav-number">10.</span> <span class="nav-text">MVC之MVVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">11.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81PHP%E9%97%AD%E5%8C%85"><span class="nav-number">11.1.</span> <span class="nav-text">一、PHP闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81JS%E9%97%AD%E5%8C%85"><span class="nav-number">11.2.</span> <span class="nav-text">二、JS闭包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS-RPC"><span class="nav-number">12.</span> <span class="nav-text">NFS-RPC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">12.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">12.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81RPC%E6%A1%86%E6%9E%B6"><span class="nav-number">12.3.</span> <span class="nav-text">三、RPC框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">12.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UML"><span class="nav-number">13.</span> <span class="nav-text">UML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">13.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">13.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%B1%BB%E5%9B%BE"><span class="nav-number">13.3.</span> <span class="nav-text">三、类图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN"><span class="nav-number">14.</span> <span class="nav-text">SVN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">14.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">14.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">14.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%AD%E9%93%BE%E6%8E%A5"><span class="nav-number">15.</span> <span class="nav-text">短链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">15.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">15.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A9%E8%99%B9%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">彩虹表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">一、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%83%8C%E6%99%AF"><span class="nav-number">2.1.</span> <span class="nav-text">二、背景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">接口幂等性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">一、什么是幂等性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">二、接口幂等性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81HOW"><span class="nav-number">3.3.</span> <span class="nav-text">三、HOW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">4.</span> <span class="nav-text">搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">二、工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">4.3.</span> <span class="nav-text">三、分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">字符集和字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6"><span class="nav-number">5.1.</span> <span class="nav-text">一、字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">5.2.</span> <span class="nav-text">二、字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="nav-number">5.3.</span> <span class="nav-text">三、字符编码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B7%B1-%E6%B5%85%E5%A4%8D%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">对象深&#x2F;浅复制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81PHP"><span class="nav-number">6.1.</span> <span class="nav-text">一、PHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81js"><span class="nav-number">6.2.</span> <span class="nav-text">二、js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">7.1.</span> <span class="nav-text">一、哈希表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">7.2.</span> <span class="nav-text">二、哈希函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81"><span class="nav-number">7.3.</span> <span class="nav-text">三、哈希冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81rehash"><span class="nav-number">7.4.</span> <span class="nav-text">四、rehash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%93%88%E5%B8%8C-hash"><span class="nav-number">7.5.</span> <span class="nav-text">五、哈希 hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C-consistent-hash"><span class="nav-number">7.6.</span> <span class="nav-text">六、一致性哈希 consistent hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">7.7.</span> <span class="nav-text">七、扩展</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E7%85%A7"><span class="nav-number">8.</span> <span class="nav-text">快照</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E5%85%A5"><span class="nav-number">8.1.</span> <span class="nav-text">一、引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BF%AB%E7%85%A7%E6%8A%80%E6%9C%AF"><span class="nav-number">8.2.</span> <span class="nav-text">二、快照技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">8.3.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Doxyfile"><span class="nav-number">9.</span> <span class="nav-text">Doxyfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC%E4%B9%8BMVVM"><span class="nav-number">10.</span> <span class="nav-text">MVC之MVVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B-S-%E4%B8%8E-C-S-%E6%9E%B6%E6%9E%84"><span class="nav-number">11.</span> <span class="nav-text">B&#x2F;S 与 C&#x2F;S 架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">11.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AF%B9%E6%AF%94"><span class="nav-number">11.2.</span> <span class="nav-text">二、对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%BB%93%E8%AE%BA"><span class="nav-number">11.3.</span> <span class="nav-text">三、结论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">12.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81PHP%E9%97%AD%E5%8C%85"><span class="nav-number">12.1.</span> <span class="nav-text">一、PHP闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81JS%E9%97%AD%E5%8C%85"><span class="nav-number">12.2.</span> <span class="nav-text">二、JS闭包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS-RPC"><span class="nav-number">13.</span> <span class="nav-text">NFS-RPC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">13.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">13.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81RPC%E6%A1%86%E6%9E%B6"><span class="nav-number">13.3.</span> <span class="nav-text">三、RPC框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">13.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UML"><span class="nav-number">14.</span> <span class="nav-text">UML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-3"><span class="nav-number">14.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">14.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%B1%BB%E5%9B%BE"><span class="nav-number">14.3.</span> <span class="nav-text">三、类图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN"><span class="nav-number">15.</span> <span class="nav-text">SVN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">15.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">15.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">15.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%AD%E9%93%BE%E6%8E%A5"><span class="nav-number">16.</span> <span class="nav-text">短链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">16.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">16.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B"><span class="nav-number">17.</span> <span class="nav-text">业务理解能力</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-3"><span class="nav-number">17.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E5%BE%81"><span class="nav-number">17.2.</span> <span class="nav-text">二、特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87"><span class="nav-number">17.3.</span> <span class="nav-text">三、如何提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">17.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85%E7%9A%84%E5%8F%8D%E6%80%9D"><span class="nav-number">18.</span> <span class="nav-text">关于一次线上事故的反思</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E6%9A%B4%E9%9C%B2%E9%97%AE%E9%A2%98"><span class="nav-number">18.1.</span> <span class="nav-text">一、 暴露问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E6%95%85-%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">18.2.</span> <span class="nav-text">二、事故&#x2F;故障处理流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">18.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1216,7 +1420,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">275</span>
+          <span class="site-state-item-count">272</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1229,7 +1433,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1020</span>
+        <span class="site-state-item-count">1037</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1256,7 +1460,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -1322,12 +1526,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">950k</span>
+    <span title="站点总字数">966k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:24</span>
+    <span title="站点阅读时长">14:38</span>
 </div>
 
         

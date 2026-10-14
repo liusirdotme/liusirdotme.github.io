@@ -149,14 +149,14 @@
 <meta property="og:description" content="在写给同在美国的好友刘晓阳的信里，王小波说：“我们背井离乡，到这儿来无非为了名利二字。既然为名为利，就说不上清高。既然不清高，就不配要面子。豁出面皮来撞就是了。”">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-03-25T08:15:02.000Z">
-<meta property="article:modified_time" content="2026-10-10T08:55:56.411Z">
+<meta property="article:modified_time" content="2026-10-14T06:32:49.160Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="GitLab">
 <meta property="article:tag" content="Git">
+<meta property="article:tag" content="merge">
 <meta property="article:tag" content="合并">
 <meta property="article:tag" content="回滚">
 <meta property="article:tag" content="变基">
-<meta property="article:tag" content="merge">
 <meta property="article:tag" content="王小波">
 <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://liusir.net/2017/03/25/Git-%E6%9D%82%E8%B0%88/">
@@ -378,13 +378,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.7k</span>
+              <span>4.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -471,6 +471,60 @@
 </ul>
 </li>
 </ol>
+<h1 id="Git-撤销操作汇总表"><a href="#Git-撤销操作汇总表" class="headerlink" title="Git 撤销操作汇总表"></a>Git 撤销操作汇总表</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>影响范围</th>
+<th>危险等级</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git checkout -- .</code></td>
+<td>丢弃<strong>工作区</strong>已跟踪文件的修改，恢复到暂存区状态</td>
+<td>已跟踪文件的本地改动；<strong>不影响暂存区、不删除untracked文件</strong></td>
+<td>⭐⭐</td>
+<td>Git 2.23之前的传统写法，新版推荐用<code>git restore .</code>替代</td>
+</tr>
+<tr>
+<td><code>git restore .</code></td>
+<td>新版命令，丢弃工作区已跟踪文件修改</td>
+<td>已跟踪文件本地改动；不影响暂存区，不删除untracked文件</td>
+<td>⭐⭐</td>
+<td>Git2.23+支持；撤销暂存：<code>git restore --staged .</code></td>
+</tr>
+<tr>
+<td><code>git clean -f</code></td>
+<td>删除<strong>未跟踪(untracked)</strong> 的文件</td>
+<td>只删除Git从未管理过的新建文件；不影响已跟踪文件</td>
+<td>⭐⭐⭐</td>
+<td><code>-f</code>强制删除；预览：<code>git clean -n -f</code>；删除后Git无法找回</td>
+</tr>
+<tr>
+<td><code>git revert &lt;commit-id&gt;</code></td>
+<td><strong>新建一条反向提交</strong>，抵消某次commit的改动</td>
+<td>生成新commit，原有提交记录保留，不修改历史</td>
+<td>⭐</td>
+<td>公共分支首选，不改写提交历史</td>
+</tr>
+<tr>
+<td><code>git reset</code></td>
+<td>重置HEAD指针，移动暂存区，可选保留工作区改动</td>
+<td>分3种模式，可改写提交历史</td>
+<td>⭐⭐⭐</td>
+<td><br>• <code>git reset --soft</code>：移动HEAD，保留暂存+工作区<br>• <code>git reset</code>(默认mixed)：移动HEAD，取消add，保留工作区<br>• <code>git reset --hard</code>：移动HEAD，清空暂存+工作区</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>一键重置组合（回退到最近一次commit，清除本地所有修改+未跟踪文件）</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD .</span><br><span class="line">git restore .</span><br><span class="line">git clean -f</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><code>git reset --hard</code> 和 <code>git clean -f</code> 会永久丢失本地未提交内容，执行前务必确认。</p>
+</blockquote>
 <hr>
 <h1 id="变基"><a href="#变基" class="headerlink" title="变基"></a><center><font color="red">变基</font></center></h1><blockquote>
 <p>⚠️ 前置红线：<strong>rebase 会重写 commit 哈希</strong>，只用于本地未推送 / 自己私有分支；公共分支、别人已经拉取过的提交严禁 rebase！</p>
@@ -685,10 +739,10 @@
           <div class="post-tags">
               <a href="/tags/GitLab/" rel="tag"><i class="fa fa-tag"></i> GitLab</a>
               <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+              <a href="/tags/merge/" rel="tag"><i class="fa fa-tag"></i> merge</a>
               <a href="/tags/%E5%90%88%E5%B9%B6/" rel="tag"><i class="fa fa-tag"></i> 合并</a>
               <a href="/tags/%E5%9B%9E%E6%BB%9A/" rel="tag"><i class="fa fa-tag"></i> 回滚</a>
               <a href="/tags/%E5%8F%98%E5%9F%BA/" rel="tag"><i class="fa fa-tag"></i> 变基</a>
-              <a href="/tags/merge/" rel="tag"><i class="fa fa-tag"></i> merge</a>
               <a href="/tags/%E7%8E%8B%E5%B0%8F%E6%B3%A2/" rel="tag"><i class="fa fa-tag"></i> 王小波</a>
           </div>
 
@@ -745,7 +799,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E5%B9%B6"><span class="nav-number">1.</span> <span class="nav-text">合并</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81merge"><span class="nav-number">1.1.</span> <span class="nav-text">一、merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81rebase"><span class="nav-number">1.2.</span> <span class="nav-text">二、rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BB%9A"><span class="nav-number">2.</span> <span class="nav-text">回滚</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81reset"><span class="nav-number">2.1.</span> <span class="nav-text">一、reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81revert"><span class="nav-number">2.2.</span> <span class="nav-text">二、revert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%84%E7%A7%8D%E6%81%A2%E5%A4%8D"><span class="nav-number">2.3.</span> <span class="nav-text">三、各种恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E5%9F%BA"><span class="nav-number">3.</span> <span class="nav-text">变基</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%EF%BC%882%E7%A7%8D%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">一、修改提交信息（2种场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%8F%AA%E4%BF%AE%E6%94%B9%E3%80%90%E6%9C%80%E8%BF%911%E6%AC%A1%E3%80%91%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8%EF%BC%88%E4%B8%8D%E9%9C%80%E8%A6%81rebase%EF%BC%89"><span class="nav-number">3.1.1.</span> <span class="nav-text">场景1：只修改【最近1次】提交备注（不需要rebase）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E4%BF%AE%E6%94%B9%E3%80%90%E5%8E%86%E5%8F%B2%E6%9F%90%E4%B8%80%E6%9D%A1-%E5%A4%9A%E6%9D%A1%E3%80%91commit%E5%A4%87%E6%B3%A8%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase%EF%BC%89"><span class="nav-number">3.1.2.</span> <span class="nav-text">场景2：修改【历史某一条&#x2F;多条】commit备注（交互式rebase）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E7%9A%84%E3%80%90%E4%BB%A3%E7%A0%81%E5%86%85%E5%AE%B9%E3%80%91%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase-edit%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">二、修改历史提交的【代码内容】（交互式rebase edit）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%88%E5%B9%B6%E5%A4%9A%E6%9D%A1%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%EF%BC%88squash-fixup%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">三、合并多条历史提交（squash &#x2F; fixup）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%88%A0%E9%99%A4%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95-drop"><span class="nav-number">3.4.</span> <span class="nav-text">四、删除历史提交记录 drop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E6%94%AF%E5%8F%98%E5%9F%BA%EF%BC%88%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F-rebase%EF%BC%8C%E5%B8%B8%E7%94%A8%E5%9C%A8%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%EF%BC%89"><span class="nav-number">3.5.</span> <span class="nav-text">五、分支变基（非交互式 rebase，常用在合并分支）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81rebase-%E9%80%9A%E7%94%A8%E4%B8%AD%E6%96%AD%E5%91%BD%E4%BB%A4%EF%BC%88%E6%89%80%E6%9C%89%E4%BA%A4%E4%BA%92%E5%BC%8F-%E5%88%86%E6%94%AFrebase%E9%83%BD%E9%80%82%E7%94%A8%EF%BC%89"><span class="nav-number">3.6.</span> <span class="nav-text">六、rebase 通用中断命令（所有交互式&#x2F;分支rebase都适用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E8%A1%A5%E5%85%85%EF%BC%9Arebase-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="nav-number">3.7.</span> <span class="nav-text">七、补充：rebase 交互式指令速查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E9%A3%8E%E9%99%A9%E6%B8%85%E5%8D%95"><span class="nav-number">3.8.</span> <span class="nav-text">八、风险清单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">4.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%92%8CGitLab%E5%AF%B9%E6%AF%94"><span class="nav-number">5.</span> <span class="nav-text">Git和GitLab对比</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E5%B9%B6"><span class="nav-number">1.</span> <span class="nav-text">合并</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81merge"><span class="nav-number">1.1.</span> <span class="nav-text">一、merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81rebase"><span class="nav-number">1.2.</span> <span class="nav-text">二、rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BB%9A"><span class="nav-number">2.</span> <span class="nav-text">回滚</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81reset"><span class="nav-number">2.1.</span> <span class="nav-text">一、reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81revert"><span class="nav-number">2.2.</span> <span class="nav-text">二、revert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%84%E7%A7%8D%E6%81%A2%E5%A4%8D"><span class="nav-number">2.3.</span> <span class="nav-text">三、各种恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB%E8%A1%A8"><span class="nav-number">3.</span> <span class="nav-text">Git 撤销操作汇总表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E5%9F%BA"><span class="nav-number">4.</span> <span class="nav-text">变基</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%EF%BC%882%E7%A7%8D%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">一、修改提交信息（2种场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%8F%AA%E4%BF%AE%E6%94%B9%E3%80%90%E6%9C%80%E8%BF%911%E6%AC%A1%E3%80%91%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8%EF%BC%88%E4%B8%8D%E9%9C%80%E8%A6%81rebase%EF%BC%89"><span class="nav-number">4.1.1.</span> <span class="nav-text">场景1：只修改【最近1次】提交备注（不需要rebase）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E4%BF%AE%E6%94%B9%E3%80%90%E5%8E%86%E5%8F%B2%E6%9F%90%E4%B8%80%E6%9D%A1-%E5%A4%9A%E6%9D%A1%E3%80%91commit%E5%A4%87%E6%B3%A8%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase%EF%BC%89"><span class="nav-number">4.1.2.</span> <span class="nav-text">场景2：修改【历史某一条&#x2F;多条】commit备注（交互式rebase）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E7%9A%84%E3%80%90%E4%BB%A3%E7%A0%81%E5%86%85%E5%AE%B9%E3%80%91%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase-edit%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">二、修改历史提交的【代码内容】（交互式rebase edit）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%88%E5%B9%B6%E5%A4%9A%E6%9D%A1%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%EF%BC%88squash-fixup%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">三、合并多条历史提交（squash &#x2F; fixup）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%88%A0%E9%99%A4%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95-drop"><span class="nav-number">4.4.</span> <span class="nav-text">四、删除历史提交记录 drop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E6%94%AF%E5%8F%98%E5%9F%BA%EF%BC%88%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F-rebase%EF%BC%8C%E5%B8%B8%E7%94%A8%E5%9C%A8%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%EF%BC%89"><span class="nav-number">4.5.</span> <span class="nav-text">五、分支变基（非交互式 rebase，常用在合并分支）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81rebase-%E9%80%9A%E7%94%A8%E4%B8%AD%E6%96%AD%E5%91%BD%E4%BB%A4%EF%BC%88%E6%89%80%E6%9C%89%E4%BA%A4%E4%BA%92%E5%BC%8F-%E5%88%86%E6%94%AFrebase%E9%83%BD%E9%80%82%E7%94%A8%EF%BC%89"><span class="nav-number">4.6.</span> <span class="nav-text">六、rebase 通用中断命令（所有交互式&#x2F;分支rebase都适用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E8%A1%A5%E5%85%85%EF%BC%9Arebase-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="nav-number">4.7.</span> <span class="nav-text">七、补充：rebase 交互式指令速查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E9%A3%8E%E9%99%A9%E6%B8%85%E5%8D%95"><span class="nav-number">4.8.</span> <span class="nav-text">八、风险清单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">5.</span> <span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">5.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">5.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%92%8CGitLab%E5%AF%B9%E6%AF%94"><span class="nav-number">6.</span> <span class="nav-text">Git和GitLab对比</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -761,7 +815,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">275</span>
+          <span class="site-state-item-count">272</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -774,7 +828,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1020</span>
+        <span class="site-state-item-count">1037</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -801,7 +855,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -867,12 +921,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">950k</span>
+    <span title="站点总字数">966k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:24</span>
+    <span title="站点阅读时长">14:38</span>
 </div>
 
         
