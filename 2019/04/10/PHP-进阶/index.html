@@ -148,12 +148,13 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/SPL.png">
 <meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/st.jpeg">
 <meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/memory.png">
 <meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/var.png">
 <meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/obj.png">
 <meta property="article:published_time" content="2019-04-10T15:20:38.000Z">
-<meta property="article:modified_time" content="2024-09-03T07:26:18.277Z">
+<meta property="article:modified_time" content="2026-10-14T08:50:53.530Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="垃圾回收">
 <meta property="article:tag" content="堆">
@@ -170,7 +171,7 @@
 <meta property="article:tag" content="对象">
 <meta property="article:tag" content="栈">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/st.jpeg">
+<meta name="twitter:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/SPL.png">
   <link rel="canonical" href="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/">
 
 
@@ -390,13 +391,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>10k</span>
+              <span>19k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>9 分钟</span>
+              <span>17 分钟</span>
             </span>
 
         </div>
@@ -415,15 +416,599 @@
 
 
 <h1 id="SPL"><a href="#SPL" class="headerlink" title="SPL"></a><center><font color="red">SPL</font></center></h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><ol>
-<li>SPL，<code>Standard PHP Library</code>的缩写，译为标准PHP类库，是用于解决典型问题(<code>standard problems</code>)的一组接口与类的集合。</li>
-</ol>
-<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li>参考<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/book.spl.php">官方文档</a></li>
+<li><strong>SPL</strong>，<code>Standard PHP Library</code> 的缩写，译为标准 PHP 类库，是用于解决典型问题（<code>standard problems</code>）的一组接口与类的集合。</li>
+<li>自 <strong>PHP 5.0</strong> 起随内核内置发布，无需安装扩展、无需 <code>require</code>，属于核心扩展（<code>php -m | grep -i spl</code> 可见 <code>SPL</code>）。</li>
+<li>它要解决的问题主要是五类：<strong>数据结构</strong>、<strong>统一遍历（迭代器）</strong>、<strong>约定接口</strong>、<strong>异常体系</strong>、<strong>文件与自动加载</strong>。</li>
+<li>核心设计思想是「<strong>接口 + 可组合实现</strong>」：接口定义能力，具体类按需组合，而不是给一堆功能重叠的工具类。</li>
 </ol>
 <hr>
-<h1 id="yield"><a href="#yield" class="headerlink" title="yield"></a><center><font color="red">yield</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lynxcat/p/7954456.html">参考一</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.laruence.com/2015/05/28/3038.html">参考二</a></li>
+<h2 id="二、分类"><a href="#二、分类" class="headerlink" title="二、分类"></a>二、分类</h2><blockquote>
+<p>官方手册把 SPL 分为六大块，本笔记按此展开：</p>
+</blockquote>
+<p><img src="SPL.png" alt="SPL"></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>分类</th>
+<th>英文</th>
+<th>一句话说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>数据结构</td>
+<td>Data Structures</td>
+<td>双链表、栈、队列、堆、优先队列、固定长度数组、对象集合</td>
+</tr>
+<tr>
+<td>2</td>
+<td>迭代器</td>
+<td>Iterators</td>
+<td>可组合的遍历器：过滤、限制、递归、多路并行</td>
+</tr>
+<tr>
+<td>3</td>
+<td>接口</td>
+<td>Interfaces</td>
+<td>定义「可数」「可下标访问」「可遍历」「可观察」等能力</td>
+</tr>
+<tr>
+<td>4</td>
+<td>异常</td>
+<td>Exceptions</td>
+<td>一套可直接使用的标准异常继承树</td>
+</tr>
+<tr>
+<td>5</td>
+<td>文件处理</td>
+<td>File Handling</td>
+<td><code>SplFileInfo</code> / <code>SplFileObject</code> / <code>SplTempFileObject</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>函数与杂项</td>
+<td>Functions &amp; Misc</td>
+<td>自动加载、类关系查询、迭代器工具函数、伪类型类</td>
+</tr>
+</tbody></table>
+<h3 id="2-1-数据结构"><a href="#2-1-数据结构" class="headerlink" title="2.1 数据结构"></a>2.1 数据结构</h3><table>
+<thead>
+<tr>
+<th>类</th>
+<th>结构</th>
+<th>特点</th>
+<th>常用方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SplDoublyLinkedList</code></td>
+<td>双向链表</td>
+<td>基类，支持头尾插入/删除、迭代模式切换</td>
+<td><code>push/pop</code>、<code>shift/unshift</code>、<code>top/bottom</code>、<code>setIteratorMode</code></td>
+</tr>
+<tr>
+<td><code>SplStack</code></td>
+<td>栈（LIFO）</td>
+<td>继承双向链表，后进先出</td>
+<td><code>push</code>、<code>pop</code>、<code>top</code></td>
+</tr>
+<tr>
+<td><code>SplQueue</code></td>
+<td>队列（FIFO）</td>
+<td>继承双向链表，先进先出</td>
+<td><code>enqueue</code>、<code>dequeue</code></td>
+</tr>
+<tr>
+<td><code>SplHeap</code></td>
+<td>堆（抽象类）</td>
+<td>需实现 <code>compare()</code>，可实现最大/最小堆</td>
+<td><code>insert</code>、<code>extract</code>、<code>top</code>、<code>isEmpty</code></td>
+</tr>
+<tr>
+<td><code>SplMaxHeap</code> / <code>SplMinHeap</code></td>
+<td>最大堆 / 最小堆</td>
+<td><code>SplHeap</code> 的开箱实现</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>SplPriorityQueue</code></td>
+<td>优先队列</td>
+<td>按优先级出队，底层是最大堆</td>
+<td><code>insert($value, $priority)</code>、<code>setExtractFlags</code></td>
+</tr>
+<tr>
+<td><code>SplFixedArray</code></td>
+<td>固定长度数组</td>
+<td>只能存数字索引、长度固定，<strong>比普通数组省内存</strong></td>
+<td><code>setSize</code>、<code>toArray</code>、<code>fromArray</code></td>
+</tr>
+<tr>
+<td><code>SplObjectStorage</code></td>
+<td>对象集合</td>
+<td>以对象为键的 map / 集合，可用关联数据</td>
+<td><code>attach</code>、<code>detach</code>、<code>contains</code>、<code>addAll</code>、<code>removeAll</code></td>
+</tr>
+</tbody></table>
+<p><strong>栈与队列</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$stack</span> = <span class="keyword">new</span> <span class="built_in">SplStack</span>();</span><br><span class="line"><span class="variable">$stack</span>-&gt;push(<span class="string">'a'</span>);</span><br><span class="line"><span class="variable">$stack</span>-&gt;push(<span class="string">'b'</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$stack</span>-&gt;pop(); <span class="comment">// b（后进先出）</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$queue</span> = <span class="keyword">new</span> <span class="built_in">SplQueue</span>();</span><br><span class="line"><span class="variable">$queue</span>-&gt;enqueue(<span class="string">'a'</span>);</span><br><span class="line"><span class="variable">$queue</span>-&gt;enqueue(<span class="string">'b'</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$queue</span>-&gt;dequeue(); <span class="comment">// a（先进先出）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>优先队列</strong>（默认最大堆，优先级数字越大越先出）</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$pq</span> = <span class="keyword">new</span> <span class="built_in">SplPriorityQueue</span>();</span><br><span class="line"><span class="variable">$pq</span>-&gt;insert(<span class="string">'low'</span>, <span class="number">1</span>);</span><br><span class="line"><span class="variable">$pq</span>-&gt;insert(<span class="string">'high'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="variable">$pq</span>-&gt;insert(<span class="string">'mid'</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$pq</span>-&gt;setExtractFlags(<span class="built_in">SplPriorityQueue</span>::EXTR_BOTH); <span class="comment">// 同时取出值和优先级</span></span><br><span class="line"><span class="keyword">while</span> (!<span class="variable">$pq</span>-&gt;isEmpty()) {</span><br><span class="line">    <span class="variable">$item</span> = <span class="variable">$pq</span>-&gt;extract();</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$item</span>[<span class="string">'data'</span>] . <span class="string">':'</span> . <span class="variable">$item</span>[<span class="string">'priority'</span>] . PHP_EOL; <span class="comment">// high:10 mid:5 low:1</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>注意：<strong>相同优先级的出队顺序不保证</strong>。若要稳定顺序，把优先级做成数组 <code>[$priority, $seq]</code>，<code>compare</code> 时依次比较。</p>
+</blockquote>
+<p><strong>自定义堆</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScoreMaxHeap</span> <span class="keyword">extends</span> <span class="title">SplMaxHeap</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params"><span class="variable">$value1</span>, <span class="variable">$value2</span></span>): <span class="title">int</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$value1</span>[<span class="string">'score'</span>] &lt;=&gt; <span class="variable">$value2</span>[<span class="string">'score'</span>];</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>固定长度数组</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr</span> = <span class="keyword">new</span> <span class="built_in">SplFixedArray</span>(<span class="number">3</span>);</span><br><span class="line"><span class="variable">$arr</span>[<span class="number">0</span>] = <span class="string">'a'</span>;</span><br><span class="line"><span class="variable">$arr</span>[<span class="number">1</span>] = <span class="string">'b'</span>;</span><br><span class="line"><span class="variable">$arr</span>-&gt;setSize(<span class="number">5</span>);          <span class="comment">// 扩容，新位为 null</span></span><br><span class="line">var_dump(<span class="variable">$arr</span>-&gt;getSize()); <span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 优势：元素按 C 数组存储，内存占用显著低于普通 array，适合海量同构数据</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>对象集合</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$storage</span> = <span class="keyword">new</span> <span class="built_in">SplObjectStorage</span>();</span><br><span class="line"><span class="variable">$o1</span> = <span class="keyword">new</span> <span class="built_in">stdClass</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$storage</span>-&gt;attach(<span class="variable">$o1</span>, [<span class="string">'role'</span> =&gt; <span class="string">'admin'</span>]); <span class="comment">// 对象为键，可带关联数据</span></span><br><span class="line"><span class="variable">$storage</span>[<span class="variable">$o1</span>] = [<span class="string">'role'</span> =&gt; <span class="string">'user'</span>];         <span class="comment">// PHP 8 起支持数组式访问</span></span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$storage</span>-&gt;contains(<span class="variable">$o1</span>)); <span class="comment">// bool(true)</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$storage</span> <span class="keyword">as</span> <span class="variable">$obj</span>) {</span><br><span class="line">    print_r(<span class="variable">$storage</span>[<span class="variable">$obj</span>]);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-2-迭代器"><a href="#2-2-迭代器" class="headerlink" title="2.2 迭代器"></a>2.2 迭代器</h3><p>SPL 的迭代器可以<strong>层层套用</strong>（装饰器模式），这是它最好用的部分。按用途分组：</p>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>迭代器</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础</td>
+<td><code>ArrayIterator</code>、<code>IteratorIterator</code>、<code>EmptyIterator</code>、<code>InfiniteIterator</code>、<code>NoRewindIterator</code></td>
+<td>把数组/可遍历对象包装成 Iterator；包装后仍嫌不够用时的补充</td>
+</tr>
+<tr>
+<td>过滤</td>
+<td><code>CallbackFilterIterator</code>、<code>FilterIterator</code>、<code>RegexIterator</code></td>
+<td>按回调 / 抽象方法 / 正则筛选元素</td>
+</tr>
+<tr>
+<td>限制</td>
+<td><code>LimitIterator</code></td>
+<td>取区间，天然适合分页</td>
+</tr>
+<tr>
+<td>递归</td>
+<td><code>RecursiveArrayIterator</code>、<code>RecursiveIteratorIterator</code>、<code>RecursiveTreeIterator</code>、<code>ParentIterator</code></td>
+<td>拍平多维数组 / 目录树</td>
+</tr>
+<tr>
+<td>目录文件</td>
+<td><code>DirectoryIterator</code>、<code>FilesystemIterator</code>、<code>GlobIterator</code>、<code>RecursiveDirectoryIterator</code></td>
+<td>遍历目录</td>
+</tr>
+<tr>
+<td>组合装饰</td>
+<td><code>AppendIterator</code>、<code>MultipleIterator</code>、<code>CachingIterator</code></td>
+<td>拼接多个迭代器、并行迭代、缓存/前瞻</td>
+</tr>
+</tbody></table>
+<p><strong>过滤 + 限流（组合用法）</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$it</span> = <span class="keyword">new</span> <span class="built_in">ArrayIterator</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]);</span><br><span class="line"><span class="variable">$it</span> = <span class="keyword">new</span> <span class="built_in">CallbackFilterIterator</span>(<span class="variable">$it</span>, <span class="function"><span class="keyword">fn</span>(<span class="params"><span class="variable">$v</span></span>) =&gt;</span> <span class="variable">$v</span> % <span class="number">2</span> === <span class="number">0</span>);</span><br><span class="line"><span class="variable">$it</span> = <span class="keyword">new</span> <span class="built_in">LimitIterator</span>(<span class="variable">$it</span>, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$it</span> <span class="keyword">as</span> <span class="variable">$v</span>) {</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$v</span> . <span class="string">' '</span>; <span class="comment">// 2 4</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>递归遍历目录</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$dir</span> = <span class="keyword">new</span> <span class="built_in">RecursiveDirectoryIterator</span>(<span class="keyword">__DIR__</span>, <span class="built_in">FilesystemIterator</span>::SKIP_DOTS);</span><br><span class="line"><span class="variable">$iter</span> = <span class="keyword">new</span> <span class="built_in">RecursiveIteratorIterator</span>(<span class="variable">$dir</span>, <span class="built_in">RecursiveIteratorIterator</span>::SELF_FIRST);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$iter</span> <span class="keyword">as</span> <span class="variable">$file</span>) {</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$iter</span>-&gt;getSubPathname() . PHP_EOL;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>正则筛选文件</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$files</span> = <span class="keyword">new</span> <span class="built_in">RegexIterator</span>(</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">DirectoryIterator</span>(<span class="keyword">__DIR__</span>),</span><br><span class="line">    <span class="string">'/\.php$/i'</span></span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>多路并行迭代</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="built_in">ArrayIterator</span>([<span class="string">'a1'</span>, <span class="string">'a2'</span>]);</span><br><span class="line"><span class="variable">$b</span> = <span class="keyword">new</span> <span class="built_in">ArrayIterator</span>([<span class="string">'b1'</span>, <span class="string">'b2'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="variable">$multi</span> = <span class="keyword">new</span> <span class="built_in">MultipleIterator</span>(<span class="built_in">MultipleIterator</span>::MIT_KEYS_ASSOC);</span><br><span class="line"><span class="variable">$multi</span>-&gt;attachIterator(<span class="variable">$a</span>, <span class="string">'left'</span>);</span><br><span class="line"><span class="variable">$multi</span>-&gt;attachIterator(<span class="variable">$b</span>, <span class="string">'right'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$multi</span> <span class="keyword">as</span> <span class="variable">$pair</span>) {</span><br><span class="line">    print_r(<span class="variable">$pair</span>); <span class="comment">// ['left' =&gt; 'a1', 'right' =&gt; 'b1'] ...</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-接口"><a href="#2-3-接口" class="headerlink" title="2.3 接口"></a>2.3 接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>能力</th>
+<th>必须实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Traversable</code></td>
+<td>可被 <code>foreach</code> 遍历的标记接口</td>
+<td>不能直接实现，须经 <code>Iterator</code> 或 <code>IteratorAggregate</code></td>
+</tr>
+<tr>
+<td><code>Iterator</code></td>
+<td>实现完整迭代协议</td>
+<td><code>current</code> <code>key</code> <code>next</code> <code>rewind</code> <code>valid</code></td>
+</tr>
+<tr>
+<td><code>IteratorAggregate</code></td>
+<td>只需返回一个迭代器，<strong>推荐优先用</strong></td>
+<td><code>getIterator</code></td>
+</tr>
+<tr>
+<td><code>ArrayAccess</code></td>
+<td>数组式下标访问 <code>$obj['k']</code></td>
+<td><code>offsetExists</code> <code>offsetGet</code> <code>offsetSet</code> <code>offsetUnset</code></td>
+</tr>
+<tr>
+<td><code>Countable</code></td>
+<td>可被 <code>count()</code> 计数</td>
+<td><code>count</code></td>
+</tr>
+<tr>
+<td><code>SeekableIterator</code></td>
+<td>支持定位到第 N 个</td>
+<td><code>seek</code></td>
+</tr>
+<tr>
+<td><code>RecursiveIterator</code></td>
+<td>递归迭代</td>
+<td><code>hasChildren</code> <code>getChildren</code></td>
+</tr>
+<tr>
+<td><code>OuterIterator</code></td>
+<td>可取出被包装的迭代器</td>
+<td><code>getInnerIterator</code></td>
+</tr>
+<tr>
+<td><code>SplObserver</code> / <code>SplSubject</code></td>
+<td>观察者模式</td>
+<td><code>update</code> / <code>attach</code> <code>detach</code> <code>notify</code></td>
+</tr>
+<tr>
+<td><code>Serializable</code></td>
+<td>自定义序列化（<strong>PHP 8 起不推荐</strong>，用 <code>__serialize</code>/<code>__unserialize</code>）</td>
+<td><code>serialize</code> <code>unserialize</code></td>
+</tr>
+</tbody></table>
+<p><strong>一个集齐四个接口的集合类</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Collection</span> <span class="keyword">implements</span> <span class="title">Countable</span>, <span class="title">ArrayAccess</span>, <span class="title">IteratorAggregate</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">array</span> <span class="variable">$items</span> = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params"></span>): <span class="title">int</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> count(<span class="keyword">$this</span>-&gt;items);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">offsetExists</span>(<span class="params"><span class="keyword">mixed</span> <span class="variable">$offset</span></span>): <span class="title">bool</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;items[<span class="variable">$offset</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">offsetGet</span>(<span class="params"><span class="keyword">mixed</span> <span class="variable">$offset</span></span>): <span class="title">mixed</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;items[<span class="variable">$offset</span>] ?? <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">offsetSet</span>(<span class="params"><span class="keyword">mixed</span> <span class="variable">$offset</span>, <span class="keyword">mixed</span> <span class="variable">$value</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$offset</span> === <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">$this</span>-&gt;items[] = <span class="variable">$value</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">$this</span>-&gt;items[<span class="variable">$offset</span>] = <span class="variable">$value</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">offsetUnset</span>(<span class="params"><span class="keyword">mixed</span> <span class="variable">$offset</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;items[<span class="variable">$offset</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getIterator</span>(<span class="params"></span>): <span class="title">Traversable</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">ArrayIterator</span>(<span class="keyword">$this</span>-&gt;items);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$c</span> = <span class="keyword">new</span> Collection();</span><br><span class="line"><span class="variable">$c</span>[] = <span class="string">'x'</span>;          <span class="comment">// offsetSet</span></span><br><span class="line"><span class="keyword">echo</span> count(<span class="variable">$c</span>);      <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$c</span>[<span class="number">0</span>];          <span class="comment">// x</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$c</span> <span class="keyword">as</span> <span class="variable">$v</span>) { <span class="keyword">echo</span> <span class="variable">$v</span>; } <span class="comment">// 可遍历</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-4-异常"><a href="#2-4-异常" class="headerlink" title="2.4 异常"></a>2.4 异常</h3><p>SPL 提供了一套<strong>开箱即用的标准异常</strong>，业务代码直接 <code>throw</code> 即可，不必自己重造。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LogicException                // 代码逻辑错误，编译期/静态可发现</span><br><span class="line">├── BadFunctionCallException</span><br><span class="line">│   └── BadMethodCallException</span><br><span class="line">├── DomainException</span><br><span class="line">├── InvalidArgumentException</span><br><span class="line">├── LengthException</span><br><span class="line">└── OutOfRangeException</span><br><span class="line"></span><br><span class="line">RuntimeException              // 运行时才能发现</span><br><span class="line">├── OutOfBoundsException</span><br><span class="line">├── OverflowException</span><br><span class="line">├── RangeException</span><br><span class="line">├── UnderflowException</span><br><span class="line">└── UnexpectedValueException</span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>InvalidArgumentException</code></td>
+<td>入参不合法（最常用）</td>
+</tr>
+<tr>
+<td><code>LogicException</code></td>
+<td>不该被调用的方法被调用了</td>
+</tr>
+<tr>
+<td><code>BadMethodCallException</code></td>
+<td>调用了不存在/未实现的方法（<code>__call</code> 兜底时常用）</td>
+</tr>
+<tr>
+<td><code>LengthException</code></td>
+<td>长度不符合约束</td>
+</tr>
+<tr>
+<td><code>OutOfRangeException</code></td>
+<td>值越界（<strong>注意与 <code>OutOfBoundsException</code> 的区别</strong>）</td>
+</tr>
+<tr>
+<td><code>OutOfBoundsException</code></td>
+<td>索引/键在运行时不合法（如数组下标越界）</td>
+</tr>
+<tr>
+<td><code>DomainException</code></td>
+<td>值不符合领域定义域</td>
+</tr>
+<tr>
+<td><code>UnexpectedValueException</code></td>
+<td>拿到了预期之外的值</td>
+</tr>
+<tr>
+<td><code>RuntimeException</code></td>
+<td>一般运行时错误</td>
+</tr>
+<tr>
+<td><code>OverflowException</code> / <code>UnderflowException</code></td>
+<td>容器满 / 空</td>
+</tr>
+<tr>
+<td><code>RangeException</code></td>
+<td>运行时的区间错误</td>
+</tr>
+</tbody></table>
+<p>记忆口径：<strong><code>LogicException</code> 系列 = 你写错了代码；<code>RuntimeException</code> 系列 = 环境/数据出问题了。</strong> <code>OutOfRange</code> 偏静态语义越界，<code>OutOfBounds</code> 偏运行时索引越界。</p>
+<h3 id="2-5-文件处理"><a href="#2-5-文件处理" class="headerlink" title="2.5 文件处理"></a>2.5 文件处理</h3><table>
+<thead>
+<tr>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SplFileInfo</code></td>
+<td>只读的文件元信息（路径、大小、时间、权限），轻量</td>
+</tr>
+<tr>
+<td><code>SplFileObject</code></td>
+<td>以<strong>对象方式流式读写文件</strong>，无需 <code>fopen</code>/<code>fclose</code>，遍历即读行</td>
+</tr>
+<tr>
+<td><code>SplTempFileObject</code></td>
+<td>内存/临时文件对象，适合当作临时缓冲区</td>
+</tr>
+</tbody></table>
+<p><strong>大文件流式逐行读（常驻内存极低）</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file</span> = <span class="keyword">new</span> <span class="built_in">SplFileObject</span>(<span class="string">'/path/to/big.csv'</span>);</span><br><span class="line"><span class="variable">$file</span>-&gt;setFlags(</span><br><span class="line">    <span class="built_in">SplFileObject</span>::READ_CSV</span><br><span class="line">    | <span class="built_in">SplFileObject</span>::SKIP_EMPTY</span><br><span class="line">    | <span class="built_in">SplFileObject</span>::DROP_NEW_LINE</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$file</span> <span class="keyword">as</span> <span class="variable">$row</span>) {</span><br><span class="line">    <span class="comment">// $row 已是数组，无需手动 fgetcsv</span></span><br><span class="line">    print_r(<span class="variable">$row</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>元信息查询</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$info</span> = <span class="keyword">new</span> <span class="built_in">SplFileInfo</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$info</span>-&gt;getSize();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$info</span>-&gt;getMTime();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$info</span>-&gt;getExtension(); <span class="comment">// 'php'</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$info</span>-&gt;isFile() ? <span class="string">'file'</span> : <span class="string">'dir'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>相比 <code>file()</code> / <code>file_get_contents()</code>，<code>SplFileObject</code> 的最大价值是<strong>惰性读取</strong>：处理 GB 级文件不会把整份内容塞进内存。</p>
+</blockquote>
+<h3 id="2-6-函数与杂项"><a href="#2-6-函数与杂项" class="headerlink" title="2.6 函数与杂项"></a>2.6 函数与杂项</h3><p><strong>自动加载（现代 PHP 的基石）</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spl_autoload_register(<span class="function"><span class="keyword">function</span> (<span class="params"><span class="keyword">string</span> <span class="variable">$class</span></span>): <span class="title">void</span> </span>{</span><br><span class="line">    <span class="variable">$file</span> = <span class="keyword">__DIR__</span> . <span class="string">'/src/'</span> . str_replace(<span class="string">'\\'</span>, <span class="string">'/'</span>, <span class="variable">$class</span>) . <span class="string">'.php'</span>;</span><br><span class="line">    <span class="keyword">if</span> (is_file(<span class="variable">$file</span>)) {</span><br><span class="line">        <span class="keyword">require</span> <span class="variable">$file</span>;</span><br><span class="line">    }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>Composer 的自动加载器本质上就是注册到 <code>spl_autoload_register</code> 的一个回调；PSR-4 规范定义了文件名与命名空间的映射规则。</p>
+</blockquote>
+<p><strong>常用函数速查</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spl_autoload_register</code> / <code>spl_autoload_unregister</code></td>
+<td>注册 / 注销自动加载器</td>
+</tr>
+<tr>
+<td><code>spl_autoload_functions</code></td>
+<td>查看已注册的加载器</td>
+</tr>
+<tr>
+<td><code>spl_autoload_extensions</code></td>
+<td>设置默认扩展名</td>
+</tr>
+<tr>
+<td><code>class_implements</code> / <code>class_parents</code> / <code>class_uses</code></td>
+<td>查询类实现的接口 / 父类 / 使用的 trait</td>
+</tr>
+<tr>
+<td><code>iterator_to_array($it, $preserve_keys)</code></td>
+<td>迭代器转数组</td>
+</tr>
+<tr>
+<td><code>iterator_count</code></td>
+<td>统计迭代器元素个数</td>
+</tr>
+<tr>
+<td><code>iterator_apply</code></td>
+<td>对每个元素调用回调</td>
+</tr>
+<tr>
+<td><code>spl_object_hash</code></td>
+<td>对象的哈希标识（字符串）</td>
+</tr>
+<tr>
+<td><code>spl_object_id</code></td>
+<td>对象的唯一整型 ID（<strong>PHP 7.2+，性能更好，优先用</strong>）</td>
+</tr>
+<tr>
+<td><code>spl_classes</code></td>
+<td>返回当前可用的 SPL 类列表</td>
+</tr>
+<tr>
+<td><code>spl_autoload_call</code></td>
+<td>手动触发自动加载</td>
+</tr>
+</tbody></table>
+<p><strong>杂项类与伪类型</strong>：手册中还有 <code>SplBool</code>、<code>SplInt</code>、<code>SplFloat</code> 等伪类型类，仅用于文档化的类型提示语义，<strong>未真正实现，不要使用</strong>。</p>
+<h3 id="2-7-常见坑"><a href="#2-7-常见坑" class="headerlink" title="2.7 常见坑"></a>2.7 常见坑</h3><ol>
+<li><strong><code>iterator_to_array</code> 默认保留键</strong>。迭代器键重复时会互相覆盖，需要保留全部元素请传第二参 <code>false</code>：<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$all</span>   = iterator_to_array(<span class="variable">$it</span>);            <span class="comment">// 可能丢元素</span></span><br><span class="line"><span class="variable">$all</span>   = iterator_to_array(<span class="variable">$it</span>, <span class="literal">false</span>);     <span class="comment">// 按顺序全部收集</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li><strong><code>SplFixedArray</code> 不能存字符串键</strong>，且未赋值的下标是 <code>null</code> 而非不存在。</li>
+<li><strong><code>SplPriorityQueue</code> 相同优先级顺序不稳定</strong>，见 2.1 的说明。</li>
+<li><strong><code>Traversable</code> 不能直接被实现</strong>，必须实现 <code>Iterator</code> 或 <code>IteratorAggregate</code>。日常首选 <code>IteratorAggregate</code>，代码更短。</li>
+<li><strong><code>RecursiveIteratorIterator</code> 需要第二参控制顺序</strong>：<code>LEAVES_ONLY</code>（默认，只输出叶子）、<code>SELF_FIRST</code>（先父后子）、<code>CHILD_FIRST</code>（先子后父）。</li>
+<li><strong><code>SplFileObject::READ_CSV</code> 的空行处理</strong>：不加 <code>SKIP_EMPTY</code> 时，末尾空行会返回 <code>[null]</code>；另需注意 UTF-8 BOM 会污染第一列。</li>
+<li><strong><code>Serializable</code> 接口自 PHP 8.1 起被标记为废弃</strong>，新代码请用魔术方法 <code>__serialize</code> / <code>__unserialize</code>。</li>
+<li><strong>PHP 8 的变化</strong>：<code>spl_object_id()</code> 取代 <code>spl_object_hash()</code> 做唯一标识；<code>SplFixedArray</code>、<code>ArrayObject</code> 等完善了 <code>ArrayAccess</code> / <code>JsonSerializable</code> 支持。</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li>参考 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/book.spl.php">官方文档</a></li>
+<li>分类子页：<ul>
+<li>数据结构：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/spl.datastructures.php">https://www.php.net/manual/zh/spl.datastructures.php</a></li>
+<li>迭代器：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/spl.iterators.php">https://www.php.net/manual/zh/spl.iterators.php</a></li>
+<li>接口：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/spl.interfaces.php">https://www.php.net/manual/zh/spl.interfaces.php</a></li>
+<li>异常：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/spl.exceptions.php">https://www.php.net/manual/zh/spl.exceptions.php</a></li>
+<li>文件处理：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/spl.files.php">https://www.php.net/manual/zh/spl.files.php</a></li>
+<li>SPL 函数：<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/ref.spl.php">https://www.php.net/manual/zh/ref.spl.php</a></li>
+</ul>
+</li>
+<li>延伸阅读：PSR-4 自动加载规范、Composer 自动加载实现。</li>
+</ol>
+<hr>
+<h1 id="yield"><a href="#yield" class="headerlink" title="yield"></a><center><font color="red">yield</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h3 id="1-1-yield-是什么"><a href="#1-1-yield-是什么" class="headerlink" title="1.1 yield 是什么"></a>1.1 yield 是什么</h3><p><code>yield</code> 是 <strong>PHP 5.5</strong> 引入的关键字，用于定义<strong>生成器（Generator）</strong>。</p>
+<p>一句话概括：<strong>生成器是一个”可以中途暂停、并且能从外部恢复”的函数</strong>。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"A\n"</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"B\n"</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"C\n"</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$gen</span> = gen();   <span class="comment">// 注意：什么都没输出！</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>第一件反直觉的事：<strong>调用含 <code>yield</code> 的函数，函数体一行都不会执行</strong>，它只是立刻返回一个 <code>Generator</code> 对象。函数体要等到你开始迭代（或手动 <code>current()</code>）时才真正运行。</p>
+<p>第二件：<code>Generator</code> 实现了 <code>Iterator</code> 接口，所以它能被 <code>foreach</code>，也能被任何接受 <code>Traversable</code> 的地方消费（<code>iterator_to_array</code>、<code>iterator_count</code>、<code>array_map</code> 不行）。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="variable">$gen</span> <span class="keyword">instanceof</span> <span class="built_in">Iterator</span>); <span class="comment">// bool(true)</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>顺带解释了那个经典”死循环不循环”的例子：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen</span>(<span class="params"></span>) </span>{ <span class="keyword">while</span> (<span class="literal">true</span>) { <span class="keyword">yield</span> <span class="string">"gen\n"</span>; } }</span><br><span class="line"><span class="variable">$gen</span> = gen();</span><br><span class="line"><span class="variable">$g</span> = gen();</span><br><span class="line">var_dump(<span class="variable">$g</span> <span class="keyword">instanceof</span> <span class="built_in">Iterator</span>); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"hello, world!\n"</span>;           <span class="comment">// 会正常输出，while(true) 根本没跑</span></span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<h3 id="1-2-Generator-是怎么实现-Iterator-的"><a href="#1-2-Generator-是怎么实现-Iterator-的" class="headerlink" title="1.2 Generator 是怎么实现 Iterator 的"></a>1.2 Generator 是怎么实现 Iterator 的</h3><p><code>foreach</code> 遍历任何 <code>Iterator</code> 的固定时序是：<code>rewind → valid → current / key → 循环体 → next → valid → ...</code>。</p>
+<p><code>yield</code> 把这些方法自动映射成了语义：</p>
+<table>
+<thead>
+<tr>
+<th>Iterator 方法</th>
+<th>生成器里的语义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rewind()</code></td>
+<td>从头执行到<strong>第一个</strong> <code>yield</code>（foreach 开始时隐式调用，所以通常不用手动写）</td>
+</tr>
+<tr>
+<td><code>valid()</code></td>
+<td>当前是否停在某个 <code>yield</code> 上（函数执行完/<code>return</code> 后返回 <code>false</code>）</td>
+</tr>
+<tr>
+<td><code>current()</code></td>
+<td>当前 <code>yield</code> 后面表达式的值</td>
+</tr>
+<tr>
+<td><code>key()</code></td>
+<td><code>yield</code> 出现的次序，从 0 递增；写了 <code>yield $k =&gt; $v</code> 则取 <code>$k</code></td>
+</tr>
+<tr>
+<td><code>next()</code></td>
+<td>从当前 <code>yield</code> 执行到<strong>下一个</strong> <code>yield</code>（或 <code>return</code>、或函数结束）</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"i\n"</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span> + <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (gen1() <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) {</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"<span class="subst">{$key}</span> - <span class="subst">{$value}</span>\n"</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line"><span class="comment">// 0 - 1</span></span><br><span class="line"><span class="comment">// i</span></span><br><span class="line"><span class="comment">// 1 - 2</span></span><br><span class="line"><span class="comment">// 2 - 4</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>等价的手动拆解（能帮你彻底看清时序）：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$gen</span> = gen1();</span><br><span class="line">var_dump(<span class="variable">$gen</span>-&gt;valid());                          <span class="comment">// bool(true)</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$gen</span>-&gt;key() . <span class="string">' - '</span> . <span class="variable">$gen</span>-&gt;current() . <span class="string">"\n"</span>; <span class="comment">// 0 - 1</span></span><br><span class="line"><span class="variable">$gen</span>-&gt;next();                                     <span class="comment">// 打印 i</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$gen</span>-&gt;key() . <span class="string">' - '</span> . <span class="variable">$gen</span>-&gt;current() . <span class="string">"\n"</span>; <span class="comment">// 1 - 2</span></span><br><span class="line"><span class="variable">$gen</span>-&gt;next();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$gen</span>-&gt;key() . <span class="string">' - '</span> . <span class="variable">$gen</span>-&gt;current() . <span class="string">"\n"</span>; <span class="comment">// 2 - 4</span></span><br><span class="line"><span class="variable">$gen</span>-&gt;next();</span><br><span class="line">var_dump(<span class="variable">$gen</span>-&gt;valid());                          <span class="comment">// bool(false)</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>所以不要用”暂停/等待唤醒”去理解 yield</strong>（虽然行为上像），而应理解为：<strong>PHP 把函数体编译成了 Iterator 的五个方法。</strong></p>
+<h3 id="1-3-yield-是表达式，不是语句-——-双向通信"><a href="#1-3-yield-是表达式，不是语句-——-双向通信" class="headerlink" title="1.3 yield 是表达式，不是语句 —— 双向通信"></a>1.3 yield 是表达式，不是语句 —— 双向通信</h3><p><code>yield</code> 有一个值：<strong>调用方通过 <code>Generator::send()</code> 传进来的值</strong>。这让生成器从”单向产出”升级为”双向通道”，也就是协程的基础。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen3</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"test\n"</span>;</span><br><span class="line">    <span class="keyword">echo</span> (<span class="keyword">yield</span> <span class="number">1</span>) . <span class="string">"I\n"</span>;</span><br><span class="line">    <span class="keyword">echo</span> (<span class="keyword">yield</span> <span class="number">2</span>) . <span class="string">"II\n"</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$gen</span> = gen3();</span><br><span class="line"><span class="variable">$gen</span>-&gt;rewind();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$gen</span>-&gt;key() . <span class="string">' - '</span> . <span class="variable">$gen</span>-&gt;current() . <span class="string">"\n"</span>; <span class="comment">// 0 - 1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$gen</span>-&gt;send(<span class="string">'value-'</span>);                          <span class="comment">// 打印 value-I，返回下一个 yield 的值 2</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>send($value)</code> 的两件事：</p>
+<ol>
+<li>把 <code>$value</code> 作为<strong>当前</strong> <code>yield</code> 表达式的值，恢复执行到下一个 <code>yield</code>；</li>
+<li><strong>返回</strong>下一个 <code>yield</code> 产出的值（等同于 resume 后的 <code>current()</code>）。</li>
+</ol>
+<p><strong>经典用法：把外部数据送回函数内部继续计算</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen4</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$id</span> = <span class="number">2</span>;</span><br><span class="line">    <span class="variable">$id</span> = <span class="keyword">yield</span> <span class="variable">$id</span>;   <span class="comment">// 这里的 $id 变成 send() 传进来的值</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$id</span>;          <span class="comment">// 5</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$gen</span> = gen4();</span><br><span class="line"><span class="variable">$gen</span>-&gt;send(<span class="variable">$gen</span>-&gt;current() + <span class="number">3</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong><code>yield</code> 作为语句（不收值）时就是一个分号位置的分隔符</strong>，这也是协程里”让出控制权”的写法：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logger</span>(<span class="params"><span class="variable">$fileName</span></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$handle</span> = fopen(<span class="variable">$fileName</span>, <span class="string">'a'</span>);</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) {</span><br><span class="line">        fwrite(<span class="variable">$handle</span>, (<span class="keyword">yield</span>) . <span class="string">"\n"</span>); <span class="comment">// yield 的括号在 5.x 必需，7.x 可省</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$logger</span> = logger(<span class="keyword">__DIR__</span> . <span class="string">'/log'</span>);</span><br><span class="line"><span class="variable">$logger</span>-&gt;send(<span class="string">'Foo'</span>);</span><br><span class="line"><span class="variable">$logger</span>-&gt;send(<span class="string">'Bar'</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-4-return-与-getReturn"><a href="#1-4-return-与-getReturn" class="headerlink" title="1.4 return 与 getReturn"></a>1.4 return 与 getReturn</h3><ul>
+<li><strong>PHP 5.5/5.6</strong>：生成器里 <code>return;</code> 只能结束，不能带值。</li>
+<li><strong>PHP 7.0+</strong>：可以 <code>return $value</code>，用 <code>Generator::getReturn()</code> 取（必须在生成器<strong>跑完之后</strong>取，否则抛 <code>Exception</code>）。</li>
+</ul>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen5</span>(<span class="params"></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'done'</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$g</span> = gen5();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$g</span> <span class="keyword">as</span> <span class="variable">$v</span>) { <span class="keyword">echo</span> <span class="variable">$v</span>; }  <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$g</span>-&gt;getReturn();            <span class="comment">// done</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-5-yield-from（PHP-7-0-）"><a href="#1-5-yield-from（PHP-7-0-）" class="headerlink" title="1.5 yield from（PHP 7.0+）"></a>1.5 yield from（PHP 7.0+）</h3><p><code>yield from</code> 用来<strong>委托</strong>另一个生成器 / 数组 / <code>Traversable</code>，把元素直接摊平到外层。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'inner-done'</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$result</span> = <span class="keyword">yield</span> <span class="keyword">from</span> inner(); <span class="comment">// 子生成器的 return 值被赋值给 $result</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$result</span> . <span class="string">"\n"</span>;          <span class="comment">// inner-done</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (outer() <span class="keyword">as</span> <span class="variable">$v</span>) { <span class="keyword">echo</span> <span class="variable">$v</span> . <span class="string">' '</span>; } <span class="comment">// 1 2 3（在内层 return 之后才打印 inner-done）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>yield from</code> 的三个要点：</p>
+<ol>
+<li>会<strong>透传</strong> <code>send()</code> 和 <code>throw()</code> 到子生成器；</li>
+<li>子生成器的键也会被保留（多个子生成器同键时，靠 <code>iterator_to_array($g, false)</code> 才能全取）；</li>
+<li>表达式结果是子生成器的 <code>return</code> 值。</li>
+</ol>
+<p>它也是<strong>递归生成器</strong>的正确写法：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$nodes</span></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$nodes</span> <span class="keyword">as</span> <span class="variable">$node</span>) {</span><br><span class="line">        <span class="keyword">yield</span> <span class="variable">$node</span>[<span class="string">'id'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$node</span>[<span class="string">'children'</span>])) {</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">from</span> walk(<span class="variable">$node</span>[<span class="string">'children'</span>]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-6-内存与性能"><a href="#1-6-内存与性能" class="headerlink" title="1.6 内存与性能"></a>1.6 内存与性能</h3><p><strong>内存</strong>：生成器是惰性的，处理 N 条数据时内存是<strong>常数级</strong>，不随 N 增长。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 100 万条：普通 range() 要先造出整个数组，几十 MB</span></span><br><span class="line"><span class="keyword">foreach</span> (range(<span class="number">1</span>, <span class="number">1000000</span>) <span class="keyword">as</span> <span class="variable">$i</span>) { <span class="comment">/* ... */</span> }</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成器：任意时刻只驻留当前一个值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">xrange</span>(<span class="params"><span class="variable">$start</span>, <span class="variable">$end</span>, <span class="variable">$step</span> = <span class="number">1</span></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="variable">$start</span>; <span class="variable">$i</span> &lt;= <span class="variable">$end</span>; <span class="variable">$i</span> += <span class="variable">$step</span>) {</span><br><span class="line">        <span class="keyword">yield</span> <span class="variable">$i</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">foreach</span> (xrange(<span class="number">1</span>, <span class="number">1000000</span>) <span class="keyword">as</span> <span class="variable">$i</span>) { <span class="comment">/* ... */</span> }</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>性能</strong>：生成器不是免费的。每个生成器对象都有固定开销，<strong>数据量小的时候”包一层生成器”反而比直接返回数组慢</strong>。结论：</p>
+<ul>
+<li>数据量大 / 流式 / 需要惰性 → 用生成器，收益巨大；</li>
+<li>几十几百条的小数组 → 直接返回数组，别为了”看起来高级”包生成器。</li>
+</ul>
+<h3 id="1-7-特性清单与常见坑"><a href="#1-7-特性清单与常见坑" class="headerlink" title="1.7 特性清单与常见坑"></a>1.7 特性清单与常见坑</h3><p><strong>特性</strong></p>
+<ol>
+<li><code>yield</code> 只能写在函数体内（含匿名函数），不能出现在全局作用域。</li>
+<li>函数体内出现 <code>yield</code>，该函数<strong>永远返回 <code>Generator</code></strong>，不论有没有 <code>return</code>。</li>
+<li><code>Generator</code> 实现了 <code>Iterator</code>；但它和普通对象一样能被 <code>foreach</code> 是因为这个接口，而不是”对象魔法”。</li>
+<li>生成器<strong>不能被 clone</strong>（<code>Generator</code> 是 uncloneable）。</li>
+<li>生成器<strong>只能被完整消费一次</strong>。</li>
+</ol>
+<p><strong>坑</strong></p>
+<ol>
+<li><strong>不能重复遍历</strong>。已推进过的生成器再 <code>rewind()</code> → <code>Exception: Cannot rewind a generator that was already run</code>；已结束时再 <code>foreach</code> → <code>Cannot traverse an already closed generator</code>。需要多次遍历就重新调用生成器函数。</li>
+<li><strong>第一个 <code>yield</code> 与 <code>send()</code> 的关系</strong>：生成器尚未启动时调用 <code>send()</code>，PHP 会先隐式推进到第一个 <code>yield</code>，<strong>这次传入的值会被丢弃</strong>。要拿到第一个值，用 <code>current()</code> / <code>rewind()</code>。（协程调度器里必须专门处理这一点，见 2.5 的 <code>beforeFirstYield</code> 标志。）</li>
+<li><strong><code>current()</code> / <code>foreach</code> 会自动 rewind</strong>，所以别在 <code>foreach</code> 前手动 <code>rewind()</code> 生成器；但注意 <code>foreach</code> 结束后不要指望迭代器还停在可用状态。</li>
+<li><strong><code>iterator_to_array($gen)</code> 默认保留键</strong>，生成器里 <code>yield $k =&gt; $v</code> 出现重复 <code>$k</code> 时会互相覆盖。要按顺序全部收集，传第二参 <code>false</code>：<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$all</span> = iterator_to_array(<span class="variable">$gen</span>, <span class="literal">false</span>);</span><br></pre></td></tr></tbody></table></figure></li>
+<li><strong>不能用 <code>count()</code> 计数</strong>，但可以 <code>iterator_count($gen)</code>（注意：它会<strong>跑完</strong>生成器）。</li>
+<li><strong>不能随机访问、不能 <code>array_map</code> 传生成器</strong>，需要先 <code>iterator_to_array</code>。</li>
+<li><strong><code>yield</code> 表达式两侧的括号</strong>：PHP 5.x 必须写 <code>$x = (yield $v);</code>，PHP 7+ 可以省略。写 PHP 7 代码时建议<strong>不省略，可读性更好也避免优先级意外</strong>。</li>
+<li><strong>想通过 yield 传出引用</strong>，函数声明要带 <code>&amp;</code>（<code>function &amp;gen()</code>），极少用，遇到再查。</li>
+<li><code>Generator</code> 也是 <code>Traversable</code> 的一种，所以类型提示写 <code>iterable</code> 能同时接受数组和生成器 —— 写库函数时优先用 <code>iterable</code>。</li>
+</ol>
+<hr>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><h3 id="2-1-惰性序列：无限序列-斐波那契"><a href="#2-1-惰性序列：无限序列-斐波那契" class="headerlink" title="2.1 惰性序列：无限序列 / 斐波那契"></a>2.1 惰性序列：无限序列 / 斐波那契</h3><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params"></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    [<span class="variable">$a</span>, <span class="variable">$b</span>] = [<span class="number">0</span>, <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) {          <span class="comment">// 无限序列，安全</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="variable">$a</span>;</span><br><span class="line">        [<span class="variable">$a</span>, <span class="variable">$b</span>] = [<span class="variable">$b</span>, <span class="variable">$a</span> + <span class="variable">$b</span>];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (fib() <span class="keyword">as</span> <span class="variable">$n</span>) {</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$n</span> &gt; <span class="number">100</span>) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$n</span> . <span class="string">' '</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-2-数据流水线：map-filter-take-组合"><a href="#2-2-数据流水线：map-filter-take-组合" class="headerlink" title="2.2 数据流水线：map / filter / take 组合"></a>2.2 数据流水线：map / filter / take 组合</h3><p>生成器天然适合做”管道”，每一节都是惰性的，中间不会产生临时大数组。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params"><span class="keyword">iterable</span> <span class="variable">$items</span>, <span class="keyword">callable</span> <span class="variable">$fn</span></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$k</span> =&gt; <span class="variable">$v</span>) {</span><br><span class="line">        <span class="keyword">yield</span> <span class="variable">$k</span> =&gt; <span class="variable">$fn</span>(<span class="variable">$v</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params"><span class="keyword">iterable</span> <span class="variable">$items</span>, <span class="keyword">callable</span> <span class="variable">$fn</span></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$k</span> =&gt; <span class="variable">$v</span>) {</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$fn</span>(<span class="variable">$v</span>)) {</span><br><span class="line">            <span class="keyword">yield</span> <span class="variable">$k</span> =&gt; <span class="variable">$v</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">take</span>(<span class="params"><span class="keyword">iterable</span> <span class="variable">$items</span>, <span class="keyword">int</span> <span class="variable">$n</span></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$i</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$k</span> =&gt; <span class="variable">$v</span>) {</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$i</span>++ &gt;= <span class="variable">$n</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">yield</span> <span class="variable">$k</span> =&gt; <span class="variable">$v</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$result</span> = take(</span><br><span class="line">    filter(</span><br><span class="line">        map(range(<span class="number">1</span>, <span class="number">1000000</span>), <span class="function"><span class="keyword">fn</span>(<span class="params"><span class="variable">$n</span></span>) =&gt;</span> <span class="variable">$n</span> * <span class="number">2</span>),</span><br><span class="line">        <span class="function"><span class="keyword">fn</span>(<span class="params"><span class="variable">$n</span></span>) =&gt;</span> <span class="variable">$n</span> % <span class="number">3</span> === <span class="number">0</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="number">5</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$result</span> <span class="keyword">as</span> <span class="variable">$v</span>) { <span class="keyword">echo</span> <span class="variable">$v</span> . <span class="string">' '</span>; } <span class="comment">// 6 12 18 24 30 —— 只计算了前若干个</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-大数据集流式处理：百万行导出-日志分析"><a href="#2-3-大数据集流式处理：百万行导出-日志分析" class="headerlink" title="2.3 大数据集流式处理：百万行导出 / 日志分析"></a>2.3 大数据集流式处理：百万行导出 / 日志分析</h3><p>这是生成器最”值钱”的场景 —— 把内存占用从 O(N) 压到 O(1)。</p>
+<p><strong>流式读 CSV / 日志</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readLines</span>(<span class="params"><span class="keyword">string</span> <span class="variable">$path</span></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$handle</span> = fopen(<span class="variable">$path</span>, <span class="string">'r'</span>);</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="keyword">while</span> ((<span class="variable">$line</span> = fgets(<span class="variable">$handle</span>)) !== <span class="literal">false</span>) {</span><br><span class="line">            <span class="keyword">yield</span> <span class="variable">$line</span>;</span><br><span class="line">        }</span><br><span class="line">    } <span class="keyword">finally</span> {</span><br><span class="line">        fclose(<span class="variable">$handle</span>);   <span class="comment">// 消费方提前 break 也能正确释放</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$errCount</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">foreach</span> (readLines(<span class="string">'/var/log/app.log'</span>) <span class="keyword">as</span> <span class="variable">$line</span>) {</span><br><span class="line">    <span class="keyword">if</span> (str_contains(<span class="variable">$line</span>, <span class="string">'[error]'</span>)) {</span><br><span class="line">        <span class="variable">$errCount</span>++;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（也可以直接用 <code>SplFileObject</code>，它本身就是 <code>Iterator</code>，见 SPL 笔记 2.5。）</p>
+<p><strong>流式导出百万行 CSV，内存恒定</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exportRows</span>(<span class="params">PDO <span class="variable">$pdo</span>, <span class="keyword">int</span> <span class="variable">$pageSize</span> = <span class="number">1000</span></span>): <span class="title">Generator</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$offset</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="variable">$stmt</span> = <span class="variable">$pdo</span>-&gt;prepare(<span class="string">'SELECT id, name, amount FROM orders ORDER BY id LIMIT :limit OFFSET :offset'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) {</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;bindValue(<span class="string">':limit'</span>, <span class="variable">$pageSize</span>, PDO::PARAM_INT);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;bindValue(<span class="string">':offset'</span>, <span class="variable">$offset</span>, PDO::PARAM_INT);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;execute();</span><br><span class="line"></span><br><span class="line">        <span class="variable">$rows</span> = <span class="variable">$stmt</span>-&gt;fetchAll(PDO::FETCH_ASSOC);</span><br><span class="line">        <span class="keyword">if</span> (!<span class="variable">$rows</span>) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$rows</span> <span class="keyword">as</span> <span class="variable">$row</span>) {</span><br><span class="line">            <span class="keyword">yield</span> <span class="variable">$row</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="variable">$offset</span> += <span class="variable">$pageSize</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">header(<span class="string">'Content-Type: text/csv'</span>);</span><br><span class="line"><span class="variable">$out</span> = fopen(<span class="string">'php://output'</span>, <span class="string">'w'</span>);</span><br><span class="line"><span class="keyword">foreach</span> (exportRows(<span class="variable">$pdo</span>) <span class="keyword">as</span> <span class="variable">$row</span>) {</span><br><span class="line">    fputcsv(<span class="variable">$out</span>, <span class="variable">$row</span>);   <span class="comment">// 边查边写，内存不随行数增长</span></span><br><span class="line">}</span><br><span class="line">fclose(<span class="variable">$out</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>关键点：<code>yield</code> 让”查库”和”写文件”交替进行，而不是先把全部数据 <code>fetchAll</code> 出来。</p>
+</blockquote>
+<h3 id="2-4-数据库惰性游标（Laravel-场景）"><a href="#2-4-数据库惰性游标（Laravel-场景）" class="headerlink" title="2.4 数据库惰性游标（Laravel 场景）"></a>2.4 数据库惰性游标（Laravel 场景）</h3><p>Laravel 的 <code>cursor()</code> / <code>lazy()</code> 就是基于生成器的惰性查询；自己写库时同理：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一次性取回，内存随行数增长</span></span><br><span class="line"><span class="keyword">foreach</span> (Order::where(<span class="string">'status'</span>, <span class="number">1</span>)-&gt;get() <span class="keyword">as</span> <span class="variable">$order</span>) { <span class="comment">/* ... */</span> }</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成器式游标：逐行取，内存恒定</span></span><br><span class="line"><span class="keyword">foreach</span> (Order::where(<span class="string">'status'</span>, <span class="number">1</span>)-&gt;cursor() <span class="keyword">as</span> <span class="variable">$order</span>) { <span class="comment">/* ... */</span> }</span><br></pre></td></tr></tbody></table></figure>
+
+<p>注意：<code>cursor()</code> 期间不能在同一连接上再执行其它查询（会与未消费的结果集冲突），需要另开连接。</p>
+<h3 id="2-5-协程：用-yield-实现协作式多任务调度"><a href="#2-5-协程：用-yield-实现协作式多任务调度" class="headerlink" title="2.5 协程：用 yield 实现协作式多任务调度"></a>2.5 协程：用 yield 实现协作式多任务调度</h3><p>这是 yield 的”高阶用法”，也是鸟哥那篇《在 PHP 中使用协程实现多任务调度》的核心。</p>
+<p><strong>思路</strong>：把 <code>yield</code> 当成任务的”交出控制权”指令。每个生成器是一个任务，调度器负责轮流推进它们。</p>
+<p><strong>第一步：Task —— 包装一个生成器</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> <span class="variable">$taskId</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="built_in">Generator</span> <span class="variable">$coroutine</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">mixed</span> <span class="variable">$sendValue</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">bool</span> <span class="variable">$beforeFirstYield</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="keyword">int</span> <span class="variable">$taskId</span>, <span class="built_in">Generator</span> <span class="variable">$coroutine</span></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">$this</span>-&gt;taskId = <span class="variable">$taskId</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;coroutine = <span class="variable">$coroutine</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getTaskId</span>(<span class="params"></span>): <span class="title">int</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;taskId;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setSendValue</span>(<span class="params"><span class="keyword">mixed</span> <span class="variable">$sendValue</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sendValue = <span class="variable">$sendValue</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>): <span class="title">mixed</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="comment">// 第一次不能 send（值会被丢弃），必须用 current 取首个 yield 的值</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;beforeFirstYield) {</span><br><span class="line">            <span class="keyword">$this</span>-&gt;beforeFirstYield = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;coroutine-&gt;current();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="variable">$retval</span> = <span class="keyword">$this</span>-&gt;coroutine-&gt;send(<span class="keyword">$this</span>-&gt;sendValue);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sendValue = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$retval</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">isFinished</span>(<span class="params"></span>): <span class="title">bool</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> !<span class="keyword">$this</span>-&gt;coroutine-&gt;valid();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>第二步：Scheduler —— 用队列轮转</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Scheduler</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> <span class="variable">$maxTaskId</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">array</span> <span class="variable">$taskMap</span> = [];      <span class="comment">// taskId =&gt; Task</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="built_in">SplQueue</span> <span class="variable">$taskQueue</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">$this</span>-&gt;taskQueue = <span class="keyword">new</span> <span class="built_in">SplQueue</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">newTask</span>(<span class="params"><span class="built_in">Generator</span> <span class="variable">$coroutine</span></span>): <span class="title">int</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="variable">$tid</span> = ++<span class="keyword">$this</span>-&gt;maxTaskId;</span><br><span class="line">        <span class="variable">$task</span> = <span class="keyword">new</span> Task(<span class="variable">$tid</span>, <span class="variable">$coroutine</span>);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;taskMap[<span class="variable">$tid</span>] = <span class="variable">$task</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;schedule(<span class="variable">$task</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$tid</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">schedule</span>(<span class="params">Task <span class="variable">$task</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">$this</span>-&gt;taskQueue-&gt;enqueue(<span class="variable">$task</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">killTask</span>(<span class="params"><span class="keyword">int</span> <span class="variable">$tid</span></span>): <span class="title">bool</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;taskMap[<span class="variable">$tid</span>])) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;taskMap[<span class="variable">$tid</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;taskQueue <span class="keyword">as</span> <span class="variable">$i</span> =&gt; <span class="variable">$task</span>) {</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$task</span>-&gt;getTaskId() === <span class="variable">$tid</span>) {</span><br><span class="line">                <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;taskQueue[<span class="variable">$i</span>]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">while</span> (!<span class="keyword">$this</span>-&gt;taskQueue-&gt;isEmpty()) {</span><br><span class="line">            <span class="variable">$task</span> = <span class="keyword">$this</span>-&gt;taskQueue-&gt;dequeue();</span><br><span class="line">            <span class="variable">$task</span>-&gt;run();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$task</span>-&gt;isFinished()) {</span><br><span class="line">                <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;taskMap[<span class="variable">$task</span>-&gt;getTaskId()]);</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                <span class="keyword">$this</span>-&gt;schedule(<span class="variable">$task</span>);   <span class="comment">// 没结束就排回队尾，实现轮转</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>第三步：跑起来 —— 两个任务交替打印</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">task1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">1</span>; <span class="variable">$i</span> &lt;= <span class="number">3</span>; ++<span class="variable">$i</span>) {</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"This is task 1 iteration <span class="subst">$i</span>.\n"</span>;</span><br><span class="line">        <span class="keyword">yield</span>;                      <span class="comment">// 主动让出控制权</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">task2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">1</span>; <span class="variable">$i</span> &lt;= <span class="number">3</span>; ++<span class="variable">$i</span>) {</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"This is task 2 iteration <span class="subst">$i</span>.\n"</span>;</span><br><span class="line">        <span class="keyword">yield</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$scheduler</span> = <span class="keyword">new</span> Scheduler();</span><br><span class="line"><span class="variable">$scheduler</span>-&gt;newTask(task1());</span><br><span class="line"><span class="variable">$scheduler</span>-&gt;newTask(task2());</span><br><span class="line"><span class="variable">$scheduler</span>-&gt;run();</span><br></pre></td></tr></tbody></table></figure>
+
+<p>输出是严格交替的：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">This is task 1 iteration 1.</span><br><span class="line">This is task 2 iteration 1.</span><br><span class="line">This is task 1 iteration 2.</span><br><span class="line">This is task 2 iteration 2.</span><br><span class="line">This is task 1 iteration 3.</span><br><span class="line">This is task 2 iteration 3.</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>第四步：SystemCall —— 让协程能”调用系统”</strong></p>
+<p>任务光会”让出”还不够，要能读到下一轮被唤醒时调度器回传的数据。做法是：任务 yield 一个<strong>可调用对象</strong>，调度器识别到它不是普通值，就执行它，由它决定 <code>setSendValue()</code> 什么、以及是否立刻重新入队。</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SystemCall</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$callback</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="keyword">callable</span> <span class="variable">$callback</span></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">$this</span>-&gt;callback = <span class="variable">$callback</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params">Task <span class="variable">$task</span>, Scheduler <span class="variable">$scheduler</span></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">$this</span>-&gt;callback)(<span class="variable">$task</span>, <span class="variable">$scheduler</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTaskId</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SystemCall(<span class="function"><span class="keyword">function</span> (<span class="params">Task <span class="variable">$task</span>, Scheduler <span class="variable">$scheduler</span></span>) </span>{</span><br><span class="line">        <span class="variable">$task</span>-&gt;setSendValue(<span class="variable">$task</span>-&gt;getTaskId());</span><br><span class="line">        <span class="variable">$scheduler</span>-&gt;schedule(<span class="variable">$task</span>);</span><br><span class="line">    });</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newTask</span>(<span class="params"><span class="built_in">Generator</span> <span class="variable">$coroutine</span></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SystemCall(<span class="function"><span class="keyword">function</span> (<span class="params">Task <span class="variable">$task</span>, Scheduler <span class="variable">$scheduler</span></span>) <span class="keyword">use</span> (<span class="params"><span class="variable">$coroutine</span></span>) </span>{</span><br><span class="line">        <span class="variable">$task</span>-&gt;setSendValue(<span class="variable">$scheduler</span>-&gt;newTask(<span class="variable">$coroutine</span>));</span><br><span class="line">        <span class="variable">$scheduler</span>-&gt;schedule(<span class="variable">$task</span>);</span><br><span class="line">    });</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对应的 <code>run()</code> 里要加分流：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$retval</span> = <span class="variable">$task</span>-&gt;run();</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$retval</span> <span class="keyword">instanceof</span> SystemCall) {</span><br><span class="line">    <span class="variable">$retval</span>(<span class="variable">$task</span>, <span class="keyword">$this</span>);   <span class="comment">// 交给 SystemCall 自己处理，是否重新入队由它决定</span></span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>任务里就能像写同步代码一样”取任务号”：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">task3</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$tid</span> = <span class="keyword">yield</span> getTaskId();     <span class="comment">// 从调度器拿回自己的 id</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"My task id is <span class="subst">{$tid}</span>\n"</span>;</span><br><span class="line">    <span class="variable">$child</span> = <span class="keyword">yield</span> newTask(task1()); <span class="comment">// 动态创建子任务</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"Created task <span class="subst">{$child}</span>\n"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>第五步：非阻塞 IO —— 协程真正的用武之地</strong></p>
+<p>把”等待 socket 可读”也做成一次 SystemCall：任务 yield <code>waitForRead($socket)</code>，调度器把它登记到等待表里，然后在主循环用 <code>stream_select()</code> 统一阻塞等待，谁就绪就把谁重新入队。这样：</p>
+<ul>
+<li>代码写法是同步的（<code>yield waitForRead($socket); $data = fread(...)</code>）；</li>
+<li>底层是异步的（一个进程处理多个连接，不阻塞）。</li>
+</ul>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">ioPoll</span>(<span class="params">?<span class="keyword">int</span> <span class="variable">$timeout</span></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="variable">$rSocks</span> = [];</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;waitingForRead <span class="keyword">as</span> [<span class="variable">$socket</span>]) {</span><br><span class="line">        <span class="variable">$rSocks</span>[] = <span class="variable">$socket</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="variable">$wSocks</span> = [];</span><br><span class="line">    <span class="variable">$eSocks</span> = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!stream_select(<span class="variable">$rSocks</span>, <span class="variable">$wSocks</span>, <span class="variable">$eSocks</span>, <span class="variable">$timeout</span>)) {</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$rSocks</span> <span class="keyword">as</span> <span class="variable">$socket</span>) {</span><br><span class="line">        [, <span class="variable">$tasks</span>] = <span class="keyword">$this</span>-&gt;waitingForRead[(<span class="keyword">int</span>) <span class="variable">$socket</span>];</span><br><span class="line">        <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;waitingForRead[(<span class="keyword">int</span>) <span class="variable">$socket</span>]);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$tasks</span> <span class="keyword">as</span> <span class="variable">$task</span>) {</span><br><span class="line">            <span class="keyword">$this</span>-&gt;schedule(<span class="variable">$task</span>);   <span class="comment">// 就绪的任务重新入队</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>配合一个”轮询任务”，在队列空闲时用 null 超时阻塞、队列非空时用 0 超时尽快返回。</p>
+<p><strong>这里就是 PHP 8 的 Fiber 想解决的问题</strong>：上面的调度器需要把「让出点」写进业务代码（每个 <code>yield</code> 都是一个手动让出点），调度器一复杂就难以维护 —— 鸟哥的原话是”<strong>在令人敬畏的代码和一大堆乱代码之间只有一线之隔</strong>“。</p>
+<h3 id="2-6-补充：yield-做错误处理与异常注入"><a href="#2-6-补充：yield-做错误处理与异常注入" class="headerlink" title="2.6 补充：yield 做错误处理与异常注入"></a>2.6 补充：yield 做错误处理与异常注入</h3><p>生成器内部可以 <code>try/catch</code>，外部可以通过 <code>Generator::throw()</code> 在暂停点抛异常进去：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"Foo\n"</span>;</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="keyword">yield</span>;</span><br><span class="line">    } <span class="keyword">catch</span> (<span class="built_in">Exception</span> <span class="variable">$e</span>) {</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Exception: <span class="subst">{$e-&gt;getMessage()}</span>\n"</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"Bar\n"</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$gen</span> = gen();</span><br><span class="line"><span class="variable">$gen</span>-&gt;rewind();</span><br><span class="line"><span class="variable">$gen</span>-&gt;throw(<span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">'Test'</span>));</span><br><span class="line"><span class="comment">// Foo / Exception: Test / Bar</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是”协程内错误可被捕获”的基础，调度器配合它才能把异常优雅地抛回任务内部。</p>
+<h3 id="2-7-什么时候别用"><a href="#2-7-什么时候别用" class="headerlink" title="2.7 什么时候别用"></a>2.7 什么时候别用</h3><ul>
+<li>小数据量、需要多次遍历、需要随机访问 → 用数组。</li>
+<li>需要并行/并发真正提速 → 生成器是<strong>协作式单线程</strong>，不会让 CPU 密集任务变快，只在 IO 等待场景有意义（或上 <code>Fiber</code> / Swoole）。</li>
+<li>逻辑简单的一次性转换 → 直接 <code>array_map</code> / <code>array_filter</code>，少一层心智负担。</li>
+</ul>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lynxcat/p/7954456.html">参考一</a> —— PHP yield 分析，以及协程的实现（超详细版），重点：Iterator 遍历时序、yield 八大特性、send 双向通信</li>
+<li><a target="_blank" rel="noopener" href="https://www.laruence.com/2015/05/28/3038.html">参考二</a> —— 在 PHP 中使用协程实现多任务调度（鸟哥），重点：Task / Scheduler / SystemCall / CoroutineReturnValue / 非阻塞 IO</li>
+<li><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.generators.php">PHP 官方手册 - 生成器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/class.generator.php">PHP 官方手册 - Generator 类</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.fibers.php">PHP 官方手册 - 协程（Fiber）</a> —— PHP 8.1+ 的原生协程，是上面手写调度器的”官方答案”</li>
 </ol>
 <hr>
 <h1 id="预定义接口"><a href="#预定义接口" class="headerlink" title="预定义接口"></a><center><font color="red">预定义接口</font></center></h1><hr>
@@ -819,7 +1404,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SPL"><span class="nav-number">1.</span> <span class="nav-text">SPL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yield"><span class="nav-number">2.</span> <span class="nav-text">yield</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">预定义接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E6%9C%9F%E9%9D%99%E6%80%81%E7%BB%91%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">后期静态绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BE%8B%E5%AD%90"><span class="nav-number">4.2.</span> <span class="nav-text">二、例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84"><span class="nav-number">5.1.</span> <span class="nav-text">一、核心结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.2.</span> <span class="nav-text">二、生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5"><span class="nav-number">5.3.</span> <span class="nav-text">三、一些概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81PHP-FPM%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.4.</span> <span class="nav-text">四、PHP-FPM详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">5.5.</span> <span class="nav-text">五、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">6.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">变量和内存的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">一、内存结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">二、测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">数组实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-3"><span class="nav-number">8.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.2.</span> <span class="nav-text">二、实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E4%BC%98"><span class="nav-number">9.</span> <span class="nav-text">调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%AA%E7%8E%AF%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">9.1.</span> <span class="nav-text">一、循环查询数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3%E4%BC%98%E5%8C%96"><span class="nav-number">9.2.</span> <span class="nav-text">二、接口优化</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SPL"><span class="nav-number">1.</span> <span class="nav-text">SPL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%BC%82%E5%B8%B8"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 文件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9D%82%E9%A1%B9"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 函数与杂项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 常见坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yield"><span class="nav-number">2.</span> <span class="nav-text">yield</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-yield-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 yield 是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Generator-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0-Iterator-%E7%9A%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 Generator 是怎么实现 Iterator 的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-yield-%E6%98%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E4%B8%8D%E6%98%AF%E8%AF%AD%E5%8F%A5-%E2%80%94%E2%80%94-%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 yield 是表达式，不是语句 —— 双向通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-return-%E4%B8%8E-getReturn"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 return 与 getReturn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-yield-from%EF%BC%88PHP-7-0-%EF%BC%89"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 yield from（PHP 7.0+）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E5%86%85%E5%AD%98%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.6 内存与性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E7%89%B9%E6%80%A7%E6%B8%85%E5%8D%95%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="nav-number">2.1.7.</span> <span class="nav-text">1.7 特性清单与常见坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.2.</span> <span class="nav-text">二、实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%83%B0%E6%80%A7%E5%BA%8F%E5%88%97%EF%BC%9A%E6%97%A0%E9%99%90%E5%BA%8F%E5%88%97-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 惰性序列：无限序列 &#x2F; 斐波那契</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E6%B5%81%E6%B0%B4%E7%BA%BF%EF%BC%9Amap-filter-take-%E7%BB%84%E5%90%88"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 数据流水线：map &#x2F; filter &#x2F; take 组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%EF%BC%9A%E7%99%BE%E4%B8%87%E8%A1%8C%E5%AF%BC%E5%87%BA-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 大数据集流式处理：百万行导出 &#x2F; 日志分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B0%E6%80%A7%E6%B8%B8%E6%A0%87%EF%BC%88Laravel-%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 数据库惰性游标（Laravel 场景）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%8D%8F%E7%A8%8B%EF%BC%9A%E7%94%A8-yield-%E5%AE%9E%E7%8E%B0%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.5 协程：用 yield 实现协作式多任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%A1%A5%E5%85%85%EF%BC%9Ayield-%E5%81%9A%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E5%BC%82%E5%B8%B8%E6%B3%A8%E5%85%A5"><span class="nav-number">2.2.6.</span> <span class="nav-text">2.6 补充：yield 做错误处理与异常注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%AB%E7%94%A8"><span class="nav-number">2.2.7.</span> <span class="nav-text">2.7 什么时候别用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">预定义接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E6%9C%9F%E9%9D%99%E6%80%81%E7%BB%91%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">后期静态绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BE%8B%E5%AD%90"><span class="nav-number">4.2.</span> <span class="nav-text">二、例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84"><span class="nav-number">5.1.</span> <span class="nav-text">一、核心结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.2.</span> <span class="nav-text">二、生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5"><span class="nav-number">5.3.</span> <span class="nav-text">三、一些概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81PHP-FPM%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.4.</span> <span class="nav-text">四、PHP-FPM详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">5.5.</span> <span class="nav-text">五、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">6.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">变量和内存的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">一、内存结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">二、测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">数组实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-3"><span class="nav-number">8.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.2.</span> <span class="nav-text">二、实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E4%BC%98"><span class="nav-number">9.</span> <span class="nav-text">调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%AA%E7%8E%AF%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">9.1.</span> <span class="nav-text">一、循环查询数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3%E4%BC%98%E5%8C%96"><span class="nav-number">9.2.</span> <span class="nav-text">二、接口优化</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -941,12 +1526,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">966k</span>
+    <span title="站点总字数">974k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:38</span>
+    <span title="站点阅读时长">14:45</span>
 </div>
 
         
