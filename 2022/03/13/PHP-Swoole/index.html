@@ -149,7 +149,7 @@
 <meta property="og:description" content="胜，不妄喜；败，不遑馁；胸有激雷而面如平湖者，可拜上将军。 —— 春秋战国·孙武 《孙子兵法》">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-13T10:21:10.000Z">
-<meta property="article:modified_time" content="2026-10-14T06:25:51.100Z">
+<meta property="article:modified_time" content="2026-10-15T10:13:40.229Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="PHP">
 <meta property="article:tag" content="Swoole">
@@ -373,13 +373,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>937</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -451,6 +451,138 @@
 <li><a target="_blank" rel="noopener" href="https://www.bbsmax.com/A/gAJGrEPbzZ/">参考二</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac77f05bee56">参考三</a></li>
 </ol>
+<hr>
+<h1 id="Swoole版本对比"><a href="#Swoole版本对比" class="headerlink" title="Swoole版本对比"></a><center><font color="red">Swoole版本对比</font></center></h1><h2 id="一、版本总览表"><a href="#一、版本总览表" class="headerlink" title="一、版本总览表"></a>一、版本总览表</h2><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>最低 PHP</th>
+<th>核心定位</th>
+<th>重大特性</th>
+<th>破坏性变更</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Swoole 1.x</td>
+<td>PHP5.3~7.0</td>
+<td>异步回调时代</td>
+<td>基础 Server(TCP/HTTP/WebSocket)、异步回调、Task、Timer、Table</td>
+<td>无协程，全回调编程</td>
+<td>老项目、传统异步服务，<strong>现已淘汰</strong></td>
+</tr>
+<tr>
+<td>Swoole 2.x</td>
+<td>PHP7.0+</td>
+<td>协程诞生</td>
+<td>引入 <strong>C 栈协程</strong>，<code>go()</code> 关键字，协程 TCP 客户端</td>
+<td>协程仅客户端，Server 还是回调；API 不稳定</td>
+<td>早期协程尝鲜，<strong>不推荐生产</strong></td>
+</tr>
+<tr>
+<td>Swoole 4.x</td>
+<td>PHP7.1~8.1</td>
+<td><strong>协程黄金版（生产最广泛）</strong></td>
+<td>1. 全协程 Server：Http/Http2/WebSocket/TCP 都支持协程<br>2. 一键协程化 <code>Swoole\Runtime::enableCoroutine()</code><br>3. 协程 MySQL/Redis/PostgreSQL 客户端、协程文件、协程 DNS<br>4. ProcessPool、多 Reactor 线程、max_concurrency、协程取消 Co::cancel<br>5. Swoole\Table 增强</td>
+<td>4.0 起不再支持 PHP5；4.7 Table 不再支持数组式访问 <code>$table[$key]</code></td>
+<td>Hyperf、EasySwoole 等主流框架；绝大多数线上业务，<strong>存量主力</strong></td>
+</tr>
+<tr>
+<td>Swoole 5.x</td>
+<td>PHP8.1+</td>
+<td>精简重构版</td>
+<td>1. 强类型声明，全 API 参数返回值类型<br>2. swoole-cli 独立二进制（无需系统 PHP）<br>3. 协程性能优化、内存优化<br>4. 支持 io_uring</td>
+<td><strong>重大移除</strong>：删除内置协程 MySQL/Redis/PostgreSQL 客户端，不再维护；废弃大量旧 API；移除旧异步回调客户端；不再支持 PHP7</td>
+<td>新项目，愿意使用原生 PDO/Redis 扩展 + Runtime 协程化；需要独立 swoole-cli</td>
+</tr>
+<tr>
+<td>Swoole 6.x</td>
+<td>PHP8.2~8.4</td>
+<td>现代化新版本</td>
+<td>1. 原生 Fiber 支持（PHP8.1+ zend fiber）<br>2. io_uring 成熟、多线程池重构<br>3. 完善协程调试、异常链路优化<br>4. 更好 PHP8 新特性兼容</td>
+<td>继续清理遗留旧 API，逐步弱化 C 栈协程，主推 PHP Fiber</td>
+<td>新项目、追求 PHP 原生特性、io_uring 高性能场景</td>
+</tr>
+</tbody></table>
+<h2 id="二、分版本详细核心升级-amp-区别"><a href="#二、分版本详细核心升级-amp-区别" class="headerlink" title="二、分版本详细核心升级 &amp; 区别"></a>二、分版本详细核心升级 &amp; 区别</h2><h3 id="✅-Swoole-1-x（回调时代，古董）"><a href="#✅-Swoole-1-x（回调时代，古董）" class="headerlink" title="✅ Swoole 1.x（回调时代，古董）"></a>✅ Swoole 1.x（回调时代，古董）</h3><ul>
+<li><strong>编程模型</strong>：事件回调，没有协程，写代码是 <code>onReceive/onRequest</code> 回调，遇到 IO 必须异步非阻塞。</li>
+<li><strong>能力</strong>：TCP/UDP/HTTP/WebSocket 服务器、Task 异步任务、毫秒定时器、Swoole\Table 共享内存。</li>
+<li><strong>痛点</strong>：回调地狱，代码难维护；阻塞 IO 直接卡死 Reactor；PHP 版本老旧。</li>
+</ul>
+<blockquote>
+<p>一句话：<strong>没有协程的 Swoole</strong>，现在几乎没人用。</p>
+</blockquote>
+<h3 id="✅-Swoole-2-x：协程初试"><a href="#✅-Swoole-2-x：协程初试" class="headerlink" title="✅ Swoole 2.x：协程初试"></a>✅ Swoole 2.x：协程初试</h3><ul>
+<li><strong>里程碑</strong>：<strong>首次引入协程（ucontext C 栈协程）</strong>，<code>go(function(){})</code>。</li>
+<li><strong>限制</strong>：<strong>Server 本身仍然是回调模式</strong>，协程只可以在回调内部创建，只能用协程 TCP 客户端；没有一键协程化。</li>
+<li><strong>坑</strong>：协程生态不全，不稳定，很多阻塞函数无法挂起。</li>
+</ul>
+<blockquote>
+<p>一句话：协程客户端可用，Server 不能全协程，属于过渡版本。</p>
+</blockquote>
+<h3 id="✅-Swoole-4-x（最重要，生产首选）"><a href="#✅-Swoole-4-x（最重要，生产首选）" class="headerlink" title="✅ Swoole 4.x（最重要，生产首选）"></a>✅ Swoole 4.x（最重要，生产首选）</h3><blockquote>
+<p>分水岭版本，<strong>PHP 协程生态成熟</strong>，Hyperf、EasySwoole、Mix 所有主流 Swoole 框架基于 4.4~4.8</p>
+</blockquote>
+<ol>
+<li><strong>全协程服务器</strong>：HttpServer 可以直接在 <code>onRequest</code> 里写同步风格代码，底层自动协程调度，告别回调地狱。</li>
+<li><strong>Runtime 一键协程化</strong> <code>Swoole\Runtime::enableCoroutine()</code>：原生 <code>file_get_contents</code>、PDO、mysqli、stream 全部自动变成协程非阻塞，不用改业务代码。</li>
+<li>内置全套协程客户端：<code>Swoole\Coroutine\MySQL / Redis / PostgreSQL</code>，高性能。</li>
+<li>新组件：ProcessPool、连接池配套能力、Http2、WebSocket 协程、协程 DNS、协程文件读写。</li>
+<li><strong>4.7 关键变更</strong>：Swoole\Table <strong>不能再用数组写法 <code>$table['key']</code></strong>，只能用 <code>get/set</code>；新增 <code>Co::cancel()</code> 协程取消。</li>
+<li><strong>4.8</strong>：SSL 握手协程化，解决 TLS 握手阻塞 Reactor 问题。</li>
+</ol>
+<p><strong>4.x 内部小版本差异</strong></p>
+<ul>
+<li>4.0：协程 HttpServer 正式稳定</li>
+<li>4.4：Runtime 一键协程化稳定，Hyperf 起点版本</li>
+<li>4.6：支持 PHP8</li>
+<li>4.7：Table 数组访问废弃、协程取消</li>
+<li>4.8：TLS 协程化、大量稳定性修复，<strong>4.8 是 4.x 系列最终稳定推荐版</strong></li>
+</ul>
+<blockquote>
+<p>一句话：4.x = 协程能力最强、生态最完善、文档/案例最多；缺点：内置协程客户端在 5.0 被砍掉。</p>
+</blockquote>
+<h3 id="✅-Swoole-5-x：破坏性精简重构"><a href="#✅-Swoole-5-x：破坏性精简重构" class="headerlink" title="✅ Swoole 5.x：破坏性精简重构"></a>✅ Swoole 5.x：破坏性精简重构</h3><p>设计理念：<strong>不再维护自研数据库协程客户端，交给 PHP 原生扩展 + Runtime 协程化</strong></p>
+<ol>
+<li>移除：<code>Swoole\Coroutine\MySQL、Redis、PostgreSQL</code> 内置协程客户端（重大 break change！）<blockquote>
+<p>业务改用原生 pdo/redis 扩展 + Runtime 自动协程化</p>
+</blockquote>
+</li>
+<li>强类型：所有 API 增加严格参数/返回值类型，PHP8 强类型体系对齐</li>
+<li>swoole-cli：独立静态二进制，打包 PHP+Swoole，<strong>不依赖宿主机 PHP 环境</strong>，部署很方便</li>
+<li>内核优化：内存泄漏修复、协程栈优化、支持 io_uring</li>
+<li>最低 PHP 8.1，彻底砍掉 PHP7 支持</li>
+</ol>
+<blockquote>
+<p><strong>升级大坑</strong>：4.x 业务如果大量直接使用 <code>Coroutine\Redis/MySQL</code>，迁移 5.x 必须改代码，重写连接池。</p>
+</blockquote>
+<h3 id="✅-Swoole-6-x：Fiber-时代"><a href="#✅-Swoole-6-x：Fiber-时代" class="headerlink" title="✅ Swoole 6.x：Fiber 时代"></a>✅ Swoole 6.x：Fiber 时代</h3><ol>
+<li>支持 PHP 原生 <code>Zend Fiber</code> 作为协程后端（替代老的 ucontext C 栈协程），可以自由切换协程实现。</li>
+<li>io_uring 成熟，提升高并发 IO 性能。</li>
+<li>协程调试、异常栈、Xdebug 支持大幅改善。</li>
+<li>持续清理遗留废弃 API，进一步简化内核。</li>
+</ol>
+<h2 id="三、重要分支说明：OpenSwoole（原-Swoole-fork）"><a href="#三、重要分支说明：OpenSwoole（原-Swoole-fork）" class="headerlink" title="三、重要分支说明：OpenSwoole（原 Swoole fork）"></a>三、重要分支说明：OpenSwoole（原 Swoole fork）</h2><blockquote>
+<p>很多人会搞混：OpenSwoole 是<strong>社区 fork</strong>，版本号独立（22/24/26），不是 swoole-src 原版。</p>
+</blockquote>
+<ul>
+<li>原版 Swoole：<code>swoole/swoole-src</code>，版本 1/2/4/5/6，swoole PECL 包</li>
+<li>OpenSwoole：<code>openswoole/openswoole</code>，版本 22+，pecl 包名叫 <code>openswoole</code>，命名空间 <code>OpenSwoole\</code></li>
+<li>两者 API 大体相似，但内核、废弃策略、PHP 支持不一样，<strong>不要混用</strong>。</li>
+</ul>
+<h2 id="四、选型建议（生产环境）"><a href="#四、选型建议（生产环境）" class="headerlink" title="四、选型建议（生产环境）"></a>四、选型建议（生产环境）</h2><ol>
+<li>老项目 / Hyperf、EasySwoole 存量：<strong>Swoole 4.8</strong>，生态成熟稳定，不轻易升 5</li>
+<li>新项目，PHP8.1+，不想依赖 swoole 内置数据库客户端：<strong>Swoole 5.x</strong></li>
+<li>追求 PHP 原生 Fiber、io_uring、最新 PHP8.3/8.4：<strong>Swoole 6.x</strong></li>
+<li>新项目尽量<strong>不要用 OpenSwoole</strong>，除非明确需要它的特殊特性，生态资料少</li>
+</ol>
+<h2 id="五、核心差异一句话总结"><a href="#五、核心差异一句话总结" class="headerlink" title="五、核心差异一句话总结"></a>五、核心差异一句话总结</h2><ul>
+<li><strong>1.x</strong>：只有异步回调，<strong>无协程</strong></li>
+<li><strong>2.x</strong>：协程来了，但只有客户端协程，Server 还是回调</li>
+<li><strong>4.x</strong>：<strong>协程黄金时代</strong>，全协程 Server + 内置全套协程数据库客户端 + Runtime 一键协程化，框架生态爆发</li>
+<li><strong>5.x</strong>：砍掉内置数据库协程客户端，拥抱原生 PHP 扩展，强类型，swoole-cli</li>
+<li><strong>6.x</strong>：支持 PHP 原生 Fiber，io_uring，逐步淘汰旧 C 栈协程</li>
+</ul>
 
     </div>
 
@@ -518,7 +650,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Swoole%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94"><span class="nav-number"></span> <span class="nav-text">Swoole版本对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%89%88%E6%9C%AC%E6%80%BB%E8%A7%88%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">一、版本总览表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%A0%B8%E5%BF%83%E5%8D%87%E7%BA%A7-amp-%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">二、分版本详细核心升级 &amp; 区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-1-x%EF%BC%88%E5%9B%9E%E8%B0%83%E6%97%B6%E4%BB%A3%EF%BC%8C%E5%8F%A4%E8%91%A3%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">✅ Swoole 1.x（回调时代，古董）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-2-x%EF%BC%9A%E5%8D%8F%E7%A8%8B%E5%88%9D%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">✅ Swoole 2.x：协程初试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-4-x%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%8C%E7%94%9F%E4%BA%A7%E9%A6%96%E9%80%89%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">✅ Swoole 4.x（最重要，生产首选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-5-x%EF%BC%9A%E7%A0%B4%E5%9D%8F%E6%80%A7%E7%B2%BE%E7%AE%80%E9%87%8D%E6%9E%84"><span class="nav-number">2.4.</span> <span class="nav-text">✅ Swoole 5.x：破坏性精简重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-6-x%EF%BC%9AFiber-%E6%97%B6%E4%BB%A3"><span class="nav-number">2.5.</span> <span class="nav-text">✅ Swoole 6.x：Fiber 时代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E8%A6%81%E5%88%86%E6%94%AF%E8%AF%B4%E6%98%8E%EF%BC%9AOpenSwoole%EF%BC%88%E5%8E%9F-Swoole-fork%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、重要分支说明：OpenSwoole（原 Swoole fork）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%80%89%E5%9E%8B%E5%BB%BA%E8%AE%AE%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">四、选型建议（生产环境）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五、核心差异一句话总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -640,12 +772,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">975k</span>
+    <span title="站点总字数">978k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:46</span>
+    <span title="站点阅读时长">14:49</span>
 </div>
 
         
