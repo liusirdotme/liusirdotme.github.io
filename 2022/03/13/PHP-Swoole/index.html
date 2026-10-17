@@ -148,12 +148,16 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="胜，不妄喜；败，不遑馁；胸有激雷而面如平湖者，可拜上将军。 —— 春秋战国·孙武 《孙子兵法》">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2022/03/13/PHP-Swoole/Windows11_PHP_Go_Node_%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://liusir.net/2022/03/13/PHP-Swoole/Swoole%E4%B8%8EGo%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E7%9F%A5%E8%AF%86%E9%87%8D%E5%8F%A0%E5%AF%B9%E7%85%A7.png">
 <meta property="article:published_time" content="2022-03-13T10:21:10.000Z">
-<meta property="article:modified_time" content="2026-10-15T10:13:40.229Z">
+<meta property="article:modified_time" content="2026-10-16T07:53:22.261Z">
 <meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="Go">
 <meta property="article:tag" content="PHP">
 <meta property="article:tag" content="Swoole">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2022/03/13/PHP-Swoole/Windows11_PHP_Go_Node_%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84.png">
   <link rel="canonical" href="https://liusir.net/2022/03/13/PHP-Swoole/">
 
 
@@ -373,7 +377,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.9k</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -583,7 +587,50 @@
 <li><strong>5.x</strong>：砍掉内置数据库协程客户端，拥抱原生 PHP 扩展，强类型，swoole-cli</li>
 <li><strong>6.x</strong>：支持 PHP 原生 Fiber，io_uring，逐步淘汰旧 C 栈协程</li>
 </ul>
+<hr>
+<h1 id="Windows11-PHP-Go-Node开发环境"><a href="#Windows11-PHP-Go-Node开发环境" class="headerlink" title="Windows11 + PHP + Go + Node开发环境"></a><center><font color="red">Windows11 + PHP + Go + Node开发环境</font></center></h1><p><img src="Windows11_PHP_Go_Node_%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84.png" alt="Windows11_PHP_Go_Node_开发环境推荐架构"></p>
+<hr>
+<h1 id="PHP之Swoole和Go对比"><a href="#PHP之Swoole和Go对比" class="headerlink" title="PHP之Swoole和Go对比"></a><center><font color="red">PHP之Swoole和Go对比</font></center></h1><p><img src="Swoole%E4%B8%8EGo%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84%E7%9F%A5%E8%AF%86%E9%87%8D%E5%8F%A0%E5%AF%B9%E7%85%A7.png" alt="Swoole与Go学习路径知识重叠对照"></p>
+<blockquote>
+<p>学习路径</p>
+</blockquote>
+<ul>
+<li>从 PHP → Swoole：你的业务代码、Composer 生态、Laravel 经验全部复用，两周能开始产出。</li>
+<li>从 PHP → Go：3–6 个月沉没成本，而且你得同时重学类型系统、错误处理（Go 没有异常，只有 error 返回值，这个思维转换对 PHP 程序员是最难的一关）、构建工具链。​你沉淀了多年的中控系统业务知识（代理账号、余额划拨、快手平台对接）全部无法迁移。</li>
+<li>从 Swoole → Go：一周。因为 Reactor、协程调度器、Channel、多进程模型这套东西是共享的，Swoole 6.x 的协程 API 和 Go 的 goroutine + channel 在心智模型上是同一套，只是语法糖不同。</li>
+</ul>
+<blockquote>
+<p>Swoole有而Go给不了的东西：Swoole\Process多进程模型+Swoole\Table跨进程共享内存。</p>
+</blockquote>
+<ul>
+<li>Go 的 goroutine 是单线程内的协程，要跨线程共享状态你得自己用 sync.Map 加锁，或者引入 etcd / Redis 做外部状态。</li>
+<li>Swoole 的 Table 是零锁、跨进程、内核内存映射的，用起来就是像操作数组一样简单。</li>
+</ul>
+<hr>
+<h1 id="Swoole学习-Windows-WSL"><a href="#Swoole学习-Windows-WSL" class="headerlink" title="Swoole学习(Windows+WSL)"></a><center><font color="red">Swoole学习(Windows+WSL)</font></center></h1><h2 id="一、流程"><a href="#一、流程" class="headerlink" title="一、流程"></a>一、流程</h2><ol>
+<li>安装wsl</li>
+</ol>
+<ul>
+<li>wsl –install</li>
+<li>wsl –set-default-version 2</li>
+</ul>
+<ol start="2">
+<li>安装Ubuntu24：wsl –install -d Ubuntu-24.04</li>
+<li>进入Ubuntu24</li>
+<li>同步代码</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/dev</span><br><span class="line">rsync -a --info=progress2 "/mnt/c/Users/Administrator/WorkBuddy/2026-10-15-17-58-08/swoole-lab/" ~/dev/swoole-lab/</span><br><span class="line">cd ~/dev/swoole-lab &amp;&amp; df -hT . | tail -1   # 确认显示 ext4</span><br></pre></td></tr></tbody></table></figure>
 
+<ol start="5">
+<li>安装运行环境:bash setup-swoole.sh</li>
+<li>验证版本</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php -v | head -1        # 应显示 PHP 8.4.x</span><br><span class="line">php --ri swoole | grep -iE 'version|curl hook|coroutine' | head -5</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="7">
+<li>验证：php week1/01-sync-vs-co.php</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">【同步】20 个请求各等 1 秒</span><br><span class="line">  已完成 5/20</span><br><span class="line">  已完成 10/20</span><br><span class="line">  已完成 15/20</span><br><span class="line">  已完成 20/20</span><br><span class="line">【同步】总耗时 20.06 秒</span><br><span class="line"></span><br><span class="line">【协程】同样 20 个请求，但并发等待</span><br><span class="line">  协程 1 完成，单个耗时 1 秒</span><br><span class="line">  协程 2 完成，单个耗时 1 秒</span><br><span class="line">  协程 4 完成，单个耗时 1 秒</span><br><span class="line">  协程 8 完成，单个耗时 1 秒</span><br><span class="line">  协程 9 完成，单个耗时 1 秒</span><br><span class="line">  协程 5 完成，单个耗时 1 秒</span><br><span class="line">  协程 10 完成，单个耗时 1 秒</span><br><span class="line">  协程 11 完成，单个耗时 1 秒</span><br><span class="line">  协程 3 完成，单个耗时 1 秒</span><br><span class="line">  协程 6 完成，单个耗时 1 秒</span><br><span class="line">  协程 12 完成，单个耗时 1 秒</span><br><span class="line">  协程 7 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 19 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 20 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 16 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 13 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 15 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 18 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 17 完成，单个耗时 1.01 秒</span><br><span class="line">  协程 14 完成，单个耗时 1.01 秒</span><br><span class="line">【协程】总耗时 1.01 秒</span><br><span class="line">单个请求平均耗时 1.01 秒 ← 没变快，只是重叠了</span><br><span class="line"></span><br><span class="line">结论：协程提升的是「吞吐量」，不是「单次响应速度」。</span><br><span class="line">      20 个请求从 20 秒压到约 1 秒，靠的是等待期间不占 CPU。</span><br></pre></td></tr></tbody></table></figure>
     </div>
 
     
@@ -593,6 +640,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/Go/" rel="tag"><i class="fa fa-tag"></i> Go</a>
               <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
               <a href="/tags/Swoole/" rel="tag"><i class="fa fa-tag"></i> Swoole</a>
           </div>
@@ -650,7 +698,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Swoole%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94"><span class="nav-number"></span> <span class="nav-text">Swoole版本对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%89%88%E6%9C%AC%E6%80%BB%E8%A7%88%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">一、版本总览表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%A0%B8%E5%BF%83%E5%8D%87%E7%BA%A7-amp-%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">二、分版本详细核心升级 &amp; 区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-1-x%EF%BC%88%E5%9B%9E%E8%B0%83%E6%97%B6%E4%BB%A3%EF%BC%8C%E5%8F%A4%E8%91%A3%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">✅ Swoole 1.x（回调时代，古董）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-2-x%EF%BC%9A%E5%8D%8F%E7%A8%8B%E5%88%9D%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">✅ Swoole 2.x：协程初试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-4-x%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%8C%E7%94%9F%E4%BA%A7%E9%A6%96%E9%80%89%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">✅ Swoole 4.x（最重要，生产首选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-5-x%EF%BC%9A%E7%A0%B4%E5%9D%8F%E6%80%A7%E7%B2%BE%E7%AE%80%E9%87%8D%E6%9E%84"><span class="nav-number">2.4.</span> <span class="nav-text">✅ Swoole 5.x：破坏性精简重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-6-x%EF%BC%9AFiber-%E6%97%B6%E4%BB%A3"><span class="nav-number">2.5.</span> <span class="nav-text">✅ Swoole 6.x：Fiber 时代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E8%A6%81%E5%88%86%E6%94%AF%E8%AF%B4%E6%98%8E%EF%BC%9AOpenSwoole%EF%BC%88%E5%8E%9F-Swoole-fork%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、重要分支说明：OpenSwoole（原 Swoole fork）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%80%89%E5%9E%8B%E5%BB%BA%E8%AE%AE%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">四、选型建议（生产环境）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五、核心差异一句话总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Swoole%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94"><span class="nav-number"></span> <span class="nav-text">Swoole版本对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%89%88%E6%9C%AC%E6%80%BB%E8%A7%88%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">一、版本总览表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%A0%B8%E5%BF%83%E5%8D%87%E7%BA%A7-amp-%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">二、分版本详细核心升级 &amp; 区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-1-x%EF%BC%88%E5%9B%9E%E8%B0%83%E6%97%B6%E4%BB%A3%EF%BC%8C%E5%8F%A4%E8%91%A3%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">✅ Swoole 1.x（回调时代，古董）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-2-x%EF%BC%9A%E5%8D%8F%E7%A8%8B%E5%88%9D%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">✅ Swoole 2.x：协程初试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-4-x%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%8C%E7%94%9F%E4%BA%A7%E9%A6%96%E9%80%89%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">✅ Swoole 4.x（最重要，生产首选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-5-x%EF%BC%9A%E7%A0%B4%E5%9D%8F%E6%80%A7%E7%B2%BE%E7%AE%80%E9%87%8D%E6%9E%84"><span class="nav-number">2.4.</span> <span class="nav-text">✅ Swoole 5.x：破坏性精简重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Swoole-6-x%EF%BC%9AFiber-%E6%97%B6%E4%BB%A3"><span class="nav-number">2.5.</span> <span class="nav-text">✅ Swoole 6.x：Fiber 时代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E8%A6%81%E5%88%86%E6%94%AF%E8%AF%B4%E6%98%8E%EF%BC%9AOpenSwoole%EF%BC%88%E5%8E%9F-Swoole-fork%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、重要分支说明：OpenSwoole（原 Swoole fork）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%80%89%E5%9E%8B%E5%BB%BA%E8%AE%AE%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">四、选型建议（生产环境）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五、核心差异一句话总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows11-PHP-Go-Node%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number"></span> <span class="nav-text">Windows11 + PHP + Go + Node开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP%E4%B9%8BSwoole%E5%92%8CGo%E5%AF%B9%E6%AF%94"><span class="nav-number"></span> <span class="nav-text">PHP之Swoole和Go对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Swoole%E5%AD%A6%E4%B9%A0-Windows-WSL"><span class="nav-number"></span> <span class="nav-text">Swoole学习(Windows+WSL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">一、流程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -666,7 +714,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">272</span>
+          <span class="site-state-item-count">274</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -679,7 +727,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1039</span>
+        <span class="site-state-item-count">1045</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -706,7 +754,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -772,12 +820,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">978k</span>
+    <span title="站点总字数">1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:49</span>
+    <span title="站点阅读时长">15:12</span>
 </div>
 
         

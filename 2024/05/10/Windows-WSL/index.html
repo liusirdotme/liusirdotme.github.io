@@ -149,8 +149,10 @@
 <meta property="og:description" content="Windows Subsystem for Linux(简称WSL)是一个在Windows 10\11上能够运行原生Linux二进制可执行文件(ELF格式)的兼容层。它是由微软与Canonical公司合作开发，开发人员可以在 Windows计算机上同时访问 Windows和Linux的强大功能。通过适用于Linux的Windows子系统(WSL)，开发人员可以安装Linux发行版(例如 Ubun">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-10T11:47:48.000Z">
-<meta property="article:modified_time" content="2025-06-06T08:47:49.945Z">
+<meta property="article:modified_time" content="2026-10-17T08:05:55.682Z">
 <meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="主从复制">
 <meta property="article:tag" content="Windows">
 <meta property="article:tag" content="WSL">
 <meta name="twitter:card" content="summary">
@@ -373,13 +375,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>4.8k</span>
+              <span>5.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -405,7 +407,10 @@
 <p>wsl –hep</p>
 </blockquote>
 <ol>
-<li>查看列表：wsl -l -v</li>
+<li>查看列表：wsl -l<ul>
+<li>包含状态信息：wsl -l -v</li>
+</ul>
+</li>
 <li>安装系统</li>
 </ol>
 <ul>
@@ -427,13 +432,21 @@
 </li>
 </ul>
 <ol start="3">
-<li>进入系统：wsl -d Debian</li>
-<li>关闭系统：wsl –shutdown<ul>
+<li><p>进入系统：wsl -d Debian</p>
+<ul>
+<li>只有一个则只需：wsl</li>
+<li>多个则指定-d参数</li>
+</ul>
+</li>
+<li><p>关闭系统：wsl –shutdown</p>
+<ul>
 <li>wsl -d Ubuntu-22.04 –shutdown</li>
 </ul>
 </li>
-<li>设置默认：wsl -s Debian</li>
-<li>设置代理</li>
+<li><p>设置默认：wsl -s Debian</p>
+</li>
+<li><p>设置代理</p>
+</li>
 </ol>
 <ul>
 <li>查看windows地址：ipconfig，得到vEthernet (WSL)的IPv4地址：172.27.144.1</li>
@@ -459,9 +472,10 @@
 </ol>
 <h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL/issues">issues</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands">basic-commands</a></li>
 </ol>
 <hr>
-<h1 id="以Ubuntu-24-04为例"><a href="#以Ubuntu-24-04为例" class="headerlink" title="以Ubuntu-24.04为例"></a><center><font color="red">以Ubuntu-24.04为例</font></center></h1><ol>
+<h1 id="以Ubuntu-24-04为例"><a href="#以Ubuntu-24-04为例" class="headerlink" title="以Ubuntu-24.04为例"></a><center><font color="red">以Ubuntu-24.04为例</font></center></h1><h2 id="一、安装-1"><a href="#一、安装-1" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
 <li><p>wsl –install Ubuntu-24.04</p>
 </li>
 <li><p>wsl，进入系统</p>
@@ -559,6 +573,27 @@
 <ol start="17">
 <li>卸载Ubuntu-24.04： wsl –unregister Ubuntu-24.04</li>
 </ol>
+<h2 id="二、其他"><a href="#二、其他" class="headerlink" title="二、其他"></a>二、其他</h2><ol>
+<li>安装ssh服务</li>
+</ol>
+<ul>
+<li>安装服务：apt-get install openssh-server</li>
+<li>启动服务：systemctl start ssh</li>
+<li>开机启动：systemctl enable ssh<ul>
+<li>service ssh start</li>
+<li>service ssh status</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>设置源</li>
+</ol>
+<ul>
+<li>备份：cp /etc/apt/sources.list /etc/apt/sources.list.bak</li>
+<li>修改：vim sources.list</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</span><br></pre></td></tr></tbody></table></figure>
+
 <hr>
 <h1 id="安装多个相同发行版本的Linux"><a href="#安装多个相同发行版本的Linux" class="headerlink" title="安装多个相同发行版本的Linux"></a><center><font color="red">安装多个相同发行版本的Linux</font></center></h1><h2 id="一、操作"><a href="#一、操作" class="headerlink" title="一、操作"></a>一、操作</h2><ol>
 <li><p>下载：<a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-msvc.zip">https://github.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-msvc.zip</a></p>
@@ -678,7 +713,69 @@
 </li>
 </ol>
 <hr>
-<h1 id="搭建MySQL主从"><a href="#搭建MySQL主从" class="headerlink" title="搭建MySQL主从"></a><center><font color="red">搭建MySQL主从</font></center></h1><h2 id="一、主库"><a href="#一、主库" class="headerlink" title="一、主库"></a>一、主库</h2><h2 id="二、从库"><a href="#二、从库" class="headerlink" title="二、从库"></a>二、从库</h2><hr>
+<h1 id="搭建MySQL主从"><a href="#搭建MySQL主从" class="headerlink" title="搭建MySQL主从"></a><center><font color="red">搭建MySQL主从</font></center></h1><h2 id="一、主库"><a href="#一、主库" class="headerlink" title="一、主库"></a>一、主库</h2><ol>
+<li>主库设置：my.cnf</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 在 [mysqld] 中增加以下配置项 </span><br><span class="line">server_id=1</span><br><span class="line"># 复制过滤：需要备份的数据库，输出 binlog</span><br><span class="line">#binlog-do-db=db_admin</span><br><span class="line"># 复制过滤：不需要备份的数据库，不输出（mysql 库一般不同步） </span><br><span class="line">binlog-ignore-db=mysql </span><br><span class="line"># 开启二进制日志功能，可以随便取，最好有含义 </span><br><span class="line">log-bin=lyz-mysql-bin </span><br><span class="line">## 为每个 session 分配的内存，在事务过程中用来存储二进制日志的缓存 </span><br><span class="line">binlog_cache_size=1M </span><br><span class="line">## 主从复制的格式（mixed,statement,row，默认格式是 statement）</span><br><span class="line">binlog_format=mixed</span><br><span class="line"># 二进制日志自动删除/过期的天数。默认值为 0，表示不自动删除。 </span><br><span class="line">expire_logs_days=7</span><br><span class="line"># 跳过主从复制中遇到的所有错误或指定类型的错误，避免 slave 端复制中断。</span><br><span class="line"># 如：1062 错误是指一些主键重复，1032 错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>登录主库，设置复制账号</li>
+</ol>
+<ul>
+<li>grant replication slave, replication client on <em>.</em> to ‘repl’@’127.0.0.1’ identified by ‘123456’; </li>
+<li>flush privileges;</li>
+</ul>
+<ol start="3">
+<li>查看file和position</li>
+</ol>
+<ul>
+<li>show master status;</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status \G;</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">             File: mysql-bin.000207</span><br><span class="line">         Position: 484110173</span><br><span class="line">     Binlog_Do_DB: db_1,db_2,db_3,test</span><br><span class="line"> Binlog_Ignore_DB: information_schema,performance_schema,mysql</span><br><span class="line">Executed_Gtid_Set: </span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>备份主库</li>
+</ol>
+<ul>
+<li>mysqldump -uroot -p db_admin &gt;/tmp/db_admin.sql</li>
+<li>XtraBackup </li>
+</ul>
+<ol start="5">
+<li>将备份的主库复制到从库</li>
+</ol>
+<h2 id="二、从库"><a href="#二、从库" class="headerlink" title="二、从库"></a>二、从库</h2><ol>
+<li>修改从库配置my.conf</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server_id=132</span><br><span class="line">binlog-ignore-db=mysql </span><br><span class="line">log-bin=lyz-mysql-slave1-bin </span><br><span class="line">binlog_format=mixed </span><br><span class="line">expire_logs_days=7 </span><br><span class="line">slave_skip_errors=1062 </span><br><span class="line">relay_log=lyz-mysql-relay-bin </span><br><span class="line">log_slave_updates=1</span><br><span class="line">read_only=1</span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>启动从库：service mysqld start</li>
+<li>创建要复制的库</li>
+<li>导入主库的sql</li>
+<li>设置同步参数：change master to master_host=’127.0.0.1’,master_user=’repl’,master_password=’123456’,master_port=3306, master_log_file=’sync-mysql-bin.000002’,master_log_pos=154,master_connect_retry=30;</li>
+<li>查看同步状态：show slave status;</li>
+<li>开启同步：start slave;</li>
+<li>再次查看同步状态：show slave status;</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">*************************** 1. row ***************************</span><br><span class="line">               Slave_IO_State: Waiting for master to send event</span><br><span class="line">                  Master_Host: 192.168.20.44</span><br><span class="line">                  Master_User: replication_user</span><br><span class="line">                  Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br><span class="line">              Master_Log_File: mysql-bin.000207</span><br><span class="line">          Read_Master_Log_Pos: 483988407</span><br><span class="line">               Relay_Log_File: center-rds3-relay-bin.000420</span><br><span class="line">                Relay_Log_Pos: 483988620</span><br><span class="line">        Relay_Master_Log_File: mysql-bin.000207</span><br><span class="line">             Slave_IO_Running: Yes</span><br><span class="line">            Slave_SQL_Running: Yes</span><br><span class="line">              Replicate_Do_DB: db_1,db_2,db_3,test</span><br><span class="line">          Replicate_Ignore_DB: mysql</span><br><span class="line">           Replicate_Do_Table: </span><br><span class="line">       Replicate_Ignore_Table: </span><br><span class="line">      Replicate_Wild_Do_Table: </span><br><span class="line">  Replicate_Wild_Ignore_Table: </span><br><span class="line">                   Last_Errno: 0</span><br><span class="line">                   Last_Error: </span><br><span class="line">                 Skip_Counter: 0</span><br><span class="line">          Exec_Master_Log_Pos: 483988407</span><br><span class="line">              Relay_Log_Space: 483988880</span><br><span class="line">              Until_Condition: None</span><br><span class="line">               Until_Log_File: </span><br><span class="line">                Until_Log_Pos: 0</span><br><span class="line">           Master_SSL_Allowed: No</span><br><span class="line">           Master_SSL_CA_File: </span><br><span class="line">           Master_SSL_CA_Path: </span><br><span class="line">              Master_SSL_Cert: </span><br><span class="line">            Master_SSL_Cipher: </span><br><span class="line">               Master_SSL_Key: </span><br><span class="line">        Seconds_Behind_Master: 0</span><br><span class="line">Master_SSL_Verify_Server_Cert: No</span><br><span class="line">                Last_IO_Errno: 0</span><br><span class="line">                Last_IO_Error: </span><br><span class="line">               Last_SQL_Errno: 0</span><br><span class="line">               Last_SQL_Error: </span><br><span class="line">  Replicate_Ignore_Server_Ids: </span><br><span class="line">             Master_Server_Id: 2044</span><br><span class="line">                  Master_UUID: 6bc97a8a-092d-11ef-aaf1-fa163eb2f36a</span><br><span class="line">             Master_Info_File: mysql.slave_master_info</span><br><span class="line">                    SQL_Delay: 0</span><br><span class="line">          SQL_Remaining_Delay: NULL</span><br><span class="line">      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates</span><br><span class="line">           Master_Retry_Count: 86400</span><br><span class="line">                  Master_Bind: </span><br><span class="line">      Last_IO_Error_Timestamp: </span><br><span class="line">     Last_SQL_Error_Timestamp: </span><br><span class="line">               Master_SSL_Crl: </span><br><span class="line">           Master_SSL_Crlpath: </span><br><span class="line">           Retrieved_Gtid_Set: </span><br><span class="line">            Executed_Gtid_Set: </span><br><span class="line">                Auto_Position: 0</span><br><span class="line">         Replicate_Rewrite_DB: </span><br><span class="line">                 Channel_Name: </span><br><span class="line">           Master_TLS_Version: </span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、验证"><a href="#三、验证" class="headerlink" title="三、验证"></a>三、验证</h2><ol>
+<li>插入记录</li>
+<li>删除记录</li>
+<li>更新记录</li>
+<li>创建索引</li>
+<li>创建表</li>
+<li>修改表</li>
+</ol>
+<h2 id="四、问题"><a href="#四、问题" class="headerlink" title="四、问题"></a>四、问题</h2><ol>
+<li>复制断了</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">show slave status\G;</span><br><span class="line">STOP SLAVE;</span><br><span class="line">RESET SLAVE;</span><br><span class="line">CHANGE MASTER TO master_log_file='mysql-bin.000069', master_log_pos=941883577;</span><br><span class="line">START SLAVE;</span><br><span class="line">等到 Seconds_Behind_Master: 0，就是同步到最新</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>磁盘满了</li>
+<li>主从复制延迟</li>
+</ol>
+<hr>
 <h1 id="Ubuntu-搭建GitLab"><a href="#Ubuntu-搭建GitLab" class="headerlink" title="Ubuntu-搭建GitLab"></a><center><font color="red">Ubuntu-搭建GitLab</font></center></h1><h2 id="一、操作-1"><a href="#一、操作-1" class="headerlink" title="一、操作"></a>一、操作</h2><ol>
 <li><p>sudo apt-get update</p>
 </li>
@@ -727,6 +824,29 @@
 <h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://gitlab.cn/docs/omnibus/installation/">参考一</a></li>
 </ol>
+<hr>
+<h1 id="Windows下开发，WSL下运行"><a href="#Windows下开发，WSL下运行" class="headerlink" title="Windows下开发，WSL下运行"></a><center><font color="red">Windows下开发，WSL下运行</font></center></h1><h2 id="一、VS-Code"><a href="#一、VS-Code" class="headerlink" title="一、VS Code"></a>一、VS Code</h2><ol>
+<li>装扩展：扩展面板搜 Remote - WSL（发布者是 Microsoft，ID ms-vscode-remote.remote-wsl）</li>
+<li>在WSL下进入项目目录</li>
+<li>code .<ul>
+<li>第一次打开会提示下载组件</li>
+<li>左下角出现 WSL: OS-xx(如Ubuntu-24.04) 就是成功了</li>
+</ul>
+</li>
+<li>命令模式下：WSL: Reopen Folder in WSL补救<ul>
+<li>Ctrl + Shift + P </li>
+</ul>
+</li>
+</ol>
+<h2 id="二、phpstorm"><a href="#二、phpstorm" class="headerlink" title="二、phpstorm"></a>二、phpstorm</h2><ol>
+<li>打开phpstorm</li>
+<li>File &gt; Open，选择对应的路径</li>
+<li>配置WSL解释器<ul>
+<li>Ctrl + Alt + S &gt; PHP &gt; CLI 解释器 &gt; … &gt; 左上角+ &gt; 选 From Docker, Vagrant, VM, WSL, Remote… → 方法选 WSL：</li>
+</ul>
+</li>
+<li>php -v，验证配置是否成功</li>
+</ol>
 
     </div>
 
@@ -737,6 +857,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/Ubuntu/" rel="tag"><i class="fa fa-tag"></i> Ubuntu</a>
+              <a href="/tags/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/" rel="tag"><i class="fa fa-tag"></i> 主从复制</a>
               <a href="/tags/Windows/" rel="tag"><i class="fa fa-tag"></i> Windows</a>
               <a href="/tags/WSL/" rel="tag"><i class="fa fa-tag"></i> WSL</a>
           </div>
@@ -794,7 +916,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WSL%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">WSL安装使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">三、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A5Ubuntu-24-04%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">以Ubuntu-24.04为例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%9B%B8%E5%90%8C%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC%E7%9A%84Linux"><span class="nav-number">3.</span> <span class="nav-text">安装多个相同发行版本的Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">一、操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">4.</span> <span class="nav-text">Ubuntu-安装MySQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAMySQL%E4%B8%BB%E4%BB%8E"><span class="nav-number">5.</span> <span class="nav-text">搭建MySQL主从</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%BB%E5%BA%93"><span class="nav-number">5.1.</span> <span class="nav-text">一、主库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%8E%E5%BA%93"><span class="nav-number">5.2.</span> <span class="nav-text">二、从库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-%E6%90%AD%E5%BB%BAGitLab"><span class="nav-number">6.</span> <span class="nav-text">Ubuntu-搭建GitLab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.1.</span> <span class="nav-text">一、操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-1"><span class="nav-number">6.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WSL%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">WSL安装使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">三、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A5Ubuntu-24-04%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">以Ubuntu-24.04为例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">2.2.</span> <span class="nav-text">二、其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%A4%9A%E4%B8%AA%E7%9B%B8%E5%90%8C%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC%E7%9A%84Linux"><span class="nav-number">3.</span> <span class="nav-text">安装多个相同发行版本的Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">一、操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">4.</span> <span class="nav-text">Ubuntu-安装MySQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAMySQL%E4%B8%BB%E4%BB%8E"><span class="nav-number">5.</span> <span class="nav-text">搭建MySQL主从</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%BB%E5%BA%93"><span class="nav-number">5.1.</span> <span class="nav-text">一、主库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%8E%E5%BA%93"><span class="nav-number">5.2.</span> <span class="nav-text">二、从库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%AA%8C%E8%AF%81"><span class="nav-number">5.3.</span> <span class="nav-text">三、验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">5.4.</span> <span class="nav-text">四、问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-%E6%90%AD%E5%BB%BAGitLab"><span class="nav-number">6.</span> <span class="nav-text">Ubuntu-搭建GitLab</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.1.</span> <span class="nav-text">一、操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-1"><span class="nav-number">6.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows%E4%B8%8B%E5%BC%80%E5%8F%91%EF%BC%8CWSL%E4%B8%8B%E8%BF%90%E8%A1%8C"><span class="nav-number">7.</span> <span class="nav-text">Windows下开发，WSL下运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81VS-Code"><span class="nav-number">7.1.</span> <span class="nav-text">一、VS Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81phpstorm"><span class="nav-number">7.2.</span> <span class="nav-text">二、phpstorm</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -810,7 +932,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">272</span>
+          <span class="site-state-item-count">274</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -823,7 +945,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1039</span>
+        <span class="site-state-item-count">1045</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -850,7 +972,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">1</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -916,12 +1038,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">978k</span>
+    <span title="站点总字数">1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:49</span>
+    <span title="站点阅读时长">15:12</span>
 </div>
 
         
