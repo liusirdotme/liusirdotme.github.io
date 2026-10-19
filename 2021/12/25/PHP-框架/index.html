@@ -148,12 +148,19 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="古之欲明明德于天下者，先治其国；欲治其国者，先齐其家；欲齐其家者，先修其身；欲修其身者，先正其心；欲正其心者，先诚其意；欲诚其意者，先致其知，致知在格物。物格而后知至，知至而后意诚，意诚而后心正，心正而后身修，身修而后家齐，家齐而后国治，国治而后天下平。–《礼记·大学》">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel1.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel2.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel3.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel4.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel5.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel6.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel7.png">
+<meta property="og:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/fast1.png">
 <meta property="article:published_time" content="2021-12-25T14:39:35.000Z">
-<meta property="article:modified_time" content="2026-10-14T07:42:06.522Z">
+<meta property="article:modified_time" content="2026-10-19T09:49:09.927Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="PHP">
 <meta property="article:tag" content="Laravel">
-<meta property="article:tag" content="migrate">
 <meta property="article:tag" content="ThinkPHP">
 <meta property="article:tag" content="CI">
 <meta property="article:tag" content="Yii">
@@ -168,7 +175,9 @@
 <meta property="article:tag" content="MineAdmin">
 <meta property="article:tag" content="ThinkCMF">
 <meta property="article:tag" content="Filament">
+<meta property="article:tag" content="migrate">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/laravel1.png">
   <link rel="canonical" href="https://liusir.net/2021/12/25/PHP-%E6%A1%86%E6%9E%B6/">
 
 
@@ -388,13 +397,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>5.4k</span>
+              <span>16k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>5 分钟</span>
+              <span>15 分钟</span>
             </span>
 
         </div>
@@ -583,6 +592,15 @@
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040421959">参考四</a></li>
 </ol>
 <hr>
+<h1 id="Laravel数据库迁移、回滚、撤销"><a href="#Laravel数据库迁移、回滚、撤销" class="headerlink" title="Laravel数据库迁移、回滚、撤销"></a><center><font color="red">Laravel数据库迁移、回滚、撤销</font></center></h1><ol>
+<li>命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 回滚【最后一批】迁移（默认）</span><br><span class="line">php artisan migrate:rollback</span><br><span class="line"></span><br><span class="line"># 回滚最近 N 个迁移文件（按文件个数，不是批次）</span><br><span class="line">php artisan migrate:rollback --step=1</span><br><span class="line"></span><br><span class="line"># 查看将要执行的SQL，不实际执行（安全预览）</span><br><span class="line">php artisan migrate:rollback --pretend</span><br><span class="line"></span><br><span class="line"># 指定数据库连接</span><br><span class="line">php artisan migrate:rollback --database=mysql</span><br><span class="line"></span><br><span class="line"># 生产环境强制执行（跳过确认提示）</span><br><span class="line">php artisan migrate:rollback --force</span><br><span class="line"></span><br><span class="line"># 回滚指定批次号（batch值来自 migrations 表）</span><br><span class="line">php artisan migrate:rollback --batch=3</span><br><span class="line"></span><br><span class="line"># 回滚全部迁移</span><br><span class="line">php artisan migrate:reset</span><br><span class="line"></span><br><span class="line"># 全部回滚 → 重新执行所有迁移</span><br><span class="line">php artisan migrate:refresh</span><br><span class="line"></span><br><span class="line"># 清空所有表，重新迁移（drop 所有表）</span><br><span class="line">php artisan migrate:fresh</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+<hr>
 <h1 id="Laravel数据库迁移轶事"><a href="#Laravel数据库迁移轶事" class="headerlink" title="Laravel数据库迁移轶事"></a><center><font color="red">Laravel数据库迁移轶事</font></center></h1><h2 id="一、复现过程"><a href="#一、复现过程" class="headerlink" title="一、复现过程"></a>一、复现过程</h2><ol>
 <li>安装composer</li>
 <li>创建laravel项目 composer create-project laravel/laravel laravel_migrate</li>
@@ -640,25 +658,492 @@
 <li><a target="_blank" rel="noopener" href="https://laravel-news.com/laravel-anonymous-migrations">参考四</a></li>
 </ol>
 <hr>
-<h1 id="ThinkPHP"><a href="#ThinkPHP" class="headerlink" title="ThinkPHP"></a><center><font color="red">ThinkPHP</font></center></h1><ol>
+<h1 id="ThinkPHP"><a href="#ThinkPHP" class="headerlink" title="ThinkPHP"></a><center><font color="red">ThinkPHP</font></center></h1><h2 id="一、使用"><a href="#一、使用" class="headerlink" title="一、使用"></a>一、使用</h2><ol>
+<li>清除缓存：php think clear</li>
+<li>创建文件：php think make:command TestCommand test_command</li>
+<li>调整日志</li>
+</ol>
+<ul>
+<li>配置文件</li>
+<li>驱动文件</li>
+</ul>
+<ol start="4">
+<li>原生sql</li>
+</ol>
+<ul>
+<li>引入库：use think\facade\Db;</li>
+<li>$monthMaulogTotal = Db::query(“select distinct(roleId), count(*) as total from t_snkrolelog  force index (idx_timestamp) where timestamp &gt;=$month_start and timestamp &lt;=$month_end group by roleId”);</li>
+</ul>
+<ol start="5">
+<li>示例代码</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//新增账户数量，没有区服信息</span><br><span class="line">//$dayWhere = [['timestamp', 'BETWEEN', [$startTimestamp, $endTimestamp]]];</span><br><span class="line">//$newRole = db('snkaccount')-&gt;field(['count(*) as new_roles'])-&gt;where($dayWhere)-&gt;select();</span><br><span class="line"></span><br><span class="line">//新增角色数量</span><br><span class="line">//$dayWhere = [['RegTime', 'BETWEEN', [$startTimestamp, $endTimestamp]]];</span><br><span class="line">//$result = db('snkrole')-&gt;field('count(*) as total,serverId')-&gt;where($dayWhere)-&gt;group('serverId')-&gt;select();</span><br><span class="line"></span><br><span class="line">//原生SQL</span><br><span class="line">//$res = Db::connect('mysql')-&gt;query("select count(*) from t_snkrole");</span><br><span class="line">//$res=Db::table('t_snkrole')-&gt;field('count(*) as total,serverId')-&gt;where($dayWhere)-&gt;group('serverId')-&gt;select();</span><br><span class="line"></span><br><span class="line">$regRes = \app\admin\model\Snk\Role::where('RegTime', '&gt;=', $startTimestamp)</span><br><span class="line">      -&gt;where('RegTime', '&lt;=', $endTimestamp)</span><br><span class="line">      -&gt;field('count(*) as total,serverId')</span><br><span class="line">      -&gt;group('serverId')</span><br><span class="line">      -&gt;select()</span><br><span class="line">      -&gt;toArray();</span><br><span class="line">print_r($regRes);exit;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>thinkphp6，with查询多条件不生效</li>
+<li>后端拼接的html代码，模板未解析</li>
+</ol>
+<ul>
+<li><code>{{$row['rebate_record']|raw}}</code></li>
+</ul>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037653">助手函数</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037599">模型关联</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037617">调试</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037615">异常</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037616">日志</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.thinkphp.cn/doc">文档中心</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037479">ThinkPHP6.0完全开发手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037479">ThinkPHP6.0完全开发手册</a><ul>
+<li><a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0">https://www.kancloud.cn/manual/thinkphp6_0</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="TP5-0-28公开漏洞"><a href="#TP5-0-28公开漏洞" class="headerlink" title="TP5.0.28公开漏洞"></a><center><font color="red">TP5.0.28公开漏洞</font></center></h1><h2 id="一、核心结论"><a href="#一、核心结论" class="headerlink" title="一、核心结论"></a>一、核心结论</h2><p><strong>ThinkPHP 5.0.28 不是安全维护版本，高危原生漏洞仍大量存在，生产环境不推荐使用</strong></p>
+<ol>
+<li>ThinkPHP 5.0 系列<strong>早已停止官方安全维护</strong>，5.0.28 是5.0分支最后一个迭代版，但仅修复了当年已知漏洞，后续多年爆出的新漏洞、底层逻辑缺陷均无官方补丁；</li>
+<li>5.0.28 修复了 <strong>5.0.23及之前</strong> 的两大顶级RCE，但仍保留大量中高危原生漏洞、配置漏洞、反序列化、文件操作缺陷；</li>
+<li>合规/等保/公网业务强烈建议升级至 ThinkPHP 6/8；无法升级必须叠加多层防护。</li>
+</ol>
+<h2 id="二、5-0-28-已修复的高危漏洞（≤5-0-23存在，28已封堵）"><a href="#二、5-0-28-已修复的高危漏洞（≤5-0-23存在，28已封堵）" class="headerlink" title="二、5.0.28 已修复的高危漏洞（≤5.0.23存在，28已封堵）"></a>二、5.0.28 已修复的高危漏洞（≤5.0.23存在，28已封堵）</h2><h3 id="1-CVE-2018-20062-非强制路由远程代码执行（GetShell）"><a href="#1-CVE-2018-20062-非强制路由远程代码执行（GetShell）" class="headerlink" title="1. CVE-2018-20062 非强制路由远程代码执行（GetShell）"></a>1. CVE-2018-20062 非强制路由远程代码执行（GetShell）</h3><ul>
+<li>影响：<code>5.0 ~ 5.0.23</code>，5.0.24+修复（含28）</li>
+<li>原理：<code>s=xxx</code> 参数未过滤反斜杠<code>\</code>，可任意调用框架内置类方法，无鉴权远程执行代码、拿服务器权限</li>
+<li>利用条件：未开启<strong>强制路由</strong>（默认关闭，历史站点极易中招）</li>
+<li>修复手段：控制器名校验正则拦截非法字符，5.0.28完整包含此修复</li>
+</ul>
+<h3 id="2-5-0-x-Debug模式变量覆盖RCE（2019年1月漏洞）"><a href="#2-5-0-x-Debug模式变量覆盖RCE（2019年1月漏洞）" class="headerlink" title="2. 5.0.x Debug模式变量覆盖RCE（2019年1月漏洞）"></a>2. 5.0.x Debug模式变量覆盖RCE（2019年1月漏洞）</h3><ul>
+<li>影响：<code>5.0 ~ 5.0.23</code>，5.0.24起修复</li>
+<li>原理：开启<code>app_debug=true</code>时，请求参数变量覆盖，配合请求类魔术方法执行任意代码</li>
+<li>28修复：加固变量赋值逻辑，阻断覆盖链</li>
+</ul>
+<h2 id="三、ThinkPHP-5-0-28-仍然存在、无官方补丁-的公开漏洞（重点风险）"><a href="#三、ThinkPHP-5-0-28-仍然存在、无官方补丁-的公开漏洞（重点风险）" class="headerlink" title="三、ThinkPHP 5.0.28 仍然存在、无官方补丁 的公开漏洞（重点风险）"></a>三、ThinkPHP 5.0.28 <strong>仍然存在、无官方补丁</strong> 的公开漏洞（重点风险）</h2><h3 id="（一）模板引擎文件读取-包含RCE（CVE-2025-63888-CVE-2025-63889）"><a href="#（一）模板引擎文件读取-包含RCE（CVE-2025-63888-CVE-2025-63889）" class="headerlink" title="（一）模板引擎文件读取/包含RCE（CVE-2025-63888 / CVE-2025-63889）"></a>（一）模板引擎文件读取/包含RCE（CVE-2025-63888 / CVE-2025-63889）</h3><ul>
+<li>影响版本：<strong>5.0.24 ~ 5.0.28 全中</strong></li>
+</ul>
+<ol>
+<li>CVE-2025-63889 任意文件读取（高危）<br>模板<code>fetch()</code>路径校验不严，传入恶意路径可读取服务器任意文件（数据库配置、密钥、源码）</li>
+<li>CVE-2025-63888 缓存文件包含RCE（严重）<br><code>view()</code>渲染缓存文件时未过滤路径，上传图片马/日志写入恶意代码后，通过模板包含执行PHP，无调试模式也可利用</li>
+</ol>
+<ul>
+<li>触发条件：业务使用<code>view()</code>/<code>fetch()</code>渲染自定义变量、允许用户控制模板名称/路径</li>
+</ul>
+<h3 id="（二）反序列化漏洞（多条，5-0全系列含28）"><a href="#（二）反序列化漏洞（多条，5-0全系列含28）" class="headerlink" title="（二）反序列化漏洞（多条，5.0全系列含28）"></a>（二）反序列化漏洞（多条，5.0全系列含28）</h3><ol>
+<li>Windows类<code>__destruct</code>任意文件删除<br>可控反序列化输入时，构造序列化字符串可删除服务器任意文件（网站源码、配置）</li>
+<li>Request/Output魔术方法反序列化RCE<br>存在<code>unserialize()</code>可控入口（Cookie、GET/POST参数、缓存读取）时，完整链可执行系统命令、写WebShell</li>
+</ol>
+<ul>
+<li>风险：绝大多数TP5业务会把Cookie/缓存做序列化存储，极易触达</li>
+</ul>
+<h3 id="（三）SQL注入相关缺陷（5-0-28未根治）"><a href="#（三）SQL注入相关缺陷（5-0-28未根治）" class="headerlink" title="（三）SQL注入相关缺陷（5.0.28未根治）"></a>（三）SQL注入相关缺陷（5.0.28未根治）</h3><ol>
+<li>数组参数报错注入（updatexml报错盲注）<br>开启<code>app_debug=true</code>时，数组形式查询参数绕过PDO预编译，报错泄露数据库账号、脱库；关闭Debug仍可时间盲注脱库<br>Payload示例：<code>?ids[0,updatexml(0,concat(0xa,user()),0)]=1</code></li>
+<li>orderby/groupby字符串拼接注入<br><code>order($param)</code>、<code>group($param)</code>直接拼接用户输入，无过滤可注入任意SQL语句，5.0.28仅做简单转义，仍存在绕过方式</li>
+</ol>
+<h3 id="（四）信息泄露类漏洞"><a href="#（四）信息泄露类漏洞" class="headerlink" title="（四）信息泄露类漏洞"></a>（四）信息泄露类漏洞</h3><ol>
+<li>CVE-2022-25481 环境变量泄露<br>默认PATHINFO配置缺陷，访问首页可读取服务器全部环境变量（数据库密码、OSS密钥、API密钥）</li>
+<li>Debug调试页面敏感信息泄露<br>只要<code>app_debug=true</code>，报错页完整暴露：数据库账号密码、服务器路径、框架源码、Redis/MQ凭证；公网开启=裸奔</li>
+<li>runtime日志目录未限制访问<br><code>/runtime/log/</code>日志明文存储SQL、POST请求、账号密码，Nginx/Apache默认可直接下载</li>
+</ol>
+<h3 id="（五）语言切换文件包含漏洞"><a href="#（五）语言切换文件包含漏洞" class="headerlink" title="（五）语言切换文件包含漏洞"></a>（五）语言切换文件包含漏洞</h3><p><code>lang_switch_on = true</code>（默认开启）时，<code>lang</code>参数可控，可跨目录包含任意本地文件，配合图片马实现代码执行</p>
+<h3 id="（六）其他通用底层风险（5-0-28无法彻底修复）"><a href="#（六）其他通用底层风险（5-0-28无法彻底修复）" class="headerlink" title="（六）其他通用底层风险（5.0.28无法彻底修复）"></a>（六）其他通用底层风险（5.0.28无法彻底修复）</h3><ol>
+<li>Phar反序列化链：支持phar://伪协议，上传phar文件后配合文件读取漏洞触发RCE</li>
+<li>上传漏洞辅助利用：框架无内置文件类型强校验，业务代码疏漏极易上传图片马，配合模板包含漏洞执行</li>
+<li>路由机制底层缺陷：即便修复控制器RCE，自定义路由、闭包路由仍存在输入过滤不严的次生漏洞</li>
+</ol>
+<h2 id="四、5-0-28-临时缓解方案（无法根除，仅降低风险）"><a href="#四、5-0-28-临时缓解方案（无法根除，仅降低风险）" class="headerlink" title="四、5.0.28 临时缓解方案（无法根除，仅降低风险）"></a>四、5.0.28 临时缓解方案（无法根除，仅降低风险）</h2><ol>
+<li><strong>永久关闭调试</strong></li>
+</ol>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/app.php</span></span><br><span class="line"><span class="string">'app_debug'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="string">'app_trace'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>开启强制路由（阻断历史路由RCE变种）</li>
+</ol>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'route_must'</span> =&gt; <span class="literal">true</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>Web服务器拦截敏感目录（Nginx示例）</li>
+</ol>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/(runtime|config|vendor|template)/</span> { <span class="attribute">deny</span> all; }</span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ \.log$</span> { <span class="attribute">deny</span> all; }</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>禁用模板动态路径、禁止用户可控模板名；<code>fetch/view</code>固定模板路径，不接收外部传入文件名</li>
+<li>关闭语言自动切换</li>
+</ol>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'lang_switch_on'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="6">
+<li>代码层防护：<ul>
+<li>所有<code>order/group</code>参数做白名单校验，禁止直接拼接用户输入</li>
+<li>业务禁用<code>unserialize()</code>处理外部输入，改用json存储Cookie/缓存</li>
+<li>文件上传校验文件头+后缀双重拦截，禁止上传phar、图片马</li>
+</ul>
+</li>
+<li>WAF拦截特征：拦截<code>s=index/\think\</code>、<code>fetch?file=</code>、<code>lang=</code>、<code>phar://</code>等攻击载荷</li>
+</ol>
+<h2 id="五、长期安全建议"><a href="#五、长期安全建议" class="headerlink" title="五、长期安全建议"></a>五、长期安全建议</h2><ol>
+<li>最优方案：升级至 ThinkPHP 6.1/8，官方持续维护，修复全部5.0遗留底层漏洞；</li>
+<li>无法升级5.0.28：公网业务必须部署专业WAF，定期扫描渗透，禁止存放支付、用户隐私等高敏感业务；</li>
+<li>禁止公网直接暴露5.0.x系列站点，等保、渗透测试会判定为<strong>高危漏洞</strong>，存在合规风险。</li>
+</ol>
+<hr>
+<h1 id="FastAdmin（TP5-0-28）无法升级完整加固方案"><a href="#FastAdmin（TP5-0-28）无法升级完整加固方案" class="headerlink" title="FastAdmin（TP5.0.28）无法升级完整加固方案"></a>FastAdmin（TP5.0.28）无法升级完整加固方案</h1><blockquote>
+<p>前提说明：  FastAdmin 底层锁定 ThinkPHP5.0.28，<strong>TP5.0 官方早已停止安全维护</strong>，底层存在模板包含、反序列化、order注入、lang文件读取、phar伪协议等原生漏洞，FastAdmin自身还有SelectPage注入、上传、XSS、后台备份高危功能漏洞。  </p>
+</blockquote>
+<blockquote>
+<p>下面分四层加固：<strong>TP底层补丁修复、FastAdmin业务层修复、PHP运行环境限制、Nginx/WAF网络拦截</strong>，覆盖全部公开可利用漏洞。</p>
+</blockquote>
+<h2 id="一、先梳理该组合下可被利用的全部高危漏洞"><a href="#一、先梳理该组合下可被利用的全部高危漏洞" class="headerlink" title="一、先梳理该组合下可被利用的全部高危漏洞"></a>一、先梳理该组合下可被利用的全部高危漏洞</h2><h3 id="1-ThinkPHP5-0-28-原生未修复漏洞（框架底层）"><a href="#1-ThinkPHP5-0-28-原生未修复漏洞（框架底层）" class="headerlink" title="1. ThinkPHP5.0.28 原生未修复漏洞（框架底层）"></a>1. ThinkPHP5.0.28 原生未修复漏洞（框架底层）</h3><ol>
+<li>模板fetch/view路径可控→任意文件读取/缓存包含RCE（CVE-2025-63888/63889）</li>
+<li>lang多语言参数路径穿越读配置文件</li>
+<li>order/group字段直接拼接SQL注入（Debug下报错盲注、关闭Debug时间盲注）</li>
+<li>可控反序列化完整RCE链（Cookie/缓存unserialize）</li>
+<li>Phar伪协议反序列化触发</li>
+<li>开启Debug环境变量、数据库密码完整泄露</li>
+<li>runtime日志目录可直接下载明文账号密码、SQL语句</li>
+</ol>
+<h3 id="2-FastAdmin专属漏洞（业务层）"><a href="#2-FastAdmin专属漏洞（业务层）" class="headerlink" title="2. FastAdmin专属漏洞（业务层）"></a>2. FastAdmin专属漏洞（业务层）</h3><ol>
+<li>SelectPage排序/筛选条件SQL注入（2026年官方安全公告）</li>
+<li>后台配置、规则、附件管理XSS跨站</li>
+<li>lang参数文件读取（CVE-2024-7928 未授权读config/database.php）</li>
+<li>分片上传文件合并路径穿越（低权限账号上传Shell）</li>
+<li>后台备份功能可打包下载全站源码+数据库配置</li>
+<li>API接口JSONP、敏感字段泄露</li>
+<li>上传目录可执行PHP图片马</li>
+</ol>
+<h2 id="二、ThinkPHP5-0-28底层手动补丁（必须操作，封堵框架原生漏洞）"><a href="#二、ThinkPHP5-0-28底层手动补丁（必须操作，封堵框架原生漏洞）" class="headerlink" title="二、ThinkPHP5.0.28底层手动补丁（必须操作，封堵框架原生漏洞）"></a>二、ThinkPHP5.0.28底层手动补丁（必须操作，封堵框架原生漏洞）</h2><h3 id="1-加固控制器路由，阻断遗留变种RCE"><a href="#1-加固控制器路由，阻断遗留变种RCE" class="headerlink" title="1. 加固控制器路由，阻断遗留变种RCE"></a>1. 加固控制器路由，阻断遗留变种RCE</h3><p>修改 <code>thinkphp/library/think/App.php</code><br>找到控制器获取代码：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$controller</span> = strip_tags(<span class="variable">$result</span>[<span class="number">1</span>] ?: <span class="variable">$config</span>[<span class="string">'default_controller'</span>]);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>下方增加白名单正则校验：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 增加控制器名校验，禁止\、/、.、特殊类路径</span></span><br><span class="line"><span class="variable">$controller</span> = strip_tags(<span class="variable">$result</span>[<span class="number">1</span>] ?: <span class="variable">$config</span>[<span class="string">'default_controller'</span>]);</span><br><span class="line"><span class="keyword">if</span> (!preg_match(<span class="string">'/^[A-Za-z]\w*$/'</span>, <span class="variable">$controller</span>)) {</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="number">404</span>, <span class="string">'页面不存在'</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-禁用模板原生-php-标签，杜绝模板代码执行"><a href="#2-禁用模板原生-php-标签，杜绝模板代码执行" class="headerlink" title="2. 禁用模板原生{php}标签，杜绝模板代码执行"></a>2. 禁用模板原生{php}标签，杜绝模板代码执行</h3><p>文件：<code>vendor/topthink/think-template/src/Template.php</code><br>搜索 <code>taglib_php</code>，直接注释/删除PHP标签解析逻辑，彻底关闭模板内执行PHP代码能力。</p>
+<h3 id="3-修复fetch路径穿越，禁止外部可控模板路径"><a href="#3-修复fetch路径穿越，禁止外部可控模板路径" class="headerlink" title="3. 修复fetch路径穿越，禁止外部可控模板路径"></a>3. 修复fetch路径穿越，禁止外部可控模板路径</h3><p>重写全局fetch方法，新建 <code>application/common.php</code> 全局覆盖：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params"><span class="variable">$template</span> = <span class="string">''</span>, <span class="variable">$vars</span> = [], <span class="variable">$replace</span> = [], <span class="variable">$config</span> = []</span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// 禁止传入../、/、\等穿越字符</span></span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/\.\.\/|\\\|^\//'</span>, <span class="variable">$template</span>)) {</span><br><span class="line">        abort(<span class="number">403</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 强制限定模板目录，只允许当前模块view内文件</span></span><br><span class="line">    <span class="variable">$template</span> = str_replace([<span class="string">'../'</span>, <span class="string">'\\'</span>], <span class="string">''</span>, <span class="variable">$template</span>);</span><br><span class="line">    <span class="keyword">return</span> think\View::instance()-&gt;fetch(<span class="variable">$template</span>, <span class="variable">$vars</span>, <span class="variable">$replace</span>, <span class="variable">$config</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-关闭多语言自动切换，封堵lang文件读取漏洞"><a href="#4-关闭多语言自动切换，封堵lang文件读取漏洞" class="headerlink" title="4. 关闭多语言自动切换，封堵lang文件读取漏洞"></a>4. 关闭多语言自动切换，封堵lang文件读取漏洞</h3><p>config/app.php</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'lang_switch_on'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-全局过滤order-group参数，根治SQL注入"><a href="#5-全局过滤order-group参数，根治SQL注入" class="headerlink" title="5. 全局过滤order/group参数，根治SQL注入"></a>5. 全局过滤order/group参数，根治SQL注入</h3><p>新建中间件 <code>application/middleware/SqlFilter.php</code></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">middleware</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SqlFilter</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"><span class="variable">$request</span>, \<span class="built_in">Closure</span> <span class="variable">$next</span></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="variable">$order</span> = <span class="variable">$request</span>-&gt;param(<span class="string">'order'</span>,<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$order</span> &amp;&amp; !preg_match(<span class="string">'/^[\w\,]+(\s+(asc|desc))?$/i'</span>,<span class="variable">$order</span>)){</span><br><span class="line">            abort(<span class="number">403</span>,<span class="string">'非法排序参数'</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$next</span>(<span class="variable">$request</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>config/middleware.php 注册全局中间件：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [</span><br><span class="line">    \app\middleware\SqlFilter::class,</span><br><span class="line">];</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-禁用unserialize处理外部输入，阻断反序列化RCE"><a href="#6-禁用unserialize处理外部输入，阻断反序列化RCE" class="headerlink" title="6. 禁用unserialize处理外部输入，阻断反序列化RCE"></a>6. 禁用unserialize处理外部输入，阻断反序列化RCE</h3><p>全局搜索代码中 <code>unserialize($_</code>、<code>unserialize($this-&gt;request-&gt;</code> 全部替换为json_decode；<br>Cookie存储统一使用json，禁止序列化存储。</p>
+<h2 id="三、FastAdmin框架专属漏洞修复（官方安全补丁）"><a href="#三、FastAdmin框架专属漏洞修复（官方安全补丁）" class="headerlink" title="三、FastAdmin框架专属漏洞修复（官方安全补丁）"></a>三、FastAdmin框架专属漏洞修复（官方安全补丁）</h2><h3 id="1-修复SelectPage-SQL注入（2026-05官方高危）"><a href="#1-修复SelectPage-SQL注入（2026-05官方高危）" class="headerlink" title="1. 修复SelectPage SQL注入（2026-05官方高危）"></a>1. 修复SelectPage SQL注入（2026-05官方高危）</h3><p>下载官方修复文件覆盖：<br><a target="_blank" rel="noopener" href="https://raw.giteeusercontent.com/fastadminnet/fastadmin/raw/127919050e5cf700e652ee9d53489007e1be1820/application/common/library/SelectPage.php">https://raw.giteeusercontent.com/fastadminnet/fastadmin/raw/127919050e5cf700e652ee9d53489007e1be1820/application/common/library/SelectPage.php</a><br>覆盖 <code>application/common/library/SelectPage.php</code></p>
+<h3 id="2-关闭分片上传（高危上传RCE入口）"><a href="#2-关闭分片上传（高危上传RCE入口）" class="headerlink" title="2. 关闭分片上传（高危上传RCE入口）"></a>2. 关闭分片上传（高危上传RCE入口）</h3><p>application/config.php</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'chunking'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-修复后台XSS输出过滤"><a href="#3-修复后台XSS输出过滤" class="headerlink" title="3. 修复后台XSS输出过滤"></a>3. 修复后台XSS输出过滤</h3><p>全局搜索后台模板 <code>{$vo.xxx}</code> 统一改为 <code>{$vo.xxx|htmlspecialchars}</code>；<br>更新官方修复后的rule.js、upload.js静态文件（官网安全公告可下载）。</p>
+<h3 id="4-限制后台备份功能，禁止全站打包下载"><a href="#4-限制后台备份功能，禁止全站打包下载" class="headerlink" title="4. 限制后台备份功能，禁止全站打包下载"></a>4. 限制后台备份功能，禁止全站打包下载</h3><p>修改 <code>application/admin/controller/Database.php</code></p>
+<ul>
+<li>备份只允许单表，移除全站备份选项</li>
+<li>备份文件存放目录Nginx拦截外部访问</li>
+</ul>
+<h3 id="5-API接口关闭JSONP、过滤敏感字段"><a href="#5-API接口关闭JSONP、过滤敏感字段" class="headerlink" title="5. API接口关闭JSONP、过滤敏感字段"></a>5. API接口关闭JSONP、过滤敏感字段</h3><p>config/api.php</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'jsonp_callback'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<p>统一API输出过滤数据库密码、密钥、token等敏感字段。</p>
+<h2 id="四、PHP-FPM运行环境底层限制（釜底抽薪，即使漏洞也无法执行命令）"><a href="#四、PHP-FPM运行环境底层限制（釜底抽薪，即使漏洞也无法执行命令）" class="headerlink" title="四、PHP-FPM运行环境底层限制（釜底抽薪，即使漏洞也无法执行命令）"></a>四、PHP-FPM运行环境底层限制（釜底抽薪，即使漏洞也无法执行命令）</h2><p>php.ini / php-fpm.conf 配置：</p>
+<ol>
+<li>禁用高危执行函数</li>
+</ol>
+<figure class="highlight properties"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disable_functions</span> = <span class="string">system,exec,shell_exec,passthru,popen,proc_open,eval,assert,pcntl_exec,file_put_contents,fopen,move_uploaded_file</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>目录访问隔离 open_basedir（Nginx fastcgi参数）</li>
+</ol>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fastcgi_param</span> PHP_VALUE <span class="string">"open_basedir=/www/你的项目/:/tmp/"</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>禁止PHP读取系统目录、跨目录读取配置。<br>3. 关闭PHP文件上传临时文件执行、限制上传大小<br>4. 关闭phar伪协议解析</p>
+<figure class="highlight properties"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">phar.readonly</span> = <span class="string">On</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>永久关闭调试模式（重中之重）<br>config/app.php</li>
+</ol>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'app_debug'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="string">'app_trace'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、Nginx站点防护规则（网络层拦截所有攻击载荷）"><a href="#五、Nginx站点防护规则（网络层拦截所有攻击载荷）" class="headerlink" title="五、Nginx站点防护规则（网络层拦截所有攻击载荷）"></a>五、Nginx站点防护规则（网络层拦截所有攻击载荷）</h2><p>复制到站点server块，一层拦截攻击，不进PHP：</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 拦截TP漏洞特征 payload</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* (\?s=.*\\|lang=|\.phar|fetch\?file=|updatexml\()</span> {</span><br><span class="line">    <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 2. 禁止访问敏感源码目录</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/(runtime|config|vendor|application|backup)/</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 3. 禁止上传目录执行PHP（图片马无法执行）</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/uploads/.*\.(php|php5|phtml)</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 4. 禁止直接访问日志</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ \.log$</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 5. 后台/admin增加IP白名单（内网/固定运维IP）</span></span><br><span class="line"><span class="attribute">location</span> /admin {</span><br><span class="line">    <span class="attribute">allow</span> <span class="number">192.168.1.0</span>/<span class="number">24</span>;</span><br><span class="line">    <span class="attribute">allow</span> 你的办公公网IP;</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">    <span class="attribute">try_files</span> $uri $uri/ /index.php?s=$uri&amp;$args;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 6. 屏蔽目录穿越 ../</span></span><br><span class="line"><span class="attribute">if</span> ($query_string <span class="regexp">~ "\.\.\/")</span> {</span><br><span class="line">    <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="六、后台账号与运维安全策略"><a href="#六、后台账号与运维安全策略" class="headerlink" title="六、后台账号与运维安全策略"></a>六、后台账号与运维安全策略</h2><ol>
+<li>修改默认admin账号，使用强密码（大小写+数字+符号），关闭游客注册</li>
+<li>开启后台登录验证码、登录失败锁定5分钟</li>
+<li>定期清理runtime/log日志，日志不保留超过7天</li>
+<li>禁用不需要的插件，删除测试插件、演示插件</li>
+<li>部署WAF（宝塔WAF/阿里云WAF），开启SQL注入、路径穿越、XSS拦截规则</li>
+<li>网站目录权限：www-data只读，uploads仅写入，禁止777权限</li>
+<li>定期扫描：使用AWVS、Xray渗透扫描，每月一次漏洞复测</li>
+</ol>
+<h2 id="七、风险兜底说明"><a href="#七、风险兜底说明" class="headerlink" title="七、风险兜底说明"></a>七、风险兜底说明</h2><ol>
+<li>以上加固只能<strong>大幅降低被利用概率</strong>，无法彻底根除TP5.0底层架构缺陷（无官方底层修复）；</li>
+<li>涉及支付、用户隐私、企业核心数据业务，长期仍存在合规与被入侵风险；</li>
+<li>中长期方案：业务解耦拆分，新项目改用FastAdmin V2（基于TP6），老项目逐步迁移；</li>
+<li>等保/渗透测试场景：必须提供完整加固文档+WAF日志+漏洞复测报告，否则会判定高危漏洞。</li>
+</ol>
+<hr>
+<h1 id="FastAdmin-TP5-0-28-一键加固操作清单（按执行顺序）"><a href="#FastAdmin-TP5-0-28-一键加固操作清单（按执行顺序）" class="headerlink" title="FastAdmin TP5.0.28 一键加固操作清单（按执行顺序）"></a>FastAdmin TP5.0.28 一键加固操作清单（按执行顺序）</h1><h2 id="前置说明"><a href="#前置说明" class="headerlink" title="前置说明"></a>前置说明</h2><ol>
+<li>操作前<strong>完整备份项目源码+数据库</strong>，避免改错无法回滚</li>
+<li>所有配置修改完成后，重启Nginx、PHP-FPM生效</li>
+<li>全部操作完成后，使用Xray/宝塔WAF扫描复测漏洞</li>
+</ol>
+<h1 id="第一阶段：框架配置文件修改（项目目录直接改）"><a href="#第一阶段：框架配置文件修改（项目目录直接改）" class="headerlink" title="第一阶段：框架配置文件修改（项目目录直接改）"></a>第一阶段：框架配置文件修改（项目目录直接改）</h1><h2 id="1-关闭调试、关闭多语言自动切换（config-app-php）"><a href="#1-关闭调试、关闭多语言自动切换（config-app-php）" class="headerlink" title="1. 关闭调试、关闭多语言自动切换（config/app.php）"></a>1. 关闭调试、关闭多语言自动切换（config/app.php）</h2><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'app_debug'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="string">'app_trace'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="string">'lang_switch_on'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-关闭分片上传、关闭JSONP（application-config-php）"><a href="#2-关闭分片上传、关闭JSONP（application-config-php）" class="headerlink" title="2. 关闭分片上传、关闭JSONP（application/config.php）"></a>2. 关闭分片上传、关闭JSONP（application/config.php）</h2><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'chunking'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<p>config/api.php</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'jsonp_callback'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-注册全局SQL过滤中间件（拦截order-group注入）"><a href="#3-注册全局SQL过滤中间件（拦截order-group注入）" class="headerlink" title="3. 注册全局SQL过滤中间件（拦截order/group注入）"></a>3. 注册全局SQL过滤中间件（拦截order/group注入）</h2><h3 id="步骤3-1-新建中间件文件-application-middleware-SqlFilter-php"><a href="#步骤3-1-新建中间件文件-application-middleware-SqlFilter-php" class="headerlink" title="步骤3.1 新建中间件文件 application/middleware/SqlFilter.php"></a>步骤3.1 新建中间件文件 application/middleware/SqlFilter.php</h3><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">middleware</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SqlFilter</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"><span class="variable">$request</span>, \<span class="built_in">Closure</span> <span class="variable">$next</span></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="variable">$order</span> = <span class="variable">$request</span>-&gt;param(<span class="string">'order'</span>,<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$order</span> &amp;&amp; !preg_match(<span class="string">'/^[\w\,]+(\s+(asc|desc))?$/i'</span>,<span class="variable">$order</span>)){</span><br><span class="line">            abort(<span class="number">403</span>,<span class="string">'非法排序参数'</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$next</span>(<span class="variable">$request</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="步骤3-2-注册全局中间件-config-middleware-php"><a href="#步骤3-2-注册全局中间件-config-middleware-php" class="headerlink" title="步骤3.2 注册全局中间件 config/middleware.php"></a>步骤3.2 注册全局中间件 config/middleware.php</h3><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> [</span><br><span class="line">    \app\middleware\SqlFilter::class,</span><br><span class="line">];</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="第二阶段：TP底层源码加固（封堵框架原生漏洞）"><a href="#第二阶段：TP底层源码加固（封堵框架原生漏洞）" class="headerlink" title="第二阶段：TP底层源码加固（封堵框架原生漏洞）"></a>第二阶段：TP底层源码加固（封堵框架原生漏洞）</h1><h2 id="1-加固控制器路由，拦截类路径RCE（thinkphp-library-think-App-php）"><a href="#1-加固控制器路由，拦截类路径RCE（thinkphp-library-think-App-php）" class="headerlink" title="1. 加固控制器路由，拦截类路径RCE（thinkphp/library/think/App.php）"></a>1. 加固控制器路由，拦截类路径RCE（thinkphp/library/think/App.php）</h2><p>找到代码：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$controller</span> = strip_tags(<span class="variable">$result</span>[<span class="number">1</span>] ?: <span class="variable">$config</span>[<span class="string">'default_controller'</span>]);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>下方追加校验代码：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 防御控制器路径穿越、反斜杠类漏洞</span></span><br><span class="line"><span class="keyword">if</span> (!preg_match(<span class="string">'/^[A-Za-z]\w*$/'</span>, <span class="variable">$controller</span>)) {</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="number">404</span>, <span class="string">'页面不存在'</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-全局覆盖fetch方法，禁止模板路径穿越（application-common-php-末尾追加）"><a href="#2-全局覆盖fetch方法，禁止模板路径穿越（application-common-php-末尾追加）" class="headerlink" title="2. 全局覆盖fetch方法，禁止模板路径穿越（application/common.php 末尾追加）"></a>2. 全局覆盖fetch方法，禁止模板路径穿越（application/common.php 末尾追加）</h2><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 重写fetch，防御模板文件包含/任意文件读取漏洞</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params"><span class="variable">$template</span> = <span class="string">''</span>, <span class="variable">$vars</span> = [], <span class="variable">$replace</span> = [], <span class="variable">$config</span> = []</span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// 拦截目录穿越、斜杠路径</span></span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/\.\.\/|\\\|^\//'</span>, <span class="variable">$template</span>)) {</span><br><span class="line">        abort(<span class="number">403</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="variable">$template</span> = str_replace([<span class="string">'../'</span>, <span class="string">'\\'</span>], <span class="string">''</span>, <span class="variable">$template</span>);</span><br><span class="line">    <span class="keyword">return</span> think\View::instance()-&gt;fetch(<span class="variable">$template</span>, <span class="variable">$vars</span>, <span class="variable">$replace</span>, <span class="variable">$config</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-关闭模板原生-php-执行标签（vendor-topthink-think-template-src-Template-php）"><a href="#3-关闭模板原生-php-执行标签（vendor-topthink-think-template-src-Template-php）" class="headerlink" title="3. 关闭模板原生{php}执行标签（vendor/topthink/think-template/src/Template.php）"></a>3. 关闭模板原生{php}执行标签（vendor/topthink/think-template/src/Template.php）</h2><p>全局搜索 <code>taglib_php</code>，注释/删除PHP标签解析逻辑，彻底禁止模板内执行PHP代码。</p>
+<h1 id="第三阶段：FastAdmin专属漏洞修复"><a href="#第三阶段：FastAdmin专属漏洞修复" class="headerlink" title="第三阶段：FastAdmin专属漏洞修复"></a>第三阶段：FastAdmin专属漏洞修复</h1><h2 id="1-修复SelectPage-SQL注入漏洞"><a href="#1-修复SelectPage-SQL注入漏洞" class="headerlink" title="1. 修复SelectPage SQL注入漏洞"></a>1. 修复SelectPage SQL注入漏洞</h2><p>覆盖文件：<code>application/common/library/SelectPage.php</code><br>官方修复地址：<a target="_blank" rel="noopener" href="https://gitee.com/fastadminnet/fastadmin/raw/master/application/common/library/SelectPage.php">https://gitee.com/fastadminnet/fastadmin/raw/master/application/common/library/SelectPage.php</a></p>
+<h2 id="2-限制数据库备份功能（application-admin-controller-Database-php）"><a href="#2-限制数据库备份功能（application-admin-controller-Database-php）" class="headerlink" title="2. 限制数据库备份功能（application/admin/controller/Database.php）"></a>2. 限制数据库备份功能（application/admin/controller/Database.php）</h2><ol>
+<li>删除全站批量备份功能，仅保留单表备份</li>
+<li>备份文件统一存放至非web可访问目录</li>
+</ol>
+<h2 id="3-模板XSS统一过滤"><a href="#3-模板XSS统一过滤" class="headerlink" title="3. 模板XSS统一过滤"></a>3. 模板XSS统一过滤</h2><p>所有后台html模板中输出变量统一增加html转义：<br><code>{$data.name}</code> → <code>{$data.name|htmlspecialchars}</code></p>
+<h1 id="第四阶段：PHP运行环境加固（php-ini-php-fpm-conf）"><a href="#第四阶段：PHP运行环境加固（php-ini-php-fpm-conf）" class="headerlink" title="第四阶段：PHP运行环境加固（php.ini / php-fpm.conf）"></a>第四阶段：PHP运行环境加固（php.ini / php-fpm.conf）</h1><h2 id="1-禁用高危执行函数"><a href="#1-禁用高危执行函数" class="headerlink" title="1. 禁用高危执行函数"></a>1. 禁用高危执行函数</h2><figure class="highlight properties"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disable_functions</span> = <span class="string">system,exec,shell_exec,passthru,popen,proc_open,eval,assert,pcntl_exec,file_put_contents,file_get_contents,move_uploaded_file</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-关闭phar伪协议利用"><a href="#2-关闭phar伪协议利用" class="headerlink" title="2. 关闭phar伪协议利用"></a>2. 关闭phar伪协议利用</h2><figure class="highlight properties"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">phar.readonly</span> = <span class="string">On</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-配置运行目录隔离-open-basedir（Nginx-fastcgi参数）"><a href="#3-配置运行目录隔离-open-basedir（Nginx-fastcgi参数）" class="headerlink" title="3. 配置运行目录隔离 open_basedir（Nginx fastcgi参数）"></a>3. 配置运行目录隔离 open_basedir（Nginx fastcgi参数）</h2><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fastcgi_param</span> PHP_VALUE <span class="string">"open_basedir=/www/项目根目录/:/tmp/"</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="第五阶段：Nginx站点防护配置（server块内完整复制）"><a href="#第五阶段：Nginx站点防护配置（server块内完整复制）" class="headerlink" title="第五阶段：Nginx站点防护配置（server块内完整复制）"></a>第五阶段：Nginx站点防护配置（server块内完整复制）</h1><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拦截TP漏洞攻击特征</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* (\?s=.*\\|lang=|\.phar|fetch\?file=|updatexml\()</span> {</span><br><span class="line">    <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 拦截目录穿越参数</span></span><br><span class="line"><span class="attribute">if</span> ($query_string <span class="regexp">~ "\.\.\/")</span> {</span><br><span class="line">    <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 禁止访问敏感源码目录</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/(runtime|config|vendor|application|backup)/</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 上传目录禁止执行PHP</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/uploads/.*\.(php|php5|phtml|phar)</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 禁止直接访问日志文件</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ \.log$</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 后台管理IP白名单（必填，替换为你的运维IP）</span></span><br><span class="line"><span class="attribute">location</span> /admin {</span><br><span class="line">    <span class="attribute">allow</span> <span class="number">127.0.0.1</span>;</span><br><span class="line">    <span class="attribute">allow</span> 办公固定公网IP;</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">    <span class="attribute">try_files</span> $uri $uri/ /index.php?s=$uri&amp;$args;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="第六阶段：代码层整改（人工全局检索替换）"><a href="#第六阶段：代码层整改（人工全局检索替换）" class="headerlink" title="第六阶段：代码层整改（人工全局检索替换）"></a>第六阶段：代码层整改（人工全局检索替换）</h1><ol>
+<li>全局搜索 <code>unserialize(</code>，所有接收请求、cookie参数的unserialize全部替换为json_decode</li>
+<li>Cookie存储统一使用json，不再使用序列化</li>
+<li>删除项目内所有演示插件、测试插件、无用第三方插件</li>
+<li>上传校验增强：文件后缀+文件头双重校验，禁止phar、svg、html等可执行文件上传</li>
+</ol>
+<h1 id="第七阶段：权限与账号运维加固"><a href="#第七阶段：权限与账号运维加固" class="headerlink" title="第七阶段：权限与账号运维加固"></a>第七阶段：权限与账号运维加固</h1><ol>
+<li>网站目录权限：程序目录只读，uploads仅写入，禁止777权限</li>
+<li>修改默认admin账号，设置16位以上强密码</li>
+<li>后台开启登录验证码、开启登录失败锁定（连续5次错误锁定5分钟）</li>
+<li>设置定时任务自动清理runtime/log日志，保留不超过7天</li>
+<li>部署WAF（宝塔WAF/云厂商WAF），开启SQL注入、路径穿越、XSS防护规则</li>
+</ol>
+<h1 id="第八阶段：生效与复测步骤"><a href="#第八阶段：生效与复测步骤" class="headerlink" title="第八阶段：生效与复测步骤"></a>第八阶段：生效与复测步骤</h1><ol>
+<li>保存全部文件</li>
+<li>重启 php-fpm + nginx</li>
+<li>清理 runtime/cache 缓存目录</li>
+<li>使用漏洞扫描工具（Xray/awvs）全站点扫描</li>
+<li>手动测试高危漏洞payload验证拦截效果</li>
+<li>留存加固文档、扫描报告用于等保/渗透检查</li>
+</ol>
+<hr>
+<h1 id="FastAdmin-TP5-0-28-修正版一键加固操作清单"><a href="#FastAdmin-TP5-0-28-修正版一键加固操作清单" class="headerlink" title="FastAdmin(TP5.0.28) 修正版一键加固操作清单"></a>FastAdmin(TP5.0.28) 修正版一键加固操作清单</h1><h2 id="前置必做"><a href="#前置必做" class="headerlink" title="前置必做"></a>前置必做</h2><ol>
+<li>完整备份项目源码+数据库，防止改错回滚</li>
+<li>修改完成后重启 php-fpm、nginx，清空 runtime/cache</li>
+</ol>
+<h2 id="一、全局配置修改（application-config-php）"><a href="#一、全局配置修改（application-config-php）" class="headerlink" title="一、全局配置修改（application/config.php）"></a>一、全局配置修改（application/config.php）</h2><p>打开 <code>application/config.php</code>，修改/新增以下配置</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭调试、关闭追踪</span></span><br><span class="line"><span class="string">'app_debug'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="string">'app_trace'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="comment">// 关闭多语言自动切换，封堵lang文件读取漏洞</span></span><br><span class="line"><span class="string">'lang_switch_on'</span> =&gt; <span class="literal">false</span>,</span><br><span class="line"><span class="comment">// 关闭分片上传（高危上传漏洞入口）</span></span><br><span class="line"><span class="string">'chunking'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、API模块关闭JSONP（application-api-config-php）"><a href="#二、API模块关闭JSONP（application-api-config-php）" class="headerlink" title="二、API模块关闭JSONP（application/api/config.php）"></a>二、API模块关闭JSONP（application/api/config.php）</h2><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'jsonp_callback'</span> =&gt; <span class="literal">false</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、新增全局SQL注入防御中间件"><a href="#三、新增全局SQL注入防御中间件" class="headerlink" title="三、新增全局SQL注入防御中间件"></a>三、新增全局SQL注入防御中间件</h2><h3 id="3-1-创建文件-application-middleware-SqlFilter-php"><a href="#3-1-创建文件-application-middleware-SqlFilter-php" class="headerlink" title="3.1 创建文件 application/middleware/SqlFilter.php"></a>3.1 创建文件 <code>application/middleware/SqlFilter.php</code></h3><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">middleware</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SqlFilter</span></span></span><br><span class="line"><span class="class"></span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"><span class="variable">$request</span>, \<span class="built_in">Closure</span> <span class="variable">$next</span></span>)</span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="variable">$order</span> = <span class="variable">$request</span>-&gt;param(<span class="string">'order'</span>,<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$order</span> &amp;&amp; !preg_match(<span class="string">'/^[\w\,]+(\s+(asc|desc))?$/i'</span>,<span class="variable">$order</span>)){</span><br><span class="line">            abort(<span class="number">403</span>,<span class="string">'非法排序参数'</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$next</span>(<span class="variable">$request</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-2-注册全局中间件-application-middleware-php"><a href="#3-2-注册全局中间件-application-middleware-php" class="headerlink" title="3.2 注册全局中间件 application/middleware.php"></a>3.2 注册全局中间件 <code>application/middleware.php</code></h3><figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">return</span> [</span><br><span class="line">    \app\middleware\SqlFilter::class,</span><br><span class="line">];</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、ThinkPHP底层源码加固（目录不变）"><a href="#四、ThinkPHP底层源码加固（目录不变）" class="headerlink" title="四、ThinkPHP底层源码加固（目录不变）"></a>四、ThinkPHP底层源码加固（目录不变）</h2><h3 id="4-1-App-php-控制器路由加固"><a href="#4-1-App-php-控制器路由加固" class="headerlink" title="4.1 App.php 控制器路由加固"></a>4.1 App.php 控制器路由加固</h3><p>文件路径：<code>thinkphp/library/think/App.php</code><br>找到代码：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$controller</span> = strip_tags(<span class="variable">$result</span>[<span class="number">1</span>] ?: <span class="variable">$config</span>[<span class="string">'default_controller'</span>]);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>下方插入校验代码：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!preg_match(<span class="string">'/^[A-Za-z]\w*$/'</span>, <span class="variable">$controller</span>)) {</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> HttpException(<span class="number">404</span>, <span class="string">'页面不存在'</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-2-重写fetch防模板路径穿越"><a href="#4-2-重写fetch防模板路径穿越" class="headerlink" title="4.2 重写fetch防模板路径穿越"></a>4.2 重写fetch防模板路径穿越</h3><p>打开 <code>application/common.php</code>，文件末尾追加：</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 覆盖原生fetch，防御任意文件读取/文件包含RCE</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params"><span class="variable">$template</span> = <span class="string">''</span>, <span class="variable">$vars</span> = [], <span class="variable">$replace</span> = [], <span class="variable">$config</span> = []</span>)</span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/\.\.\/|\\\|^\//'</span>, <span class="variable">$template</span>)) {</span><br><span class="line">        abort(<span class="number">403</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="variable">$template</span> = str_replace([<span class="string">'../'</span>, <span class="string">'\\'</span>], <span class="string">''</span>, <span class="variable">$template</span>);</span><br><span class="line">    <span class="keyword">return</span> think\View::instance()-&gt;fetch(<span class="variable">$template</span>, <span class="variable">$vars</span>, <span class="variable">$replace</span>, <span class="variable">$config</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-3-禁用模板-php-可执行标签"><a href="#4-3-禁用模板-php-可执行标签" class="headerlink" title="4.3 禁用模板 {php} 可执行标签"></a>4.3 禁用模板 {php} 可执行标签</h3><p>文件：<code>vendor/topthink/think-template/src/Template.php</code><br>搜索 <code>taglib_php</code>，注释/删除PHP标签解析逻辑，禁止模板内执行PHP代码。</p>
+<h2 id="五、FastAdmin专属漏洞修复"><a href="#五、FastAdmin专属漏洞修复" class="headerlink" title="五、FastAdmin专属漏洞修复"></a>五、FastAdmin专属漏洞修复</h2><h3 id="5-1-修复SelectPage排序注入"><a href="#5-1-修复SelectPage排序注入" class="headerlink" title="5.1 修复SelectPage排序注入"></a>5.1 修复SelectPage排序注入</h3><p>覆盖文件：<code>application/common/library/SelectPage.php</code><br>下载官方修复文件替换：<br><a target="_blank" rel="noopener" href="https://gitee.com/fastadminnet/fastadmin/raw/master/application/common/library/SelectPage.php">https://gitee.com/fastadminnet/fastadmin/raw/master/application/common/library/SelectPage.php</a></p>
+<h3 id="5-2-限制后台数据库备份"><a href="#5-2-限制后台数据库备份" class="headerlink" title="5.2 限制后台数据库备份"></a>5.2 限制后台数据库备份</h3><p>文件：<code>application/admin/controller/Database.php</code></p>
+<ol>
+<li>移除全站一键备份功能，仅保留单表备份</li>
+<li>将备份目录迁移至 web 不可访问路径</li>
+</ol>
+<h3 id="5-3-全局模板XSS过滤"><a href="#5-3-全局模板XSS过滤" class="headerlink" title="5.3 全局模板XSS过滤"></a>5.3 全局模板XSS过滤</h3><p>所有后台html模板输出变量统一转义：<br><code>{$vo.title}</code> → <code>{$vo.title|htmlspecialchars}</code></p>
+<h2 id="六、PHP环境加固（php-ini-php-fpm-conf）"><a href="#六、PHP环境加固（php-ini-php-fpm-conf）" class="headerlink" title="六、PHP环境加固（php.ini / php-fpm.conf）"></a>六、PHP环境加固（php.ini / php-fpm.conf）</h2><ol>
+<li>禁用危险执行函数</li>
+</ol>
+<figure class="highlight properties"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disable_functions</span> = <span class="string">system,exec,shell_exec,passthru,popen,proc_open,eval,assert,pcntl_exec</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>关闭phar伪协议利用</li>
+</ol>
+<figure class="highlight properties"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">phar.readonly</span> = <span class="string">On</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>Nginx 配置目录隔离</li>
+</ol>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fastcgi_param</span> PHP_VALUE <span class="string">"open_basedir=/www/你的项目目录/:/tmp/"</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="七、Nginx-站点完整防护规则（server块直接粘贴）"><a href="#七、Nginx-站点完整防护规则（server块直接粘贴）" class="headerlink" title="七、Nginx 站点完整防护规则（server块直接粘贴）"></a>七、Nginx 站点完整防护规则（server块直接粘贴）</h2><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拦截TP漏洞特征payload</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* (\?s=.*\\|lang=|\.phar|fetch\?file=|updatexml\()</span> {</span><br><span class="line">    <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 拦截目录穿越参数</span></span><br><span class="line"><span class="attribute">if</span> ($query_string <span class="regexp">~ "\.\.\/")</span> {</span><br><span class="line">    <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 禁止访问敏感目录</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/(runtime|vendor|application/backup)/</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 上传目录禁止执行php</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/uploads/.*\.(php|php5|phtml|phar)</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 禁止直接访问日志</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~ \.log$</span> {</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 后台IP白名单（替换为你的运维公网IP、本地IP）</span></span><br><span class="line"><span class="attribute">location</span> /admin {</span><br><span class="line">    <span class="attribute">allow</span> <span class="number">127.0.0.1</span>;</span><br><span class="line">    <span class="attribute">allow</span> 你的办公固定IP;</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">    <span class="attribute">try_files</span> $uri $uri/ /index.php?s=$uri&amp;$args;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="八、全局代码检索整改"><a href="#八、全局代码检索整改" class="headerlink" title="八、全局代码检索整改"></a>八、全局代码检索整改</h2><ol>
+<li>全局搜索 <code>unserialize(</code>，所有接收GET/POST/COOKIE的序列化全部替换为 json_decode</li>
+<li>Cookie统一使用json存储，放弃serialize</li>
+<li>删除无用、演示、测试类插件</li>
+<li>上传增加双重校验：后缀校验 + 文件头校验，禁止phar、svg、html上传</li>
+</ol>
+<h2 id="九、账号与服务器权限加固"><a href="#九、账号与服务器权限加固" class="headerlink" title="九、账号与服务器权限加固"></a>九、账号与服务器权限加固</h2><ol>
+<li>修改默认admin账号，设置16位强密码</li>
+<li>后台开启登录验证码、登录失败锁定（5次错误锁定5分钟）</li>
+<li>网站程序目录设置只读，uploads目录仅写入，禁止777权限</li>
+<li>定时清理 runtime/log 日志，仅保留7天内日志</li>
+<li>部署WAF，开启SQL注入、路径穿越、XSS防护</li>
+</ol>
+<h2 id="十、生效-amp-复测流程"><a href="#十、生效-amp-复测流程" class="headerlink" title="十、生效&amp;复测流程"></a>十、生效&amp;复测流程</h2><ol>
+<li>保存所有修改文件</li>
+<li>重启 php-fpm + nginx</li>
+<li>删除 <code>runtime/cache</code> 全部缓存文件</li>
+<li>使用Xray/宝塔WAF进行漏洞扫描复测</li>
+<li>手动测试漏洞payload验证拦截效果</li>
+<li>留存加固记录用于等保、渗透测试</li>
 </ol>
 <hr>
 <h1 id="CodeIgniter-CI"><a href="#CodeIgniter-CI" class="headerlink" title="CodeIgniter(CI)"></a><center><font color="red">CodeIgniter(CI)</font></center></h1><hr>
 <h1 id="Yii"><a href="#Yii" class="headerlink" title="Yii"></a><center><font color="red">Yii</font></center></h1><hr>
 <h1 id="Symfony"><a href="#Symfony" class="headerlink" title="Symfony"></a><center><font color="red">Symfony</font></center></h1><hr>
 <h1 id="Zend-Framework"><a href="#Zend-Framework" class="headerlink" title="Zend Framework"></a><center><font color="red">Zend Framework</font></center></h1><hr>
-<h1 id="Laravel-admin"><a href="#Laravel-admin" class="headerlink" title="Laravel-admin"></a><center><font color="red">Laravel-admin</font></center></h1><h2 id="一、使用"><a href="#一、使用" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Laravel-admin"><a href="#Laravel-admin" class="headerlink" title="Laravel-admin"></a><center><font color="red">Laravel-admin</font></center></h1><h2 id="一、使用-1"><a href="#一、使用-1" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="一、Laravel-laravel-admin"><a href="#一、Laravel-laravel-admin" class="headerlink" title="一、Laravel+laravel-admin"></a>一、Laravel+laravel-admin</h2><ol>
+<li>composer global require laravel/installer</li>
+</ol>
+<ul>
+<li>composer clear-cache</li>
+<li>composer config -g repo.packagist composer <a target="_blank" rel="noopener" href="https://packagist.phpcomposer.com">https://packagist.phpcomposer.com</a><ul>
+<li>composer config repo.packagist composer <a target="_blank" rel="noopener" href="https://packagist.phpcomposer.com">https://packagist.phpcomposer.com</a></li>
+<li>composer global require laravel/installer <img src="laravel1.png" alt="laravel1"></li>
+</ul>
+</li>
+<li>composer config -g repo.packagist composer <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/composer/">https://mirrors.aliyun.com/composer/</a><ul>
+<li>composer global require laravel/installer</li>
+<li>laravel new luna-laraveladmin</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>laravel new luna-web</li>
+<li>cd luna-web</li>
+<li><del>npm install</del></li>
+<li><del>npm run build</del></li>
+<li><del>composer run dev</del></li>
+<li>composer require encore/laravel-admin</li>
+<li>php artisan vendor:publish –provider=”Encore\Admin\AdminServiceProvider”</li>
+<li>php artisan admin:install</li>
+<li>添加网站</li>
+<li>修改重写</li>
+<li>添加菜单</li>
+</ol>
+<ul>
+<li>公告管理<ul>
+<li>php artisan make:model  Admin\Notice</li>
+<li>php artisan admin:make NoticeController –model=App\Models\Admin\Notice</li>
+<li>创建表：tc_notices</li>
+</ul>
+</li>
+<li>活动管理<ul>
+<li>php artisan make:model  Admin\Event</li>
+<li>php artisan admin:make EventController –model=App\Models\Admin\Event</li>
+<li>创建表：tc_events</li>
+</ul>
+</li>
+<li>更新管理<ul>
+<li>php artisan make:model  Admin\Update</li>
+<li>php artisan admin:make UpdateController –model=App\Models\Admin\Update</li>
+<li>创建表：tc_updates</li>
+</ul>
+</li>
+<li>新手教学<ul>
+<li>php artisan make:model  Admin\Guide</li>
+<li>php artisan admin:make GuideController –model=App\Models\Admin\Guide</li>
+<li>创建表：tc_guides</li>
+</ul>
+</li>
+<li>常见问题<ul>
+<li>php artisan make:model  Admin\Faq</li>
+<li>php artisan admin:make FaqController –model=App\Models\Admin\Faq</li>
+<li>创建表：tc_faqs</li>
+</ul>
+</li>
+</ul>
+<ol start="13">
+<li>添加官网controller</li>
+</ol>
+<ul>
+<li>php artisan make:controller NoticeController</li>
+<li>php artisan make:controller EventController </li>
+<li>php artisan make:controller UpdateController</li>
+<li>php artisan make:controller GuideController</li>
+<li>php artisan make:controller FaqController</li>
+</ul>
+<ol start="14">
+<li>富文本编辑器</li>
+</ol>
+<ul>
+<li><del>composer require laravel-admin-ext/tinymce</del></li>
+<li><del>php artisan vendor:publish –tag=laravel-admin-tinymce</del></li>
+<li>composer require tinymce/tinymce</li>
+<li>php artisan vendor:publish –tag=laravel-assets –ansi –force</li>
+<li>config/admin.php中注册TinyMCE编辑器</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">'extensions' =&gt; [</span><br><span class="line">    'tinymce' =&gt; [</span><br><span class="line">        // 设置编辑器的路径，默认为`/admin/tinymce`</span><br><span class="line">        'path' =&gt; '/admin/tinymce',</span><br><span class="line">        // 设置编辑器的语言，默认为`en`</span><br><span class="line">        'locale' =&gt; 'zh_CN',</span><br><span class="line">    ],</span><br><span class="line">],</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>在控制器中添加</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">use Encore\Admin\Form\Field\Editor;</span><br><span class="line"> </span><br><span class="line">$form-&gt;editor('content', 'Content');</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h2 id="二、问题-1"><a href="#二、问题-1" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>上传图片访问不到</li>
+</ol>
+<ul>
+<li>php artisan storage:link，会在public目录下创建软连接</li>
+</ul>
+<ol start="2">
+<li>权限问题：可以是角色级别，也可以是用户级别</li>
+<li>sidebar默认展开，修改config/admin.php</li>
+<li>laravel上传图片：<a target="_blank" rel="noopener" href="https://learnku.com/laravel/t/45408">https://learnku.com/laravel/t/45408</a></li>
+<li>wang-editor上传完不回显 <img src="laravel2.png" alt=""></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return array(</span><br><span class="line">            'errno' =&gt; 0,</span><br><span class="line">            'data' =&gt; $urls</span><br><span class="line">        );</span><br></pre></td></tr></tbody></table></figure>
+<ol start="6">
+<li>注释powered by：vendor/encore/laravel-admin/resources/views/partials/footer.blade.php</li>
+<li>登录首页修改config/admin</li>
+</ol>
+<ul>
+<li>清掉bootstrap/cache目录</li>
+</ul>
+<ol start="8">
+<li>Access to font at ‘<a target="_blank" rel="noopener" href="http://luna-mobile.com.cn/images/Simple-Line-Icons.woff2'">http://luna-mobile.com.cn/images/Simple-Line-Icons.woff2'</a> from origin ‘<a target="_blank" rel="noopener" href="http://www.luna-mobile.com.cn'">http://www.luna-mobile.com.cn'</a> has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.<br><img src="laravel3.png" alt="laravel3"></li>
+<li>model-&gt;save失败，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lxwphp/p/10880644.html">参考</a></li>
+<li>update_id写入失败</li>
+</ol>
+<p><img src="laravel4.png" alt="laravel4"><br><img src="laravel5.png" alt="laravel5"><br><img src="laravel6.png" alt="laravel6"><br><img src="laravel7.png" alt="laravel7"></p>
+<h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://laravel-admin.org/">https://laravel-admin.org/</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/498444931">https://zhuanlan.zhihu.com/p/498444931</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sucretan2010/p/13065692.html">https://www.cnblogs.com/sucretan2010/p/13065692.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://packagist.org/">https://packagist.org/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/z-song/laravel-admin/issues/2781">https://github.com/z-song/laravel-admin/issues/2781</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/z-song/laravel-admin/issues/1541">https://github.com/z-song/laravel-admin/issues/1541</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel-admin.org/docs/zh/1.x/installation">https://laravel-admin.org/docs/zh/1.x/installation</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/z-song/laravel-admin">https://github.com/z-song/laravel-admin</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lxwphp/p/15454314.html">https://www.cnblogs.com/lxwphp/p/15454314.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39801208/article/details/121980167">https://blog.csdn.net/qq_39801208/article/details/121980167</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40787608/article/details/129414154">https://blog.csdn.net/qq_40787608/article/details/129414154</a></li>
 </ol>
 <hr>
-<h1 id="FastAdmin"><a href="#FastAdmin" class="headerlink" title="FastAdmin"></a><center><font color="red">FastAdmin</font></center></h1><h2 id="一、使用-1"><a href="#一、使用-1" class="headerlink" title="一、使用"></a>一、使用</h2><p>1.下载完整包：<a target="_blank" rel="noopener" href="https://www.fastadmin.net/download.html">https://www.fastadmin.net/download.html</a></p>
+<h1 id="FastAdmin"><a href="#FastAdmin" class="headerlink" title="FastAdmin"></a><center><font color="red">FastAdmin</font></center></h1><h2 id="一、使用-2"><a href="#一、使用-2" class="headerlink" title="一、使用"></a>一、使用</h2><p>1.下载完整包：<a target="_blank" rel="noopener" href="https://www.fastadmin.net/download.html">https://www.fastadmin.net/download.html</a></p>
 <ul>
 <li>1.6.5.20260602.zip，即v1.6.0+版本</li>
 </ul>
@@ -684,52 +1169,102 @@
 <ol start="6">
 <li>创建数据表</li>
 </ol>
-<h2 id="二、问题-1"><a href="#二、问题-1" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h2 id="二、问题-2"><a href="#二、问题-2" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>配置多数据库连接：<a target="_blank" rel="noopener" href="https://ask.fastadmin.net/question/13980.html">https://ask.fastadmin.net/question/13980.html</a></li>
+<li>列表取消编辑、删除按钮：修改模板</li>
+<li>表格无刷新编辑</li>
+</ol>
+<ul>
+<li>安装editable插件</li>
+<li>js引入插件</li>
+<li>Token验证错误</li>
+</ul>
+<ol start="4">
+<li>写入报错 <img src="fast1.png" alt="fast"></li>
+</ol>
+<ul>
+<li>protected $autoWriteTimestamp = ‘datetime’;</li>
+<li>protected $createTime = ‘created_at’;</li>
+<li>protected $updateTime = ‘updated_at’;</li>
+<li>protected $dateFormat = ‘Y-m-d H:i:s’;</li>
+</ul>
+<ol start="5">
+<li>没有访问权限</li>
+</ol>
+<ul>
+<li>要添加列表、编辑、删除等按钮的菜单</li>
+<li>chargeset不行，更换charge恢复正常</li>
+</ul>
+<ol start="6">
+<li>清理缓存报错：权限问题</li>
+<li>operate可选操作</li>
+<li>sortName可选操作</li>
+<li>查询对应账号下的数据</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public function base($query)</span><br><span class="line">    {</span><br><span class="line">        // 静态变量标记：防止base方法无限递归调用</span><br><span class="line">        static $isProcessing = false;</span><br><span class="line">        if ($isProcessing) {</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line">        $isProcessing = true;</span><br><span class="line"></span><br><span class="line">        try {</span><br><span class="line">            // 关键：跳过全局查询范围，避免触发二次查询</span><br><span class="line">            $admin = \think\Session::get('admin', null, false);</span><br><span class="line"></span><br><span class="line">            // 仅当管理员已登录且非超级管理员时，添加筛选条件</span><br><span class="line">            if (!empty($admin) &amp;&amp; isset($admin['id'])) {</span><br><span class="line">                // 超级管理员判断（按需调整）</span><br><span class="line">                $isSuperAdmin = $admin['id'] == 1;</span><br><span class="line"></span><br><span class="line">                if (!$isSuperAdmin) {</span><br><span class="line">                    // 核心：筛选agent_id等于当前管理员ID的订单</span><br><span class="line">                    // 先判断字段是否存在，避免字段错误导致的查询异常</span><br><span class="line">                    if ($query-&gt;getTableInfo('', 'fields')) {</span><br><span class="line">                        $query-&gt;where('agent_id', $admin['id']);</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        } catch (\Exception $e) {</span><br><span class="line">            // 捕获异常，避免查询出错导致整个系统崩溃</span><br><span class="line">            \think\Log::error('Order模型base方法异常：' . $e-&gt;getMessage());</span><br><span class="line">        } finally {</span><br><span class="line">            // 重置标记，确保后续查询正常执行</span><br><span class="line">            $isProcessing = false;</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="10">
+<li>设置搜索条件，对应的js文件</li>
+</ol>
+<ul>
+<li>开启/关闭：operator：true/false</li>
+<li>下拉框<ul>
+<li>增加接口</li>
+<li>修改js</li>
+</ul>
+</li>
+</ul>
+<ol start="11">
+<li>设置方法不需要权限控制</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">protected $noNeedLogin = ['getAgentList'];</span><br><span class="line">protected $noNeedRight = ['getAgentList'];</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.fastadmin.net/">https://www.fastadmin.net/</a></li>
 </ol>
 <hr>
-<h1 id="BuildAdmin"><a href="#BuildAdmin" class="headerlink" title="BuildAdmin"></a><center><font color="red">BuildAdmin</font></center></h1><h2 id="一、使用-2"><a href="#一、使用-2" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-2"><a href="#二、问题-2" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="BuildAdmin"><a href="#BuildAdmin" class="headerlink" title="BuildAdmin"></a><center><font color="red">BuildAdmin</font></center></h1><h2 id="一、使用-3"><a href="#一、使用-3" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-3"><a href="#二、问题-3" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-5"><a href="#三、参考-5" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://doc.buildadmin.com/">https://doc.buildadmin.com/</a></li>
 </ol>
 <hr>
-<h1 id="ThinkAdmin"><a href="#ThinkAdmin" class="headerlink" title="ThinkAdmin"></a><center><font color="red">ThinkAdmin</font></center></h1><h2 id="一、使用-3"><a href="#一、使用-3" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-3"><a href="#二、问题-3" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-5"><a href="#三、参考-5" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="ThinkAdmin"><a href="#ThinkAdmin" class="headerlink" title="ThinkAdmin"></a><center><font color="red">ThinkAdmin</font></center></h1><h2 id="一、使用-4"><a href="#一、使用-4" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-4"><a href="#二、问题-4" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-6"><a href="#三、参考-6" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://thinkadmin.top/">https://thinkadmin.top/</a></li>
 </ol>
 <hr>
-<h1 id="Dcat-Admin"><a href="#Dcat-Admin" class="headerlink" title="Dcat Admin"></a><center><font color="red">Dcat Admin</font></center></h1><h2 id="一、使用-4"><a href="#一、使用-4" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-4"><a href="#二、问题-4" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-6"><a href="#三、参考-6" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Dcat-Admin"><a href="#Dcat-Admin" class="headerlink" title="Dcat Admin"></a><center><font color="red">Dcat Admin</font></center></h1><h2 id="一、使用-5"><a href="#一、使用-5" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-5"><a href="#二、问题-5" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-7"><a href="#三、参考-7" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.dcat-admin.com/books/dcatplus-admin/#/">https://www.dcat-admin.com/books/dcatplus-admin/#/</a></li>
 </ol>
 <hr>
-<h1 id="Laravel-Filament"><a href="#Laravel-Filament" class="headerlink" title="Laravel Filament"></a><center><font color="red">Laravel Filament</font></center></h1><h2 id="一、使用-5"><a href="#一、使用-5" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-5"><a href="#二、问题-5" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-7"><a href="#三、参考-7" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Laravel-Filament"><a href="#Laravel-Filament" class="headerlink" title="Laravel Filament"></a><center><font color="red">Laravel Filament</font></center></h1><h2 id="一、使用-6"><a href="#一、使用-6" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-6"><a href="#二、问题-6" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-8"><a href="#三、参考-8" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://laravel-filament.cn/">https://laravel-filament.cn/</a></li>
 <li><a target="_blank" rel="noopener" href="https://filamentphp.com/">https://filamentphp.com/</a></li>
 </ol>
 <hr>
-<h1 id="Laravel-Nova"><a href="#Laravel-Nova" class="headerlink" title="Laravel Nova"></a><center><font color="red">Laravel Nova</font></center></h1><h2 id="一、使用-6"><a href="#一、使用-6" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-6"><a href="#二、问题-6" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-8"><a href="#三、参考-8" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Laravel-Nova"><a href="#Laravel-Nova" class="headerlink" title="Laravel Nova"></a><center><font color="red">Laravel Nova</font></center></h1><h2 id="一、使用-7"><a href="#一、使用-7" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-7"><a href="#二、问题-7" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-9"><a href="#三、参考-9" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://nova.laravel.com/">https://nova.laravel.com/</a></li>
 </ol>
 <hr>
-<h1 id="WebmanAdmin"><a href="#WebmanAdmin" class="headerlink" title="WebmanAdmin"></a><center><font color="red">WebmanAdmin</font></center></h1><h2 id="一、使用-7"><a href="#一、使用-7" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-7"><a href="#二、问题-7" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-9"><a href="#三、参考-9" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="WebmanAdmin"><a href="#WebmanAdmin" class="headerlink" title="WebmanAdmin"></a><center><font color="red">WebmanAdmin</font></center></h1><h2 id="一、使用-8"><a href="#一、使用-8" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-8"><a href="#二、问题-8" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-10"><a href="#三、参考-10" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.workerman.net/plugin/82">https://www.workerman.net/plugin/82</a></li>
 </ol>
 <hr>
-<h1 id="NiuShop"><a href="#NiuShop" class="headerlink" title="NiuShop"></a><center><font color="red">NiuShop</font></center></h1><h2 id="一、使用-8"><a href="#一、使用-8" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-8"><a href="#二、问题-8" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-10"><a href="#三、参考-10" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="NiuShop"><a href="#NiuShop" class="headerlink" title="NiuShop"></a><center><font color="red">NiuShop</font></center></h1><h2 id="一、使用-9"><a href="#一、使用-9" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-9"><a href="#二、问题-9" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-11"><a href="#三、参考-11" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.niushop.com/">https://www.niushop.com/</a></li>
 </ol>
 <hr>
-<h1 id="CRMEB"><a href="#CRMEB" class="headerlink" title="CRMEB"></a><center><font color="red">CRMEB</font></center></h1><h2 id="一、使用-9"><a href="#一、使用-9" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-9"><a href="#二、问题-9" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-11"><a href="#三、参考-11" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="CRMEB"><a href="#CRMEB" class="headerlink" title="CRMEB"></a><center><font color="red">CRMEB</font></center></h1><h2 id="一、使用-10"><a href="#一、使用-10" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-10"><a href="#二、问题-10" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-12"><a href="#三、参考-12" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.crmeb.com/">https://www.crmeb.com/</a></li>
 </ol>
 <hr>
-<h1 id="EasyAdmin"><a href="#EasyAdmin" class="headerlink" title="EasyAdmin"></a><center><font color="red">EasyAdmin</font></center></h1><h2 id="一、使用-10"><a href="#一、使用-10" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-10"><a href="#二、问题-10" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-12"><a href="#三、参考-12" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="EasyAdmin"><a href="#EasyAdmin" class="headerlink" title="EasyAdmin"></a><center><font color="red">EasyAdmin</font></center></h1><h2 id="一、使用-11"><a href="#一、使用-11" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-11"><a href="#二、问题-11" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-13"><a href="#三、参考-13" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://easyadmin8.top/">https://easyadmin8.top/</a></li>
 </ol>
 <hr>
-<h1 id="MineAdmin"><a href="#MineAdmin" class="headerlink" title="MineAdmin"></a><center><font color="red">MineAdmin</font></center></h1><h2 id="一、使用-11"><a href="#一、使用-11" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-11"><a href="#二、问题-11" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-13"><a href="#三、参考-13" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="MineAdmin"><a href="#MineAdmin" class="headerlink" title="MineAdmin"></a><center><font color="red">MineAdmin</font></center></h1><h2 id="一、使用-12"><a href="#一、使用-12" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-12"><a href="#二、问题-12" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-14"><a href="#三、参考-14" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.mineadmin.com/">https://www.mineadmin.com/</a></li>
 </ol>
 <hr>
-<h1 id="ThinkCMF"><a href="#ThinkCMF" class="headerlink" title="ThinkCMF"></a><center><font color="red">ThinkCMF</font></center></h1><h2 id="一、使用-12"><a href="#一、使用-12" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-12"><a href="#二、问题-12" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-14"><a href="#三、参考-14" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="ThinkCMF"><a href="#ThinkCMF" class="headerlink" title="ThinkCMF"></a><center><font color="red">ThinkCMF</font></center></h1><h2 id="一、使用-13"><a href="#一、使用-13" class="headerlink" title="一、使用"></a>一、使用</h2><h2 id="二、问题-13"><a href="#二、问题-13" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考-15"><a href="#三、参考-15" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.thinkcmf.com/">https://www.thinkcmf.com/</a></li>
 </ol>
 
@@ -744,7 +1279,6 @@
           <div class="post-tags">
               <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
               <a href="/tags/Laravel/" rel="tag"><i class="fa fa-tag"></i> Laravel</a>
-              <a href="/tags/migrate/" rel="tag"><i class="fa fa-tag"></i> migrate</a>
               <a href="/tags/ThinkPHP/" rel="tag"><i class="fa fa-tag"></i> ThinkPHP</a>
               <a href="/tags/CI/" rel="tag"><i class="fa fa-tag"></i> CI</a>
               <a href="/tags/Yii/" rel="tag"><i class="fa fa-tag"></i> Yii</a>
@@ -759,6 +1293,7 @@
               <a href="/tags/MineAdmin/" rel="tag"><i class="fa fa-tag"></i> MineAdmin</a>
               <a href="/tags/ThinkCMF/" rel="tag"><i class="fa fa-tag"></i> ThinkCMF</a>
               <a href="/tags/Filament/" rel="tag"><i class="fa fa-tag"></i> Filament</a>
+              <a href="/tags/migrate/" rel="tag"><i class="fa fa-tag"></i> migrate</a>
           </div>
 
         
@@ -814,7 +1349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel"><span class="nav-number">1.</span> <span class="nav-text">Laravel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E8%BD%B6%E4%BA%8B"><span class="nav-number">2.</span> <span class="nav-text">Laravel数据库迁移轶事</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">一、复现过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E5%86%B3"><span class="nav-number">2.2.</span> <span class="nav-text">二、解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThinkPHP"><span class="nav-number">3.</span> <span class="nav-text">ThinkPHP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CodeIgniter-CI"><span class="nav-number">4.</span> <span class="nav-text">CodeIgniter(CI)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Yii"><span class="nav-number">5.</span> <span class="nav-text">Yii</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symfony"><span class="nav-number">6.</span> <span class="nav-text">Symfony</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zend-Framework"><span class="nav-number">7.</span> <span class="nav-text">Zend Framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-admin"><span class="nav-number">8.</span> <span class="nav-text">Laravel-admin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">8.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">8.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastAdmin"><span class="nav-number">9.</span> <span class="nav-text">FastAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">9.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-1"><span class="nav-number">9.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">9.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BuildAdmin"><span class="nav-number">10.</span> <span class="nav-text">BuildAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">10.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-2"><span class="nav-number">10.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">10.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThinkAdmin"><span class="nav-number">11.</span> <span class="nav-text">ThinkAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-3"><span class="nav-number">11.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-3"><span class="nav-number">11.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">11.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dcat-Admin"><span class="nav-number">12.</span> <span class="nav-text">Dcat Admin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-4"><span class="nav-number">12.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-4"><span class="nav-number">12.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-6"><span class="nav-number">12.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-Filament"><span class="nav-number">13.</span> <span class="nav-text">Laravel Filament</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-5"><span class="nav-number">13.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-5"><span class="nav-number">13.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-7"><span class="nav-number">13.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-Nova"><span class="nav-number">14.</span> <span class="nav-text">Laravel Nova</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-6"><span class="nav-number">14.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-6"><span class="nav-number">14.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-8"><span class="nav-number">14.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebmanAdmin"><span class="nav-number">15.</span> <span class="nav-text">WebmanAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-7"><span class="nav-number">15.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-7"><span class="nav-number">15.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-9"><span class="nav-number">15.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NiuShop"><span class="nav-number">16.</span> <span class="nav-text">NiuShop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-8"><span class="nav-number">16.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-8"><span class="nav-number">16.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-10"><span class="nav-number">16.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CRMEB"><span class="nav-number">17.</span> <span class="nav-text">CRMEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-9"><span class="nav-number">17.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-9"><span class="nav-number">17.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-11"><span class="nav-number">17.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EasyAdmin"><span class="nav-number">18.</span> <span class="nav-text">EasyAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-10"><span class="nav-number">18.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-10"><span class="nav-number">18.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-12"><span class="nav-number">18.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MineAdmin"><span class="nav-number">19.</span> <span class="nav-text">MineAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-11"><span class="nav-number">19.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-11"><span class="nav-number">19.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-13"><span class="nav-number">19.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThinkCMF"><span class="nav-number">20.</span> <span class="nav-text">ThinkCMF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-12"><span class="nav-number">20.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-12"><span class="nav-number">20.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-14"><span class="nav-number">20.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel"><span class="nav-number">1.</span> <span class="nav-text">Laravel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E3%80%81%E5%9B%9E%E6%BB%9A%E3%80%81%E6%92%A4%E9%94%80"><span class="nav-number">2.</span> <span class="nav-text">Laravel数据库迁移、回滚、撤销</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E8%BD%B6%E4%BA%8B"><span class="nav-number">3.</span> <span class="nav-text">Laravel数据库迁移轶事</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">一、复现过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%A7%A3%E5%86%B3"><span class="nav-number">3.2.</span> <span class="nav-text">二、解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThinkPHP"><span class="nav-number">4.</span> <span class="nav-text">ThinkPHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">4.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TP5-0-28%E5%85%AC%E5%BC%80%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.</span> <span class="nav-text">TP5.0.28公开漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E7%BB%93%E8%AE%BA"><span class="nav-number">5.1.</span> <span class="nav-text">一、核心结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%815-0-28-%E5%B7%B2%E4%BF%AE%E5%A4%8D%E7%9A%84%E9%AB%98%E5%8D%B1%E6%BC%8F%E6%B4%9E%EF%BC%88%E2%89%A45-0-23%E5%AD%98%E5%9C%A8%EF%BC%8C28%E5%B7%B2%E5%B0%81%E5%A0%B5%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">二、5.0.28 已修复的高危漏洞（≤5.0.23存在，28已封堵）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-CVE-2018-20062-%E9%9D%9E%E5%BC%BA%E5%88%B6%E8%B7%AF%E7%94%B1%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%EF%BC%88GetShell%EF%BC%89"><span class="nav-number">5.2.1.</span> <span class="nav-text">1. CVE-2018-20062 非强制路由远程代码执行（GetShell）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-0-x-Debug%E6%A8%A1%E5%BC%8F%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96RCE%EF%BC%882019%E5%B9%B41%E6%9C%88%E6%BC%8F%E6%B4%9E%EF%BC%89"><span class="nav-number">5.2.2.</span> <span class="nav-text">2. 5.0.x Debug模式变量覆盖RCE（2019年1月漏洞）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81ThinkPHP-5-0-28-%E4%BB%8D%E7%84%B6%E5%AD%98%E5%9C%A8%E3%80%81%E6%97%A0%E5%AE%98%E6%96%B9%E8%A1%A5%E4%B8%81-%E7%9A%84%E5%85%AC%E5%BC%80%E6%BC%8F%E6%B4%9E%EF%BC%88%E9%87%8D%E7%82%B9%E9%A3%8E%E9%99%A9%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">三、ThinkPHP 5.0.28 仍然存在、无官方补丁 的公开漏洞（重点风险）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96-%E5%8C%85%E5%90%ABRCE%EF%BC%88CVE-2025-63888-CVE-2025-63889%EF%BC%89"><span class="nav-number">5.3.1.</span> <span class="nav-text">（一）模板引擎文件读取&#x2F;包含RCE（CVE-2025-63888 &#x2F; CVE-2025-63889）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%EF%BC%88%E5%A4%9A%E6%9D%A1%EF%BC%8C5-0%E5%85%A8%E7%B3%BB%E5%88%97%E5%90%AB28%EF%BC%89"><span class="nav-number">5.3.2.</span> <span class="nav-text">（二）反序列化漏洞（多条，5.0全系列含28）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9B%B8%E5%85%B3%E7%BC%BA%E9%99%B7%EF%BC%885-0-28%E6%9C%AA%E6%A0%B9%E6%B2%BB%EF%BC%89"><span class="nav-number">5.3.3.</span> <span class="nav-text">（三）SQL注入相关缺陷（5.0.28未根治）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E7%B1%BB%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.3.4.</span> <span class="nav-text">（四）信息泄露类漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.3.5.</span> <span class="nav-text">（五）语言切换文件包含漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E5%85%AD%EF%BC%89%E5%85%B6%E4%BB%96%E9%80%9A%E7%94%A8%E5%BA%95%E5%B1%82%E9%A3%8E%E9%99%A9%EF%BC%885-0-28%E6%97%A0%E6%B3%95%E5%BD%BB%E5%BA%95%E4%BF%AE%E5%A4%8D%EF%BC%89"><span class="nav-number">5.3.6.</span> <span class="nav-text">（六）其他通用底层风险（5.0.28无法彻底修复）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%815-0-28-%E4%B8%B4%E6%97%B6%E7%BC%93%E8%A7%A3%E6%96%B9%E6%A1%88%EF%BC%88%E6%97%A0%E6%B3%95%E6%A0%B9%E9%99%A4%EF%BC%8C%E4%BB%85%E9%99%8D%E4%BD%8E%E9%A3%8E%E9%99%A9%EF%BC%89"><span class="nav-number">5.4.</span> <span class="nav-text">四、5.0.28 临时缓解方案（无法根除，仅降低风险）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%95%BF%E6%9C%9F%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%AE"><span class="nav-number">5.5.</span> <span class="nav-text">五、长期安全建议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastAdmin%EF%BC%88TP5-0-28%EF%BC%89%E6%97%A0%E6%B3%95%E5%8D%87%E7%BA%A7%E5%AE%8C%E6%95%B4%E5%8A%A0%E5%9B%BA%E6%96%B9%E6%A1%88"><span class="nav-number">6.</span> <span class="nav-text">FastAdmin（TP5.0.28）无法升级完整加固方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%A2%B3%E7%90%86%E8%AF%A5%E7%BB%84%E5%90%88%E4%B8%8B%E5%8F%AF%E8%A2%AB%E5%88%A9%E7%94%A8%E7%9A%84%E5%85%A8%E9%83%A8%E9%AB%98%E5%8D%B1%E6%BC%8F%E6%B4%9E"><span class="nav-number">6.1.</span> <span class="nav-text">一、先梳理该组合下可被利用的全部高危漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ThinkPHP5-0-28-%E5%8E%9F%E7%94%9F%E6%9C%AA%E4%BF%AE%E5%A4%8D%E6%BC%8F%E6%B4%9E%EF%BC%88%E6%A1%86%E6%9E%B6%E5%BA%95%E5%B1%82%EF%BC%89"><span class="nav-number">6.1.1.</span> <span class="nav-text">1. ThinkPHP5.0.28 原生未修复漏洞（框架底层）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-FastAdmin%E4%B8%93%E5%B1%9E%E6%BC%8F%E6%B4%9E%EF%BC%88%E4%B8%9A%E5%8A%A1%E5%B1%82%EF%BC%89"><span class="nav-number">6.1.2.</span> <span class="nav-text">2. FastAdmin专属漏洞（业务层）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ThinkPHP5-0-28%E5%BA%95%E5%B1%82%E6%89%8B%E5%8A%A8%E8%A1%A5%E4%B8%81%EF%BC%88%E5%BF%85%E9%A1%BB%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%B0%81%E5%A0%B5%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%94%9F%E6%BC%8F%E6%B4%9E%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">二、ThinkPHP5.0.28底层手动补丁（必须操作，封堵框架原生漏洞）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8A%A0%E5%9B%BA%E6%8E%A7%E5%88%B6%E5%99%A8%E8%B7%AF%E7%94%B1%EF%BC%8C%E9%98%BB%E6%96%AD%E9%81%97%E7%95%99%E5%8F%98%E7%A7%8DRCE"><span class="nav-number">6.2.1.</span> <span class="nav-text">1. 加固控制器路由，阻断遗留变种RCE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%A6%81%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%8E%9F%E7%94%9F-php-%E6%A0%87%E7%AD%BE%EF%BC%8C%E6%9D%9C%E7%BB%9D%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="nav-number">6.2.2.</span> <span class="nav-text">2. 禁用模板原生{php}标签，杜绝模板代码执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BF%AE%E5%A4%8Dfetch%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A%EF%BC%8C%E7%A6%81%E6%AD%A2%E5%A4%96%E9%83%A8%E5%8F%AF%E6%8E%A7%E6%A8%A1%E6%9D%BF%E8%B7%AF%E5%BE%84"><span class="nav-number">6.2.3.</span> <span class="nav-text">3. 修复fetch路径穿越，禁止外部可控模板路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%85%B3%E9%97%AD%E5%A4%9A%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%EF%BC%8C%E5%B0%81%E5%A0%B5lang%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E"><span class="nav-number">6.2.4.</span> <span class="nav-text">4. 关闭多语言自动切换，封堵lang文件读取漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%85%A8%E5%B1%80%E8%BF%87%E6%BB%A4order-group%E5%8F%82%E6%95%B0%EF%BC%8C%E6%A0%B9%E6%B2%BBSQL%E6%B3%A8%E5%85%A5"><span class="nav-number">6.2.5.</span> <span class="nav-text">5. 全局过滤order&#x2F;group参数，根治SQL注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%A6%81%E7%94%A8unserialize%E5%A4%84%E7%90%86%E5%A4%96%E9%83%A8%E8%BE%93%E5%85%A5%EF%BC%8C%E9%98%BB%E6%96%AD%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96RCE"><span class="nav-number">6.2.6.</span> <span class="nav-text">6. 禁用unserialize处理外部输入，阻断反序列化RCE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81FastAdmin%E6%A1%86%E6%9E%B6%E4%B8%93%E5%B1%9E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%EF%BC%88%E5%AE%98%E6%96%B9%E5%AE%89%E5%85%A8%E8%A1%A5%E4%B8%81%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">三、FastAdmin框架专属漏洞修复（官方安全补丁）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BF%AE%E5%A4%8DSelectPage-SQL%E6%B3%A8%E5%85%A5%EF%BC%882026-05%E5%AE%98%E6%96%B9%E9%AB%98%E5%8D%B1%EF%BC%89"><span class="nav-number">6.3.1.</span> <span class="nav-text">1. 修复SelectPage SQL注入（2026-05官方高危）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B3%E9%97%AD%E5%88%86%E7%89%87%E4%B8%8A%E4%BC%A0%EF%BC%88%E9%AB%98%E5%8D%B1%E4%B8%8A%E4%BC%A0RCE%E5%85%A5%E5%8F%A3%EF%BC%89"><span class="nav-number">6.3.2.</span> <span class="nav-text">2. 关闭分片上传（高危上传RCE入口）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BF%AE%E5%A4%8D%E5%90%8E%E5%8F%B0XSS%E8%BE%93%E5%87%BA%E8%BF%87%E6%BB%A4"><span class="nav-number">6.3.3.</span> <span class="nav-text">3. 修复后台XSS输出过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E9%99%90%E5%88%B6%E5%90%8E%E5%8F%B0%E5%A4%87%E4%BB%BD%E5%8A%9F%E8%83%BD%EF%BC%8C%E7%A6%81%E6%AD%A2%E5%85%A8%E7%AB%99%E6%89%93%E5%8C%85%E4%B8%8B%E8%BD%BD"><span class="nav-number">6.3.4.</span> <span class="nav-text">4. 限制后台备份功能，禁止全站打包下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-API%E6%8E%A5%E5%8F%A3%E5%85%B3%E9%97%ADJSONP%E3%80%81%E8%BF%87%E6%BB%A4%E6%95%8F%E6%84%9F%E5%AD%97%E6%AE%B5"><span class="nav-number">6.3.5.</span> <span class="nav-text">5. API接口关闭JSONP、过滤敏感字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81PHP-FPM%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%BA%95%E5%B1%82%E9%99%90%E5%88%B6%EF%BC%88%E9%87%9C%E5%BA%95%E6%8A%BD%E8%96%AA%EF%BC%8C%E5%8D%B3%E4%BD%BF%E6%BC%8F%E6%B4%9E%E4%B9%9F%E6%97%A0%E6%B3%95%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">四、PHP-FPM运行环境底层限制（釜底抽薪，即使漏洞也无法执行命令）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Nginx%E7%AB%99%E7%82%B9%E9%98%B2%E6%8A%A4%E8%A7%84%E5%88%99%EF%BC%88%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8B%A6%E6%88%AA%E6%89%80%E6%9C%89%E6%94%BB%E5%87%BB%E8%BD%BD%E8%8D%B7%EF%BC%89"><span class="nav-number">6.5.</span> <span class="nav-text">五、Nginx站点防护规则（网络层拦截所有攻击载荷）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%90%8E%E5%8F%B0%E8%B4%A6%E5%8F%B7%E4%B8%8E%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="nav-number">6.6.</span> <span class="nav-text">六、后台账号与运维安全策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E9%A3%8E%E9%99%A9%E5%85%9C%E5%BA%95%E8%AF%B4%E6%98%8E"><span class="nav-number">6.7.</span> <span class="nav-text">七、风险兜底说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastAdmin-TP5-0-28-%E4%B8%80%E9%94%AE%E5%8A%A0%E5%9B%BA%E6%93%8D%E4%BD%9C%E6%B8%85%E5%8D%95%EF%BC%88%E6%8C%89%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">FastAdmin TP5.0.28 一键加固操作清单（按执行顺序）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">7.1.</span> <span class="nav-text">前置说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%A1%86%E6%9E%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9%EF%BC%88%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%9B%B4%E6%8E%A5%E6%94%B9%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">第一阶段：框架配置文件修改（项目目录直接改）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%85%B3%E9%97%AD%E8%B0%83%E8%AF%95%E3%80%81%E5%85%B3%E9%97%AD%E5%A4%9A%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%EF%BC%88config-app-php%EF%BC%89"><span class="nav-number">8.1.</span> <span class="nav-text">1. 关闭调试、关闭多语言自动切换（config&#x2F;app.php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E9%97%AD%E5%88%86%E7%89%87%E4%B8%8A%E4%BC%A0%E3%80%81%E5%85%B3%E9%97%ADJSONP%EF%BC%88application-config-php%EF%BC%89"><span class="nav-number">8.2.</span> <span class="nav-text">2. 关闭分片上传、关闭JSONP（application&#x2F;config.php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B3%A8%E5%86%8C%E5%85%A8%E5%B1%80SQL%E8%BF%87%E6%BB%A4%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%88%E6%8B%A6%E6%88%AAorder-group%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="nav-number">8.3.</span> <span class="nav-text">3. 注册全局SQL过滤中间件（拦截order&#x2F;group注入）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43-1-%E6%96%B0%E5%BB%BA%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%96%87%E4%BB%B6-application-middleware-SqlFilter-php"><span class="nav-number">8.3.1.</span> <span class="nav-text">步骤3.1 新建中间件文件 application&#x2F;middleware&#x2F;SqlFilter.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43-2-%E6%B3%A8%E5%86%8C%E5%85%A8%E5%B1%80%E4%B8%AD%E9%97%B4%E4%BB%B6-config-middleware-php"><span class="nav-number">8.3.2.</span> <span class="nav-text">步骤3.2 注册全局中间件 config&#x2F;middleware.php</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9ATP%E5%BA%95%E5%B1%82%E6%BA%90%E7%A0%81%E5%8A%A0%E5%9B%BA%EF%BC%88%E5%B0%81%E5%A0%B5%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%94%9F%E6%BC%8F%E6%B4%9E%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">第二阶段：TP底层源码加固（封堵框架原生漏洞）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8A%A0%E5%9B%BA%E6%8E%A7%E5%88%B6%E5%99%A8%E8%B7%AF%E7%94%B1%EF%BC%8C%E6%8B%A6%E6%88%AA%E7%B1%BB%E8%B7%AF%E5%BE%84RCE%EF%BC%88thinkphp-library-think-App-php%EF%BC%89"><span class="nav-number">9.1.</span> <span class="nav-text">1. 加固控制器路由，拦截类路径RCE（thinkphp&#x2F;library&#x2F;think&#x2F;App.php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%A8%E5%B1%80%E8%A6%86%E7%9B%96fetch%E6%96%B9%E6%B3%95%EF%BC%8C%E7%A6%81%E6%AD%A2%E6%A8%A1%E6%9D%BF%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A%EF%BC%88application-common-php-%E6%9C%AB%E5%B0%BE%E8%BF%BD%E5%8A%A0%EF%BC%89"><span class="nav-number">9.2.</span> <span class="nav-text">2. 全局覆盖fetch方法，禁止模板路径穿越（application&#x2F;common.php 末尾追加）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E9%97%AD%E6%A8%A1%E6%9D%BF%E5%8E%9F%E7%94%9F-php-%E6%89%A7%E8%A1%8C%E6%A0%87%E7%AD%BE%EF%BC%88vendor-topthink-think-template-src-Template-php%EF%BC%89"><span class="nav-number">9.3.</span> <span class="nav-text">3. 关闭模板原生{php}执行标签（vendor&#x2F;topthink&#x2F;think-template&#x2F;src&#x2F;Template.php）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9AFastAdmin%E4%B8%93%E5%B1%9E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D"><span class="nav-number">10.</span> <span class="nav-text">第三阶段：FastAdmin专属漏洞修复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%AE%E5%A4%8DSelectPage-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="nav-number">10.1.</span> <span class="nav-text">1. 修复SelectPage SQL注入漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%99%90%E5%88%B6%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%8A%9F%E8%83%BD%EF%BC%88application-admin-controller-Database-php%EF%BC%89"><span class="nav-number">10.2.</span> <span class="nav-text">2. 限制数据库备份功能（application&#x2F;admin&#x2F;controller&#x2F;Database.php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A8%A1%E6%9D%BFXSS%E7%BB%9F%E4%B8%80%E8%BF%87%E6%BB%A4"><span class="nav-number">10.3.</span> <span class="nav-text">3. 模板XSS统一过滤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9APHP%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%8A%A0%E5%9B%BA%EF%BC%88php-ini-php-fpm-conf%EF%BC%89"><span class="nav-number">11.</span> <span class="nav-text">第四阶段：PHP运行环境加固（php.ini &#x2F; php-fpm.conf）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%A6%81%E7%94%A8%E9%AB%98%E5%8D%B1%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number">11.1.</span> <span class="nav-text">1. 禁用高危执行函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E9%97%ADphar%E4%BC%AA%E5%8D%8F%E8%AE%AE%E5%88%A9%E7%94%A8"><span class="nav-number">11.2.</span> <span class="nav-text">2. 关闭phar伪协议利用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE%E8%BF%90%E8%A1%8C%E7%9B%AE%E5%BD%95%E9%9A%94%E7%A6%BB-open-basedir%EF%BC%88Nginx-fastcgi%E5%8F%82%E6%95%B0%EF%BC%89"><span class="nav-number">11.3.</span> <span class="nav-text">3. 配置运行目录隔离 open_basedir（Nginx fastcgi参数）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%98%B6%E6%AE%B5%EF%BC%9ANginx%E7%AB%99%E7%82%B9%E9%98%B2%E6%8A%A4%E9%85%8D%E7%BD%AE%EF%BC%88server%E5%9D%97%E5%86%85%E5%AE%8C%E6%95%B4%E5%A4%8D%E5%88%B6%EF%BC%89"><span class="nav-number">12.</span> <span class="nav-text">第五阶段：Nginx站点防护配置（server块内完整复制）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E9%98%B6%E6%AE%B5%EF%BC%9A%E4%BB%A3%E7%A0%81%E5%B1%82%E6%95%B4%E6%94%B9%EF%BC%88%E4%BA%BA%E5%B7%A5%E5%85%A8%E5%B1%80%E6%A3%80%E7%B4%A2%E6%9B%BF%E6%8D%A2%EF%BC%89"><span class="nav-number">13.</span> <span class="nav-text">第六阶段：代码层整改（人工全局检索替换）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%9D%83%E9%99%90%E4%B8%8E%E8%B4%A6%E5%8F%B7%E8%BF%90%E7%BB%B4%E5%8A%A0%E5%9B%BA"><span class="nav-number">14.</span> <span class="nav-text">第七阶段：权限与账号运维加固</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E9%98%B6%E6%AE%B5%EF%BC%9A%E7%94%9F%E6%95%88%E4%B8%8E%E5%A4%8D%E6%B5%8B%E6%AD%A5%E9%AA%A4"><span class="nav-number">15.</span> <span class="nav-text">第八阶段：生效与复测步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastAdmin-TP5-0-28-%E4%BF%AE%E6%AD%A3%E7%89%88%E4%B8%80%E9%94%AE%E5%8A%A0%E5%9B%BA%E6%93%8D%E4%BD%9C%E6%B8%85%E5%8D%95"><span class="nav-number">16.</span> <span class="nav-text">FastAdmin(TP5.0.28) 修正版一键加固操作清单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%BF%85%E5%81%9A"><span class="nav-number">16.1.</span> <span class="nav-text">前置必做</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9%EF%BC%88application-config-php%EF%BC%89"><span class="nav-number">16.2.</span> <span class="nav-text">一、全局配置修改（application&#x2F;config.php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81API%E6%A8%A1%E5%9D%97%E5%85%B3%E9%97%ADJSONP%EF%BC%88application-api-config-php%EF%BC%89"><span class="nav-number">16.3.</span> <span class="nav-text">二、API模块关闭JSONP（application&#x2F;api&#x2F;config.php）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%96%B0%E5%A2%9E%E5%85%A8%E5%B1%80SQL%E6%B3%A8%E5%85%A5%E9%98%B2%E5%BE%A1%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">16.4.</span> <span class="nav-text">三、新增全局SQL注入防御中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6-application-middleware-SqlFilter-php"><span class="nav-number">16.4.1.</span> <span class="nav-text">3.1 创建文件 application&#x2F;middleware&#x2F;SqlFilter.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%B3%A8%E5%86%8C%E5%85%A8%E5%B1%80%E4%B8%AD%E9%97%B4%E4%BB%B6-application-middleware-php"><span class="nav-number">16.4.2.</span> <span class="nav-text">3.2 注册全局中间件 application&#x2F;middleware.php</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81ThinkPHP%E5%BA%95%E5%B1%82%E6%BA%90%E7%A0%81%E5%8A%A0%E5%9B%BA%EF%BC%88%E7%9B%AE%E5%BD%95%E4%B8%8D%E5%8F%98%EF%BC%89"><span class="nav-number">16.5.</span> <span class="nav-text">四、ThinkPHP底层源码加固（目录不变）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-App-php-%E6%8E%A7%E5%88%B6%E5%99%A8%E8%B7%AF%E7%94%B1%E5%8A%A0%E5%9B%BA"><span class="nav-number">16.5.1.</span> <span class="nav-text">4.1 App.php 控制器路由加固</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E9%87%8D%E5%86%99fetch%E9%98%B2%E6%A8%A1%E6%9D%BF%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A"><span class="nav-number">16.5.2.</span> <span class="nav-text">4.2 重写fetch防模板路径穿越</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E7%A6%81%E7%94%A8%E6%A8%A1%E6%9D%BF-php-%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%A0%87%E7%AD%BE"><span class="nav-number">16.5.3.</span> <span class="nav-text">4.3 禁用模板 {php} 可执行标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81FastAdmin%E4%B8%93%E5%B1%9E%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D"><span class="nav-number">16.6.</span> <span class="nav-text">五、FastAdmin专属漏洞修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BF%AE%E5%A4%8DSelectPage%E6%8E%92%E5%BA%8F%E6%B3%A8%E5%85%A5"><span class="nav-number">16.6.1.</span> <span class="nav-text">5.1 修复SelectPage排序注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E9%99%90%E5%88%B6%E5%90%8E%E5%8F%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD"><span class="nav-number">16.6.2.</span> <span class="nav-text">5.2 限制后台数据库备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%85%A8%E5%B1%80%E6%A8%A1%E6%9D%BFXSS%E8%BF%87%E6%BB%A4"><span class="nav-number">16.6.3.</span> <span class="nav-text">5.3 全局模板XSS过滤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81PHP%E7%8E%AF%E5%A2%83%E5%8A%A0%E5%9B%BA%EF%BC%88php-ini-php-fpm-conf%EF%BC%89"><span class="nav-number">16.7.</span> <span class="nav-text">六、PHP环境加固（php.ini &#x2F; php-fpm.conf）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81Nginx-%E7%AB%99%E7%82%B9%E5%AE%8C%E6%95%B4%E9%98%B2%E6%8A%A4%E8%A7%84%E5%88%99%EF%BC%88server%E5%9D%97%E7%9B%B4%E6%8E%A5%E7%B2%98%E8%B4%B4%EF%BC%89"><span class="nav-number">16.8.</span> <span class="nav-text">七、Nginx 站点完整防护规则（server块直接粘贴）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%85%A8%E5%B1%80%E4%BB%A3%E7%A0%81%E6%A3%80%E7%B4%A2%E6%95%B4%E6%94%B9"><span class="nav-number">16.9.</span> <span class="nav-text">八、全局代码检索整改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E8%B4%A6%E5%8F%B7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E9%99%90%E5%8A%A0%E5%9B%BA"><span class="nav-number">16.10.</span> <span class="nav-text">九、账号与服务器权限加固</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E7%94%9F%E6%95%88-amp-%E5%A4%8D%E6%B5%8B%E6%B5%81%E7%A8%8B"><span class="nav-number">16.11.</span> <span class="nav-text">十、生效&amp;复测流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CodeIgniter-CI"><span class="nav-number">17.</span> <span class="nav-text">CodeIgniter(CI)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Yii"><span class="nav-number">18.</span> <span class="nav-text">Yii</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symfony"><span class="nav-number">19.</span> <span class="nav-text">Symfony</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zend-Framework"><span class="nav-number">20.</span> <span class="nav-text">Zend Framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-admin"><span class="nav-number">21.</span> <span class="nav-text">Laravel-admin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">21.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Laravel-laravel-admin"><span class="nav-number">21.2.</span> <span class="nav-text">一、Laravel+laravel-admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-1"><span class="nav-number">21.3.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">21.4.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FastAdmin"><span class="nav-number">22.</span> <span class="nav-text">FastAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">22.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-2"><span class="nav-number">22.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">22.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BuildAdmin"><span class="nav-number">23.</span> <span class="nav-text">BuildAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-3"><span class="nav-number">23.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-3"><span class="nav-number">23.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">23.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThinkAdmin"><span class="nav-number">24.</span> <span class="nav-text">ThinkAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-4"><span class="nav-number">24.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-4"><span class="nav-number">24.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-6"><span class="nav-number">24.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dcat-Admin"><span class="nav-number">25.</span> <span class="nav-text">Dcat Admin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-5"><span class="nav-number">25.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-5"><span class="nav-number">25.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-7"><span class="nav-number">25.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-Filament"><span class="nav-number">26.</span> <span class="nav-text">Laravel Filament</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-6"><span class="nav-number">26.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-6"><span class="nav-number">26.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-8"><span class="nav-number">26.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-Nova"><span class="nav-number">27.</span> <span class="nav-text">Laravel Nova</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-7"><span class="nav-number">27.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-7"><span class="nav-number">27.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-9"><span class="nav-number">27.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebmanAdmin"><span class="nav-number">28.</span> <span class="nav-text">WebmanAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-8"><span class="nav-number">28.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-8"><span class="nav-number">28.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-10"><span class="nav-number">28.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NiuShop"><span class="nav-number">29.</span> <span class="nav-text">NiuShop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-9"><span class="nav-number">29.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-9"><span class="nav-number">29.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-11"><span class="nav-number">29.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CRMEB"><span class="nav-number">30.</span> <span class="nav-text">CRMEB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-10"><span class="nav-number">30.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-10"><span class="nav-number">30.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-12"><span class="nav-number">30.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EasyAdmin"><span class="nav-number">31.</span> <span class="nav-text">EasyAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-11"><span class="nav-number">31.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-11"><span class="nav-number">31.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-13"><span class="nav-number">31.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MineAdmin"><span class="nav-number">32.</span> <span class="nav-text">MineAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-12"><span class="nav-number">32.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-12"><span class="nav-number">32.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-14"><span class="nav-number">32.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThinkCMF"><span class="nav-number">33.</span> <span class="nav-text">ThinkCMF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-13"><span class="nav-number">33.1.</span> <span class="nav-text">一、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-13"><span class="nav-number">33.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-15"><span class="nav-number">33.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -936,12 +1471,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">1m</span>
+    <span title="站点总字数">1.1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:12</span>
+    <span title="站点阅读时长">16:19</span>
 </div>
 
         

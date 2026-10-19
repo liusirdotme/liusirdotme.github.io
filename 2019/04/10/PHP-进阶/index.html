@@ -154,10 +154,10 @@
 <meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/var.png">
 <meta property="og:image" content="https://liusir.net/2019/04/10/PHP-%E8%BF%9B%E9%98%B6/obj.png">
 <meta property="article:published_time" content="2019-04-10T15:20:38.000Z">
-<meta property="article:modified_time" content="2026-10-14T08:50:53.530Z">
+<meta property="article:modified_time" content="2026-10-17T09:52:17.164Z">
 <meta property="article:author" content="刘三儿">
-<meta property="article:tag" content="垃圾回收">
 <meta property="article:tag" content="堆">
+<meta property="article:tag" content="垃圾回收">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="内存">
 <meta property="article:tag" content="PHP">
@@ -391,13 +391,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>19k</span>
+              <span>29k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>17 分钟</span>
+              <span>26 分钟</span>
             </span>
 
         </div>
@@ -1325,6 +1325,1216 @@
 <li>接口易用性优化：通过对接口的参数设计、返回结果的格式、文档说明等方面进行优化，提高接口的易用性和可读性，降低开发成本和使用难度。</li>
 <li>接口标准化优化：通过制定接口规范、统一接口命名、参数格式等方面进行优化，提高接口的可维护性和可扩展性，降低开发人员之间的沟通成本。</li>
 </ol>
+<hr>
+<h1 id="大数据量导出"><a href="#大数据量导出" class="headerlink" title="大数据量导出"></a><center><font color="red">大数据量导出</font></center></h1><ol>
+<li>任务处理+多节点+任务监控</li>
+<li>拆分子任务并发处理+查询优化</li>
+<li>文件分片+流式读写文件</li>
+</ol>
+<hr>
+<h1 id="突发流量"><a href="#突发流量" class="headerlink" title="突发流量"></a><center><font color="red">突发流量</font></center></h1><ol>
+<li>限制流量+系统降级</li>
+<li>系统扩容+性能瓶颈</li>
+<li>服务拆分+队列处理</li>
+<li>缓存处理</li>
+<li>CDN加速</li>
+<li>数据库底层</li>
+<li>提前压测</li>
+<li>提前演练</li>
+<li>提前准备预案</li>
+</ol>
+<hr>
+<h1 id="魔术常量、魔术方法、全局变量"><a href="#魔术常量、魔术方法、全局变量" class="headerlink" title="魔术常量、魔术方法、全局变量"></a><center><font color="red">魔术常量、魔术方法、全局变量</font></center></h1><h2 id="一、魔术常量（Magic-Constants）"><a href="#一、魔术常量（Magic-Constants）" class="headerlink" title="一、魔术常量（Magic Constants）"></a>一、魔术常量（Magic Constants）</h2><p>PHP 预定义的常量，值会随所在位置变化。</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>作用</th>
+<th>返回值示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__LINE__</code></td>
+<td>获取当前行号</td>
+<td><code>12</code></td>
+<td>PHP 4.0.0</td>
+</tr>
+<tr>
+<td><code>__FILE__</code></td>
+<td>文件的完整路径 + 文件名</td>
+<td><code>D:/Laragon/www/app/Models/User.php</code></td>
+<td>绝对路径，PHP 4.0.0</td>
+</tr>
+<tr>
+<td><code>__DIR__</code></td>
+<td>文件所在目录</td>
+<td><code>D:/Laragon/www/app/Models</code></td>
+<td>不含末尾斜杠，等价 <code>dirname(__FILE__)</code></td>
+</tr>
+<tr>
+<td><code>__FUNCTION__</code></td>
+<td>当前函数名</td>
+<td><code>getUserName</code></td>
+<td>函数体内有效，PHP 4.3.0</td>
+</tr>
+<tr>
+<td><code>__CLASS__</code></td>
+<td>当前类名</td>
+<td><code>App\Models\User</code></td>
+<td>类体内有效，PHP 4.3.0，含命名空间</td>
+</tr>
+<tr>
+<td><code>__METHOD__</code></td>
+<td>当前类的方法名</td>
+<td><code>App\Models\User::getName</code></td>
+<td><strong>格式：类名::方法名</strong>，PHP 5.0.0</td>
+</tr>
+<tr>
+<td><code>__NAMESPACE__</code></td>
+<td>当前命名空间</td>
+<td><code>App\Models</code></td>
+<td>根命名空间下为 <code>""</code>，区分大小写</td>
+</tr>
+<tr>
+<td><code>__TRAIT__</code></td>
+<td>Trait 名字</td>
+<td><code>App\Models\LogsTrait</code></td>
+<td>PHP 5.4.0，含声明的作用域，区分大小写</td>
+</tr>
+<tr>
+<td><code>__CLASS__</code>（trait 内）</td>
+<td>trait 自身名字</td>
+<td>见 <code>__TRAIT__</code></td>
+<td>在 trait 定义体内两者相同</td>
+</tr>
+</tbody></table>
+<p><strong>易混点：</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用哪个</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法里要方法名</td>
+<td><code>__FUNCTION__</code></td>
+<td>只返回 <code>getName</code>，不带类名</td>
+</tr>
+<tr>
+<td>方法里要 <code>Class::method</code></td>
+<td><code>__METHOD__</code></td>
+<td>带类名前缀</td>
+</tr>
+<tr>
+<td>trait 里要类名</td>
+<td>不适用</td>
+<td>trait 里没有类概念，用 <code>__TRAIT__</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、魔术方法（Magic-Methods）"><a href="#二、魔术方法（Magic-Methods）" class="headerlink" title="二、魔术方法（Magic Methods）"></a>二、魔术方法（Magic Methods）</h2><h3 id="2-1-生命周期类"><a href="#2-1-生命周期类" class="headerlink" title="2.1 生命周期类"></a>2.1 生命周期类</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>签名</th>
+<th>触发时机</th>
+<th>关键说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__construct()</code></td>
+<td><code>public function __construct(mixed ...$args)</code></td>
+<td>每次 <code>new</code> 实例化前调用</td>
+<td>子类定义了则<strong>不隐式</strong>调父类构造，需手动 <code>parent::__construct()</code>；子类未定义则<strong>继承</strong>父类的（<code>private</code> 除外）</td>
+</tr>
+<tr>
+<td><code>__destruct()</code></td>
+<td><code>public function __destruct()</code></td>
+<td>所有引用被删除 / 显式销毁 / 脚本关闭时</td>
+<td>① 脚本关闭时调用，此时 HTTP 头已发出；② <code>exit()</code> 终止脚本也会调用；③ 析构里再 <code>exit()</code> 会中止其余关闭流程；④ 子类定义了需显式 <code>parent::__destruct()</code>，否则不继承（<code>private</code> 除外）</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-访问拦截类"><a href="#2-2-访问拦截类" class="headerlink" title="2.2 访问拦截类"></a>2.2 访问拦截类</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>签名</th>
+<th>触发时机</th>
+<th>关键说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__call()</code></td>
+<td><code>public mixed __call(string $name, array $arguments)</code></td>
+<td>对象中调用<strong>不可访问/不存在</strong>的方法</td>
+<td><code>$name</code> = 要调的方法名，<code>$arguments</code> = 枚举数组；用来实现代理、<code>__call</code> 伪静态</td>
+</tr>
+<tr>
+<td><code>__callStatic()</code></td>
+<td><code>public static mixed __callStatic(string $name, array $arguments)</code></td>
+<td><strong>静态上下文</strong>中调用不可访问方法</td>
+<td>与 <code>__call</code> 成对使用，写类名调用时才走</td>
+</tr>
+<tr>
+<td><code>__get()</code></td>
+<td><code>public mixed __get(string $name)</code></td>
+<td>读取不可访问属性 / 属性不存在</td>
+<td>Laravel 的 Eloquent 属性投喂就是它</td>
+</tr>
+<tr>
+<td><code>__set()</code></td>
+<td><code>public void __set(string $name, mixed $value)</code></td>
+<td>给不可访问属性赋值 / 属性不存在</td>
+<td></td>
+</tr>
+<tr>
+<td><code>__isset()</code></td>
+<td><code>public bool __isset(string $name)</code></td>
+<td>对不可访问属性用 <code>isset()</code> / <code>empty()</code></td>
+<td><strong>只处理存在性检查</strong>，不读值</td>
+</tr>
+<tr>
+<td><code>__unset()</code></td>
+<td><code>public void __unset(string $name)</code></td>
+<td>对不可访问属性用 <code>unset()</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>__isset()</code> / <code>__unset()</code> 只做「存在 / 销毁」判断，不参与取值赋值，别混用。</p>
+</blockquote>
+<h3 id="2-3-序列化类"><a href="#2-3-序列化类" class="headerlink" title="2.3 序列化类"></a>2.3 序列化类</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>签名</th>
+<th>时机</th>
+<th>关键说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__sleep()</code></td>
+<td><code>public array __sleep()</code></td>
+<td><code>serialize()</code> 前调用</td>
+<td>返回要序列化的属性名数组；返回值相当于调用 <code>array_serialize</code>；可在此清理临时属性。<strong>未返回内容 → 序列化为 <code>NULL</code> 并抛 <code>E_NOTICE</code></strong></td>
+</tr>
+<tr>
+<td><code>__wakeup()</code></td>
+<td><code>public void __wakeup()</code></td>
+<td><code>unserialize()</code> 后立刻调用</td>
+<td>典型用途：重建数据库连接、重新初始化资源</td>
+</tr>
+<tr>
+<td><code>__serialize()</code></td>
+<td><code>public array __serialize(): array</code></td>
+<td><code>serialize()</code> 前（PHP 7.4+）</td>
+<td>若与 <code>__sleep()</code> 同时定义，<strong>本方法优先且 <code>__sleep()</code> 被忽略</strong></td>
+</tr>
+<tr>
+<td><code>__unserialize()</code></td>
+<td><code>public void __unserialize(array $data): void</code></td>
+<td><code>unserialize()</code> 后（PHP 7.4+）</td>
+<td>与 <code>__serialize()</code> 配对；定义了它则 <code>__wakeup()</code> 同样被忽略</td>
+</tr>
+<tr>
+<td><code>__set_state()</code></td>
+<td><code>public static object __set_state(array $properties)</code></td>
+<td><code>var_export()</code> 导出类时调用（PHP 5.1.0+）</td>
+<td>参数是 <code>array('prop' =&gt; value, ...)</code>，需返回同类新对象；<strong>是实现 <code>var_export</code> 可回导的唯一途径</strong></td>
+</tr>
+</tbody></table>
+<h3 id="2-4-类型转换-杂项"><a href="#2-4-类型转换-杂项" class="headerlink" title="2.4 类型转换 / 杂项"></a>2.4 类型转换 / 杂项</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>签名</th>
+<th>时机</th>
+<th>关键说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__toString()</code></td>
+<td><code>public function __toString(): string</code></td>
+<td>对象被当字符串用（<code>echo $obj</code>）</td>
+<td>必须返回字符串；否则抛 <code>E_RECOVERABLE_ERROR</code> 级致命错误。<strong>PHP 7.4 起可抛 <code>Exception</code></strong>；自 PHP 8.0 起可用 <code>Stringable</code> 接口</td>
+</tr>
+<tr>
+<td><code>__invoke()</code></td>
+<td><code>public function __invoke(mixed ...$args): mixed</code></td>
+<td>把对象当函数调用：<code>$obj()</code></td>
+<td>PHP 5.3.0+</td>
+</tr>
+<tr>
+<td><code>__clone()</code></td>
+<td><code>public function __clone(): void</code></td>
+<td>复制完成后，在<strong>新对象</strong>上调用</td>
+<td>深拷贝场景改属性用；⚠️ <code>clone</code> 关键字是浅拷贝，递归成员不会自动深拷贝</td>
+</tr>
+<tr>
+<td><code>__debugInfo()</code></td>
+<td><code>public function __debugInfo(): array</code></td>
+<td><code>var_dump()</code> 打印对象时</td>
+<td>隐藏敏感字段/只暴露关键字段，PHP 5.6.0+</td>
+</tr>
+</tbody></table>
+<h3 id="2-5-方法签名速查（PHP-8-强制类型）"><a href="#2-5-方法签名速查（PHP-8-强制类型）" class="headerlink" title="2.5 方法签名速查（PHP 8 强制类型）"></a>2.5 方法签名速查（PHP 8 强制类型）</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>PHP 8 签名（严格模式会校验）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__call</code></td>
+<td><code>public function __call(string $name, array $arguments): mixed</code></td>
+</tr>
+<tr>
+<td><code>__callStatic</code></td>
+<td><code>public static function __callStatic(string $name, array $arguments): mixed</code></td>
+</tr>
+<tr>
+<td><code>__get</code></td>
+<td><code>public function __get(string $name): mixed</code></td>
+</tr>
+<tr>
+<td><code>__set</code></td>
+<td><code>public function __set(string $name, mixed $value): void</code></td>
+</tr>
+<tr>
+<td><code>__isset</code></td>
+<td><code>public function __isset(string $name): bool</code></td>
+</tr>
+<tr>
+<td><code>__unset</code></td>
+<td><code>public function __unset(string $name): void</code></td>
+</tr>
+<tr>
+<td><code>__sleep</code></td>
+<td><code>public function __sleep(): array</code></td>
+</tr>
+<tr>
+<td><code>__wakeup</code></td>
+<td><code>public function __wakeup(): void</code></td>
+</tr>
+<tr>
+<td><code>__serialize</code></td>
+<td><code>public function __serialize(): array</code></td>
+</tr>
+<tr>
+<td><code>__unserialize</code></td>
+<td><code>public function __unserialize(array $data): void</code></td>
+</tr>
+<tr>
+<td><code>__set_state</code></td>
+<td><code>public static function __set_state(array $properties): object</code></td>
+</tr>
+<tr>
+<td><code>__toString</code></td>
+<td><code>public function __toString(): string</code></td>
+</tr>
+<tr>
+<td><code>__invoke</code></td>
+<td><code>public function __invoke(mixed ...$args): mixed</code></td>
+</tr>
+<tr>
+<td><code>__clone</code></td>
+<td><code>public function __clone(): void</code></td>
+</tr>
+<tr>
+<td><code>__debugInfo</code></td>
+<td><code>public function __debugInfo(): array</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 签名对不上的坑：类型写错（比如 <code>__isset</code> 返回 <code>bool</code> 写成 <code>void</code>）在 <code>declare(strict_types=1)</code> 下会直接致命错误。</p>
+</blockquote>
+<hr>
+<h2 id="三、预定义变量"><a href="#三、预定义变量" class="headerlink" title="三、预定义变量"></a>三、预定义变量</h2><h3 id="3-1-超全局变量（在全部作用域始终可用）"><a href="#3-1-超全局变量（在全部作用域始终可用）" class="headerlink" title="3.1 超全局变量（在全部作用域始终可用）"></a>3.1 超全局变量（在全部作用域始终可用）</h3><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+<th>类型 / 来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$GLOBALS</code></td>
+<td>引用全局作用域中<strong>所有</strong>变量</td>
+<td><code>array</code>，包含全部全局变量</td>
+</tr>
+<tr>
+<td><code>$_SERVER</code></td>
+<td>服务器和执行环境信息</td>
+<td><code>array</code>，如 <code>$_SERVER['REQUEST_URI']</code></td>
+</tr>
+<tr>
+<td><code>$_GET</code></td>
+<td>HTTP GET 变量</td>
+<td><code>array</code>，URL 查询参数</td>
+</tr>
+<tr>
+<td><code>$_POST</code></td>
+<td>HTTP POST 变量</td>
+<td><code>array</code>，表单 / <code>application/x-www-form-urlencoded</code></td>
+</tr>
+<tr>
+<td><code>$_FILES</code></td>
+<td>HTTP 文件上传变量</td>
+<td><code>array</code>，多维结构 <code>$_FILES['f']['tmp_name']</code></td>
+</tr>
+<tr>
+<td><code>$_REQUEST</code></td>
+<td>HTTP Request 变量（<code>GET</code> + <code>POST</code> + <code>COOKIE</code> 默认合并）</td>
+<td><code>array</code></td>
+</tr>
+<tr>
+<td><code>$_SESSION</code></td>
+<td>Session 变量（需先 <code>session_start()</code>）</td>
+<td><code>array</code></td>
+</tr>
+<tr>
+<td><code>$_ENV</code></td>
+<td>环境变量</td>
+<td><code>array</code></td>
+</tr>
+<tr>
+<td><code>$_COOKIE</code></td>
+<td>HTTP Cookies</td>
+<td><code>array</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-2-其他预定义变量"><a href="#3-2-其他预定义变量" class="headerlink" title="3.2 其他预定义变量"></a>3.2 其他预定义变量</h3><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+<th>版本 / 备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$php_errormsg</code></td>
+<td><strong>前一个</strong>错误信息</td>
+<td>已被 <code>set_error_handler()</code> 取代，不推荐在新代码用</td>
+</tr>
+<tr>
+<td><code>$HTTP_RAW_POST_DATA</code></td>
+<td>原生 POST 数据（未经 PHP 解析）</td>
+<td><strong>已废弃</strong>（PHP 5.6 起），改用 <code>php://input</code></td>
+</tr>
+<tr>
+<td><code>$http_response_header</code></td>
+<td>HTTP 响应头数组（HTTP 包装器产生）</td>
+<td>部分封装下不可用</td>
+</tr>
+<tr>
+<td><code>$argc</code></td>
+<td>传给脚本的参数<strong>个数</strong></td>
+<td>仅 CLI</td>
+</tr>
+<tr>
+<td><code>$argv</code></td>
+<td>传给脚本的参数<strong>数组</strong>（<code>$argv[0]</code> 是脚本名）</td>
+<td>仅 CLI</td>
+</tr>
+</tbody></table>
+<p><strong>CLI 示例：</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// php test.php foo bar</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$argc</span>;      <span class="comment">// 3</span></span><br><span class="line">print_r(<span class="variable">$argv</span>);  <span class="comment">// [0] =&gt; test.php, [1] =&gt; foo, [2] =&gt; bar</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>POST 原生数据（<code>php://input</code>）：</strong></p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSON 请求体 → $_POST 为空，要读 php://input</span></span><br><span class="line"><span class="variable">$raw</span> = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line"><span class="variable">$data</span> = json_decode(<span class="variable">$raw</span>, <span class="literal">true</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>⚠️ <code>$_POST</code> 为空的两大原因：请求体是 <code>application/json</code>（走 <code>php://input</code>）/ <code>multipart/form-data</code> 走 <code>$_FILES</code>，以及 PHP ≥ 7 的 <code>max_input_vars</code> 超限（超出的静默丢弃）。</p>
+</blockquote>
+<hr>
+<h2 id="四、三者关系速览"><a href="#四、三者关系速览" class="headerlink" title="四、三者关系速览"></a>四、三者关系速览</h2><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>数量级</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>魔术常量</td>
+<td>9 个</td>
+<td><strong>编译期</strong>替换成字面量，不占运行时开销；<code>__LINE__</code> 等在常量表达式里也能用</td>
+</tr>
+<tr>
+<td>魔术方法</td>
+<td>15 个</td>
+<td>运行时<strong>拦截</strong>行为：生命周期、访问、序列化、类型转换</td>
+</tr>
+<tr>
+<td>超全局变量</td>
+<td>9 个</td>
+<td><strong>作用域无关</strong>，函数内直接可读，不用 <code>global</code></td>
+</tr>
+</tbody></table>
+<p><strong>一句话记忆：</strong></p>
+<ul>
+<li>想知道「我在哪」→ 魔术常量</li>
+<li>想拦截「别人对我做什么」→ 魔术方法</li>
+<li>想拿到「请求和环境信息」→ 超全局变量</li>
+</ul>
+<hr>
+<h2 id="五、常用坑位速查"><a href="#五、常用坑位速查" class="headerlink" title="五、常用坑位速查"></a>五、常用坑位速查</h2><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>根因</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>子类构造函数没跑父类逻辑</td>
+<td>子类 <code>__construct</code> 覆盖且没调 <code>parent::__construct()</code></td>
+<td>显式 <code>parent::__construct(...)</code></td>
+</tr>
+<tr>
+<td>析构函数里的清理没执行完</td>
+<td>脚本已在 <code>exit()</code> / fatal error 中</td>
+<td>改用 <code>register_shutdown_function()</code></td>
+</tr>
+<tr>
+<td><code>isset($obj-&gt;prop)</code> 恒为 false</td>
+<td>只实现了 <code>__get</code>，没实现 <code>__isset</code></td>
+<td>补 <code>__isset</code></td>
+</tr>
+<tr>
+<td><code>echo $obj</code> 致命错误</td>
+<td><code>__toString</code> 返回非字符串 / 抛异常未处理</td>
+<td>保证返回 <code>string</code></td>
+</tr>
+<tr>
+<td><code>clone</code> 后嵌套对象还是同一个引用</td>
+<td><code>clone</code> 是浅拷贝</td>
+<td>在 <code>__clone</code> 里手动克隆嵌套对象</td>
+</tr>
+<tr>
+<td><code>serialize</code> 后变 <code>NULL</code> + <code>E_NOTICE</code></td>
+<td><code>__sleep</code> 没 <code>return</code> 数组</td>
+<td><code>return ['a', 'b'];</code></td>
+</tr>
+<tr>
+<td><code>__wakeup</code> 不执行</td>
+<td>类里定义了 <code>__unserialize</code></td>
+<td>二者互斥，只能选一套</td>
+</tr>
+<tr>
+<td><code>var_export</code> 出来不能反导</td>
+<td>缺 <code>__set_state</code></td>
+<td>实现并返回同类对象</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="cgi-fastcgi-php-cgi-php-fpm"><a href="#cgi-fastcgi-php-cgi-php-fpm" class="headerlink" title="cgi/fastcgi/php-cgi/php-fpm"></a><center><font color="red">cgi/fastcgi/php-cgi/php-fpm</font></center></h1><h2 id="零、一句话结论（先记这个）"><a href="#零、一句话结论（先记这个）" class="headerlink" title="零、一句话结论（先记这个）"></a>零、一句话结论（先记这个）</h2><table>
+<thead>
+<tr>
+<th>名字</th>
+<th>本质</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CGI</strong></td>
+<td>协议</td>
+<td>web server 和后端程序之间的通信规范，规定「传哪些数据、什么格式」</td>
+</tr>
+<tr>
+<td><strong>FastCGI</strong></td>
+<td>协议</td>
+<td>CGI 的改良版，核心是<strong>进程复用</strong>（长驻，不再一请求一进程）</td>
+</tr>
+<tr>
+<td><strong>php-cgi</strong></td>
+<td>程序（SAPI）</td>
+<td>PHP 对 <strong>CGI 协议</strong>的实现，每次请求起进程、干完就退出</td>
+</tr>
+<tr>
+<td><strong>php-fpm</strong></td>
+<td>程序（SAPI）</td>
+<td>PHP 对 <strong>FastCGI 协议</strong>的实现，自带 master/worker 进程池</td>
+</tr>
+</tbody></table>
+<p><strong>关系链：</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx ──FastCGI 协议──&gt; php-fpm ──fork──&gt; worker（php-cgi 形态，长驻）</span><br><span class="line"> │</span><br><span class="line"> └──CGI 协议────&gt; php-cgi（一请求一进程，进程即退）</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="一、为什么需要-CGI-这层协议"><a href="#一、为什么需要-CGI-这层协议" class="headerlink" title="一、为什么需要 CGI 这层协议"></a>一、为什么需要 CGI 这层协议</h2><table>
+<thead>
+<tr>
+<th>环节</th>
+<th>发生了什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态请求（<code>/index.html</code>、<code>/image.png</code>）</td>
+<td>web server 直接读文件系统，把文件字节流发给浏览器，<strong>不经过任何解释器</strong></td>
+</tr>
+<tr>
+<td>动态请求（<code>/index.php</code>、<code>/index.jsp</code>）</td>
+<td>web server 按配置把请求<strong>转交</strong>给对应解析器（PHP / Java 等）</td>
+</tr>
+<tr>
+<td>转交时必须带的数据</td>
+<td>URL 路径、查询字符串、POST 数据、HTTP Header、客户端 IP、端口…</td>
+</tr>
+<tr>
+<td>CGI 管什么</td>
+<td><strong>规定「传哪些数据、什么格式」</strong>，让后端程序不用为每个 server 写一套适配</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>CGI 的原始动机是「让后端程序编写者能拿到标准格式的数据」，而不是为了性能。它后来被 FastCGI 取代的原因只有一个：<strong>太慢</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="二、CGI-慢在哪（FastCGI-的改进点）"><a href="#二、CGI-慢在哪（FastCGI-的改进点）" class="headerlink" title="二、CGI 慢在哪（FastCGI 的改进点）"></a>二、CGI 慢在哪（FastCGI 的改进点）</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>CGI（每个请求）</th>
+<th>FastCGI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>进程模型</td>
+<td><strong>一请求一进程</strong>，处理完立即销毁</td>
+<td><strong>一进程多请求</strong>，处理完接着处理下一个</td>
+</tr>
+<tr>
+<td>启动开销</td>
+<td>每次都重新解析 <code>php.ini</code>、初始化数据结构、初始化 Zend 虚拟机</td>
+<td>只在 master 启动时做一次，worker 直接复用</td>
+</tr>
+<tr>
+<td>进程数随并发增长</td>
+<td>并发 N → N 个 CGI 进程</td>
+<td>并发 N → N 个 worker，进程数由池大小封顶</td>
+</tr>
+<tr>
+<td>内存/资源消耗</td>
+<td>高，且频繁分配释放</td>
+<td>稳，进程长期驻留</td>
+</tr>
+<tr>
+<td>配置生效</td>
+<td>每次请求重新读，天然实时</td>
+<td>需重启（reload）才生效</td>
+</tr>
+</tbody></table>
+<p><strong>FastCGI 的调度逻辑：</strong></p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>master 做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 启动时</td>
+<td>解析配置文件、初始化执行环境</td>
+</tr>
+<tr>
+<td>2. 启动时</td>
+<td>预启动多个 worker 进程</td>
+</tr>
+<tr>
+<td>3. 请求到达</td>
+<td>交给某个空闲 worker，<strong>自己立即返回去接下一个请求</strong></td>
+</tr>
+<tr>
+<td>4. worker 不够</td>
+<td>按配置预先启动备用 worker</td>
+</tr>
+<tr>
+<td>5. worker 太多/空闲</td>
+<td>回收多余 worker</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 常见误解：<strong>FastCGI 是协议，不是进程</strong>。就像 HTTP 是协议，Apache 的实现叫 httpd，Nginx 的实现叫 nginx。FastCGI 的实现者可以是 php-fpm，也可以是 spawn-fcgi、lighthttpd 等。</p>
+</blockquote>
+<h2 id="四者对照总表"><a href="#四者对照总表" class="headerlink" title="四者对照总表"></a>四者对照总表</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>CGI</th>
+<th>FastCGI</th>
+<th>php-cgi</th>
+<th>php-fpm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>类型</strong></td>
+<td>协议</td>
+<td>协议</td>
+<td>程序（PHP SAPI）</td>
+<td>程序（PHP SAPI）</td>
+</tr>
+<tr>
+<td><strong>解决的问题</strong></td>
+<td>通信规范</td>
+<td>性能</td>
+<td>执行 PHP 代码</td>
+<td>调度 + 执行</td>
+</tr>
+<tr>
+<td><strong>谁实现它</strong></td>
+<td>各种语言各有自己的 CGI 程序</td>
+<td>php-fpm / spawn-fcgi / IIS 等</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>进程模型</strong></td>
+<td>一请求一进程</td>
+<td>协议本身不规定，靠实现方</td>
+<td>单进程，干完即退</td>
+<td>master + 多 worker，常驻</td>
+</tr>
+<tr>
+<td><strong>能否常驻</strong></td>
+<td>否</td>
+<td>是（设计目标）</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td><strong>内置进程池管理</strong></td>
+<td>—</td>
+<td>—</td>
+<td>❌ 无</td>
+<td>✅ 有</td>
+</tr>
+<tr>
+<td><strong>配置生效方式</strong></td>
+<td>每请求重读</td>
+<td>需 reload/restart</td>
+<td>改配置需<strong>重启 php-cgi</strong></td>
+<td><code>reload</code>（优雅重载）/ <code>restart</code></td>
+</tr>
+<tr>
+<td><strong>PHP 官方地位</strong></td>
+<td>历史标准</td>
+<td>历史标准</td>
+<td>仍保留但<strong>不推荐生产</strong></td>
+<td><strong>官方推荐</strong></td>
+</tr>
+<tr>
+<td><strong>并发承载</strong></td>
+<td>差</td>
+<td>好</td>
+<td>差</td>
+<td>好（受 <code>pm.max_children</code> 限制）</td>
+</tr>
+</tbody></table>
+<h2 id="三、四个概念逐个拆开"><a href="#三、四个概念逐个拆开" class="headerlink" title="三、四个概念逐个拆开"></a>三、四个概念逐个拆开</h2><h3 id="3-1-CGI（Common-Gateway-Interface）"><a href="#3-1-CGI（Common-Gateway-Interface）" class="headerlink" title="3.1 CGI（Common Gateway Interface）"></a>3.1 CGI（Common Gateway Interface）</h3><table>
+<thead>
+<tr>
+<th>项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全称</td>
+<td>Common Gateway Interface，公共网关接口</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>让 web server 把动态请求 + 参数，以<strong>标准格式</strong>传给后端程序</td>
+</tr>
+<tr>
+<td>类比</td>
+<td>「插座标准」——规定插头长什么样，至于用电器是冰箱还是电视它不管</td>
+</tr>
+<tr>
+<td>生命周期</td>
+<td>每请求：启动进程 → 读配置 → 处理 → 输出 → <strong>销毁进程</strong></td>
+</tr>
+<tr>
+<td>现状</td>
+<td>已被 FastCGI 取代，PHP 里基本只作为历史概念出现</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-FastCGI"><a href="#3-2-FastCGI" class="headerlink" title="3.2 FastCGI"></a>3.2 FastCGI</h3><table>
+<thead>
+<tr>
+<th>项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本质</td>
+<td>协议（不是进程）</td>
+</tr>
+<tr>
+<td>改进点</td>
+<td>进程复用 + 数据结构优化，把「每次初始化」变成「一次初始化」</td>
+</tr>
+<tr>
+<td>实现者</td>
+<td>php-fpm（官方）、spawn-fcgi（从 lighthttpd 分裂出来）、IIS FastCGI Handler 等</td>
+</tr>
+<tr>
+<td>注意</td>
+<td>协议不规定进程数，进程池大小由实现方的配置决定（php-fpm 的 <code>pm.*</code>）</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-php-cgi"><a href="#3-3-php-cgi" class="headerlink" title="3.3 php-cgi"></a>3.3 php-cgi</h3><table>
+<thead>
+<tr>
+<th>项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>PHP 提供的 <strong>CGI 协议接口程序</strong>，php-cgi 就是 PHP 解释器本身在 CGI 模式下的运行形态</td>
+</tr>
+<tr>
+<td>每次请求</td>
+<td>启动进程 → 加载 <code>php.ini</code> → 初始化数据结构与运行环境 → 处理请求 → 按 CGI 格式返回 → <strong>销毁进程</strong></td>
+</tr>
+<tr>
+<td>配置生效</td>
+<td>改 <code>php.ini</code> 必须<strong>重启 php-cgi</strong> 才生效</td>
+</tr>
+<tr>
+<td>致命短板</td>
+<td>它只是「一个干活的程序」，<strong>不会管理进程</strong>。高并发下光靠它自己顶不住</td>
+</tr>
+<tr>
+<td>于是有了</td>
+<td>spawn-fcgi、php-fpm 这类「调度器」来 fork 和复用 php-cgi</td>
+</tr>
+<tr>
+<td>现状</td>
+<td>官方明确不推荐用于生产，调试/某些特殊场景仍会用</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-php-fpm（PHP-FastCGI-Process-Manager）"><a href="#3-4-php-fpm（PHP-FastCGI-Process-Manager）" class="headerlink" title="3.4 php-fpm（PHP FastCGI Process Manager）"></a>3.4 php-fpm（PHP FastCGI Process Manager）</h3><table>
+<thead>
+<tr>
+<th>项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全称</td>
+<td>PHP FastCGI Process Manager</td>
+</tr>
+<tr>
+<td>定位</td>
+<td><strong>实现了 FastCGI 协议</strong>的程序，已被 PHP 官方收录，是目前的事实标准</td>
+</tr>
+<tr>
+<td>与 php-cgi 的关系</td>
+<td>可以理解为 <strong>php-cgi 的管理程序 + 改进版</strong>：不随请求生死，进程常驻，一进程接多连接</td>
+</tr>
+<tr>
+<td>工作方式</td>
+<td>master 常驻内存 → 把请求分给某个 worker → worker 处理完<strong>不退出</strong>，继续等下一个连接</td>
+</tr>
+<tr>
+<td>加速原理</td>
+<td>省掉每次的「重载配置 + 初始化数据结构 + 初始化运行环境」</td>
+</tr>
+<tr>
+<td>进程结构</td>
+<td>master（管理） + N × worker（干活）；空闲 worker 超阈值会被回收</td>
+</tr>
+<tr>
+<td>状态查看</td>
+<td><code>systemctl status php-fpm</code> / `ps -ef</td>
+</tr>
+<tr>
+<td>配置生效</td>
+<td><code>reload</code>（优雅重载，不中断服务）/ <code>restart</code>（全停全启）</td>
+</tr>
+</tbody></table>
+<h2 id="四、进程模型示意"><a href="#四、进程模型示意" class="headerlink" title="四、进程模型示意"></a>四、进程模型示意</h2><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>请求流向</th>
+<th>生命周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CGI</strong></td>
+<td><code>nginx ──&gt; [php-cgi 进程] ──&gt; 结束销毁</code></td>
+<td>进程寿命 = 单个请求寿命</td>
+</tr>
+<tr>
+<td><strong>FastCGI + spawn-fcgi</strong></td>
+<td><code>nginx ──&gt; spawn-fcgi ──fork─&gt; [php-cgi]</code>，进程复用</td>
+<td>进程寿命 = 多请求（由 spawn-fcgi 管）</td>
+</tr>
+<tr>
+<td><strong>FastCGI + php-fpm</strong></td>
+<td><code>nginx ──&gt; [master 常驻] ──分派─&gt; worker（复用）</code></td>
+<td>master 常驻，worker 复用并按需回收</td>
+</tr>
+</tbody></table>
+<p><strong>php-fpm 内部角色：</strong></p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>数量</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>master</td>
+<td>1</td>
+<td>读配置、监听 socket、分派请求、管理 worker 生命周期</td>
+</tr>
+<tr>
+<td>worker</td>
+<td>N（<code>pm.max_children</code> 上限）</td>
+<td>真正执行 PHP 代码、跑 Zend 虚拟机</td>
+</tr>
+<tr>
+<td>idle worker</td>
+<td>按 <code>pm.min_requests_spare</code> 等参数调节</td>
+<td>空闲回收，避免内存浪费</td>
+</tr>
+</tbody></table>
+<h2 id="五、内存与-502-的真实关系"><a href="#五、内存与-502-的真实关系" class="headerlink" title="五、内存与 502 的真实关系"></a>五、内存与 502 的真实关系</h2><table>
+<thead>
+<tr>
+<th>说法</th>
+<th>是否准确</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「php-fpm 开启多个 php-cgi 进程」</td>
+<td>简化说法</td>
+<td>FPM 的 worker <strong>本身就是 php-cgi 二进制的 fork 子进程</strong>，同一个可执行文件，不是两个程序</td>
+</tr>
+<tr>
+<td>「一个 php-cgi 占 7~25M」</td>
+<td>大致量级</td>
+<td>真实值取决于加载的扩展、<code>memory_limit</code>、脚本复杂度；现代 PHP 常见 worker RSS 在 20~40M 量级</td>
+</tr>
+<tr>
+<td>「内存涨太多会引发 502」</td>
+<td><strong>间接成立</strong></td>
+<td>502 的<strong>直接原因不是内存</strong>，而是 FPM worker 不够/超时导致上游无响应。内存只是背后的推手</td>
+</tr>
+</tbody></table>
+<p><strong>502 的典型链路：</strong></p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>现象</th>
+<th>排查命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FPM 进程数打满</td>
+<td>请求排队 → 排队超时</td>
+<td><code>pm.max_children</code> 是否过小</td>
+</tr>
+<tr>
+<td><code>pm.max_children</code> × 单进程内存 &gt; 物理内存</td>
+<td>系统开始 swap / OOM，worker 被杀</td>
+<td>看 <code>free -h</code>、容器 <code>memory.limit</code></td>
+</tr>
+<tr>
+<td>脚本执行超时</td>
+<td>FPM 主动断开，Nginx 报 502</td>
+<td>调 <code>request_terminate_timeout</code></td>
+</tr>
+<tr>
+<td>慢脚本 / 死循环</td>
+<td>worker 被占满，后续请求全排队</td>
+<td><code>request_slowlog_timeout</code> + slowlog</td>
+</tr>
+<tr>
+<td>真正的 OOM</td>
+<td>kernel 杀进程</td>
+<td>Nginx error log 会出现 <code>worker process ... exited on signal 9</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 排查顺序：<strong>先看 FPM 的饱和度，再看内存，最后才看代码</strong>。别一上来就加内存——<code>pm.max_children</code> 算错的话，加多少内存都会被吃光。</p>
+</blockquote>
+<p><strong><code>pm.max_children</code> 估算公式：</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_children ≈ (可用物理内存 × 0.7) / 单个 worker 实测 RSS</span><br></pre></td></tr></tbody></table></figure>
+
+<p>例：机器 4G，可用约 2.8G，worker 实测 30M → <code>max_children ≈ 93</code>，实际还要留余量，一般取 70~80。</p>
+<h2 id="六、术语对照（这组词最容易混）"><a href="#六、术语对照（这组词最容易混）" class="headerlink" title="六、术语对照（这组词最容易混）"></a>六、术语对照（这组词最容易混）</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>在 PHP 里指什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>cgi 进程 / 线程</strong></td>
+<td>就是 php-cgi 进程/线程，专门接收 web server 的动态请求，调用并初始化 Zend 虚拟机</td>
+</tr>
+<tr>
+<td><strong>cgi 脚本</strong></td>
+<td>被执行的 PHP 源代码文件（<code>.php</code>），注意它和「cgi 进程」不是一回事</td>
+</tr>
+<tr>
+<td><strong>Zend 虚拟机</strong></td>
+<td>对 PHP 文件做<strong>词法分析 → 语法分析 → 编译成 opcode → 执行</strong>，最后关闭</td>
+</tr>
+<tr>
+<td><strong>两者关系</strong></td>
+<td>cgi 进程负责<strong>调用并初始化</strong> Zend 虚拟机的各种环境；每个请求一个独立的执行上下文</td>
+</tr>
+</tbody></table>
+<p><strong>生命周期串起来看：</strong></p>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>CGI 模式（php-cgi）</th>
+<th>FastCGI 模式（php-fpm worker）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>启动进程</td>
+<td>worker 已常驻（首次启动时初始化一次）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>解析 <code>php.ini</code></td>
+<td>跳过（已加载）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>初始化数据结构 + Zend VM 环境</td>
+<td>跳过（已初始化），每次只做请求级清理（<code>register_shutdown</code> 语义）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>解析脚本 → 编译 opcode → 执行</td>
+<td>同左</td>
+</tr>
+<tr>
+<td>5</td>
+<td>按 CGI 格式输出结果</td>
+<td>同左</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>销毁进程</strong></td>
+<td><strong>回到池中等待下一个请求</strong></td>
+</tr>
+</tbody></table>
+<h2 id="七、常见误区纠正"><a href="#七、常见误区纠正" class="headerlink" title="七、常见误区纠正"></a>七、常见误区纠正</h2><table>
+<thead>
+<tr>
+<th>常见说法</th>
+<th>实际情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>「FastCGI 是一个进程」</td>
+<td>❌ FastCGI 是<strong>协议</strong>，php-fpm 才是实现它的程序</td>
+</tr>
+<tr>
+<td>「php-fpm 和 php-cgi 是两个不同的可执行文件」</td>
+<td>❌ 都是 PHP 的 SAPI 形态；FPM 的 worker 就是自身 fork 出来的子进程，不是「另开的 php-cgi」</td>
+</tr>
+<tr>
+<td>「FastCGI 规定了一进程多请求」</td>
+<td>⚠️ 不准确。FastCGI 只规定<strong>通信协议</strong>，是否复用进程由实现决定；复用是它带来的<strong>客观效果</strong>和设计意图</td>
+</tr>
+<tr>
+<td>「用了 FastCGI 就一定不重启」</td>
+<td>❌ FPM 改 <code>php.ini</code> / <code>www.conf</code> 仍需 <code>reload</code>，只是<strong>不用重启全部进程</strong>（优雅重载）</td>
+</tr>
+<tr>
+<td>「CGI 慢是因为语言慢」</td>
+<td>❌ 慢在<strong>进程创建销毁 + 每次重复初始化环境</strong>，与语言本身无关</td>
+</tr>
+<tr>
+<td>「php-cgi 现在还能用」</td>
+<td>能，但不推荐生产；官方推荐 php-fpm</td>
+</tr>
+</tbody></table>
+<h2 id="八、常用命令速查"><a href="#八、常用命令速查" class="headerlink" title="八、常用命令速查"></a>八、常用命令速查</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动</td>
+<td><code>systemctl start php-fpm</code></td>
+</tr>
+<tr>
+<td>停止</td>
+<td><code>systemctl stop php-fpm</code></td>
+</tr>
+<tr>
+<td><strong>重载配置（不中断）</strong></td>
+<td><code>systemctl reload php-fpm</code> 或 <code>kill -USR2 $(cat /var/run/php-fpm.pid)</code></td>
+</tr>
+<tr>
+<td>重启（会中断请求）</td>
+<td><code>systemctl restart php-fpm</code></td>
+</tr>
+<tr>
+<td>查看状态</td>
+<td><code>systemctl status php-fpm</code></td>
+</tr>
+<tr>
+<td>看进程</td>
+<td><code>ps -ef | grep php-fpm</code></td>
+</tr>
+<tr>
+<td>看 master/worker 数</td>
+<td><code>pgrep -c php-fpm</code></td>
+</tr>
+<tr>
+<td>验证 FPM 是否在监听</td>
+<td><code>ss -lntp | grep 9000</code></td>
+</tr>
+<tr>
+<td>改完 <code>www.conf</code> 后</td>
+<td><code>php-fpm -t</code> 测试配置，再 <code>reload</code></td>
+</tr>
+<tr>
+<td>临时看某脚本耗时</td>
+<td><code>request_slowlog_timeout</code> + <code>slowlog</code></td>
+</tr>
+</tbody></table>
+<p><strong>关键 <code>www.conf</code> 参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>listen</code></td>
+<td>监听地址（端口或 Unix socket）</td>
+<td>Unix socket 通常比 TCP 快一点</td>
+</tr>
+<tr>
+<td><code>pm</code></td>
+<td>进程管理模式</td>
+<td><code>dynamic</code>（默认）/ <code>static</code> / <code>ondemand</code></td>
+</tr>
+<tr>
+<td><code>pm.max_children</code></td>
+<td>worker 数量上限</td>
+<td><strong>最关键的调优项</strong>，直接决定并发上限和内存占用</td>
+</tr>
+<tr>
+<td><code>pm.start_servers</code></td>
+<td>启动时的 worker 数</td>
+<td>仅 <code>dynamic</code> 生效</td>
+</tr>
+<tr>
+<td><code>pm.min_spare_servers</code></td>
+<td>空闲 worker 下限</td>
+<td>低于此值会补充 worker</td>
+</tr>
+<tr>
+<td><code>pm.max_spare_servers</code></td>
+<td>空闲 worker 上限</td>
+<td>高于此值会回收 worker</td>
+</tr>
+<tr>
+<td><code>request_terminate_timeout</code></td>
+<td>单请求超时（秒）</td>
+<td><strong>502 的常见来源</strong>，超时即断开</td>
+</tr>
+<tr>
+<td><code>request_slowlog_timeout</code></td>
+<td>超过该秒数记录慢日志</td>
+<td>排查卡死用</td>
+</tr>
+<tr>
+<td><code>catch_workers_output</code></td>
+<td>是否把 worker 输出接到 error log</td>
+<td>排查问题建议开</td>
+</tr>
+<tr>
+<td><code>security.limit_extensions</code></td>
+<td>限制可执行的后缀</td>
+<td>默认 <code>.php</code>，别乱改</td>
+</tr>
+</tbody></table>
+<h2 id="九、参考"><a href="#九、参考" class="headerlink" title="九、参考"></a>九、参考</h2><table>
+<thead>
+<tr>
+<th>来源</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>简单说明 CGI 和动态请求是什么</td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/f-ck-need-u/p/7627035.html">https://www.cnblogs.com/f-ck-need-u/p/7627035.html</a></td>
+</tr>
+<tr>
+<td>PHP-FPM / php-cgi / fast-cgi 与 Nginx 的关系</td>
+<td><a target="_blank" rel="noopener" href="https://killuachen.com/view/50">https://killuachen.com/view/50</a></td>
+</tr>
+<tr>
+<td>PHP 官方 CGI/FastCGI 说明</td>
+<td><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/install.cgi.php">https://www.php.net/manual/zh/install.cgi.php</a></td>
+</tr>
+<tr>
+<td>PHP-FPM 配置文档</td>
+<td><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/install.fpm.configuration.php">https://www.php.net/manual/zh/install.fpm.configuration.php</a></td>
+</tr>
+</tbody></table>
+<h2 id="十、30-秒自测"><a href="#十、30-秒自测" class="headerlink" title="十、30 秒自测"></a>十、30 秒自测</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>答案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FastCGI 是什么？</td>
+<td>协议。php-fpm 是它的 PHP 实现</td>
+</tr>
+<tr>
+<td>CGI 慢在哪？</td>
+<td>一请求一进程，每次重复初始化环境</td>
+</tr>
+<tr>
+<td>php-fpm 解决了什么？</td>
+<td>master/worker 池，进程复用，省掉重复初始化</td>
+</tr>
+<tr>
+<td>php-cgi 为什么被淘汰？</td>
+<td>只干活不管进程，高并发顶不住；配置还要重启</td>
+</tr>
+<tr>
+<td>502 直接原因是什么？</td>
+<td>FPM worker 耗尽/超时，Nginx 拿不到上游响应（不是内存本身）</td>
+</tr>
+<tr>
+<td><code>pm.max_children</code> 怎么定？</td>
+<td><code>(可用内存 × 0.7) / 单 worker 实测 RSS</code>，别照抄别人的值</td>
+</tr>
+<tr>
+<td>Zend VM 在哪个阶段工作？</td>
+<td>词法 → 语法 → 编译 opcode → 执行，请求结束关闭</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -1335,8 +2545,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="tag"><i class="fa fa-tag"></i> 垃圾回收</a>
               <a href="/tags/%E5%A0%86/" rel="tag"><i class="fa fa-tag"></i> 堆</a>
+              <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="tag"><i class="fa fa-tag"></i> 垃圾回收</a>
               <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 数组</a>
               <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"><i class="fa fa-tag"></i> 内存</a>
               <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
@@ -1404,7 +2614,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SPL"><span class="nav-number">1.</span> <span class="nav-text">SPL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%BC%82%E5%B8%B8"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 文件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9D%82%E9%A1%B9"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 函数与杂项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 常见坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yield"><span class="nav-number">2.</span> <span class="nav-text">yield</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-yield-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 yield 是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Generator-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0-Iterator-%E7%9A%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 Generator 是怎么实现 Iterator 的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-yield-%E6%98%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E4%B8%8D%E6%98%AF%E8%AF%AD%E5%8F%A5-%E2%80%94%E2%80%94-%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 yield 是表达式，不是语句 —— 双向通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-return-%E4%B8%8E-getReturn"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 return 与 getReturn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-yield-from%EF%BC%88PHP-7-0-%EF%BC%89"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 yield from（PHP 7.0+）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E5%86%85%E5%AD%98%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.6 内存与性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E7%89%B9%E6%80%A7%E6%B8%85%E5%8D%95%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="nav-number">2.1.7.</span> <span class="nav-text">1.7 特性清单与常见坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.2.</span> <span class="nav-text">二、实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%83%B0%E6%80%A7%E5%BA%8F%E5%88%97%EF%BC%9A%E6%97%A0%E9%99%90%E5%BA%8F%E5%88%97-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 惰性序列：无限序列 &#x2F; 斐波那契</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E6%B5%81%E6%B0%B4%E7%BA%BF%EF%BC%9Amap-filter-take-%E7%BB%84%E5%90%88"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 数据流水线：map &#x2F; filter &#x2F; take 组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%EF%BC%9A%E7%99%BE%E4%B8%87%E8%A1%8C%E5%AF%BC%E5%87%BA-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 大数据集流式处理：百万行导出 &#x2F; 日志分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B0%E6%80%A7%E6%B8%B8%E6%A0%87%EF%BC%88Laravel-%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 数据库惰性游标（Laravel 场景）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%8D%8F%E7%A8%8B%EF%BC%9A%E7%94%A8-yield-%E5%AE%9E%E7%8E%B0%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.5 协程：用 yield 实现协作式多任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%A1%A5%E5%85%85%EF%BC%9Ayield-%E5%81%9A%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E5%BC%82%E5%B8%B8%E6%B3%A8%E5%85%A5"><span class="nav-number">2.2.6.</span> <span class="nav-text">2.6 补充：yield 做错误处理与异常注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%AB%E7%94%A8"><span class="nav-number">2.2.7.</span> <span class="nav-text">2.7 什么时候别用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">预定义接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E6%9C%9F%E9%9D%99%E6%80%81%E7%BB%91%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">后期静态绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BE%8B%E5%AD%90"><span class="nav-number">4.2.</span> <span class="nav-text">二、例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84"><span class="nav-number">5.1.</span> <span class="nav-text">一、核心结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.2.</span> <span class="nav-text">二、生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5"><span class="nav-number">5.3.</span> <span class="nav-text">三、一些概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81PHP-FPM%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.4.</span> <span class="nav-text">四、PHP-FPM详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">5.5.</span> <span class="nav-text">五、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">6.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">变量和内存的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">一、内存结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">二、测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">数组实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-3"><span class="nav-number">8.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.2.</span> <span class="nav-text">二、实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E4%BC%98"><span class="nav-number">9.</span> <span class="nav-text">调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%AA%E7%8E%AF%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">9.1.</span> <span class="nav-text">一、循环查询数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3%E4%BC%98%E5%8C%96"><span class="nav-number">9.2.</span> <span class="nav-text">二、接口优化</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SPL"><span class="nav-number">1.</span> <span class="nav-text">SPL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">二、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%BC%82%E5%B8%B8"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 文件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9D%82%E9%A1%B9"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 函数与杂项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 常见坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yield"><span class="nav-number">2.</span> <span class="nav-text">yield</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-yield-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 yield 是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Generator-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0-Iterator-%E7%9A%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 Generator 是怎么实现 Iterator 的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-yield-%E6%98%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E4%B8%8D%E6%98%AF%E8%AF%AD%E5%8F%A5-%E2%80%94%E2%80%94-%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 yield 是表达式，不是语句 —— 双向通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-return-%E4%B8%8E-getReturn"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 return 与 getReturn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-yield-from%EF%BC%88PHP-7-0-%EF%BC%89"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 yield from（PHP 7.0+）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E5%86%85%E5%AD%98%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.6 内存与性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E7%89%B9%E6%80%A7%E6%B8%85%E5%8D%95%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%9D%91"><span class="nav-number">2.1.7.</span> <span class="nav-text">1.7 特性清单与常见坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.2.</span> <span class="nav-text">二、实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%83%B0%E6%80%A7%E5%BA%8F%E5%88%97%EF%BC%9A%E6%97%A0%E9%99%90%E5%BA%8F%E5%88%97-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 惰性序列：无限序列 &#x2F; 斐波那契</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E6%B5%81%E6%B0%B4%E7%BA%BF%EF%BC%9Amap-filter-take-%E7%BB%84%E5%90%88"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 数据流水线：map &#x2F; filter &#x2F; take 组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%EF%BC%9A%E7%99%BE%E4%B8%87%E8%A1%8C%E5%AF%BC%E5%87%BA-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 大数据集流式处理：百万行导出 &#x2F; 日志分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B0%E6%80%A7%E6%B8%B8%E6%A0%87%EF%BC%88Laravel-%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 数据库惰性游标（Laravel 场景）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%8D%8F%E7%A8%8B%EF%BC%9A%E7%94%A8-yield-%E5%AE%9E%E7%8E%B0%E5%8D%8F%E4%BD%9C%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.5 协程：用 yield 实现协作式多任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%A1%A5%E5%85%85%EF%BC%9Ayield-%E5%81%9A%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E5%BC%82%E5%B8%B8%E6%B3%A8%E5%85%A5"><span class="nav-number">2.2.6.</span> <span class="nav-text">2.6 补充：yield 做错误处理与异常注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%AB%E7%94%A8"><span class="nav-number">2.2.7.</span> <span class="nav-text">2.7 什么时候别用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">预定义接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E6%9C%9F%E9%9D%99%E6%80%81%E7%BB%91%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">后期静态绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BE%8B%E5%AD%90"><span class="nav-number">4.2.</span> <span class="nav-text">二、例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84"><span class="nav-number">5.1.</span> <span class="nav-text">一、核心结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.2.</span> <span class="nav-text">二、生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5"><span class="nav-number">5.3.</span> <span class="nav-text">三、一些概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81PHP-FPM%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.4.</span> <span class="nav-text">四、PHP-FPM详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">5.5.</span> <span class="nav-text">五、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">6.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">变量和内存的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">一、内存结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">二、测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">数组实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-3"><span class="nav-number">8.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.2.</span> <span class="nav-text">二、实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E4%BC%98"><span class="nav-number">9.</span> <span class="nav-text">调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BE%AA%E7%8E%AF%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">9.1.</span> <span class="nav-text">一、循环查询数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3%E4%BC%98%E5%8C%96"><span class="nav-number">9.2.</span> <span class="nav-text">二、接口优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E5%AF%BC%E5%87%BA"><span class="nav-number">10.</span> <span class="nav-text">大数据量导出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AA%81%E5%8F%91%E6%B5%81%E9%87%8F"><span class="nav-number">11.</span> <span class="nav-text">突发流量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AD%94%E6%9C%AF%E5%B8%B8%E9%87%8F%E3%80%81%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E3%80%81%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">12.</span> <span class="nav-text">魔术常量、魔术方法、全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%AD%94%E6%9C%AF%E5%B8%B8%E9%87%8F%EF%BC%88Magic-Constants%EF%BC%89"><span class="nav-number">12.1.</span> <span class="nav-text">一、魔术常量（Magic Constants）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%EF%BC%88Magic-Methods%EF%BC%89"><span class="nav-number">12.2.</span> <span class="nav-text">二、魔术方法（Magic Methods）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%B1%BB"><span class="nav-number">12.2.1.</span> <span class="nav-text">2.1 生命周期类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%AE%BF%E9%97%AE%E6%8B%A6%E6%88%AA%E7%B1%BB"><span class="nav-number">12.2.2.</span> <span class="nav-text">2.2 访问拦截类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%BA%8F%E5%88%97%E5%8C%96%E7%B1%BB"><span class="nav-number">12.2.3.</span> <span class="nav-text">2.3 序列化类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%9D%82%E9%A1%B9"><span class="nav-number">12.2.4.</span> <span class="nav-text">2.4 类型转换 &#x2F; 杂项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%96%B9%E6%B3%95%E7%AD%BE%E5%90%8D%E9%80%9F%E6%9F%A5%EF%BC%88PHP-8-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%EF%BC%89"><span class="nav-number">12.2.5.</span> <span class="nav-text">2.5 方法签名速查（PHP 8 强制类型）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-number">12.3.</span> <span class="nav-text">三、预定义变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%B6%85%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%EF%BC%88%E5%9C%A8%E5%85%A8%E9%83%A8%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%A7%8B%E7%BB%88%E5%8F%AF%E7%94%A8%EF%BC%89"><span class="nav-number">12.3.1.</span> <span class="nav-text">3.1 超全局变量（在全部作用域始终可用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%85%B6%E4%BB%96%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-number">12.3.2.</span> <span class="nav-text">3.2 其他预定义变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%89%E8%80%85%E5%85%B3%E7%B3%BB%E9%80%9F%E8%A7%88"><span class="nav-number">12.4.</span> <span class="nav-text">四、三者关系速览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E7%94%A8%E5%9D%91%E4%BD%8D%E9%80%9F%E6%9F%A5"><span class="nav-number">12.5.</span> <span class="nav-text">五、常用坑位速查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cgi-fastcgi-php-cgi-php-fpm"><span class="nav-number">13.</span> <span class="nav-text">cgi&#x2F;fastcgi&#x2F;php-cgi&#x2F;php-fpm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%BB%93%E8%AE%BA%EF%BC%88%E5%85%88%E8%AE%B0%E8%BF%99%E4%B8%AA%EF%BC%89"><span class="nav-number">13.1.</span> <span class="nav-text">零、一句话结论（先记这个）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-CGI-%E8%BF%99%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="nav-number">13.2.</span> <span class="nav-text">一、为什么需要 CGI 这层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81CGI-%E6%85%A2%E5%9C%A8%E5%93%AA%EF%BC%88FastCGI-%E7%9A%84%E6%94%B9%E8%BF%9B%E7%82%B9%EF%BC%89"><span class="nav-number">13.3.</span> <span class="nav-text">二、CGI 慢在哪（FastCGI 的改进点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E8%80%85%E5%AF%B9%E7%85%A7%E6%80%BB%E8%A1%A8"><span class="nav-number">13.4.</span> <span class="nav-text">四者对照总表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9B%9B%E4%B8%AA%E6%A6%82%E5%BF%B5%E9%80%90%E4%B8%AA%E6%8B%86%E5%BC%80"><span class="nav-number">13.5.</span> <span class="nav-text">三、四个概念逐个拆开</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-CGI%EF%BC%88Common-Gateway-Interface%EF%BC%89"><span class="nav-number">13.5.1.</span> <span class="nav-text">3.1 CGI（Common Gateway Interface）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-FastCGI"><span class="nav-number">13.5.2.</span> <span class="nav-text">3.2 FastCGI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-php-cgi"><span class="nav-number">13.5.3.</span> <span class="nav-text">3.3 php-cgi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-php-fpm%EF%BC%88PHP-FastCGI-Process-Manager%EF%BC%89"><span class="nav-number">13.5.4.</span> <span class="nav-text">3.4 php-fpm（PHP FastCGI Process Manager）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B%E7%A4%BA%E6%84%8F"><span class="nav-number">13.6.</span> <span class="nav-text">四、进程模型示意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%86%85%E5%AD%98%E4%B8%8E-502-%E7%9A%84%E7%9C%9F%E5%AE%9E%E5%85%B3%E7%B3%BB"><span class="nav-number">13.7.</span> <span class="nav-text">五、内存与 502 的真实关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%EF%BC%88%E8%BF%99%E7%BB%84%E8%AF%8D%E6%9C%80%E5%AE%B9%E6%98%93%E6%B7%B7%EF%BC%89"><span class="nav-number">13.8.</span> <span class="nav-text">六、术语对照（这组词最容易混）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E7%BA%A0%E6%AD%A3"><span class="nav-number">13.9.</span> <span class="nav-text">七、常见误区纠正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="nav-number">13.10.</span> <span class="nav-text">八、常用命令速查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">13.11.</span> <span class="nav-text">九、参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%8130-%E7%A7%92%E8%87%AA%E6%B5%8B"><span class="nav-number">13.12.</span> <span class="nav-text">十、30 秒自测</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1526,12 +2736,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">1m</span>
+    <span title="站点总字数">1.1m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:12</span>
+    <span title="站点阅读时长">16:19</span>
 </div>
 
         
