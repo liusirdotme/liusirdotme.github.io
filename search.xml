@@ -15123,7 +15123,7 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
 </li>
 </ul>
 <ol start="5">
-<li>确定问题，修改：<code>{{$row['rebate_record']|raw}}</code></li>
+<li>确定问题，修改为：<code>{{$row['rebate_record']|raw}}</code></li>
 </ol>
 ]]></content>
       <categories>
@@ -60590,6 +60590,93 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
 <td>词法 → 语法 → 编译 opcode → 执行，请求结束关闭</td>
 </tr>
 </tbody></table>
+<hr>
+<h1 id="Ondrej-PPA-使用手册"><a href="#Ondrej-PPA-使用手册" class="headerlink" title="Ondrej PPA 使用手册"></a><center><font color="red">Ondrej PPA 使用手册</font></center></h1><blockquote>
+<p>作者：Ondřej Surý，Debian/Ubuntu 平台 PHP、Nginx、Apache 第三方源，常用于多版本PHP共存环境。<br>官网：<a href="https://deb.sury.org">https://deb.sury.org</a></p>
+</blockquote>
+<h2 id="1-源介绍"><a href="#1-源介绍" class="headerlink" title="1. 源介绍"></a>1. 源介绍</h2><p>Ondrej PPA（deb.sury.org）是 Ondřej Surý 维护的软件源：</p>
+<ul>
+<li>✅ 同一服务器<strong>多PHP版本共存</strong>（7.4 / 8.1 / 8.2 / 8.3 / 8.4）</li>
+<li>✅ 提供 PHP-FPM、全部常用扩展</li>
+<li>✅ 提供 Nginx 稳定版、主线版，Apache2</li>
+<li>✅ 适配 Ubuntu / Debian<blockquote>
+<p>⚠️ 注意：已经EOL（生命周期结束）的PHP版本，源里虽然能安装，但<strong>不再接收安全补丁，生产慎用</strong>。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-系统支持"><a href="#2-系统支持" class="headerlink" title="2. 系统支持"></a>2. 系统支持</h2><ul>
+<li>Ubuntu：20.04 / 22.04 / 24.04</li>
+<li>Debian：11(bullseye) / 12(bookworm)</li>
+</ul>
+<h2 id="3-安装前置依赖"><a href="#3-安装前置依赖" class="headerlink" title="3. 安装前置依赖"></a>3. 安装前置依赖</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install software-properties-common ca-certificates apt-transport-https -y</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-添加-Ondrej-源"><a href="#4-添加-Ondrej-源" class="headerlink" title="4. 添加 Ondrej 源"></a>4. 添加 Ondrej 源</h2><h3 id="方式1：Ubuntu-PPA（推荐Ubuntu）"><a href="#方式1：Ubuntu-PPA（推荐Ubuntu）" class="headerlink" title="方式1：Ubuntu PPA（推荐Ubuntu）"></a>方式1：Ubuntu PPA（推荐Ubuntu）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 添加PHP源</span></span><br><span class="line">LC_ALL=C sudo add-apt-repository ppa:ondrej/php</span><br><span class="line"><span class="comment"># 更新软件列表</span></span><br><span class="line">sudo apt update</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>LC_ALL=C 解决中文locale导致ppa添加失败问题</p>
+</blockquote>
+<h3 id="方式2：Debian-DPA源（Debian系统）"><a href="#方式2：Debian-DPA源（Debian系统）" class="headerlink" title="方式2：Debian DPA源（Debian系统）"></a>方式2：Debian DPA源（Debian系统）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo curl -o /etc/apt/trusted.gpg.d/deb.sury.org-php.gpg [https://packages.sury.org/php/apt.gpg](https://packages.sury.org/php/apt.gpg)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"deb [https://packages.sury.org/php/](https://packages.sury.org/php/) <span class="subst">$(lsb_release -sc)</span> main"</span> | sudo tee /etc/apt/sources.list.d/sury-php.list</span><br><span class="line">sudo apt update</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其他源可选：</p>
+<ul>
+<li><code>ppa:ondrej/nginx</code>：Nginx稳定版</li>
+<li><code>ppa:ondrej/nginx-mainline</code>：Nginx主线开发版</li>
+<li><code>ppa:ondrej/apache2</code>：Apache2</li>
+</ul>
+<h2 id="5-PHP-安装与管理"><a href="#5-PHP-安装与管理" class="headerlink" title="5. PHP 安装与管理"></a>5. PHP 安装与管理</h2><h3 id="安装示例（PHP8-3-FPM）"><a href="#安装示例（PHP8-3-FPM）" class="headerlink" title="安装示例（PHP8.3 FPM）"></a>安装示例（PHP8.3 FPM）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt install php8.3 php8.3-fpm -y</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>可同时安装多个版本，互不冲突：php7.4-fpm php8.1-fpm php8.2-fpm php8.4-fpm</p>
+</blockquote>
+<p>查看已安装PHP版本</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">php -v</span><br><span class="line"><span class="comment"># 查看所有fpm服务</span></span><br><span class="line">systemctl list-unit-files | grep php</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="6-Nginx-Apache-源"><a href="#6-Nginx-Apache-源" class="headerlink" title="6. Nginx / Apache 源"></a>6. Nginx / Apache 源</h2><h3 id="安装-Ondrej-Nginx"><a href="#安装-Ondrej-Nginx" class="headerlink" title="安装 Ondrej Nginx"></a>安装 Ondrej Nginx</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:ondrej/nginx</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx -y</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Nginx主线版"><a href="#Nginx主线版" class="headerlink" title="Nginx主线版"></a>Nginx主线版</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo add-apt-repository ppa:ondrej/nginx-mainline</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx -y</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="7-版本切换"><a href="#7-版本切换" class="headerlink" title="7. 版本切换"></a>7. 版本切换</h2><h3 id="CLI-PHP版本切换（命令行php）"><a href="#CLI-PHP版本切换（命令行php）" class="headerlink" title="CLI PHP版本切换（命令行php）"></a>CLI PHP版本切换（命令行php）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 列出可选版本</span></span><br><span class="line">sudo update-alternatives --list php</span><br><span class="line"><span class="comment"># 交互式切换</span></span><br><span class="line">sudo update-alternatives --config php</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="PHP-FPM-版本切换"><a href="#PHP-FPM-版本切换" class="headerlink" title="PHP-FPM 版本切换"></a>PHP-FPM 版本切换</h3><p>FPM是独立服务，<strong>不需要全局切换</strong>，Nginx站点直接指定socket即可。<br>示例Nginx配置：</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attribute">fastcgi_pass</span> unix:/run/php/php8.3-fpm.sock;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="8-常用扩展安装"><a href="#8-常用扩展安装" class="headerlink" title="8. 常用扩展安装"></a>8. 常用扩展安装</h2><blockquote>
+<p>格式：<code>php版本-扩展名称</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># php8.3示例</span></span><br><span class="line">sudo apt install php8.3-mysql php8.3-redis php8.3-curl php8.3-gd php8.3-mbstring php8.3-xml php8.3-zip php8.3-opcache -y</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="9-配置文件路径"><a href="#9-配置文件路径" class="headerlink" title="9. 配置文件路径"></a>9. 配置文件路径</h2><p>PHP-FPM 配置目录：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/etc/php/8.3/</span><br><span class="line">├── fpm/</span><br><span class="line">│   ├── php.ini</span><br><span class="line">│   └── pool.d/www.conf</span><br><span class="line">└── cli/</span><br><span class="line">    └── php.ini</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>不同版本目录独立：<code>/etc/php/7.4/</code>、<code>/etc/php/8.1/</code></p>
+</blockquote>
+<h2 id="10-服务管理命令"><a href="#10-服务管理命令" class="headerlink" title="10. 服务管理命令"></a>10. 服务管理命令</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">sudo systemctl start php8.3-fpm</span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">sudo systemctl stop php8.3-fpm</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">sudo systemctl restart php8.3-fpm</span><br><span class="line"><span class="comment"># 开机自启</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> php8.3-fpm</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">sudo systemctl status php8.3-fpm</span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">sudo journalctl -u php8.3-fpm</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="11-常见问题与坑"><a href="#11-常见问题与坑" class="headerlink" title="11. 常见问题与坑"></a>11. 常见问题与坑</h2><ol>
+<li><p><strong>add-apt-repository 报错（locale中文）</strong></p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">LC_ALL=C sudo add-apt-repository ppa:ondrej/php</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><strong>源冲突，多个ppa混杂</strong></p>
+<blockquote>
+<p>不要同时开启多个第三方PHP源，容易包冲突。</p>
+</blockquote>
+</li>
+<li><p><strong>PHP升级后扩展丢失</strong></p>
+<blockquote>
+<p>切换PHP大版本，扩展需要<strong>单独安装对应版本</strong>，不会自动迁移。</p>
+</blockquote>
+</li>
+<li><p><strong>EOL旧版本PHP</strong></p>
+<blockquote>
+<p>7.4 已停止维护，Ondrej源仅保留存档，无安全更新，生产禁止使用。</p>
+</blockquote>
+</li>
+<li><p><strong>apt update 报GPG密钥过期</strong><br>重新导入密钥：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">curl -o /etc/apt/trusted.gpg.d/deb.sury.org-php.gpg [https://packages.sury.org/php/apt.gpg](https://packages.sury.org/php/apt.gpg)</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h2 id="12-卸载源"><a href="#12-卸载源" class="headerlink" title="12. 卸载源"></a>12. 卸载源</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 删除ppa源配置</span></span><br><span class="line">sudo add-apt-repository --remove ppa:ondrej/php</span><br><span class="line"><span class="comment"># 删除对应软件包（可选）</span></span><br><span class="line">sudo apt remove php* -y</span><br><span class="line">sudo apt autoremove -y</span><br></pre></td></tr></tbody></table></figure>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -60598,6 +60685,8 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
         <tag>堆</tag>
         <tag>垃圾回收</tag>
         <tag>数组</tag>
+        <tag>Ubuntu</tag>
+        <tag>Debian</tag>
         <tag>内存</tag>
         <tag>PHP</tag>
         <tag>后期静态绑定</tag>
@@ -60609,6 +60698,8 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
         <tag>引用计数</tag>
         <tag>对象</tag>
         <tag>栈</tag>
+        <tag>Ondrej</tag>
+        <tag>PPA</tag>
       </tags>
   </entry>
   <entry>
