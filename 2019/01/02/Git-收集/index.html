@@ -149,7 +149,7 @@
 <meta property="og:description" content="在写给同在美国的好友刘晓阳的信里，王小波说：“我们背井离乡，到这儿来无非为了名利二字。既然为名为利，就说不上清高。既然不清高，就不配要面子。豁出面皮来撞就是了。”">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-02T06:30:59.000Z">
-<meta property="article:modified_time" content="2026-10-21T08:49:41.408Z">
+<meta property="article:modified_time" content="2026-10-21T09:15:43.034Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="GitLab">
 <meta property="article:tag" content="Git">
@@ -382,7 +382,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>14k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -405,7 +405,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="Git入门"><a href="#Git入门" class="headerlink" title="Git入门"></a><center><font color="red">Git入门</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li>介绍：Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。它是<code>Linus Torvalds</code>为了帮助管理<code>Linux</code>内核开发而开发的一个开放源码的版本控制软件。</li>
 <li>安装git<ul>
 <li>Linux<ul>
@@ -443,34 +443,43 @@
 <li>基本的git工作流程如下：<ul>
 <li>在工作目录中修改文件</li>
 <li>暂存文件，将文件的快照放入暂存区域</li>
-<li>提交更新，找到暂存区域的文件，将快照永久性存储到 git 仓库目录<h2 id="二、必杀技"><a href="#二、必杀技" class="headerlink" title="二、必杀技"></a>二、必杀技</h2></li>
+<li>提交更新，找到暂存区域的文件，将快照永久性存储到 git 仓库目录</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>所有的命令都可以查看手册，如：git init –help,以下只是常用的一些命令整理</li>
 </ol>
-<h2 id="三、常用操作"><a href="#三、常用操作" class="headerlink" title="三、常用操作"></a>三、常用操作</h2><ol>
-<li>git init</li>
-<li>git config –global user.name xxxx </li>
-<li>git config –global user.email <a href="mailto:xxxx@qq.com">xxxx@qq.com</a><ul>
+<h2 id="二、常用操作"><a href="#二、常用操作" class="headerlink" title="二、常用操作"></a>二、常用操作</h2><blockquote>
+<p>所有的命令都可以查看手册，如：git init –help,以下只是常用的一些命令整理</p>
+</blockquote>
+<ol>
+<li><p>git init</p>
+</li>
+<li><p>git config –global user.name xxxx </p>
+</li>
+<li><p>git config –global user.email <a href="mailto:xxxx@qq.com">xxxx@qq.com</a></p>
+<ul>
 <li>–global 参数可选，带此参数则配置全局有效，不带则只有此仓库生效</li>
 </ul>
 </li>
-<li>git add filename 添加文件到到暂存区<ul>
+<li><p>git add filename 添加文件到到暂存区</p>
+<ul>
 <li>开始跟踪新文件</li>
 <li>把已跟踪的文件放到暂存区</li>
 <li>合并时把有冲突的文件标记为已解决状态</li>
 </ul>
 </li>
-<li>git commit 的使用<ul>
+<li><p>git commit 的使用</p>
+<ul>
 <li>git commit -m ‘comment’    推送暂存区修改并添加描述</li>
 <li>git commit -a -m ‘comment’ 推送工作区修改并添加描述</li>
 <li>git commit –amend -m      推送暂存区修改，覆盖上一次推送并添加描述</li>
 </ul>
 </li>
-<li>git pull origin branch_name 拉取远程最新代码</li>
-<li>git push 的使用<ul>
+<li><p>git pull origin branch_name 拉取远程最新代码</p>
+</li>
+<li><p>git push 的使用</p>
+<ul>
 <li>git push <shortname> branch_name 推送本地代码到远程</shortname></li>
 <li>git push <shortname> –delete branch_name 删除远程分支<ul>
 <li>如：git push origin –delete v1.1.0</li>
@@ -478,194 +487,42 @@
 </shortname></li>
 </ul>
 </li>
-<li>git checkout 的使用<ul>
+<li><p>git checkout 的使用</p>
+<ul>
 <li>git checkout dev 切换分支(一是使 HEAD 指回 dev 分支，二是将工作目录恢复成 dev 分支所指向的快照内容)</li>
 <li>git checkout -b [branchname] [tagname] 在特定的标签上创建一个新分支</li>
 <li>git checkout – filename 撤销未添加到暂存区的修改 </li>
 </ul>
 </li>
-<li>git reset 的使用<ul>
+<li><p>git reset 的使用</p>
+<ul>
 <li>git reset –hard commit_id 回滚指定提交的版本      </li>
 <li>git reset HEAD filename 撤销已添加到暂存区的修改 </li>
 </ul>
 </li>
-<li>git diff 的使用<ul>
+<li><p>git diff 的使用</p>
+<ul>
 <li>git diff 当前做的哪些更新还没有暂存（只显示尚未暂存的改动）  </li>
 <li>git diff –cached 有哪些更新已经暂存起来准备好了下次提交 </li>
 </ul>
 </li>
-<li>git tag 的使用<ul>
+<li><p>git tag 的使用</p>
+<ul>
 <li>git tag 列出已有标签</li>
 <li>git tag tag_name 轻量标签</li>
 <li>git tag -a tag_name -m ‘comment’ 打附注标签</li>
 <li>git tab -a tag_name -m ‘comment’ commit_id 对某个提交打附注标签</li>
 </ul>
 </li>
-<li>git show tag_name  查看标签相关信息     </li>
-<li>git config –global http.proxy <a href="http://127.0.0.1:7890，设置代理">http://127.0.0.1:7890，设置代理</a><ul>
+<li><p>git show tag_name  查看标签相关信息     </p>
+</li>
+<li><p>git config –global http.proxy <a href="http://127.0.0.1:7890，设置代理">http://127.0.0.1:7890，设置代理</a></p>
+<ul>
 <li>git config –global unset http.proxy</li>
 </ul>
 </li>
-<li>git branch -M main，将当前分支重命名为main</li>
-</ol>
-<h2 id="四、将本地代码托管到github"><a href="#四、将本地代码托管到github" class="headerlink" title="四、将本地代码托管到github"></a>四、将本地代码托管到github</h2><ol>
-<li>注册github账号、配置SSH-KEY、添加仓库repo等略过</li>
-<li>git remote 的使用<ul>
-<li>git remote -v 查看已经配置的远程仓库</li>
-<li>git remote add <shortname> <url> 添加一个远程仓库并指定一个简写</url></shortname></li>
-</ul>
+<li><p>git branch -M main，将当前分支重命名为main</p>
 </li>
-<li>git fetch <shortname> branch_name 从远程仓库中获得数据(不合并或修改当前的工作)</shortname></li>
-<li>git pull <shortname> branch_name 从远程仓库中抓取数据并合并到当前所在的分支</shortname></li>
-<li>git push 的使用<ul>
-<li>git push <shortname> tagname 推送指定标签到远程仓库</shortname></li>
-<li>git push <shortname> branch_name 推送分支到远程仓库</shortname></li>
-<li>git push -u <shortname> branch_name 第一次推送分支到远程仓库</shortname></li>
-</ul>
-</li>
-<li>git remote show <shortname>  查看远程仓库</shortname></li>
-<li>git remote rename old_name new_name 远程仓库的重命名</li>
-<li>git remote rm <shortname> 远程仓库的重命名</shortname></li>
-<li>git config –global alias.别名 命令名   全局重命名命令</li>
-<li>git branch –set-upstream-to=origin/remote_branch  local_branch 本地关联远程分支</li>
-</ol>
-<h2 id="五、git进阶"><a href="#五、git进阶" class="headerlink" title="五、git进阶"></a>五、git进阶</h2><ol>
-<li>分支原理<ul>
-<li>git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照, 会把代码仓库完整地镜像下来。</li>
-<li>git 的分支，本质上仅仅是指向提交对象的可变指针。</li>
-<li>在 git 中，HEAD是一个指针，指向当前所在的本地分支。</li>
-<li>创建一个分支，只是创建了一个可以移动的新的指针。</li>
-<li>git 的分支实质上仅是包含所指对象校验和(长度为40的SHA-1值字符串)的文件，所以它的创建和销毁都异常高效。 </li>
-<li>创建一个新分支就相当于往一个文件中写入 41 个字节(40个字符和1个换行符)。</li>
-</ul>
-</li>
-</ol>
-<h2 id="六、一台电脑配置两个github账户"><a href="#六、一台电脑配置两个github账户" class="headerlink" title="六、一台电脑配置两个github账户"></a>六、一台电脑配置两个github账户</h2><ol>
-<li><p>背景交代：很早的时候用QQ邮箱注册了一个github账户，零零散散的写了一些东西，给人的感觉很不正式(找过工作的人都应该懂得)，后来就用手机邮箱注又一个。那么问题来了，想同时在两个账号工作互不影响，手里就一台笔记本怎么办？如果你也有这样的问题那就看一下这篇文章吧。</p>
-</li>
-<li><p>准备工作：台式机OR笔记本一台，装好git，熟悉一些基本的git命令</p>
-</li>
-<li><p>撸起袖子开干</p>
-<ul>
-<li>生成两对秘钥放到C:\Users\Administrator.ssh目录下<ul>
-<li>秘钥一<ul>
-<li>输入命令ssh-keygen -t rsa -C “<a href="mailto:123456@qq.com">123456@qq.com</a>“ </li>
-<li>在第一个提示后输入：id_rsa_one(如果默认第二次生成的会把第一次的覆盖掉)</li>
-<li>一路回车完事儿</li>
-</ul>
-</li>
-<li>秘钥二<ul>
-<li>输入命令ssh-keygen -t rsa -C “188****8888@163.com” </li>
-<li>在第一个提示后输入：id_rsa_two(分跟第一次生成的区分开)</li>
-<li>一路回车完事儿</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>登录<a href="mailto:123456@qq.com">123456@qq.com</a>的github账号，找到SSH and GPGkeys选项，点击New SSH key按钮，编辑打开id_rsa_one.pub，复制里面的内容粘贴到富文本框，随便起个名字然后保存</li>
-<li>登录188****8888@163.com的github账号，找到SSH and GPGkeys选项，点击New SSH key按钮，编辑打开id_rsa_two.pub，复制里面的内容粘贴到富文本框，随便起个名字然后保存</li>
-<li>(可选)ssh-agent bash </li>
-<li>(可选)ssh-add -l 如果为空就添加</li>
-<li>在C:\Users\Administrator.ssh目录下创建config文件，添加以下内容</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Host abc.com(名字随便起)                 </span><br><span class="line">HostName github.com(github账号必须得填github)</span><br><span class="line">IdentityFile C:\Users\Administrator\.ssh\id_rsa_one</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">User abc</span><br><span class="line"></span><br><span class="line">Host xyz.com(名字随便起)                 </span><br><span class="line">HostName github.com(github账号必须得填github)</span><br><span class="line">IdentityFile C:\Users\Administrator\.ssh\id_rsa_two</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">User xyz</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><p>测试下配置成功了木，分别输入以下命令，如果成功了会有提示信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@abc.com </span><br><span class="line">ssh -T git@xyz.com</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>设置一个全局git账号 </p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name one</span><br><span class="line">git config --global user.email 123456@qq.com</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>在github账号<a href="mailto:123456@qq.com">123456@qq.com</a>下新建一个仓库test</p>
-</li>
-<li><p>克隆到本地</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原先的写法：</span><br><span class="line">git clone git@github.com:your_name/test.git</span><br><span class="line"> </span><br><span class="line">现在的写法：</span><br><span class="line">git clone git@abc.com</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>进入目录并设置git账号密码(非全局)</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name two</span><br><span class="line">git config user.email 188****8888@163.com</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>正常编辑然后推送,登入github账号<a href="mailto:123456@qq.com">123456@qq.com</a>，查看推送信息即可看到</p>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="4">
-<li>问题：本地电脑配了好几个github、gitlab、gitee账号，同时也生成了好几对公私钥，当时配完了就不管了。后来突然有一天，本地码完代码之后推送到远程的时候不管用了(github上的私有仓库)，一直提示<code>Repository not found</code>，BZ以为是本地仓库账号配错了，折腾了好久都不起作用。后来想到可能是哪个地方配错了，最终还真是这，再次记录下。<ul>
-<li><code>git push</code>报错<code>Repository not found</code></li>
-<li><code>ssh -T git@github.com</code>，账号明明对着了，就是提示<code>git@github.com: Permission denied (publickey).</code></li>
-<li><code>ssh -T git@liusir.me</code>，即上面第七步，<code>Hi liusirdotme! You've successfully authenticated, but GitHub does not provide shell access.</code></li>
-<li><code>git remote add origin git@liusir.me:liusirdotme/liusirdotme.git</code></li>
-<li><code>git push -u origin master</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="七、一次代码合并的错误"><a href="#七、一次代码合并的错误" class="headerlink" title="七、一次代码合并的错误"></a>七、一次代码合并的错误</h2><ol>
-<li>合并流程：开发分支develop合并到功能分支，功能分支合并到仿真分支，仿真分支合并到master</li>
-<li>假设：</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="left">分支名称</th>
-<th align="left">最后一次正确提交ID</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>master</code></td>
-<td align="left"><code>aaaaaaaa</code></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>fangzhe</code></td>
-<td align="left"><code>bbbbbbbb</code></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>develop</code></td>
-<td align="left"><code>cccccccc</code></td>
-<td align="left">罪魁祸首</td>
-</tr>
-<tr>
-<td align="left"><code>v1.x.x</code></td>
-<td align="left"><code>dddddddd</code></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<ol start="3">
-<li>处理步骤：<ul>
-<li>git reset –hard dddddddd &amp;&amp; git push –force</li>
-<li>git reset –hard bbbbbbbb &amp;&amp; git push –force</li>
-<li>git reset –hard aaaaaaaa &amp;&amp; git push –force</li>
-<li>再分别把 v1.x.x 分别合到 fangzhen、master 上，其余正常操作就完事</li>
-</ul>
-</li>
-</ol>
-<ol start="4">
-<li>感悟：<ul>
-<li>生产环境数据处理首要考虑数据量，内存溢出，处理数据进度</li>
-<li>git怎么提交、合并代码才能不出错</li>
-<li>git代码合并错误回滚的步骤、常用操作命令</li>
-</ul>
-</li>
-</ol>
-<h2 id="八、暂存"><a href="#八、暂存" class="headerlink" title="八、暂存"></a>八、暂存</h2><ol>
-<li>添加暂存<code>git stash [--args]</code><ul>
-<li>暂存未跟踪或忽略的文件 :-u/–include-untracked</li>
-<li>可以stash当前目录下的所有修改：-a/–all</li>
-</ul>
-</li>
-<li>重新应用暂存并删除原有暂存 git stash pop</li>
-<li>重新应用暂存并保留原有暂存 git stash apply</li>
-<li>查看暂存 git stash list</li>
-<li>删除指定暂存 git stash drop stash@{0,1…n}<ul>
-<li>删除所有暂存 git stash clear</li>
-</ul>
-</li>
-<li>基于暂存创建分支 git stash branch new_branch</li>
-</ol>
-<h2 id="九、常用操作"><a href="#九、常用操作" class="headerlink" title="九、常用操作"></a>九、常用操作</h2><ol>
 <li><p>查看某个文件修改记录<code>git log -- filename</code>或<code>git log --pretty=oneline filename</code></p>
 </li>
 <li><p>查看某个作者修改记录<code>git log --author=author</code>或<code>git log --author=author --pretty=oneline</code></p>
@@ -744,41 +601,6 @@
 <li><code>git show [&lt;options&gt;] [&lt;object&gt;...]</code></li>
 </ul>
 </li>
-<li><p>push/pull好慢</p>
-<ul>
-<li>使用ipaddress.com</li>
-<li><a target="_blank" rel="noopener" href="https://www.ipaddress.com/">查询最快的ip</a>，我拿到的<code>115.238.229.131</code></li>
-<li>修改<code>/etc/hosts</code>，添加<code>115.238.229.131 github.global.ssl.fastly.net</code></li>
-<li>刷新本地DNS缓存<code>sudo killall -HUP mDNSResponder</code></li>
-<li>使用tool.chinaz.com</li>
-<li>在浏览器打开<code>http://tool.chinaz.com/dns</code></li>
-<li>输入<code>github.com</code></li>
-<li>在输出列表中选择TTL值小的IP地址复制，如<code>13.250.177.223</code></li>
-<li>粘贴到hosts文件<code>13.250.177.223 github.com</code></li>
-<li>刷新下DNS缓存</li>
-</ul>
-</li>
-<li><p>删除本地分支并推送到远程</p>
-<ul>
-<li>方式一</li>
-<li>git branch -d branch_name </li>
-<li>git push origin :branch_name </li>
-<li>方式二</li>
-<li>git branch -r -d origin/branch_name</li>
-<li>git push origin :branch_name</li>
-<li>git branch -D branch_name </li>
-<li>方式三</li>
-<li>git push origin –delete branch_name</li>
-<li>git branch -d branch_name<blockquote>
-<p>扩展</p>
-</blockquote>
-</li>
-<li>git branch -a 查看本地和分支</li>
-<li>git branch -r 查看远程分支</li>
-<li>git branch -d branch_name 删除本地已merge的分支</li>
-<li>git branch -D branch_name 删除本地分支(包含未merge)</li>
-</ul>
-</li>
 <li><p>将本地代码推送至github</p>
 <ul>
 <li>git init</li>
@@ -799,142 +621,9 @@
 <li>git branch –set-upstream-to=origin/v5.5.5 v5.5.5</li>
 </ul>
 </li>
-<li><p>Git只合并某几次提交</p>
-<ul>
-<li>cd ~</li>
-<li>git init git_cherry</li>
-<li>cd git_cherry</li>
-<li>vim master.txt</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is master file</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>git add . </li>
-<li>git commit -m ‘master first commit’ </li>
-<li>git checkout -b develop </li>
-<li>vim master.txt，增加以下内容</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This edtion is in develop branch</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>git add .</li>
-<li>git commit -m ‘in develop branch edit master.txt’</li>
-<li>vim develop.txt</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is develop file</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>git add .</li>
-<li>git commit -m ‘init develop.txt and commit’</li>
-<li>git log，拿到需要合并的提交id</li>
-<li>git checkout master</li>
-<li>git cherry-pick commit_id</li>
-<li>git log</li>
-</ul>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/asdfsfsdgdfgh/article/details/54981823">git修改remote origin</a></p>
-<ul>
-<li>直接修改<code>git remote set-url origin url</code></li>
-<li>先删后加<code>git remote rm origin &amp;&amp; git remote add origin url</code></li>
-<li>直接修改config文件</li>
-<li>使用客户端修改如SourceTree</li>
-</ul>
-<blockquote>
-<p>博主本地有多个公私钥对：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config           id_rsa.pub       id_rsa_dotme.pub</span><br><span class="line">id_rsa           id_rsa_dotme     known_hosts</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>vim config</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host liusir.me</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile /Users/your_name/.ssh/id_rsa_dotme</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">User abc</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>修改remote origin</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:liusirdotme/liusirdotme.git</span><br><span class="line"></span><br><span class="line">改为</span><br><span class="line"></span><br><span class="line">git@liusir.me:liusirdotme/liusirdotme.git</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-remote">Git官网</a></li>
-</ul>
-</li>
-<li><p>command not found:gitk</p>
-<ul>
-<li>查看git版本 <code>git --version</code> //git version 2.20.1 (Apple Git-117)</li>
-<li>更新brew库 <code>brew update</code></li>
-<li>重新安装git <code>brew install git</code></li>
-<li>关闭重新打开 <code>gitk</code>，打完收工</li>
-</ul>
-</li>
-<li><p>gitk模糊问题</p>
-<ul>
-<li>关闭rootless，重启mac，command+r，选择终端，输入<code>csrutil disable</code></li>
-<li>查看rootless状态 <code>csrutil status</code></li>
-<li>开启rootless <code>csrutil enable –without debug</code></li>
-<li>修改Wish.app的Info.plist</li>
-<li>切换目录 <code>cd /System/Library/Frameworks/Tk.framework/Versions/Current/Resources</code></li>
-<li>编辑Info.plist <code>sudo gedit ./Wish.app/Contents/Info.plist</code></li>
-<li>加入以下代码 <code>&lt;key&gt;NSHighResolutionCapable&lt;/key&gt; &lt;true/&gt;</code></li>
-<li>更新Wish.app <code>sudo touch Wish.app</code></li>
-<li>设置完毕后重新打开rootless <code>csrutil enable</code></li>
-<li>参考</li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30195143/gitk-command-not-found">stackoverflow gitk command</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ieayoio.com/2017/03/31/mac%E4%B8%8B%E8%A7%A3%E5%86%B3gitk%E6%A8%A1%E7%B3%8A%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/">mac下解决gitk模糊完整教程</a></li>
-</ul>
-</li>
-<li><p>本地新建分支并推到远程</p>
-<ul>
-<li>方式一</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.切换到master分支：git checkout master </span><br><span class="line">2.拉取最新代码：git pull</span><br><span class="line">3.基于master创建featur_branch分支：git checkout -b feature_branch</span><br><span class="line">4.将本地分支关联到远程分支：git push origin feature_branch:feature_branch</span><br><span class="line">5.git branch --set-upstream-to=origin/remote_branch(名字自定义) feature_branch(刚建那分支名称)</span><br><span class="line"> 步骤4、5可换成以下命令：</span><br><span class="line"> * git push --set-upstream origin feature_branch </span><br></pre></td></tr></tbody></table></figure>
-
-
-</li>
 </ol>
-<ul>
-<li><p>方式二</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v1.1.0_bugfix</span><br><span class="line">git push --set-upstream origin v1.1.0_bugfix  </span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<ol start="32">
-<li><p>remote: Password authentication is temporarily disabled as part of a brownout. Please use a personal access token instead.</p>
-<ul>
-<li><code>git push</code>报错</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Password authentication is temporarily disabled as part of a brownout. Please use a personal access token    instead.</span><br><span class="line">remote: Please see https://github.blog/2020-07-30-token-authentication-requirements-for-api-and-git-operations/    for more information.</span><br><span class="line">fatal: unable to access 'https://github.com/liusirdotme/liusirdotme.git/': The requested URL returned error: 403</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><p>点击报错信息提供的<a target="_blank" rel="noopener" href="https://github.blog/2020-07-30-token-authentication-requirements-for-api-and-git-operations/">url</a>，可看到大概意思是加强了安全验证之类的</p>
-</li>
-<li><p>根据指引，<a target="_blank" rel="noopener" href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">先去创建access_token</a>，复制，等下要用</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">创建完后根据指引去设置本地仓库</a></p>
-</li>
-<li><p>验证是否安装<code>osxkeychain helper</code>，<code>git credential-osxkeychain</code>，正常会输出<code>usage: git credential-osxkeychain &lt;get|store|erase&gt;</code></p>
-</li>
-<li><p>设置<code>git config --global credential.helper osxkeychain</code></p>
-</li>
-<li><p>将本地的keychain删除</p>
-</li>
-<li><p>打开Spotlight(command + space)</p>
-</li>
-<li><p>输入keychain，实际打开的是<code>keychain Access.app</code></p>
-</li>
-<li><p>在列表中搜索github.com，移除</p>
-</li>
-<li><p>重新git pull，要求输入用户名和密码，密码即刚刚生成的access_token</p>
-</li>
-<li><p>参考</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/getting-started-with-git/updating-credentials-from-the-macos-keychain">macOS Keychain</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">credentials</a></p>
-</li>
-</ul>
-</li>
-<li><p>本地有修改，远程也修改了，且本地修改早于远程</p>
-</li>
+<ol start="33">
+<li>本地有修改，远程也修改了，且本地修改早于远程</li>
 </ol>
 <ul>
 <li>git fetch –all</li>
@@ -950,13 +639,336 @@
 </li>
 <li><p>忽略大小写：git config core.ignorecase true</p>
 </li>
-<li><p>git pull报错：fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/liusirdotme/liusirdotme.git/'">https://github.com/liusirdotme/liusirdotme.git/'</a>: Failed to connect to github.com port 443 after 21047 ms: Couldn’t connect to server</p>
+</ol>
+<hr>
+<h1 id="将本地代码托管到github"><a href="#将本地代码托管到github" class="headerlink" title="将本地代码托管到github"></a><center><font color="red">将本地代码托管到github</font></center></h1><ol>
+<li>注册github账号、配置SSH-KEY、添加仓库repo等略过</li>
+<li>git remote 的使用<ul>
+<li>git remote -v 查看已经配置的远程仓库</li>
+<li>git remote add <shortname> <url> 添加一个远程仓库并指定一个简写</url></shortname></li>
+</ul>
+</li>
+<li>git fetch <shortname> branch_name 从远程仓库中获得数据(不合并或修改当前的工作)</shortname></li>
+<li>git pull <shortname> branch_name 从远程仓库中抓取数据并合并到当前所在的分支</shortname></li>
+<li>git push 的使用<ul>
+<li>git push <shortname> tagname 推送指定标签到远程仓库</shortname></li>
+<li>git push <shortname> branch_name 推送分支到远程仓库</shortname></li>
+<li>git push -u <shortname> branch_name 第一次推送分支到远程仓库</shortname></li>
+</ul>
+</li>
+<li>git remote show <shortname>  查看远程仓库</shortname></li>
+<li>git remote rename old_name new_name 远程仓库的重命名</li>
+<li>git remote rm <shortname> 远程仓库的重命名</shortname></li>
+<li>git config –global alias.别名 命令名   全局重命名命令</li>
+<li>git branch –set-upstream-to=origin/remote_branch  local_branch 本地关联远程分支</li>
+</ol>
+<hr>
+<h1 id="一台电脑配置两个github账户"><a href="#一台电脑配置两个github账户" class="headerlink" title="一台电脑配置两个github账户"></a><center><font color="red">一台电脑配置两个github账户</font></center></h1><ol>
+<li><p>背景交代：很早的时候用QQ邮箱注册了一个github账户，零零散散的写了一些东西，给人的感觉很不正式(找过工作的人都应该懂得)，后来就用手机邮箱注又一个。那么问题来了，想同时在两个账号工作互不影响，手里就一台笔记本怎么办？如果你也有这样的问题那就看一下这篇文章吧。</p>
+</li>
+<li><p>准备工作：台式机OR笔记本一台，装好git，熟悉一些基本的git命令</p>
+</li>
+<li><p>撸起袖子开干</p>
+<ul>
+<li>生成两对秘钥放到C:\Users\Administrator.ssh目录下<ul>
+<li>秘钥一<ul>
+<li>输入命令ssh-keygen -t rsa -C “<a href="mailto:123456@qq.com">123456@qq.com</a>“ </li>
+<li>在第一个提示后输入：id_rsa_one(如果默认第二次生成的会把第一次的覆盖掉)</li>
+<li>一路回车完事儿</li>
+</ul>
+</li>
+<li>秘钥二<ul>
+<li>输入命令ssh-keygen -t rsa -C “188****8888@163.com” </li>
+<li>在第一个提示后输入：id_rsa_two(分跟第一次生成的区分开)</li>
+<li>一路回车完事儿</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>登录<a href="mailto:123456@qq.com">123456@qq.com</a>的github账号，找到SSH and GPGkeys选项，点击New SSH key按钮，编辑打开id_rsa_one.pub，复制里面的内容粘贴到富文本框，随便起个名字然后保存</li>
+<li>登录188****8888@163.com的github账号，找到SSH and GPGkeys选项，点击New SSH key按钮，编辑打开id_rsa_two.pub，复制里面的内容粘贴到富文本框，随便起个名字然后保存</li>
+<li>(可选)ssh-agent bash </li>
+<li>(可选)ssh-add -l 如果为空就添加</li>
+<li>在C:\Users\Administrator.ssh目录下创建config文件，添加以下内容</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Host abc.com(名字随便起)                 </span><br><span class="line">HostName github.com(github账号必须得填github)</span><br><span class="line">IdentityFile C:\Users\Administrator\.ssh\id_rsa_one</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">User abc</span><br><span class="line"></span><br><span class="line">Host xyz.com(名字随便起)                 </span><br><span class="line">HostName github.com(github账号必须得填github)</span><br><span class="line">IdentityFile C:\Users\Administrator\.ssh\id_rsa_two</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">User xyz</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>测试下配置成功了木，分别输入以下命令，如果成功了会有提示信息</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@abc.com </span><br><span class="line">ssh -T git@xyz.com</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>设置一个全局git账号 </p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name one</span><br><span class="line">git config --global user.email 123456@qq.com</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>在github账号<a href="mailto:123456@qq.com">123456@qq.com</a>下新建一个仓库test</p>
+</li>
+<li><p>克隆到本地</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原先的写法：</span><br><span class="line">git clone git@github.com:your_name/test.git</span><br><span class="line"> </span><br><span class="line">现在的写法：</span><br><span class="line">git clone git@abc.com</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>进入目录并设置git账号密码(非全局)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name two</span><br><span class="line">git config user.email 188****8888@163.com</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>正常编辑然后推送,登入github账号<a href="mailto:123456@qq.com">123456@qq.com</a>，查看推送信息即可看到</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li>问题：本地电脑配了好几个github、gitlab、gitee账号，同时也生成了好几对公私钥，当时配完了就不管了。后来突然有一天，本地码完代码之后推送到远程的时候不管用了(github上的私有仓库)，一直提示<code>Repository not found</code>，BZ以为是本地仓库账号配错了，折腾了好久都不起作用。后来想到可能是哪个地方配错了，最终还真是这，再次记录下。<ul>
+<li><code>git push</code>报错<code>Repository not found</code></li>
+<li><code>ssh -T git@github.com</code>，账号明明对着了，就是提示<code>git@github.com: Permission denied (publickey).</code></li>
+<li><code>ssh -T git@liusir.me</code>，即上面第七步，<code>Hi liusirdotme! You've successfully authenticated, but GitHub does not provide shell access.</code></li>
+<li><code>git remote add origin git@liusir.me:liusirdotme/liusirdotme.git</code></li>
+<li><code>git push -u origin master</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="记一次代码合并的错误"><a href="#记一次代码合并的错误" class="headerlink" title="记一次代码合并的错误"></a><center><font color="red">记一次代码合并的错误</font></center></h1><ol>
+<li>合并流程：开发分支develop合并到功能分支，功能分支合并到仿真分支，仿真分支合并到master</li>
+<li>假设：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">分支名称</th>
+<th align="left">最后一次正确提交ID</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>master</code></td>
+<td align="left"><code>aaaaaaaa</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>fangzhe</code></td>
+<td align="left"><code>bbbbbbbb</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>develop</code></td>
+<td align="left"><code>cccccccc</code></td>
+<td align="left">罪魁祸首</td>
+</tr>
+<tr>
+<td align="left"><code>v1.x.x</code></td>
+<td align="left"><code>dddddddd</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>处理步骤：<ul>
+<li>git reset –hard dddddddd &amp;&amp; git push –force</li>
+<li>git reset –hard bbbbbbbb &amp;&amp; git push –force</li>
+<li>git reset –hard aaaaaaaa &amp;&amp; git push –force</li>
+<li>再分别把 v1.x.x 分别合到 fangzhen、master 上，其余正常操作就完事</li>
+</ul>
+</li>
+</ol>
+<ol start="4">
+<li>感悟：<ul>
+<li>生产环境数据处理首要考虑数据量，内存溢出，处理数据进度</li>
+<li>git怎么提交、合并代码才能不出错</li>
+<li>git代码合并错误回滚的步骤、常用操作命令</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="暂存"><a href="#暂存" class="headerlink" title="暂存"></a><center><font color="red">暂存</font></center></h1><ol>
+<li>添加暂存<code>git stash [--args]</code><ul>
+<li>暂存未跟踪或忽略的文件 :-u/–include-untracked</li>
+<li>可以stash当前目录下的所有修改：-a/–all</li>
+</ul>
+</li>
+<li>重新应用暂存并删除原有暂存 git stash pop</li>
+<li>重新应用暂存并保留原有暂存 git stash apply</li>
+<li>查看暂存 git stash list</li>
+<li>删除指定暂存 git stash drop stash@{0,1…n}<ul>
+<li>删除所有暂存 git stash clear</li>
+</ul>
+</li>
+<li>基于暂存创建分支 git stash branch new_branch</li>
+</ol>
+<hr>
+<h1 id="删除本地分支并推送到远程"><a href="#删除本地分支并推送到远程" class="headerlink" title="删除本地分支并推送到远程"></a><center><font color="red">删除本地分支并推送到远程</font></center></h1><ol>
+<li>方式一</li>
+</ol>
+<ul>
+<li>git branch -d branch_name </li>
+<li>git push origin :branch_name </li>
+</ul>
+<ol start="2">
+<li>方式二</li>
+</ol>
+<ul>
+<li>git branch -r -d origin/branch_name</li>
+<li>git push origin :branch_name</li>
+<li>git branch -D branch_name </li>
+</ul>
+<ol start="3">
+<li>方式三</li>
+</ol>
+<ul>
+<li>git push origin –delete branch_name</li>
+<li>git branch -d branch_name</li>
+</ul>
+<blockquote>
+<p>扩展</p>
+</blockquote>
+<ul>
+<li>git branch -a 查看本地和分支</li>
+<li>git branch -r 查看远程分支</li>
+<li>git branch -d branch_name 删除本地已merge的分支</li>
+<li>git branch -D branch_name 删除本地分支(包含未merge)</li>
+</ul>
+<hr>
+<h1 id="Git只合并某几次提交"><a href="#Git只合并某几次提交" class="headerlink" title="Git只合并某几次提交"></a><center><font color="red">Git只合并某几次提交</font></center></h1><ol>
+<li><p>cd ~</p>
+</li>
+<li><p>git init git_cherry</p>
+</li>
+<li><p>cd git_cherry</p>
+</li>
+<li><p>vim master.txt</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is master file</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>git add . </p>
+</li>
+<li><p>git commit -m ‘master first commit’ </p>
+</li>
+<li><p>git checkout -b develop </p>
+</li>
+<li><p>vim master.txt，增加以下内容</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This edtion is in develop branch</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>git add .</p>
+</li>
+<li><p>git commit -m ‘in develop branch edit master.txt’</p>
+</li>
+<li><p>vim develop.txt</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is develop file</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>git add .</p>
+</li>
+<li><p>git commit -m ‘init develop.txt and commit’</p>
+</li>
+<li><p>git log，拿到需要合并的提交id</p>
+</li>
+<li><p>git checkout master</p>
+</li>
+<li><p>git cherry-pick commit_id</p>
+</li>
+<li><p>git log</p>
+</li>
+</ol>
+<hr>
+<h1 id="git修改remote-origin"><a href="#git修改remote-origin" class="headerlink" title="git修改remote origin"></a><center><font color="red">git修改remote origin</font></center></h1><ol>
+<li><p>直接修改<code>git remote set-url origin url</code></p>
+</li>
+<li><p>先删后加<code>git remote rm origin &amp;&amp; git remote add origin url</code></p>
+</li>
+<li><p>直接修改config文件</p>
+</li>
+<li><p>使用客户端修改如SourceTree</p>
+<blockquote>
+<p>博主本地有多个公私钥对：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config           id_rsa.pub       id_rsa_dotme.pub</span><br><span class="line">id_rsa           id_rsa_dotme     known_hosts</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>vim config</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host liusir.me</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile /Users/your_name/.ssh/id_rsa_dotme</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">User abc</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>修改remote origin</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:liusirdotme/liusirdotme.git</span><br><span class="line"></span><br><span class="line">改为</span><br><span class="line"></span><br><span class="line">git@liusir.me:liusirdotme/liusirdotme.git</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-remote">Git官网</a></p>
+</li>
+</ol>
+<hr>
+<h1 id="command-not-found-gitk"><a href="#command-not-found-gitk" class="headerlink" title="command not found:gitk"></a><center><font color="red">command not found:gitk</font></center></h1><ol>
+<li>查看git版本 <code>git --version</code> //git version 2.20.1 (Apple Git-117)</li>
+<li>更新brew库 <code>brew update</code></li>
+<li>重新安装git <code>brew install git</code></li>
+<li>关闭重新打开 <code>gitk</code>，打完收工</li>
+</ol>
+<hr>
+<h1 id="gitk模糊问题"><a href="#gitk模糊问题" class="headerlink" title="gitk模糊问题"></a><center><font color="red">gitk模糊问题</font></center></h1><ol>
+<li>关闭rootless，重启mac，command+r，选择终端，输入<code>csrutil disable</code></li>
+</ol>
+<ul>
+<li>查看rootless状态 <code>csrutil status</code></li>
+<li>开启rootless <code>csrutil enable –without debug</code></li>
+</ul>
+<ol start="2">
+<li>修改Wish.app的Info.plist</li>
+</ol>
+<ul>
+<li>切换目录 <code>cd /System/Library/Frameworks/Tk.framework/Versions/Current/Resources</code></li>
+<li>编辑Info.plist <code>sudo gedit ./Wish.app/Contents/Info.plist</code></li>
+<li>加入以下代码 <code>&lt;key&gt;NSHighResolutionCapable&lt;/key&gt; &lt;true/&gt;</code></li>
+</ul>
+<ol start="3">
+<li>更新Wish.app <code>sudo touch Wish.app</code></li>
+<li>设置完毕后重新打开rootless <code>csrutil enable</code></li>
+<li>参考</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30195143/gitk-command-not-found">stackoverflow gitk command</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ieayoio.com/2017/03/31/mac%E4%B8%8B%E8%A7%A3%E5%86%B3gitk%E6%A8%A1%E7%B3%8A%E5%AE%8C%E6%95%B4%E6%95%99%E7%A8%8B/">mac下解决gitk模糊完整教程</a></li>
+</ul>
+<hr>
+<h1 id="本地新建分支并推到远程"><a href="#本地新建分支并推到远程" class="headerlink" title="本地新建分支并推到远程"></a><center><font color="red">本地新建分支并推到远程</font></center></h1><ol>
+<li><p>方式一</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.切换到master分支：git checkout master </span><br><span class="line">2.拉取最新代码：git pull</span><br><span class="line">3.基于master创建featur_branch分支：git checkout -b feature_branch</span><br><span class="line">4.将本地分支关联到远程分支：git push origin feature_branch:feature_branch</span><br><span class="line">5.git branch --set-upstream-to=origin/remote_branch(名字自定义) feature_branch(刚建那分支名称)</span><br><span class="line"> 步骤4、5可换成以下命令：</span><br><span class="line"> * git push --set-upstream origin feature_branch </span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>方式二</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v1.1.0_bugfix</span><br><span class="line">git push --set-upstream origin v1.1.0_bugfix  </span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<hr>
+<h1 id="git-push报错：remote-Password-authentication-is-temporarily-disabled-as-part-of-a-brownout"><a href="#git-push报错：remote-Password-authentication-is-temporarily-disabled-as-part-of-a-brownout" class="headerlink" title="git push报错：remote: Password authentication is temporarily disabled as part of a brownout"></a><center><font color="red">git push报错：remote: Password authentication is temporarily disabled as part of a brownout</font></center></h1><ol>
+<li><p><code>git push</code>报错</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Password authentication is temporarily disabled as part of a brownout. Please use a personal access token    instead.</span><br><span class="line">remote: Please see https://github.blog/2020-07-30-token-authentication-requirements-for-api-and-git-operations/    for more information.</span><br><span class="line">fatal: unable to access 'https://github.com/liusirdotme/liusirdotme.git/': The requested URL returned error: 403</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>点击报错信息提供的<a target="_blank" rel="noopener" href="https://github.blog/2020-07-30-token-authentication-requirements-for-api-and-git-operations/">url</a>，可看到大概意思是加强了安全验证之类的</p>
+</li>
+<li><p>根据指引，<a target="_blank" rel="noopener" href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">先去创建access_token</a>，复制，等下要用</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">创建完后根据指引去设置本地仓库</a></p>
 </li>
 </ol>
 <ul>
-<li><strong>*<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">查询最快的ip</a>，我拿到的<code>115.238.229.131</code> *</strong></li>
+<li>验证是否安装<code>osxkeychain helper</code>，<code>git credential-osxkeychain</code>，正常会输出<code>usage: git credential-osxkeychain &lt;get|store|erase&gt;</code></li>
+<li>设置<code>git config --global credential.helper osxkeychain</code></li>
+</ul>
+<ol start="5">
+<li>将本地的keychain删除<ul>
+<li>打开Spotlight(command + space)</li>
+<li>输入keychain，实际打开的是<code>keychain Access.app</code></li>
+<li>在列表中搜索github.com，移除</li>
+</ul>
+</li>
+<li>重新git pull，要求输入用户名和密码，密码即刚刚生成的access_token</li>
+<li>参考</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/getting-started-with-git/updating-credentials-from-the-macos-keychain">macOS Keychain</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">credentials</a></li>
+</ul>
+<hr>
+<h1 id="git-pull报错：fatal-unable-to-access"><a href="#git-pull报错：fatal-unable-to-access" class="headerlink" title="git pull报错：fatal: unable to access"></a><center><font color="red">git pull报错：fatal: unable to access</font></center></h1><ol>
+<li>git pull报错：fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/liusirdotme/liusirdotme.git/'">https://github.com/liusirdotme/liusirdotme.git/'</a>: Failed to connect to github.com port 443 after 21047 ms: Couldn’t connect to server</li>
+<li><strong>*<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">查询最快的ip</a>，我拿到的<code>115.238.229.131</code> *</strong><ul>
 <li><a target="_blank" rel="noopener" href="https://www.ipaddress.com/website/github.global.ssl.fastly.net/">访问获取最快IP</a>，得到IP1</li>
 <li><a target="_blank" rel="noopener" href="https://www.ipaddress.com/website/github.com/">访问获取最快IP</a>,得到IP2</li>
+</ul>
+</li>
 <li>修改<code>hosts</code>,添加<ul>
 <li><code>IP1 github.global.ssl.fastly.net</code></li>
 <li><code>IP2 github.com</code></li>
@@ -964,17 +976,18 @@
 </li>
 <li>刷新DNS：ipconfig/flushdns</li>
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1835785">参考链接</a></li>
-</ul>
-<ol start="37">
-<li>git报错</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">"git log"失败，错误代码 128:fatal:detected dubious ownership in</span><br><span class="line">repository at d:/phpstudy_pro/www/abandon/abyss weixin_pc'</span><br><span class="line">d:/phpstudy_pro/www/abandon/abyss weixin_pc' is owned by:</span><br><span class="line">builtin/administrators (s-1-5-32-544)</span><br><span class="line">but the current user is:</span><br><span class="line">liusir/administrator</span><br><span class="line">(s-1-5-21-1136792711-3309325150-3176985401-500)</span><br><span class="line">to add an exception for this directory,call:</span><br><span class="line">git config --global--add safe.directory</span><br><span class="line">d://phpstudy_pro/www/abandon/abyss_weixin_pc</span><br><span class="line">(d:/phpstudy_pro/wwwwabandonlabyss weixin_pc)</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">push/pull好慢</span><br><span class="line"> * 使用ipaddress.com</span><br><span class="line">    * [查询最快的ip](https://www.ipaddress.com/)，我拿到的`115.238.229.131`</span><br><span class="line">    * 修改`/etc/hosts`，添加`115.238.229.131 github.global.ssl.fastly.net`</span><br><span class="line">    * 刷新本地DNS缓存`sudo killall -HUP mDNSResponder`</span><br><span class="line"> * 使用tool.chinaz.com</span><br><span class="line">    * 在浏览器打开`http://tool.chinaz.com/dns`</span><br><span class="line">    * 输入`github.com`</span><br><span class="line">    * 在输出列表中选择TTL值小的IP地址复制，如`13.250.177.223`</span><br><span class="line">    * 粘贴到hosts文件`13.250.177.223 github.com`</span><br><span class="line">    * 刷新下DNS缓存</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h1 id="git报错：fatal-detected-dubious-ownership-in-xxx"><a href="#git报错：fatal-detected-dubious-ownership-in-xxx" class="headerlink" title="git报错：fatal:detected dubious ownership in xxx"></a><center><font color="red">git报错：fatal:detected dubious ownership in xxx</font></center></h1><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">"git log"失败，错误代码 128:fatal:detected dubious ownership in</span><br><span class="line">repository at d:/phpstudy_pro/www/abandon/abyss weixin_pc'</span><br><span class="line">d:/phpstudy_pro/www/abandon/abyss weixin_pc' is owned by:</span><br><span class="line">builtin/administrators (s-1-5-32-544)</span><br><span class="line">but the current user is:</span><br><span class="line">liusir/administrator</span><br><span class="line">(s-1-5-21-1136792711-3309325150-3176985401-500)</span><br><span class="line">to add an exception for this directory,call:</span><br><span class="line">git config --global--add safe.directory</span><br><span class="line">d://phpstudy_pro/www/abandon/abyss_weixin_pc</span><br><span class="line">(d:/phpstudy_pro/wwwwabandonlabyss weixin_pc)</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
 <li>git config –global –add safe.directory D:/phpstudy_pro/WWW/abandon/abyss_weixin_pc</li>
 <li>git config –global –add safe.directory “*”</li>
 </ul>
-<h2 id="十、修改commit-message"><a href="#十、修改commit-message" class="headerlink" title="十、修改commit message"></a>十、修改commit message</h2><ol>
+<hr>
+<h1 id="修改commit-message"><a href="#修改commit-message" class="headerlink" title="修改commit message"></a><center><font color="red">修改commit message</font></center></h1><ol>
 <li><p>修改已commit未push最近的提交</p>
 <ul>
 <li>git commit –amend</li>
@@ -990,9 +1003,6 @@
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1730774">修改历史提交commit的信息</a></p>
 </li>
-</ol>
-<h2 id="十一、CI"><a href="#十一、CI" class="headerlink" title="十一、CI"></a>十一、CI</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904045581172744">gitlab的ci</a></li>
 </ol>
 <hr>
 <h1 id="合并"><a href="#合并" class="headerlink" title="合并"></a><center><font color="red">合并</font></center></h1><blockquote>
@@ -1427,7 +1437,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BF%85%E6%9D%80%E6%8A%80"><span class="nav-number">2.</span> <span class="nav-text">二、必杀技</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">三、常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E5%88%B0github"><span class="nav-number">4.</span> <span class="nav-text">四、将本地代码托管到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81git%E8%BF%9B%E9%98%B6"><span class="nav-number">5.</span> <span class="nav-text">五、git进阶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AAgithub%E8%B4%A6%E6%88%B7"><span class="nav-number">6.</span> <span class="nav-text">六、一台电脑配置两个github账户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%B8%80%E6%AC%A1%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">7.</span> <span class="nav-text">七、一次代码合并的错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%9A%82%E5%AD%98"><span class="nav-number">8.</span> <span class="nav-text">八、暂存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">9.</span> <span class="nav-text">九、常用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E4%BF%AE%E6%94%B9commit-message"><span class="nav-number">10.</span> <span class="nav-text">十、修改commit message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81CI"><span class="nav-number">11.</span> <span class="nav-text">十一、CI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E5%B9%B6"><span class="nav-number"></span> <span class="nav-text">合并</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81merge"><span class="nav-number">1.</span> <span class="nav-text">一、merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81rebase"><span class="nav-number">2.</span> <span class="nav-text">二、rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BB%9A"><span class="nav-number"></span> <span class="nav-text">回滚</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81reset"><span class="nav-number">1.</span> <span class="nav-text">一、reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81revert"><span class="nav-number">2.</span> <span class="nav-text">二、revert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%84%E7%A7%8D%E6%81%A2%E5%A4%8D"><span class="nav-number">3.</span> <span class="nav-text">三、各种恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB%E8%A1%A8"><span class="nav-number"></span> <span class="nav-text">Git 撤销操作汇总表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E5%9F%BA"><span class="nav-number"></span> <span class="nav-text">变基</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%EF%BC%882%E7%A7%8D%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一、修改提交信息（2种场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%8F%AA%E4%BF%AE%E6%94%B9%E3%80%90%E6%9C%80%E8%BF%911%E6%AC%A1%E3%80%91%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8%EF%BC%88%E4%B8%8D%E9%9C%80%E8%A6%81rebase%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">场景1：只修改【最近1次】提交备注（不需要rebase）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E4%BF%AE%E6%94%B9%E3%80%90%E5%8E%86%E5%8F%B2%E6%9F%90%E4%B8%80%E6%9D%A1-%E5%A4%9A%E6%9D%A1%E3%80%91commit%E5%A4%87%E6%B3%A8%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">场景2：修改【历史某一条&#x2F;多条】commit备注（交互式rebase）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E7%9A%84%E3%80%90%E4%BB%A3%E7%A0%81%E5%86%85%E5%AE%B9%E3%80%91%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase-edit%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">二、修改历史提交的【代码内容】（交互式rebase edit）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%88%E5%B9%B6%E5%A4%9A%E6%9D%A1%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%EF%BC%88squash-fixup%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、合并多条历史提交（squash &#x2F; fixup）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%88%A0%E9%99%A4%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95-drop"><span class="nav-number">4.</span> <span class="nav-text">四、删除历史提交记录 drop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E6%94%AF%E5%8F%98%E5%9F%BA%EF%BC%88%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F-rebase%EF%BC%8C%E5%B8%B8%E7%94%A8%E5%9C%A8%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">五、分支变基（非交互式 rebase，常用在合并分支）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81rebase-%E9%80%9A%E7%94%A8%E4%B8%AD%E6%96%AD%E5%91%BD%E4%BB%A4%EF%BC%88%E6%89%80%E6%9C%89%E4%BA%A4%E4%BA%92%E5%BC%8F-%E5%88%86%E6%94%AFrebase%E9%83%BD%E9%80%82%E7%94%A8%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">六、rebase 通用中断命令（所有交互式&#x2F;分支rebase都适用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E8%A1%A5%E5%85%85%EF%BC%9Arebase-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="nav-number">7.</span> <span class="nav-text">七、补充：rebase 交互式指令速查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E9%A3%8E%E9%99%A9%E6%B8%85%E5%8D%95"><span class="nav-number">8.</span> <span class="nav-text">八、风险清单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number"></span> <span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%92%8CGitLab%E5%AF%B9%E6%AF%94"><span class="nav-number"></span> <span class="nav-text">Git和GitLab对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="nav-number"></span> <span class="nav-text">更换远程仓库地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8A%A5%E9%94%99"><span class="nav-number">1.</span> <span class="nav-text">一、报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">二、处理</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">Git入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">二、常用操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E5%88%B0github"><span class="nav-number">2.</span> <span class="nav-text">将本地代码托管到github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AAgithub%E8%B4%A6%E6%88%B7"><span class="nav-number">3.</span> <span class="nav-text">一台电脑配置两个github账户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">4.</span> <span class="nav-text">记一次代码合并的错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9A%82%E5%AD%98"><span class="nav-number">5.</span> <span class="nav-text">暂存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E5%B9%B6%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">删除本地分支并推送到远程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%8F%AA%E5%90%88%E5%B9%B6%E6%9F%90%E5%87%A0%E6%AC%A1%E6%8F%90%E4%BA%A4"><span class="nav-number">7.</span> <span class="nav-text">Git只合并某几次提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E4%BF%AE%E6%94%B9remote-origin"><span class="nav-number">8.</span> <span class="nav-text">git修改remote origin</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#command-not-found-gitk"><span class="nav-number">9.</span> <span class="nav-text">command not found:gitk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gitk%E6%A8%A1%E7%B3%8A%E9%97%AE%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">gitk模糊问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B0%E5%BB%BA%E5%88%86%E6%94%AF%E5%B9%B6%E6%8E%A8%E5%88%B0%E8%BF%9C%E7%A8%8B"><span class="nav-number">11.</span> <span class="nav-text">本地新建分支并推到远程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-push%E6%8A%A5%E9%94%99%EF%BC%9Aremote-Password-authentication-is-temporarily-disabled-as-part-of-a-brownout"><span class="nav-number">12.</span> <span class="nav-text">git push报错：remote: Password authentication is temporarily disabled as part of a brownout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-pull%E6%8A%A5%E9%94%99%EF%BC%9Afatal-unable-to-access"><span class="nav-number">13.</span> <span class="nav-text">git pull报错：fatal: unable to access</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E6%8A%A5%E9%94%99%EF%BC%9Afatal-detected-dubious-ownership-in-xxx"><span class="nav-number">14.</span> <span class="nav-text">git报错：fatal:detected dubious ownership in xxx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9commit-message"><span class="nav-number">15.</span> <span class="nav-text">修改commit message</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E5%B9%B6"><span class="nav-number">16.</span> <span class="nav-text">合并</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81merge"><span class="nav-number">16.1.</span> <span class="nav-text">一、merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81rebase"><span class="nav-number">16.2.</span> <span class="nav-text">二、rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">16.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BB%9A"><span class="nav-number">17.</span> <span class="nav-text">回滚</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81reset"><span class="nav-number">17.1.</span> <span class="nav-text">一、reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81revert"><span class="nav-number">17.2.</span> <span class="nav-text">二、revert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%84%E7%A7%8D%E6%81%A2%E5%A4%8D"><span class="nav-number">17.3.</span> <span class="nav-text">三、各种恢复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-%E6%92%A4%E9%94%80%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB%E8%A1%A8"><span class="nav-number">18.</span> <span class="nav-text">Git 撤销操作汇总表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E5%9F%BA"><span class="nav-number">19.</span> <span class="nav-text">变基</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E4%BF%A1%E6%81%AF%EF%BC%882%E7%A7%8D%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="nav-number">19.1.</span> <span class="nav-text">一、修改提交信息（2种场景）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%8F%AA%E4%BF%AE%E6%94%B9%E3%80%90%E6%9C%80%E8%BF%911%E6%AC%A1%E3%80%91%E6%8F%90%E4%BA%A4%E5%A4%87%E6%B3%A8%EF%BC%88%E4%B8%8D%E9%9C%80%E8%A6%81rebase%EF%BC%89"><span class="nav-number">19.1.1.</span> <span class="nav-text">场景1：只修改【最近1次】提交备注（不需要rebase）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E4%BF%AE%E6%94%B9%E3%80%90%E5%8E%86%E5%8F%B2%E6%9F%90%E4%B8%80%E6%9D%A1-%E5%A4%9A%E6%9D%A1%E3%80%91commit%E5%A4%87%E6%B3%A8%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase%EF%BC%89"><span class="nav-number">19.1.2.</span> <span class="nav-text">场景2：修改【历史某一条&#x2F;多条】commit备注（交互式rebase）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E7%9A%84%E3%80%90%E4%BB%A3%E7%A0%81%E5%86%85%E5%AE%B9%E3%80%91%EF%BC%88%E4%BA%A4%E4%BA%92%E5%BC%8Frebase-edit%EF%BC%89"><span class="nav-number">19.2.</span> <span class="nav-text">二、修改历史提交的【代码内容】（交互式rebase edit）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%88%E5%B9%B6%E5%A4%9A%E6%9D%A1%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%EF%BC%88squash-fixup%EF%BC%89"><span class="nav-number">19.3.</span> <span class="nav-text">三、合并多条历史提交（squash &#x2F; fixup）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%88%A0%E9%99%A4%E5%8E%86%E5%8F%B2%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95-drop"><span class="nav-number">19.4.</span> <span class="nav-text">四、删除历史提交记录 drop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E6%94%AF%E5%8F%98%E5%9F%BA%EF%BC%88%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F-rebase%EF%BC%8C%E5%B8%B8%E7%94%A8%E5%9C%A8%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%EF%BC%89"><span class="nav-number">19.5.</span> <span class="nav-text">五、分支变基（非交互式 rebase，常用在合并分支）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81rebase-%E9%80%9A%E7%94%A8%E4%B8%AD%E6%96%AD%E5%91%BD%E4%BB%A4%EF%BC%88%E6%89%80%E6%9C%89%E4%BA%A4%E4%BA%92%E5%BC%8F-%E5%88%86%E6%94%AFrebase%E9%83%BD%E9%80%82%E7%94%A8%EF%BC%89"><span class="nav-number">19.6.</span> <span class="nav-text">六、rebase 通用中断命令（所有交互式&#x2F;分支rebase都适用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E8%A1%A5%E5%85%85%EF%BC%9Arebase-%E4%BA%A4%E4%BA%92%E5%BC%8F%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="nav-number">19.7.</span> <span class="nav-text">七、补充：rebase 交互式指令速查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E9%A3%8E%E9%99%A9%E6%B8%85%E5%8D%95"><span class="nav-number">19.8.</span> <span class="nav-text">八、风险清单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">20.</span> <span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">20.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB"><span class="nav-number">20.2.</span> <span class="nav-text">二、分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">20.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E5%92%8CGitLab%E5%AF%B9%E6%AF%94"><span class="nav-number">21.</span> <span class="nav-text">Git和GitLab对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="nav-number">22.</span> <span class="nav-text">更换远程仓库地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8A%A5%E9%94%99"><span class="nav-number">22.1.</span> <span class="nav-text">一、报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%84%E7%90%86"><span class="nav-number">22.2.</span> <span class="nav-text">二、处理</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
