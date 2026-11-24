@@ -6,6 +6,8 @@ NexT.boot.registerEvents = function() {
 
   NexT.utils.registerScrollPercent();
   NexT.utils.registerCanIUseTag();
+  // FIX(anchor): 带 #锚点 进入页面时兜底滚动（编码不一致时原生跳转不生效）。
+  NexT.utils.registerHashScroll();
 
   // Mobile top menu bar.
   document.querySelector('.site-nav-toggle .toggle').addEventListener('click', () => {

@@ -228,14 +228,72 @@ NexT.utils = {
     });
   },
 
+  // FIX(anchor): Hexo 内置 toc helper（node_modules/hexo/lib/plugins/helper/toc.js）用 encodeURL 生成目录 href，
+  // 中文标题会被百分号编码（#%E4%B8%80%E3%80%81...），而正文标题 id 是原文（id="一、账号与权限"）。
+  // 两者对不上：getElementById 取到 null，preventDefault 之后抛 TypeError，页面不滚动。
+  // 这里统一做多重匹配：原文 / 解码一次 / 解码两次 / 用正文标题 id 的编码形式反查。
+  getAnchorTarget: function(hash) {
+    var raw = String(hash || '').replace(/^#/, '');
+    if (!raw) return null;
+    var decode = function(str) {
+      try {
+        return decodeURIComponent(str);
+      } catch (e) {
+        return str;
+      }
+    };
+    var candidates = [raw, decode(raw), decode(decode(raw))];
+    for (var i = 0; i < candidates.length; i++) {
+      var el = document.getElementById(candidates[i]);
+      if (el) return el;
+    }
+    var headings = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]');
+    for (var j = 0; j < headings.length; j++) {
+      if (encodeURI(headings[j].id) === raw || encodeURIComponent(headings[j].id) === raw) return headings[j];
+    }
+    return null;
+  },
+
+  scrollToAnchor: function(hash, headerOffset) {
+    var target = NexT.utils.getAnchorTarget(hash);
+    if (!target) return false;
+    var offset = target.getBoundingClientRect().top + window.scrollY - (headerOffset || 0);
+    offset = Math.max(offset, 0);
+    if (window.anime) {
+      window.anime({
+        targets : [document.documentElement, document.body],
+        duration: 300,
+        easing  : 'linear',
+        scrollTop: offset
+      });
+    } else {
+      window.scrollTo(0, offset);
+    }
+    return true;
+  },
+
+  // FIX(anchor): 直接带 #锚点 打开或刷新页面时，浏览器原生跳转未必命中（编码不一致），
+  // 这里兜底再滚一次，并扣掉固定导航栏高度，保证标题不被遮住。
+  registerHashScroll: function() {
+    if (!location.hash) return;
+    var jump = function() {
+      NexT.utils.scrollToAnchor(location.hash, 60);
+    };
+    setTimeout(jump, 0);
+    window.addEventListener('load', jump);
+    window.addEventListener('hashchange', jump);
+  },
+
   registerSidebarTOC: function() {
+    const getTocTarget = link => NexT.utils.getAnchorTarget(link && link.getAttribute('href'));
     const navItems = document.querySelectorAll('.post-toc li');
     const sections = [...navItems].map(element => {
       var link = element.querySelector('a.nav-link');
       // TOC item animation navigate.
       link.addEventListener('click', event => {
         event.preventDefault();
-        var target = document.getElementById(event.currentTarget.getAttribute('href').replace('#', ''));
+        var target = getTocTarget(event.currentTarget);
+        if (!target) return;   // 目标不存在就静默返回，别抛错卡死后续逻辑
         var offset = target.getBoundingClientRect().top + window.scrollY;
         window.anime({
           targets  : [document.documentElement, document.body],
@@ -244,11 +302,12 @@ NexT.utils = {
           scrollTop: offset + 10
         });
       });
-      return document.getElementById(link.getAttribute('href').replace('#', ''));
+      return getTocTarget(link);
     });
 
     var tocElement = document.querySelector('.post-toc-wrap');
     function activateNavByIndex(target) {
+      if (!target) return;   // FIX(anchor): index 为 -1 时别再抛错
       if (target.classList.contains('active-current')) return;
 
       document.querySelectorAll('.post-toc .active').forEach(element => {
