@@ -143,13 +143,13 @@
 
   <meta name="description" content="函数指针是指向函数的指针变量，它可以像一般函数一样，用于调用函数、传递参数。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Elasticsearch详解">
-<meta property="og:url" content="https://liusir.net/2021/05/09/ELK-Elasticsearch%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:title" content="Elasticsearch收集">
+<meta property="og:url" content="https://liusir.net/2021/05/09/ELK-Elasticsearch%E6%94%B6%E9%9B%86/index.html">
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="函数指针是指向函数的指针变量，它可以像一般函数一样，用于调用函数、传递参数。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-09T02:36:01.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.081Z">
+<meta property="article:modified_time" content="2026-11-24T07:18:09.461Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="ELK">
 <meta property="article:tag" content="Elasticsearch">
@@ -171,7 +171,7 @@
 <meta property="article:tag" content="Xapian">
 <meta property="article:tag" content="elasticsearch-head">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://liusir.net/2021/05/09/ELK-Elasticsearch%E8%AF%A6%E8%A7%A3/">
+  <link rel="canonical" href="https://liusir.net/2021/05/09/ELK-Elasticsearch%E6%94%B6%E9%9B%86/">
 
 
 <script id="page-configurations">
@@ -185,7 +185,7 @@
   };
 </script>
 
-  <title>Elasticsearch详解 | liusir.net</title>
+  <title>Elasticsearch收集 | liusir.net</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liusir.net/2021/05/09/ELK-Elasticsearch%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2021/05/09/ELK-Elasticsearch%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kid.jpg">
@@ -359,7 +359,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Elasticsearch详解
+          Elasticsearch收集
         </h1>
 
         <div class="post-meta">
@@ -390,13 +390,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>16k</span>
+              <span>21k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>14 分钟</span>
+              <span>19 分钟</span>
             </span>
 
         </div>
@@ -1055,6 +1055,307 @@
 <li><p>Xapian：Xapian是一个用C++编写的全文检索程序，他的作用类似于Java的lucene。尽管在Java世界lucene已经是标准的全文检索程序，在C/C++世界中虽然有lucene的一个版本clucene，但是在业界却是一个饱受争议的使用(毕竟是通过修改Java的代码改编而来的)，但Xapian则是原生支持C/C++的，并且他能够支持php、python等语言的动态绑定。Xapian的api和检索原理和lucene在很多方面都很相似，但是也有一些地方存在不同，具体请看Xapian自己的文档Xapian除了提供原生的C++编程接口之外，还提供了Perl，PHP，Python和Ruby编程接口和相应的类库，所以你可以直接从自己喜欢的脚本编程语言当中使用Xapian进行全文检索了。</p>
 </li>
 </ol>
+<hr>
+<h1 id="ES-Canal实施演练"><a href="#ES-Canal实施演练" class="headerlink" title="ES+Canal实施演练"></a><center><font color="red">ES+Canal实施演练</font></center></h1><h2 id="一、版本信息"><a href="#一、版本信息" class="headerlink" title="一、版本信息"></a>一、版本信息</h2><ol>
+<li>系统信息</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>条目</strong></th>
+<th align="center"><strong>版本</strong></th>
+<th align="center"><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">操作系统</td>
+<td align="center">Debian GNU/Linux 10 \n \l</td>
+<td align="center">Linux rds-server1 4.19.0-26-cloud-amd64 #1 SMP Debian 4.19.304-1 (2024-01-09) x86_64 GNU/Linux</td>
+</tr>
+<tr>
+<td align="center">CPU</td>
+<td align="center">4核</td>
+<td align="center">4C升8C</td>
+</tr>
+<tr>
+<td align="center">内存</td>
+<td align="center">32G</td>
+<td align="center">8G升16G</td>
+</tr>
+<tr>
+<td align="center">硬盘</td>
+<td align="center">80G+300G</td>
+<td align="center">新增300G</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>依赖信息</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>命令</strong></th>
+<th align="center"><strong>用途</strong></th>
+<th align="center"><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">wget</td>
+<td align="center">下载包</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tar</td>
+<td align="center">解压包</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">vim</td>
+<td align="center">编辑配置文件</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">apt</td>
+<td align="center">更新包、安装包</td>
+<td align="center">sudo apt update</td>
+</tr>
+<tr>
+<td align="center">curl</td>
+<td align="center">测试应用启动</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><strong><font style="color:#DF2A3F;">应用信息</font></strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>服务</strong></th>
+<th align="center"><strong>版本</strong></th>
+<th align="center"><strong>备注</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">MySQL</td>
+<td align="center">5.7.42</td>
+<td align="center">云商提供</td>
+</tr>
+<tr>
+<td align="center">JAVA</td>
+<td align="center">11.0.22</td>
+<td align="center">教程一般用Java8，有坑，用Java11</td>
+</tr>
+<tr>
+<td align="center">ElasticSearch</td>
+<td align="center">8.14.1</td>
+<td align="center">最新</td>
+</tr>
+<tr>
+<td align="center">Kibana</td>
+<td align="center">8.14.1</td>
+<td align="center">和ElasticSearch保持一致</td>
+</tr>
+<tr>
+<td align="center">Canal</td>
+<td align="center">canal-1.1.7</td>
+<td align="center">稳定版</td>
+</tr>
+</tbody></table>
+<h2 id="二、开始操作"><a href="#二、开始操作" class="headerlink" title="二、开始操作"></a>二、开始操作</h2><ol>
+<li>安装Java</li>
+</ol>
+<ul>
+<li>查找：sudo apt search openjdk-11-jdk</li>
+<li>安装：sudo apt install openjdk-11-jdk<ul>
+<li><font style="color:#DF2A3F;">最终安装11.0.23，apt包无11.0.22版本</font></li>
+</ul>
+</li>
+<li>查看：java -version</li>
+<li>卸载：sudo apt remove openjdk-11-jdk</li>
+</ul>
+<ol start="2">
+<li>安装ES</li>
+</ol>
+<ul>
+<li>切换目录：cd /usr/local/src</li>
+<li>下载文件：sudo wget <a target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.14.1-amd64.deb">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.14.1-amd64.deb</a></li>
+<li>安装文件：sudo dpkg -i elasticsearch-8.14.1-amd64.deb<ul>
+<li>安装目录：/usr/share/elasticsearch</li>
+</ul>
+</li>
+<li>查看安装：dpkg -l | grep elastic</li>
+<li>卸载安装： dpkg -P elasticsearch</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">root@rds-server1:/usr/local/src# dpkg -i elasticsearch-8.14.1-amd64.deb</span><br><span class="line">Selecting previously unselected package elasticsearch.</span><br><span class="line">(Reading database ... 40392 files and directories currently installed.)</span><br><span class="line">Preparing to unpack elasticsearch-8.14.1-amd64.deb ...</span><br><span class="line">Creating elasticsearch group... OK</span><br><span class="line">Creating elasticsearch user... OK</span><br><span class="line">Unpacking elasticsearch (8.14.1) ...</span><br><span class="line">Setting up elasticsearch (8.14.1) ...</span><br><span class="line">--------------------------- Security autoconfiguration information ------------------------------</span><br><span class="line"></span><br><span class="line">Authentication and authorization are enabled.</span><br><span class="line">TLS for the transport and HTTP layers is enabled and configured.</span><br><span class="line"></span><br><span class="line">The generated password for the elastic built-in superuser is : 0UV+f1pZ_DujGDm5qiqo</span><br><span class="line"></span><br><span class="line">If this node should join an existing cluster, you can reconfigure this with</span><br><span class="line">'/usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token &lt;token-here&gt;'</span><br><span class="line">after creating an enrollment token on your existing cluster.</span><br><span class="line"></span><br><span class="line">You can complete the following actions at any time:</span><br><span class="line"></span><br><span class="line">Reset the password of the elastic built-in superuser with </span><br><span class="line">'/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic'.</span><br><span class="line"></span><br><span class="line">Generate an enrollment token for Kibana instances with </span><br><span class="line"> '/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana'.</span><br><span class="line"></span><br><span class="line">Generate an enrollment token for Elasticsearch nodes with </span><br><span class="line">'/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node'.</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------------------------</span><br><span class="line">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd</span><br><span class="line"> sudo systemctl daemon-reload</span><br><span class="line"> sudo systemctl enable elasticsearch.service</span><br><span class="line">### You can start elasticsearch service by executing</span><br><span class="line"> sudo systemctl start elasticsearch.service</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>修改配置：<ul>
+<li>network.host：默认localhost，和kibana配置elasticsearch.hosts保持一致</li>
+<li>http.host：配127.0.0.1不能通过浏览器访问，可指定ip或0.0.0.0</li>
+</ul>
+</li>
+<li>启动服务：sudo systemctl start elasticsearch.service</li>
+<li>重新启动：sudo systemctl restart elasticsearch.service</li>
+<li>关闭服务：sudo systemctl stop elasticsearch.service</li>
+<li>设置端口：去云商后台设置安全组策略</li>
+<li>浏览器访问：<a target="_blank" rel="noopener" href="https://1.201.166.220:9200/?pretty">https://1.201.166.220:9200/?pretty</a></li>
+<li>终端访问：curl <a target="_blank" rel="noopener" href="http://localhost:9200/_cat/indices?v">http://localhost:9200/_cat/indices?v</a></li>
+<li>终端访问：curl <a target="_blank" rel="noopener" href="http://localhost:9200/t_snkitemlog/_mapping?pretty=true">http://localhost:9200/t_snkitemlog/_mapping?pretty=true</a></li>
+</ul>
+<ol start="3">
+<li>安装Kibana</li>
+</ol>
+<ul>
+<li>切换目录：cd /usr/local/src</li>
+<li>下载文件：wget <a target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/kibana/kibana-8.14.1-amd64.deb">https://artifacts.elastic.co/downloads/kibana/kibana-8.14.1-amd64.deb</a></li>
+<li>安装文件：sudo dpkg -i kibana-8.14.1-amd64.deb<ul>
+<li>安装目录：/usr/share/kibana</li>
+</ul>
+</li>
+<li>查看安装：dpkg -l | grep kibana</li>
+<li>卸载安装：dpkg -P kibana</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@rds-server1:/usr/local/src# dpkg -i kibana-8.14.1-amd64.deb </span><br><span class="line">Selecting previously unselected package kibana.</span><br><span class="line">(Reading database ... 41742 files and directories currently installed.)</span><br><span class="line">Preparing to unpack kibana-8.14.1-amd64.deb ...</span><br><span class="line">Unpacking kibana (8.14.1) ...</span><br><span class="line">Setting up kibana (8.14.1) ...</span><br><span class="line">Creating kibana group... OK</span><br><span class="line">Creating kibana user... OK</span><br><span class="line">Kibana is currently running with legacy OpenSSL providers enabled! For details and instructions on how to disable see https://www.elastic.co/guide/en/kibana/8.14/production.html#openssl-legacy-provider</span><br><span class="line">Created Kibana keystore in /etc/kibana/kibana.keystore</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>启动服务：sudo systemctl start kibana.service</li>
+<li>停掉服务：sudo systemctl stop kibana.service</li>
+<li>重新启动：sudo systemctl restart kibana.service<ul>
+<li>FATAL  Error: [config validation of [elasticsearch].username]: value of “elastic” is forbidden. This is a superuser account that cannot write to system indices that Kibana needs to</li>
+<li>curl -XPUT -u elastic:”otpKRXJZqe9Dzs5iXTjO” ‘<a target="_blank" rel="noopener" href="http://localhost:9200/_security/user/elastic">http://localhost:9200/_security/user/elastic</a>/_password’ -H “Content-Type: application/json” -d ‘{  “password”: “1234qwer.”}’</li>
+</ul>
+</li>
+<li>添加用户：./elasticsearch-users useradd  youshu<ul>
+<li>密码：youshu123,,,</li>
+</ul>
+</li>
+<li>设置分组：<ul>
+<li>./elasticsearch-users roles -a superuser  youshu</li>
+<li>./elasticsearch-users roles -a kibana_system youshu </li>
+</ul>
+</li>
+<li>修改密码：./elasticsearch-users  passwd youshu</li>
+<li>重置密码：./elasticsearch-reset-password -u elastic</li>
+<li>测试访问： curl -u youshu:”youshu123.” ‘<a target="_blank" rel="noopener" href="http://localhost:9200/'">http://localhost:9200/‘</a><ul>
+<li>curl -X GET “localhost:9200/_cluster/health?pretty”</li>
+<li>Unable to retrieve version information from Elasticsearch nodes</li>
+<li>Unable to navigate to space "default". ResponseError: missing authentication credentials for REST request</li>
+<li>Unable to retrieve version information from Elasticsearch nodes. self-signed certificate in certificate chain</li>
+<li>Unable to retrieve version information from Elasticsearch nodes. self-signed certificate in certificate chain<ul>
+<li>./bin/elasticsearch-certutil ca</li>
+<li>./bin/elasticsearch-certutil cert –ca elastic-stack-ca.p12</li>
+<li>openssl pkcs12 -in elastic-stack-ca.p12 -out elastic.crt.pem -clcerts -nokeys</li>
+<li>./bin/elasticsearch-certutil cert –pem –self-signed elastic-stack-ca.p12</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>设置MySQL账号</li>
+</ol>
+<ul>
+<li>增加用户：CREATE USER ‘canal’@’%’ IDENTIFIED BY ‘canal’;</li>
+<li>赋予权限：GRANT SELECT, SHOW VIEW, Reload, REPLICATION SLAVE, REPLICATION CLIENT ON <em>.</em> TO ‘canal’@’%’;</li>
+<li>刷新生效：FLUSH PRIVILEGES;</li>
+</ul>
+<blockquote>
+<p>Canal安装(分为deployer和adapter)</p>
+</blockquote>
+<ol start="4">
+<li>安装Canal-deployer</li>
+</ol>
+<ul>
+<li>规划目录：mkdir -p /usr/local/canal-server</li>
+<li>下载文件：wget <a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/releases/download/canal-1.1.8-alpha-2/canal.deployer-1.1.8-SNAPSHOT.tar.gz">https://github.com/alibaba/canal/releases/download/canal-1.1.7/canal.deployer-1.1.7.tar.gz</a></li>
+<li>解压文件：tar -zxvf canal.deployer-1.1.7.tar.gz -C /usr/local/canal-server</li>
+<li>修改配置：canal-server/conf/example/instance.properties，改为第3步配置的账号密码<ul>
+<li>canal.instance.dbUsername=canal</li>
+<li>canal.instance.dbPassword=canal</li>
+</ul>
+</li>
+<li>启停服务：<ul>
+<li>canal-server/bin/startup.sh</li>
+<li>canal-server/bin/stop.sh</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>安装Canal-adapter</li>
+</ol>
+<ul>
+<li>规划目录：mkdir -p /usr/local/canal-client</li>
+<li>下载文件：wget <a target="_blank" rel="noopener" href="https://github.com/alibaba/canal/releases/download/canal-1.1.8-alpha-2/canal.adapter-1.1.8-SNAPSHOT.tar.gz">https://github.com/alibaba/canal/releases/download/canal-1.1.7/canal.adapter-1.1.7.tar.gz</a></li>
+<li>解压文件：tar -zxvf canal.adapter-1.1.7.tar.gz -C /usr/local/canal-client</li>
+<li>修改配置<ul>
+<li>canal-client/conf/application.yml</li>
+<li>canal-client/conf/es8/</li>
+</ul>
+</li>
+<li>启停服务<ul>
+<li>canal-client/bin/startup.sh</li>
+<li>canal-client/bin/stop.sh</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、历史数据"><a href="#三、历史数据" class="headerlink" title="三、历史数据"></a>三、历史数据</h2><ol>
+<li>全量同步</li>
+</ol>
+<ul>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkitemlog.yml">http://127.0.0.1:8081/etl/es8/t_snkitemlog.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkorder.yml">http://127.0.0.1:8081/etl/es8/t_snkorder.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkgiftcode.yml">http://127.0.0.1:8081/etl/es8/t_snkgiftcode.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkrolelog.yml">http://127.0.0.1:8081/etl/es8/t_snkrolelog.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkpcu.yml">http://127.0.0.1:8081/etl/es8/t_snkpcu.yml</a> -X POST -d “params=0”</li>
+</ul>
+<ol start="2">
+<li>同步脚本</li>
+</ol>
+<h2 id="四、问题记录"><a href="#四、问题记录" class="headerlink" title="四、问题记录"></a>四、问题记录</h2><ol>
+<li>es+kibana开启ssl</li>
+<li>adapter各种报错</li>
+</ol>
+<h2 id="五、上线"><a href="#五、上线" class="headerlink" title="五、上线"></a>五、上线</h2><ol>
+<li>代码</li>
+</ol>
+<ul>
+<li>vendor包</li>
+<li>其他代码</li>
+</ul>
+<ol start="2">
+<li>数据</li>
+</ol>
+<ul>
+<li>全量同步<ul>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkitemlog.yml">http://127.0.0.1:8081/etl/es8/t_snkitemlog.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkorder.yml">http://127.0.0.1:8081/etl/es8/t_snkorder.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkgiftcode.yml">http://127.0.0.1:8081/etl/es8/t_snkgiftcode.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkrolelog.yml">http://127.0.0.1:8081/etl/es8/t_snkrolelog.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkpcu.yml">http://127.0.0.1:8081/etl/es8/t_snkpcu.yml</a> -X POST -d “params=0”</li>
+</ul>
+</li>
+<li>增量同步</li>
+</ul>
+<ol start="3">
+<li>更新内容</li>
+</ol>
+<ul>
+<li>部署ES+Canal服务，同步历史数据</li>
+<li>优化调整菜单，根据功能拆分二级菜单</li>
+<li>优化订单、道具日志、角色日志、兑换码列表、pcu列表查询</li>
+</ul>
+<ol start="4">
+<li>分批同步</li>
+</ol>
+<ul>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkitemlog.yml">http://127.0.0.1:8081/etl/es8/t_snkitemlog.yml</a> -X POST -d “params=1;1000000”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkorder.yml">http://127.0.0.1:8081/etl/es8/t_snkorder.yml</a> -X POST -d “params=0”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkgiftcode.yml">http://127.0.0.1:8081/etl/es8/t_snkgiftcode.yml</a> -X POST -d “params=1;1000000”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkrolelog.yml">http://127.0.0.1:8081/etl/es8/t_snkrolelog.yml</a> -X POST -d “params=1;1000000”</li>
+<li>curl <a target="_blank" rel="noopener" href="http://127.0.0.1:8081/etl/es8/t_snkpcu.yml">http://127.0.0.1:8081/etl/es8/t_snkpcu.yml</a> -X POST -d “params=1;1000000”</li>
+</ul>
+<h2 id="七、mapping"><a href="#七、mapping" class="headerlink" title="七、mapping"></a>七、mapping</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br></pre></td><td class="code"><pre><span class="line">DELETE /t_snkitemlog</span><br><span class="line">DELETE /t_snkorder</span><br><span class="line"></span><br><span class="line">GET /</span><br><span class="line">get /_cat</span><br><span class="line">get /_cat/indices?v</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">get /t_snkorder/_search</span><br><span class="line">get /t_snkitemlog/_search</span><br><span class="line">get /t_snkgiftcode/_search</span><br><span class="line">get /t_snkrolelog/_search</span><br><span class="line">get /t_snkpcu/_search</span><br><span class="line"></span><br><span class="line">delete /t_snkpcu</span><br><span class="line">delete /t_snkrolelog</span><br><span class="line">delete /t_snkitemlog</span><br><span class="line">delete /t_snkgiftcode</span><br><span class="line">delete /t_snkorder</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GET /t_snkrolelog/_search</span><br><span class="line">{</span><br><span class="line">  "query": {</span><br><span class="line">    "bool": {</span><br><span class="line">      "must": {</span><br><span class="line">        "term": {</span><br><span class="line">          "docs.deleted": true</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PUT t_snkitemlog/_settings?preserve_existing=true</span><br><span class="line">{</span><br><span class="line">  "max_result_window": "1000000"</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">GET /t_snkitemlog/_mapping?pretty</span><br><span class="line"></span><br><span class="line">get /t_snkitemlog/_search</span><br><span class="line">{</span><br><span class="line">  "query":{</span><br><span class="line">    "match_all": {}</span><br><span class="line">  },</span><br><span class="line">  "track_total_hits": true</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">put /t_snkitemlog</span><br><span class="line">{</span><br><span class="line">    "mappings": {</span><br><span class="line">      "properties": {</span><br><span class="line">        "roleId": {</span><br><span class="line">          "type": "long"</span><br><span class="line">        },</span><br><span class="line">        "itemlog_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "roleName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "roleLevel": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "item_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "item_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "type": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "num": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "old_num": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "new_num": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "power": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "event": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "item_uid": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "serverId": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "channel_id" : {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "game_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "timestamp": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "channel_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "game_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "zoneName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "serverName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    },</span><br><span class="line">    "settings": {</span><br><span class="line">      "number_of_replicas": 0,</span><br><span class="line">      "number_of_shards": 1,</span><br><span class="line">      "index":{</span><br><span class="line">        "max_result_window":200000</span><br><span class="line">      } </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">put /t_snkorder</span><br><span class="line">{</span><br><span class="line">    "mappings": {</span><br><span class="line">      "properties": {</span><br><span class="line">        "order_id": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "roleId": {</span><br><span class="line">          "type": "long"</span><br><span class="line">        },</span><br><span class="line">        "roleName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "payId": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "payName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "payDriver": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "amount": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "realAmount": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "productId": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "goodId": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "payType": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "orderId": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "chargeId": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "currency": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "realCurrency" : {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "serverId": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "channel_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "game_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "sandbox": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "cpExtendParam": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "status": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "msg": {</span><br><span class="line">          "type":"keyword"</span><br><span class="line">        },</span><br><span class="line">        "delivTime": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "paySUTime":{</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "payTime": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "note": {</span><br><span class="line">           "type":"keyword"</span><br><span class="line">        },</span><br><span class="line">        "evidence": {</span><br><span class="line">           "type":"keyword"</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    },</span><br><span class="line">    "settings": {</span><br><span class="line">      "number_of_replicas": 0,</span><br><span class="line">      "number_of_shards": 1,</span><br><span class="line">      "index":{</span><br><span class="line">        "max_result_window":200000</span><br><span class="line">      } </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PUT /t_snkrolelog</span><br><span class="line">{</span><br><span class="line">    "mappings": {</span><br><span class="line">      "properties": {</span><br><span class="line">        "id": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "roleId": {</span><br><span class="line">          "type": "long"</span><br><span class="line">        },</span><br><span class="line">        "roleName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "roleLevel": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "avatar": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "avatarBox": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "account_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "serverId": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "channel_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "game_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "modifyType": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "target": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "note": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "timestamp": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "channel_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "game_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "zoneName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "serverName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "sdkAccountId":{</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    },</span><br><span class="line">    "settings": {</span><br><span class="line">      "number_of_replicas": 0,</span><br><span class="line">      "number_of_shards": 1 ,</span><br><span class="line">      "index":{</span><br><span class="line">        "max_result_window":200000</span><br><span class="line">      } </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PUT /t_snkgiftcode</span><br><span class="line">{</span><br><span class="line">    "mappings": {</span><br><span class="line">      "properties": {</span><br><span class="line">        "giftcode_id": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "giftCode": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "gift_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "gift_name": {</span><br><span class="line">          "type":"keyword"</span><br><span class="line">        },</span><br><span class="line">        "gift_type": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "item_list": {</span><br><span class="line">          "type":"text"</span><br><span class="line">        },</span><br><span class="line">        "game_id": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "start_time": {</span><br><span class="line">          "type":"date"</span><br><span class="line">        },</span><br><span class="line">        "end_time": {</span><br><span class="line">          "type":"date"</span><br><span class="line">        },</span><br><span class="line">        "timestamp": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "game_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    },</span><br><span class="line">    "settings": {</span><br><span class="line">      "number_of_replicas": 0,</span><br><span class="line">      "number_of_shards": 1,</span><br><span class="line">      "index":{</span><br><span class="line">        "max_result_window":200000</span><br><span class="line">      } </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">put /t_snkpcu</span><br><span class="line">{</span><br><span class="line">    "mappings": {</span><br><span class="line">      "properties": {</span><br><span class="line">        "id": {</span><br><span class="line">          "type":"integer"</span><br><span class="line">        },</span><br><span class="line">        "appId": {</span><br><span class="line">          "type": "long"</span><br><span class="line">        },</span><br><span class="line">        "serverId": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "pcu": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "timestamp":{</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "game_id": {</span><br><span class="line">          "type": "integer"</span><br><span class="line">        },</span><br><span class="line">        "game_name": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "zoneName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        },</span><br><span class="line">        "serverName": {</span><br><span class="line">          "type": "keyword"</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    },</span><br><span class="line">    "settings": {</span><br><span class="line">      "number_of_replicas": 0,</span><br><span class="line">      "number_of_shards": 1,</span><br><span class="line">      "index":{</span><br><span class="line">        "max_result_window":200000</span><br><span class="line">      } </span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
     </div>
 
@@ -1139,7 +1440,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8BSearch"><span class="nav-number">1.</span> <span class="nav-text">Elasticsearch之Search</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">Elasticsearch之命令行操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98-1"><span class="nav-number">2.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E6%90%9C%E7%B4%A2%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Elasticsearch之搜索原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">二、倒排索引原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E5%88%86%E6%9E%90%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">Elasticsearch之分析器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98-2"><span class="nav-number">4.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E7%B4%A2%E5%BC%95%E6%A8%A1%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">Elasticsearch之索引模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">5.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-7-4-0"><span class="nav-number">5.2.</span> <span class="nav-text">二、使用(7.4.0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">5.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E9%85%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">Elasticsearch之配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AE%B9"><span class="nav-number">6.1.</span> <span class="nav-text">一、内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E6%8F%92%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">Elasticsearch之插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-3"><span class="nav-number">7.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">7.2.</span> <span class="nav-text">二、安装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#elasticsearch-head%E6%8F%92%E4%BB%B6"><span class="nav-number">8.</span> <span class="nav-text">elasticsearch-head插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-4"><span class="nav-number">8.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8-1"><span class="nav-number">8.2.</span> <span class="nav-text">二、安装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-6"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filebeat-Logstash-Elasticsearch%E8%A7%A3%E6%9E%90nginx%E6%97%A5%E5%BF%97"><span class="nav-number">9.</span> <span class="nav-text">Filebeat-Logstash-Elasticsearch解析nginx日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-5"><span class="nav-number">9.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E6%9E%90"><span class="nav-number">9.2.</span> <span class="nav-text">二、分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%BB%84%E6%88%90"><span class="nav-number">9.3.</span> <span class="nav-text">三、组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">9.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">10.</span> <span class="nav-text">全文搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B8%B8%E8%A7%81%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">10.1.</span> <span class="nav-text">一、常见全文搜索引擎</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8BSearch"><span class="nav-number">1.</span> <span class="nav-text">Elasticsearch之Search</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">Elasticsearch之命令行操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98-1"><span class="nav-number">2.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E6%90%9C%E7%B4%A2%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Elasticsearch之搜索原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.</span> <span class="nav-text">二、倒排索引原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E5%88%86%E6%9E%90%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">Elasticsearch之分析器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-2"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98-2"><span class="nav-number">4.2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E7%B4%A2%E5%BC%95%E6%A8%A1%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">Elasticsearch之索引模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">5.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-7-4-0"><span class="nav-number">5.2.</span> <span class="nav-text">二、使用(7.4.0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">5.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E9%85%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">Elasticsearch之配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E5%AE%B9"><span class="nav-number">6.1.</span> <span class="nav-text">一、内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.2.</span> <span class="nav-text">二、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch%E4%B9%8B%E6%8F%92%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">Elasticsearch之插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-3"><span class="nav-number">7.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">7.2.</span> <span class="nav-text">二、安装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#elasticsearch-head%E6%8F%92%E4%BB%B6"><span class="nav-number">8.</span> <span class="nav-text">elasticsearch-head插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-4"><span class="nav-number">8.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8-1"><span class="nav-number">8.2.</span> <span class="nav-text">二、安装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-6"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filebeat-Logstash-Elasticsearch%E8%A7%A3%E6%9E%90nginx%E6%97%A5%E5%BF%97"><span class="nav-number">9.</span> <span class="nav-text">Filebeat-Logstash-Elasticsearch解析nginx日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-5"><span class="nav-number">9.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E6%9E%90"><span class="nav-number">9.2.</span> <span class="nav-text">二、分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%BB%84%E6%88%90"><span class="nav-number">9.3.</span> <span class="nav-text">三、组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">9.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">10.</span> <span class="nav-text">全文搜索引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B8%B8%E8%A7%81%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="nav-number">10.1.</span> <span class="nav-text">一、常见全文搜索引擎</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES-Canal%E5%AE%9E%E6%96%BD%E6%BC%94%E7%BB%83"><span class="nav-number">11.</span> <span class="nav-text">ES+Canal实施演练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">11.1.</span> <span class="nav-text">一、版本信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E5%A7%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">11.2.</span> <span class="nav-text">二、开始操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE"><span class="nav-number">11.3.</span> <span class="nav-text">三、历史数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-number">11.4.</span> <span class="nav-text">四、问题记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%8A%E7%BA%BF"><span class="nav-number">11.5.</span> <span class="nav-text">五、上线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81mapping"><span class="nav-number">11.6.</span> <span class="nav-text">七、mapping</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1155,7 +1456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-count">271</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1168,7 +1469,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-count">1058</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1195,7 +1496,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -1261,12 +1562,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">1.1m</span>
+    <span title="站点总字数">1.2m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16:59</span>
+    <span title="站点阅读时长">18:07</span>
 </div>
 
         

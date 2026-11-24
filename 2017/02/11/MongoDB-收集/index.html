@@ -148,12 +148,14 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="劝君莫惜金缕衣，劝君惜取少年时。花开堪折直须折，莫待无花空折枝。 —— 唐·无名氏 《金缕衣》">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/a.png">
 <meta property="article:published_time" content="2017-02-11T02:04:28.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.196Z">
+<meta property="article:modified_time" content="2026-11-24T07:33:07.361Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="NoSQL">
 <meta property="article:tag" content="MongoDB">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/a.png">
   <link rel="canonical" href="https://liusir.net/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/">
 
 
@@ -373,13 +375,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.7k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -396,10 +398,8 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、安装MongoDB"><a href="#一、安装MongoDB" class="headerlink" title="一、安装MongoDB"></a>一、安装MongoDB</h2><blockquote>
-<p>通过添加repo源方式</p>
-</blockquote>
-<ol>
+
+<h1 id="CentOS下安装"><a href="#CentOS下安装" class="headerlink" title="CentOS下安装"></a><center><font color="red">CentOS下安装</font></center></h1><h2 id="一、通过添加repo源方式"><a href="#一、通过添加repo源方式" class="headerlink" title="一、通过添加repo源方式"></a>一、通过添加repo源方式</h2><ol>
 <li><p>添加repo源 /etc/yum.repos.d/mongodb-org-4.0.repo</p>
 </li>
 <li><p>编辑repo源，加入以下内容</p>
@@ -411,19 +411,20 @@
 </ul>
 </li>
 </ol>
-<blockquote>
-<p>通过源码安装</p>
-</blockquote>
-<ol>
+<h2 id="二、通过源码安装"><a href="#二、通过源码安装" class="headerlink" title="二、通过源码安装"></a>二、通过源码安装</h2><ol>
 <li>下载源码 <code>wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.9.tgz</code></li>
 <li>解压并指定位置 <code>tar -zxvf mongodb-linux-x86_64-rhel70-4.0.9.tgz -C /usr/local</code></li>
 <li>重命名 <code>mv mongodb-linux-x86_64-rhel70-4.0.9  /usr/local/mongodb-4.0.9</code></li>
 <li><code>cd /usr/local/mongodb-4.0.9</code></li>
 <li>创建data和logs目录 <code>mkdir data &amp;&amp; mkdir logs &amp;&amp; touch ./logs/mongo.log</code></li>
 <li>创建mongodb.conf </li>
+<li>编辑mongodb.conf，加入以下内容</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">7. 编辑mongodb.conf，加入以下内容</span><br><span class="line"></span><br><span class="line">  dbpath = /usr/local/mongodb-4.0.9/data</span><br><span class="line">  logpath = /usr/local/mongodb-4.0.9/log/mongo.log</span><br><span class="line">  port = 27017</span><br><span class="line">  fork = true   </span><br><span class="line">  logappend=true</span><br><span class="line">  maxConns=5000</span><br><span class="line">  #storageEngine=wiredtiger #可不写此项，3.2版本后默认，3.2之前默认mmapv1</span><br><span class="line"></span><br><span class="line">8. 启动服务 mongod -f mongodb.conf</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dbpath = /usr/local/mongodb-4.0.9/data</span><br><span class="line">logpath = /usr/local/mongodb-4.0.9/log/mongo.log</span><br><span class="line">port = 27017</span><br><span class="line">fork = true   </span><br><span class="line">logappend=true</span><br><span class="line">maxConns=5000</span><br><span class="line">#storageEngine=wiredtiger #可不写此项，3.2版本后默认，3.2之前默认mmapv1</span><br></pre></td></tr></tbody></table></figure>
 
+<ol start="8">
+<li>启动服务 mongod -f mongodb.conf</li>
+</ol>
 <blockquote>
 <p>通过以上7/8步骤后不能启动，换成如下方式启动成功</p>
 </blockquote>
@@ -434,10 +435,7 @@
 </ul>
 </li>
 </ol>
-<blockquote>
-<p>通过rpm方式</p>
-</blockquote>
-<ol>
+<h2 id="三、通过rpm方式"><a href="#三、通过rpm方式" class="headerlink" title="三、通过rpm方式"></a>三、通过rpm方式</h2><ol>
 <li>下载rpm文件<ul>
 <li>mongodb-org-server-4.0.9-1.el7.x86_64.rpm</li>
 <li>mongodb-org-3.2.9-1.el7.x86_64.rpm         </li>
@@ -449,10 +447,8 @@
 </li>
 <li>安装各个rpm rpm -ivh mongodb-*.rpm</li>
 </ol>
-<h2 id="二、Mac下安装"><a href="#二、Mac下安装" class="headerlink" title="二、Mac下安装"></a>二、<a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/administration/install-community/">Mac下安装</a></h2><blockquote>
-<p>源码安装</p>
-</blockquote>
-<ol>
+<hr>
+<h1 id="Mac下安装"><a href="#Mac下安装" class="headerlink" title="Mac下安装"></a><center><font color="red">Mac下安装</font></center></h1><h2 id="一、源码安装"><a href="#一、源码安装" class="headerlink" title="一、源码安装"></a>一、源码安装</h2><ol>
 <li>下载 <code>https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-4.0.11.tgz</code> 至<code>/usr/local/src</code></li>
 <li>解压 <code>sudo tar -zxvf mongodb-osx-ssl-x86_64-4.0.11.tgz</code></li>
 <li>移动 <code>sudo mv mongodb-osx-x86_64-4.0.11  /usr/local/mongodb-4.0.11</code></li>
@@ -483,10 +479,51 @@
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">DB methods:</span><br><span class="line">	db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [just calls db.runCommand(...)]</span><br><span class="line">	db.aggregate([pipeline], {options}) - performs a collectionless aggregation on this database; returns a cursor</span><br><span class="line">	db.auth(username, password)</span><br><span class="line">	db.cloneDatabase(fromhost) - will only function with MongoDB 4.0 and below</span><br><span class="line">	db.commandHelp(name) returns the help for the command</span><br><span class="line">	db.copyDatabase(fromdb, todb, fromhost) - will only function with MongoDB 4.0 and below</span><br><span class="line">	db.createCollection(name, {size: ..., capped: ..., max: ...})</span><br><span class="line">	db.createUser(userDocument)</span><br><span class="line">	db.createView(name, viewOn, [{$operator: {...}}, ...], {viewOptions})</span><br><span class="line">	db.currentOp() displays currently executing operations in the db</span><br><span class="line">	db.dropDatabase(writeConcern)</span><br><span class="line">	db.dropUser(username)</span><br><span class="line">	db.eval() - deprecated</span><br><span class="line">	db.fsyncLock() flush data to disk and lock server for backups</span><br><span class="line">	db.fsyncUnlock() unlocks server following a db.fsyncLock()</span><br><span class="line">	db.getCollection(cname) same as db['cname'] or db.cname</span><br><span class="line">	db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections</span><br><span class="line">	db.getCollectionNames()</span><br><span class="line">	db.getLastError() - just returns the err msg string</span><br><span class="line">	db.getLastErrorObj() - return full status object</span><br><span class="line">	db.getLogComponents()</span><br><span class="line">	db.getMongo() get the server connection object</span><br><span class="line">	db.getMongo().setSlaveOk() allow queries on a replication slave server</span><br><span class="line">	db.getName()</span><br><span class="line">	db.getProfilingLevel() - deprecated</span><br><span class="line">	db.getProfilingStatus() - returns if profiling is on and slow threshold</span><br><span class="line">	db.getReplicationInfo()</span><br><span class="line">	db.getSiblingDB(name) get the db at the same server as this one</span><br><span class="line">	db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set</span><br><span class="line">	db.hostInfo() get details about the server's host</span><br><span class="line">	db.isMaster() check replica primary status</span><br><span class="line">	db.killOp(opid) kills the current operation in the db</span><br><span class="line">	db.listCommands() lists all the db commands</span><br><span class="line">	db.loadServerScripts() loads all the scripts in db.system.js</span><br><span class="line">	db.logout()</span><br><span class="line">	db.printCollectionStats()</span><br><span class="line">	db.printReplicationInfo()</span><br><span class="line">	db.printShardingStatus()</span><br><span class="line">	db.printSlaveReplicationInfo()</span><br><span class="line">	db.resetError()</span><br><span class="line">	db.runCommand(cmdObj) run a database command.  if cmdObj is a string, turns it into {cmdObj: 1}</span><br><span class="line">	db.serverStatus()</span><br><span class="line">	db.setLogLevel(level,&lt;component&gt;)</span><br><span class="line">	db.setProfilingLevel(level,slowms) 0=off 1=slow 2=all</span><br><span class="line">	db.setVerboseShell(flag) display extra information in shell output</span><br><span class="line">	db.setWriteConcern(&lt;write concern doc&gt;) - sets the write concern for writes to the db</span><br><span class="line">	db.shutdownServer()</span><br><span class="line">	db.stats()</span><br><span class="line">	db.unsetWriteConcern(&lt;write concern doc&gt;) - unsets the write concern for writes to the db</span><br><span class="line">	db.version() current version of the server</span><br><span class="line">	db.watch() - opens a change stream cursor for a database to report on all  changes to its non-system collections.</span><br></pre></td></tr></tbody></table></figure>
 
-<blockquote>
-<p>命令安装</p>
+<h2 id="二、命令安装"><a href="#二、命令安装" class="headerlink" title="二、命令安装"></a>二、命令安装</h2><blockquote>
+<p>TODO</p>
 </blockquote>
-<h2 id="三、php扩展安装"><a href="#三、php扩展安装" class="headerlink" title="三、php扩展安装"></a>三、php扩展安装</h2><ol>
+<hr>
+<h1 id="AliOS搭建"><a href="#AliOS搭建" class="headerlink" title="AliOS搭建"></a><center><font color="red">AliOS搭建</font></center></h1><h2 id="一、AliOS搭建"><a href="#一、AliOS搭建" class="headerlink" title="一、AliOS搭建"></a>一、AliOS搭建</h2><ol>
+<li>安装mongodb</li>
+</ol>
+<ul>
+<li>安装依赖：yum install compat-openssl10.x86_64</li>
+<li>wget <a target="_blank" rel="noopener" href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.27.tgz">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.27.tgz</a></li>
+<li>tar -zxvf mongodb-linux-x86_64-rhel70-4.0.27.tgz</li>
+<li>mv mongodb-linux-x86_64-rhel70-4.0.27 /usr/local/mongodb</li>
+<li>cd /usr/local/mongodb/</li>
+<li>mkdir data data/db data/log</li>
+<li>sudo chmod 666 data/db data/log/</li>
+<li>touch mongodb.conf</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 数据库数据存放目录</span><br><span class="line">dbpath=/usr/local/mongodb/data/db</span><br><span class="line"># 日志文件存放目录</span><br><span class="line">logpath=/usr/local/mongodb/data/log/mongodb.log</span><br><span class="line"># 日志追加方式</span><br><span class="line">logappend=true</span><br><span class="line"># 端口</span><br><span class="line">port=27017</span><br><span class="line"># 是否认证</span><br><span class="line">auth=true</span><br><span class="line"># 以守护进程方式在后台运行</span><br><span class="line">fork=true</span><br><span class="line"># 远程连接要指定ip，否则无法连接；0.0.0.0代表不限制ip访问</span><br><span class="line">bind_ip=0.0.0.0</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>sudo vi /etc/profile</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MONGODB_HOME=/usr/local/mongodb</span><br><span class="line">export PATH=$PATH:$MONGODB_HOME/bin</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>source /etc/profile</li>
+<li>mongod -f /usr/local/mongodb/mongodb.conf</li>
+<li>mongo<ul>
+<li>use admin</li>
+<li>db.createUser({ user: “admin”, pwd: “youshu123”, roles: [“root”] }) </li>
+<li><del>db.createUser({ user: “xxx”, pwd: “xxx”, roles: [“root”] }) </del></li>
+<li>quit()</li>
+</ul>
+</li>
+<li>sudo vi /etc/mongod.conf</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>重启服务，先kill进程，再启动：mongod -f /usr/local/mongodb/mongodb.conf</li>
+<li>登录：mongo -u admin -p youshu123 –authenticationDatabase admin</li>
+<li>db.auth(‘xxx’,’xxxx’)</li>
+</ul>
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><hr>
+<h1 id="php扩展安装"><a href="#php扩展安装" class="headerlink" title="php扩展安装"></a><center><font color="red">php扩展安装</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
 <li>下载<code>wget http://pecl.php.net/get/mongodb-1.5.3.tgz</code></li>
 <li>解压<code>tar -zxvf mongodb-1.5.3.tgz</code></li>
 <li><code>cd mongodb-1.5.3</code></li>
@@ -505,10 +542,10 @@
 <li>make &amp;&amp; make install</li>
 <li><a target="_blank" rel="noopener" href="http://pecl.php.net/">参考</a></li>
 </ol>
-<h2 id="四、各种问题"><a href="#四、各种问题" class="headerlink" title="四、各种问题"></a>四、各种问题</h2><ol>
+<h2 id="二、各种问题"><a href="#二、各种问题" class="headerlink" title="二、各种问题"></a>二、各种问题</h2><ol>
 <li>MongoDB时间范围查询与like查询</li>
 </ol>
-<h2 id="五、进阶列表"><a href="#五、进阶列表" class="headerlink" title="五、进阶列表"></a>五、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30377426">进阶列表</a></h2><ol>
+<h2 id="三、进阶列表"><a href="#三、进阶列表" class="headerlink" title="三、进阶列表"></a>三、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30377426">进阶列表</a></h2><ol>
 <li><p>常见问题处理</p>
 <ul>
 <li>连接问题<ul>
@@ -568,13 +605,25 @@
 <li>连接时使用和复制集类似，如PHP连接时：<code>mongodb://user:'.rawurlencode('password').'@aaap.mongodb.xxx.rds.aliyuncs.com:3717,aaas.mongodb.xxx.rds.aliyuncs.com:3717</code>，即没有指定复制集名称。</li>
 </ul>
 </li>
-<li><p>参考</p>
-<ul>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/8461">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/69380">参考二</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/53771">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/administration/install-community/">参考四</a></li>
+</ol>
+<hr>
+<h1 id="MongoDB漏洞"><a href="#MongoDB漏洞" class="headerlink" title="MongoDB漏洞"></a><center><font color="red">MongoDB漏洞</font></center></h1><ol>
+<li>漏洞：<img src="a.png" alt="a.png"></li>
+<li>处理</li>
+</ol>
+<ul>
+<li>方案一：升级到指定版本</li>
+<li>方案二：宝塔不支持指定版本，则修改配置文件</li>
 </ul>
-</li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net:</span><br><span class="line">  port: 27017</span><br><span class="line">  bindIp: 127.0.0.1</span><br><span class="line">  compression:</span><br><span class="line">    compressors: snappy,zstd  # 仅启用 snappy + zstd，排除 zlib</span><br></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>参考：<a target="_blank" rel="noopener" href="https://jira.mongodb.org/browse/SERVER-115508">https://jira.mongodb.org/browse/SERVER-115508</a></li>
 </ol>
 
     </div>
@@ -643,7 +692,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85MongoDB"><span class="nav-number">1.</span> <span class="nav-text">一、安装MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Mac%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">二、Mac下安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">三、php扩展安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">四、各种问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%9B%E9%98%B6%E5%88%97%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">五、进阶列表</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">CentOS下安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%80%9A%E8%BF%87%E6%B7%BB%E5%8A%A0repo%E6%BA%90%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">一、通过添加repo源方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%80%9A%E8%BF%87%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">二、通过源码安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%80%9A%E8%BF%87rpm%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">三、通过rpm方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">Mac下安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">一、源码安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">二、命令安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AliOS%E6%90%AD%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">AliOS搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81AliOS%E6%90%AD%E5%BB%BA"><span class="nav-number">3.1.</span> <span class="nav-text">一、AliOS搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">二、问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">php扩展安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.</span> <span class="nav-text">二、各种问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%BF%9B%E9%98%B6%E5%88%97%E8%A1%A8"><span class="nav-number">4.3.</span> <span class="nav-text">三、进阶列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.</span> <span class="nav-text">MongoDB漏洞</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -659,7 +708,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-count">271</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -672,7 +721,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-count">1058</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -699,7 +748,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -765,12 +814,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">1.1m</span>
+    <span title="站点总字数">1.2m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16:59</span>
+    <span title="站点阅读时长">18:07</span>
 </div>
 
         
