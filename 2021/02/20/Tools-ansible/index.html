@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="一日练，一日功，一日不练十日空。—— 《增广贤文》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible">
+<meta property="og:url" content="https://liusir.net/2021/02/20/Tools-ansible/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="一日练，一日功，一日不练十日空。—— 《增广贤文》">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-20T11:47:48.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.472Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="自动化运维">
+<meta property="article:tag" content="ansible">
+<meta property="article:tag" content="rsync">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2021/02/20/Tools-ansible/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ansible | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2021/02/20/Tools-ansible/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ansible
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-20 19:47:48" itemprop="dateCreated datePublished" datetime="2021-02-20T19:47:48+08:00">2021-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>一日练，一日功，一日不练十日空。—— 《增广贤文》</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ansible是一种自动化运维工具，基于Python开发，集合了众多运维工具(puppet、chef、func、fabric)的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>Mac</p>
+<ul>
+<li><p>安装</p>
+<ul>
+<li>brew安装<code>brew install ansible</code>，本文使用brew安装</li>
+<li>pip安装<code>pip install ansible</code></li>
+<li>源码安装<ul>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/ansible/ansible.git">https://github.com/ansible/ansible.git</a></li>
+<li>cd ansible</li>
+<li>sudo python setup.py install</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>验证<code>ansible --version</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ansible [core 2.11.6]</span><br><span class="line">config file = None</span><br><span class="line">configured module search path = ['/Users/xxxx/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']</span><br><span class="line">ansible python module location = /usr/local/Cellar/ansible/4.8.0/libexec/lib/python3.10/site-packages/ansible</span><br><span class="line">ansible collection location = /Users/xxxx/.ansible/collections:/usr/share/ansible/collections</span><br><span class="line">executable location = /usr/local/bin/ansible</span><br><span class="line">python version = 3.10.0 (default, Oct 13 2021, 06:44:31) [Clang 12.0.0 (clang-1200.0.32.29)]</span><br><span class="line">jinja version = 3.0.2</span><br><span class="line">libyaml = True</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>配置</p>
+<ul>
+<li><p><code>cd /etc</code></p>
+</li>
+<li><p><code>sudo mkdir ansible</code></p>
+</li>
+<li><p><code>git clone https://github.com/ansible/ansible.git &amp;&amp; cd ansible</code></p>
+</li>
+<li><p><code>sudo cp -R * /etc/ansible</code></p>
+</li>
+<li><p>生成秘钥：<code>ssh-keygen</code></p>
+</li>
+<li><p>将秘钥推送到指定服务器：</p>
+<ul>
+<li><p>机器1：<code>ssh-copy-id username@ip1</code></p>
+</li>
+<li><p>机器2：<code>ssh-copy-id username@ip2</code></p>
+</li>
+<li><p>机器3：<code>ssh-copy-id username@ip3</code></p>
+<ul>
+<li><p>公司本地开发服务器，一般会有多个人一起协作，按此方式推送的话有可能会覆盖别人的秘钥，按如下方式处理：</p>
+<ul>
+<li><p>ssh-keygen时输入自定义的名字</p>
+<ul>
+<li>Enter file in which to save the key (/Users/xxxx/.ssh/id_rsa):id_rsa_play</li>
+</ul>
+</li>
+<li><p>此时会在.ssh目录下生成一对儿<code>id_rsa_play</code>和<code>id_rsa_play.pub</code></p>
+</li>
+<li><p>vim config</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Host server1     #填写别名(自定义)</span><br><span class="line">HostName ip1 #填写真实的服务地址</span><br><span class="line">User user1</span><br><span class="line">IdentityFile /Users/xxxx/.ssh/id_rsa_play #填写证书所在位置</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line"></span><br><span class="line">Host server2</span><br><span class="line">HostName ip2</span><br><span class="line">User user2</span><br><span class="line">IdentityFile /Users/xxxx/.ssh/id_rsa_play</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line"></span><br><span class="line">Host server3</span><br><span class="line">HostName ip3</span><br><span class="line">User user3</span><br><span class="line">IdentityFile /Users/xxxx/.ssh/id_rsa_play</span><br><span class="line">PreferredAuthentications publickey</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>   <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/username/.ssh/id_rsa.pub"</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys</span><br><span class="line">username@ip's password:</span><br><span class="line"></span><br><span class="line">Number of key(s) added:        1</span><br><span class="line"></span><br><span class="line">Now try logging into the machine, with:   "ssh 'username@ip'"</span><br><span class="line">and check to make sure that only the key(s) you wanted were added.</span><br></pre></td></tr></tbody></table></figure>
+
+* 测试免密登录`ssh username@ip`，登录成功则说明配置成功
+* 修改配置文件`vim /etc/ansible/hosts`
+
+   <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[host1]</span><br><span class="line">10.2.24.180</span><br><span class="line">10.2.24.179</span><br><span class="line">    </span><br><span class="line">[host2]</span><br><span class="line">10.2.24.141</span><br></pre></td></tr></tbody></table></figure></code></pre><ul>
+<li><p>使用</p>
+<ul>
+<li><p>测试能否ping通<code>ansible all -m ping</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ip1 | SUCCESS =&gt; {</span><br><span class="line">    "ansible_facts": {</span><br><span class="line">        "discovered_interpreter_python": "/usr/bin/python"</span><br><span class="line">    },</span><br><span class="line">    "changed": false,</span><br><span class="line">    "ping": "pong"</span><br><span class="line">}</span><br><span class="line">ip2 | SUCCESS =&gt; {</span><br><span class="line">    "ansible_facts": {</span><br><span class="line">        "discovered_interpreter_python": "/usr/bin/python"</span><br><span class="line">    },</span><br><span class="line">    "changed": false,</span><br><span class="line">    "ping": "pong"</span><br><span class="line">}</span><br><span class="line">ip3 | SUCCESS =&gt; {</span><br><span class="line">    "ansible_facts": {</span><br><span class="line">        "discovered_interpreter_python": "/usr/bin/python"</span><br><span class="line">    },</span><br><span class="line">    "changed": false,</span><br><span class="line">    "ping": "pong"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><code>ansible host1  -a ". .bash_profile;ps -fe |grep php" -m shell</code></p>
+<ul>
+<li>查看具体执行过程<code>ansible host1  -a ". .bash_profile;ps -fe |grep php" -m shell -vvv</code></li>
+<li>指定hosts文件位置<code>ansible -i /path/hosts host1  -a ". .bash_profile;ps -fe |grep php" -m shell -vvv</code></li>
+<li>ansible -i ~/tools/hosts host1 -m fetch -a “src=/home/xxx/*.txt dest=./ force=yes”</li>
+</ul>
+</li>
+<li><p>执行scripts``</p>
+</li>
+<li><p>playbook</p>
+</li>
+<li><p>$a =  exec(“/path/Python-2.7.8/bin/ansible -i /path/hosts -m copy -a "src=/path/test.php dest=/path/"  global”, $out, $status);</p>
+</li>
+<li><p>$a =  exec(“/paty/Python-2.7.8/bin/ansible -i /path/hosts -m synchronize -a "src=/path/test.php dest=/path/"  global”, $out, $status);</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Linux<ul>
+<li>安装(Ubuntu22.04)<ul>
+<li>sudo apt update</li>
+<li>sudo apt install software-properties-common</li>
+<li>sudo add-apt-repository –yes –update ppa:ansible/ansible</li>
+<li>sudo apt install ansible</li>
+<li>ansible –version</li>
+</ul>
+</li>
+<li>配置<ul>
+<li>/etc/ansible/hosts，节点信息</li>
+<li>/etc/ansible/ansible.cfg，配置信息，如秘钥文件</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>集群假设有1台admin节点3台服务节点，直接在admin节点修改3台服务节点的时间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
+<li>rsync</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.ansible.com/">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/74e69dea64e5">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/873975e0abb8">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/blob/stable-2.9/examples/ansible.cfg">参考四</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/DevOps/" rel="tag"><i class="fa fa-tag"></i> DevOps</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" rel="tag"><i class="fa fa-tag"></i> 自动化运维</a>
+              <a href="/tags/ansible/" rel="tag"><i class="fa fa-tag"></i> ansible</a>
+              <a href="/tags/rsync/" rel="tag"><i class="fa fa-tag"></i> rsync</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/02/06/MongoDB-%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/" rel="next" title="MongoDB使用规范">
+                  <i class="fa fa-chevron-left"></i> MongoDB使用规范
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/03/20/Technology-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/" rel="prev" title="主从复制">
+                  主从复制 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">三、扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">四、参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="代码变成可执行文件，叫做编译(compile)；先编译这个还是先编译那个(即编译的安排)，叫做构建(build)。Make是最常用的构建工具，诞生于1977年，主要用于C语言的项目。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Makefile收集">
+<meta property="og:url" content="https://liusir.net/2019/08/09/Linux-Makefile%E6%94%B6%E9%9B%86/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="代码变成可执行文件，叫做编译(compile)；先编译这个还是先编译那个(即编译的安排)，叫做构建(build)。Make是最常用的构建工具，诞生于1977年，主要用于C语言的项目。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-09T08:49:10.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.167Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="Makefile">
+<meta property="article:tag" content="make">
+<meta property="article:tag" content="ifeq">
+<meta property="article:tag" content="phony">
+<meta property="article:tag" content="自动变量">
+<meta property="article:tag" content="隐晦规则">
+<meta property="article:tag" content="伪目标">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2019/08/09/Linux-Makefile%E6%94%B6%E9%9B%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Makefile收集 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2019/08/09/Linux-Makefile%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Makefile收集
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-09 16:49:10" itemprop="dateCreated datePublished" datetime="2019-08-09T16:49:10+08:00">2019-08-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>代码变成可执行文件，叫做编译(compile)；先编译这个还是先编译那个(即编译的安排)，叫做构建(build)。Make是最常用的构建工具，诞生于1977年，主要用于C语言的项目。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Makefile基础"><a href="#Makefile基础" class="headerlink" title="Makefile基础"></a><center><font color="red">Makefile基础</font></center></h1><h2 id="一、Make"><a href="#一、Make" class="headerlink" title="一、Make"></a>一、Make</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make命令执行时需要一个makefile文件，以告诉make命令需要怎么样的去编译和链接程序。它是一个根据指定的Shell命令进行构建的工具，规则很简单，你规定要构建哪个文件、它依赖哪些源文件，当那些文件有变动时，如何重新构建它。</p>
+<h2 id="二、Makefile"><a href="#二、Makefile" class="headerlink" title="二、Makefile"></a>二、Makefile</h2><ol>
+<li><code>Makefile</code>文件由一系列规则<code>rules</code>构成，每条规则就明确两件事：构建目标的前置条件是什么，以及如何构建。每条规则的形式如下</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;target&gt; : &lt;prerequisites&gt; </span><br><span class="line">[tab]  &lt;commands&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>目标<code>target</code>：一个目标<code>target</code>就构成一条规则，它通常是文件名(一个或多个，多个用空格分开)，指明<code>Make</code>命令所要构建的对象目标是一/多个文件名。<ul>
+<li><code>target</code>除了可以是文件名，还可以是某个操作的名字，这称为”伪目标”(<code>phony target</code>)。</li>
+</ul>
+</li>
+<li>前置条件<code>prerequisites</code>：它通常是一组文件名，之间用空格分隔。<ul>
+<li>前置条件指定了<code>目标</code>是否重新构建的判断标准：只要有一个前置文件不存在，或者有过更新(前置文件的last-modification时间戳比目标的时间戳新)<code>目标</code>就需要重新构建。</li>
+</ul>
+</li>
+<li>制表键<code>tab</code>：每行命令之前必须有一个制表键<code>tab</code>。<ul>
+<li>如果想用其他键可以用内置变量<code>.RECIPEPREFIX</code>声明。</li>
+</ul>
+</li>
+<li>命令<code>commands</code>：表示如何更新目标文件，由一行或多行的<code>shell</code>命令组成。它是构建<code>目标</code>的具体指令，它的运行结果通常就是生成目标文件。<ul>
+<li>每行命令在一个单独的<code>shell</code>中执行，这些<code>shell</code>之间没有继承关系。若要一次性执行执行多行<code>shell</code>有三种方案：<ul>
+<li>将多行shell写在一行，中间用逗号分隔</li>
+<li>在每行shell后加反斜杠<code>\</code>转义</li>
+<li>使用内置变量<code>.ONESHELL</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Makefile语法<ul>
+<li>注释：用<code>#</code>，跟<code>shell</code>脚本一样</li>
+<li>回声<code>echoing</code>：正常情况下<code>make</code>会打印每条命令，然后再执行，这就叫做回声。<ul>
+<li>在命令的前面加上<code>@</code>可以关闭回声。</li>
+</ul>
+</li>
+<li>通配符<code>wildcard</code>：用来指定一组符合条件的文件名。<ul>
+<li><code>Makefile</code>的通配符与<code>Bash</code>一致，主要有<code>*</code>、<code>?</code>和 <code>[...]</code>，如<code>*.o</code>表示所有后缀名为o的文件。</li>
+</ul>
+</li>
+<li>模式匹配：Make命令允许对文件名进行类似正则运算的匹配，主要用到的匹配符是<code>%</code>。<ul>
+<li>使用匹配符<code>%</code>可以将大量同类型的文件只用一条规则就完成构建。</li>
+</ul>
+</li>
+<li>变量和赋值符：和大多数变成语言类似，使用等号<code>=</code>进行赋值给变量<ul>
+<li>调用<code>shell</code>变量需要在美元符号前再加一个美元符号，如<code>echo $$PATH</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VARIABLE = value # 在执行时扩展，允许递归扩展</span><br><span class="line">VARIABLE := value # 在定义时扩展</span><br><span class="line">VARIABLE ?= value # 只有在该变量为空时才设置值</span><br><span class="line">VARIABLE += value # 将值追加到变量的尾端</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>内置变量<code>Implicit Variables</code>：Make命令提供一系列内置变量，比如<code>$(CC)</code>指向当前使用的编译器，<code>$(MAKE)</code>指向当前使用的Make工具。</li>
+<li>自动变量<code>Automatic Variables</code>：自动变量的值与当前规则有关，常用的如下：<ul>
+<li><code>$@</code>指代当前目标，就是Make命令当前构建的目标。</li>
+<li><code>$&lt;</code>指代第一个前置条件，如规则为<code>t: p1 p2</code>，那么<code>$&lt;</code>就指代<code>p1</code>。</li>
+<li><code>$^</code>指代所有前置条件，之间以空格分隔。</li>
+<li><code>$+</code>表示所有依赖文件的集合(不去重)。</li>
+<li><code>$?</code>指代比目标更新的所有前置条件，之间以空格分隔。</li>
+<li><code>$*</code>指代匹配符<code>%</code>匹配到的部分。</li>
+<li><code>$(@D)</code>和<code>$(@F)</code>分别指向<code>$@</code>的目录名和文件名。</li>
+<li><code>$(&lt;D)</code>和<code>$(&lt;F)</code>分别指向<code>$&lt;</code>的目录名和文件名。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>判断和循环：<code>Makefile</code>使用<code>Bash</code>语法完成判断和循环。</li>
+<li>函数：<code>Makefile</code>还可以使用函数，格式为：<code>$(function arguments)或${function arguments}</code>，一些常用的函数如下：<ul>
+<li><code>shell</code>函数用来执行<code>shell</code>命令。</li>
+<li><code>wildcard</code>函数用来在<code>Makefile</code>中替换<code>Bash</code>的通配符。</li>
+<li><code>subst</code>函数用来文本替换。</li>
+<li><code>patsubst</code>函数用于模式匹配的替换。</li>
+<li><code>strip</code>函数用于去除头部和尾部的空格。</li>
+<li><code>filter</code>函数用于过滤特定模式的字符串。</li>
+<li><code>word</code>函数用于取单词。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://seisman.github.io/how-to-write-makefile/">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/02/make.html">参考二</a></li>
+</ol>
+<hr>
+<h1 id="Makefile中条件判断"><a href="#Makefile中条件判断" class="headerlink" title="Makefile中条件判断"></a><center><font color="red">Makefile中条件判断</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用条件判断可以让make根据运行时的不同情况选择不同的执行分支，条件表达式可以是比较变量的值，或是比较变量和常量的值。</p>
+<ol>
+<li>语法</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifxxx (arg1,arg2)</span><br><span class="line">    #do true</span><br><span class="line">else            #可省略</span><br><span class="line">    #do false   #可省略</span><br><span class="line">endif</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li><p>条件常用格式</p>
+<ul>
+<li><code>ifxxx (arg1,arg2)</code></li>
+<li><code>ifxxx “arg1” “arg2”</code></li>
+<li><code>ifxxx ‘arg1’ ‘arg2’</code></li>
+<li><code>ifxxx “arg1” ‘arg2’</code></li>
+<li><code>ifxxx ‘arg1’ “arg2”</code></li>
+</ul>
+</li>
+<li><p>分类</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">判断</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ifeq</td>
+<td align="left">判断参数是否相等，相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifneq</td>
+<td align="left">判断参数是否不相等，不相等为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifdef</td>
+<td align="left">判断参数是否有值，有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+<tr>
+<td align="center">ifndef</td>
+<td align="left">判断参数是否没有值，没有值为<code>true</code>，否则为<code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>定义makefile文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : test</span><br><span class="line"></span><br><span class="line">var1 := 123</span><br><span class="line">var2 := $(var1)</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">    ifeq ($(var1),$(var2))</span><br><span class="line">        @echo success</span><br><span class="line">    else</span><br><span class="line">        @echo fail</span><br><span class="line">    endif</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li><p>执行<code>make</code>或<code>make test</code>，正常会输出<code>success</code></p>
+</li>
+<li><p><font color="red">注意：</font></p>
+<ul>
+<li><code>ifxxx</code> 后面有个空格</li>
+<li><code>ifxxx</code>：当<code>ifxxx</code>没有缩进时make会正确识别它们，将其作为分支选择的标识；当<code>ifxxx</code>有缩进时，make将它们当做普通的<code>shell script</code>。<ul>
+<li>意思就是ifxxx前不用加tab</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://seisman.github.io/">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Makefile中自动变量与隐晦规则"><a href="#Makefile中自动变量与隐晦规则" class="headerlink" title="Makefile中自动变量与隐晦规则"></a><center><font color="red">Makefile中自动变量与隐晦规则</font></center></h1><h2 id="一、自动变量"><a href="#一、自动变量" class="headerlink" title="一、自动变量"></a>一、自动变量</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;makefile中的自动变量实质上是对一类变量的简写，当我们在模式规则中对这类变量处理的时候可以直接使用自动变量简化makefile代码的编写。自动变量包括如目标文件，依赖文件等，常用的自动变量:</p>
+<ol>
+<li><p><code>$@</code>指代当前目标，就是Make命令当前构建的那个目标。</p>
+<ul>
+<li>makefile内容如下</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test:</span><br><span class="line">@echo $@</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>执行<code>make</code>得到结果<code>test</code>，即目标本身</li>
+</ul>
+</li>
+<li><p><code>$&lt;</code>指代第一个前置条件。</p>
+<ul>
+<li>makefile内容如下</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test.txt: source.txt result.txt</span><br><span class="line">	@echo $&lt;</span><br><span class="line">source.txt:</span><br><span class="line">	@echo "this is a test" &gt; source.txt</span><br><span class="line">result.txt:</span><br><span class="line">	@echo "this is also a test" &gt; result.txt</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>执行<code>make</code>或<code>make test.txt</code>得到结果<code>source.txt</code></li>
+</ul>
+<ol start="3">
+<li><code>$^</code>指代所有前置条件，之间以空格分隔。<ul>
+<li>makefile内容如下</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test.txt: source.txt result.txt</span><br><span class="line">	@echo $^</span><br><span class="line">source.txt:</span><br><span class="line">	@echo "this is a test" &gt; source.txt</span><br><span class="line">result.txt:</span><br><span class="line">	@echo "this is also a test" &gt; result.txt</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>执行<code>make</code>或<code>make test.txt</code>得到结果<code>source.txt result.txt</code></li>
+</ul>
+<ol start="4">
+<li><p><code>$+</code>表示所有依赖文件的集合(不去重)，<code>$^</code>会去重。</p>
+</li>
+<li><p><code>$?</code>指代比目标更新的所有前置条件，之间以空格分隔。</p>
+</li>
+<li><p><code>$*</code>指代匹配符<code>%</code>匹配到的部分。</p>
+</li>
+<li><p><code>$(@D)</code>和<code>$(@F)</code>分别指向<code>$@</code>的目录名(相对路径)和文件名。</p>
+</li>
+<li><p><code>$(&lt;D)</code>和<code>$(&lt;F)</code>分别指向<code>$&lt;</code>的目录名(相对路径)和文件名。</p>
+</li>
+</ol>
+<h2 id="二、隐晦规则"><a href="#二、隐晦规则" class="headerlink" title="二、隐晦规则"></a>二、隐晦规则</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用<code>makefile</code>隐晦规则可以省去为每一个类似的规则生成都去写类似的规则，<code>makefile</code>会自动推导依赖文件，并根据隐含规则推导出生成当前目标的命令。</p>
+<ol>
+<li>不使用隐晦规则</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">target: a.o b.o c.o</span><br><span class="line">  g++ -o $@　$^ $(LIB) $(INC) $(LINKER)</span><br><span class="line">a.o: a.c</span><br><span class="line">  g++ -c $(CFLAGS) -o a.o a.c</span><br><span class="line">b.o: b.c</span><br><span class="line">  g++ -c $(CFLAGS) -o b.o b.c</span><br><span class="line">c.o: c.c</span><br><span class="line">  g++ -c $(CFLAGS) -o c.o c.c</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>使用隐晦规则</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SOURCE := $(shell find ./ -type f -name *.c)</span><br><span class="line">OBJECTS := $(patsubst *.c,*.o,$(SOURCE))</span><br><span class="line">target : $(OBJECTS)</span><br><span class="line">  g++ -o $@ $^ $(LIB) $(INC) $(LINKER)</span><br><span class="line">%.o:%.c</span><br><span class="line">   $(CC) -c $(CFLAGS) -o $@ $&lt;</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>执行过程:</p>
+<blockquote>
+<p><code>makefile</code>中首先声明了变量<code>SOURCE</code>和<code>OBJECTS</code>分别代表当前文件夹下的<code>.c</code>和<code>.o</code>文件集合。目标<code>target</code>依赖所有的目标文件<code>.o</code>，即<code>a.o,b.o,c.o</code>。当需要依赖<code>a.o</code>时<code>makefile</code>会根据隐晦规则自动推导出生成<code>a.o</code>文件的命令<code>g++ -c $(CFLAGS) -o a.o a.c</code>生成<code>a.o</code>，同理会根据隐晦规则生成<code>b.o、c.o</code>，三个<code>.o</code>文件生成后再根据上述规则生成<code>target</code>。</p>
+</blockquote>
+</blockquote>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://langzi989.github.io/2017/09/20/makefile%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F%E4%B8%8E%E9%9A%90%E6%99%A6%E8%A7%84%E5%88%99%E6%8E%A8%E5%AF%BC/">参考一</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://seisman.github.io/how-to-write-makefile/introduction.html#id4">参考二</a></p>
+</li>
+</ol>
+<hr>
+<h1 id="Makefile中伪目标与PHONY"><a href="#Makefile中伪目标与PHONY" class="headerlink" title="Makefile中伪目标与PHONY"></a><center><font color="red">Makefile中伪目标与PHONY</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Makefile</code>文件由一系列规则<code>rules</code>构成，规则是有格式要求的，其中最主要的就是目标文件<code>target</code>，其次就是前置条件<code>prerequisites</code>和命令<code>commands</code>(二者至少存在一个)。当目标文件<code>target</code>不是一个文件时就称此<code>target</code>为伪目标。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>.PHONY</code>是一个特殊的目标(<code>special target</code>)，也可称为伪目标，它用来指定一个假想的工作目标，其后面并不是一个实际文件，而是一个必须要执行的命令名。即存在<code>.PHONY</code>时，其后面的命令一定会执行，可以有效防止在<code>Makefile</code>文件中定义的可执行命令的目标规则和工作目录下的实际文件出现名称冲突，并提高<code>Makefile</code>的执行性能。</p>
+<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>不带<code>.PHONY</code><ul>
+<li>不存在同名文件<code>clean</code>，执行<code>make clean</code>会正常删除<code>result.txt</code></li>
+<li>存在同名文件<code>clean</code>，执行<code>make clean</code>会报错</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clean:</span><br><span class="line">        rm result.txt</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>带<code>.PHONY</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clean:</span><br><span class="line">        rm result.txt</span><br><span class="line"></span><br><span class="line">.PHONY:clean</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/lishuhuakai/note/210174">参考一</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Makefile/" rel="tag"><i class="fa fa-tag"></i> Makefile</a>
+              <a href="/tags/make/" rel="tag"><i class="fa fa-tag"></i> make</a>
+              <a href="/tags/ifeq/" rel="tag"><i class="fa fa-tag"></i> ifeq</a>
+              <a href="/tags/phony/" rel="tag"><i class="fa fa-tag"></i> phony</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 自动变量</a>
+              <a href="/tags/%E9%9A%90%E6%99%A6%E8%A7%84%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 隐晦规则</a>
+              <a href="/tags/%E4%BC%AA%E7%9B%AE%E6%A0%87/" rel="tag"><i class="fa fa-tag"></i> 伪目标</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/07/15/OOP-%E6%94%B6%E9%9B%86/" rel="next" title="面向对象收集">
+                  <i class="fa fa-chevron-left"></i> 面向对象收集
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/08/21/Tools-selenium/" rel="prev" title="selenium">
+                  selenium <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Makefile基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Make"><span class="nav-number">1.1.</span> <span class="nav-text">一、Make</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Makefile"><span class="nav-number">1.2.</span> <span class="nav-text">二、Makefile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile%E4%B8%AD%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="nav-number">2.</span> <span class="nav-text">Makefile中条件判断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">一、介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile%E4%B8%AD%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F%E4%B8%8E%E9%9A%90%E6%99%A6%E8%A7%84%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">Makefile中自动变量与隐晦规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.</span> <span class="nav-text">一、自动变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9A%90%E6%99%A6%E8%A7%84%E5%88%99"><span class="nav-number">3.2.</span> <span class="nav-text">二、隐晦规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile%E4%B8%AD%E4%BC%AA%E7%9B%AE%E6%A0%87%E4%B8%8EPHONY"><span class="nav-number">4.</span> <span class="nav-text">Makefile中伪目标与PHONY</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">4.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

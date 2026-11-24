@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="AI工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库RAG、API调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化AI任务闭环。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI工作流">
+<meta property="og:url" content="https://liusir.net/2026/07/09/AI-AI%E5%B7%A5%E4%BD%9C%E6%B5%81/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="AI工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库RAG、API调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化AI任务闭环。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-09T01:37:21.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.021Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="工作流">
+<meta property="article:tag" content="agent">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2026/07/09/AI-AI%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>AI工作流 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2026/07/09/AI-AI%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AI工作流
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-07-09 09:37:21" itemprop="dateCreated datePublished" datetime="2026-07-09T09:37:21+08:00">2026-07-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AI/" itemprop="url" rel="index">
+                    <span itemprop="name">AI</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>3.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>AI工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库RAG、API调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化AI任务闭环。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="AI工作流"><a href="#AI工作流" class="headerlink" title="AI工作流"></a><center><font color="red">AI工作流</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li><p>定义：AI 工作流是人工预先编排、节点化串联的自动化任务流水线：把大模型、知识库 RAG、API 调用、数据库读写、条件判断、人工审核、文件处理等能力封装成独立节点，设定执行顺序、分支、循环、重试逻辑，输入数据后自动按预设流程跑完全链路，实现标准化 AI 任务闭环。</p>
+</li>
+<li><p>对比</p>
+</li>
+</ol>
+<ul>
+<li>传统 RPA：纯固定规则，只能点击、填表，无理解推理能力；</li>
+<li>AI 工作流：人定死整体步骤，AI 只负责单节点内推理，流程路径固定可控，适合标准化重复业务；</li>
+<li>AI Agent/多智能体：只给最终目标，AI 自主拆解步骤、动态选工具、调整执行顺序，适合开放、不确定复杂任务。</li>
+</ul>
+<ol start="3">
+<li>三层技术架构</li>
+</ol>
+<ul>
+<li>编排层（画布引擎）：流程调度核心，可视化拖拽 / 代码定义 DAG 有向无环图，支持：<ul>
+<li>基础逻辑：顺序、并行、条件分支、循环、异常重试、人工拦截节点；</li>
+<li>触发方式：定时、表单提交、API 回调、文件上传、消息队列；</li>
+<li>运维能力：日志、执行记录、失败断点续跑、版本保存。</li>
+</ul>
+</li>
+<li>节点能力层（可复用模块）：所有可拖拽单元，分为 5 大类：<ul>
+<li>大模型节点：文生文、文生图、多模态解析、意图分类、摘要、翻译；</li>
+<li>RAG 知识库节点：文档切片、向量检索、知识库问答、事实校验；</li>
+<li>工具调用节点：数据库读写、企业 API、Excel/CSV 处理、邮件 / 消息推送、爬虫；</li>
+<li>逻辑控制节点：判断分支、循环、数据清洗、格式转换；</li>
+<li>人工节点：审核、人工输入、驳回重跑（人机协同关键）。</li>
+</ul>
+</li>
+<li>底层能力层：提供基础算力与资源：各类大模型 API、向量数据库、文件存储、权限鉴权、LLM 监控面板。</li>
+</ul>
+<ol start="4">
+<li>三大主流工作流执行模式</li>
+</ol>
+<ul>
+<li><p>顺序串行工作流（最常用）</p>
+<ul>
+<li>上一步输出作为下一步输入，线性流转。</li>
+<li>适用：内容生产、报告撰写、工单处理、多阶段质检；</li>
+<li>优点：逻辑清晰、结果可控、便于分步调优 Prompt；</li>
+<li>缺点：串行耗时</li>
+</ul>
+</li>
+<li><p>并行分支工作流</p>
+<ul>
+<li>同一输入同时触发多条独立子流程，完成后合并结果。</li>
+<li>适用：多模型对比输出、多渠道数据同步、图文同时生成。</li>
+</ul>
+</li>
+<li><p>评估优化闭环工作流（Eval-Ops）</p>
+<ul>
+<li>执行完成后自动打分校验，不合格自动回退重跑 / 调整参数。</li>
+<li>适用：企业客服、合规文案、数据抽取，保障输出准确率。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、完整落地全流程（6大阶段）"><a href="#二、完整落地全流程（6大阶段）" class="headerlink" title="二、完整落地全流程（6大阶段）"></a>二、完整落地全流程（6大阶段）</h2><ol>
+<li>阶段 1：需求拆解</li>
+</ol>
+<ul>
+<li>把业务目标拆成分步可执行节点，明确：触发条件、输入数据源、每一步输出格式、验收标准、异常兜底规则。</li>
+<li>示例：自媒体内容流 —— 输入关键词→选题生成→文案撰写→配图生成→封面标题→导出打包。</li>
+</ul>
+<ol start="2">
+<li>阶段 2：流程编排搭建：可视化画布拖拽节点，配置参数：</li>
+</ol>
+<ul>
+<li>大模型：绑定 API、编写标准化 Prompt；</li>
+<li>数据工具：配置数据库 / 接口凭证、字段映射；</li>
+<li>控制逻辑：设置判断条件、失败重试次数、超时规则；</li>
+<li>人机节点：设置审核人、驳回后重跑节点。</li>
+</ul>
+<ol start="3">
+<li>阶段 3：知识库 / 数据底座配置</li>
+</ol>
+<ul>
+<li>业务类工作流必备 RAG：上传行业文档、政策、历史案例，用于事实校验，减少 AI 幻觉。</li>
+</ul>
+<ol start="4">
+<li>阶段 4：流程测试调优：单节点调试→完整链路试运行：</li>
+</ol>
+<ul>
+<li>检查数据流转是否丢失；</li>
+<li>优化 Prompt 减少输出偏差；</li>
+<li>测试异常场景（接口超时、无匹配知识库、空输入）。</li>
+</ul>
+<ol start="5">
+<li>阶段 5：上线定时 / 对外调用</li>
+</ol>
+<ul>
+<li>内部自动化：设置每日定时触发；</li>
+<li>业务集成：对外暴露 API，嵌入 ERP、CRM、官网、后台系统。</li>
+</ul>
+<ol start="6">
+<li>阶段 6：监控迭代运维：记录每次执行日志、错误统计、人工驳回率，定期优化节点逻辑、更新知识库，形成持续迭代闭环。</li>
+</ol>
+<h2 id="三、典型应用场景"><a href="#三、典型应用场景" class="headerlink" title="三、典型应用场景"></a>三、典型应用场景</h2><ol>
+<li>内容自动化（自媒体 / 企业新媒体）</li>
+</ol>
+<ul>
+<li>关键词→多选题→正文初稿→AI 配图→多版本标题→自动排版导出→推送公众号。</li>
+</ul>
+<ol start="2">
+<li>企业客服工单处理</li>
+</ol>
+<ul>
+<li>用户消息→意图分类→知识库检索自动回复→无法解答自动流转人工→对话总结归档。</li>
+</ul>
+<ol start="3">
+<li>金融信贷初审</li>
+</ol>
+<ul>
+<li>拉取客户征信 / 订单数据→检索信贷政策→LLM 综合风险打分→生成审批报告→高风险人工复核。</li>
+</ul>
+<ol start="4">
+<li>研发文档自动化</li>
+</ol>
+<ul>
+<li>接口日志→自动生成接口文档→代码注释补充→生成测试用例→推送至知识库。</li>
+</ul>
+<ol start="5">
+<li>市场数据分析</li>
+</ol>
+<ul>
+<li>每日爬虫竞品数据→清洗统计→AI 生成分析简报→定时推送企业微信群。</li>
+</ul>
+<hr>
+<h1 id="AI工作流服务商"><a href="#AI工作流服务商" class="headerlink" title="AI工作流服务商"></a><center><font color="red">AI工作流服务商</font></center></h1><h2 id="一、-国内AI工作流服务商"><a href="#一、-国内AI工作流服务商" class="headerlink" title="一、 国内AI工作流服务商"></a>一、 国内AI工作流服务商</h2><h3 id="1-开源可视化AI工作流平台（私有化部署优先）"><a href="#1-开源可视化AI工作流平台（私有化部署优先）" class="headerlink" title="1.开源可视化AI工作流平台（私有化部署优先）"></a>1.开源可视化AI工作流平台（私有化部署优先）</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>运营主体</th>
+<th>核心定位</th>
+<th>核心能力</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dify</td>
+<td>Dify官方开源社区</td>
+<td>全栈LLMOps/Agent工作流引擎</td>
+<td>可视化拖拽编排、RAG知识库、多模型兼容、API发布、私有部署、多Agent协作</td>
+<td>企业内部AI工具、私有化智能客服、知识库问答、政企数据隔离场景</td>
+</tr>
+<tr>
+<td>FastGPT</td>
+<td>开源社区</td>
+<td>知识库导向AI工作流</td>
+<td>自定义流程节点、文档向量解析、批量问答、插件扩展、私有化</td>
+<td>企业文档库、行业知识库、内部检索机器人</td>
+</tr>
+<tr>
+<td>LangFlow（国产适配分支）</td>
+<td>国内二次开源社区</td>
+<td>LangChain可视化编排</td>
+<td>链式LLM流程、Prompt调试、子工作流、本地模型对接</td>
+<td>开发者快速调试Agent链路、算法原型验证</td>
+</tr>
+</tbody></table>
+<h3 id="2-互联网大厂SaaS-AI工作流-智能体平台"><a href="#2-互联网大厂SaaS-AI工作流-智能体平台" class="headerlink" title="2 互联网大厂SaaS AI工作流/智能体平台"></a>2 互联网大厂SaaS AI工作流/智能体平台</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>所属企业</th>
+<th>核心定位</th>
+<th>生态优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coze 扣子</td>
+<td>字节跳动</td>
+<td>零代码对话Bot工作流</td>
+<td>飞书/豆包/抖音/微信多渠道发布、海量中文插件、低门槛拖拽流程</td>
+</tr>
+<tr>
+<td>腾讯元器 WorkBuddy</td>
+<td>腾讯</td>
+<td>微信生态AI工作流</td>
+<td>企业微信/公众号打通、办公审批流、微信客服自动化、文档解析Agent</td>
+</tr>
+<tr>
+<td>通义FlowLab</td>
+<td>阿里通义实验室</td>
+<td>通义模型专属工作流</td>
+<td>阿里云无缝集成、电商业务流程、多模态图文视频流水线</td>
+</tr>
+<tr>
+<td>千帆AppBuilder</td>
+<td>百度文心</td>
+<td>企业级低代码AI应用编排</td>
+<td>文心全系模型、行业模板、政企私有化、文档/合同处理工作流</td>
+</tr>
+<tr>
+<td>ModelArts Versatile</td>
+<td>华为云</td>
+<td>政企AI流程中台</td>
+<td>昇腾硬件适配、信创兼容、100+行业流程模板、数据安全管控</td>
+</tr>
+<tr>
+<td>Hi Agent</td>
+<td>火山引擎（字节云）</td>
+<td>企业AI Agent DevOps工作流</td>
+<td>私有部署、多智能体协同、数据资产沉淀、内部业务自动化</td>
+</tr>
+<tr>
+<td>科大讯飞星辰Agent</td>
+<td>科大讯飞</td>
+<td>语音+文本融合工作流</td>
+<td>会议转写、教育题库流程、政务语音审批、MCP工具生态集成</td>
+</tr>
+<tr>
+<td>天工SkyAgents</td>
+<td>昆仑万维</td>
+<td>Office全链路AI工作流</td>
+<td>PPT/表格/文档批量处理、办公自动化、多模态内容生产流水线</td>
+</tr>
+</tbody></table>
+<h3 id="3-独立商业化SaaS-企业级AI工作流厂商"><a href="#3-独立商业化SaaS-企业级AI工作流厂商" class="headerlink" title="3 独立商业化SaaS/企业级AI工作流厂商"></a>3 独立商业化SaaS/企业级AI工作流厂商</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>厂商</th>
+<th>核心特色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PMTSoul AI</td>
+<td>酷特智能</td>
+<td>企业多数字员工协同OS，全业务端到端流程自动化</td>
+</tr>
+<tr>
+<td>实在Agent</td>
+<td>实在智能</td>
+<td>RPA+AI融合工作流，钉钉/企微深度办公自动化</td>
+</tr>
+<tr>
+<td>智谱Agent平台</td>
+<td>智谱AI</td>
+<td>GLM大模型原生编排、网页自主操作、决策分析工作流</td>
+</tr>
+</tbody></table>
+<h3 id="4-国内RPA-AI融合工作流厂商（业务流程自动化）"><a href="#4-国内RPA-AI融合工作流厂商（业务流程自动化）" class="headerlink" title="4 国内RPA+AI融合工作流厂商（业务流程自动化）"></a>4 国内RPA+AI融合工作流厂商（业务流程自动化）</h3><p>金智维Ki-AgentS、艺赛旗iS-RPA、弘玑Cyclone、达观数据、影刀RPA、UiBot、容智信息、阿里云RPA、腾讯云智RPA</p>
+<h2 id="二、海外AI工作流服务商"><a href="#二、海外AI工作流服务商" class="headerlink" title="二、海外AI工作流服务商"></a>二、海外AI工作流服务商</h2><h3 id="1-通用无代码-低代码自动化（AI增强）"><a href="#1-通用无代码-低代码自动化（AI增强）" class="headerlink" title="1 通用无代码/低代码自动化（AI增强）"></a>1 通用无代码/低代码自动化（AI增强）</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>厂商</th>
+<th>定位</th>
+<th>优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>n8n</td>
+<td>n8n.io</td>
+<td>开源全链路流程编排</td>
+<td>支持私有化、千级第三方节点、LangChain原生集成、AI自定义节点</td>
+</tr>
+<tr>
+<td>Zapier</td>
+<td>Zapier Inc.</td>
+<td>小白级SaaS自动化</td>
+<td>8000+应用连接器、一键AI流程、轻量跨工具数据流转</td>
+</tr>
+<tr>
+<td>Make(原Integromat)</td>
+<td>Celonis旗下</td>
+<td>高级可视化工作流</td>
+<td>复杂分支、子流程、批量数据处理、多LLM接入</td>
+</tr>
+<tr>
+<td>Workato</td>
+<td>Workato Inc.</td>
+<td>大型企业级混合云流程</td>
+<td>强合规治理、ERP/CRM深度打通、大规模AI业务流水线</td>
+</tr>
+<tr>
+<td>Tray.io</td>
+<td>Tray</td>
+<td>云原生SaaS集成+AI编排</td>
+<td>700+连接器、营销/销售自动化AI工作流</td>
+</tr>
+</tbody></table>
+<h3 id="2-LLM-Agent专用可视化工作流平台"><a href="#2-LLM-Agent专用可视化工作流平台" class="headerlink" title="2 LLM/Agent专用可视化工作流平台"></a>2 LLM/Agent专用可视化工作流平台</h3><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>厂商</th>
+<th>核心场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LangFlow</td>
+<td>LangChain官方</td>
+<td>开发者LLM链式流程调试、Prompt工程可视化</td>
+</tr>
+<tr>
+<td>Vellum AI</td>
+<td>Vellum</td>
+<td>企业级模型编排、多版本Prompt管理、生产级AI Pipeline</td>
+</tr>
+<tr>
+<td>Gumloop</td>
+<td>Gumloop</td>
+<td>轻量化多模型聚合工作流，面向非技术团队</td>
+</tr>
+<tr>
+<td>Lindy.ai</td>
+<td>Lindy</td>
+<td>具备长期记忆自主AI Agent流程，个人办公自动化</td>
+</tr>
+</tbody></table>
+<h3 id="3-微软生态AI工作流体系"><a href="#3-微软生态AI工作流体系" class="headerlink" title="3 微软生态AI工作流体系"></a>3 微软生态AI工作流体系</h3><ol>
+<li>Microsoft Copilot Studio：低代码AI智能体、Teams/Office 365流程打通</li>
+<li>Power Automate：微软全平台自动化，原生集成Copilot大模型节点</li>
+<li>Azure AI Foundry：开发者级模型流水线、企业复杂AI工作流编排</li>
+</ol>
+<h3 id="4-企业级RPA-AI海外厂商"><a href="#4-企业级RPA-AI海外厂商" class="headerlink" title="4 企业级RPA+AI海外厂商"></a>4 企业级RPA+AI海外厂商</h3><p>UiPath Automation Cloud、Pega Platform、SnapLogic、Agentforce(Salesforce原生AI流程)</p>
+<h3 id="5-开源AI底层编排工具（开发者自用）"><a href="#5-开源AI底层编排工具（开发者自用）" class="headerlink" title="5 开源AI底层编排工具（开发者自用）"></a>5 开源AI底层编排工具（开发者自用）</h3><p>Hugging Face Transformers Workflow、Airflow（可自定义AI任务节点）</p>
+<h2 id="三-平台分类说明"><a href="#三-平台分类说明" class="headerlink" title="三 平台分类说明"></a>三 平台分类说明</h2><ol>
+<li><strong>开源私有化类</strong>：Dify、FastGPT、n8n、LangFlow<ul>
+<li>适合：数据敏感、政企、自有服务器部署、深度二次开发</li>
+</ul>
+</li>
+<li><strong>大厂SaaS对话类</strong>：Coze、腾讯元器、千帆AppBuilder<ul>
+<li>适合：快速搭建聊天机器人、对内对外客服、社交渠道分发</li>
+</ul>
+</li>
+<li><strong>通用自动化类</strong>：Zapier、Make、实在Agent、UiBot<ul>
+<li>适合：跨软件数据同步、办公/营销重复性流程、RPA+AI落地</li>
+</ul>
+</li>
+<li><strong>企业重型中台类</strong>：ModelArts、Workato、Azure AI Foundry、PMTSoul AI<ul>
+<li>适合：集团多业务线、多智能体协同、强合规审计、大规模生产流水线</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"><i class="fa fa-tag"></i> AI</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 工作流</a>
+              <a href="/tags/agent/" rel="tag"><i class="fa fa-tag"></i> agent</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2026/07/06/Book-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E7%94%B2%E8%91%97%E4%BD%9C%E6%9D%83/" rel="next" title="计算机软件著作权">
+                  <i class="fa fa-chevron-left"></i> 计算机软件著作权
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.</span> <span class="nav-text">AI工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%8C%E6%95%B4%E8%90%BD%E5%9C%B0%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BC%886%E5%A4%A7%E9%98%B6%E6%AE%B5%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">二、完整落地全流程（6大阶段）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">三、典型应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%95%86"><span class="nav-number">2.</span> <span class="nav-text">AI工作流服务商</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E5%9B%BD%E5%86%85AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%95%86"><span class="nav-number">2.1.</span> <span class="nav-text">一、 国内AI工作流服务商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%80%E6%BA%90%E5%8F%AF%E8%A7%86%E5%8C%96AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%EF%BC%88%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E4%BC%98%E5%85%88%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.开源可视化AI工作流平台（私有化部署优先）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%92%E8%81%94%E7%BD%91%E5%A4%A7%E5%8E%82SaaS-AI%E5%B7%A5%E4%BD%9C%E6%B5%81-%E6%99%BA%E8%83%BD%E4%BD%93%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">2 互联网大厂SaaS AI工作流&#x2F;智能体平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%8B%AC%E7%AB%8B%E5%95%86%E4%B8%9A%E5%8C%96SaaS-%E4%BC%81%E4%B8%9A%E7%BA%A7AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%8E%82%E5%95%86"><span class="nav-number">2.1.3.</span> <span class="nav-text">3 独立商业化SaaS&#x2F;企业级AI工作流厂商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%9B%BD%E5%86%85RPA-AI%E8%9E%8D%E5%90%88%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%8E%82%E5%95%86%EF%BC%88%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%89"><span class="nav-number">2.1.4.</span> <span class="nav-text">4 国内RPA+AI融合工作流厂商（业务流程自动化）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%B7%E5%A4%96AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%95%86"><span class="nav-number">2.2.</span> <span class="nav-text">二、海外AI工作流服务商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E7%94%A8%E6%97%A0%E4%BB%A3%E7%A0%81-%E4%BD%8E%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%88AI%E5%A2%9E%E5%BC%BA%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">1 通用无代码&#x2F;低代码自动化（AI增强）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LLM-Agent%E4%B8%93%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">2 LLM&#x2F;Agent专用可视化工作流平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BE%AE%E8%BD%AF%E7%94%9F%E6%80%81AI%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BD%93%E7%B3%BB"><span class="nav-number">2.2.3.</span> <span class="nav-text">3 微软生态AI工作流体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%BC%81%E4%B8%9A%E7%BA%A7RPA-AI%E6%B5%B7%E5%A4%96%E5%8E%82%E5%95%86"><span class="nav-number">2.2.4.</span> <span class="nav-text">4 企业级RPA+AI海外厂商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%BC%80%E6%BA%90AI%E5%BA%95%E5%B1%82%E7%BC%96%E6%8E%92%E5%B7%A5%E5%85%B7%EF%BC%88%E5%BC%80%E5%8F%91%E8%80%85%E8%87%AA%E7%94%A8%EF%BC%89"><span class="nav-number">2.2.5.</span> <span class="nav-text">5 开源AI底层编排工具（开发者自用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%B9%B3%E5%8F%B0%E5%88%86%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">三 平台分类说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

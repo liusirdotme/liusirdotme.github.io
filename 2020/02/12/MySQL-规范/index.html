@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="索引是数据库中专门用于帮助用户快速查询数据的一种数据结构。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL规范">
+<meta property="og:url" content="https://liusir.net/2020/02/12/MySQL-%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="索引是数据库中专门用于帮助用户快速查询数据的一种数据结构。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-12T15:53:02.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.225Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="规范">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2020/02/12/MySQL-%E8%A7%84%E8%8C%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>MySQL规范 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2020/02/12/MySQL-%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL规范
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-12 23:53:02" itemprop="dateCreated datePublished" datetime="2020-02-12T23:53:02+08:00">2020-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>5.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>索引是数据库中专门用于帮助用户快速查询数据的一种数据结构。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、建表规约"><a href="#一、建表规约" class="headerlink" title="一、建表规约"></a>一、建表规约</h2><ol>
+<li><p>【强制】表达是与否概念的字段：必须使用<code>is_xxx</code>的方式命名，数据类型是<code>unsigned tinyint</code>(1表示是，0表示否)，此规则同样适用于<code>odps</code>建表。</p>
+<ul>
+<li>说明：任何字段如果为非负数，必须是 unsigned。</li>
+</ul>
+</li>
+<li><p>【强制】表名：表名必须使用小写字母或数字；禁止出现数字开头，禁止两个下划线中间只出现数字。</p>
+<ul>
+<li>数据库表名的修改代价很大，因为无法进行预发布，所以表名称需要慎重考虑。<ul>
+<li>正例：getter_admin，task_config，level3_name</li>
+<li>反例：GetterAdmin，taskConfig，level_3_name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>【强制】表名不使用复数名词</p>
+<ul>
+<li>说明：表名应该仅仅表示表里面的实体内容，不应该表示实体数量，对应于DO类名也是单数形式，符合表达习惯。</li>
+</ul>
+</li>
+<li><p>【强制】禁用保留字：如desc、range、match、delayed等，请参考<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/keywords.html">MySQL官方保留字</a>。</p>
+</li>
+<li><p>【强制】唯一索引名为<code>uk_字段名</code>，普通索引名则为<code>idx_字段名</code>。</p>
+<ul>
+<li>说明：uk_即unique key，idx_即index的简称。</li>
+</ul>
+</li>
+<li><p>【强制】小数类型为decimal，禁止使用float和double。</p>
+<ul>
+<li>说明：float和double在存储的时候，存在精度损失的问题，很可能在值的比较时，得到不正确的结果。</li>
+<li>如果存储的数据范围超过decimal的范围，建议将数据拆成整数和小数分开存储。</li>
+</ul>
+</li>
+<li><p>【强制】如果存储的字符串长度几乎相等，使用char定长字符串类型。</p>
+</li>
+<li><p>【强制】varchar是可变长字符串，不预先分配存储空间，长度不要超过5000。</p>
+<ul>
+<li>如果存储长度大于5000，定义字段类型为text，并独立出来一张表，用主键来对应，避免影响其它字段索引效率。</li>
+</ul>
+</li>
+<li><p>【强制】表必备三字段：id, gmt_create, gmt_modified。</p>
+<ul>
+<li>说明：其中id必为主键，类型为<code>unsigned bigint</code>，单表时自增步长为 1。</li>
+<li>gmt_create、gmt_modified的类型均为date_time类型。</li>
+</ul>
+</li>
+<li><p>【推荐】表的命名最好是加上<code>业务名称_表的作用</code>。</p>
+<ul>
+<li>正例：tiger_task/tiger_reader/mpp_config</li>
+</ul>
+</li>
+<li><p>【推荐】库名与应用名称尽量一致。</p>
+</li>
+<li><p>【推荐】如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释。</p>
+</li>
+<li><p>【推荐】字段允许适当冗余，以提高性能，但是必须考虑数据同步的情况。冗余字段应遵循：1)不是频繁修改的字段。2)不是varchar超长字段，更不能是text字段。</p>
+<ul>
+<li>如商品类目名称使用频率高，字段长度短，名称基本一成不变，可在相关联的表中冗余存储类目名称，避免关联查询。</li>
+</ul>
+</li>
+<li><p>【推荐】单表行数超过<code>500万行</code>或者单表容量超过<code>2GB</code>才推荐进行分库分表。</p>
+</li>
+</ol>
+<ul>
+<li>说明：如果预计三年后的数据量根本达不到这个级别，请不要在创建表时就分库分表。</li>
+</ul>
+<ol start="15">
+<li>【参考】合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。<ul>
+<li>如人的年龄用 unsigned tinyint(表示范围 0-255，人的寿命不会超过 255 岁)</li>
+<li>海龟就必须是 smallint，但如果是太阳的年龄，就必须是 int；</li>
+<li>如果是所有恒星的年龄都加起来，那么就必须使用 bigint。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、索引规约"><a href="#二、索引规约" class="headerlink" title="二、索引规约"></a>二、索引规约</h2><ol>
+<li><p>【强制】业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引。</p>
+<ul>
+<li>不要以为唯一索引影响了insert速度，这个速度损耗可以忽略，但提高查找速度是明显的</li>
+<li>另外即使在应用层做了非常完善的校验和控制，只要没有唯一索引，根据墨菲定律，必然有脏数据产生</li>
+</ul>
+</li>
+<li><p>【强制】超过三个表禁止join。</p>
+<ul>
+<li>需要join的字段，数据类型保持绝对一致</li>
+<li>多表关联查询时，保证被关联的字段需要有索引。</li>
+<li>即使双表join也要注意表索引、SQL 性能。</li>
+</ul>
+</li>
+<li><p>【强制】在varchar字段上建立索引时必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度。</p>
+<ul>
+<li>索引的长度与区分度是一对矛盾体，一般对字符串类型数据，长度为20的索引区分度会高达 90% 以上</li>
+<li>可以使用count(distinct left (列名，索引长度))/count (*)的区分度来确定。</li>
+</ul>
+</li>
+<li><p>【强制】页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决。</p>
+<ul>
+<li>索引文件具有B-Tree的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引。</li>
+</ul>
+</li>
+<li><p>【推荐】如果有order by的场景，请注意利用索引的有序性。</p>
+<ul>
+<li>order by最后的字段是组合索引的一部分，并且放在索引组合顺序的最后，避免出现file_sort的情况，影响查询性能。</li>
+<li>正例：<code>where a=? and b=? order by c</code>，索引：a_b_c </li>
+<li>反例：索引中有范围查找，那么索引有序性无法利用，如：<code>WHERE a&gt;10 ORDER BY b</code>，索引 a_b 无法排序。</li>
+</ul>
+</li>
+<li><p>【推荐】利用覆盖索引来进行查询操作，来避免回表操作。</p>
+<ul>
+<li>如果一本书需要知道第11章是什么标题，会翻开第11章对应的那一页吗？目录浏览一下就好，这个目录就是起到覆盖索引的作用。</li>
+<li>索引的种类：主键索引、唯一索引、普通索引，而覆盖索引是一种查询的一种效果，用explain的结果，extra列会出现：using index。</li>
+</ul>
+</li>
+<li><p>【推荐】利用延迟关联或者子查询优化超多分页场景。</p>
+<ul>
+<li>MySQL并不是跳过offset行，而是取offset+N 行，然后返回放弃前offset行，返回 N 行，那当offset特别大的时候，效率就非常的低下，要么控制返回的总页数，要么对超过特定阈值的页数进行SQL改写。</li>
+<li>先快速定位需要获取的id段，然后再关联：​​`SELECT a.* FROM 表 1 a, (select id from 表 1 where 条件 LIMIT 100000,20) b where a.id=b.id​​</li>
+</ul>
+</li>
+<li><p>【推荐】SQL性能优化的目标：至少要达到range级别，要求是ref级别，如果可以是consts最好。</p>
+<ul>
+<li>consts单表中最多只有一个匹配行(主键或者唯一索引)，在优化阶段即可读取到数据。</li>
+<li>ref指的是使用普通的索引(normal index)。</li>
+<li>range对索引进行范围检索。</li>
+</ul>
+</li>
+<li><p>【推荐】建组合索引的时候，区分度最高的在最左边。</p>
+<ul>
+<li>如果<code>where a=? and b=?</code>，a列的几乎接近于唯一值，那么只需要单建 idx_a 索引即可。</li>
+<li>存在非等号和等号混合判断条件时，在建索引时请把等号条件的列前置。如：where a&gt;?and b=? 那么即使a的区分度更高，也必须把b放在索引的最前列。</li>
+</ul>
+</li>
+<li><p>【参考】创建索引时避免有如下极端误解：</p>
+<ul>
+<li>误认为一个查询就需要建一个索引。</li>
+<li>误认为索引会消耗空间、严重拖慢更新和新增速度。</li>
+<li>误认为唯一索引一律需要在应用层通过 “先查后插” 方式解决。</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、SQL规约"><a href="#三、SQL规约" class="headerlink" title="三、SQL规约"></a>三、SQL规约</h2><ol>
+<li><p>【强制】不要使用count(列名)或 count(常量)来替代count()，count()就是SQL92 定义的标准统计行数的语法，跟数据库无关，跟NULL和非NULL无关。</p>
+<ul>
+<li>count(*)会统计值为NULL的行，而count(列名)不会统计此列为NULL值的行。</li>
+</ul>
+</li>
+<li><p>【强制】count(distinct col)计算该列除NULL之外的不重复数量。</p>
+<ul>
+<li>count(distinctcol1, col2)如果其中一列全为 NULL，那么即使另一列有不同的值也将返回为 0。</li>
+</ul>
+</li>
+<li><p>【强制】当某一列的值全是NULL时，count (col)的返回结果为0，但sum(col)的返回结果为NULL，因此使用sum()时需注意NPE问题。</p>
+<ul>
+<li>可以使用如下方式来避免sum的NPE问题：​​SELECT IF (ISNULL (SUM (g)),0,SUM (g)) FROM table;​​</li>
+</ul>
+</li>
+<li><p>【强制】使用ISNULL()来判断是否为NULL值。</p>
+<ul>
+<li>NULL 与任何值的直接比较都为 NULL。<ul>
+<li>NULL&lt;&gt;NULL的返回结果是NULL，而不是 false。</li>
+<li>NULL=NULL的返回结果是 NULL，而不是 true。</li>
+<li>NULL&lt;&gt;1的返回结果是NULL，而不是 true。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>【强制】在代码中写分页查询逻辑时，若count为0应直接返回，避免执行后面的分页语句。</p>
+</li>
+<li><p>【强制】不得使用外键与级联更新，一切外键概念必须在应用层解决。</p>
+<ul>
+<li>学生表中的student_id是主键，那么成绩表中的student_id则为外键。</li>
+<li>如果更新学生表中的student_id，同时触发成绩表中的student_id更新，则为级联更新。</li>
+<li>外键与级联更新适用于单机低并发，不适合分布式、高并发集群</li>
+<li>级联更新是强阻塞，存在数据库更新风暴的风险；外键影响数据库的插入速度。</li>
+</ul>
+</li>
+<li><p>【强制】禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。</p>
+</li>
+<li><p>【强制】数据订正时，删除和修改记录时，要先select，避免出现误删除，确认无误才能执行更新语句。</p>
+</li>
+<li><p>【推荐】in操作能避免则避免，若实在避免不了需要仔细评估in后边的集合元素数量，控制在 1000 个之内。</p>
+</li>
+<li><p>【参考】如果有全球化需要，所有的字符存储与表示均以utf-8编码</p>
+<ul>
+<li>​​SELECT LENGTH (“轻松工作”)；​​​返回为 12</li>
+<li>SELECT CHARACTER_LENGTH (“轻松工作”)；​返回为 4</li>
+<li>如果要使用表情，那么使用 utfmb4 来进行存储，注意它与 utf-8 编码的区别。</li>
+</ul>
+</li>
+<li><p>【参考】TRUNCATE TABLE比DELETE速度快，且使用的系统和事务日志资源少，但TRUNCATE无事务且不触发trigger，有可能造成事故，故不建议在开发代码中使用此语句。</p>
+<ul>
+<li>TRUNCATE TABLE在功能上与不带WHERE子句的DELETE语句相同。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、ORM-规约"><a href="#四、ORM-规约" class="headerlink" title="四、ORM 规约"></a>四、ORM 规约</h2><ol>
+<li><p>【强制】在表查询中一律不要使用<code>*</code>作为查询的字段列表，需要哪些字段必须明确写明。</p>
+<ul>
+<li>增加查询分析器解析成本。</li>
+<li>增减字段容易与resultMap配置不一致。</li>
+</ul>
+</li>
+<li><p>【强制】POJO类的boolean属性不能加is，而数据库字段必须加is_，要求在resultMap中进行字段与属性之间的映射。</p>
+<ul>
+<li>参见定义POJO类以及数据库字段定义规定，在sql.xml增加映射是必须的。</li>
+</ul>
+</li>
+<li><p>【强制】不要用resultClass当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义；反过来，每一个表也必然有一个与之对应。</p>
+<ul>
+<li>配置映射关系，使字段与DO类解耦，方便维护。</li>
+</ul>
+</li>
+<li><p>【强制】xml配置中参数注意使用：#{}，#param#， 不要使用 ${} 此种方式容易出现SQL注入。</p>
+</li>
+<li><p>【强制】iBATIS自带的queryForList (String statementName,int start,int size)不推荐使用。</p>
+<ul>
+<li><p>其实现方式是在数据库取到statementName对应的SQL语句的所有记录，再通过subList取start,size的子集合。</p>
+</li>
+<li><p>在 sqlmap.xml 中引入 #start#, #size#</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</span><br><span class="line">map.put(“start”, start);</span><br><span class="line">map.put(“size”, size);</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="6">
+<li><p>【强制】不允许直接拿HashMap与Hashtable作为查询结果集的输出。</p>
+</li>
+<li><p>【强制】更新数据表记录时必须同时更新记录对应的gmt_modified字段值为当前时间。</p>
+</li>
+<li><p>【推荐】不要写一个大而全的数据更新接口,不管是不是自己的目标更新字段，都进行<code>​​update table set c1=value1,c2=value2,c3=value3;</code>​​这是不对的。</p>
+<ul>
+<li>执行 SQL 时，尽量不要更新无改动的字段，一是易出错；二是效率低；三是binlog增加存储。</li>
+</ul>
+</li>
+<li><p>【参考】@Transactional事务不要滥用。事务会影响数据库的QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。</p>
+</li>
+<li><p>【参考】中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；表示不为空且不为 null 时执行；表示不为 null 值时执行。</p>
+</li>
+</ol>
+<h2 id="五、其他"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他</h2><ol>
+<li>所有表必须使用Innodb存储引擎</li>
+<li>每个Innodb表必须有个主键</li>
+<li>数据库和表的字符集统一使用UTF8</li>
+<li><code>单表索引数量控制在5个以内</code></li>
+<li>不允许存在重复索引和冗余索引</li>
+<li>防止字段隐式转换导致的索引失效</li>
+<li>SQL优化目标：至少达到range级别</li>
+<li>利用覆盖索引避免回表操作</li>
+<li>禁止超过三个表的join</li>
+<li>在varchar上建立索引，指定索引长度</li>
+<li>索引字段值不允许设置为null，必须设置默认值</li>
+<li>单表数据量控制在1000w以内</li>
+<li>字段列数量建议在30以内</li>
+<li>不建议使用MySql分区表</li>
+<li>单表行数超过500W或者单表容量超过2G建议分区分表</li>
+<li>避免在where子句中使用or来连接条件</li>
+<li>尽量使用数值替代字符串类型</li>
+<li>避免使用ENUM类型</li>
+<li>去重distinct过滤字段要少</li>
+<li>where中使用默认值代替null</li>
+<li>避免在where子句中使用!=或&lt;&gt;操作符</li>
+<li>inner join 、left join、right join，优先使用inner join</li>
+<li>提高group by语句的效率</li>
+<li>批量插入性能提升</li>
+<li>避免产生大事务操作</li>
+</ol>
+<h2 id="六、参考"><a href="#六、参考" class="headerlink" title="六、参考"></a>六、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://www.rstk.cn/news/24668.html?action=onClick">参考一</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+              <a href="/tags/%E8%A7%84%E8%8C%83/" rel="tag"><i class="fa fa-tag"></i> 规范</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/23/Redis-%E5%90%84%E7%A7%8D%E5%AE%9E%E6%88%98/" rel="next" title="Redis各种实战">
+                  <i class="fa fa-chevron-left"></i> Redis各种实战
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/02/16/K8S-K8S%E5%85%A5%E9%97%A8/" rel="prev" title="K8S入门">
+                  K8S入门 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BB%BA%E8%A1%A8%E8%A7%84%E7%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">一、建表规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B4%A2%E5%BC%95%E8%A7%84%E7%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">二、索引规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81SQL%E8%A7%84%E7%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">三、SQL规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81ORM-%E8%A7%84%E7%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">四、ORM 规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">5.</span> <span class="nav-text">五、其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">六、参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

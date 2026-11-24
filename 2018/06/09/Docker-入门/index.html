@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="王国维在《人间词话》中说：“古之成大事业、大学问者必经过三种之境界。第一境界：昨夜西风凋碧树，独上高楼，望尽天涯路。第二境界：衣带渐宽终不悔，为伊消得人憔悴。第三境界：众里寻他千百度过，蓦然回首，那人却在灯火阑珊处。”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker入门">
+<meta property="og:url" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="王国维在《人间词话》中说：“古之成大事业、大学问者必经过三种之境界。第一境界：昨夜西风凋碧树，独上高楼，望尽天涯路。第二境界：衣带渐宽终不悔，为伊消得人憔悴。第三境界：众里寻他千百度过，蓦然回首，那人却在灯火阑珊处。”">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
+<meta property="article:published_time" content="2018-06-09T09:32:53.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.077Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="镜像">
+<meta property="article:tag" content="容器">
+<meta property="article:tag" content="仓库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
+  <link rel="canonical" href="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>docker入门 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker入门
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-09 17:32:53" itemprop="dateCreated datePublished" datetime="2018-06-09T17:32:53+08:00">2018-06-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>王国维在《人间词话》中说：“古之成大事业、大学问者必经过三种之境界。第一境界：昨夜西风凋碧树，独上高楼，望尽天涯路。第二境界：衣带渐宽终不悔，为伊消得人憔悴。第三境界：众里寻他千百度过，蓦然回首，那人却在灯火阑珊处。”</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a><center><font color="red">Docker安装</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
+<li>方式<ul>
+<li>使用桌面版</li>
+<li>使用apt源</li>
+<li>手动安装</li>
+<li>使用官方脚本</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></li>
+</ol>
+<hr>
+<h1 id="Docker基础"><a href="#Docker基础" class="headerlink" title="Docker基础"></a><center><font color="red">Docker基础</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器或Windows机器上，也可以实现虚拟化，容器是完全使用沙箱机制，相互之间不会有任何接口。它是一种Linux容器技术，容器有效的将由单个操作系统挂管理的资源划分到孤立的组中，以便更好的在组之间平衡有冲突的资源使用需求，可简单理解为一种沙盒。每个容器内运行一个应用，不同的容器之间相互隔离，容器之间也可以建立通信机制。容器的创建和停止都十分快速，资源需求远远低于虚拟机。</p>
+<ol>
+<li><p>一个完整的Docker有以下几个部分组成：</p>
+<ul>
+<li>Docker Daemon守护进程</li>
+<li>Docker Client客户端</li>
+<li>Docker Image镜像</li>
+<li>Docker Container容器</li>
+</ul>
+<p><img src="docker.png" alt="docker"></p>
+</li>
+<li><p>能干什么</p>
+<ul>
+<li>快速部署</li>
+<li>解决虚拟机资源消耗问题</li>
+<li>提供一次性的环境</li>
+<li>提供弹性的云服务</li>
+<li>组建微服务架构</li>
+</ul>
+</li>
+<li><p>镜像</p>
+<ul>
+<li>docker的镜像概念类似虚拟机的镜像，可以将他理解为一个面向Docker引擎的只读模板，包含了文件系统，包括运行容器所需的数据，可以用来创建新的容器。<ul>
+<li>如命令：<code>docker create image_id</code>，它的意思是为指定的镜像添加一个可读写层，构成一个新的容器</li>
+</ul>
+</li>
+<li>docker镜像实际上是由一层一层的系统文件组成，这种层级的文件系统被称为UnionFS(Union file system，统一文件系统)。</li>
+<li>docker镜像可以基于dockerfile构建，dockerfile是一个描述文件，里面包含了若干条密令，每条命令都会对基础文件系统创建新的层次结构。</li>
+<li>docker镜像是创建docker容器的基础，通过版本管理和增量的文件系统，docker提供了一套十分简单的机制来创建和更新现有的镜像，用户甚至可以从其他人那里下载一个已经做好的镜像直接使用并通过命令直接使用。总之，应用运行是需要环境的，而镜像就是来提供这种环境。</li>
+<li>镜像是只读的，可以理解为静态文件。</li>
+</ul>
+</li>
+<li><p>容器</p>
+<ul>
+<li>docker容器类似于一个轻量级的沙箱子，docker利用容器来运行和隔离应用。</li>
+<li>容器从镜像启动的时候，docker会在镜像的最上一层创建一个可写层，镜像本身是只读的，保持不变。</li>
+</ul>
+</li>
+<li><p>仓库</p>
+<ul>
+<li>docker仓库(repository)类似于代码仓库，是docker集中存放镜像文件的场所。</li>
+<li>docker仓库是用来包含镜像的位置，docker提供了一个注册服务器(register)来保存多个仓库，每个仓库又可以包含多个具备不同tag的镜像。</li>
+<li>docker运作中使用的默认仓库是docker hub公共仓库。</li>
+<li>仓库支持的操作类似git，当用户创建了自己的镜像之后就可以使用push命令将它上传到共有或者私有的仓库。这样下次再另外一台机器上使用这个镜像的时候只需要从仓库里面pull下来就可以了。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h2><blockquote>
+<p>docker version: 19.03.1</p>
+</blockquote>
+<ol>
+<li><p>镜像</p>
+<ul>
+<li>查找公网镜像 <code>docker search [OPTIONS] image_name</code></li>
+<li>拉取公网镜像 <code>docker pull image_name[:tag_name]</code></li>
+<li>查看已有镜像 <code>docker images</code></li>
+<li>导出已有镜像 <code>docker save -o image_name.tar image_name</code></li>
+<li>导入本地镜像 <code>docker load --input image_name.tar</code> 或 <code>docker load &lt; image_name.tar</code></li>
+<li>删除已有镜像 <code>docker rmi image_name</code></li>
+<li>查看镜像信息 <code>docker inspect image_name/image_id</code></li>
+</ul>
+</li>
+<li><p>容器</p>
+<ul>
+<li><p>创建容器 <code>docker create -it image_name:tag/image_id</code></p>
+<ul>
+<li><code>-i</code>:以交互模式运行容器，通常与 -t 同时使用</li>
+<li><code>-t</code>:为容器重新分配一个伪输入终端，通常与 -i 同时使用</li>
+</ul>
+</li>
+<li><p>查看容器 <code>docker ps [OPTIONS]</code></p>
+<ul>
+<li><code>-a</code>:显示所有的容器，包括未运行的</li>
+<li><code>-f</code>:根据条件过滤显示的内容</li>
+<li><code>-l</code>:显示最近创建的容器</li>
+<li><code>-n</code>:列出最近创建的n个容器</li>
+<li><code>-q</code>:静默模式，只显示容器编号</li>
+<li><code>-s</code>:显示总的文件大小</li>
+</ul>
+</li>
+<li><p>启动容器 <code>docker start -i -a container_id</code></p>
+<ul>
+<li><code>-a</code>:Attach STDOUT/STDERR and forward signals</li>
+<li><code>-i</code>:以交互模式运行容器</li>
+</ul>
+</li>
+<li><p>进入容器 <code>docker exec -it container /bin/sh</code></p>
+</li>
+<li><p>创建并启动容器 <code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code>，相当于<code>docker pull + docker create + docker start</code></p>
+<ul>
+<li><code>-a stdin</code>: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项</li>
+<li><code>-d</code>: 后台运行容器，并返回容器ID</li>
+<li><code>-i</code>: 以交互模式运行容器，通常与 -t 同时使用</li>
+<li><code>-P</code>: 随机端口映射，容器内部端口随机映射到主机的高端口</li>
+<li><code>-p</code>: 指定端口映射，格式为：主机(宿主)端口:容器端口</li>
+<li><code>-t</code>: 为容器重新分配一个伪输入终端，通常与 -i 同时使用</li>
+<li><code>-m</code>:设置容器使用内存最大值</li>
+<li><code>--name="nginx-lb"</code>: 为容器指定一个名称</li>
+<li><code>--dns 8.8.8.8</code>: 指定容器使用的DNS服务器，默认和宿主一致</li>
+<li><code>--dns-search example.com</code>: 指定容器DNS搜索域名，默认和宿主一致</li>
+<li><code>-h "mars"</code>: 指定容器的hostname</li>
+<li><code>-e username="ritchie"</code>: 设置环境变量</li>
+<li><code>--env-file=[]</code>: 从指定文件读入环境变量</li>
+<li><code>--cpuset="0-2" or --cpuset="0,1,2"</code>: 绑定容器到指定CPU运行</li>
+<li><code>--net="bridge"</code>: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型</li>
+<li><code>--link=[]</code>: 添加链接到另一个容器</li>
+<li><code>--expose=[]</code>: 开放一个端口或一组端口</li>
+<li><code>--volume , -v</code>:    绑定一个卷</li>
+</ul>
+</li>
+<li><p>移除容器 <code>docker rm container_id</code></p>
+</li>
+<li><p>终止容器 <code>docker kill container_id</code></p>
+</li>
+<li><p>关闭/重启容器 <code>docker stop/restart container</code></p>
+</li>
+<li><p>查看容器信息 <code>docker inspect container</code></p>
+</li>
+<li><p>查看容器日志 <code>docker logs container</code></p>
+</li>
+<li><p>查看容器资源状况 <code>docker stats container</code></p>
+</li>
+<li><p>显示容器正在运行进程 <code>docker top container</code></p>
+</li>
+<li><p>退出后容器依然保持启动状态 <code>control + p &amp;&amp; control + q</code></p>
+</li>
+</ul>
+</li>
+<li><p>仓库</p>
+<ul>
+<li>登录仓库<code>docker login</code></li>
+<li>拉取镜像<code>docker pull</code></li>
+<li>推送镜像<code>docker push</code></li>
+<li>查找镜像/容器<code>docker search</code></li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>查看docker版本 <code>docker --version</code></li>
+<li>查看docker信息 <code>docker info</code></li>
+<li>docker所有命令 <code>docker --help</code></li>
+</ul>
+</li>
+<li><p>镜像(Image)和容器(Container)的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的命名空间。因此容器可以拥有自己的root文件系统、自己的网络配置、自己的进程空间，甚至自己的用户ID空间。容器内的进程是运行在一个隔离的环境里，使用起来就好像是在一个独立于宿主的系统下操作一样，这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
+<ul>
+<li>镜像<ul>
+<li>查看镜像仓库<code>docker search ubuntu</code></li>
+<li>拉取仓库镜像<code>docker pull ubuntu</code></li>
+<li>查看本地镜像<code>docker images</code></li>
+<li>删除本地镜像<code>docker rmi ubuntu</code></li>
+<li>加载镜像<code>docker load -i image_path</code></li>
+</ul>
+</li>
+<li>容器<ul>
+<li>创建并启动容器<code>docker run -it --name ubuntu  ubuntu /bin/bash</code></li>
+<li>查看运行的容器<code>docker ps</code><ul>
+<li>查看所有的容器<code>docker ps -a</code></li>
+</ul>
+</li>
+<li>(在容器中)退出并保持运行状态<code>control + p &amp;&amp; control + q</code>，同<code>exit</code><ul>
+<li>(在容器中)退出并退出运行状态<code>exit</code>(exec进入的容器是个特例)</li>
+</ul>
+</li>
+<li>停止运行的容器<code>docker stop ubuntu</code></li>
+<li>启动并运行容器<code>docker start -ia ubuntu</code></li>
+<li>进入容器<code>docker attach ubuntu</code><ul>
+<li>退出并终止运行<code>exit</code></li>
+</ul>
+</li>
+<li>开启容器<code>docker start ubuntu</code></li>
+<li>进入容器<code>docker exec -it ubuntu /bin/bash</code><ul>
+<li>退出并保持运行<code>exit</code>，同<code>control + p &amp;&amp; control + q</code></li>
+</ul>
+</li>
+<li>移除容器<code>docker rm ubuntu</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>进入docker的四种方式</p>
+<ul>
+<li>使用docker attach</li>
+<li>使用ssh</li>
+<li>使用nssenter</li>
+<li>使用docker exec  </li>
+</ul>
+</li>
+<li><p>docker info | grep Root</p>
+<ul>
+<li>cd /var/lib/docker/containers</li>
+<li>config.v2.json</li>
+</ul>
+</li>
+<li><p>docker stats</p>
+<ul>
+<li>docker images</li>
+<li>docker run </li>
+<li>docker-compose</li>
+<li>docker ps -a –no-trunc</li>
+<li>docker stop xxxdock_php-fpm_1</li>
+</ul>
+</li>
+<li><p>查看镜像仓库地址：cat /etc/docker/daemon.json</p>
+</li>
+</ol>
+<h2 id="三、实战"><a href="#三、实战" class="headerlink" title="三、实战"></a>三、实战</h2><ol>
+<li>查找redis：docker search redis<ul>
+<li>报错：Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://index.docker.io/v1/search?q=redis&amp;n=25&quot;">https://index.docker.io/v1/search?q=redis&amp;n=25"</a>: dial tcp 199.59.149.201:443: i/o timeout</li>
+<li>解决：<strong><font color="red">哈哈，以下1/2两种方式都没解决，3没有试</font></strong><ul>
+<li>方式1：直接修改/etc/resolv.conf，增加一行dns地址：nameserver 8.8.4.4<ul>
+<li>Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://index.docker.io/v1/search?q=redis&amp;n=25&quot;">https://index.docker.io/v1/search?q=redis&amp;n=25"</a>: dial tcp 108.160.162.98:443: i/o timeout</li>
+</ul>
+</li>
+<li>方式2：dig @114.114.114.114 index.docker.io，把返回添加至hosts文件：<ul>
+<li>Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://index.docker.io/v1/search?q=redis&amp;n=25&quot;">https://index.docker.io/v1/search?q=redis&amp;n=25"</a>: read tcp 172.28.29.175:52534-&gt;34.195.83.243:443: read: connection reset by peer</li>
+</ul>
+</li>
+<li>方式3：修改镜像源，vim /etc/docker/daemon.json</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">"registry-mirrors":</span><br><span class="line">[</span><br><span class="line">"https://docker.registry.cyou",</span><br><span class="line">"https://docker-cf.registry.cyou",</span><br><span class="line">"https://dockercf.jsdelivr.fyi",</span><br><span class="line">"https://docker.jsdelivr.fyi",</span><br><span class="line">"https://dockertest.jsdelivr.fyi",</span><br><span class="line">"https://mirror.aliyuncs.com",</span><br><span class="line">"https://dockerproxy.com",</span><br><span class="line">"https://mirror.baidubce.com",</span><br><span class="line">"https://docker.m.daocloud.io",</span><br><span class="line">"https://docker.nju.edu.cn",</span><br><span class="line">"https://docker.mirrors.sjtug.sjtu.edu.cn",</span><br><span class="line">"https://docker.mirrors.ustc.edu.cn",</span><br><span class="line">"https://mirror.iscas.ac.cn",</span><br><span class="line">"https://docker.rainbond.cc"</span><br><span class="line">]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li><p>启动redis：docker run –name some-redis -d redis</p>
+</li>
+<li><p>进入redis</p>
+<ul>
+<li>方式1：docker exec -it some-redis redis-cli</li>
+<li>方式2：docker exec -it some_redis /bin/sh</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Docker">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rdammkoehler/DockerKata/blob/master/README.md">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/aylei/kubectl-debug/blob/master/docs/zh-cn.md">Kubectl debug</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zeromake/docker-debug/blob/master/README-zh-Hans.md">Docker-debug</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016362346">Docker系列</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/leilei1366615/article/details/106267225">命令大全</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/reference/cli/docker/">官方命令文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/">官网镜像仓库</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+              <a href="/tags/%E9%95%9C%E5%83%8F/" rel="tag"><i class="fa fa-tag"></i> 镜像</a>
+              <a href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
+              <a href="/tags/%E4%BB%93%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 仓库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/05/26/Linux-%E6%83%8A%E7%BE%A4%E6%95%88%E5%BA%94/" rel="next" title="Linux惊群效应">
+                  <i class="fa fa-chevron-left"></i> Linux惊群效应
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2018/07/12/Book-%E5%9B%9B%E5%AD%97%E8%AF%80/" rel="prev" title="四字诀">
+                  四字诀 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Docker基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">二、常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.3.</span> <span class="nav-text">三、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

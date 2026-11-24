@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="言无常信，行无常贞，惟利所在，无所不倾，若是则可谓小人矣。——荀子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游玩杂谈">
+<meta property="og:url" content="https://liusir.net/2019/11/09/Hobby-%E6%B8%B8%E7%8E%A9%E6%9D%82%E8%B0%88/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="言无常信，行无常贞，惟利所在，无所不倾，若是则可谓小人矣。——荀子">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2019/11/09/Hobby-%E6%B8%B8%E7%8E%A9%E6%9D%82%E8%B0%88/%E6%95%85%E5%AE%AB.jpg">
+<meta property="article:published_time" content="2019-11-09T11:10:54.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.148Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="历史">
+<meta property="article:tag" content="长城">
+<meta property="article:tag" content="故宫">
+<meta property="article:tag" content="香山">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2019/11/09/Hobby-%E6%B8%B8%E7%8E%A9%E6%9D%82%E8%B0%88/%E6%95%85%E5%AE%AB.jpg">
+  <link rel="canonical" href="https://liusir.net/2019/11/09/Hobby-%E6%B8%B8%E7%8E%A9%E6%9D%82%E8%B0%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>游玩杂谈 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2019/11/09/Hobby-%E6%B8%B8%E7%8E%A9%E6%9D%82%E8%B0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          游玩杂谈
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-09 19:10:54" itemprop="dateCreated datePublished" datetime="2019-11-09T19:10:54+08:00">2019-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hobby/" itemprop="url" rel="index">
+                    <span itemprop="name">Hobby</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>10k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>言无常信，行无常贞，惟利所在，无所不倾，若是则可谓小人矣。——荀子</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="一、长城"><a href="#一、长城" class="headerlink" title="一、长城"></a><center><font color="red">一、长城</font></center></h1><ol>
+<li><p>基础</p>
+<ul>
+<li>长城（The Great Wall），又称万里长城，是中国古代的军事防御工程，是一道高大、坚固而连绵不断的长垣，用以限隔敌骑的行动。长城不是一道单纯孤立的城墙，而是以城墙为主体，同大量的城、障、亭、标相结合的防御体系。长城是中国也是世界上修建时间最长、工程量最大的一项古代防御工程，自西周时期开始，延续不断修筑了2000多年，分布于中国北部和中部的广大土地上，总计长度达5万多千米。</li>
+<li>长城修筑的历史可上溯到西周时期，发生在首都镐京（今陕西西安）的著名的典故“烽火戏诸侯”就源于此。春秋战国时期列国争霸，互相防守，长城修筑进入第一个高潮，但此时修筑的长度都比较短。秦灭六国统一天下后，秦始皇连接和修缮战国长城，始有万里长城之称。自秦始皇以后，凡是统治着中原地区的朝代，几乎都要修筑长城。汉、晋、北魏、东魏、西魏、北齐、北周、隋、唐、宋、辽、金、元、明、清等十多个朝代，都不同规模地修筑过长城。从修筑长城的统治民族看，除汉族之外，许多少数民族统治中国的朝代也修长城，而且比汉族统治的朝代为多。清康熙时期，虽然停止了大规模的长城修筑，但后来也曾在个别地方修筑了长城，可以说自春秋战国时期开始到清代的2000多年一直没有停止过修筑。据历史文献记载，有20多个诸侯国家和封建王朝修筑过长城，若把各个时代修筑的长城加起来，有10万里以上，其中秦、汉、明三个朝代所修长城的长度都超过了1万里。</li>
+<li>明朝是最后一个大修长城的朝代，今天人们所看到的长城多是此时修筑。</li>
+<li>长城资源主要分布在河北、北京、天津、山西、陕西、甘肃、内蒙古、黑龙江、吉林、辽宁、山东、河南、青海、宁夏、新疆等15个省区市。其中河北省境内长度2000多千米，陕西省境内长度1838千米。根据文物和测绘部门的全国性长城资源调查结果，明长城总长度为8851.8千米，秦汉及早期长城超过1万千米，总长超过2.1万千米。</li>
+<li>1961年3月4日，长城被国务院公布为第一批全国重点文物保护单位。1987年12月，长城被列入世界文化遗产。</li>
+</ul>
+</li>
+<li><p>长度</p>
+<ul>
+<li>由于年代久远，早期各个朝代的长城大多数都残缺不全，保存得比较完整的是明代修建的长城，所以人们一般说的长城指的是明长城，所称长城的长度，也就是明长城的长度。</li>
+<li>国家文物局和国家测绘局2009年4月18日联合公布，明长城东起辽宁虎山，西至甘肃嘉峪关，从东向西行经辽宁、河北、天津、北京、山西、内蒙古、陕西、宁夏、甘肃、青海十个省（自治区、直辖市）的156个县域，总长度为8851.8千米。经过壕堑359.7千米，自然天险2232.5千米。</li>
+<li>2012年6月5日，国家文物局在北京居庸关长城宣布，历经近5年的调查认定，中国历代长城总长度为21196.18千米，包括长城墙体、壕堑、单体建筑、关堡和相关设施等长城遗产43721处。这是中国首次科学、系统地测量历代长城的总长度。此次长城的调查和认定，不仅认定了2009年测定的明长城长度，还开展了秦汉及其他时代长城的资源调查。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="二、故宫"><a href="#二、故宫" class="headerlink" title="二、故宫"></a><center><font color="red">二、故宫</font></center></h1><ol>
+<li><p>总览</p>
+<ul>
+<li>北京故宫是中国明清两代的皇家宫殿，旧称紫禁城，位于北京中轴线的中心，是中国古代宫廷建筑之精华。北京故宫以三大殿为中心，占地面积72万平方米，建筑面积约15万平方米，有大小宫殿七十多座，房屋九千余间，是世界上现存规模最大、保存最为完整的木质结构古建筑之一。</li>
+<li>北京故宫于明成祖永乐四年(1406年)开始建设，以南京故宫为蓝本营建，到永乐十八年(1420年)建成。它是一座长方形城池，南北长961米，东西宽753米，四面围有高10米的城墙，城外有宽52米的护城河。紫禁城内的建筑分为外朝和内廷两部分。外朝的中心为太和殿、中和殿、保和殿，统称三大殿，是国家举行大典礼的地方。内廷的中心是乾清宫、交泰殿、坤宁宫，统称后三宫，是皇帝和皇后居住的正宫。 </li>
+<li>北京故宫被誉为世界五大宫之首(法国凡尔赛宫、英国白金汉宫、美国白宫、俄罗斯克里姆林宫)，是国家AAAAA级旅游景区，1961年被列为第一批全国重点文物保护单位；1987年被列为世界文化遗产。 </li>
+</ul>
+</li>
+<li><p>主要建筑</p>
+</li>
+</ol>
+<p><img src="%E6%95%85%E5%AE%AB.jpg" alt="故宫"></p>
+<ul>
+<li><p>故宫四门：故宫有四个大门，正门名为午门，其平面为凹形。午门后有五座汉白玉拱桥通往太和门。东门名东华门，西门名西华门，北门名神武门。故宫的四个城角都有角楼，高27.5米，十字屋脊。</p>
+<ul>
+<li>午门：午门是故宫的正门，俗称五凤楼。东西北三面以12米高的城台相连，环抱一个方形广场。这组城上的建筑，是故宫宫殿群中第一高峰。午门是皇帝下诏书、下令出征的地方。它当中的正门平时只有皇帝才可以出入；皇帝大婚时皇后进一次；殿试考中状元、榜眼、探花的三人可以从此门走出一次。文武大臣进出东侧门，宗室王公出入西侧门。</li>
+<li>神武门：神武门在明朝时为“玄武门”，玄武为古代四神兽之一，从方位上讲，左青龙，右白虎，前朱雀，后玄武，玄武主北方，所以帝王宫殿的北宫门多取名“玄武”。清康熙年间因避讳改称“神武门”。神武门是宫内日常出入的门禁，现神武门为故宫博物院正门。</li>
+<li>东华门</li>
+<li>西华门</li>
+</ul>
+</li>
+<li><p>外廷建筑：北京故宫的外廷以三大殿为主，太和殿和中和殿、保和殿都建在汉白玉砌成的8米高的工字形基台上，太和殿在前，中和居中，保和在后。</p>
+<ul>
+<li>太和门：太和门是紫禁城内最大的宫门，也是外朝宫殿的正门。建成于明永乐十八年(1420年)，当时称奉天门。嘉靖四十一年(1562年)改称皇极门，清顺治二年(1645年)改今名。太和门在明代是“御门听政”之处。清初的皇帝也曾在太和门听政、赐宴，后来“御门听政”改在乾清门。顺治元年(1644年)九月，满族统治者定鼎北京后的第一个皇帝福临即在太和门颁布大赦令。    </li>
+<li>太和门广场：太和门前有面积约26000平方米的广场，内金水河自西向东蜿蜒流过。</li>
+<li>太和殿：太和殿俗称“金銮殿”，明永乐十八年(1420年)建成，称奉天殿。嘉靖四十一年(1562年)改称皇极殿，清顺治二年(1645年)改今名，是皇帝举行大典的地方。自建成后屡遭焚毁，又多次重建，今天所见为清代康熙三十四年(1695年)重建后的形制。明清两朝24个皇帝都在太和殿举行盛大典礼，如皇帝登极即位、皇帝大婚、册立皇后、命将出征，此外每年万寿节、元旦、冬至三大节，皇帝在此接受文武官员的朝贺，并向王公大臣赐宴。 </li>
+<li>中和殿：中和殿位于太和殿后，高27米，平面呈正方形，面阔、进深各为3间，四面出廊，建筑面积580平方米。中和殿是皇帝去太和殿举行大典前稍事休息和演习礼仪的地方。另外皇帝祭祀天地和太庙之前，也要先在这里审阅一下写有祭文的“祝版”；在到中南海演耕前，也要在这里审视一下耕具。</li>
+<li>保和殿：保和殿(谨身殿、建极殿)也是故宫三大殿之一，在中和殿后。保和殿高29米，平面呈长方形，面阔9间，进深5间，建筑面积1240平方米。保和殿是每年除夕皇帝赐宴外藩王公的场所。保和殿也是科举考试举行殿试的地方。    </li>
+<li>体仁阁：体仁阁位于太和殿前广场内东侧，面西。始建于明永乐十八年(1420年)，明初称文楼，嘉靖时改称文昭阁，清初改称体仁阁。康熙年间，曾诏内外大臣举荐博学之士在体仁阁试诗比赋，清代各朝御容也曾收藏于此。乾隆年间重建后，此处作为清代内务府缎库，内设收贮缎绣木架143座。</li>
+<li>弘义阁：弘义阁高23.8米，属前三殿区，初建于明永乐年，名为武楼，明嘉靖朝改称武成阁，清初改为今名，意为弘扬大义。清代的弘义阁长期用于收储宫廷使用的金银器具等，现辟为“皇朝礼乐展”展厅。 </li>
+</ul>
+</li>
+<li><p>内廷中路</p>
+<ul>
+<li>乾清门：乾清门为紫禁城内廷的正宫门。建于明永乐十八年(1420年)，清顺治十二年(1655年)重修。乾清门东为内左门及九卿值房，西边内右门及军机处。门前广场东西两端为景运门、隆宗门。乾清门是连接内廷与外朝往来的重要通道，在清代又兼为处理政务的场所，清代的“御门听政”、斋戒、请宝接宝等典礼仪式都在乾清门举行。</li>
+<li>乾清宫：乾清宫是内廷后三宫之一。始建于明永乐十八年(1420年)，明清两代曾因数次被焚毁而重建，现有建筑为清嘉庆三年(1798年)所建。乾清宫建筑规模为内廷之首，明代共有14位皇帝曾在此居住，明代乾清宫也曾作为皇帝守丧之处。清顺治、康熙也在此居住，雍正以后，密建皇储的建储匣存放乾清宫“正大光明”匾后。康熙、乾隆两朝这里也曾举行过千叟宴，现为宫廷生活原状陈列。</li>
+<li>交泰殿：交泰殿为内廷后三宫之一，位于乾清宫和坤宁宫之间，约为明嘉靖年间建。交泰殿为皇后千秋节受庆贺礼的地方。</li>
+<li>坤宁宫：坤宁宫是内廷后三宫之一，始建于明永乐十八年(1420年)，清沿明制于顺治二年(1645年)重修，顺治十二年(1655年)仿沈阳盛京清宁宫再次重修。清康熙、同治、光绪皇帝在此大婚，溥仪结婚也都是在坤宁宫举行，现为宫廷生活原状陈列。 </li>
+<li>御花园：御花园位于紫禁城中轴线上，坤宁宫后方，明代称为“宫后苑”，清代称御花园。始建于明永乐十八年(1420年)，以后曾有增修，现仍保留初建时的基本格局。</li>
+<li>御景亭：御景亭位于御花园内东侧的假山顶上，原是明代观花殿的旧址，万历间改堆假山。御景亭是皇帝、皇后在农历九月初九重阳节登高的地方。自亭上可俯瞰宫苑，远眺紫禁城、景山、西苑。 </li>
+<li>摛藻堂：摛藻堂位于御花园内堆秀山东侧，依墙面南，面阔5间，黄琉璃瓦硬山式顶，堂西墙辟有一小门，可通西耳房。堂前出廊，明间开门，次梢间为槛窗。室内放置书架，为宫中藏书之所。乾隆四十四年(1779年)后，《四库全书荟要》曾贮藏于此。</li>
+</ul>
+</li>
+<li><p>内廷西路</p>
+<ul>
+<li>长春宫：长春宫，内廷西六宫之一，明永乐十八年(1420年)建成，清康熙二十二年(1683年)重修，后又多次修整。咸丰九年(1859年)拆除长春宫的宫门长春门，并将启祥宫后殿改为穿堂殿，咸丰帝题额曰“体元殿”。长春宫、启祥宫两宫院由此连通。</li>
+<li>翊坤宫：翊坤宫，内廷西六宫之一，明清时为妃嫔居所。建于明永乐十八年(1420年)。原为二进院，清晚期将翊坤宫后殿改成穿堂殿曰体和殿，东西耳房各改一间为通道，使翊坤宫与储秀宫相连，形成四进院的格局。东西有配殿曰延洪殿、元和殿，均为3间黄琉璃瓦硬山顶建筑。 </li>
+<li>储秀宫：储秀宫，内廷西六宫之一，明清时为妃嫔所居。始建于明永乐十八年(1420年)，光绪十年(1884年)为庆祝慈禧五十寿辰，耗费白银63万两进行大规模整修，现存建筑为光绪十年重修后的形制。储秀宫原为二进院，清晚期拆除了储秀门及围墙，并将翊坤宫后殿改为穿堂殿，称体和殿，连通储秀宫与翊坤宫，形成相通的四进院落。</li>
+<li>永寿宫：永寿宫为内廷西六宫之一，建于明永乐十八年(1420年)，初名长乐宫。永寿宫为两进院，前院正殿永寿宫面阔5间，黄琉璃瓦歇山顶。殿内高悬乾隆皇帝御笔匾额“令德淑仪”，东壁悬乾隆《圣制班姬辞辇赞》，西壁悬《班姬辞辇图》。乾隆六年(1741年)，乾隆皇帝下令，内廷东西十一宫的匾额“俱照永寿宫式样制造”，自挂起之后，不许擅动或更换。</li>
+<li>重华宫：重华宫位于内廷西路西六宫以北，原为明代乾西五所之二所。雍正十一年(1733年)，弘历被封为“和硕宝亲王”，住地赐名“乐善堂”。弘历登极后，名重华    </li>
+<li>咸福宫：咸福宫为内廷西六宫之一，为两进院。咸福宫为后妃所居，前殿为行礼升座之处，后殿为寝宫。道光帝琳贵人(庄顺皇贵妃)、成贵妃、彤贵妃、常妃等都曾在此居住。 </li>
+<li>养心殿：养心殿位于内廷后三宫的西侧，西六宫的南面。初建于明嘉靖年间(16世纪中)，一直做为皇帝的便殿。养心殿中最著名的是雍正皇帝的“勤政亲贤”室、乾隆皇帝的三希堂以及东暖阁的晚清垂帘听政处。 </li>
+<li>太极殿：太极殿，内廷西六宫之一，建于明永乐十八年(1420年)。原名未央宫，因嘉靖皇帝的生父兴献王朱祐杬生于此，故于嘉靖十四年(1535年)更名启祥宫，清代晚期改称太极殿。</li>
+<li>漱芳斋：漱芳斋原为乾西五所之头所，清乾隆皇帝即位后，改乾西二所为重华宫，遂将头所改为漱芳斋，并建戏台，作为重华宫宴集演戏之所。</li>
+</ul>
+</li>
+<li><p>内廷东路</p>
+<ul>
+<li>奉先殿：奉先殿，位于紫禁城内廷东侧，为明清皇室祭祀祖先的家庙，始建于明初。清沿明制，于清顺治十四年(1657年)重建，后又多次修缮。</li>
+<li>承乾宫：承乾宫，内廷东六宫之一，明永乐十八年(1420年)建成，初曰永宁宫。</li>
+<li>景仁宫：景仁宫，内廷东六宫之一，明永乐十八年(1420年)建成，初曰长安宫。清顺治十一年(1654年)三月，康熙帝生于此宫。乾隆帝生母孝圣宪皇后、咸丰帝婉贵妃、光绪帝珍妃均曾在此居住。 </li>
+<li>延禧宫：延禧宫为内廷东六宫之一，建于明永乐十八年(1420年)，初名长寿宫。隆裕太后题匾额曰“灵沼轩”，俗称“水晶宫”。1917年张勋复辟时，延禧宫北部被直系部队飞机投弹炸毁。    </li>
+<li>景阳宫：景阳宫，为内廷东六宫之一，位于钟粹宫之东、永和宫之北。明永乐十八年(1420年)建成，初名长阳宫，嘉靖十四年(1535年)更名景阳宫。</li>
+<li>永和宫：永和宫，内廷东六宫之一，位于承乾宫之东、景阳宫之南。明代为妃嫔所居，清代为后妃所居。清康熙帝孝恭仁皇后久居此宫。其后，道光帝静贵妃，咸丰帝丽贵人等先后在此居住。</li>
+<li>毓庆宫：毓庆宫位于内廷东路奉先殿与斋宫之间，系清康熙十八年(1679年)在明代奉慈殿基址上修建而成。毓庆宫是康熙年间特为皇太子允礽所建，后作为皇子居所。同治、光绪两朝，此宫均作为皇帝读书处，光绪皇帝曾在此居住。  </li>
+<li>斋宫：斋宫位于紫禁城东六宫之南，毓庆宫西，为皇帝行祭天祀地典礼前的斋戒之所。明代和清前期，祭天祀地前的斋戒均在宫外进行。凡祭天祀地及祈谷、常雩大祀前，皇帝致斋于此。遇皇帝宿斋宫，恭设斋戒牌、铜人于斋宫丹陛左侧。斋戒日，皇帝与陪祀大臣佩戴斋戒牌，各宫悬斋戒木牌于帘额。斋戒期间，不作乐，不饮酒，忌辛辣。</li>
+</ul>
+</li>
+<li><p>其他建筑</p>
+<ul>
+<li>武英殿：武英殿始建于明初，位于外朝熙和门以西。清兵入关之初，摄政王多尔衮先行抵京，以武英殿作为理事之所。</li>
+<li>皇极殿：皇极殿为宁寿宫区的主体建筑，始建于清康熙二十八年(1689年)，初名宁寿宫。皇极殿位于宁寿宫区中轴线前部，与后殿宁寿宫前后排列于单层石台基之上。</li>
+<li>慈宁宫：慈宁宫位于内廷外西路隆宗门西侧，始建于明嘉靖十五年(1536年)。乾隆三十四年(1769年)兴工将慈宁宫正殿由单檐改为重檐，并将后寝殿后移，始定今之形制。</li>
+<li>文渊阁：文渊阁是文华殿后的藏书楼，乾隆四十一年(1776年)仿浙江藏书名楼“天一阁”建造。阁内藏《四库全书》与《钦定古今图书集成》，清代乾隆朝以后，除了皇帝来这里读书外，也允许臣工和学士们来此查阅图书。  </li>
+<li>畅音阁：畅音阁通高20.71米，在宁寿宫区的中部，养性殿东侧，是紫禁城中最大的戏楼。清乾隆四十一年(1776年)建成，嘉庆年(19世纪初)又增建扮戏楼。</li>
+<li>寿安宫：寿安宫位于内廷外西路寿康宫以北，英华殿以南，始建于明代，初名咸熙宫，嘉靖四年(1525年)改称咸安宫。清初沿明制，雍正年间在此兴办咸安宫官学，乾隆十六年(1751年)咸安宫官学移出。同年，乾隆皇帝为庆贺皇太后六十寿诞，将此宫修葺一新后改称寿安宫。乾隆二十五年(1760年)，为皇太后七十圣寿庆典，在院中添建一座3层大戏台。嘉庆四年(1799年)将戏台拆除，扮戏楼改建为春禧殿后卷殿。 </li>
+<li>养性殿：养性殿位于宁寿宫后的养性门内，为宁寿宫后寝主体建筑之一。清乾隆三十七年(1772年)仿内廷养心殿建造，体量略小，平面布局特殊。养性殿作为太上皇帝寝宫，原为和玺彩画。光绪年间慈禧太后居乐寿堂时，曾在养性殿东暖阁进早、晚膳。此殿在光绪十七年重修后，除墨云室仍为和玺彩画外，其它均改为苏式彩画。</li>
+<li>九龙壁：九龙壁位于紫禁城宁寿宫区皇极门外。壁长29.47m，高3.59m，厚0.45.9m，是一座背倚宫墙而建的单面琉璃影壁，为乾隆三十七年(1770年)改建宁寿宫时烧造。    </li>
+<li>珍妃井：位于北京故宫宁寿宫北端的贞顺门内，原为宫中普通水井。珍妃井井眼上置井口石，石两侧凿小洞，用以穿入铁棍上锁。清光绪二十六年(1900年)八国联军攻打京城，慈禧太后与光绪皇帝仓惶西逃。临行之前，慈禧太后将幽禁在景祺阁北小院的珍妃召至颐和轩，命太监崔玉贵等人将她推入贞顺门内井中溺死，此井因而得名“珍妃井”。    </li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8C%97%E4%BA%AC%E6%95%85%E5%AE%AB/345415?fromtitle=%E6%95%85%E5%AE%AB&amp;fromid=9326&amp;fr=aladdin">参考</a></li>
+</ol>
+<hr>
+<h1 id="三、香山"><a href="#三、香山" class="headerlink" title="三、香山"></a><center><font color="red">三、香山</font></center></h1><ol>
+<li>介绍<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;香山公园，位于北京市海淀区买卖街40号，北京市区西北郊，占地188公顷，是一座具有山林特色的皇家园林。景区内主峰香炉峰俗称鬼见愁，海拔575米。早在元、明、清时，皇家就在香山营建离宫别院，每逢夏秋时节皇帝都要到此狩猎纳凉。咸丰十年(1860年)和光绪二十六年(1900年)先后两次被英法联军、八国联军焚毁，1956年开辟为人民公园。香山公园有香山寺、洪光寺、双清别墅等著名旅游景点。香山公园于1993年被评为首都文明单位，2001年被国家旅游局评为AAAA景区，2002年被评为首批北京市精品公园。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;香山的得名，历史文献中有两种说法。其中第一种说法来自于民间，据说早年间香山上曾栽种有大面积的杏花，每年花期一到，这里便花香浓郁，故而得名。其二则是来自《香山永安寺记》，这里面讲到山中有一块大石头，其形状和寺庙里烧香的香炉很像，因此这座山便因香炉形状的石头而得名。</p>
+<ol start="2">
+<li>历史渊源<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于香山寺的记载可追溯到唐代，据明代成书的《宛署杂记》：“妙高堂(香山寺中的一座建筑)，在宛平县西四十里香山寺右，唐以来有之。”到了大定二十六年(1186年)，在金世宗完颜雍的提议下，将原有的香山寺和吉安寺合二为一，并重新命名为“大永安寺”。元世祖忽必烈曾到永安寺游览，到了元仁宗在位时将永安寺更名为甘露寺。文宗至顺二年(1331年)，耶律楚材的后裔耶律阿勒弥创建碧云庵。明代时香山及大西山一带被划定为皇家陵寝区域，专门埋葬早殇皇子、公主以及部分皇帝的妃嫔。清乾隆十年(1745年)，香山的园林营建工程正式展开，而香山寺的扩建工程也在同一时期进行。经过扩建后的香山寺与其周边的宗镜大昭之庙、碧云寺、卧佛寺共同构成了清代西山一带的佛教寺庙建筑群，而香山寺也形成了前街、中寺、后苑的格局。在北洋军阀和国民党反动统治时期，香山的大部分风景区被“达官贵人”、“军阀巨商”建为私人别墅，多处名胜封闭。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1949年3月，中共中央从西柏坡进京，第一站就进驻的香山双清别墅，毛主席、周总理等老一辈革命家在香山指挥了解放全中国，并筹建了中央人民政府。1956年，香山公园作为人民公园向公众开放游览。20世纪90年代开始，香山静宜园二十八景修缮保护工程陆续启动，翠微亭、玉乳泉、玉华岫、隔云钟、璎珞岩、香雾窟等陆续修复完成。2002年7月，作为静宜园二十八景首景的勤政殿主殿及南北配殿完成修复，对游客开放。2019年9月13日，中共中央北京香山革命纪念地(包含香山革命旧址和香山革命纪念馆两个部分)正式对外开放。其中，香山革命旧址位于香山公园内，由双清别墅、来青轩等中共中央在香山的8处革命旧址组成</p>
+<ol start="3">
+<li>主要景点</li>
+</ol>
+<ul>
+<li><p>香炉峰<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;香炉峰至高点海拔575米，香山公园最高处，因其地势陡峭，登攀困难而俗称“鬼见愁”。香山公园先后在顶峰建起三个有特色的亭子。“重阳阁”意在九九重阳登之可望京城。“踏云亭”因秋雨后，春雨前缕缕云丝穿行亭内外，犹如踏云一般而得名，“紫烟亭”因晨夕之际的薄雾淡淡如紫色云霭，时隐时现，颇有日照香炉生紫烟的味道而得名。</p>
+</li>
+<li><p>玉华岫<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;玉华岫位于香山中麓，为静宜园二十八景之一，建于清乾隆十年(1745年)，于咸丰十年(1860年)遭到英法联军焚毁。1999年公园按照原貌在原址上进行复建后，正式对游客开放。</p>
+</li>
+<li><p>洪光寺<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;洪光寺始建于明成化四年(1468年)，太监郑同建洪光寺。郑同原籍高丽，奉李氏国王命入华，进宫侍奉宣宗。他曾代表成化皇帝出使高丽，在金刚山见千佛绕毗卢之式，回来后就在香山建洪光寺供奉，表里千佛，各座金莲。乾隆十二年(1747年)洪光寺内香岩室纳为静宜园二十八景之一。其正殿内额日：香岩净域。现建筑为明国时期修建，不对外开放。</p>
+</li>
+<li><p>香山寺<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;香山寺位于双清别墅上方，始建于金大定二十六年(1186年)，原是西山一带历史悠久的规模最大的寺庙，旧名永安寺、甘露寺，元、明、清时都曾扩建修葺。</p>
+</li>
+<li><p>双清别墅<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;双清别墅地处香山南麓的半山腰处，“双清”二字是清代乾隆皇帝根据院内两股清泉而命名。1920年教育家熊希龄先生在香山创建“慈幼院”，将此处辟为私人宅邸，更名为双清别墅。双清别墅展览共分“毛泽东在双清”和“毛泽东在双清活动陈列”两大部分。</p>
+</li>
+<li><p>香山饭店<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;香山饭店原址为清代皇家园林之一的静宜园中的乾隆行宫——虚朗斋，1957年4月27日，北京市园林局和市饭店联合办公室共同筹备，修缮房屋及修建附属用房，从1957年7月16日饭店开业持续至1976年停业。1980年4月，由北京市第一服务局独家投资5800万元人民币的香山饭店破土动工，由国际著名建筑师贝聿铭设计，占地31000余平方米，建筑面积38000余平方米，1983年4月1日正式全面开业。</p>
+</li>
+<li><p>翠微亭<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;翠微亭位于静翠湖南侧，为静宜园二十八景之一。始建于乾隆十年(1745年)，因其地处古树、绿荫、沟壑、山岩之间，又与来青轩、蟾蜍峰、清音亭等名胜毗邻，故有“翠微”之称。</p>
+</li>
+<li><p>东宫门<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;东宫门为香山公园之正门，坐西朝东，两侧有铜狮。乾隆所题“静宜园”赤金大字匾额悬在门檐上。    </p>
+</li>
+<li><p>勤政殿<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;勤政殿位于公园东门内，始建于清乾隆十年(1745年)。勤政殿是清代皇帝在香山静宜园驻跸期间，处理朝政和接见王宫大臣的场所，是静宜园二十八景的首景。勤政殿于咸丰十年(1860年)被英法联军焚毁，仅存殿基。公园于2002年在原址上进行复建，2003年7月竣工。勤政殿是香山公园最具皇家特色的标志性建筑，殿外牌匾为乾隆皇帝御笔题写。</p>
+</li>
+<li><p>知松园<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;知松园位于南北主要游览干道西侧，占地2公顷，是1987年新辟建的景区。景区内一、二级古松柏100余株。在景区之东立宽1.5米，长2.5米，高5.5米巨石一块，正面书直径为0.8米的“知松园”三字，石背录陈毅诗“大雪压青松，青松挺且直，欲知松高节，待到雪化时”。</p>
+</li>
+<li><p>昭庙<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昭庙是静宜园时别垣二景之一，昭庙全称宗镜大昭之庙。始建于乾隆四十五年(公元1780年)七月。它是为了迎接班禅六世来京向乾隆皇帝祝贺七十大寿而建的，故世称之为班禅行宫。</p>
+</li>
+<li><p>琉璃塔<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;琉璃塔在香山公园宗镜大昭之庙西部山腰，为该庙组成部分。清乾隆四十五年(1780年)建，高约30米，七级八角密檐式。塔顶安黄色琉璃宝瓶和八条檐脊。塔底由八面张开的伞盖承托，周饰汉白玉雕栏，最下层为石砌八角形塔基，层层檐端缀有铜铃。</p>
+</li>
+<li><p>见心斋<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;见心斋位于公园内北门内西侧，这里是惟一的一处保存较好的古迹。始建于明嘉靖元年(1522)，清嘉庆元年(1796)重修。传说是皇帝鉴证大臣是否对他忠心的地方，故名见心斋。</p>
+</li>
+<li><p>碧云寺<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碧云寺始建于元至顺二年(1331年)，原名碧云庵。位于香山公园内的北面，全寺依山而建，坐西朝东，整个布局是以排列在中轴线上的六进院落为主体，南北各配一组院落，占地4万余平方米。</p>
+</li>
+<li><p>孙中山纪念堂<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孙中山纪念堂坐落在香山碧云寺内，自1977年10月1日正式对游人开放以来，成千上万的社会各界人士纷纷前来瞻仰参观，是革命传统教育和爱国主义教育的重要基地。纪念堂内正中安放着中国国民党中央委员会暨全国各地中山学校敬献的孙中山汉白玉全身塑像，左右墙壁上镶嵌着用汉白玉雕刻的孙中山所写的《致苏联遗书》，正厅西北隅陈列着1925年3月30日苏联人民送来的玻璃盖钢棺，堂内还陈列着孙中山的遗墨、遗著。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag"><i class="fa fa-tag"></i> 历史</a>
+              <a href="/tags/%E9%95%BF%E5%9F%8E/" rel="tag"><i class="fa fa-tag"></i> 长城</a>
+              <a href="/tags/%E6%95%85%E5%AE%AB/" rel="tag"><i class="fa fa-tag"></i> 故宫</a>
+              <a href="/tags/%E9%A6%99%E5%B1%B1/" rel="tag"><i class="fa fa-tag"></i> 香山</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/26/ELK-ElasticSearch%E8%81%9A%E5%90%88/" rel="next" title="Elasticsearch聚合">
+                  <i class="fa fa-chevron-left"></i> Elasticsearch聚合
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/11/12/MQ-RabbitMQ%E7%AE%A1%E7%90%86/" rel="prev" title="RabbitMQ管理">
+                  RabbitMQ管理 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%95%BF%E5%9F%8E"><span class="nav-number">1.</span> <span class="nav-text">一、长城</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%85%E5%AE%AB"><span class="nav-number">2.</span> <span class="nav-text">二、故宫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%A6%99%E5%B1%B1"><span class="nav-number">3.</span> <span class="nav-text">三、香山</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

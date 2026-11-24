@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自省">
+<meta property="og:url" content="https://liusir.net/2023/07/18/Book-%E8%87%AA%E7%9C%81/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-18T01:37:21.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.063Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="优秀">
+<meta property="article:tag" content="自律">
+<meta property="article:tag" content="认知">
+<meta property="article:tag" content="迷茫">
+<meta property="article:tag" content="抉择">
+<meta property="article:tag" content="自省">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2023/07/18/Book-%E8%87%AA%E7%9C%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>自省 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2023/07/18/Book-%E8%87%AA%E7%9C%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自省
+        </h1>
+
+        <div class="post-meta">
+
+
+    <i class="fa fa-thumb-tack"></i>
+    <font color="#56ea26">置顶</font>
+    <span class="post-meta-divider">|</span>
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-07-18 09:37:21" itemprop="dateCreated datePublished" datetime="2023-07-18T09:37:21+08:00">2023-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Book/" itemprop="url" rel="index">
+                    <span itemprop="name">Book</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>9.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="致迷茫的你"><a href="#致迷茫的你" class="headerlink" title="致迷茫的你"></a><center><font color="red">致迷茫的你</font></center></h1><h2 id="一、为什么会迷茫"><a href="#一、为什么会迷茫" class="headerlink" title="一、为什么会迷茫"></a>一、为什么会迷茫</h2><ol>
+<li>没有目标和方向，不知道自己要去哪里，要追求什么</li>
+<li>有了目标和方向，急于追求结果却又求而不得</li>
+</ol>
+<h2 id="二、迷茫的时候怎么办"><a href="#二、迷茫的时候怎么办" class="headerlink" title="二、迷茫的时候怎么办"></a>二、迷茫的时候怎么办</h2><ol>
+<li>分析产生迷茫的原因，跳出僵化的思维方式</li>
+<li>审视自我，重新确定目标和方向<ul>
+<li>没有目标就先确定一个，哪怕是打扫房间，跑步，读一本书等等</li>
+<li>有目标就反思一下目标是否过大了，无法在短期内实现</li>
+</ul>
+</li>
+<li>摆脱负面的情绪，做积极正向的心理引导，保持积极乐观的心态</li>
+<li>跟周围的倾诉，听取别人合理化的建议</li>
+<li>多读书多学习，保持规律的作息和良好的生活习惯</li>
+</ol>
+<h2 id="三、致迷茫的你"><a href="#三、致迷茫的你" class="headerlink" title="三、致迷茫的你"></a>三、致迷茫的你</h2><ol>
+<li>没有人能阻碍你，就像没有人能真正救助你，坎坷崎岖是生活本身，跨不过的坎儿都是你自己。</li>
+<li>除了那个不争气的自己，没有人能阻止你变得更好。世间没有白走的路，白读的书，因为每一步都融进了你的骨子里，滋养全新的你。</li>
+<li>关上的门不一定上锁，至少再过去推一推。在抱怨自己赚钱少之前先努力，让自己变得值钱。只有先改变自己的态度，才能改变人生的高度。</li>
+<li>别担心现实总比梦想遥远，别计较收成不如付出丰盈。你对待当下的态度，会决定你未来的高度。</li>
+<li>我们总以为生活稀松平常，总在把挥霍当成常态。其实生命极其有限，每一个不曾努力的日子，都是对自己的一种辜负。</li>
+<li>跌倒了没人扶，我就自己爬起来。难过了没人安慰，我就告诉自己要坚强。哭了没人疼，我就自己擦眼泪。我知道，没有人会把我当作全世界。人生最大的敬佩是拿得起，生命最大的安慰是放得下。</li>
+<li>你梦想成为什么样的人，你就能成为什么样的人。你今时今日所处的位置都是基于你所信赖和梦想的一切。</li>
+<li>别把所有的委屈都照单全收，别总在暗地里咬着牙独自逞强，别怕拒绝别人，别怕麻烦到人，别让你的善良伤到了自己。</li>
+<li>你现在的努力，辛苦，压力，承受的一切，都是为了攒够能力和本钱，去做自己更喜欢的事，去为自己争取选择的权利。</li>
+<li>不要因为冲动说一些过激的话，没有人愿意拿热情换冷漠，拿体贴换伤害。</li>
+<li>任何事情不要将希望寄托在别人身上，无论是情感还是工作，否则唯一的结果便是措手不及，安全感只能自己给自己。</li>
+<li>你看，若不努力，除了年纪在涨，头发变少，容颜变老，你买不起的还是买不起，你喜欢的人还是与你无关。</li>
+<li>人生旅途中，你总有那么一段时间，需要自己走，需要自己扛，不要感觉害怕，不要感觉孤单，这只不过是你成长的代价罢了。</li>
+<li>你现在是大人了，别再因为一点感情问题就失魂落魄；你可以有一段糟糕的爱情，但不能放纵自己过一个烂透的人生。</li>
+<li>你要记得那些黑暗中默默抱紧你的人，逗你笑的人，陪你彻夜聊天的人，坐车来看望你的人，带着你四处游荡的人，说想念你的人，是这些人组成你生命中一点一滴的温暖，是这些温暖使你远离阴霾，是这些温暖使你成为善良的人。</li>
+<li>所有的借口不过都是你给拖延和懒情找的理由。</li>
+<li>第一眼就看上的衣服往往你买不起，第一眼就心动的人往往他不会喜欢你。你真正喜欢想要的，没有一样是可以轻易得到的，这就是努力的理由。</li>
+<li>让自己忙一点，忙到没有时间去思考无关紧要的事，很多事就这样悄悄地淡忘了。时间不一定能证明很多东西，但是一定能看透很多东西。坚信自己的选择，不动摇，使劲跑，明天会更好。</li>
+<li>也许好看的脸蛋可以让你暂时很快乐，但是真的能让你自信的，是你真正可以拥有的能力，那才是不会被别人所替代的东西。</li>
+<li>站稳了就是精品一件，倒下了就是乱石一堆，放弃了你就是笑话一段，成功了你就是神话一曲，挺住了你就是人生最美的风景线。</li>
+<li>有一点压力，就感觉天塌下来了；有一点不开心，就觉得自己是世上最可怜的人。你如此脆弱，都是曾经有人宠溺，有人替你撑着，有人替你坚强。你的性格就是懒，兴趣就是玩，特长就是吃，技能就是睡。你穷得没钱做坏事，熟得没法做情侣，饿得不知吃什么，困得就是睡不着。你这个状态，就别去说看不到希望。</li>
+<li>再难也要坚持，再好也要淡泊，再差也要自信，再多也要节省，</li>
+<li>人生难免要受些委屈和伤害，与其耿耿于怀，倒不如坦坦荡荡泰然处之，只有经受住狂风暴雨的洗礼才能练就波澜不惊的淡定。</li>
+<li>不要怕有压力，它可以垫高你的人生；也不要怕忙碌，它可以充实你的生活；不要拒绝错误，它可以改正你的缺点；不要一味惬意，乐极生悲，这往往是挫败的开始。许多时刻，我们的成长靠的不仅仅是时间，而是自我的勤奋与努力；那些虚度的光阴，熄灭的是梦想之火，拼凑的是支离破碎的命运。</li>
+</ol>
+<hr>
+<h1 id="抉择，是时候了"><a href="#抉择，是时候了" class="headerlink" title="抉择，是时候了"></a><center><font color="red">抉择，是时候了</font></center></h1><h2 id="一、回首"><a href="#一、回首" class="headerlink" title="一、回首"></a>一、回首</h2><h2 id="二、当下"><a href="#二、当下" class="headerlink" title="二、当下"></a>二、当下</h2><h2 id="三、展望"><a href="#三、展望" class="headerlink" title="三、展望"></a>三、展望</h2><hr>
+<h1 id="优秀的人往往是自律的"><a href="#优秀的人往往是自律的" class="headerlink" title="优秀的人往往是自律的"></a><center><font color="red">优秀的人往往是自律的</font></center></h1><h2 id="一、人为什么要自律"><a href="#一、人为什么要自律" class="headerlink" title="一、人为什么要自律"></a>一、人为什么要自律</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓自律，其实就是自我管理的能力。它不是你生活的必需品，没有它生活还是会正常进行；它更像是一种助推剂，拥有它会让你平凡的生活出现另一种缤纷色彩的可能。正所谓自律的人不一定都优秀，但优秀的人基本都是自律的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个人都有选择生活方式的权利，但不同的选择往往带来地是截然不同的人生。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你可以选择毫无顾忌、随心所欲地活着，房间很乱，地板很差，随处可见的零食袋，周末睡到自然醒，上班摸鱼塘，下班大爷躺等等。这样的结局很可能是身材肥胖，事业毫无起色，人生灰暗，心中迷茫彷徨，却又懒得行动，自暴自弃，日复一日，年复一年，彻底沉沦。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你也可以选择有规律的生活，坚持早起，坚持锻炼，控制食欲和体重，有时间观念，工作有规划，分主次，知道什么事情该做什么事情不能做，每月读几本书，保持家里整洁…这也是一种人生，很显然这样的人基本都会成为各行各业的精英阶层。</p>
+<h2 id="二、自律的人有哪些特点"><a href="#二、自律的人有哪些特点" class="headerlink" title="二、自律的人有哪些特点"></a>二、自律的人有哪些特点</h2><ol>
+<li>自律的人有思想</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>如果一个人只能做到按照别人的安排做事，那么只能成为劳动者；而如果一个人能够按照自己的思维做事，才能成为领导者。凡是自律的人，都有着丰富的想象力，他们愿意不断地去思考，而不愿意盲目苦干；他们愿意相信自己，而不愿意把决定权和安排权交给别人。这是自律人的特点，也是他们的与众不同之处。只有自律，才能让一个人开始独立，变成一个有思想有觉悟的人。</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li>自律的人有执行力</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>有一些人往往总是夸夸其谈，喜欢吹牛，却不干实事。而自律的人，他们说过的话、制定过的目标是不会放弃的。他们会脚踏实地，为了那些目标而默默努力，为了每一次小小的成功而开心不已，也为每一次的失败做出总结。他们的执行力体现在说做就做，不为自己找借口，不拖延不磨蹭，保持清醒地走在一条正确的路上。我们只有自律，才能避免自己懒惰，也只有自律，才能看得清远方。</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li>自律的人不怕吃苦</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>古时候有政治家孙敬头悬梁锥刺股——为了让自己战胜困倦，学到更多的知识。现代有人民领袖毛泽东在上学期间每天坚持洗冷水浴——为了锻炼身体、磨练意志。由此看来，自律的人是不怕吃苦的，与理想相比，吃苦并不可怕，可怕的是丧失希望，可怕的是忘记初心。</p>
+</blockquote>
+</blockquote>
+<h2 id="三、如何培养自律"><a href="#三、如何培养自律" class="headerlink" title="三、如何培养自律"></a>三、如何培养自律</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;没有哪个人天生就是成功者，也没有哪个人一开始就能够做到自律。自律是一种习惯，一种能力，而非天赋。它无所谓年龄，也无所谓性格，只要我们愿意，就能培养出自律的能力。</p>
+<ol>
+<li>设定目标</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>当我们不知道未来怎么走的时候，不妨主动去寻找，设定目标就是在告诉自己，你的未来已经确定了，需要做的就是去靠近它、实现它。这个目标可大可小，但是不能超出我们的能力范围，不要去学王健林设立“先赚它一个亿”的目标，你做不到，只能是给自己平添烦恼。也不要设立低于自己能力的目标，那样轻而易举就能完成，缺乏挑战性。只有设立一个合适的目标，才能够进一步落实，才能慢慢养成习惯，帮助自己自律。</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li>不要给自己留后路</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>设立了目标就要及时执行，不要给自己留后路。有的人完不成任务就说留到明天，再完不成就说留到后天，明日复明日，这个目标达成的概率只会越来越小。我们在执行一件事的时候，要有决心和信心，不达目的决不罢休，这样才能成就自己。</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li>把控时间</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>时间是这个世界上最宝贵的东西，如果没有好好珍惜，只能看它像流水一样白白逝去。比如你定了早上6点去晨练的闹钟，却没有按时起床，一觉睡到了下午，那么这一天的时间就结束了。它不会等你，也不会重头再来。因此，我们都要学会把控自己的时间，约定的事情按时完成，安排好的任务不要拖延，只有做时间的主人，才能够体会到自律给我们带来的充实和满足。</p>
+</blockquote>
+</blockquote>
+<ol start="4">
+<li>给自己奖励</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>不要吝啬给自己的奖励，生活需要短暂的休息和放松，自律也是。如果我们达到了小小的成就，可以给自己一个短期旅游，可以和朋友来一顿烛光晚餐，可以是一束美丽的鲜花、一件漂亮的衣服。要知道，休息好了才能整装待发，学会享受这些美好才能够坚持不懈、继续向前。</p>
+</blockquote>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总之，自律不是一件痛苦的事情，相反地，它带给我们的是自由，是对未来的向往，是认真生活、不虚度光阴的态度，是我们通向成功彼岸的船帆。希望我们都可以培养出自律的好习惯，帮助我们活成想要的样子。</p>
+<hr>
+<h1 id="成为优秀的人"><a href="#成为优秀的人" class="headerlink" title="成为优秀的人"></a><center><font color="red">成为优秀的人</font></center></h1><h2 id="一、优秀的人"><a href="#一、优秀的人" class="headerlink" title="一、优秀的人"></a>一、优秀的人</h2><ol>
+<li>不管和谁沟通说话，都有不怯场的气场。不管对方的身份和地位比自己高多少，都能做到不卑不亢。</li>
+<li>说话的时候，条理非常的清晰，即便在情绪激动的时候，也不会口无遮拦、信口开河。</li>
+<li>懂得向上社交，喜欢结交比自己优秀的人，看到比自己优秀的人，或许也有羡慕和嫉妒，但更多的是见贤思齐。</li>
+<li>走路的时候，抬头挺胸，显得很有气势，散发出一种自信，不说龙行虎步，也是行走带风。</li>
+<li>拒绝别人的时候，不管以什么方式，都能做到干净利落，不会拖泥带水，犹犹豫豫，浪费彼此的时间。</li>
+<li>生活中或许节约，但在需要花钱的时候，尤其是在需要给别人钱的时候，非常大方，深知财散人聚的道理。</li>
+<li>追求高质量的社交和优质的圈子，并会给自己足够的独处时间，在独处中不断提升自我。</li>
+<li>非常的务实，不管什么时候看到他，都是忙忙碌碌，但却不是低效率的瞎忙，而是总能高效率地拿到结果。</li>
+<li>具备很强的独立思考能力，遇事有自己的主见，不会轻易受别人的影响，也不会因为别人的不认可，而否定自己、陷入内耗。</li>
+<li>或许不喜欢应酬，但却很会说场面话，尤其是在人多的场合，有镇得住场子的强大气场。</li>
+<li>人生有大目标，做事有小目标，不会混日子，即便生活已经很好、让很多人羡慕了，也不会待在舒适区里吃老本。</li>
+<li>能享福，更能吃苦，就像做生意人的一样，既能当老板，又能睡地板，把吃苦当作奋进的动力！</li>
+<li>非常的现实，和一般人相处，或许看不出什么，但遇到贵人，一定是胆大、心细、脸皮厚，就像追女孩子一样，锲而不舍！</li>
+<li>对别人或许很包容，但对自己一定非常的狠，要求非常的严格，能做到高级的自律，用自律换自由。</li>
+<li>有超强的执行力，敢想更敢做，只要是想好了的事情，就能雷厉风行地付出行动，而不是“晚上想了千条路，早上起来走老路”。</li>
+<li>有大局观，不会纠缠于细枝末节，但也不会忽视细节，深知细节决定成败的道理。</li>
+<li>极善于控制情绪，从不会胡乱发脾气，即便发脾气，也是故意的，也是有针对性的，而不是情绪失控下的发脾气。</li>
+<li>有很强的责任感，做错了事情，不会逃避自己的责任，而是勇于承担，这是一个人想成大事的标配。</li>
+<li>非常沉得住气。沉住气，成大器！遇事要是沉不住气，容易慌乱，那不仅是没有气场的表现，也肯定会坏事。</li>
+<li>善于吃亏，尤其是对自己有大用的人，或者对自己很重要的人，在他们面前，一定要主动吃亏。</li>
+<li>胆大敢冒险。人都是先有胆、后有钱，想成大事，更要有大勇气，敢想敢做敢折腾。有了胆量，你就有了获取财富和成功的基础，没有胆量，你就等于是丧失了一切成大事、赚大钱的可能。</li>
+<li>具备全面、深度思考的能力，也就是遇到问题，能尝试从不同的角度思考，而且，思考不会肤浅，是非常有深度的，像这样的人，容易产生新思路，自然也就容易赚大钱。</li>
+<li>能看透、理解和运用人性，不管是想赚钱，还是想成事，关键其实都是利用人性来设局，你能用人性圈住多少人，就能赚多少钱，也就能成多大的事。</li>
+<li>做人有底线，做事有原则，不该赚的钱，坚决不赚；不该做的事，坚决不做！像这样有坚守的人，是难能可贵的，也是容易赚钱、成事的。</li>
+<li>不仅有很强的能力、很大的本事，且不会敝帚自珍，愿意用自己的能力、本事去为他人解决问题，或者满足他人需求，有利他思维，这也是一个人赚大钱、成大事的关键。</li>
+<li>善于在浩如烟海的信息海洋里，收集和分析对自己有用的信息，借此找到赚钱和成事的机会，比如，通过打信息差，借别人不知道的信息来赚钱。</li>
+<li>执行力非常的强，说做就做。真正能赚大钱、成大事的人，绝非天生，而是在行动中历练出来的，当别人抱怨、犹豫、拖延时，他们已经开始用行动去改变了。</li>
+<li>非常善于控制自己的情绪，尤其是遇到会引起情绪变化的问题时，都是先处理好情绪，让情绪恢复平静后，再去处理问题，而不是带着情绪处理问题。</li>
+<li>有一个开放的人生态度，愿意尝试新事物、接受新事物、研究新事物，在新事物中找到赚钱和成事的机会，在如今这个开放的时代，这样的人，当然也容易成大事、赚大钱。</li>
+<li>意识敏锐，心思敏捷，思维非常的灵活，常常是别人还没有发现的时候，他已经发现了。对于事物的本质和规律，以及发展的趋势，能做到领先于人，故此，能顺势而为，先人一步获取财富和成功。</li>
+<li>成大事、赚大钱其实是一体的，当你真正找到了自己想做又能做的事情，把这件事做精做透、做大做强，那赚大钱也就是水到渠成的事情。所以，别再胡思乱想了，找到你真正想做的事情，坚持去做吧。</li>
+<li>不管你想在哪一行上成大事、赚大钱，都有一个“捷径”，也是无法绕开的一条路，那就是向同行和前辈学习，站在巨人的肩膀上，你的成长才会更快，也才能有效避开很多弯路，以及避免做无用功。</li>
+</ol>
+<h2 id="二、如何成为优秀的人"><a href="#二、如何成为优秀的人" class="headerlink" title="二、如何成为优秀的人"></a>二、如何成为优秀的人</h2><ol>
+<li>设定目标</li>
+<li>持续学习</li>
+<li>积极心态</li>
+<li>培养爱好</li>
+<li>培养自信</li>
+<li>保持自律</li>
+<li>保持专注</li>
+<li>保持热情</li>
+<li>保持谦虚</li>
+<li>学会聆听</li>
+<li>学会总结</li>
+<li>学会思考</li>
+<li>不轻易言败</li>
+<li>保持边界感</li>
+<li>培养责任该</li>
+<li>关注身体健康</li>
+<li>做好情绪管理</li>
+<li>调整思维方式</li>
+<li>培养社交和沟通</li>
+<li>寻找导师和支持者</li>
+<li>建立积极的人际关系</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li>学习定位思考，算出一条路的起点，算出一条路的终点，不能着急说话，学会隐藏锋芒，在规定的时间充实自己，学会读书，学会接受别人的批评。</li>
+<li>想成才，先认识自己，想成大事，必须收了自己的脾气，人生没有彩排，读懂自己，认识内心，探索自己的灵魂，没词就读书，没钱就多锻炼。</li>
+<li>勤于思考，换位思考，出门之前，把口才练好，学会打扮，给别人一种气质，给自己一份自信，别盲目跟风，把难说的话说好，把不懂的事藏起来。</li>
+<li>想成为优秀的人，不能优柔寡断，不能半信半疑，不能起得晚，可以让自己输，但是要输得有价值，自己可以赢，但是不能显摆，不能耀武扬威，一定要知道人外有人。</li>
+<li>遇事不急，遇人不慌，学会等，学会看，学会珍惜，人善于隐藏，话善于拒绝，学会听，学会分析，定位，掌握，权衡，一定不要超越自己的能力范涛。</li>
+<li>如果想培养情商，一定要和语言标准线高的人聊天，如果想培养智商，一定要和喜欢读书的人聊天，如果想培养财商，一定要学会尊重别人，认识自己，权衡利弊。</li>
+<li>所有的努力，都是为了健康，所有的付出，都是为了快乐，请记住，维护他人的尊严，保护自己的人格，必要的时候，一定要放下面子。</li>
+<li>男人，要受得了苦，女人，要收得住脾气，看人用的是耐心，不要着急说话，不要认识不久就下判断，时间是真的，一定要有一颗慈悲的心，善良他人。</li>
+<li>学会关心，做一个温暖的人，学会照顾，做一个真实的人，学会等待，做一个自信的人，没有十足的把握，千万不要着急出发，人要有定力，也要有恒心。</li>
+<li>有魄力的生存感，让自己学会充电，读书，提炼思维，整理心灵空间，用心情去沟通全世界，用耐心去等待灵魂的回眸，走出自己的位置，必须尊重别人的选择。</li>
+<li>有气质的造化感，勤于锻炼，为了健康，勤于忙碌，忙的不是浪费时间，也不是浪费感情，而是去找活下去的价值，认识生命的起点，划分人生的路线。</li>
+<li>做自己想做的，走自己想走的，认识自己想认识的，放弃无畏的社交，离别耽误生命的人，人不能混得太熟，关系不能走得太近，时间不能被别人赶着走。</li>
+<li>善于总结，善于分析，每一个总结，找一句属于自己的话，每一个分析，找一句属于别人的话，别着急说出来，别盲目传出去，等一等，问一问。</li>
+<li>人来人往，少问别人没必要的问题，人情世故，不要别人问什么说什么，一定要学会隐藏，一定要学会放下，一定要学会微笑，尊敬别人的语言，善待别人的真诚。</li>
+<li>别轻易坚持一条路，别轻易放弃一条路，选择了，就别轻易放弃，放弃了，就别轻易后悔，人生没有彩排，没上路之前，一定要认识起点，熟悉终点。</li>
+<li>做一个有礼貌的人，准备几个台词，做一个有修养的人，衣着干净，谈吐优雅，做一个有内涵的人，说几句温暖的话，让别人省心，说几句激励的话，让别人奋发图强。</li>
+<li>制定目标，制定学习领域，制定自己的思维空间，然后准备里面的内容，设定自己的时间圈子，改变自己的语言套路，圈住自己的起点，感动自己的终点。</li>
+<li>有些事，必须得做，这是责任，有些话，必须得说，这是生活，有些路，必须得走，这是感恩，有些付出，必须感动自己，有些守护，必须学会放弃。</li>
+<li>改掉不良嗜好，学会拒绝，学会认错，拒绝是为了更好的认识自己，认错，是为了纠正自己的瞬间，让别人看出自己的人格，修养，礼貌和责任。</li>
+<li>人要有心，也要有胆，树立自信，充满正能量，带着微笑，把口才练好，把心态放好，走出的步伐不一般，待人也是非常优秀。</li>
+<li>控制时间，要学会减法，也要学会加法，控制自己，要学会裁剪一些不必要的努力，学会放弃一些不必要的方向，认真对待，别盲目投资。</li>
+<li>懂投资，看投资，才投资，千万不要盲目的透支，透支时间，会耽误自己的明天，透支生命，只会让自己的余生不堪一击，透支前程，只会让自己活得邋遢。</li>
+<li>认识自己之前，就要告诉自己，别怕失败，别怕哭泣，别怕委屈，要想成大事，稳住自己的心，要想学别人挑大梁，不仅要没脾气，还得说话可巧，不怕事，不惹事。</li>
+<li>每天提升自己，学会读书，学会锻炼，学会练习口才，做一个有趣的人，必须裁剪自己的懒惰，删除自己的敷衍，减掉自己的浪费空间。</li>
+<li>学会从基层做起，认识别人的心态，触动自己的灵魂，认识语言的节奏，调动自己的生命感，存在感，找差距，找时差，排除自己的时间外，还要学会修炼内心，提升自己。</li>
+<li>读书，为了思考，等待，为了找到距离，多想想，多问问，找找自己的缺点，问问别人的有点，想想路线，看看时间差，别盲目学习，别浪费感情。</li>
+<li>认识优秀的人，其实很容易，如果深交，就要看看自己的资质了，交友为了提升自己，说话是为了提炼自己，读书是为了更好的升华自己。</li>
+<li>人要有上进心，也要有责任心，不要因为一点小事，就说个没完没了，不要因为一个人犯错，就耽误太多的事，学会用钱争取时间，学会用自己换位思考。</li>
+<li>一个优秀的人，不仅要有宽阔的胸怀，也要有良好的品德，坚持做一个孝顺的人，更应该懂得感恩，不耽误，不错过，但是更应该明白珍惜。</li>
+<li>无论是维持家庭，维持朋友，还是维持男女恋人的关系，一定要记住，礼貌，修养，善待，比有钱还好，真诚，不说宽话，不背后说话带刺，就是关爱自己的全世界。</li>
+</ol>
+<hr>
+<h1 id="你永远赚不到超出认知范围之外的钱"><a href="#你永远赚不到超出认知范围之外的钱" class="headerlink" title="你永远赚不到超出认知范围之外的钱"></a><center><font color="red">你永远赚不到超出认知范围之外的钱</font></center></h1><h2 id="一、什么是认知"><a href="#一、什么是认知" class="headerlink" title="一、什么是认知"></a>一、什么是认知</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓认知，是指人们获得知识或应用知识的过程，或信息加工的过程，这是人的最基本的心理过程。它包括感觉、知觉、记忆、思维、想像和语言等。人脑接受外界输入的信息，经过头脑的加工处理，转换成内在的心理活动，进而支配人的行为，这个过程就是信息加工的过程，也就是认知过程。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人的认知能力与人的认识过程是密切相关的，可以说认知是人的认识过程的一种产物。一般说来，人们对客观事物的感知(感觉、知觉)、思维(想象、联想、思考)等都是认识活动。认识过程是主观客观化的过程，即主观反映客观，使客观表现在主观中。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;傅盛说：认知，几乎是人和人之间唯一的本质差别。技能的差别是可量化的，技能再多累加，也就是熟练工种；而认知的差别是本质的，是不可量化的。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起点相似的人，思维不同，结果也不同。因为真正决定穷富差距的是“思维认知”。想要摆脱“穷人思维”，就要建立“富人思维”。认知的不同，决定了结果的天地之别。认知很虚，看似无用，却决定了你未来可能达到的圈层。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你所赚的每一分钱，都是你对这个世界认知的变现。你所亏的每一分钱，都是你对这个世界认知有缺陷。你永远赚不到超出你认知范围之外的钱，除非你靠运气。但是靠运气赚到的钱，最后往往会由于实力不足而亏掉。这个世界最大的公平就在于：当一个人的认知不足以驾驭他所拥有的财富时，这个社会有10000种方法收割他，直到财富和认知相匹配为止。</p>
+<h2 id="二、认知相关"><a href="#二、认知相关" class="headerlink" title="二、认知相关"></a>二、认知相关</h2><ol>
+<li><p>认知过程，也称认知历程。</p>
+<ul>
+<li>传统上指认识过程，指人脑以感知、记忆、思维等形式反映客观事物特性及其关系的心理过程。</li>
+<li>皮亚杰学派用语，指通过对原有的认知结构(图式)对刺激物进行同化和顺应达到平衡的过程。这是结构主义认知心理学的观点。</li>
+<li>信息加工认知心理学的用语，指个体接受、编码、贮存、提取和使用信息的过程。它通常由感知系统(接受信息)、记忆系统(信息编码、贮存和提取)、控制系统(监督执行决定)、反应系统(控制信息输出)等4种成分构成的模式。</li>
+<li>H.西蒙认为，人类认知有3种基本过程： <ul>
+<li>问题解决。采用启发式、手段-目的分析和计划过程法。</li>
+<li>模式识别能力。人要建立事物的模式，就必须认识各元素之间的关系。如等同关系、连续关系等。根据元素之间的关系，就可构成模式。</li>
+<li>学习。学习就是获取信息并将其贮存起来，便于以后使用。学习有不同的形式，如辨别学习、阅读、理解、范例学习等。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>认知风格，也叫认知方式，是指个人所偏爱使用的信息加工方式。例如：有人喜欢与别人讨论问题，从别人那里得到启发；有人则喜欢自己独立思考。个体在认知风格上的差异具有一定的稳定性，儿童时期所表现出来的某种认知风格可能会保持到成年。认知加工方式有许多种，主要有：场独立性和场依存性、冲动和沉思、同时性和继时性。</p>
+</li>
+<li><p>认知能力，是指人脑加工、存储和提取信息的能力，即我们一般所讲的智力，如观察力、记忆力、想像力等。人们认识客观世界，获得各种各样的知识，主要依赖于人的认知能力。</p>
+</li>
+<li><p>认知策略，是指导认知活动的计划、方案、技巧或窍门。人脑的信息加工能力是有限的，不可能在瞬间进行多种操作，为了顺利地加工大量的信息，人只能按照一定的策略在每一时刻选择特定的信息进行操作，并将整个认知过程的大量操作组织起来。因此，认知策略对认知活动的有效进行是十分重要的。</p>
+</li>
+</ol>
+<h2 id="三、如何培养认知"><a href="#三、如何培养认知" class="headerlink" title="三、如何培养认知"></a>三、如何培养认知</h2><ol>
+<li>第一，自己思考，亲身经历，亲身实践。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">站在1楼看外面，都是细节，自己附近的那点东西，市井吵架，违章停车。</span><br><span class="line"></span><br><span class="line">站在10楼看外面，能看到局部，细节慢慢消失，轮廓关联显现。</span><br><span class="line"></span><br><span class="line">站在100楼看外面，就是看全局，你会体会到自然资源的分布，城市设计的气魄。</span><br><span class="line"></span><br><span class="line">当你在1楼时，要更愿意主动跑到5楼、8楼、10楼，去看看都能望到些什么。</span><br><span class="line"></span><br><span class="line">再回到1楼执行时，会更理解不同角度看待问题的深度，并且不会遗忘细节。</span><br><span class="line"></span><br><span class="line">拥有上帝视角，能瞬间把自己拉到空中俯视全局。也要有操盘手技能，能瞬间俯冲到地面死磕细节。</span><br><span class="line"></span><br><span class="line">知道什么时候该在空中，什么时候该在地面。你不经历，就是纸上谈兵。</span><br><span class="line"></span><br><span class="line">少年不识愁滋味，为赋新词强说愁。中年人的苦，经历过，才懂得。</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>第二，大量读书，广泛阅读。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读书是最普遍的向前人学习的方式，站在前人的肩膀上来构建自己的认知体系。</span><br><span class="line"></span><br><span class="line">通过读书去获得新知，通过读书去自我检讨，达到自我校正、自我进步的目的。</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>第三，行走。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">读万卷书，也要行万里路。</span><br><span class="line"></span><br><span class="line">到处走走，走别人没有走过的路，走别人不愿意走的路，走难走的路。经历别人没有经历过的冰霜雨雪、闪电雷鸣、严寒酷暑。</span><br><span class="line"></span><br><span class="line">去冒一些别人不能冒的风险，去别人不能到达的地方，来增加生命的宽度，启发自己对这个世界全面地思考。</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>第四，向前人、向先进学习，高手指路。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">跟不同的人聊天，尤其适合各行各业的高手聊天，你会获得看待世界的不同视角和智慧。</span><br><span class="line"></span><br><span class="line">每个人都需要平衡，而不是单一路径依赖。</span><br><span class="line"></span><br><span class="line">成功的人、失败的人、努力的人、落魄的人，不同的人生场景、个体的迷惘，欲望和挣扎，积累出不同的经验。</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.sohu.com/a/423291611_167719">参考一</a></li>
+</ol>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E4%BC%98%E7%A7%80/" rel="tag"><i class="fa fa-tag"></i> 优秀</a>
+              <a href="/tags/%E8%87%AA%E5%BE%8B/" rel="tag"><i class="fa fa-tag"></i> 自律</a>
+              <a href="/tags/%E8%AE%A4%E7%9F%A5/" rel="tag"><i class="fa fa-tag"></i> 认知</a>
+              <a href="/tags/%E8%BF%B7%E8%8C%AB/" rel="tag"><i class="fa fa-tag"></i> 迷茫</a>
+              <a href="/tags/%E6%8A%89%E6%8B%A9/" rel="tag"><i class="fa fa-tag"></i> 抉择</a>
+              <a href="/tags/%E8%87%AA%E7%9C%81/" rel="tag"><i class="fa fa-tag"></i> 自省</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2023/06/23/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="next" title="技术文档">
+                  <i class="fa fa-chevron-left"></i> 技术文档
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2023/08/11/Network-FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="prev" title="FRP内网穿透/反向代理完整部署手册">
+                  FRP内网穿透/反向代理完整部署手册 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%B4%E8%BF%B7%E8%8C%AB%E7%9A%84%E4%BD%A0"><span class="nav-number">1.</span> <span class="nav-text">致迷茫的你</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%BF%B7%E8%8C%AB"><span class="nav-number">1.1.</span> <span class="nav-text">一、为什么会迷茫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%B7%E8%8C%AB%E7%9A%84%E6%97%B6%E5%80%99%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">1.2.</span> <span class="nav-text">二、迷茫的时候怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%87%B4%E8%BF%B7%E8%8C%AB%E7%9A%84%E4%BD%A0"><span class="nav-number">1.3.</span> <span class="nav-text">三、致迷茫的你</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%89%E6%8B%A9%EF%BC%8C%E6%98%AF%E6%97%B6%E5%80%99%E4%BA%86"><span class="nav-number">2.</span> <span class="nav-text">抉择，是时候了</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%9E%E9%A6%96"><span class="nav-number">2.1.</span> <span class="nav-text">一、回首</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BD%93%E4%B8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">二、当下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B1%95%E6%9C%9B"><span class="nav-number">2.3.</span> <span class="nav-text">三、展望</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA%E5%BE%80%E5%BE%80%E6%98%AF%E8%87%AA%E5%BE%8B%E7%9A%84"><span class="nav-number">3.</span> <span class="nav-text">优秀的人往往是自律的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">一、人为什么要自律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%87%AA%E5%BE%8B%E7%9A%84%E4%BA%BA%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text">二、自律的人有哪些特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E4%BD%95%E5%9F%B9%E5%85%BB%E8%87%AA%E5%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">三、如何培养自律</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA"><span class="nav-number">4.</span> <span class="nav-text">成为优秀的人</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA"><span class="nav-number">4.1.</span> <span class="nav-text">一、优秀的人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E6%88%90%E4%B8%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BA%BA"><span class="nav-number">4.2.</span> <span class="nav-text">二、如何成为优秀的人</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%A0%E6%B0%B8%E8%BF%9C%E8%B5%9A%E4%B8%8D%E5%88%B0%E8%B6%85%E5%87%BA%E8%AE%A4%E7%9F%A5%E8%8C%83%E5%9B%B4%E4%B9%8B%E5%A4%96%E7%9A%84%E9%92%B1"><span class="nav-number">5.</span> <span class="nav-text">你永远赚不到超出认知范围之外的钱</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A4%E7%9F%A5"><span class="nav-number">5.1.</span> <span class="nav-text">一、什么是认知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A4%E7%9F%A5%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.</span> <span class="nav-text">二、认知相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E4%BD%95%E5%9F%B9%E5%85%BB%E8%AE%A4%E7%9F%A5"><span class="nav-number">5.3.</span> <span class="nav-text">三、如何培养认知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">5.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

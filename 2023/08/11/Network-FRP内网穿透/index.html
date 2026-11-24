@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="场景：公网 Linux 服务器（frps + nginx）↔ 内网 Windows 机器（frpc）目标：让公网域名 app.example.com 访问内网 Windows 上的 Web 服务，同时可按需映射 RDP &#x2F; TCP 端口。frp 版本以 v0.61.2 为准，配置格式为 TOML（frp ≥ 0.52 已废弃 ini，老版本请自行对照字段名）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FRP内网穿透&#x2F;反向代理完整部署手册">
+<meta property="og:url" content="https://liusir.net/2023/08/11/Network-FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="场景：公网 Linux 服务器（frps + nginx）↔ 内网 Windows 机器（frpc）目标：让公网域名 app.example.com 访问内网 Windows 上的 Web 服务，同时可按需映射 RDP &#x2F; TCP 端口。frp 版本以 v0.61.2 为准，配置格式为 TOML（frp ≥ 0.52 已废弃 ini，老版本请自行对照字段名）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-11T07:52:30.000Z">
+<meta property="article:modified_time" content="2026-11-24T03:03:59.741Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="内网穿透">
+<meta property="article:tag" content="反向代理">
+<meta property="article:tag" content="FRP">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2023/08/11/Network-FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>FRP内网穿透/反向代理完整部署手册 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2023/08/11/Network-FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FRP内网穿透/反向代理完整部署手册
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-11 15:52:30" itemprop="dateCreated datePublished" datetime="2023-08-11T15:52:30+08:00">2023-08-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Network</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>场景：公网 Linux 服务器（frps + nginx）↔ 内网 Windows 机器（frpc）<br>目标：让公网域名 <code>app.example.com</code> 访问内网 Windows 上的 Web 服务，同时可按需映射 RDP / TCP 端口。<br>frp 版本以 v0.61.2 为准，配置格式为 TOML（frp ≥ 0.52 已废弃 ini，老版本请自行对照字段名）。</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="0-先替换这几处占位符"><a href="#0-先替换这几处占位符" class="headerlink" title="0. 先替换这几处占位符"></a>0. 先替换这几处占位符</h2><p>全文统一使用下列占位值，部署前先在你的环境里对应替换，后面不再逐处提醒。</p>
+<table>
+<thead>
+<tr>
+<th>占位符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>1.2.3.4</code></td>
+<td>公网 VPS 的 IP</td>
+<td>47.100.x.x</td>
+</tr>
+<tr>
+<td><code>app.example.com</code></td>
+<td>对外访问域名（A 记录指向 VPS）</td>
+<td>oa.mycompany.com</td>
+</tr>
+<tr>
+<td><code>S3cr3tT0ken...</code></td>
+<td>frp 认证 token，两端必须一致</td>
+<td>32 位随机串</td>
+</tr>
+<tr>
+<td><code>8080</code></td>
+<td>内网 Windows 上真实 Web 服务端口</td>
+<td>IIS 80 / PHP 8080</td>
+</tr>
+<tr>
+<td><code>7000</code></td>
+<td>frp 控制隧道端口</td>
+<td>7000</td>
+</tr>
+<tr>
+<td><code>8080 / 8443</code></td>
+<td>frps 的 vhost 端口（仅监听本机）</td>
+<td>8080 / 8443</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="1-架构与流量走向"><a href="#1-架构与流量走向" class="headerlink" title="1. 架构与流量走向"></a>1. 架构与流量走向</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">用户浏览器</span><br><span class="line">   │  https://app.example.com:443</span><br><span class="line">   ▼</span><br><span class="line">┌──────────────────────────────────────────┐</span><br><span class="line">│ 公网 Linux VPS                            │</span><br><span class="line">│  nginx :443 (TLS 终结)                    │</span><br><span class="line">│    └─ proxy_pass http://127.0.0.1:8080    │</span><br><span class="line">│  frps :7000 (控制隧道)                     │</span><br><span class="line">│       :8080 / :8443 (vhost，仅本机监听)     │</span><br><span class="line">└──────────────────────────────────────────┘</span><br><span class="line">   ▲  frpc 主动外连 7000，维持长连接</span><br><span class="line">   │</span><br><span class="line">┌──────────────────────────────────────────┐</span><br><span class="line">│ 内网 Windows 机器                          │</span><br><span class="line">│  frpc.exe  → 127.0.0.1:8080 (IIS/应用)     │</span><br><span class="line">│            → 127.0.0.1:3389 (RDP，可选)     │</span><br><span class="line">└──────────────────────────────────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<p>三个设计要点，先理解再动手，能少踩一半坑：</p>
+<ol>
+<li><strong>frpc 主动外连</strong>，内网无需公网 IP、无需在路由器做端口映射，Windows 防火墙出站默认放行即可。</li>
+<li><strong>vhost 端口必须只绑 127.0.0.1</strong>（<code>proxyBindAddr</code>），由 nginx 对外提供服务，防止有人绕过 nginx 直连 8080。</li>
+<li><strong>TLS 终结在 nginx</strong>，内网应用只需跑 HTTP，证书只在 VPS 上维护一份。</li>
+</ol>
+<hr>
+<h2 id="2-前置条件"><a href="#2-前置条件" class="headerlink" title="2. 前置条件"></a>2. 前置条件</h2><ul>
+<li>域名 A 记录：<code>app.example.com → 1.2.3.4</code>，<code>ping</code> 能通再继续。</li>
+<li>VPS 已装 nginx，且 80/443 未被其他站点占用。</li>
+<li>VPS 已放通 7000/80/443（云厂商安全组 + 系统防火墙两层都要放）。</li>
+<li>Windows 侧能访问外网 7000 端口。</li>
+</ul>
+<hr>
+<h2 id="3-服务端：Linux-VPS-部署-frps"><a href="#3-服务端：Linux-VPS-部署-frps" class="headerlink" title="3. 服务端：Linux VPS 部署 frps"></a>3. 服务端：Linux VPS 部署 frps</h2><h3 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">V=0.61.2</span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v<span class="variable">${V}</span>/frp_<span class="variable">${V}</span>_linux_amd64.tar.gz</span><br><span class="line">tar -zxf frp_<span class="variable">${V}</span>_linux_amd64.tar.gz</span><br><span class="line">install -m755 frp_<span class="variable">${V}</span>_linux_amd64/frps /usr/<span class="built_in">local</span>/bin/frps</span><br><span class="line">mkdir -p /etc/frp</span><br><span class="line">frps -v</span><br></pre></td></tr></tbody></table></figure>
+
+<p>不建议用 <code>apt install frp</code>：发行版源里的版本普遍停在 0.44 左右，仍是 ini 语法，与本手册不兼容。</p>
+<h3 id="3-2-配置-etc-frp-frps-toml"><a href="#3-2-配置-etc-frp-frps-toml" class="headerlink" title="3.2 配置 /etc/frp/frps.toml"></a>3.2 配置 <code>/etc/frp/frps.toml</code></h3><figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 控制隧道</span></span><br><span class="line"><span class="attr">bindPort</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># vhost 端口只绑回环，交给 nginx 对外</span></span><br><span class="line"><span class="attr">proxyBindAddr</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">vhostHTTPPort</span> = <span class="number">8080</span></span><br><span class="line"><span class="attr">vhostHTTPSPort</span> = <span class="number">8443</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 泛解析子域名场景才需要（本例用固定 customDomains，可留空）</span></span><br><span class="line"><span class="attr">subDomainHost</span> = <span class="string">"frp.example.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 认证</span></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">"token"</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">"S3cr3tT0ken换成32位随机串"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制隧道 TLS，防止明文 token 被抓</span></span><br><span class="line"><span class="attr">transport.tls.force</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只放行 6000-6010 作为 TCP 映射端口，防止 frpc 把 3306 直接怼上公网</span></span><br><span class="line"><span class="attr">allowPorts</span> = [</span><br><span class="line">  { start = <span class="number">6000</span>, end = <span class="number">6010</span> }</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dashboard（只监听本机，用 ssh 隧道或 nginx 加认证后访问）</span></span><br><span class="line"><span class="attr">webServer.addr</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">webServer.port</span> = <span class="number">7500</span></span><br><span class="line"><span class="attr">webServer.user</span> = <span class="string">"admin"</span></span><br><span class="line"><span class="attr">webServer.password</span> = <span class="string">"改成强密码"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>生成随机 token 并写入（避免手打错字）：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TOKEN=$(openssl rand -hex 16)</span><br><span class="line">sed -i <span class="string">"s|S3cr3tT0ken换成32位随机串|<span class="variable">$TOKEN</span>|"</span> /etc/frp/frps.toml</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"token = <span class="variable">$TOKEN</span>"</span></span><br><span class="line">chmod 600 /etc/frp/frps.toml</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-3-systemd-守护"><a href="#3-3-systemd-守护" class="headerlink" title="3.3 systemd 守护"></a>3.3 systemd 守护</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/systemd/system/frps.service &lt;&lt;<span class="string">'EOF'</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=frp server</span><br><span class="line">After=network-online.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/bin/frps -c /etc/frp/frps.toml</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line">LimitNOFILE=1048576</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl <span class="built_in">enable</span> --now frps</span><br><span class="line">systemctl status frps --no-pager</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-4-放行端口"><a href="#3-4-放行端口" class="headerlink" title="3.4 放行端口"></a>3.4 放行端口</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CentOS / RHEL</span></span><br><span class="line">firewall-cmd --add-port=7000/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=80/tcp --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># Ubuntu / Debian</span></span><br><span class="line">ufw allow 7000/tcp</span><br><span class="line">ufw allow 80,443/tcp</span><br><span class="line">ufw reload</span><br></pre></td></tr></tbody></table></figure>
+
+<p>同时去云厂商控制台的安全组，放通 7000/80/443（入方向）。<strong>不要</strong>放通 8080/8443/7500。</p>
+<hr>
+<h2 id="4-服务端：nginx-反向代理"><a href="#4-服务端：nginx-反向代理" class="headerlink" title="4. 服务端：nginx 反向代理"></a>4. 服务端：nginx 反向代理</h2><h3 id="4-1-上游与-WebSocket-升级配置"><a href="#4-1-上游与-WebSocket-升级配置" class="headerlink" title="4.1 上游与 WebSocket 升级配置"></a>4.1 上游与 WebSocket 升级配置</h3><p><code>/etc/nginx/conf.d/upgrade.conf</code>（放在 http 块内，需被 include）：</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">map</span> $http_upgrade $connection_upgrade {</span><br><span class="line">    <span class="attribute">default</span> upgrade;</span><br><span class="line">    ''      close;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>若你的 nginx.conf 的 <code>http {}</code> 里已有 <code>include /etc/nginx/conf.d/*.conf;</code>，把上面这段单独存成 <code>conf.d/upgrade.conf</code> 即可；否则直接写进 <code>http {}</code> 内。</p>
+<h3 id="4-2-站点配置-etc-nginx-conf-d-app-example-com-conf"><a href="#4-2-站点配置-etc-nginx-conf-d-app-example-com-conf" class="headerlink" title="4.2 站点配置 /etc/nginx/conf.d/app.example.com.conf"></a>4.2 站点配置 <code>/etc/nginx/conf.d/app.example.com.conf</code></h3><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> {</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> app.example.com;</span><br><span class="line">    <span class="comment"># 证书申请可走此处（certbot / acme.sh），签完再改成 301</span></span><br><span class="line">    <span class="attribute">return</span> <span class="number">301</span> https://$host$request_uri;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="section">server</span> {</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">http2</span>  <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">server_name</span> app.example.com;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">ssl_certificate</span>     /etc/nginx/ssl/app.example.com.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/nginx/ssl/app.example.com.key;</span><br><span class="line">    <span class="attribute">ssl_protocols</span>       TLSv1.<span class="number">2</span> TLSv1.<span class="number">3</span>;</span><br><span class="line">    <span class="attribute">ssl_session_cache</span>   shared:SSL:<span class="number">10m</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">client_max_body_size</span> <span class="number">200m</span>;      <span class="comment"># 有上传功能的业务按需调大</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / {</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 这一行是命门：frps 靠 Host 匹配 customDomains</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host              $host;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP         $remote_addr;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto $scheme;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Port  $server_port;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># WebSocket / SSE</span></span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade    $http_upgrade;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection $connection_upgrade;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">proxy_connect_timeout</span> <span class="number">10s</span>;</span><br><span class="line">        <span class="attribute">proxy_read_timeout</span>    <span class="number">300s</span>;</span><br><span class="line">        <span class="attribute">proxy_send_timeout</span>    <span class="number">300s</span>;</span><br><span class="line">        <span class="attribute">proxy_buffering</span>       <span class="literal">off</span>;      <span class="comment"># 流式接口、大文件下载更稳</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><strong><code>proxy_set_header Host $host;</code> 必须写。</strong> 若被改写成 <code>127.0.0.1:8080</code>，frps 找不到匹配的 <code>customDomains</code>，会直接返回纯文本 <code>404 page not found</code>——这是最高频的故障，且现象极易被误判成 nginx 配置错。</p>
+</blockquote>
+<h3 id="4-3-校验并重载"><a href="#4-3-校验并重载" class="headerlink" title="4.3 校验并重载"></a>4.3 校验并重载</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t &amp;&amp; systemctl reload nginx</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="5-客户端：Windows-内网机部署-frpc"><a href="#5-客户端：Windows-内网机部署-frpc" class="headerlink" title="5. 客户端：Windows 内网机部署 frpc"></a>5. 客户端：Windows 内网机部署 frpc</h2><h3 id="5-1-下载解压"><a href="#5-1-下载解压" class="headerlink" title="5.1 下载解压"></a>5.1 下载解压</h3><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$V</span> = <span class="string">"0.61.2"</span></span><br><span class="line"><span class="variable">$url</span> = <span class="string">"https://github.com/fatedier/frp/releases/download/v<span class="variable">$V</span>/frp_<span class="variable">$</span>{V}_windows_amd64.zip"</span></span><br><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-Uri</span> <span class="variable">$url</span> <span class="literal">-OutFile</span> <span class="string">"<span class="variable">$env:TEMP</span>\frp.zip"</span> <span class="literal">-UseBasicParsing</span></span><br><span class="line"><span class="built_in">Expand-Archive</span> <span class="string">"<span class="variable">$env:TEMP</span>\frp.zip"</span> <span class="literal">-DestinationPath</span> <span class="string">"C:\frp_tmp"</span> <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">New-Item</span> <span class="literal">-ItemType</span> Directory <span class="literal">-Path</span> C:\frp <span class="literal">-Force</span> | <span class="built_in">Out-Null</span></span><br><span class="line"><span class="built_in">Copy-Item</span> <span class="string">"C:\frp_tmp\frp_<span class="variable">$</span>{V}_windows_amd64\frpc.exe"</span> C:\frp\ <span class="literal">-Force</span></span><br><span class="line">C:\frp\frpc.exe <span class="literal">-v</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>-UseBasicParsing</code> 必加，否则部分环境因 IE 引擎未初始化而报错。</p>
+<h3 id="5-2-配置-C-frp-frpc-toml"><a href="#5-2-配置-C-frp-frpc-toml" class="headerlink" title="5.2 配置 C:\frp\frpc.toml"></a>5.2 配置 <code>C:\frp\frpc.toml</code></h3><figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">serverAddr</span> = <span class="string">"1.2.3.4"</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">"token"</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">"S3cr3tT0ken换成32位随机串"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">loginFailExit</span> = <span class="literal">false</span>        <span class="comment"># 登录失败不退出，持续重试</span></span><br><span class="line"><span class="attr">transport.tls.enable</span> = <span class="literal">true</span>  <span class="comment"># 与 frps 的 tls.force 对应</span></span><br><span class="line"></span><br><span class="line"><span class="attr">log.to</span> = <span class="string">"C:/frp/frpc.log"</span>   <span class="comment"># TOML 里统一用正斜杠，避免反斜杠转义</span></span><br><span class="line"><span class="attr">log.level</span> = <span class="string">"info"</span></span><br><span class="line"><span class="attr">log.maxDays</span> = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- Web 站点映射 ----</span></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"web-app"</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">"http"</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">8080</span></span><br><span class="line"><span class="attr">customDomains</span> = [<span class="string">"app.example.com"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 远程桌面（可选，见 8.2 安全提醒）----</span></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"rdp"</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">"tcp"</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">3389</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">6001</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 数据库（可选）----</span></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"mssql"</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">"tcp"</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">1433</span></span><br><span class="line"><span class="attr">remotePort</span> = <span class="number">6002</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Windows 专属的三条硬规矩：</p>
+<ul>
+<li><strong>文件必须是 UTF-8 无 BOM</strong>。记事本“另存为 UTF-8”会带 BOM，frpc 直接报 TOML 解析错误。用 PowerShell 落盘最稳：</li>
+</ul>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$content</span> = <span class="built_in">Get-Content</span> <span class="literal">-LiteralPath</span> <span class="string">"C:\frp\frpc.toml"</span> <span class="literal">-Raw</span></span><br><span class="line">[<span class="type">System.IO.File</span>]::WriteAllText(<span class="string">"C:\frp\frpc.toml"</span>, <span class="variable">$content</span>, (<span class="built_in">New-Object</span> System.Text.UTF8Encoding <span class="variable">$false</span>))</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><strong><code>localIP</code> 写 <code>127.0.0.1</code>，不要写 <code>localhost</code></strong>。Windows 上 <code>localhost</code> 先解析 <code>::1</code>，IIS 或仅监听 IPv4 的服务会返回 <code>connection refused</code>。</li>
+<li><strong>路径一律用正斜杠</strong>（<code>C:/frp/frpc.log</code>），或反斜杠双写（<code>C:\\frp\\frpc.log</code>）。</li>
+</ul>
+<h3 id="5-3-先手工跑通"><a href="#5-3-先手工跑通" class="headerlink" title="5.3 先手工跑通"></a>5.3 先手工跑通</h3><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\frp</span><br><span class="line">.\frpc.exe <span class="literal">-c</span> .\frpc.toml</span><br></pre></td></tr></tbody></table></figure>
+
+<p>出现 <code>start proxy success</code> 即隧道已通。此时在 VPS 上验证：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -I https://app.example.com</span><br><span class="line">journalctl -u frps -n 40 --no-pager | grep -i <span class="string">"login\|proxy"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>确认无误后 <code>Ctrl+C</code> 停掉，再装服务。</p>
+<h3 id="5-4-注册为-Windows-服务（NSSM）"><a href="#5-4-注册为-Windows-服务（NSSM）" class="headerlink" title="5.4 注册为 Windows 服务（NSSM）"></a>5.4 注册为 Windows 服务（NSSM）</h3><p><code>sc.exe create</code> 对控制台程序支持不稳（SCM 的 30 秒握手容易判失败），推荐 NSSM。</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="string">"https://nssm.cc/release/nssm-2.24.zip"</span> <span class="literal">-OutFile</span> <span class="string">"<span class="variable">$env:TEMP</span>\nssm.zip"</span> <span class="literal">-UseBasicParsing</span></span><br><span class="line"><span class="built_in">Expand-Archive</span> <span class="string">"<span class="variable">$env:TEMP</span>\nssm.zip"</span> <span class="literal">-DestinationPath</span> <span class="string">"<span class="variable">$env:TEMP</span>\nssm"</span> <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Copy-Item</span> <span class="string">"<span class="variable">$env:TEMP</span>\nssm\nssm-2.24\win64\nssm.exe"</span> C:\frp\ <span class="literal">-Force</span></span><br><span class="line"></span><br><span class="line">C:\frp\nssm.exe install frpc <span class="string">"C:\frp\frpc.exe"</span> <span class="string">"-c C:\frp\frpc.toml"</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppDirectory      <span class="string">"C:\frp"</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppStdout         <span class="string">"C:\frp\frpc_stdout.log"</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppStderr         <span class="string">"C:\frp\frpc_stderr.log"</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppRotateFiles    <span class="number">1</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppRotateBytes    <span class="number">10485760</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc <span class="built_in">Start</span>             SERVICE_AUTO_START</span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppRestartDelay   <span class="number">5000</span></span><br><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc AppStopMethodConsole <span class="number">3000</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Start-Service</span> frpc</span><br><span class="line"><span class="built_in">Get-Service</span> frpc | <span class="built_in">Format-List</span> Status,StartType</span><br></pre></td></tr></tbody></table></figure>
+
+<p>NSSM 默认以 <code>LocalSystem</code> 运行。若你的业务服务依赖某个用户会话、映射网络驱动器或用户级证书，改成指定账号：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\frp\nssm.exe <span class="built_in">set</span> frpc ObjectName <span class="string">".\svc_frp"</span> <span class="string">"账号密码"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>不想用 NSSM 的替代方案：下载 WinSW，把 <code>WinSW-x64.exe</code> 重命名为 <code>frpc-service.exe</code> 放到 <code>C:\frp</code>，同目录放 XML 配置后执行 <code>.\frpc-service.exe install</code>。</p>
+<hr>
+<h2 id="6-内网服务监听自检"><a href="#6-内网服务监听自检" class="headerlink" title="6. 内网服务监听自检"></a>6. 内网服务监听自检</h2><p>frpc 连不上本机，九成是监听地址问题，先查：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-NetTCPConnection</span> <span class="literal">-LocalPort</span> <span class="number">8080</span> <span class="literal">-State</span> Listen |</span><br><span class="line">    <span class="built_in">Select-Object</span> LocalAddress,LocalPort,OwningProcess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反查进程名</span></span><br><span class="line"><span class="built_in">Get-Process</span> <span class="literal">-Id</span> &lt;OwningProcess&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>要求出现 <code>127.0.0.1</code> 或 <code>0.0.0.0</code>。若只有 <code>::1</code>：要么把 IIS/应用绑定改回 IPv4，要么在 frpc 里写 <code>localIP = "::1"</code>。</p>
+<hr>
+<h2 id="7-上线验收清单"><a href="#7-上线验收清单" class="headerlink" title="7. 上线验收清单"></a>7. 上线验收清单</h2><p>按顺序逐项打勾，任何一项不过就不要往下走。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <code>dig +short app.example.com</code> 返回 <code>1.2.3.4</code></li>
+<li><input disabled="" type="checkbox"> VPS：<code>ss -lntp | grep -E "7000|8080|8443|7500"</code> 四个端口都在</li>
+<li><input disabled="" type="checkbox"> VPS：<code>ss -lntp | grep 8080</code> 的 Local Address 是 <code>127.0.0.1</code>，不是 <code>0.0.0.0</code></li>
+<li><input disabled="" type="checkbox"> VPS：<code>journalctl -u frps -n 30 | grep -i login</code> 能看到 frpc 的登录记录</li>
+<li><input disabled="" type="checkbox"> Windows：<code>Test-NetConnection 1.2.3.4 -Port 7000</code> 为 <code>True</code></li>
+<li><input disabled="" type="checkbox"> Windows：<code>Get-Service frpc</code> 为 <code>Running</code> / <code>Automatic</code></li>
+<li><input disabled="" type="checkbox"> 公网：<code>curl -I https://app.example.com</code> 返回 <code>200</code> 而非 <code>404 page not found</code></li>
+<li><input disabled="" type="checkbox"> 浏览器能打开，且静态资源、接口请求均正常（无混合内容报错）</li>
+<li><input disabled="" type="checkbox"> 业务后台里取到的客户端 IP 是真实公网 IP（验证 <code>X-Forwarded-For</code> 透传）</li>
+<li><input disabled="" type="checkbox"> 重启 Windows 机器后，未登录桌面的情况下服务仍能自动起来并连通</li>
+</ul>
+<hr>
+<h2 id="8-安全加固（必读）"><a href="#8-安全加固（必读）" class="headerlink" title="8. 安全加固（必读）"></a>8. 安全加固（必读）</h2><h3 id="8-1-三层防护"><a href="#8-1-三层防护" class="headerlink" title="8.1 三层防护"></a>8.1 三层防护</h3><ol>
+<li><strong>token + TLS</strong>：已在前文配置，杜绝明文和弱认证。</li>
+<li><strong>端口白名单</strong>：<code>allowPorts</code> 限定 6000-6010，frpc 无法擅自映射其他端口。</li>
+<li><strong>不暴露 vhost 端口</strong>：<code>proxyBindAddr = "127.0.0.1"</code>，安全组也别开 8080/8443/7500。</li>
+</ol>
+<h3 id="8-2-不要把-RDP-数据库直接怼公网"><a href="#8-2-不要把-RDP-数据库直接怼公网" class="headerlink" title="8.2 不要把 RDP / 数据库直接怼公网"></a>8.2 不要把 RDP / 数据库直接怼公网</h3><p><code>remotePort = 6001</code> 映射 3389，等于把桌面暴露在互联网上，弱口令爆破几分钟就来。两个替代方案：</p>
+<p><strong>方案 A：frp 的 stcp 模式（不经公网端口，需访问方也装 frpc）</strong></p>
+<figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows 内网机（被访问方）</span></span><br><span class="line"><span class="section">[[proxies]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"rdp-secret"</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">"stcp"</span></span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">"另一个随机串"</span></span><br><span class="line"><span class="attr">localIP</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">localPort</span> = <span class="number">3389</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight toml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 你自己的电脑（访问方）</span></span><br><span class="line"><span class="attr">serverAddr</span> = <span class="string">"1.2.3.4"</span></span><br><span class="line"><span class="attr">serverPort</span> = <span class="number">7000</span></span><br><span class="line"><span class="attr">auth.method</span> = <span class="string">"token"</span></span><br><span class="line"><span class="attr">auth.token</span> = <span class="string">"同一 token"</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[visitors]]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">"rdp-visitor"</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">"visitor"</span></span><br><span class="line"><span class="attr">serverName</span> = <span class="string">"rdp-secret"</span></span><br><span class="line"><span class="attr">secretKey</span> = <span class="string">"另一个随机串"</span></span><br><span class="line"><span class="attr">bindAddr</span> = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">bindPort</span> = <span class="number">13389</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>之后 <code>mstsc 127.0.0.1:13389</code> 即可，公网上不开放任何端口。</p>
+<p><strong>方案 B：先 SSH 隧道再跳 RDP</strong></p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 13389:127.0.0.1:6001 root@1.2.3.4</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="8-3-Dashboard-访问"><a href="#8-3-Dashboard-访问" class="headerlink" title="8.3 Dashboard 访问"></a>8.3 Dashboard 访问</h3><p><code>webServer.addr</code> 已绑 127.0.0.1，外部访问走 SSH 端口转发：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 7500:127.0.0.1:7500 root@1.2.3.4</span><br><span class="line"><span class="comment"># 浏览器打开 http://127.0.0.1:7500，用配置的账号密码登录</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="9-排错速查表"><a href="#9-排错速查表" class="headerlink" title="9. 排错速查表"></a>9. 排错速查表</h2><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>根因</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名返回纯文本 <code>404 page not found</code></td>
+<td>nginx 覆盖了 <code>Host</code>，frps 匹配不到 <code>customDomains</code></td>
+<td>加 <code>proxy_set_header Host $host;</code>，然后 <code>nginx -s reload</code></td>
+</tr>
+<tr>
+<td>同上，但 Host 已正确</td>
+<td><code>customDomains</code> 域名拼写 / 与实际访问域名不一致</td>
+<td>两端逐字符比对，含 www 与否</td>
+</tr>
+<tr>
+<td><code>curl</code> 直接超时</td>
+<td>安全组未放通 80/443，或云厂商拦截</td>
+<td>控制台放通，<code>telnet 1.2.3.4 443</code> 验证</td>
+</tr>
+<tr>
+<td>frpc 日志 <code>token in login doesn't match</code></td>
+<td>两端 token 不一致</td>
+<td>重取 token 覆盖两端，重启两个服务</td>
+</tr>
+<tr>
+<td>frpc 报 TLS 握手失败</td>
+<td>frps 开了 <code>transport.tls.force</code>，frpc 没开 <code>enable</code></td>
+<td>frpc 加 <code>transport.tls.enable = true</code></td>
+</tr>
+<tr>
+<td>frpc <code>connect to server error: i/o timeout</code></td>
+<td>7000 未放通 / VPS 侧 frps 未启动</td>
+<td><code>journalctl -u frps -n 30</code>，<code>Test-NetConnection</code></td>
+</tr>
+<tr>
+<td>frpc 起来但代理 <code>start error: port already used</code></td>
+<td>TCP 映射的 <code>remotePort</code> 被占</td>
+<td><code>ss -lntp | grep 600X</code> 换端口</td>
+</tr>
+<tr>
+<td>Windows 上 <code>connection refused</code></td>
+<td><code>localIP</code> 用了 <code>localhost</code> 解析到 <code>::1</code></td>
+<td>改 <code>127.0.0.1</code>，或查监听地址</td>
+</tr>
+<tr>
+<td>上传中断 / 长任务超时</td>
+<td>nginx 或 frp 超时过短</td>
+<td><code>proxy_read_timeout 300s</code>，<code>client_max_body_size</code> 调大</td>
+</tr>
+<tr>
+<td>页面白屏、静态资源 404</td>
+<td>内网应用按绝对 URL 拼资源，或反向代理未透传 <code>X-Forwarded-Proto</code></td>
+<td>补 <code>X-Forwarded-Proto $scheme</code>，应用侧信任代理头</td>
+</tr>
+<tr>
+<td>重启后隧道不通</td>
+<td>frpc 未装成服务，或服务以 LocalSystem 无权访问业务</td>
+<td><code>Get-Service frpc</code>，必要时改 <code>ObjectName</code></td>
+</tr>
+<tr>
+<td>frpc.exe 进程消失、日志无断连记录</td>
+<td>Defender / 360 静默拦截</td>
+<td>把 <code>C:\frp</code> 加入杀软与 Defender 排除项</td>
+</tr>
+<tr>
+<td>nginx <code>502 Bad Gateway</code></td>
+<td>内网服务挂了，或 frpc 掉线</td>
+<td>先验内网直连，再看 frpc 服务状态</td>
+</tr>
+<tr>
+<td>WebSocket 连不上（<code>101</code> 拿不到）</td>
+<td>缺 <code>Upgrade</code> / <code>Connection</code> 头</td>
+<td>补 <code>map $http_upgrade</code> 与两行 <code>proxy_set_header</code></td>
+</tr>
+<tr>
+<td>TOML 解析报错，配置看似正常</td>
+<td>文件带 BOM 或用了反斜杠路径</td>
+<td>用 UTF8Encoding($false) 重写，路径改正斜杠</td>
+</tr>
+<tr>
+<td>日志暴涨占满 C 盘</td>
+<td>未设日志轮转</td>
+<td><code>log.maxDays = 7</code> + NSSM <code>AppRotateBytes</code></td>
+</tr>
+</tbody></table>
+<p>通用定位顺序：<strong>DNS → 防火墙 → frps 登录日志 → frpc 日志 → nginx error.log → 内网服务本身</strong>，逐层往下，不要跳步。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># VPS 侧常用</span></span><br><span class="line">tail -f /var/<span class="built_in">log</span>/nginx/error.log</span><br><span class="line">journalctl -u frps -f</span><br><span class="line">ss -lntp | grep -E <span class="string">"7000|8080|8443"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Windows 侧常用</span></span><br><span class="line"><span class="built_in">Get-Content</span> C:\frp\frpc.log <span class="literal">-Tail</span> <span class="number">30</span> <span class="literal">-Wait</span></span><br><span class="line"><span class="built_in">Get-Service</span> frpc</span><br><span class="line"><span class="built_in">Get-NetTCPConnection</span> <span class="literal">-State</span> Established | <span class="built_in">Where-Object</span> RemotePort <span class="operator">-eq</span> <span class="number">7000</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="10-运维补充"><a href="#10-运维补充" class="headerlink" title="10. 运维补充"></a>10. 运维补充</h2><h3 id="10-1-多台内网机器-多个域名"><a href="#10-1-多台内网机器-多个域名" class="headerlink" title="10.1 多台内网机器 / 多个域名"></a>10.1 多台内网机器 / 多个域名</h3><p>frps 侧无需改动（<code>allowPorts</code> 与 vhost 端口通用），每台内网机各自一份 frpc.toml：</p>
+<ul>
+<li><code>proxies.name</code> 全局唯一，重复会 <code>proxy name already exists</code> 报错；</li>
+<li>每台机器用自己的 <code>customDomains</code>，nginx 里加对应 <code>server_name</code> 的 server 块；</li>
+<li>若域名很多，改用泛解析：frps 配 <code>subDomainHost = "frp.example.com"</code>，frpc 里把 <code>customDomains</code> 换成 <code>subdomain = "oa"</code>，nginx 用一个 <code>server_name *.frp.example.com</code> 兜住，<code>proxy_pass</code> 仍指向 8080 即可（Host 头保留原样，frps 自己分流）。</li>
+</ul>
+<h3 id="10-2-多服务共用-80-443"><a href="#10-2-多服务共用-80-443" class="headerlink" title="10.2 多服务共用 80/443"></a>10.2 多服务共用 80/443</h3><p>nginx 一个 <code>server</code> 块的 <code>location</code> 分流即可，但注意 <strong>frps 的 vhost 是按 Host 分流的，不能按 path 分流</strong>。路径级路由要在内网应用的网关层做，或者在内网起多个端口、frpc 起多个 <code>[[proxies]]</code>（不同 <code>customDomains</code>）。</p>
+<h3 id="10-3-升级"><a href="#10-3-升级" class="headerlink" title="10.3 升级"></a>10.3 升级</h3><p>Linux：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop frps</span><br><span class="line"><span class="comment"># 重复 3.1 的下载与 install 步骤</span></span><br><span class="line">systemctl start frps</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Windows：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> frpc</span><br><span class="line"><span class="comment"># 用新 frpc.exe 覆盖 C:\frp\frpc.exe</span></span><br><span class="line"><span class="built_in">Start-Service</span> frpc</span><br></pre></td></tr></tbody></table></figure>
+
+<p>升级前备份 <code>/etc/frp/</code> 与 <code>C:\frp\frpc.toml</code>。跨大版本（如 0.5x → 0.6x）注意 TOML 字段有改名，先看 release notes。</p>
+<h3 id="10-4-带宽与并发"><a href="#10-4-带宽与并发" class="headerlink" title="10.4 带宽与并发"></a>10.4 带宽与并发</h3><p>frp 本身不限速，瓶颈在 VPS 带宽。若业务流量大：</p>
+<ul>
+<li>大文件传输走对象存储直传，不要过 frp 隧道；</li>
+<li><code>frps.toml</code> 可加 <code>transport.maxPoolCount = 10</code> 提升并发隧道数；</li>
+<li>nginx 侧 <code>proxy_buffering off</code> 已缓解流式场景的内存压力。</li>
+</ul>
+<hr>
+<h2 id="附录：文件清单"><a href="#附录：文件清单" class="headerlink" title="附录：文件清单"></a>附录：文件清单</h2><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VPS</td>
+<td><code>/usr/local/bin/frps</code></td>
+</tr>
+<tr>
+<td>VPS</td>
+<td><code>/etc/frp/frps.toml</code></td>
+</tr>
+<tr>
+<td>VPS</td>
+<td><code>/etc/systemd/system/frps.service</code></td>
+</tr>
+<tr>
+<td>VPS</td>
+<td><code>/etc/nginx/conf.d/app.example.com.conf</code>、<code>/etc/nginx/conf.d/upgrade.conf</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><code>C:\frp\frpc.exe</code>、<code>C:\frp\frpc.toml</code>、<code>C:\frp\nssm.exe</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>服务名 <code>frpc</code>，日志 <code>C:\frp\frpc.log</code></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"><i class="fa fa-tag"></i> 内网穿透</a>
+              <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 反向代理</a>
+              <a href="/tags/FRP/" rel="tag"><i class="fa fa-tag"></i> FRP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2023/07/18/Book-%E8%87%AA%E7%9C%81/" rel="next" title="自省">
+                  <i class="fa fa-chevron-left"></i> 自省
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2023/09/05/PL-Rust/" rel="prev" title="Rust">
+                  Rust <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-%E5%85%88%E6%9B%BF%E6%8D%A2%E8%BF%99%E5%87%A0%E5%A4%84%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">0. 先替换这几处占位符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%B5%81%E9%87%8F%E8%B5%B0%E5%90%91"><span class="nav-number">2.</span> <span class="nav-text">1. 架构与流量走向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">2. 前置条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%9ALinux-VPS-%E9%83%A8%E7%BD%B2-frps"><span class="nav-number">4.</span> <span class="nav-text">3. 服务端：Linux VPS 部署 frps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%85%8D%E7%BD%AE-etc-frp-frps-toml"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 配置 &#x2F;etc&#x2F;frp&#x2F;frps.toml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-systemd-%E5%AE%88%E6%8A%A4"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 systemd 守护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">4.4.</span> <span class="nav-text">3.4 放行端口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%9Anginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">4. 服务端：nginx 反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E4%B8%8A%E6%B8%B8%E4%B8%8E-WebSocket-%E5%8D%87%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 上游与 WebSocket 升级配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE-etc-nginx-conf-d-app-example-com-conf"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 站点配置 &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;app.example.com.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%A0%A1%E9%AA%8C%E5%B9%B6%E9%87%8D%E8%BD%BD"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 校验并重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%9AWindows-%E5%86%85%E7%BD%91%E6%9C%BA%E9%83%A8%E7%BD%B2-frpc"><span class="nav-number">6.</span> <span class="nav-text">5. 客户端：Windows 内网机部署 frpc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%B8%8B%E8%BD%BD%E8%A7%A3%E5%8E%8B"><span class="nav-number">6.1.</span> <span class="nav-text">5.1 下载解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E9%85%8D%E7%BD%AE-C-frp-frpc-toml"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 配置 C:\frp\frpc.toml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%85%88%E6%89%8B%E5%B7%A5%E8%B7%91%E9%80%9A"><span class="nav-number">6.3.</span> <span class="nav-text">5.3 先手工跑通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%B3%A8%E5%86%8C%E4%B8%BA-Windows-%E6%9C%8D%E5%8A%A1%EF%BC%88NSSM%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">5.4 注册为 Windows 服务（NSSM）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E7%9B%91%E5%90%AC%E8%87%AA%E6%A3%80"><span class="nav-number">7.</span> <span class="nav-text">6. 内网服务监听自检</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E4%B8%8A%E7%BA%BF%E9%AA%8C%E6%94%B6%E6%B8%85%E5%8D%95"><span class="nav-number">8.</span> <span class="nav-text">7. 上线验收清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%AE%89%E5%85%A8%E5%8A%A0%E5%9B%BA%EF%BC%88%E5%BF%85%E8%AF%BB%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">8. 安全加固（必读）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E4%B8%89%E5%B1%82%E9%98%B2%E6%8A%A4"><span class="nav-number">9.1.</span> <span class="nav-text">8.1 三层防护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E4%B8%8D%E8%A6%81%E6%8A%8A-RDP-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B4%E6%8E%A5%E6%80%BC%E5%85%AC%E7%BD%91"><span class="nav-number">9.2.</span> <span class="nav-text">8.2 不要把 RDP &#x2F; 数据库直接怼公网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-Dashboard-%E8%AE%BF%E9%97%AE"><span class="nav-number">9.3.</span> <span class="nav-text">8.3 Dashboard 访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E6%8E%92%E9%94%99%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="nav-number">10.</span> <span class="nav-text">9. 排错速查表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E8%BF%90%E7%BB%B4%E8%A1%A5%E5%85%85"><span class="nav-number">11.</span> <span class="nav-text">10. 运维补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-%E5%A4%9A%E5%8F%B0%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8-%E5%A4%9A%E4%B8%AA%E5%9F%9F%E5%90%8D"><span class="nav-number">11.1.</span> <span class="nav-text">10.1 多台内网机器 &#x2F; 多个域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-%E5%A4%9A%E6%9C%8D%E5%8A%A1%E5%85%B1%E7%94%A8-80-443"><span class="nav-number">11.2.</span> <span class="nav-text">10.2 多服务共用 80&#x2F;443</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-%E5%8D%87%E7%BA%A7"><span class="nav-number">11.3.</span> <span class="nav-text">10.3 升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-4-%E5%B8%A6%E5%AE%BD%E4%B8%8E%E5%B9%B6%E5%8F%91"><span class="nav-number">11.4.</span> <span class="nav-text">10.4 带宽与并发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E6%96%87%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="nav-number">12.</span> <span class="nav-text">附录：文件清单</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

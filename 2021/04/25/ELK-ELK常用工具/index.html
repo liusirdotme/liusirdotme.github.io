@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="逗号分隔值(Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号)，其文件以纯文本形式存储表格数据(数字和文本)。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由字段组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或制表符。通常，所有记录都有完全相同的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK常用工具">
+<meta property="og:url" content="https://liusir.net/2021/04/25/ELK-ELK%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="逗号分隔值(Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号)，其文件以纯文本形式存储表格数据(数字和文本)。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由字段组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或制表符。通常，所有记录都有完全相同的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-25T02:36:01.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.078Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="ELK">
+<meta property="article:tag" content="Elasticsearch">
+<meta property="article:tag" content="Logstash">
+<meta property="article:tag" content="Kibana">
+<meta property="article:tag" content="Filebeat">
+<meta property="article:tag" content="cerebro">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2021/04/25/ELK-ELK%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ELK常用工具 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2021/04/25/ELK-ELK%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ELK常用工具
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-25 10:36:01" itemprop="dateCreated datePublished" datetime="2021-04-25T10:36:01+08:00">2021-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ELK/" itemprop="url" rel="index">
+                    <span itemprop="name">ELK</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>逗号分隔值(Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号)，其文件以纯文本形式存储表格数据(数字和文本)。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由字段组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或制表符。通常，所有记录都有完全相同的字段序列。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="cerebro"><a href="#cerebro" class="headerlink" title="cerebro"></a><center><font color="red">cerebro</font></center></h1><h2 id="一、-基础"><a href="#一、-基础" class="headerlink" title="一、 基础"></a>一、 基础</h2><blockquote>
+<p>使用curl等客户端工具即可通过<code>Restful API</code>对Elasticsearch进行操作，但也有一些客户端工具提供对于ElasticSearch更加友好的可视化操作支持，比如cerebro。</p>
+</blockquote>
+<hr>
+<h1 id="mutate"><a href="#mutate" class="headerlink" title="mutate"></a><center><font color="red">mutate</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutate插件可以对事件中的数据进行修改，包括rename、update、replace、convert、split、gsub、uppercase、lowercase、strip、remove_field、join、merge等功能。</p>
+<ol>
+<li>rename：对于已经存在的字段，重命名其字段名称。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        rename =&gt; ["old_name", "new_name"]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>update：更新字段内容(如果字段不存在不会新建)。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        update =&gt; {"old_data" =&gt; "new_data"}</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>replace：与update功能相同，区别在于如果字段不存在则会新建字段。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        replace =&gt; {"message" =&gt; "%{source_host}: new_host" }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>convert：数据类型转换。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        convert =&gt; ["request_time", "float"]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>gsub：通过正则表达式实现文本替换的功能。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        gsub =&gt; [</span><br><span class="line">            "fieldname", "/", "_",</span><br><span class="line">            "fieldname2", "[\\?#-]", "."</span><br><span class="line">        ]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="6">
+<li>uppercase/lowercase：大小写转换。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        uppercase =&gt; [ "fieldname" ]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="7">
+<li>split：将提取到的某个字段按照某个字符分割。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        split =&gt; ["message", "|"]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="8">
+<li>strip：去除首尾的空白字符。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        strip =&gt; ["field1", "field2"]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="9">
+<li>remove_field：删除字段。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        remove_field =&gt; [ "foo_%{somefield}" ]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="10">
+<li>join：将类型为array的字段中的元素使用指定字符为分隔符聚合成一个字符串。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        split =&gt; ["message", "|"]</span><br><span class="line">    }</span><br><span class="line">    mutate {</span><br><span class="line">        join =&gt; ["message", ","]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="11">
+<li>merge：合并字段。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    mutate {</span><br><span class="line">        merge =&gt; [ "dest_field", "added_field" ]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>下载<a target="_blank" rel="noopener" href="https://grouplens.org/datasets/movielens/">测试数据</a></li>
+<li>解压至<code>/Users/your_name/elk/ml-25m/movies.csv</code></li>
+<li>启动Elasticsearch实例</li>
+<li>修改Logstash配置<code>logstash.conf</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">input {</span><br><span class="line">  #beats {</span><br><span class="line">  #  port =&gt; 9011</span><br><span class="line">  #}</span><br><span class="line">  file {</span><br><span class="line">     path =&gt; ["/Users/your_name/elk/ml-25m/movies.csv"]</span><br><span class="line">     start_position =&gt; "beginning"</span><br><span class="line">     sincedb_path =&gt; null</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">filter {</span><br><span class="line">  csv {</span><br><span class="line">    separator =&gt; ","</span><br><span class="line">    columns =&gt; ["movieId","title","genre"]</span><br><span class="line">  }</span><br><span class="line">  mutate {</span><br><span class="line">    split =&gt; { "genre" =&gt; "|" }</span><br><span class="line">    # remove_field =&gt; ["path", "host","@timestamp","message"]</span><br><span class="line">  }</span><br><span class="line">  mutate {</span><br><span class="line">    convert =&gt; {</span><br><span class="line">      "year" =&gt; "integer"</span><br><span class="line">    }</span><br><span class="line">    strip =&gt; ["title"]</span><br><span class="line">    #remove_field =&gt; ["path", "host","@timestamp","message","content"]</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">output {</span><br><span class="line">  elasticsearch {</span><br><span class="line">    hosts =&gt; ["http://localhost:9200"]</span><br><span class="line">    index =&gt; "movies"</span><br><span class="line">  }</span><br><span class="line">  stdout {}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li><p>启动Logstash实例</p>
+</li>
+<li><p>查询</p>
+<ul>
+<li><p><code>curl -XGET "localhost:9200/movies/_search?pretty" -H "content-type:application/json" -d '{"_source":["movieId","title"],"query":{"match":{"title":"liu*"}}}'</code></p>
+</li>
+<li><p><code>curl -XGET "localhost:9200/_search?pretty" -H "content-type:application/json" -d '{"_source":["movieId","title"],"query":{"match":{"title":"liu*"}}}'</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f47bf814e032">参考二</a></li>
+</ol>
+<hr>
+<h1 id="Grok"><a href="#Grok" class="headerlink" title="Grok"></a><center><font color="red">Grok</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Grok</code>是<code>ELK Stack</code>中用来快速解析日志的一个脚本工具，运用得好的话可以极大程度的降低日志解析的工作，是将非结构化的日志数据解析为可查询的结构化数据的一种方法。它使用正则表达式提取日志记录中的数据，其正则表达式语法与<code>Perl</code>和<code>Ruby</code>语言中的正则表达式语法类似，语法：<code>％{SYNTAX:SEMANTIC}</code>，SYNTAX匹配模式的名称，分为配置pattern和自定义pattern，SEMANTIC则是对匹配到的文本气的别名。</p>
+<blockquote>
+<p>默认情况下SEMANTIC匹配到的是string，特殊的<code>％{SYNTAX:SEMANTIC:type}</code>，即执行匹配文本的数据类型，目前仅支持int和float。</p>
+</blockquote>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/legacy/grok-patterns">常用内置pattern</a></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">含义</th>
+<th align="left">正则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">INT</td>
+<td align="center">int类型</td>
+<td align="left">(?:[+-]?(?:[0-9]+))</td>
+</tr>
+<tr>
+<td align="center">NUMBER</td>
+<td align="center">数字</td>
+<td align="left">(?:%{BASE10NUM})</td>
+</tr>
+<tr>
+<td align="center">DATA</td>
+<td align="center">数据，可以对应字符串</td>
+<td align="left">.*?</td>
+</tr>
+<tr>
+<td align="center">GREEDYDATA</td>
+<td align="center">数据，可以对应字符串，贪婪匹配</td>
+<td align="left">.*</td>
+</tr>
+<tr>
+<td align="center">WORD</td>
+<td align="center">单词</td>
+<td align="left">\b\w+\b</td>
+</tr>
+<tr>
+<td align="center">IP</td>
+<td align="center">ip地址，v4或v6</td>
+<td align="left">(?:%{IPV6}</td>
+</tr>
+<tr>
+<td align="center">DATE</td>
+<td align="center">日期</td>
+<td align="left">%{DATE_US}</td>
+</tr>
+<tr>
+<td align="center">TIME</td>
+<td align="center">时间</td>
+<td align="left">(?!&lt;[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])</td>
+</tr>
+<tr>
+<td align="center">DATESTAMP</td>
+<td align="center">日期+时间</td>
+<td align="left">%{DATE}[- ]%{TIME}</td>
+</tr>
+<tr>
+<td align="center">PATH</td>
+<td align="center">系统路径</td>
+<td align="left">(?:%{UNIXPATH}</td>
+</tr>
+<tr>
+<td align="center">HOSTNAME</td>
+<td align="center">主机名</td>
+<td align="left">\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(.?</td>
+</tr>
+<tr>
+<td align="center">MAC</td>
+<td align="center">mac地址</td>
+<td align="left">(?:%{CISCOMAC}</td>
+</tr>
+<tr>
+<td align="center">UUID</td>
+<td align="center">uuid</td>
+<td align="left">[A-Fa-f0-9]{8}-(?:[A-Fa-f0-9]{4}-){3}[A-Fa-f0-9]{12}</td>
+</tr>
+<tr>
+<td align="center">EMAILADDRESS</td>
+<td align="center">email地址</td>
+<td align="left">%{EMAILLOCALPART}@%{HOSTNAME}</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>自定义pattern(不常用，内置基本已够用)</li>
+</ol>
+<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>使用内置pattern</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filter {</span><br><span class="line">    grok {</span><br><span class="line">        match =&gt; { "message" =&gt; "%{NUMBER:id} %{TIME:created}"}</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li><p>测试grok是否生效，<a target="_blank" rel="noopener" href="https://grokdebug.herokuapp.com/">传送门</a></p>
+<ul>
+<li>nginx日志格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span><br><span class="line">                  '$status $body_bytes_sent "$http_referer" '</span><br><span class="line">                  '"$http_user_agent" "$http_x_forwarded_for"';</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>测试文件access.log</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [26/Apr/2017:16:29:31 +0800] "GET /demo/Demo/jquery.dump.js HTTP/1.1" 200 4482 "http://localhost/index.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"</span><br><span class="line">127.0.0.1 - - [26/Apr/2017:16:29:31 +0800] "GET /demo/Demo/main.js HTTP/1.1" 200 3018 "http://localhost/index.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>grok模式</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"> %{IPORHOST:remote_addr} - %{USERNAME:remote_user} \[%{HTTPDATE:time_local}\] \"%{DATA:request}\" %{INT:status} %{NUMBER:bytes_sent} \"%{DATA:refer}\" \"%{DATA:http_user_agent}\"</span><br><span class="line"></span><br><span class="line"> {</span><br><span class="line">  "remote_addr": [</span><br><span class="line">    [</span><br><span class="line">      "127.0.0.1"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "HOSTNAME": [</span><br><span class="line">    [</span><br><span class="line">      "127.0.0.1"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "IP": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "IPV6": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "IPV4": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "remote_user": [</span><br><span class="line">    [</span><br><span class="line">      "-"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "time_local": [</span><br><span class="line">    [</span><br><span class="line">      "26/Apr/2017:16:29:31 +0800"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "MONTHDAY": [</span><br><span class="line">    [</span><br><span class="line">      "26"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "MONTH": [</span><br><span class="line">    [</span><br><span class="line">      "Apr"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "YEAR": [</span><br><span class="line">    [</span><br><span class="line">      "2017"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "TIME": [</span><br><span class="line">    [</span><br><span class="line">      "16:29:31"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "HOUR": [</span><br><span class="line">    [</span><br><span class="line">      "16"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "MINUTE": [</span><br><span class="line">    [</span><br><span class="line">      "29"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "SECOND": [</span><br><span class="line">    [</span><br><span class="line">      "31"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "INT": [</span><br><span class="line">    [</span><br><span class="line">      "+0800"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "request": [</span><br><span class="line">    [</span><br><span class="line">      "GET /demo/Demo/jquery.dump.js HTTP/1.1"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "status": [</span><br><span class="line">    [</span><br><span class="line">      "200"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "bytes_sent": [</span><br><span class="line">   [</span><br><span class="line">     "4482"</span><br><span class="line">   ]</span><br><span class="line"> ],</span><br><span class="line"> "BASE10NUM": [</span><br><span class="line">   [</span><br><span class="line">     "4482"</span><br><span class="line">   ]</span><br><span class="line"> ],</span><br><span class="line"> "refer": [</span><br><span class="line">   [</span><br><span class="line">     "http://localhost/index.php"</span><br><span class="line">   ]</span><br><span class="line"> ],</span><br><span class="line"> "http_user_agent": [</span><br><span class="line">   [</span><br><span class="line">     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36"</span><br><span class="line">   ]</span><br><span class="line"> ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>grok模式：<code>%{COMBINEDAPACHELOG}+%{GREEDYDATA:extra_fields}</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"> {</span><br><span class="line">  "COMBINEDAPACHELOG": [</span><br><span class="line">    [</span><br><span class="line">      "127.0.0.1 - - [26/Apr/2017:16:29:31 +0800] "GET /demo/Demo/jquery.dump.js HTTP/1.1" 200 4482 "http://localhost/index.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36""</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "COMMONAPACHELOG": [</span><br><span class="line">    [</span><br><span class="line">      "127.0.0.1 - - [26/Apr/2017:16:29:31 +0800] "GET /demo/Demo/jquery.dump.js HTTP/1.1" 200 4482"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "clientip": [</span><br><span class="line">    [</span><br><span class="line">      "127.0.0.1"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "HOSTNAME": [</span><br><span class="line">    [</span><br><span class="line">      "127.0.0.1"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "IP": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "IPV6": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "IPV4": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "ident": [</span><br><span class="line">    [</span><br><span class="line">      "-"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "USERNAME": [</span><br><span class="line">    [</span><br><span class="line">      "-",</span><br><span class="line">      "-"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "auth": [</span><br><span class="line">    [</span><br><span class="line">      "-"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "timestamp": [</span><br><span class="line">    [</span><br><span class="line">      "26/Apr/2017:16:29:31 +0800"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "MONTHDAY": [</span><br><span class="line">    [</span><br><span class="line">      "26"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "MONTH": [</span><br><span class="line">    [</span><br><span class="line">      "Apr"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "YEAR": [</span><br><span class="line">    [</span><br><span class="line">      "2017"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "TIME": [</span><br><span class="line">    [</span><br><span class="line">      "16:29:31"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "HOUR": [</span><br><span class="line">    [</span><br><span class="line">      "16"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "MINUTE": [</span><br><span class="line">    [</span><br><span class="line">      "29"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "SECOND": [</span><br><span class="line">    [</span><br><span class="line">      "31"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "INT": [</span><br><span class="line">    [</span><br><span class="line">      "+0800"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "verb": [</span><br><span class="line">    [</span><br><span class="line">      "GET"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "request": [</span><br><span class="line">    [</span><br><span class="line">      "/demo/Demo/jquery.dump.js"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "httpversion": [</span><br><span class="line">    [</span><br><span class="line">      "1.1"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "BASE10NUM": [</span><br><span class="line">    [</span><br><span class="line">      "1.1",</span><br><span class="line">      "200",</span><br><span class="line">      "4482"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "rawrequest": [</span><br><span class="line">    [</span><br><span class="line">      null</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "response": [</span><br><span class="line">    [</span><br><span class="line">      "200"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "bytes": [</span><br><span class="line">    [</span><br><span class="line">      "4482"</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "referrer": [</span><br><span class="line">    [</span><br><span class="line">      ""http://localhost/index.php""</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "QUOTEDSTRING": [</span><br><span class="line">    [</span><br><span class="line">      ""http://localhost/index.php"",</span><br><span class="line">      ""Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36""</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "agent": [</span><br><span class="line">    [</span><br><span class="line">      ""Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36""</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  "extra_fields": [</span><br><span class="line">    [</span><br><span class="line">      ""</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://grokdebug.herokuapp.com/">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/toSeek/p/6117845.html">参考四</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/mariotacke/88053be5be5ef87b7544ece220f41af4">参考五</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/UbuntuTouch/article/details/107512971">参考六</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/ELK/" rel="tag"><i class="fa fa-tag"></i> ELK</a>
+              <a href="/tags/Elasticsearch/" rel="tag"><i class="fa fa-tag"></i> Elasticsearch</a>
+              <a href="/tags/Logstash/" rel="tag"><i class="fa fa-tag"></i> Logstash</a>
+              <a href="/tags/Kibana/" rel="tag"><i class="fa fa-tag"></i> Kibana</a>
+              <a href="/tags/Filebeat/" rel="tag"><i class="fa fa-tag"></i> Filebeat</a>
+              <a href="/tags/cerebro/" rel="tag"><i class="fa fa-tag"></i> cerebro</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/04/17/Rust-%E5%85%A5%E9%97%A8/" rel="next" title="Rust入门">
+                  <i class="fa fa-chevron-left"></i> Rust入门
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/05/05/PL-Julia/" rel="prev" title="Julia">
+                  Julia <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cerebro"><span class="nav-number">1.</span> <span class="nav-text">cerebro</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、 基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mutate"><span class="nav-number">2.</span> <span class="nav-text">mutate</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grok"><span class="nav-number">3.</span> <span class="nav-text">Grok</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

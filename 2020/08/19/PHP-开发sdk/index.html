@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="阿斯伯格综合征(Asperger syndrome，简称AS)是广泛性发展障碍(PDD)中的一种综合征，属于孤独症谱系障碍(ASD)。其重要特征是社交与非言语交际障碍，同时伴随着兴趣狭隘及重复特定行为，但相较于其他孤独症谱系障碍，仍相对保有语言及认知发展。患者经常出现肢体笨拙和语言表达方式异常等状况，偶尔会发出怪声音，但并不作为诊断依据。其症状一般在两岁前出现，并伴随患者终生。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP开发SDK">
+<meta property="og:url" content="https://liusir.net/2020/08/19/PHP-%E5%BC%80%E5%8F%91sdk/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="阿斯伯格综合征(Asperger syndrome，简称AS)是广泛性发展障碍(PDD)中的一种综合征，属于孤独症谱系障碍(ASD)。其重要特征是社交与非言语交际障碍，同时伴随着兴趣狭隘及重复特定行为，但相较于其他孤独症谱系障碍，仍相对保有语言及认知发展。患者经常出现肢体笨拙和语言表达方式异常等状况，偶尔会发出怪声音，但并不作为诊断依据。其症状一般在两岁前出现，并伴随患者终生。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-19T08:56:16.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.325Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="阿斯伯格综合征">
+<meta property="article:tag" content="Composer">
+<meta property="article:tag" content="PSR">
+<meta property="article:tag" content="SDK">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2020/08/19/PHP-%E5%BC%80%E5%8F%91sdk/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>PHP开发SDK | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2020/08/19/PHP-%E5%BC%80%E5%8F%91sdk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP开发SDK
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-19 16:56:16" itemprop="dateCreated datePublished" datetime="2020-08-19T16:56:16+08:00">2020-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>阿斯伯格综合征(Asperger syndrome，简称AS)是广泛性发展障碍(PDD)中的一种综合征，属于孤独症谱系障碍(ASD)。其重要特征是社交与非言语交际障碍，同时伴随着兴趣狭隘及重复特定行为，但相较于其他孤独症谱系障碍，仍相对保有语言及认知发展。患者经常出现肢体笨拙和语言表达方式异常等状况，偶尔会发出怪声音，但并不作为诊断依据。其症状一般在两岁前出现，并伴随患者终生。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li>PSR规范，是PHP Standard Recommendations(PHP推荐标准)的简写，由<a target="_blank" rel="noopener" href="https://www.php-fig.org/">PHP FIG</a>组织制定的PHP规范，是PHP开发的实践标准。<a target="_blank" rel="noopener" href="https://www.php-fig.org/psr/">具体规范如下</a>：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">NUM</th>
+<th align="left">TITLE</th>
+<th align="left">EDITOR(S) / MAINTAINERS</th>
+<th align="left">STATUS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">Autoloading Standard</td>
+<td align="left"></td>
+<td align="left">Deprecated</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">Basic Coding Standard</td>
+<td align="left">vacant</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Coding Style Guide</td>
+<td align="left"></td>
+<td align="left">Deprecated</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Logger Interface</td>
+<td align="left">Jordi Boggiano</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Autoloading Standard</td>
+<td align="left">vacant</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">PHPDoc Standard</td>
+<td align="left">Chuck Burgess</td>
+<td align="left">Draft</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">Caching Interface</td>
+<td align="left">Larry Garfield</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">HTTP Message Interface</td>
+<td align="left">Matthew Weier O’Phinney</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">Huggable Interface</td>
+<td align="left">Larry Garfield</td>
+<td align="left">Abandoned</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">Security Advisories</td>
+<td align="left">Michael Hess</td>
+<td align="left">Abandoned</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">Security Reporting Process</td>
+<td align="left">Michael Hess</td>
+<td align="left">Abandoned</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">Container Interface</td>
+<td align="left">Matthieu Napoli, David Négrier</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">Extended Coding Style Guide</td>
+<td align="left">Korvin Szanto</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">Hypermedia Links</td>
+<td align="left">Larry Garfield</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">Event Dispatcher</td>
+<td align="left">Larry Garfield</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">HTTP Handlers</td>
+<td align="left">Woody Gilk</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left">Simple Cache</td>
+<td align="left">Paul Dragoonis</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left">HTTP Factories</td>
+<td align="left">Woody Gilk</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">18</td>
+<td align="left">HTTP Client</td>
+<td align="left">Tobias Nyholm</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">19</td>
+<td align="left">PHPDoc tags</td>
+<td align="left">Chuck Burgess</td>
+<td align="left">Draft</td>
+</tr>
+<tr>
+<td align="left">20</td>
+<td align="left">Clock</td>
+<td align="left">Chris Seufert</td>
+<td align="left">Accepted</td>
+</tr>
+<tr>
+<td align="left">21</td>
+<td align="left">Internationalization</td>
+<td align="left">Navarr Barnier</td>
+<td align="left">Draft</td>
+</tr>
+<tr>
+<td align="left">22</td>
+<td align="left">Application Tracing</td>
+<td align="left">Adam Allport</td>
+<td align="left">Draft</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://learnku.com/docs/psr">中文翻译入口</a></p>
+</blockquote>
+<ol start="2">
+<li><p>注意事项</p>
+<ul>
+<li>命名空间: 使用命名空间来组织你的类和功能。</li>
+<li>自动加载: 使用Composer的自动加载机制或者在你的SDK中实现自己的自动加载器。</li>
+<li>版本控制: 确保你的SDK遵循语义化版本控制（Semantic Versioning）。</li>
+<li>单元测试: 编写单元测试来确保你的SDK的功能按预期工作，并且有很高的代码覆盖率。</li>
+<li>文档化: 编写清晰的文档来说明如何安装SDK，如何使用API，以及可能遇到的常见问题。</li>
+<li>错误处理: 优雅地处理错误和异常，向开发者清晰说明问题所在。</li>
+<li>兼容性: 确保你的SDK能在不同版本的PHP上运行，并且兼容主流的框架。</li>
+<li>安全性: 确保你的SDK在处理敏感数据时采取了安全措施，比如数据加密、输入验证等。</li>
+<li>性能: 优化SDK以提高性能，减少延迟。</li>
+<li>更新维护: 保持SDK的更新和维护，修复已知问题，添加新功能。</li>
+</ul>
+</li>
+<li><p>几个方面</p>
+<ul>
+<li>功能设计：在开发SDK之前，首先需要明确SDK所需实现的功能。这可以通过与开发者或产品经理的讨论来确定。确保在设计SDK功能时，考虑到了开发者的实际需求和常见使用场景。</li>
+<li>代码结构：良好的代码结构可以提高SDK的可维护性和易用性。建议采用面向对象的方式设计SDK，将不同的功能模块划分为独立的类。这样可以使代码更加清晰、可扩展性更高。</li>
+<li>接口设计：SDK的接口设计应该简单明了，易于使用。在设计方法和参数时，需考虑到开发者的常见操作。建议提供必要的输入参数，并在接口注释中清晰地说明参数的含义和使用方式。</li>
+<li>错误处理：良好的错误处理是开发SDK时必不可少的。建议设计适合的错误码和错误信息，以便开发者能够明确地知道发生了什么问题，并可以针对错误进行相应的处理。</li>
+<li>文档和示例代码：提供详细的文档和示例代码可以帮助开发者更快地上手使用SDK。文档应包括SDK的安装、配置和使用说明，以及常见问题的解答。示例代码应涵盖SDK的主要功能，并包含详细的注释。</li>
+<li>单元测试：在开发SDK的过程中，进行单元测试是必不可少的。通过编写测试用例，可以确保SDK的各个功能模块能够正常工作，并及时发现和修复潜在的问题。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、开干"><a href="#二、开干" class="headerlink" title="二、开干"></a>二、开干</h2><ol>
+<li>注册github账号，配置ssh-key等，此处不再赘述</li>
+<li>登录github，新建一个仓库，如my-first-packagist</li>
+<li>回到本机，克隆刚新建的仓库 <code>git clone https://github.com/liusirdotnet/my-first-packagist.git</code></li>
+<li>切换到仓库目录 <code>cd my-first-packagist</code></li>
+<li>初始化composer.json文件 <code>composer init</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">$ composer init</span><br><span class="line"></span><br><span class="line">Welcome to the Composer config generator</span><br><span class="line"></span><br><span class="line">This command will guide you through creating your composer.json config.</span><br><span class="line"></span><br><span class="line">// 1. 输入项目命名空间，默认【用户名/仓库名】</span><br><span class="line">Package name (&lt;vendor&gt;/&lt;name&gt;) [dell/htdocs]: yourname/projectname</span><br><span class="line"></span><br><span class="line">// 2. 项目描述</span><br><span class="line">Description []: 这是一个测试</span><br><span class="line"></span><br><span class="line">// 3. 输入作者信息，可以直接回车，默认当前git配置的信息</span><br><span class="line">Author [test &lt;123@qq.com&gt;, n to skip]:</span><br><span class="line"></span><br><span class="line">// 4. 输入最低稳定版本，stable, RC, beta, alpha, dev</span><br><span class="line">Minimum Stability []: dev</span><br><span class="line"></span><br><span class="line">// 5. 输入项目类型，</span><br><span class="line">Package Type (e.g. library, project, metapackage, composer-plugin) []: library</span><br><span class="line"></span><br><span class="line">// 6. 输入授权类型</span><br><span class="line">License []: MIT //github建仓库时可指定，不写的话packagist会报错</span><br><span class="line"></span><br><span class="line">&gt; Define your dependencies.</span><br><span class="line">// 7. 输入依赖信息</span><br><span class="line">Would you like to define your dependencies (require) interactively [yes]?</span><br><span class="line"></span><br><span class="line">// 7.1如果需要依赖，则输入要安装的依赖</span><br><span class="line">Search for a package: php</span><br><span class="line"></span><br><span class="line">// 7.2输入版本号，如需多个则重复7.1和7.2</span><br><span class="line">Enter the version constraint to require (or leave blank to use the latest version): &gt;=5.6</span><br><span class="line"></span><br><span class="line">// 8. 是否需要require-dev，操作同7</span><br><span class="line">Would you like to define your dev dependencies (require-dev) interactively [yes]?</span><br><span class="line"></span><br><span class="line">{</span><br><span class="line">    "name": "yourname/projectname",</span><br><span class="line">    "description": "这是一个测试",</span><br><span class="line">    "type": "library",</span><br><span class="line">    "require": {</span><br><span class="line">        "php": "&gt;=5.6"</span><br><span class="line">    },</span><br><span class="line">    "require-dev": {</span><br><span class="line">        "php": "&gt;=5.6"</span><br><span class="line">    },</span><br><span class="line">    "license": "",</span><br><span class="line">    "authors": [</span><br><span class="line">        {</span><br><span class="line">            "name": "test",</span><br><span class="line">            "email": "test@qq.com"</span><br><span class="line">        }</span><br><span class="line">    ],</span><br><span class="line">    "minimum-stability": "dev"</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// 9. 是否生成composer.json</span><br><span class="line">Do you confirm generation [yes]? yes</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="6">
+<li>编辑composer.json文件，添加自动加载</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"autoload": {</span><br><span class="line">        "psr-4": {</span><br><span class="line">            "namespace_name\\": "src/" //自定义命名空间名称，和类文件命名空间保持一致</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="7">
+<li>新建<code>src/Test.php</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">/**  </span><br><span class="line"> * This is a test class</span><br><span class="line"> * </span><br><span class="line"> * @detail null</span><br><span class="line"> * @author Name &lt;email@email.com&gt;</span><br><span class="line"> * @date 2018-06-17</span><br><span class="line"> * @version v1.0</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">namespace Liusir; // 注意命名空间与composer.json中的一致</span><br><span class="line"></span><br><span class="line">class Test</span><br><span class="line">{</span><br><span class="line">    /**  </span><br><span class="line">    * This is a test function</span><br><span class="line">    * </span><br><span class="line">    * @access public </span><br><span class="line">    * @param string $arg1 参数一的说明 </span><br><span class="line">    * @param int    $arg2 参数二的说明 </span><br><span class="line">    * @param mixed  $mixed 这是一个混合类型 </span><br><span class="line">    * @return array 返回类型</span><br><span class="line">    * @author Name &lt;email@email.com&gt;</span><br><span class="line">    * @date 2018-06-17</span><br><span class="line">    */  </span><br><span class="line">    public function testFunc()</span><br><span class="line">    {</span><br><span class="line">        echo 'This is a test script';</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="8">
+<li>生成vendor目录 <code>composer install</code></li>
+<li>跟src同级目录新建demo.php</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">require './vendor/autoload.php';</span><br><span class="line"></span><br><span class="line">use Liusir\Test;</span><br><span class="line"></span><br><span class="line">$test = new Test();</span><br><span class="line"></span><br><span class="line">$test-&gt;testFunc();</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="10">
+<li>提交并推送到github</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m 'first commit'</span><br><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="11">
+<li><p>发布到packagist</p>
+<ul>
+<li>注册packagist</li>
+<li>点击submit</li>
+<li>将github仓库输入到输入框，Check &amp;&amp; Submit</li>
+</ul>
+</li>
+<li><p>切换到另一个项目目录，安装刚发布的包 <code>composer require liusirdotnet/my-first-packagist</code>，报错</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  [InvalidArgumentException]                                                                                                                </span><br><span class="line">  Could not find a matching version of package liuyulong/second-packagist. Check the package spelling, your version constraint and that th  </span><br><span class="line">  e package is available in a stability which matches your minimum-stability (stable).                                                      </span><br><span class="line">require [--dev] [--prefer-source] [--prefer-dist] [--no-progress] [--no-suggest] [--no-update] [--no-scripts] [--update-no-dev] [--update-with-dependencies] [--update-with-all-dependencies] [--ignore-platform-reqs] [--prefer-stable] [--prefer-lowest] [--sort-packages] [-o|--optimize-autoloader] [-a|--classmap-authoritative] [--apcu-autoloader] [--] [&lt;packages&gt;]...</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="13">
+<li>打一个tag并推送到github</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.0 -m 'first tag'</span><br><span class="line">git push </span><br><span class="line">git push origin v1.0</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="14">
+<li><p>回到github后台并进入当前仓库，点击<code>release</code>选项，点击<code>Draft a new release</code>按钮，勾选下面的<code>This is a pre-release</code>，最后点击<code>Publish release</code>按钮</p>
+</li>
+<li><p>切换到另一个项目目录，安装刚发布的包 <code>composer require liusirdotnet/my-first-packagist</code></p>
+</li>
+<li><p>新建index.php</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require './vendor/autoload.php';</span><br><span class="line">use RabbitMQ\RabbitMQ;</span><br><span class="line"></span><br><span class="line">$ob = new RabbitMQ;</span><br><span class="line">$ob-&gt;test();</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="17">
+<li>设置更新composer包自动更新packagist【github停止此服务了】<ul>
+<li>在packagist后台获取 <code>API Token</code></li>
+<li>进入当前仓库，点击settings，点击add service，选择packagist，输入表单后添加add service按钮，最后点击Update service</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>Note: GitHub Services have been deprecated. Please contact your integrator for more information on how to migrate or replace a service with webhooks or GitHub Apps.</p>
+</blockquote>
+</blockquote>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/280acb6b0b22">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e3c0b240dab4">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.php-fig.org/">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://learnku.com/docs/psr">参考四</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/GitHub/" rel="tag"><i class="fa fa-tag"></i> GitHub</a>
+              <a href="/tags/%E9%98%BF%E6%96%AF%E4%BC%AF%E6%A0%BC%E7%BB%BC%E5%90%88%E5%BE%81/" rel="tag"><i class="fa fa-tag"></i> 阿斯伯格综合征</a>
+              <a href="/tags/Composer/" rel="tag"><i class="fa fa-tag"></i> Composer</a>
+              <a href="/tags/PSR/" rel="tag"><i class="fa fa-tag"></i> PSR</a>
+              <a href="/tags/SDK/" rel="tag"><i class="fa fa-tag"></i> SDK</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/08/09/Technology-%E9%95%BF%E8%BF%9E%E6%8E%A5/" rel="next" title="长连接">
+                  <i class="fa fa-chevron-left"></i> 长连接
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/08/20/MySQL-json%E7%B1%BB%E5%9E%8B/" rel="prev" title="MySQL之json类型">
+                  MySQL之json类型 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E5%B9%B2"><span class="nav-number">2.</span> <span class="nav-text">二、开干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

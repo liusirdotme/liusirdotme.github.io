@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Prometheus是一个用 Golang 编写的开源的系统监控和警报工具包，能够收集和处理来自各种目标的指标，还可以查询、查看、分析指标并根据阈值收到警报。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零搭建运维监控系统-Prometheus">
+<meta property="og:url" content="https://liusir.net/2024/04/02/DevOps-%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F-Prometheus/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="Prometheus是一个用 Golang 编写的开源的系统监控和警报工具包，能够收集和处理来自各种目标的指标，还可以查询、查看、分析指标并根据阈值收到警报。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-02T14:39:35.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.072Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="监控">
+<meta property="article:tag" content="自动化运维">
+<meta property="article:tag" content="Zabbix">
+<meta property="article:tag" content="Nagios">
+<meta property="article:tag" content="Cacti">
+<meta property="article:tag" content="Prometheus">
+<meta property="article:tag" content="普罗米修斯">
+<meta property="article:tag" content="Grafana">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2024/04/02/DevOps-%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F-Prometheus/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>从零搭建运维监控系统-Prometheus | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2024/04/02/DevOps-%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F-Prometheus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从零搭建运维监控系统-Prometheus
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-02 22:39:35" itemprop="dateCreated datePublished" datetime="2024-04-02T22:39:35+08:00">2024-04-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DevOps/" itemprop="url" rel="index">
+                    <span itemprop="name">DevOps</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Prometheus是一个用 Golang 编写的开源的系统监控和警报工具包，能够收集和处理来自各种目标的指标，还可以查询、查看、分析指标并根据阈值收到警报。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、基础介绍"><a href="#一、基础介绍" class="headerlink" title="一、基础介绍"></a>一、基础介绍</h2><ol>
+<li>Prometheus是一个用 Golang 编写的开源的系统监控和警报工具包，能够收集和处理来自各种目标的指标，还可以查询、查看、分析指标并根据阈值收到警报。自2012年启动以来，许多公司和组织都采用了Prometheus，该项目拥有非常活跃的开发人员和用户社区。它现在是一个独立的开源项目，独立于任何公司进行维护。Prometheus于2016年加入云原生计算基金会，成为继Kubernetes之后的第二个托管项目。<ul>
+<li>在Prometheus的架构设计中，Prometheus Server并不直接服务监控特定的目标，其主要任务负责数据的收集，存储并且对外提供数据查询支持。因此为了能够监控到某些东西，如主机的CPU使用率，我们需要使用到Exporter。Prometheus周期性的从Exporter暴露的HTTP服务地址（通常是/metrics）拉取监控样本数据。</li>
+</ul>
+</li>
+<li>Exporter是Prometheus的指标数据收集组件。它负责从目标Jobs收集数据，并把收集到的数据转换为Prometheus支持的时序数据格式。和传统的指标数据收集组件不同的是，他只负责收集，并不向Server端发送数据，而是等待Prometheus Server 主动抓取，node-exporter 默认的抓取url地址：<a target="_blank" rel="noopener" href="http://ip:9100/metrics。">http://ip:9100/metrics。</a><ul>
+<li>Prometheus可以使用Pushgateway这个组件推送node-exporter的指标数据到远端Prometheus，node-exporter用于采集node的运行指标，包括node的cpu、load、filesystem、meminfo、network等基础监控指标，类似于zabbix监控系统的的zabbix-agent。node-exporter由Prometheus官方提供、维护，属于监控指标收集类UNIX内核操作系统的必备的exporter。</li>
+</ul>
+</li>
+<li>‌‌Grafana是一个开源的‌数据可视化工具，它提供了强大的数据可视化功能、灵活的告警系统、用户和角色管理、插件系统等核心功能。‌<ul>
+<li>Grafana的架构由前端、后端和数据源组成。前端是基于‌React的单页应用，后端是基于‌Go语言的服务器，数据源通过插件与Grafana集成。这种架构设计使得Grafana能够灵活地适应不同的数据源和用户需求。</li>
+<li>Grafana支持与多种数据源（如Elasticsearch、InfluxDB、Prometheus等）集成，使得它能够展示来自这些数据源的数据。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、安装使用"><a href="#二、安装使用" class="headerlink" title="二、安装使用"></a>二、安装使用</h2><ol>
+<li>安装prometheus<ul>
+<li>cd /usr/local/src</li>
+<li>wget <a target="_blank" rel="noopener" href="https://github.com/prometheus/prometheus/releases/download/v2.54.1/prometheus-2.54.1.linux-amd64.tar.gz">https://github.com/prometheus/prometheus/releases/download/v2.54.1/prometheus-2.54.1.linux-amd64.tar.gz</a></li>
+<li>tar -zxvf prometheus-2.54.1.linux-amd64.tar.gz</li>
+<li>mv prometheus-2.54.1.linux-amd64 /usr/local/</li>
+<li>mv prometheus-2.54.1.linux-amd64 prometheus-2.54.1</li>
+<li>cd prometheus-2.54.1</li>
+<li>./prometheus –config.file=prometheus.yml</li>
+<li>添加到系统服务：vim /usr/lib/systemd/system/prometheus.service</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=https://prometheus.io</span><br><span class="line">[Service]</span><br><span class="line">Restart=on-failure</span><br><span class="line">ExecStart=/usr/local/prometheus-2.54.1/prometheus --storage.tsdb.path=/usr/local/prometheus-2.54.1/data --config.file=/usr/local/prometheus-2.54.1/prometheus.yml</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl start prometheus</li>
+<li>systemctl status prometheus</li>
+<li>systemctl restart prometheus</li>
+<li>systemctl stop prometheus</li>
+</ul>
+<ol start="2">
+<li><p>安装go环境</p>
+<ul>
+<li>源码安装<ul>
+<li>cd /usr/local/src</li>
+<li>wget <a target="_blank" rel="noopener" href="https://go.dev/dl/go1.23.0.linux-386.tar.gz">https://go.dev/dl/go1.23.0.linux-386.tar.gz</a></li>
+<li>tar -zxvf go1.23.0.linux-386.tar.gz </li>
+<li>mv go /usr/local</li>
+<li>export GOROOT=/usr/local/go</li>
+<li>export GOPATH=/home/gopath</li>
+<li>export PATH=$PATH:$GOROOT/bin:$GOPATH/bin <ul>
+<li>GOROOT 是 go 的安装目录</li>
+<li>GOPATH 是 go 的工作目录</li>
+<li>PATH 是环境变量 </li>
+</ul>
+</li>
+<li>go version</li>
+</ul>
+</li>
+<li>命令安装<ul>
+<li>snap install go<ul>
+<li>apt  install golang-go</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>安装node_exporter</p>
+<ul>
+<li>源码安装<ul>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/prometheus/node_exporter.git">https://github.com/prometheus/node_exporter.git</a></li>
+<li>cd node_exporter</li>
+<li>go build<ul>
+<li>下载慢设置代理：export GOPROXY=<a target="_blank" rel="noopener" href="https://goproxy.cn">https://goproxy.cn</a></li>
+</ul>
+</li>
+<li>./node_exporter –version</li>
+</ul>
+</li>
+<li>使用编译好的包<ul>
+<li>wget <a target="_blank" rel="noopener" href="https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz">https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz</a></li>
+<li>tar -zxvf node_exporter-1.8.2.linux-amd64.tar.gz </li>
+<li>mv node_exporter-1.8.2.linux-amd64 /usr/local/</li>
+<li>cd /usr/local</li>
+<li>mv node_exporter-1.8.2.linux-amd64 node_exporter-1.8.2</li>
+<li>cd /usr/local/node_exporter-1.8.2/</li>
+<li>./node_exporter –log.level=debug <ul>
+<li>./node_exporter –help</li>
+</ul>
+</li>
+<li>curl -s <a target="_blank" rel="noopener" href="http://localhost:9100/metrics">http://localhost:9100/metrics</a><ul>
+<li>设置安全组：9100</li>
+<li>浏览器访问：<a target="_blank" rel="noopener" href="http://101.200.15.11:9100/metrics">http://101.200.15.11:9100/metrics</a></li>
+<li>curl -s <a target="_blank" rel="noopener" href="http://8.141.94.234:9100/metrics">http://8.141.94.234:9100/metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>修改prometheus配置文件prometheus.yml</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># my global config</span><br><span class="line">global:</span><br><span class="line">  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.</span><br><span class="line">  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.</span><br><span class="line">  # scrape_timeout is set to the global default (10s).</span><br><span class="line"></span><br><span class="line"># Alertmanager configuration</span><br><span class="line">alerting:</span><br><span class="line">  alertmanagers:</span><br><span class="line">    - static_configs:</span><br><span class="line">        - targets:</span><br><span class="line">          # - alertmanager:9093</span><br><span class="line"></span><br><span class="line"># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.</span><br><span class="line">rule_files:</span><br><span class="line">  # - "first_rules.yml"</span><br><span class="line">  # - "second_rules.yml"</span><br><span class="line"></span><br><span class="line"># A scrape configuration containing exactly one endpoint to scrape:</span><br><span class="line"># Here it's Prometheus itself.</span><br><span class="line">scrape_configs:</span><br><span class="line">  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span><br><span class="line">  - job_name: "prometheus"</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: ["localhost:9090"]</span><br><span class="line">  - job_name: "node-exporter"</span><br><span class="line">    metrics_path: /metrics</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: ["localhost:9100"]</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl restart prometheus</li>
+<li>浏览器访问：<a target="_blank" rel="noopener" href="http://ip:9090/targets">http://ip:9090/targets</a></li>
+<li>添加到系统服务：vim /usr/lib/systemd/system/node_exporter.service</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus node_exporter</span><br><span class="line">[Service]</span><br><span class="line">User=nobody</span><br><span class="line">ExecStart=/usr/local/node_exporter-1.8.2/node_exporter --log.level=error</span><br><span class="line">ExecStop=/usr/bin/killall node_exporter</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl start node_exporter</li>
+<li>systemctl stop node_exporter</li>
+<li>systemctl restart node_exporter</li>
+<li>systemctl status node_exporter</li>
+</ul>
+<ol start="4">
+<li><p>安装grafana,<a target="_blank" rel="noopener" href="https://grafana.com/get/?pg=graf&amp;plcmt=hero-btn-1">传送门</a></p>
+<ul>
+<li><p>源码安装</p>
+<ul>
+<li>wget <a target="_blank" rel="noopener" href="https://dl.grafana.com/grafana-enterprise/release/12.1.1/grafana-enterprise_12.1.1_16903967602_linux_amd64.tar.gz">https://dl.grafana.com/grafana-enterprise/release/12.1.1/grafana-enterprise_12.1.1_16903967602_linux_amd64.tar.gz</a></li>
+<li>tar -zxvf grafana-enterprise_12.1.1_16903967602_linux_amd64.tar.gz</li>
+<li>mv grafana-12.1.1/ /usr/local/</li>
+<li>cd grafana-12.1.1/</li>
+<li>./bin/grafane-server</li>
+<li><a target="_blank" rel="noopener" href="http://101.200.15.11:3000">http://101.200.15.11:3000</a></li>
+<li>sudo useradd -r -s /bin/false grafana</li>
+<li>sudo chown -R grafana:users /usr/local/grafana-12.1.1</li>
+<li>添加到系统启动服务：vim /usr/lib/systemd/system/grafana.service</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Grafana Server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=grafana</span><br><span class="line">Group=users</span><br><span class="line">ExecStart=/usr/local/grafana-12.1.1/bin/grafana server --config=/usr/local/grafana-12.1.1/conf/sample.ini --homepath=/usr/local/grafana-12.1.1</span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl start grafana</li>
+<li>systemctl status grafana</li>
+<li>systemctl stop grafana</li>
+<li>systemctl daemon-reload</li>
+</ul>
+</li>
+<li><p>使用命令</p>
+<ul>
+<li>sudo yum install -y <a target="_blank" rel="noopener" href="https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0-1.x86_64.rpm">https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0-1.x86_64.rpm</a></li>
+<li>systemctl enable grafana-server</li>
+<li>systemctl start grafana-server</li>
+<li>systemctl status grafana-server<ul>
+<li>未启动成功，修改/usr/lib/systemd/system/grafana.service：User=root Group=root</li>
+</ul>
+</li>
+<li>systemctl restart grafana-server</li>
+<li>systemctl stop grafana-server</li>
+<li>访问：<a target="_blank" rel="noopener" href="http://101.200.15.11:3000">http://101.200.15.11:3000</a><ul>
+<li>默认：admin/admin，登录成功后会提示修改密码</li>
+<li>修改：admin/xxx</li>
+</ul>
+</li>
+<li>配置prometheus数据源<ul>
+<li>Connections</li>
+<li>Data sources</li>
+<li>Add data source</li>
+<li>prometheus</li>
+<li>输入链接</li>
+<li>save &amp; test</li>
+</ul>
+</li>
+<li>配置显示面板<ul>
+<li>Dashboards</li>
+<li>Create dashboard</li>
+<li>Import a dashboard</li>
+<li>输入：8919，<a target="_blank" rel="noopener" href="https://grafana.com/grafana/dashboards/">详见</a></li>
+<li><a target="_blank" rel="noopener" href="https://grafana.com/grafana/dashboards/1860-node-exporter-full/">https://grafana.com/grafana/dashboards/1860-node-exporter-full/</a></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>监听其他服务器</p>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.prometheus.io/">https://www.prometheus.io/</a></li>
+<li><a target="_blank" rel="noopener" href="https://prometheus.io/download/">https://prometheus.io/download/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/prometheus/prometheus">https://github.com/prometheus/prometheus</a></li>
+<li><a target="_blank" rel="noopener" href="https://grafana.com/">https://grafana.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/grafana/latest/setup-grafana/installation/">https://grafana.com/docs/grafana/latest/setup-grafana/installation/</a></li>
+<li><a target="_blank" rel="noopener" href="https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/">https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/</a></li>
+<li><a target="_blank" rel="noopener" href="https://grafana.com/grafana/dashboards/">https://grafana.com/grafana/dashboards/</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/DevOps/" rel="tag"><i class="fa fa-tag"></i> DevOps</a>
+              <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="fa fa-tag"></i> 运维</a>
+              <a href="/tags/%E7%9B%91%E6%8E%A7/" rel="tag"><i class="fa fa-tag"></i> 监控</a>
+              <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" rel="tag"><i class="fa fa-tag"></i> 自动化运维</a>
+              <a href="/tags/Zabbix/" rel="tag"><i class="fa fa-tag"></i> Zabbix</a>
+              <a href="/tags/Nagios/" rel="tag"><i class="fa fa-tag"></i> Nagios</a>
+              <a href="/tags/Cacti/" rel="tag"><i class="fa fa-tag"></i> Cacti</a>
+              <a href="/tags/Prometheus/" rel="tag"><i class="fa fa-tag"></i> Prometheus</a>
+              <a href="/tags/%E6%99%AE%E7%BD%97%E7%B1%B3%E4%BF%AE%E6%96%AF/" rel="tag"><i class="fa fa-tag"></i> 普罗米修斯</a>
+              <a href="/tags/Grafana/" rel="tag"><i class="fa fa-tag"></i> Grafana</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2024/03/15/Tools-%E5%AE%9D%E5%A1%94/" rel="next" title="宝塔">
+                  <i class="fa fa-chevron-left"></i> 宝塔
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2024/04/12/DevOps-GitLab/" rel="prev" title="GitLab搭建使用">
+                  GitLab搭建使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">一、基础介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">二、安装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

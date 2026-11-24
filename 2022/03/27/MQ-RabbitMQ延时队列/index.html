@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="选择大于努力，思路决定出路，观念决定命运，梦想照亮人生。—— 张旭 《思维力:思路决定出路,观念决定行动》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="延时队列">
+<meta property="og:url" content="https://liusir.net/2022/03/27/MQ-RabbitMQ%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="选择大于努力，思路决定出路，观念决定命运，梦想照亮人生。—— 张旭 《思维力:思路决定出路,观念决定行动》">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2022/03/27/MQ-RabbitMQ%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97.png">
+<meta property="article:published_time" content="2022-03-27T10:21:10.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.190Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="RabbitMQ">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="延时队列">
+<meta property="article:tag" content="延迟消费">
+<meta property="article:tag" content="延时消息">
+<meta property="article:tag" content="延时消费">
+<meta property="article:tag" content="TTL">
+<meta property="article:tag" content="DLX">
+<meta property="article:tag" content="死信队列">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2022/03/27/MQ-RabbitMQ%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97.png">
+  <link rel="canonical" href="https://liusir.net/2022/03/27/MQ-RabbitMQ%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>延时队列 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2022/03/27/MQ-RabbitMQ%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          延时队列
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-27 18:21:10" itemprop="dateCreated datePublished" datetime="2022-03-27T18:21:10+08:00">2022-03-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MQ/" itemprop="url" rel="index">
+                    <span itemprop="name">MQ</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>选择大于努力，思路决定出路，观念决定命运，梦想照亮人生。—— 张旭 《思维力:思路决定出路,观念决定行动》</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;延时队列，顾名思义，其首先是一种队列，即一种先进先出的数据结构。它与队列最大的区别在于延时属性上，延时队列中的元素在入队时会指定一个延迟时间，表示其希望能够在经过该指定时间后处理。从某种意义上来讲，延迟队列的结构并不像一个队列，而更像是一种以时间为权重的有序堆结构。</p>
+<ol>
+<li><p>使用场景</p>
+<ul>
+<li>订单在十分钟之内未支付则自动取消。</li>
+<li>新创建的店铺，如果在十天内都没有上传过商品，则自动发送消息提醒。</li>
+<li>账单在一周内未支付，则自动结算。</li>
+<li>用户注册成功后，如果三天内没有登陆则进行短信提醒。</li>
+<li>用户发起退款，如果三天内没有得到处理则通知相关运营人员。</li>
+<li>预定会议后，需要在预定的时间点前十分钟通知各个与会人员参加会议。</li>
+</ul>
+</li>
+<li><p>实现方案</p>
+<ul>
+<li><p>基于Redis有序集合实现</p>
+</li>
+<li><p>定时任务轮询数据库，看是否有产生新任务，如果产生则消费任务</p>
+</li>
+<li><p>pcntl_alarm为进程设置一个闹钟信号</p>
+</li>
+<li><p>swoole的异步高精度定时器:swoole_time_tick和swoole_time_after</p>
+<ul>
+<li>有点类似于javascript中setInterval和setTimeout</li>
+</ul>
+</li>
+<li><p>rabbitmq延迟任务</p>
+<ul>
+<li>TTL + DLX</li>
+<li>使用延迟插件</li>
+</ul>
+<p><img src="%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97.png" alt="延迟队列"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、实战"><a href="#二、实战" class="headerlink" title="二、实战"></a>二、实战</h2><ol>
+<li>基于Redis有序集合Zset实现<ul>
+<li>根据score值范围查询<code>[0，当前时间戳]</code>即为要处理的订单</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class DelayQueue {</span><br><span class="line">    public $redis;</span><br><span class="line"></span><br><span class="line">    public function __construct() {</span><br><span class="line">        $redis = new \Redis();</span><br><span class="line">        $res = $redis-&gt;connect('127.0.0.1', 6379, 5);</span><br><span class="line">        if ($res === false) {</span><br><span class="line">            throw new Exception('连接失败');</span><br><span class="line">        }</span><br><span class="line">        $this-&gt;redis = $redis;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public function set($key, $value, $score) {</span><br><span class="line">        $res = $this-&gt;redis-&gt;zAdd($key, ['NX'], $score, $value);</span><br><span class="line">        if ($res == 0) {</span><br><span class="line">            throw new Exception('入队列失败');</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public function deal($key) {</span><br><span class="line">        while (true) {</span><br><span class="line">            $res = $this-&gt;redis-&gt;zRangeByScore($key, 0, time(), ['limit' =&gt; [0, 1]]);</span><br><span class="line">            echo '正常处理' . PHP_EOL;</span><br><span class="line">            if (empty($res)) {</span><br><span class="line">                sleep(1);</span><br><span class="line">                continue;</span><br><span class="line">            }</span><br><span class="line">            $value = $res[0];</span><br><span class="line">            $res = $this-&gt;redis-&gt;zRem($key, $value);</span><br><span class="line">            if ($res) {</span><br><span class="line">                var_dump(sprintf("订单【%s】30分钟未支付，已自动取消", $value));</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">$model = new DelayQueue();</span><br><span class="line">$key = "order:delayqueue";</span><br><span class="line"></span><br><span class="line">$ordId = "order1";</span><br><span class="line">$model-&gt;set($key, $ordId, time()+5);</span><br><span class="line"></span><br><span class="line">$ordId = "order2";</span><br><span class="line">$model-&gt;set($key, $ordId, time()+10);</span><br><span class="line"></span><br><span class="line">$ordId = "order3";</span><br><span class="line">$model-&gt;set($key, $ordId, time()+15);</span><br><span class="line"></span><br><span class="line">$model-&gt;deal($key);</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li><p>基于php-amqplib实现(RabbitMQ3.9.15 Erlang24.3.3)</p>
+<ul>
+<li><p>TTL(Time To Live)：消息的存活时间，RabbitMQ可以通过<code>x-message-ttl</code>参数来设置指定队列Queue和消息Message的存活时间，它的值是一个非负整数，单位为微秒。</p>
+</li>
+<li><p>DLX(Dead Letter Exchanges)：死信交换机，绑定在死信交换机上的队列就是死信队列。RabbitMQ的队列Queue可以配置两个参数<code>x-dead-letter-exchange</code>和<code>x-dead-letter-routing-key(可选)</code>，一旦队列内出现了死信(Dead Letter)，则按照这两个参数可以将消息重新路由到另一个交换机Exchange从而让消息重新被消费。</p>
+</li>
+<li><p>队列出现死信的情况有：</p>
+<ul>
+<li>消息或者队列的TTL过期</li>
+<li>队列达到最大长度</li>
+<li>消息被消费端拒绝</li>
+</ul>
+</li>
+<li><p>实现</p>
+<ul>
+<li>composer.json</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    "require": {</span><br><span class="line">        "phpunit/phpunit": "^9.4",</span><br><span class="line">        "php-amqplib/php-amqplib": "^3.0"</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>composer install</li>
+<li>生产者producer.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">require 'vendor/autoload.php';</span><br><span class="line"></span><br><span class="line">use PhpAmqpLib\Connection\AMQPStreamConnection;</span><br><span class="line">use PhpAmqpLib\Message\AMQPMessage;</span><br><span class="line">use PhpAmqpLib\Wire\AMQPTable;</span><br><span class="line">use PhpAmqpLib\Exchange\AMQPExchangeType;</span><br><span class="line"></span><br><span class="line">$conf = [</span><br><span class="line">    'host'     =&gt; 'localhost',</span><br><span class="line">    'port'     =&gt; 5672,</span><br><span class="line">    'user'     =&gt; 'guest',</span><br><span class="line">    'password' =&gt; 'guest',</span><br><span class="line">    'vhost'    =&gt; '/',</span><br><span class="line">];</span><br><span class="line">$exchangeName = 'origindelayExchange';</span><br><span class="line">$queueName    = 'originTtlQueue';</span><br><span class="line">$delayName    = 'originDelayQueue';</span><br><span class="line"></span><br><span class="line">$connect = new AMQPStreamConnection($conf['host'], $conf['port'], $conf['user'], $conf['password'], $conf['vhost']);</span><br><span class="line">$channel = $connect-&gt;channel();</span><br><span class="line"></span><br><span class="line">$args = new AMQPTable();</span><br><span class="line">$args-&gt;set('x-dead-letter-exchange', $exchangeName);</span><br><span class="line">$args-&gt;set('x-message-ttl', 10000);</span><br><span class="line">$args-&gt;set('x-dead-letter-routing-key', $queueName);</span><br><span class="line">// 不能写为$delayName，否则ttlQueue过期后不会路由到delayQueue</span><br><span class="line">// $args-&gt;set('x-dead-letter-routing-key', $delayName);</span><br><span class="line"></span><br><span class="line">$channel-&gt;queue_declare($queueName, false, true, false, false, false, $args);</span><br><span class="line">$channel-&gt;exchange_declare($exchangeName, AMQPExchangeType::DIRECT, false, true, false);</span><br><span class="line">$channel-&gt;queue_declare($delayName, false, true, false, false);</span><br><span class="line">$channel-&gt;queue_bind($delayName, $exchangeName, $queueName, false);</span><br><span class="line"></span><br><span class="line">// $channel-&gt;confirm_select();</span><br><span class="line">// $channel-&gt;set_ack_handler(function (AMQPMessage $msg){</span><br><span class="line">    // echo 'ack:' . $msg-&gt;getBody() .PHP_EOL;</span><br><span class="line">// });</span><br><span class="line">// $channel-&gt;set_nack_handler(function (AMQPMessage $msg){</span><br><span class="line">    // echo 'nack:' . $msg-&gt;getBody() .PHP_EOL;</span><br><span class="line">// });</span><br><span class="line"></span><br><span class="line">for ($i=1; $i&lt;=100; $i++) {</span><br><span class="line">    $msgBody = json_encode(["name" =&gt; "liusir", "no" =&gt; $i, "sql"  =&gt; "select * from user"]);</span><br><span class="line">    $msg = new AMQPMessage($msgBody, ['content_type' =&gt; 'text/plain', 'delivery_mode' =&gt; 2]);</span><br><span class="line"></span><br><span class="line">    // useless </span><br><span class="line">    // $tag = rand(0, 10000000);</span><br><span class="line">    // $msg-&gt;setDeliveryTag($tag);</span><br><span class="line"></span><br><span class="line">    // 不能指定exchange，否则ttlQueue不生效</span><br><span class="line">    // $ret = $channel-&gt;basic_publish($msg, $exchangeName, $queueName);</span><br><span class="line"></span><br><span class="line">    $ret = $channel-&gt;basic_publish($msg, '', $queueName);</span><br><span class="line"></span><br><span class="line">    // single confirm</span><br><span class="line">    // $channel-&gt;wait_for_pending_acks(2); //等待ACK确认</span><br><span class="line"></span><br><span class="line">    echo "{$i}入队成功！！！", PHP_EOL;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// multi confirm</span><br><span class="line">// $channel-&gt;wait_for_pending_acks(2); //等待ACK确认</span><br><span class="line"></span><br><span class="line">$channel-&gt;close();</span><br><span class="line">$connect-&gt;close();</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>消费者consumer.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">require 'vendor/autoload.php';</span><br><span class="line"></span><br><span class="line">use PhpAmqpLib\Connection\AMQPStreamConnection;</span><br><span class="line">use PhpAmqpLib\Wire\AMQPTable;</span><br><span class="line"></span><br><span class="line">$conf = [</span><br><span class="line">    'host'     =&gt; 'localhost',</span><br><span class="line">    'port'     =&gt; 5672,</span><br><span class="line">    'user'     =&gt; 'guest',</span><br><span class="line">    'password' =&gt; 'guest',</span><br><span class="line">    'vhost'    =&gt; '/',</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">$exchangeName = 'origindelayExchange';</span><br><span class="line">$queueName    = 'originTtlQueue';</span><br><span class="line">$routingKey   = 'originDelayQueue';</span><br><span class="line">$conn = new AMQPStreamConnection($conf['host'], $conf['port'], $conf['user'], $conf['password'], $conf['vhost']);</span><br><span class="line">$channel = $conn-&gt;channel();</span><br><span class="line"></span><br><span class="line">// 方式一：声明ttl队列再消费</span><br><span class="line">// $args = new AMQPTable();</span><br><span class="line">// $args-&gt;set('x-dead-letter-exchange', $exchangeName);</span><br><span class="line">// $args-&gt;set('x-message-ttl',10000);</span><br><span class="line">// $args-&gt;set('x-dead-letter-routing-key', $queueName);</span><br><span class="line">// $channel-&gt;queue_declare($routingKey, false, true, false, false, false, $args);</span><br><span class="line"></span><br><span class="line">// 方式二：声明普通队列再消费</span><br><span class="line">// $channel-&gt;queue_declare($routingKey, false, true, false, false, false);</span><br><span class="line"></span><br><span class="line">// 方式三：不声明队列直接消费(前提是队列已存在)</span><br><span class="line">// none code</span><br><span class="line"></span><br><span class="line">$channel-&gt;basic_qos(null, 1, null);</span><br><span class="line"></span><br><span class="line">$callback = function ($msg) {</span><br><span class="line">    $msg-&gt;delivery_info['channel']-&gt;basic_ack($msg-&gt;delivery_info['delivery_tag']);</span><br><span class="line">    echo "Received: ", json_decode($msg-&gt;body)-&gt;no, "\n";</span><br><span class="line">    // $msg-&gt;nack(true);</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">// 消费delay队列</span><br><span class="line">$channel-&gt;basic_consume($routingKey, '', false, false, false, false, $callback);</span><br><span class="line">// 直接消费ttl队列</span><br><span class="line">// $channel-&gt;basic_consume($queueName, '', false, false, false, false, $callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while ($channel-&gt;is_consuming()) {</span><br><span class="line">    $channel-&gt;wait();</span><br><span class="line">    // sleep(1);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>php producer.php，登录<a target="_blank" rel="noopener" href="http://localhost:15672/#/queues可查看到消息的路由过程">http://localhost:15672/#/queues可查看到消息的路由过程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p>基于amqp扩展(1.11.0) + rabbitmq_delayed_message_exchange插件实现(RabbitMQ3.9.15 Erlang24.3.3)</p>
+<ul>
+<li><p>启用插件<code>rabbitmq-plugins enable rabbitmq_delayed_message_exchange</code></p>
+<ul>
+<li>brew安装的rabbitmq有可能默认没有此插件，需要手动下载<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases">找到合适的版本</a></li>
+<li>切换到插件目录<code>cd your_rabbitmq/plugins</code></li>
+<li>下载<code>wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.9.0/rabbitmq_delayed_message_exchange-3.9.0.ez</code></li>
+<li>启用插件<code>rabbitmq-plugins enable rabbitmq_delayed_message_exchange</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pecl.php.net/package/amqp">安装扩展amqp</a></p>
+<ul>
+<li>源码安装<ul>
+<li>下载<code>wget https://pecl.php.net/get/amqp-1.11.0.tgz</code></li>
+<li>解压<code>tar -zxvf amqp-1.11.0.tgz</code></li>
+<li>cd amqp-1.11.0</li>
+<li>sudo /usr/local/php/7.1/bin/phpize</li>
+<li>sudo ./configure –with-php-config=/usr/local/php/7.1/bin/php-config<ul>
+<li>报错<code>librabbitmq not found</code></li>
+<li>查找lib库<code>brew search librabbitmq</code>，没有</li>
+<li>安装rabbitmq-c<code>brew install rabbitmq-c</code></li>
+</ul>
+</li>
+<li>TODO</li>
+</ul>
+</li>
+<li>pecl安装<ul>
+<li>brew install rabbitmq-c</li>
+<li>sudo curl <a target="_blank" rel="noopener" href="https://pecl.php.net/get/amqp-1.11.0.tgz">https://pecl.php.net/get/amqp-1.11.0.tgz</a> -o amqp-1.11.0.tgz</li>
+<li>sudo ./pecl install  amqp-1.11.0.tgz<ul>
+<li><code>Set the path to librabbitmq install prefix [autodetect] :</code>设置rabbitmq-c目录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>实现</p>
+<ul>
+<li>producer.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">$exchangeName = 'pluginDelayedExchange';</span><br><span class="line">$queueName    = 'pluginTtlQueue';</span><br><span class="line">$routeKey     = 'pluginDelayQueue';</span><br><span class="line"></span><br><span class="line">$config = array(</span><br><span class="line">    'host'     =&gt; 'localhost',</span><br><span class="line">    'port'     =&gt; 5672,</span><br><span class="line">    'login'    =&gt; 'guest',</span><br><span class="line">    'password' =&gt; 'guest',</span><br><span class="line">    'vhost'    =&gt; 'liusir'</span><br><span class="line">);</span><br><span class="line">// var_dump(extension_loaded('amqp'));</span><br><span class="line"></span><br><span class="line">$conn = new AMQPConnection($config);</span><br><span class="line">$conn-&gt;connect();</span><br><span class="line">$channel  = new AMQPChannel($conn);</span><br><span class="line">$exchange = new AMQPExchange($channel);</span><br><span class="line">// $ref = new ReflectionClass($conn);</span><br><span class="line">// $ref = new ReflectionClass($channel);</span><br><span class="line">// $ref = new ReflectionClass($exchange);</span><br><span class="line"></span><br><span class="line">$exchange-&gt;setName($exchangeName);</span><br><span class="line">$exchange-&gt;setType('x-delayed-message');</span><br><span class="line">$exchange-&gt;setArgument('x-delayed-type', 'direct');</span><br><span class="line">$exchange-&gt;declareExchange();</span><br><span class="line"></span><br><span class="line">// $channel-&gt;startTransaction();</span><br><span class="line">$queue = new AMQPQueue($channel);</span><br><span class="line">// $ref = new ReflectionClass($queue);</span><br><span class="line">$queue-&gt;setName($routeKey);</span><br><span class="line"></span><br><span class="line">$queue-&gt;setFlags(AMQP_DURABLE);</span><br><span class="line">$queue-&gt;declareQueue();</span><br><span class="line">$queue-&gt;bind($exchangeName, $queueName);</span><br><span class="line"></span><br><span class="line">for ($i=1; $i&lt;=5; $i++) {</span><br><span class="line">    $message = json_encode(['order_id' =&gt; time(), 'i' =&gt; $i]);</span><br><span class="line">    $ret = $exchange-&gt;publish($message, $queueName, AMQP_NOPARAM, ['headers' =&gt; ['x-delay' =&gt; 10000]]);</span><br><span class="line">    // if (!$ret) {</span><br><span class="line">        // $channel-&gt;rollbackTransaction();</span><br><span class="line">    // }</span><br><span class="line">    echo "消息 $i 发送成功",PHP_EOL;</span><br><span class="line">    // sleep(2);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// $channel-&gt;commitTransaction();</span><br><span class="line">$conn-&gt;disconnect();</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>consumer.php</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">$exchangeName = 'pluginDelayedExchange';</span><br><span class="line">$queueName    = 'pluginTtlQueue';</span><br><span class="line">$routeKey     = 'pluginDelayQueue';</span><br><span class="line"></span><br><span class="line">$config = array(</span><br><span class="line">    'host'     =&gt; 'localhost',</span><br><span class="line">    'port'     =&gt; 5672,</span><br><span class="line">    'login'    =&gt; 'guest',</span><br><span class="line">    'password' =&gt; 'guest',</span><br><span class="line">    'vhost'    =&gt; '/'</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">//var_dump(extension_loaded('amqp'));</span><br><span class="line"></span><br><span class="line">$conn = new AMQPConnection($config);</span><br><span class="line">$conn-&gt;connect();</span><br><span class="line">$channel = new AMQPChannel($conn);</span><br><span class="line"></span><br><span class="line">$exchange = new AMQPExchange($channel);</span><br><span class="line">$exchange-&gt;setName($exchangeName);</span><br><span class="line">$exchange-&gt;setType('x-delayed-message');</span><br><span class="line">$exchange-&gt;setArgument('x-delayed-type', 'direct');</span><br><span class="line">$exchange-&gt;declareExchange();</span><br><span class="line"></span><br><span class="line">//$channel-&gt;startTransaction();</span><br><span class="line">$queue = new AMQPQueue($channel);</span><br><span class="line">$queue-&gt;setName($routeKey);</span><br><span class="line">$queue-&gt;setFlags(AMQP_DURABLE);</span><br><span class="line">$queue-&gt;declareQueue();</span><br><span class="line">$queue-&gt;bind($exchangeName, $routeKey);</span><br><span class="line">//$channel-&gt;commitTransaction();</span><br><span class="line"></span><br><span class="line">function callback(AMQPEnvelope $message) {</span><br><span class="line">    global $queue;</span><br><span class="line">    if ($message) {</span><br><span class="line">        $body = $message-&gt;getBody();</span><br><span class="line">        echo '接收内容：'.$body . PHP_EOL;</span><br><span class="line">        $queue-&gt;ack($message-&gt;getDeliveryTag());</span><br><span class="line">    } else {</span><br><span class="line">        echo 'no message' . PHP_EOL;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">$action = '1';</span><br><span class="line">if ($action == '1') {</span><br><span class="line">    $queue-&gt;consume('callback');</span><br><span class="line">} else {</span><br><span class="line">    $start = time();</span><br><span class="line">    while(true) {</span><br><span class="line">        $message = $queue-&gt;get();</span><br><span class="line">        if(!empty($message)) {</span><br><span class="line">            echo '接收内容：' . $message-&gt;getBody() . PHP_EOL;</span><br><span class="line">            $queue-&gt;ack($message-&gt;getDeliveryTag());</span><br><span class="line">            $end = time();</span><br><span class="line">            echo '运行时间：' . ($end - $start) . '秒' . PHP_EOL;</span><br><span class="line">        } else {</span><br><span class="line">            // echo 'no message' . PHP_EOL;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>php producer.php，登录<a target="_blank" rel="noopener" href="http://localhost:15672/#/queues，只可看到延时队列pluginDelayQueue的情况，看不到ttl队列">http://localhost:15672/#/queues，只可看到延时队列pluginDelayQueue的情况，看不到ttl队列</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266156267">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022718540">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022630976">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022774099">参考四</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">参考五</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mrl/p/11114116.html">参考六</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">参考七</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mfrank/p/11260355.html">参考八</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sv00/p/8280082.html">参考九</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/chinalx1/2162676?utm_source=oschina-app">参考十</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+              <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
+              <a href="/tags/MQ/" rel="tag"><i class="fa fa-tag"></i> MQ</a>
+              <a href="/tags/%E5%BB%B6%E6%97%B6%E9%98%9F%E5%88%97/" rel="tag"><i class="fa fa-tag"></i> 延时队列</a>
+              <a href="/tags/%E5%BB%B6%E8%BF%9F%E6%B6%88%E8%B4%B9/" rel="tag"><i class="fa fa-tag"></i> 延迟消费</a>
+              <a href="/tags/%E5%BB%B6%E6%97%B6%E6%B6%88%E6%81%AF/" rel="tag"><i class="fa fa-tag"></i> 延时消息</a>
+              <a href="/tags/%E5%BB%B6%E6%97%B6%E6%B6%88%E8%B4%B9/" rel="tag"><i class="fa fa-tag"></i> 延时消费</a>
+              <a href="/tags/TTL/" rel="tag"><i class="fa fa-tag"></i> TTL</a>
+              <a href="/tags/DLX/" rel="tag"><i class="fa fa-tag"></i> DLX</a>
+              <a href="/tags/%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/" rel="tag"><i class="fa fa-tag"></i> 死信队列</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2022/03/20/Technology-%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" rel="next" title="限流算法">
+                  <i class="fa fa-chevron-left"></i> 限流算法
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2022/04/03/MQ-RabbitMQ%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/" rel="prev" title="RabbitMQ优先级队列">
+                  RabbitMQ优先级队列 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">二、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

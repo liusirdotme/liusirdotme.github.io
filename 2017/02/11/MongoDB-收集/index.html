@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="劝君莫惜金缕衣，劝君惜取少年时。花开堪折直须折，莫待无花空折枝。 —— 唐·无名氏 《金缕衣》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB收集">
+<meta property="og:url" content="https://liusir.net/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="劝君莫惜金缕衣，劝君惜取少年时。花开堪折直须折，莫待无花空折枝。 —— 唐·无名氏 《金缕衣》">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-11T02:04:28.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.196Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="NoSQL">
+<meta property="article:tag" content="MongoDB">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>MongoDB收集 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2017/02/11/MongoDB-%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MongoDB收集
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-02-11 10:04:28" itemprop="dateCreated datePublished" datetime="2017-02-11T10:04:28+08:00">2017-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">MongoDB</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>3.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>劝君莫惜金缕衣，劝君惜取少年时。花开堪折直须折，莫待无花空折枝。 —— 唐·无名氏 《金缕衣》</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、安装MongoDB"><a href="#一、安装MongoDB" class="headerlink" title="一、安装MongoDB"></a>一、安装MongoDB</h2><blockquote>
+<p>通过添加repo源方式</p>
+</blockquote>
+<ol>
+<li><p>添加repo源 /etc/yum.repos.d/mongodb-org-4.0.repo</p>
+</li>
+<li><p>编辑repo源，加入以下内容</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mongodb-org-4.0]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>安装 sudo yum install -y mongodb-org</p>
+<ul>
+<li>可指定安装版本 sudo yum install -y mongodb-org-4.0.9 mongodb-org-server-4.0.9 mongodb-org-shell-4.0.9 mongodb-org-mongos-4.0.9 mongodb-org-tools-4.0.9</li>
+<li>关闭自动更新，编辑/etc/yum.conf文件加入以下内容 <code>exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools</code></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过源码安装</p>
+</blockquote>
+<ol>
+<li>下载源码 <code>wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.9.tgz</code></li>
+<li>解压并指定位置 <code>tar -zxvf mongodb-linux-x86_64-rhel70-4.0.9.tgz -C /usr/local</code></li>
+<li>重命名 <code>mv mongodb-linux-x86_64-rhel70-4.0.9  /usr/local/mongodb-4.0.9</code></li>
+<li><code>cd /usr/local/mongodb-4.0.9</code></li>
+<li>创建data和logs目录 <code>mkdir data &amp;&amp; mkdir logs &amp;&amp; touch ./logs/mongo.log</code></li>
+<li>创建mongodb.conf </li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">7. 编辑mongodb.conf，加入以下内容</span><br><span class="line"></span><br><span class="line">  dbpath = /usr/local/mongodb-4.0.9/data</span><br><span class="line">  logpath = /usr/local/mongodb-4.0.9/log/mongo.log</span><br><span class="line">  port = 27017</span><br><span class="line">  fork = true   </span><br><span class="line">  logappend=true</span><br><span class="line">  maxConns=5000</span><br><span class="line">  #storageEngine=wiredtiger #可不写此项，3.2版本后默认，3.2之前默认mmapv1</span><br><span class="line"></span><br><span class="line">8. 启动服务 mongod -f mongodb.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>通过以上7/8步骤后不能启动，换成如下方式启动成功</p>
+</blockquote>
+<ol start="9">
+<li>启动服务 <code>mongod --dbpath=/usr/local/mongodb-4.0.9/data --logpath=/usr/local/mongodb-4.0.9/log/mongo.log --logappend --fork</code><ul>
+<li><code>mongod --help</code>可查看更多参数设置</li>
+<li>社区版中提供的mongo二进制文件不支持–ssl选项</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过rpm方式</p>
+</blockquote>
+<ol>
+<li>下载rpm文件<ul>
+<li>mongodb-org-server-4.0.9-1.el7.x86_64.rpm</li>
+<li>mongodb-org-3.2.9-1.el7.x86_64.rpm         </li>
+<li>mongodb-org-server-3.2.9-1.el7.x86_64.rpm  </li>
+<li>mongodb-org-tools-3.2.9-1.el7.x86_64.rpm</li>
+<li>mongodb-org-mongos-3.2.9-1.el7.x86_64.rpm  </li>
+<li>mongodb-org-shell-3.2.9-1.el7.x86_64.rpm</li>
+</ul>
+</li>
+<li>安装各个rpm rpm -ivh mongodb-*.rpm</li>
+</ol>
+<h2 id="二、Mac下安装"><a href="#二、Mac下安装" class="headerlink" title="二、Mac下安装"></a>二、<a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/administration/install-community/">Mac下安装</a></h2><blockquote>
+<p>源码安装</p>
+</blockquote>
+<ol>
+<li>下载 <code>https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-4.0.11.tgz</code> 至<code>/usr/local/src</code></li>
+<li>解压 <code>sudo tar -zxvf mongodb-osx-ssl-x86_64-4.0.11.tgz</code></li>
+<li>移动 <code>sudo mv mongodb-osx-x86_64-4.0.11  /usr/local/mongodb-4.0.11</code></li>
+<li>切换目录 <code>cd /usr/local/mongodb-4.0.11</code></li>
+<li>初始化数据目录和日志目录和日志文件 <code>mkdir data &amp;&amp; sudo mkdir logs &amp;&amp; sudo touch ./logs/mongo.log</code></li>
+<li>创建配置文件 <code>sudo touch mongodb.conf</code>，加入以下内容：</li>
+<li>修改权限 <code>sudo chmod -R 777 /usr/local/mongodb-4.0.11</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dbpath = /usr/local/mongodb-4.0.11/data</span><br><span class="line">logpath = /usr/local/mongodb-4.0.11/logs/mongo.log</span><br><span class="line">port = 27017 ## 指定端口</span><br><span class="line">fork = true  ## 一后台进程方式启动</span><br><span class="line">logappend=true ## 以追加方式记录日志</span><br><span class="line">#maxConns=5000  ## 最大连接数</span><br><span class="line">#storageEngine=mmapv1 ## 指定存储引擎，3.2+版本默认wireTiger</span><br><span class="line">#nohttpinterface = true ## 2.6+版本已废弃</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>MAC下新版本(4.2.1)指定<code>storageEngine=mmapv1</code>选项时会报错，4.2已废弃此引擎，默认wiredTiger</li>
+<li>MAC下提示<code>Error parsing INI config file: unrecognised option 'nohttpinterface'</code></li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/configuration-file-settings-command-line-options-mapping/">配置参数</a></p>
+</blockquote>
+<ol start="8">
+<li>启动服务 <code>./bin/mongod -f mongodb.conf</code>，成功则有如下信息：</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">about to fork child process, waiting until server is ready for connections.</span><br><span class="line">forked process: 80348</span><br><span class="line">child process started successfully, parent exiting</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="9">
+<li>进入mongo<code>./bin/mongo --port 27017</code><ul>
+<li>查看db支持的系统方法<code>db.help()</code></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">DB methods:</span><br><span class="line">	db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [just calls db.runCommand(...)]</span><br><span class="line">	db.aggregate([pipeline], {options}) - performs a collectionless aggregation on this database; returns a cursor</span><br><span class="line">	db.auth(username, password)</span><br><span class="line">	db.cloneDatabase(fromhost) - will only function with MongoDB 4.0 and below</span><br><span class="line">	db.commandHelp(name) returns the help for the command</span><br><span class="line">	db.copyDatabase(fromdb, todb, fromhost) - will only function with MongoDB 4.0 and below</span><br><span class="line">	db.createCollection(name, {size: ..., capped: ..., max: ...})</span><br><span class="line">	db.createUser(userDocument)</span><br><span class="line">	db.createView(name, viewOn, [{$operator: {...}}, ...], {viewOptions})</span><br><span class="line">	db.currentOp() displays currently executing operations in the db</span><br><span class="line">	db.dropDatabase(writeConcern)</span><br><span class="line">	db.dropUser(username)</span><br><span class="line">	db.eval() - deprecated</span><br><span class="line">	db.fsyncLock() flush data to disk and lock server for backups</span><br><span class="line">	db.fsyncUnlock() unlocks server following a db.fsyncLock()</span><br><span class="line">	db.getCollection(cname) same as db['cname'] or db.cname</span><br><span class="line">	db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections</span><br><span class="line">	db.getCollectionNames()</span><br><span class="line">	db.getLastError() - just returns the err msg string</span><br><span class="line">	db.getLastErrorObj() - return full status object</span><br><span class="line">	db.getLogComponents()</span><br><span class="line">	db.getMongo() get the server connection object</span><br><span class="line">	db.getMongo().setSlaveOk() allow queries on a replication slave server</span><br><span class="line">	db.getName()</span><br><span class="line">	db.getProfilingLevel() - deprecated</span><br><span class="line">	db.getProfilingStatus() - returns if profiling is on and slow threshold</span><br><span class="line">	db.getReplicationInfo()</span><br><span class="line">	db.getSiblingDB(name) get the db at the same server as this one</span><br><span class="line">	db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set</span><br><span class="line">	db.hostInfo() get details about the server's host</span><br><span class="line">	db.isMaster() check replica primary status</span><br><span class="line">	db.killOp(opid) kills the current operation in the db</span><br><span class="line">	db.listCommands() lists all the db commands</span><br><span class="line">	db.loadServerScripts() loads all the scripts in db.system.js</span><br><span class="line">	db.logout()</span><br><span class="line">	db.printCollectionStats()</span><br><span class="line">	db.printReplicationInfo()</span><br><span class="line">	db.printShardingStatus()</span><br><span class="line">	db.printSlaveReplicationInfo()</span><br><span class="line">	db.resetError()</span><br><span class="line">	db.runCommand(cmdObj) run a database command.  if cmdObj is a string, turns it into {cmdObj: 1}</span><br><span class="line">	db.serverStatus()</span><br><span class="line">	db.setLogLevel(level,&lt;component&gt;)</span><br><span class="line">	db.setProfilingLevel(level,slowms) 0=off 1=slow 2=all</span><br><span class="line">	db.setVerboseShell(flag) display extra information in shell output</span><br><span class="line">	db.setWriteConcern(&lt;write concern doc&gt;) - sets the write concern for writes to the db</span><br><span class="line">	db.shutdownServer()</span><br><span class="line">	db.stats()</span><br><span class="line">	db.unsetWriteConcern(&lt;write concern doc&gt;) - unsets the write concern for writes to the db</span><br><span class="line">	db.version() current version of the server</span><br><span class="line">	db.watch() - opens a change stream cursor for a database to report on all  changes to its non-system collections.</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>命令安装</p>
+</blockquote>
+<h2 id="三、php扩展安装"><a href="#三、php扩展安装" class="headerlink" title="三、php扩展安装"></a>三、php扩展安装</h2><ol>
+<li>下载<code>wget http://pecl.php.net/get/mongodb-1.5.3.tgz</code></li>
+<li>解压<code>tar -zxvf mongodb-1.5.3.tgz</code></li>
+<li><code>cd mongodb-1.5.3</code></li>
+<li>/path/phpize</li>
+<li>./configure –with-php-config=/path/php-config</li>
+<li>make &amp;&amp; make install<ul>
+<li>报错 <code>/usr/local/src/mongodb-1.5.3/src/libmongoc/src/libmongoc/src/mongoc/mongoc-rand-common-crypto.c:25:10: fatal error:'Security/Security.h' file not found</code></li>
+</ul>
+</li>
+<li>解决<ul>
+<li><code>cd mongodb-1.5.3/include</code></li>
+<li><code>ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Versions/A/Headers/ Security</code></li>
+<li><code>ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreFoundation.framework/Versions/A/Headers/ CoreFoundation</code></li>
+</ul>
+</li>
+<li>make &amp;&amp; make install</li>
+<li><a target="_blank" rel="noopener" href="http://pecl.php.net/">参考</a></li>
+</ol>
+<h2 id="四、各种问题"><a href="#四、各种问题" class="headerlink" title="四、各种问题"></a>四、各种问题</h2><ol>
+<li>MongoDB时间范围查询与like查询</li>
+</ol>
+<h2 id="五、进阶列表"><a href="#五、进阶列表" class="headerlink" title="五、进阶列表"></a>五、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30377426">进阶列表</a></h2><ol>
+<li><p>常见问题处理</p>
+<ul>
+<li>连接问题<ul>
+<li>连接超时<ul>
+<li>测试链路是否通畅<code>telnet IP/Domain port</code></li>
+</ul>
+</li>
+<li>鉴权失败<ul>
+<li>用户或密码错误</li>
+<li>用户权限不对</li>
+</ul>
+</li>
+<li><code>not master and slaveOk=false</code><ul>
+<li>默认情况下MongoDB的读写请求都必须到Primary节点，Secondary是不可读的，设置Secondary可读：<code>rs.slaveOk()</code></li>
+</ul>
+</li>
+<li><code>Connection reset by peer</code><ul>
+<li>实例的连接数已经达到上限，无法再建立更多的网络连接</li>
+<li>连接数问题<ul>
+<li>查看当前连接数：<code>db.serverStatus().connections</code></li>
+<li>查看连接具体信息：<code>db.runCommand({currentOp: 1, $all: true})</code></li>
+<li>限制连接数数量：在<code>Connection String URI Format</code>末尾添加<code>&amp;maxPoolSize=num</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>负载问题<ul>
+<li>CPU利用率很高，查看实例正在执行的操作：<code>db.currentOp()</code><ul>
+<li>造成实例负载高的典型case<ul>
+<li>并发请求的量太大，超出当前规格的服务能力</li>
+<li>查询集合时没有合理的建索引，导致全表扫描或排序</li>
+<li>正在跑一些计算量很大的mapreduce或者aggregation任务</li>
+</ul>
+</li>
+<li>kill操作：<code>db.killOp(opid)</code>，opid来自第一步<code>db.currentOp()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用正确的姿势连接复制集</p>
+<ul>
+<li>Primary节点不是固定的<ul>
+<li>MongoDB复制集里Primary节点是不固定的，当遇到复制集轮转升级、Primary宕机、网络分区等场景时复制集可能会选举出一个新的Primary，而原来的Primary则会降级为Secondary，即发生主备切换。</li>
+<li>当连接复制集时，如果直接指定Primary的地址来连接，当时可能可以正确读写数据的，一旦发生主备切换，原来的Primary会降级为Secondary，此时将无法继续执行写操作，切不可以直连Primary地址。</li>
+</ul>
+</li>
+<li>连接时使用<a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/connection-string/?spm=a2c6h.12873639.0.0.33a62a9aAPJNhl">Connection String URI Format</a>，如PHP连接时<code>mongodb://user:'.rawurlencode('password').'@aaap.mongodb.xxx.rds.aliyuncs.com:3717,aaas.mongodb.xxx.rds.aliyuncs.com:3717?replicaSet=mgset-1234</code>。</li>
+</ul>
+</li>
+<li><p>使用正确的姿势连接分片集群</p>
+<ul>
+<li>用户访问分片集群跟访问单个实例类似</li>
+<li>连接时使用和复制集类似，如PHP连接时：<code>mongodb://user:'.rawurlencode('password').'@aaap.mongodb.xxx.rds.aliyuncs.com:3717,aaas.mongodb.xxx.rds.aliyuncs.com:3717</code>，即没有指定复制集名称。</li>
+</ul>
+</li>
+<li><p>参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/8461">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/69380">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/53771">参考三</a></li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/NoSQL/" rel="tag"><i class="fa fa-tag"></i> NoSQL</a>
+              <a href="/tags/MongoDB/" rel="tag"><i class="fa fa-tag"></i> MongoDB</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2017/01/22/Python-%E6%A1%86%E6%9E%B6/" rel="next" title="Python框架">
+                  <i class="fa fa-chevron-left"></i> Python框架
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2017/02/12/Network-%E4%B8%80%E7%BD%91%E6%89%93%E5%B0%BD/" rel="prev" title="一网打尽">
+                  一网打尽 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85MongoDB"><span class="nav-number">1.</span> <span class="nav-text">一、安装MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Mac%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">二、Mac下安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81php%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">三、php扩展安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">四、各种问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%9B%E9%98%B6%E5%88%97%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">五、进阶列表</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="《谁伴我闯荡》是中国香港摇滚乐队Beyond演唱的一首粤语歌曲，由刘卓辉作词，黄家驹作曲，Beyond编曲，收录在Beyond于1991年9月6日发行的粤语专辑《犹豫》中。该歌曲也是Beyond自传式电影《莫欺少年穷》的插曲之一，也是Beyond为数不多的专为电影创作作品。另外，本歌曲在港剧《笑看风云》中也被用做插曲。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象收集">
+<meta property="og:url" content="https://liusir.net/2019/07/15/OOP-%E6%94%B6%E9%9B%86/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="《谁伴我闯荡》是中国香港摇滚乐队Beyond演唱的一首粤语歌曲，由刘卓辉作词，黄家驹作曲，Beyond编曲，收录在Beyond于1991年9月6日发行的粤语专辑《犹豫》中。该歌曲也是Beyond自传式电影《莫欺少年穷》的插曲之一，也是Beyond为数不多的专为电影创作作品。另外，本歌曲在港剧《笑看风云》中也被用做插曲。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-15T10:38:01.000Z">
+<meta property="article:modified_time" content="2026-10-25T03:37:35.286Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="面向对象">
+<meta property="article:tag" content="封装">
+<meta property="article:tag" content="继承">
+<meta property="article:tag" content="多态">
+<meta property="article:tag" content="单一职责原则">
+<meta property="article:tag" content="开放封闭原则">
+<meta property="article:tag" content="里氏替换原则">
+<meta property="article:tag" content="依赖倒置原则">
+<meta property="article:tag" content="接口分离原则">
+<meta property="article:tag" content="迪米特法则">
+<meta property="article:tag" content="依赖注入">
+<meta property="article:tag" content="控制反转">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2019/07/15/OOP-%E6%94%B6%E9%9B%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>面向对象收集 | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2019/07/15/OOP-%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          面向对象收集
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-15 18:38:01" itemprop="dateCreated datePublished" datetime="2019-07-15T18:38:01+08:00">2019-07-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OOP/" itemprop="url" rel="index">
+                    <span itemprop="name">OOP</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>《谁伴我闯荡》是中国香港摇滚乐队Beyond演唱的一首粤语歌曲，由刘卓辉作词，黄家驹作曲，Beyond编曲，收录在Beyond于1991年9月6日发行的粤语专辑《犹豫》中。该歌曲也是Beyond自传式电影《莫欺少年穷》的插曲之一，也是Beyond为数不多的专为电影创作作品。另外，本歌曲在港剧《笑看风云》中也被用做插曲。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、三大特性"><a href="#一、三大特性" class="headerlink" title="一、三大特性"></a>一、三大特性</h2><ol>
+<li>封装</li>
+<li>继承：一个类继承另一个类，则称继承的类为子类，被继承的类为父类。<ul>
+<li>实现：使用<code>extends</code></li>
+<li>限制：public和protected属性和方法可以被继承，private不可以</li>
+<li>结果：继承后子类自动拥有了父类的属性和方法。<ul>
+<li>子类也可以复写父类的方法，即方法的重写</li>
+<li>子类也可以写自己特有的属性和方法，目的是实现功能的扩展。</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>提高了代码的复用性，继承后就拥有父类的属性和方法</li>
+<li>提高了代码的维护性，子类可以重写父类的属性和方法，也可以定义自己特有的方法和属性</li>
+<li>实现多态的前提，父类定义基础方法，不同子类重写此基础方法从而实现多态</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>降低代码的灵活性，只要继承就肯定拥有父类的所有属性和方法</li>
+<li>增强了耦合性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多态</li>
+</ol>
+<h2 id="二、五大原则"><a href="#二、五大原则" class="headerlink" title="二、五大原则"></a>二、五大原则</h2><ol>
+<li>单一职责原则SRP(Single Responsibility Principle)</li>
+<li>开放封闭原则OCP(Open－Close Principle) </li>
+<li>里氏替换原则LSP(Liskov Substitution Principle)</li>
+<li>依赖倒置原则DIP(Dependency Inversion Principle)</li>
+<li>接口分离原则(Interface Segregation Principle)</li>
+<li>迪米特法则(Law of Demeter)</li>
+</ol>
+<h2 id="三、依赖注入-控制反转"><a href="#三、依赖注入-控制反转" class="headerlink" title="三、依赖注入/控制反转"></a>三、依赖注入/控制反转</h2><ol>
+<li>依赖倒置原则(DIP)：一种软件架构设计的原则，程序中所有的依赖关系都应该终止于抽象类或者接口(抽象概念)。</li>
+<li>控制反转IoC(Inversion of Control)：一种反转流、依赖和接口的方式(DIP的具体实现方式)。<ul>
+<li>控制反转(Inversion of Control，缩写为IoC)是说创建对象的控制权进行转移，以前创建对象的主动权和创建时机是由自己把控的，而现在这种权力转移到第三方，总结即为获得依赖对象的方式反转了。IoC 不是一种技术，只是一种思想，一个重要的面向对象编程的法则，它能指导我们如何设计出松耦合、更优良的程序，降低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。</li>
+</ul>
+</li>
+<li>依赖注入DI(Dependency Injection)：将依赖对象的创建和绑定转移到被依赖对象类的外部来实现，用来反转依赖，是IoC的一种实现方式。</li>
+<li>IoC容器：依赖注入的框架，用来映射依赖，管理对象创建和生存周期（DI框架）。</li>
+<li>DI实现方式<ul>
+<li>构造函数注入</li>
+<li>属性注入</li>
+<li>接口注入</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenwolong/p/DI.html">依赖注入</a></li>
+</ol>
+<h2 id="四、重写"><a href="#四、重写" class="headerlink" title="四、重写"></a>四、重写</h2><ol>
+<li><p>当一个父类和子类有一个方法，参数和名字完全一致，那么子类方法会覆盖父类的方法。</p>
+<ul>
+<li>子类中方法的访问权限一定不能低于父类被覆盖方法的访问权限，也就是一定要高于或等于父类方法的访问权限。</li>
+<li>子类中的方法参数一定要和父类保持一致，否则会报错(构造函数除外)</li>
+</ul>
+</li>
+<li><p>demo</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Person</span><br><span class="line">{</span><br><span class="line">    public $name;</span><br><span class="line">    public $sex;</span><br><span class="line">    public $age;</span><br><span class="line"></span><br><span class="line">    public function __construct($name, $sex, $age)</span><br><span class="line">    {</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">        $this-&gt;sex = $sex;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public function say()</span><br><span class="line">    {</span><br><span class="line">        echo "名字：" . $this-&gt;name . "，性别：" . $this-&gt;sex . "，年龄：" . $this-&gt;age;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">class Student extends Person</span><br><span class="line">{</span><br><span class="line">    public $school; </span><br><span class="line"></span><br><span class="line">    public function __construct($name, $sex, $age, $school)</span><br><span class="line">    {</span><br><span class="line">        parent::__construct($name, $sex, $age);</span><br><span class="line">        $this-&gt;school = $school;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    // public function say($test),报错：PHP Strict Standards:  Declaration of Student::say() should be compatible with Person::say()</span><br><span class="line">    public function say()</span><br><span class="line">    {</span><br><span class="line">        // parent::say(); // 或Person::say();</span><br><span class="line">        echo "姓名：" . $this-&gt;name ."，就读学校：" . $this-&gt;school;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// $p = new Person('张三','男',11);</span><br><span class="line">// $p-&gt;say();</span><br><span class="line"></span><br><span class="line">$s = new Student('张三','男',11,'北大');</span><br><span class="line">$s-&gt;say();</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、重载"><a href="#五、重载" class="headerlink" title="五、重载"></a>五、重载</h2><ol>
+<li><p>PHP所提供的重载(overloading)是指动态地创建类属性和方法，通过魔术方法(magic methods)来实现。</p>
+<ul>
+<li>魔术方法的参数都不能通过引用传递</li>
+</ul>
+</li>
+<li><p>当调用当前环境下未定义或不可见的类属性或方法时，重载方法会被调用。</p>
+<ul>
+<li>所有的重载方法都必须被声明为<code>public</code></li>
+</ul>
+</li>
+<li><p>PHP中的重载与其它绝大多数面向对象语言不同：传统的重载是用于提供多个同名的类方法，但各方法的参数类型和个数不同。</p>
+<ul>
+<li><strong>函数重载指方法的名称相同而参数形式不同，且能够通过函数的参数个数或参数类型将这些同名的函数区分开来，调用不发生混淆。即当调用的时候，虽然方法名字相同，但根据参数的不同可以自动调用相应的函数</strong></li>
+<li>重载是多态的一种实现</li>
+<li>函数重载指一个标识符被用作多个函数名，且能够通过函数的参数个数或参数类型将这些同名的函数区分开来，调用不发生混淆。即当调用的时候，虽然方法名字相同，但根据参数的不同可以自动调用相应的函数。</li>
+</ul>
+</li>
+<li><p>属性重载魔术方法</p>
+<ul>
+<li><code>public __set(string $name, mixed $value):void</code>，给不可访问属性赋值时，__set()会被调用。</li>
+<li><code>public __get(string $name):mixed</code>，读取不可访问属性的值时，__get() 会被调用。</li>
+<li><code>public __isset(string $name):bool</code>，对不可访问属性调用isset()或empty()时，__isset()会被调用。</li>
+<li><code>public __unset(string $name):void</code>，对不可访问属性调用 unset() 时，__unset() 会被调用。<ul>
+<li>属性重载只能在对象中进行</li>
+<li>在静态方法中，这些魔术方法将不会被调用，所以这些方法都不能被声明为static。</li>
+<li>从PHP5.3.0起，将这些魔术方法定义为static会产生一个警告。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>方法重载魔术方法</p>
+<ul>
+<li><code>public __call(string $name, array $arguments):mixed</code>，在对象中调用一个不可访问方法时，__call()会被调用。</li>
+<li><code>public static __callStatic(string $name ,array $arguments):mixed</code>，在静态上下文中调用一个不可访问方法时，__callStatic()会被调用。</li>
+</ul>
+</li>
+<li><p>实现重载</p>
+<ul>
+<li>基于魔术方法实现</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Overload{</span><br><span class="line"></span><br><span class="line">    public function __call($name, $args)</span><br><span class="line">    {</span><br><span class="line">        if ($name == 'test') {</span><br><span class="line">            switch (count($args)) {</span><br><span class="line">                case 1:</span><br><span class="line">                    call_user_func_array([$this,'test1'], $args);</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    call_user_func_array('self::test2', $args);</span><br><span class="line">                    break;         </span><br><span class="line">                default:</span><br><span class="line">                    throw new Exception("Not Found Action");</span><br><span class="line">                    break;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static function __callStatic($name, $args)</span><br><span class="line">    {</span><br><span class="line">        echo 'function name:'.$name,PHP_EOL,'args list:'.join(',', $args);</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    private function test1($arg0)</span><br><span class="line">    {</span><br><span class="line">        echo __METHOD__,PHP_EOL;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private function test2($arg0, $arg1)</span><br><span class="line">    {</span><br><span class="line">        echo __METHOD__,PHP_EOL;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"> </span><br><span class="line">$obj = new Overload();</span><br><span class="line">$obj-&gt;test(1);</span><br><span class="line">$obj-&gt;test(1,2);</span><br><span class="line">Overload::myFunc('magic static func');</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>基于参数个数实现</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Overload</span><br><span class="line">{</span><br><span class="line">    public function test()</span><br><span class="line">    {</span><br><span class="line">       $num = func_num_args(); </span><br><span class="line">       $arg = func_get_args(); </span><br><span class="line">       switch ($num) {</span><br><span class="line">            case 1:</span><br><span class="line">                $this-&gt;testOne($arg[0]);</span><br><span class="line">                break;</span><br><span class="line">            case 2:</span><br><span class="line">                $this-&gt;testTwo($arg[0], $arg[1]);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                throw new Exception("Not Found Action");</span><br><span class="line">                break;</span><br><span class="line">       }</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    private function testOne($arg0)</span><br><span class="line">    {</span><br><span class="line">        echo __METHOD__,PHP_EOL;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    private function testTwo($arg0, $arg1)</span><br><span class="line">    {</span><br><span class="line">        echo __METHOD__,PHP_EOL;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">$obj = new Overload();</span><br><span class="line">$obj-&gt;test(1);   //Overload::testOne</span><br><span class="line">$obj-&gt;test(1,2); //Overload::testTwo</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="六、面向对象面向过程面向接口"><a href="#六、面向对象面向过程面向接口" class="headerlink" title="六、面向对象面向过程面向接口"></a>六、面向对象面向过程面向接口</h2><ol>
+<li>面向过程的编程的基本构成便是“过程”，过程实现的方式就是“函数”，我们通过不同函数来实现不同的功能，并按照程序的执行顺序调用相应的函数，组成一个完整的可以运行的应用程序。我们可以通过把不同的功能在不同的函数中实现或者给函数传递不同的参数来实现不同的功能，这是面向过程中模块化设计的原理。</li>
+<li>面向对象，是把数据及对数据的操作方法放在一起，作为一个相互依存的整体，即对象。对同类对象抽象出其共性，形成类；类中的大多数数据，只能用本类的方法进行处理。类通过一个简单的外部接口与外界发生关系，对象与对象之间通过消息进行通信；程序流程由用户在使用中决定。</li>
+<li>接口就是这样一种东西，定义一种规格，以保持团队开发的一致性和规范性。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag"><i class="fa fa-tag"></i> 面向对象</a>
+              <a href="/tags/%E5%B0%81%E8%A3%85/" rel="tag"><i class="fa fa-tag"></i> 封装</a>
+              <a href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag"><i class="fa fa-tag"></i> 继承</a>
+              <a href="/tags/%E5%A4%9A%E6%80%81/" rel="tag"><i class="fa fa-tag"></i> 多态</a>
+              <a href="/tags/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 单一职责原则</a>
+              <a href="/tags/%E5%BC%80%E6%94%BE%E5%B0%81%E9%97%AD%E5%8E%9F%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 开放封闭原则</a>
+              <a href="/tags/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 里氏替换原则</a>
+              <a href="/tags/%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 依赖倒置原则</a>
+              <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%88%86%E7%A6%BB%E5%8E%9F%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 接口分离原则</a>
+              <a href="/tags/%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99/" rel="tag"><i class="fa fa-tag"></i> 迪米特法则</a>
+              <a href="/tags/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" rel="tag"><i class="fa fa-tag"></i> 依赖注入</a>
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" rel="tag"><i class="fa fa-tag"></i> 控制反转</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/06/24/Technology-Code%20Review/" rel="next" title="Code Review">
+                  <i class="fa fa-chevron-left"></i> Code Review
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/08/09/Linux-Makefile%E6%94%B6%E9%9B%86/" rel="prev" title="Makefile收集">
+                  Makefile收集 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">一、三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">二、五大原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC"><span class="nav-number">3.</span> <span class="nav-text">三、依赖注入&#x2F;控制反转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%87%8D%E5%86%99"><span class="nav-number">4.</span> <span class="nav-text">四、重写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%87%8D%E8%BD%BD"><span class="nav-number">5.</span> <span class="nav-text">五、重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3"><span class="nav-number">6.</span> <span class="nav-text">六、面向对象面向过程面向接口</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1053</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16:59</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>
