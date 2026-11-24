@@ -56012,7 +56012,7 @@ read_xlsx(name, sheet)
 </blockquote>
 <span id="more"></span>
 
-<h1 id="MySQL工作原理"><a href="#MySQL工作原理" class="headerlink" title="MySQL工作原理"></a><center><font color="red">MySQL工作原理</font></center></h1><p><font color="red"><img src="mysql.png" alt="mysql"></font></p><font color="red">
+<h1 id="MySQL工作原理"><a href="#MySQL工作原理" class="headerlink" title="MySQL工作原理"></a><center><font color="red">MySQL工作原理</font></center></h1><p><img src="mysql.png" alt="mysql"></p>
 <blockquote>
 <p>对应图：Oracle 官方文档的 MySQL Server 架构图（连接层 → Server 层 → 存储引擎层 → 文件系统与日志）。<br>图的年代偏 5.6/5.7，8.0 有两处结构性变化：<strong>查询缓存被移除</strong>、<strong>数据字典事务化</strong>。笔记中逐处标注。</p>
 </blockquote>
@@ -56700,7 +56700,7 @@ read_xlsx(name, sheet)
 <li><strong>8.0 的最大结构变化</strong>：查询缓存消失、数据字典事务化、redo 目录化 —— 看图时记得减去 query cache。</li>
 </ol>
 <hr>
-<h1 id="常见收集"><a href="#常见收集" class="headerlink" title="常见收集"></a><center><font color="red">常见收集</font></center></h1><h2 id="一、常用"><font color="red"><a href="#一、常用" class="headerlink" title="一、常用"></a>一、常用</font></h2><ol><font color="red">
+<h1 id="常见收集"><a href="#常见收集" class="headerlink" title="常见收集"></a><center><font color="red">常见收集</font></center></h1><h2 id="一、常用"><a href="#一、常用" class="headerlink" title="一、常用"></a>一、常用</h2><ol>
 <li><p>忘记密码</p>
 <ul>
 <li><p>低版本</p>
@@ -56774,7 +56774,7 @@ read_xlsx(name, sheet)
 </li>
 <li><p>取1到10的第二大值</p>
 </li>
-</font></ol><font color="red">
+</ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&gt;建表</span><br><span class="line">CREATE TABLE `test_tb1` (</span><br><span class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `val` int(11) unsigned NOT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">&gt;插入</span><br><span class="line">INSERT INTO `test_tb1` VALUES (1, 1);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (2, 2);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (3, 3);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (4, 4);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (5, 5);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (6, 6);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (7, 7);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (8, 8);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (9, 9);</span><br><span class="line">INSERT INTO `test_tb1` VALUES (10, 10);</span><br><span class="line"></span><br><span class="line">&gt;取结果</span><br><span class="line">SELECT max(val) FROM test_tb1 </span><br><span class="line">WHERE val NOT IN (SELECT max(val) FROM test_tb1)</span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="5">
@@ -57101,14 +57101,14 @@ read_xlsx(name, sheet)
 <li>Syntax error or access violation: 1059 Identifier name ‘idx_xxx_at_xxx_id_xxx_id_xxx_type_status’ is too long</li>
 </ul>
 <hr>
-<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a><center><font color="red">触发器</font></center></h1><p><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触发器(trigger)是数据库服务器提供给程序员和数据分析员来保证数据完整性的一种方法，它是与表事件相关的特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件来触发，比如当对一个表进行操作(insert/delete/update)时就会激活它执行。触发器经常用于加强数据的完整性约束和业务规则等。触发器可以从DBA_TRIGGERS，USER_TRIGGERS数据字典中查到。SQL3的触发器是一个能由系统自动执行对数据库修改的语句。</font></p><font color="red">
+<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a><center><font color="red">触发器</font></center></h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;触发器(trigger)是数据库服务器提供给程序员和数据分析员来保证数据完整性的一种方法，它是与表事件相关的特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件来触发，比如当对一个表进行操作(insert/delete/update)时就会激活它执行。触发器经常用于加强数据的完整性约束和业务规则等。触发器可以从DBA_TRIGGERS，USER_TRIGGERS数据字典中查到。SQL3的触发器是一个能由系统自动执行对数据库修改的语句。</p>
 <hr>
-<h1 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a><center><font color="red">存储过程</font></center></h1><ol><font color="red">
+<h1 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a><center><font color="red">存储过程</font></center></h1><ol>
 <li><p>定义<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>MySQL</code>从<code>5.0</code>版本开始支持存储过程(<code>Stored Procedure</code>)，是一种在数据库中存储复杂程序以便外部程序调用的一种数据库对象。它是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。存储过程思想上很简单，就是数据库<code>SQL</code>语言层面的代码封装与重用。</p>
 </li>
 <li><p>语法</p>
 </li>
-</font></ol><font color="red">
+</ol>
 <p><code>CREATE PROCEDURE &lt;过程名&gt; ([过程参数[,…]]) &lt;过程体&gt;</code></p>
 <ul>
 <li>2.1 过程名：存储过程的名称，默认在当前数据库中创建。若需要在特定数据库中创建存储过程，则要在名称前面加上数据库的名称，即 db_name.sp_name。需要注意的是，名称应当尽量避免选取与 MySQL 内置函数相同的名称，否则会发生错误。</li>
@@ -57152,8 +57152,8 @@ read_xlsx(name, sheet)
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">delimiter //</span><br><span class="line">create procedure pro2(IN id INT, OUT result varchar)</span><br><span class="line">begin</span><br><span class="line">	declare tmp;</span><br><span class="line">	select field into tmp from user_info;</span><br><span class="line">	set result = tmp;</span><br><span class="line">end //</span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line">call pro2();</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
-<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a><center><font color="red">外键</font></center></h1><hr><font color="red">
-<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a><center><font color="red">视图</font></center></h1><ol><font color="red">
+<h1 id="外键"><a href="#外键" class="headerlink" title="外键"></a><center><font color="red">外键</font></center></h1><hr>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a><center><font color="red">视图</font></center></h1><ol>
 <li><p>视图(view)是一种虚拟存在的表，是一个逻辑表，本身并不包含数据，作为一个select语句保存在数据字典中的。</p>
 <ul>
 <li>通过视图，可以展现基表的部分数据；视图数据来自定义视图的查询中使用的表，使用视图动态生成。</li>
@@ -57196,7 +57196,7 @@ read_xlsx(name, sheet)
 </li>
 </ul>
 </li>
-</font></ol><font color="red">
+</ol>
 <ol start="4">
 <li>扩展：MySQL的两个视图<ul>
 <li>一个是 view，它是一个用查询语句定义的虚拟表，在调用的时候执行查询语句并生成结果。</li>
@@ -57205,9 +57205,9 @@ read_xlsx(name, sheet)
 </li>
 </ol>
 <hr>
-<h1 id="数据类型-MySQL-5-7"><a href="#数据类型-MySQL-5-7" class="headerlink" title="数据类型(MySQL 5.7)"></a><center><font color="red">数据类型(MySQL 5.7)</font></center></h1><ol><font color="red">
+<h1 id="数据类型-MySQL-5-7"><a href="#数据类型-MySQL-5-7" class="headerlink" title="数据类型(MySQL 5.7)"></a><center><font color="red">数据类型(MySQL 5.7)</font></center></h1><ol>
 <li>数字类型</li>
-</font></ol><font color="red">
+</ol>
 <table>
 <thead>
 <tr>
@@ -57689,16 +57689,16 @@ read_xlsx(name, sheet)
 </li>
 </ol>
 <hr>
-<h1 id="内存表和临时表"><a href="#内存表和临时表" class="headerlink" title="内存表和临时表"></a><center><font color="red">内存表和临时表</font></center></h1><ol><font color="red">
+<h1 id="内存表和临时表"><a href="#内存表和临时表" class="headerlink" title="内存表和临时表"></a><center><font color="red">内存表和临时表</font></center></h1><ol>
 <li>内存表，指的是使用Memory引擎的表，建表语法是<code>create table … engine=memory</code>。这种表的数据都保存在内存里，系统重启的时候会被清空，但是表结构还在。</li>
 <li>临时表，可以使用各种引擎类型。如果是使用 InnoDB 引擎或者 MyISAM 引擎的临时表，写数据的时候是写到磁盘上的。当然临时表也可以使用 Memory 引擎。<ul>
 <li>用户临时表</li>
 <li>内部临时表</li>
 </ul>
 </li>
-</font></ol><font color="red">
+</ol>
 <hr>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a><center><font color="red">函数</font></center></h1><ol><font color="red">
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a><center><font color="red">函数</font></center></h1><ol>
 <li><p>内置函数</p>
 <ul>
 <li><p>group_concat</p>
@@ -57759,13 +57759,13 @@ read_xlsx(name, sheet)
 </li>
 <li><p>实战</p>
 </li>
-</font></ol><font color="red">
+</ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">CREATE DEFINER=`root`@`localhost` FUNCTION `func2`() </span><br><span class="line">RETURNS int(11)</span><br><span class="line">begin</span><br><span class="line">declare a int;</span><br><span class="line">declare b int;</span><br><span class="line">set a=rand();</span><br><span class="line">set b=a*100;</span><br><span class="line">return b;</span><br><span class="line">end</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
-<h1 id="MySQL-JSON字段类型"><a href="#MySQL-JSON字段类型" class="headerlink" title="MySQL JSON字段类型"></a><center><font color="red">MySQL JSON字段类型</font></center></h1><blockquote><font color="red">
+<h1 id="MySQL-JSON字段类型"><a href="#MySQL-JSON字段类型" class="headerlink" title="MySQL JSON字段类型"></a><center><font color="red">MySQL JSON字段类型</font></center></h1><blockquote>
 <p>适用版本：MySQL <strong>5.7.8+</strong>（原生 JSON 类型）／<strong>8.0+</strong>（JSON_TABLE、多值索引、JSON_VALUE 等增强）<br>文中标注 <code>8.0.x</code> 的特性在 5.7 上不可用，动手前先 <code>SELECT VERSION();</code> 确认。</p>
-</font></blockquote><font color="red">
+</blockquote>
 <hr>
 <h2 id="一、先搞清楚它是什么"><a href="#一、先搞清楚它是什么" class="headerlink" title="一、先搞清楚它是什么"></a>一、先搞清楚它是什么</h2><h3 id="1-1-定位"><a href="#1-1-定位" class="headerlink" title="1.1 定位"></a>1.1 定位</h3><p>MySQL 的 <code>JSON</code> 不是”存字符串的 TEXT”，而是<strong>带校验、带二进制存储格式、带一套函数与操作符的独立数据类型</strong>：</p>
 <ul>
@@ -58094,9 +58094,9 @@ read_xlsx(name, sheet)
 <li>没有 <code>JSON_VALID</code> 兜底的老数据，读出来 <code>json_decode</code> 得到 null 却当成空对象用。</li>
 </ol>
 <hr>
-<h1 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a><center><font color="red">数据库引擎</font></center></h1><h2 id="一、MYSQL支持的数据库引擎"><font color="red"><a href="#一、MYSQL支持的数据库引擎" class="headerlink" title="一、MYSQL支持的数据库引擎"></a>一、MYSQL支持的数据库引擎</font></h2><blockquote><font color="red">
+<h1 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a><center><font color="red">数据库引擎</font></center></h1><h2 id="一、MYSQL支持的数据库引擎"><a href="#一、MYSQL支持的数据库引擎" class="headerlink" title="一、MYSQL支持的数据库引擎"></a>一、MYSQL支持的数据库引擎</h2><blockquote>
 <p>查看mysql支持的数据库引擎：<code>show engines;</code>，以下是常用到的几种数据库引擎：</p>
-</font></blockquote><font color="red">
+</blockquote>
 <ol>
 <li>ISAM是一个定义明确且历经时间考验的数据表格管理方法，它在设计之时就考虑到数据库被查询的次数要远大于更新的次数。<ul>
 <li>因此，ISAM执行读取操作的速度很快，而且不占用大量的内存和存储资源。</li>
@@ -58219,9 +58219,9 @@ read_xlsx(name, sheet)
 </ol>
 <p><em>扩展：</em> 全文索引是指对char、varchar和text中的每个词（停用词除外）建立倒排序索引。MyISAM的全文索引其实没啥用，因为它不支持中文分词，必须由使用者分词后加入空格再写到数据表里，而且少于4个汉字的词会和停用词一样被忽略掉。</p>
 <hr>
-<h1 id="聚簇索引与非聚簇索引"><a href="#聚簇索引与非聚簇索引" class="headerlink" title="聚簇索引与非聚簇索引"></a><center><font color="red">聚簇索引与非聚簇索引</font></center></h1><blockquote><font color="red">
+<h1 id="聚簇索引与非聚簇索引"><a href="#聚簇索引与非聚簇索引" class="headerlink" title="聚簇索引与非聚簇索引"></a><center><font color="red">聚簇索引与非聚簇索引</font></center></h1><blockquote>
 <p>聚簇索引是将数据存储与索引放到了一块，找到索引也就找到了数据；非聚簇索引则是将数据存储与索引分开，索引结构的叶子节点指向了数据的对应行的地址。</p>
-</font></blockquote><font color="red">
+</blockquote>
 <!-- more -->
 
 <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><blockquote>
@@ -58323,11 +58323,7 @@ read_xlsx(name, sheet)
 </li>
 </ol>
 <hr>
-<h1 id="MySQL修改密码"><a href="#MySQL修改密码" class="headerlink" title="MySQL修改密码"></a><center><font color="red">MySQL修改密码</font></center></h1><h1 id="MySQL-修改密码完全指南（5-7-与-8-0-）"><font color="red"><a href="#MySQL-修改密码完全指南（5-7-与-8-0-）" class="headerlink" title="MySQL 修改密码完全指南（5.7 与 8.0+）"></a>MySQL 修改密码完全指南（5.7 与 8.0+）</font></h1><blockquote><font color="red">
-<p>覆盖：常规改密、服务端随机密码（RANDOM PASSWORD，8.0.18+）、忘记密码、复制账号、多实例、Docker 容器、云托管 RDS、批量脚本、应用侧联动。<br>通用前提：所有操作以有 <code>ALTER USER</code> 权限的账号登录（通常是 <code>root</code> 或具备 <code>CREATE USER</code> 的运维账号）。</p>
-</font></blockquote><font color="red">
-<hr>
-<h2 id="一、动手前先确认三件事"><a href="#一、动手前先确认三件事" class="headerlink" title="一、动手前先确认三件事"></a>一、动手前先确认三件事</h2><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">-- 1) 版本：决定能用哪些语法（5.7.6 是分界线，8.0 是 PASSWORD() 的分界线）</span></span><br><span class="line"><span class="keyword">SELECT</span> VERSION();</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2) 账号、认证插件、当前密码存储形态</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">user</span>, host, plugin, authentication_string, password_expired</span><br><span class="line"><span class="keyword">FROM</span> mysql.user</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">user</span> <span class="keyword">IN</span> (<span class="string">'root'</span>,<span class="string">'app'</span>,<span class="string">'repl'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3) 是否开了密码强度校验（会导致"密码明明对了却报 1819"）</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">'validate_password%'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="MySQL修改密码"><a href="#MySQL修改密码" class="headerlink" title="MySQL修改密码"></a><center><font color="red">MySQL修改密码</font></center></h1><h2 id="一、动手前先确认三件事"><a href="#一、动手前先确认三件事" class="headerlink" title="一、动手前先确认三件事"></a>一、动手前先确认三件事</h2><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">-- 1) 版本：决定能用哪些语法（5.7.6 是分界线，8.0 是 PASSWORD() 的分界线）</span></span><br><span class="line"><span class="keyword">SELECT</span> VERSION();</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2) 账号、认证插件、当前密码存储形态</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">user</span>, host, plugin, authentication_string, password_expired</span><br><span class="line"><span class="keyword">FROM</span> mysql.user</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">user</span> <span class="keyword">IN</span> (<span class="string">'root'</span>,<span class="string">'app'</span>,<span class="string">'repl'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3) 是否开了密码强度校验（会导致"密码明明对了却报 1819"）</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">'validate_password%'</span>;</span><br></pre></td></tr></tbody></table></figure>
 
 <p>三个判断结论：</p>
 <table>
@@ -58721,9 +58717,9 @@ read_xlsx(name, sheet)
 <li><input disabled="" type="checkbox"> 记录到变更台账（谁、何时、哪个实例、哪个账号，密码存密钥管理不存文档）</li>
 </ul>
 <hr>
-<h1 id="AliOS安装"><a href="#AliOS安装" class="headerlink" title="AliOS安装"></a><center><font color="red">AliOS安装</font></center></h1><ol><font color="red">
+<h1 id="AliOS安装"><a href="#AliOS安装" class="headerlink" title="AliOS安装"></a><center><font color="red">AliOS安装</font></center></h1><ol>
 <li>安装mysql(5.7.44)</li>
-</font></ol><font color="red">
+</ol>
 <ul>
 <li>yum -y install mysql-server  –nogpgcheck</li>
 <li>systemctl start mysqld.service</li>
@@ -58738,9 +58734,9 @@ read_xlsx(name, sheet)
 <li>查看：mysql –version</li>
 </ol>
 <hr>
-<h1 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a><center><font color="red">CentOS安装</font></center></h1><ol><font color="red">
+<h1 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a><center><font color="red">CentOS安装</font></center></h1><ol>
 <li>查看版本</li>
-</font></ol><font color="red">
+</ol>
 <ul>
 <li>yum search mysql</li>
 <li>卸载mariadb和MySQL<ul>
@@ -58836,7 +58832,7 @@ read_xlsx(name, sheet)
 </li>
 </ol>
 <hr>
-<h1 id="mysql优化"><a href="#mysql优化" class="headerlink" title="mysql优化"></a><center><font color="red">mysql优化</font></center></h1><h2 id="一、创建优化"><font color="red"><a href="#一、创建优化" class="headerlink" title="一、创建优化"></a>一、创建优化</font></h2><ol><font color="red">
+<h1 id="mysql优化"><a href="#mysql优化" class="headerlink" title="mysql优化"></a><center><font color="red">mysql优化</font></center></h1><h2 id="一、创建优化"><a href="#一、创建优化" class="headerlink" title="一、创建优化"></a>一、创建优化</h2><ol>
 <li>选择合适的存储引擎</li>
 <li>字段设置为<code>NOT NULL</code></li>
 <li>字段属性越小查询越快(<code>int enum</code>等)，尽量使用数值型</li>
@@ -58845,7 +58841,7 @@ read_xlsx(name, sheet)
 <li>ip使用<code>long</code>存储</li>
 <li>写多读少的业务用InnoDB</li>
 <li>读多写少的业务使用MyISAM</li>
-</font></ol><font color="red">
+</ol>
 <h2 id="二、查询优化"><a href="#二、查询优化" class="headerlink" title="二、查询优化"></a>二、查询优化</h2><ol>
 <li>查询需要的字段而不是<code>*</code></li>
 <li>只查询一条记录使用<code>LIMIT</code></li>
@@ -58934,9 +58930,9 @@ read_xlsx(name, sheet)
 <li>设置大页内存</li>
 </ol>
 <hr>
-<h1 id="binlog恢复"><a href="#binlog恢复" class="headerlink" title="binlog恢复"></a><center><font color="red">binlog恢复</font></center></h1><h2 id="一、前提条件（必须满足）"><font color="red"><a href="#一、前提条件（必须满足）" class="headerlink" title="一、前提条件（必须满足）"></a>一、前提条件（必须满足）</font></h2><ol><font color="red">
+<h1 id="binlog恢复"><a href="#binlog恢复" class="headerlink" title="binlog恢复"></a><center><font color="red">binlog恢复</font></center></h1><h2 id="一、前提条件（必须满足）"><a href="#一、前提条件（必须满足）" class="headerlink" title="一、前提条件（必须满足）"></a>一、前提条件（必须满足）</h2><ol>
 <li><strong>binlog 已开启</strong>（恢复前就要开启，出事再开没用）配置 my.cnf（Linux）/my.ini（Windows）：ini</li>
-</font></ol><font color="red">
+</ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">log-bin = /var/log/mysql/mysql-bin  # 日志文件前缀</span><br><span class="line">server-id = 1                          # 必须设，主从/恢复都要</span><br><span class="line">binlog_format = ROW                    # 推荐ROW，数据更安全</span><br></pre></td></tr></tbody></table></figure>
 
 <p>重启 MySQL：bash运行</p>
@@ -59092,9 +59088,9 @@ read_xlsx(name, sheet)
 <li>恢复完立刻<strong>检查数据</strong>，确认无误再对外提供服务</li>
 </ol>
 <hr>
-<h1 id="MySQL常见报错整理"><a href="#MySQL常见报错整理" class="headerlink" title="MySQL常见报错整理"></a><center><font color="red">MySQL常见报错整理</font></center></h1><blockquote><font color="red">
+<h1 id="MySQL常见报错整理"><a href="#MySQL常见报错整理" class="headerlink" title="MySQL常见报错整理"></a><center><font color="red">MySQL常见报错整理</font></center></h1><blockquote>
 <p>覆盖：主键/唯一键冲突、字段类型截断、连接中断、认证失败、权限不足，另补 15 个高频报错。<br>每条统一结构：<strong>报错原文 → 含义 → 典型场景 → 定位命令 → 解决方案 → 预防</strong>。</p>
-</font></blockquote><font color="red">
+</blockquote>
 <hr>
 <h2 id="零、先学会读报错"><a href="#零、先学会读报错" class="headerlink" title="零、先学会读报错"></a>零、先学会读报错</h2><p>一条 MySQL 报错由三段构成：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ERROR 1062 (23000): Duplicate entry '100000000000001634' for key 'PRIMARY'</span><br><span class="line">  ↑      ↑              ↑                                  ↑</span><br><span class="line">错误码  SQLSTATE      服务端给的具体信息                  冲突的索引名</span><br></pre></td></tr></tbody></table></figure>
@@ -59546,7 +59542,7 @@ read_xlsx(name, sheet)
 <li><input disabled="" type="checkbox"> 报错日志接入告警，按错误码分类统计（1062/1265 突增通常意味着上游数据或并发逻辑出问题）</li>
 </ul>
 <hr>
-<h1 id="MySQL常用操作"><a href="#MySQL常用操作" class="headerlink" title="MySQL常用操作"></a><center><font color="red">MySQL常用操作</font></center></h1><h2 id="目录"><font color="red"><a href="#目录" class="headerlink" title="目录"></a>目录</font></h2><ol><font color="red">
+<h1 id="MySQL常用操作"><a href="#MySQL常用操作" class="headerlink" title="MySQL常用操作"></a><center><font color="red">MySQL常用操作</font></center></h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
 <li>账号与权限</li>
 <li>连接、线程与状态查看</li>
 <li>容量与性能优化（千万级）</li>
@@ -59558,7 +59554,7 @@ read_xlsx(name, sheet)
 <li>导入导出与 secure_file_priv</li>
 <li>报错速查</li>
 <li>一页命令速查</li>
-</font></ol><font color="red">
+</ol>
 <hr>
 <h2 id="一、账号与权限"><a href="#一、账号与权限" class="headerlink" title="一、账号与权限"></a>一、账号与权限</h2><h3 id="1-1-创建普通业务账号"><a href="#1-1-创建普通业务账号" class="headerlink" title="1.1 创建普通业务账号"></a>1.1 创建普通业务账号</h3><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'app'</span>@<span class="string">'10.0.0.%'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'AppPass@123'</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, UPDATE, <span class="keyword">DELETE</span> <span class="keyword">ON</span> app_db.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'app'</span>@<span class="string">'10.0.0.%'</span>;</span><br></pre></td></tr></tbody></table></figure>
 
@@ -60028,7 +60024,7 @@ read_xlsx(name, sheet)
 <h2 id="十一、一页命令速查"><a href="#十一、一页命令速查" class="headerlink" title="十一、一页命令速查"></a>十一、一页命令速查</h2><figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">-- 账号</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'u'</span>@<span class="string">'h'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'p'</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">INSERT</span>,UPDATE,<span class="keyword">DELETE</span> <span class="keyword">ON</span> db.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'u'</span>@<span class="string">'h'</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">'u'</span>@<span class="string">'h'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'p'</span>;</span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span> PRIVILEGES, <span class="keyword">GRANT</span> OPTION <span class="keyword">FROM</span> <span class="string">'u'</span>@<span class="string">'h'</span>;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">'u'</span>@<span class="string">'h'</span>;</span><br><span class="line"><span class="keyword">SHOW</span> GRANTS <span class="keyword">FOR</span> <span class="string">'u'</span>@<span class="string">'h'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_USER</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 状态与连接</span></span><br><span class="line"><span class="keyword">SHOW</span> STATUS <span class="keyword">LIKE</span> <span class="string">'Threads_connected'</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">FULL</span> PROCESSLIST;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> information_schema.processlist <span class="keyword">WHERE</span> id <span class="operator">=</span> ?;</span><br><span class="line">KILL QUERY ?;</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p status;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 性能</span></span><br><span class="line">EXPLAIN <span class="keyword">SELECT</span> ...;              <span class="operator">/</span> EXPLAIN ANALYZE <span class="keyword">SELECT</span> ...;</span><br><span class="line"><span class="keyword">SHOW</span> INDEX <span class="keyword">FROM</span> t;</span><br><span class="line">ANALYZE <span class="keyword">TABLE</span> t;</span><br><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FROM</span> t FORCE INDEX (idx) <span class="keyword">WHERE</span> ...;</span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">'slow_query_log%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 复制</span></span><br><span class="line">CHANGE REPLICATION SOURCE <span class="keyword">TO</span> SOURCE_HOST<span class="operator">=</span><span class="string">'..'</span>,SOURCE_USER<span class="operator">=</span><span class="string">'..'</span>,SOURCE_PASSWORD<span class="operator">=</span><span class="string">'..'</span>,SOURCE_AUTO_POSITION<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="keyword">START</span> REPLICA;  <span class="keyword">SHOW</span> REPLICA STATUS\G;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 锁</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> sys.innodb_lock_waits\G</span><br><span class="line"><span class="keyword">SHOW</span> ENGINE INNODB STATUS\G</span><br><span class="line"></span><br><span class="line"><span class="comment">-- JSON</span></span><br><span class="line">spec<span class="operator">-</span><span class="operator">&gt;&gt;</span><span class="string">'$.k'</span>                      取字符串</span><br><span class="line">JSON_SET<span class="operator">/</span>JSON_INSERT<span class="operator">/</span>JSON_REPLACE<span class="operator">/</span>JSON_REMOVE</span><br><span class="line">JSON_CONTAINS(tags,<span class="string">'"v"'</span>)         <span class="operator">/</span> <span class="string">'v'</span> <span class="keyword">MEMBER</span> <span class="keyword">OF</span> (tags)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 对象查看</span></span><br><span class="line"><span class="keyword">SELECT</span> routine_name <span class="keyword">FROM</span> information_schema.ROUTINES <span class="keyword">WHERE</span> routine_schema<span class="operator">=</span><span class="string">'db'</span>;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> p\G</span><br><span class="line"><span class="keyword">SHOW</span> TRIGGERS <span class="keyword">FROM</span> db;</span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">'secure_file_priv'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 备份</span></span><br><span class="line">mysqldump <span class="operator">-</span>u u <span class="operator">-</span>p <span class="comment">--single-transaction --routines --triggers db &gt; db.sql</span></span><br></pre></td></tr></tbody></table></figure>
 
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">systemctl restart mysql</span><br><span class="line">mysql -u u -p db &lt; db.sql</span><br></pre></td></tr></tbody></table></figure>
-</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font>]]></content>
+]]></content>
       <categories>
         <category>MySQL</category>
       </categories>
