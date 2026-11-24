@@ -13989,22 +13989,6 @@
       </tags>
   </entry>
   <entry>
-    <title>一次网上购物发生了什么</title>
-    <url>/2021/05/15/Network-%E4%B8%80%E6%AC%A1%E7%BD%91%E4%B8%8A%E8%B4%AD%E7%89%A9%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>天行健，君子以自强不息。 —— 《易·乾》</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、详解"><a href="#二、详解" class="headerlink" title="二、详解"></a>二、详解</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2>]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Elasticsearch收集</title>
     <url>/2021/05/09/ELK-Elasticsearch%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -24916,7 +24900,7 @@
     <title>MySQL规范</title>
     <url>/2020/02/12/MySQL-%E8%A7%84%E8%8C%83/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>索引是数据库中专门用于帮助用户快速查询数据的一种数据结构。</p>
+<p>天行健，君子以自强不息。 —— 《易·乾》</p>
 </blockquote>
 <span id="more"></span>
 
@@ -36789,129 +36773,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TCP/IP四层模型与OSI七层模型和五层模型</title>
-    <url>/2018/11/03/Network-%E5%9B%9B%E5%B1%82%E6%A8%A1%E5%9E%8B%E4%B8%8EOSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>别再说什么大学都一样，上大学就是一个体验过程之类的话了，更不要相信这样的话，这都是没考上好大学的人一种自我安慰罢了。野鸡大学跟名牌大学是没有可比性的，无论校园氛围还是师资水平等等都远远不在一个等级，能考上这样大学的学生素质也不一样，毕业之后发展也就千差万别了。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、TCP-IP四层模型"><a href="#一、TCP-IP四层模型" class="headerlink" title="一、TCP/IP四层模型"></a>一、TCP/IP四层模型</h2><ol>
-<li>TCP/IP把网络通信分为4层，分别是网络接口层、网络层、传输层、应用层。</li>
-<li>TCP/IP则是实际运行的网络协议。</li>
-<li>层次功能与协议</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">层次</th>
-<th align="center">功能</th>
-<th align="center">协议</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">应用层</td>
-<td align="center">负责实现一切与应用程序相关的功能，对应OSI的上三层</td>
-<td align="center">HTTP/FTP/DNS/SMTP/NFS</td>
-</tr>
-<tr>
-<td align="center">传输层</td>
-<td align="center">负责提供可靠的传输服务，对应OSI第四层</td>
-<td align="center">TCP/UDP</td>
-</tr>
-<tr>
-<td align="center">网络层</td>
-<td align="center">负责网络间的寻址，对应OSI的第三层</td>
-<td align="center">IP/ICMP/ARP/RARP</td>
-</tr>
-<tr>
-<td align="center">网络接口层</td>
-<td align="center">负责实际数据的传输，对应OSI下两层</td>
-<td align="center">HDLC/PPP/SLIP</td>
-</tr>
-</tbody></table>
-<h2 id="二、TCP-IP五层模型"><a href="#二、TCP-IP五层模型" class="headerlink" title="二、TCP/IP五层模型"></a>二、TCP/IP五层模型</h2><ol>
-<li>五层模型结构包括：物理层、数据链路层、网络层、运输层、应用层。</li>
-<li>五层模型只是OSI和TCP/IP的综合，实际应用还是TCP/IP的四层结构。</li>
-</ol>
-<h2 id="三、OSI七层模型"><a href="#三、OSI七层模型" class="headerlink" title="三、OSI七层模型"></a>三、OSI七层模型</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OSI模型是一个理论上的网络通信模型，把网络通信分为7层，分别是物理层(physical)、数据链路层(data link)、网络层(network)、传输层(transport)、会话层(session)、表示层(presentation)、应用层(application)。开放式系统互联模型(Open System Interconnection Model，缩写OSI，简称为OSI模型)是一种概念模型，由国际标准化组织提出，一个试图使各种计算机在世界范围内互连为网络的标准框架。定义于ISO/IEC 7498-1，共分为7层，由下而上分别为物理层、数据链路层、网络层、传输层、会话层、表达层、应用层。二层负载均衡会通过一个虚拟MAC地址接收请求，然后再分配到真实的MAC地址；三层负载均衡会通过一个虚拟IP地址接收请求，然后再分配到真实的IP地址；四层通过虚拟IP+端口接收请求，然后再分配到真实的服务器；七层通过虚拟的URL或主机名接收请求，然后再分配到真实的服务器。</p>
-<ol>
-<li><blockquote>
-<p>第7层 应用层</p>
-<blockquote>
-<p>应用层（Application Layer）提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如: HTTP，HTTPS，FTP，TELNET，SSH，SMTP，POP3.HTML.等。</p>
-</blockquote>
-</blockquote>
-</li>
-<li><blockquote>
-<p>第6层 表达层</p>
-<blockquote>
-<p>表达层（Presentation Layer）把数据转换为能与接收者的系统格式兼容并适合传输的格式。</p>
-</blockquote>
-</blockquote>
-</li>
-<li><blockquote>
-<p>第5层 会话层</p>
-<blockquote>
-<p>会话层（Session Layer）负责在数据传输中设置和维护电脑网络中两台电脑之间的通信连接。</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>第4层 传输层</p>
-<blockquote>
-<blockquote>
-<p>传输层（Transport Layer）把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议（TCP）等。</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>第3层 网络层</p>
-<blockquote>
-<blockquote>
-<p>网络层（Network Layer）决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成报文。网络表头包含了网络数据。例如:互联网协议（IP）等。</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>第2层 数据链路层</p>
-<blockquote>
-<blockquote>
-<p>数据链路层（Data Link Layer）负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<blockquote>
-<p>分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。</p>
-</blockquote>
-</blockquote>
-<ol start="7">
-<li><blockquote>
-<p>第1层 物理层</p>
-<blockquote>
-<p>物理层（Physical Layer）在局部局域网上传送数据帧（data frame），它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
-<li><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F">参考一</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">参考二</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>OSI</tag>
-        <tag>计算机网络</tag>
-        <tag>TCP</tag>
-        <tag>IP</tag>
-        <tag>四层模型</tag>
-        <tag>五层模型</tag>
-        <tag>七层模型</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Redis持久化</title>
     <url>/2018/10/24/Redis-%E6%8C%81%E4%B9%85%E5%8C%96/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -44263,9 +44124,583 @@ read_xlsx(name, sheet)
     <title>计算机网络收集</title>
     <url>/2017/04/11/Network-%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>在互联网早期的时候，我们输入的信息只能保存在本地，无法和其他电脑进行交互。我们保存的信息通常都以文本即简单字符的形式存在，文本是一种能够被计算机解析的有意义的二进制数据包。</p>
+<p>别再说什么大学都一样，上大学就是一个体验过程之类的话了，更不要相信这样的话，这都是没考上好大学的人一种自我安慰罢了。野鸡大学跟名牌大学是没有可比性的，无论校园氛围还是师资水平等等都远远不在一个等级，能考上这样大学的学生素质也不一样，毕业之后发展也就千差万别了。</p>
 </blockquote>
-<span id="more"></span>
+<h1 id="一次网上购物发生了什么"><a href="#一次网上购物发生了什么" class="headerlink" title="一次网上购物发生了什么"></a><center><font color="red">一次网上购物发生了什么</font></center></h1><blockquote>
+<p>我在浏览器下单，先走DNS把域名解析成IP，TCP三次握手建连接，TLS握手把链路加密；HTTP请求经CDN、负载均衡到达后端，后端鉴权、重算价格、扣库存、落订单库，再发消息把发券和履约异步化；支付交给第三方，以异步回调验签改状态；最后响应压缩传回浏览器渲成页面。整条链路的耗时就是这六段相加，所以排查慢、排查挂，都是按层定位。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;场景固定下来：晚上 20:00，你在家连 Wi-Fi，浏览器里打开某电商的商品页，点「立即购买」→ 选地址 → 提交订单 → 跳收银台 → 扫码付款 → 页面回到「支付成功」。下面按时间顺序把这条链路拆到每一层，看清「一次点击」背后到底发生了多少事。</p>
+<p>一条请求的分层视角（从上到下再回到上）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">浏览器（应用层）   URL 解析 / 缓存判断 / 渲染</span><br><span class="line">    ↓ HTTPS = HTTP(应用层) + TLS(表示/会话层)</span><br><span class="line">    ↓ TCP(传输层) 三次握手、可靠传输、拥塞控制</span><br><span class="line">    ↓ IP(网络层)  路由选路、NAT、分片</span><br><span class="line">    ↓ 以太网/Wi-Fi(链路层)  ARP、MAC、交换机</span><br><span class="line">    ↓ 光纤/基站(物理层)  比特流</span><br><span class="line">服务端：CDN → SLB/WAF → Nginx/网关 → 应用 → MySQL/Redis/MQ → 第三方支付</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="一、点下去之前，浏览器已经在做的事"><a href="#一、点下去之前，浏览器已经在做的事" class="headerlink" title="一、点下去之前，浏览器已经在做的事"></a>一、点下去之前，浏览器已经在做的事</h2><ol>
+<li>URL解析：拆出 scheme（https）、host（<code>item.xxx.com</code>）、port（缺省 443）、path、query，query 里通常带着 <code>skuId</code>、<code>spuId</code>、活动 ID、渠道来源。</li>
+<li>HSTS检查：域名若在 HSTS 预加载列表里，浏览器把 <code>http://</code> 直接升级成 <code>https://</code>，连 301 那一趟都省掉。</li>
+<li>缓存判断：先查强缓存（<code>Cache-Control: max-age</code>、<code>Expires</code>），命中就直接用本地副本，不发请求；不命中再带 <code>If-None-Match</code>/<code>If-Modified-Since</code> 走协商缓存，服务端回 304。</li>
+<li>连接预热：<code>&lt;link rel="dns-prefetch"&gt;</code>、<code>&lt;link rel="preconnect"&gt;</code> 提前做 DNS 和 TCP/TLS 握手，<code>preload</code> 提前拉首屏关键资源。</li>
+<li>Service Worker 拦截：命中离线缓存则整个请求根本不出网。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">缓存指令</th>
+<th align="left">含义</th>
+<th align="left">典型用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>max-age=31536000, immutable</code></td>
+<td align="left">强缓存一年，带指纹的文件名</td>
+<td align="left">JS/CSS/图片（<code>app.9f3c1a.js</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>no-cache</code></td>
+<td align="left">可缓存，但每次必须协商</td>
+<td align="left">HTML 页面</td>
+</tr>
+<tr>
+<td align="left"><code>no-store</code></td>
+<td align="left">完全不缓存</td>
+<td align="left">订单详情、支付页</td>
+</tr>
+<tr>
+<td align="left"><code>ETag</code> / <code>If-None-Match</code></td>
+<td align="left">内容指纹协商，命中回 304</td>
+<td align="left">接口 GET</td>
+</tr>
+<tr>
+<td align="left"><code>s-maxage</code></td>
+<td align="left">只对 CDN 等共享缓存生效</td>
+<td align="left">商品详情页（CDN 缓存 60s）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>结账、支付这类页面必须 <code>no-store</code>，否则用户退出登录后点浏览器回退还能看到别人的订单信息。</p>
+</blockquote>
+<h2 id="二、DNS：把域名换成-IP"><a href="#二、DNS：把域名换成-IP" class="headerlink" title="二、DNS：把域名换成 IP"></a>二、DNS：把域名换成 IP</h2><ol>
+<li>浏览器DNS缓存（Chrome 有独立缓存，<code>chrome://net-internals/#dns</code> 可查）→ 操作系统缓存（Windows <code>ipconfig /displaydns</code>）→ <code>hosts</code> 文件。</li>
+<li>都没有才发出去：向本地 DNS（运营商 DNS 或 223.5.5.5 / 119.29.29.29）发递归查询，本地 DNS 再向根 → 顶级域（<code>.com</code>）→ 权威 DNS 逐级迭代。</li>
+<li>电商站点的域名通常 CNAME 到 CDN，权威 DNS 返回的是 CDN 的调度域名，由 GSLB 按「运营商 + 地域 + 节点健康度 + 负载」算出最优边缘节点 IP —— 所以同一个域名，郑州联通和郑州电信解析出来的 IP 不一样。</li>
+<li>移动端还会走 HTTPDNS（<code>https://223.5.5.5/resolve?name=...</code>），绕过 LocalDNS 劫持和调度不准的问题。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">记录</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">A / AAAA</td>
+<td align="left">域名 → IPv4 / IPv6 地址</td>
+</tr>
+<tr>
+<td align="left">CNAME</td>
+<td align="left">别名，指向另一个域名（CDN 接入常用）</td>
+</tr>
+<tr>
+<td align="left">NS</td>
+<td align="left">指定该域由哪台 DNS 服务器解析</td>
+</tr>
+<tr>
+<td align="left">TXT</td>
+<td align="left">校验、SPF 等文本记录</td>
+</tr>
+<tr>
+<td align="left">MX</td>
+<td align="left">邮件路由（跟购物无关，但同域下常有）</td>
+</tr>
+</tbody></table>
+<p>TTL 是最容易被忽略的参数：调小（如 60s）便于故障切流，但会放大解析压力；调大（如 3600s）省事，出故障时切换要等 TTL 过期。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">dig +trace item.xxx.com            <span class="comment"># 从根开始逐级看解析链路</span></span><br><span class="line">dig item.xxx.com @223.5.5.5 +short <span class="comment"># 指定递归 DNS</span></span><br><span class="line">nslookup -<span class="built_in">type</span>=CNAME static.xxx.com</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、有了IP之后：路由、ARP、NAT"><a href="#三、有了IP之后：路由、ARP、NAT" class="headerlink" title="三、有了IP之后：路由、ARP、NAT"></a>三、有了IP之后：路由、ARP、NAT</h2><ol>
+<li>浏览器把IP交给内核，内核查路由表做<strong>最长前缀匹配</strong>：目标不在同网段就走默认网关。</li>
+<li>同网段要先ARP：广播「谁是 192.168.1.1」，拿到网关MAC才能把帧发出去；跨网段则目标 MAC 直接填网关的 MAC。</li>
+<li>家里那台路由器做NAT（准确说是 NAPT/PAT）：把 <code>192.168.1.100:54321</code> 改写成 <code>公网IP:随机端口</code>，用一张连接跟踪表记住映射，回包再反向改写。</li>
+<li>运营商侧还可能有CGNAT（大内网），所以家宽的公网IP经常是共享的，做端口映射/自建服务会失败。</li>
+<li>链路层把IP包封成以太网帧（MTU 1500），超过就分片；Wi-Fi还要走 802.11 的 CSMA/CA 竞争信道。</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ip route get 8.8.8.8     <span class="comment"># 看内核到底选哪条路由、哪个源地址</span></span><br><span class="line">arp -a                   <span class="comment"># ARP 表</span></span><br><span class="line">tracert item.xxx.com     <span class="comment"># Windows 逐跳；Linux 用 traceroute / mtr</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="四、TCP-三次握手：可靠传输的地基"><a href="#四、TCP-三次握手：可靠传输的地基" class="headerlink" title="四、TCP 三次握手：可靠传输的地基"></a>四、TCP 三次握手：可靠传输的地基</h2><ol>
+<li>客户端随机一个初始序列号 ISN，发 <code>SYN</code>；服务端回 <code>SYN+ACK</code>（自己的 ISN + 确认号）；客户端回 <code>ACK</code>。三次是为了双方都确认「我能发、你能收、你也能发」。</li>
+<li>同一时刻交换的还有：MSS（每段最大数据量）、窗口缩放因子、SACK 允许、时间戳选项。</li>
+<li>服务端有两级队列：半连接队列（收到 SYN 未完成握手，<code>tcp_max_syn_backlog</code>）和全连接队列（已完成握手等待 accept，<code>somaxconn</code> + 应用 <code>backlog</code>）。队列满了就丢包或直接 RST，表现为「连接超时」而不是「应用慢」。</li>
+<li>建好之后才开始谈可靠传输：超时重传（RTO 由 RTT 估算）、快速重传（收到 3 个重复 ACK）、SACK 只重传缺失段、滑动窗口控制流量、慢启动/拥塞避免控制发送速率。CUBIC 是 Linux 默认，BBR 更适合高丢包长肥管道。</li>
+<li>复用：HTTP/1.1 的 <code>keep-alive</code> 让一条连接跑多个请求；HTTP/2 在同一条连接上多路复用；TCP Fast Open 把握手和首个数据包合并。</li>
+</ol>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">curl -o /dev/null -s -w <span class="string">"dns=%{time_namelookup} tcp=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total}\n"</span> https://item.xxx.com/</span><br><span class="line">ss -ti                                  <span class="comment"># 看拥塞窗口 cwnd、RTT、重传</span></span><br><span class="line">tcpdump -i any -n <span class="string">'tcp port 443 and host 1.2.3.4'</span> -w shop.pcap</span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">现象</th>
+<th align="left">多半是</th>
+<th align="left">依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>curl</code> 卡在 <code>time_connect</code></td>
+<td align="left">网络不通/防火墙丢 SYN</td>
+<td align="left">抓包只有 SYN 没有 SYN-ACK</td>
+</tr>
+<tr>
+<td align="left"><code>time_appconnect</code> 很久</td>
+<td align="left">TLS 握手慢（证书链大、RTT 高）</td>
+<td align="left"><code>openssl s_client</code> 分段计时</td>
+</tr>
+<tr>
+<td align="left"><code>time_starttransfer</code> 很久</td>
+<td align="left">服务端处理慢（不是网络问题）</td>
+<td align="left">后端日志、TraceID</td>
+</tr>
+</tbody></table>
+<h2 id="五、TLS-握手：加密通道怎么建起来"><a href="#五、TLS-握手：加密通道怎么建起来" class="headerlink" title="五、TLS 握手：加密通道怎么建起来"></a>五、TLS 握手：加密通道怎么建起来</h2><ol>
+<li>客户端 <code>ClientHello</code>：支持的版本、密码套件、随机数、<strong>SNI</strong>（一台服务器多域名靠它选证书）、<strong>ALPN</strong>（协商 <code>h2</code> 还是 <code>http/1.1</code>）。</li>
+<li>服务端 <code>ServerHello</code> + 证书链（服务器证书 + 中间 CA，缺中间证书会导致部分安卓机/老浏览器报「证书链不完整」）。</li>
+<li>客户端校验证书：签发链是否可信、域名是否匹配（SAN）、有效期、是否被吊销（OCSP/CRL）。</li>
+<li>密钥交换（ECDHE）：双方各自算共享密钥，前向安全性由此而来；再用证书私钥签名证明身份。</li>
+<li><code>Finished</code> 后开始传加密的应用数据。</li>
+</ol>
+<p>TLS 1.3 把往返次数从 2RTT 压到 1RTT（会话复用可 0RTT），砍掉了 RSA 密钥交换和一堆老套件：</p>
+<table>
+<thead>
+<tr>
+<th align="left">版本</th>
+<th align="left">握手往返</th>
+<th align="left">会话复用</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TLS 1.2</td>
+<td align="left">2 RTT（完整）</td>
+<td align="left">Session ID / Ticket，1 RTT</td>
+<td align="left">套件多，配置容易踩坑</td>
+</tr>
+<tr>
+<td align="left">TLS 1.3</td>
+<td align="left">1 RTT（完整）</td>
+<td align="left">PSK，理论 0 RTT</td>
+<td align="left">只保留 AEAD 套件，默认前向安全</td>
+</tr>
+</tbody></table>
+<p>0-RTT 有重放风险，只适合幂等的 GET，下单、支付绝不能走 0-RTT 重放。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">openssl s_client -connect item.xxx.com:443 -servername item.xxx.com -alpn h2 &lt;/dev/null</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="六、HTTP-请求：报文里到底有什么"><a href="#六、HTTP-请求：报文里到底有什么" class="headerlink" title="六、HTTP 请求：报文里到底有什么"></a>六、HTTP 请求：报文里到底有什么</h2><p>一个「提交订单」的请求大概长这样：</p>
+<figure class="highlight http"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/api/order/confirm</span> <span class="meta">HTTP/2</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>item.xxx.com</span><br><span class="line"><span class="attribute">Cookie</span><span class="punctuation">: </span>session_id=xxx; user_id=10086</span><br><span class="line"><span class="attribute">Authorization</span><span class="punctuation">: </span>Bearer eyJhbGciOi...</span><br><span class="line"><span class="attribute">X-Request-Id</span><span class="punctuation">: </span>6f1d9a2c-...</span><br><span class="line"><span class="attribute">X-Forwarded-For</span><span class="punctuation">: </span>203.0.113.7</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json; charset=utf-8</span><br><span class="line"><span class="attribute">Origin</span><span class="punctuation">: </span>https://item.xxx.com</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>https://item.xxx.com/detail?skuId=123</span><br><span class="line"></span><br><span class="line"><span class="json">{<span class="attr">"skuId"</span>:<span class="number">123</span>,<span class="attr">"count"</span>:<span class="number">1</span>,<span class="attr">"addressId"</span>:<span class="number">88</span>,<span class="attr">"payType"</span>:<span class="number">3</span>,<span class="attr">"token"</span>:<span class="string">"下单令牌"</span>,<span class="attr">"sign"</span>:<span class="string">"..."</span>}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>要点：</p>
+<ul>
+<li><code>Cookie</code> 带登录态，<code>Authorization</code> 带令牌；两者通常择一。</li>
+<li><code>X-Request-Id</code> 是<strong>全链路 TraceID 的起点</strong>，网关、应用、MQ、DB 日志都带上它，出问题才能一次串起来。</li>
+<li><code>X-Forwarded-For</code> 记录代理链，取真实客户端 IP 必须信任白名单，否则可伪造。</li>
+<li><code>Origin</code>/<code>Referer</code> 用于 CSRF 与防盗链校验；<code>sign</code>/<code>token</code> 用于防篡改价格和防重复提交。</li>
+<li>价格、优惠、库存<strong>一律服务端重算</strong>，客户端传上来的只当作提示。</li>
+</ul>
+<p>HTTP 版本演进对比：</p>
+<table>
+<thead>
+<tr>
+<th align="left">版本</th>
+<th align="left">传输层</th>
+<th align="left">并发方式</th>
+<th align="left">典型开销</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HTTP/1.1</td>
+<td align="left">TCP</td>
+<td align="left">每域名 6 条连接，队头阻塞</td>
+<td align="left">头重复、连接多</td>
+</tr>
+<tr>
+<td align="left">HTTP/2</td>
+<td align="left">TCP</td>
+<td align="left">单连接多路复用 + 头部压缩</td>
+<td align="left">TCP 层丢包仍会阻塞所有流</td>
+</tr>
+<tr>
+<td align="left">HTTP/3</td>
+<td align="left">QUIC/UDP</td>
+<td align="left">多路复用 + 无队头阻塞 + 0RTT</td>
+<td align="left">部分网络封 UDP，需降级</td>
+</tr>
+</tbody></table>
+<p>状态码重点记：<code>301</code> 永久（会被缓存，慎用）/ <code>302</code> 临时跳转（登录、支付回跳）/ <code>304</code> 协商缓存命中 / <code>409</code> 冲突（库存不足、重复下单）/ <code>429</code> 被限流 / <code>502</code> 网关拿到无效响应（后端挂了）/ <code>504</code> 网关等后端超时。</p>
+<h2 id="七、接入层：CDN、负载均衡、WAF、网关"><a href="#七、接入层：CDN、负载均衡、WAF、网关" class="headerlink" title="七、接入层：CDN、负载均衡、WAF、网关"></a>七、接入层：CDN、负载均衡、WAF、网关</h2><ol>
+<li>CDN：静态资源（图片、JS、CSS、视频）命中边缘节点直接返回，<code>X-Cache: HIT</code>；不命中回源。商品详情页这类动态内容常用「边缘 60s 短缓存 + 主动刷新」。</li>
+<li>负载均衡：LVS 做四层（VIP + 端口转发，性能高），Nginx/OpenResty 做七层（按域名、路径、Header 分流）。算法有轮询、加权、最少连接、一致性哈希（同一用户粘到同一台，保 session）。</li>
+<li>WAF/风控：拦 SQL 注入、XSS、爬虫、羊毛党。大促前「秒杀接口」单独限流，超阈值返回 429 或排队页。</li>
+<li>API 网关：统一鉴权、限流、灰度、协议转换、日志埋点。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">限流算法</th>
+<th align="left">特点</th>
+<th align="left">场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">计数器（固定窗口）</td>
+<td align="left">实现简单，临界点会双倍突刺</td>
+<td align="left">粗粒度接口</td>
+</tr>
+<tr>
+<td align="left">滑动窗口</td>
+<td align="left">平滑，需存时间片</td>
+<td align="left">常规 API</td>
+</tr>
+<tr>
+<td align="left">漏桶</td>
+<td align="left">恒定速率流出，削峰</td>
+<td align="left">下游能力固定（如短信）</td>
+</tr>
+<tr>
+<td align="left">令牌桶</td>
+<td align="left">允许短时突发</td>
+<td align="left">大多数业务接口（Nginx <code>limit_req</code>）</td>
+</tr>
+</tbody></table>
+<h2 id="八、服务端：一笔订单是怎么被处理出来的"><a href="#八、服务端：一笔订单是怎么被处理出来的" class="headerlink" title="八、服务端：一笔订单是怎么被处理出来的"></a>八、服务端：一笔订单是怎么被处理出来的</h2><p>请求落到应用后，典型链路（PHP/Java 都类似）：</p>
+<ol>
+<li>Nginx 判断动静：静态直接返回或交给 CDN；动态走 <code>fastcgi_pass</code> 到 PHP-FPM，或反代到 Java 服务。</li>
+<li>鉴权与参数校验：登录态、风控标记（设备指纹、频次）、收货地址归属、SKU 是否上架。</li>
+<li>价格与优惠重算：活动规则在服务端算，客户端价格只做展示，防止改包改价。</li>
+<li>库存预扣：Redis + Lua 保证原子扣减（<code>if stock &gt;= n then decr</code>），数据库用唯一索引/乐观锁兜底；扣减成功才继续。</li>
+<li>生成订单：雪花算法/号段发号器生成订单号（全局唯一且趋势递增，利于分库分表）。</li>
+<li>落库：订单主表 + 明细表在一个本地事务里提交，<code>binlog</code> 落盘后才返回成功。</li>
+<li>发消息：投递 MQ，异步做发券、积分、履约单、通知；下单接口只等「消息写入成功」，不等下游执行。</li>
+<li>返回：订单号 + 待支付金额 + 支付跳转参数。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">步骤</th>
+<th align="left">常见耗时预算</th>
+<th align="left">超时设置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">鉴权 + 参数校验</td>
+<td align="left">1~5 ms</td>
+<td align="left">本地缓存 token</td>
+</tr>
+<tr>
+<td align="left">价格/优惠计算</td>
+<td align="left">3~10 ms</td>
+<td align="left">规则缓存</td>
+</tr>
+<tr>
+<td align="left">Redis 扣库存</td>
+<td align="left">1~3 ms</td>
+<td align="left">500 ms</td>
+</tr>
+<tr>
+<td align="left">订单落库</td>
+<td align="left">5~20 ms</td>
+<td align="left">1 s，重试幂等</td>
+</tr>
+<tr>
+<td align="left">投递 MQ</td>
+<td align="left">1~3 ms</td>
+<td align="left">300 ms，本地消息表补偿</td>
+</tr>
+</tbody></table>
+<p>幂等的三板斧：业务幂等键（<code>userId + skuId + 时间窗</code>）落去重表、前端一次性 token（提交后作废）、数据库唯一索引兜底。三样都做才算稳，只靠前端按钮置灰挡不住脚本重放。</p>
+<h2 id="九、存储与中间件：数据怎么落地、怎么保证一致"><a href="#九、存储与中间件：数据怎么落地、怎么保证一致" class="headerlink" title="九、存储与中间件：数据怎么落地、怎么保证一致"></a>九、存储与中间件：数据怎么落地、怎么保证一致</h2><ul>
+<li>事务：InnoDB 的 redo（崩溃恢复）、undo（回滚 + MVCC）、<code>binlog</code>（主从复制与审计）。二阶段提交保证 redo 与 binlog 一致。</li>
+<li>隔离级别：大促下单常用 RC（读已提交）或 RR，超卖问题<strong>不能靠隔离级别解决</strong>，要靠唯一索引/乐观锁/预扣。</li>
+<li>缓存：热点商品详情走 Redis；三件套问题分别对应——穿透（空值缓存或布隆过滤器）、击穿（热点 key 加互斥锁）、雪崩（过期时间加随机量 + 本地缓存兜底）。</li>
+<li>分布式锁：<code>SET key value NX PX 3000</code> 加锁，Lua 脚本比对 value 后释放，避免误删别人的锁。</li>
+<li>消息队列：至少一次投递 + 消费端幂等；延迟队列做「30 分钟未支付自动关单」。</li>
+<li>读写分离会带来主从延迟：下单后立刻查订单可能查不到，需要「读主库」或「延迟可见」策略。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">一致性策略</th>
+<th align="left">做法</th>
+<th align="left">代价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">先更库再删缓存</td>
+<td align="left">最常用，配合延迟双删</td>
+<td align="left">极端情况短暂脏读</td>
+</tr>
+<tr>
+<td align="left">订阅 binlog 异步刷缓存</td>
+<td align="left">Canal 监听变更</td>
+<td align="left">有秒级延迟，实现复杂</td>
+</tr>
+<tr>
+<td align="left">定时对账补偿</td>
+<td align="left">离线比对 + 修正</td>
+<td align="left">滞后，适合非实时字段</td>
+</tr>
+</tbody></table>
+<h2 id="十、支付：跳出去，再跳回来"><a href="#十、支付：跳出去，再跳回来" class="headerlink" title="十、支付：跳出去，再跳回来"></a>十、支付：跳出去，再跳回来</h2><ol>
+<li>收银台向支付网关申请支付单，网关再对接支付宝/微信/银联。商户不直接持银行密钥，渠道参数集中管理。</li>
+<li>用户完成付款后，渠道做两件事：<strong>同步跳转</strong>（<code>return_url</code>，把浏览器带回商户页面）和<strong>异步通知</strong>（<code>notify_url</code>，服务器到服务器）。<strong>以异步通知为准</strong>，同步跳转只负责把用户带回页面，不能作为支付成功的依据。</li>
+<li>收到通知必须：验签（RSA2）→ 校验金额与商户订单号 → 幂等处理（同一笔通知可能重复十几次）→ 更新订单状态 → 返回渠道要求的成功标识（<code>success</code>），否则渠道会持续重试。</li>
+<li>兜底：定时任务主动调「查询订单」接口补状态；T+1 与渠道对账，掉单、长款、短款逐笔核对处理。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">状态</th>
+<th align="left">触发</th>
+<th align="left">后续动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">待支付</td>
+<td align="left">提交订单成功</td>
+<td align="left">启动 30 分钟关单延迟消息</td>
+</tr>
+<tr>
+<td align="left">支付中</td>
+<td align="left">已跳到收银台，结果未知</td>
+<td align="left">轮询查询，禁止用户重复支付</td>
+</tr>
+<tr>
+<td align="left">已支付</td>
+<td align="left">异步通知验签通过</td>
+<td align="left">履约、发券、发通知、扣减真实库存</td>
+</tr>
+<tr>
+<td align="left">已关闭</td>
+<td align="left">超时未支付或用户取消</td>
+<td align="left">回滚预扣库存、释放优惠券</td>
+</tr>
+<tr>
+<td align="left">退款中/已退款</td>
+<td align="left">售后发起</td>
+<td align="left">调渠道退款，幂等 + 对账</td>
+</tr>
+</tbody></table>
+<h2 id="十一、响应回程：数据怎么回到浏览器"><a href="#十一、响应回程：数据怎么回到浏览器" class="headerlink" title="十一、响应回程：数据怎么回到浏览器"></a>十一、响应回程：数据怎么回到浏览器</h2><ol>
+<li>服务端生成响应（HTML 或 JSON），网关压缩（<code>gzip</code>/<code>br</code>），CDN 按 <code>Cache-Control</code> 决定是否缓存。</li>
+<li>传输层按 MSS 分片、滑动窗口发送、丢包重传。带宽时延积（BDP）决定「窗口能否打满」——跨境链路 RTT 200ms、窗口不够时，单流吞吐会被卡死，这也是大文件要分片并发的原因。</li>
+<li>浏览器拿到响应后进入渲染流水线：HTML 解析 → DOM → CSSOM → 渲染树 → 布局（Layout）→ 绘制（Paint）→ 合成（Composite）。</li>
+<li>阻塞点：<code>&lt;script&gt;</code> 同步脚本阻塞解析（用 <code>defer</code>/<code>async</code>）、CSS 阻塞渲染、字体阻塞文字显示（<code>font-display: swap</code>）、首屏图片没压缩。</li>
+<li>关注指标：TTFB（首字节）、FCP（首次内容绘制）、LCP（最大内容绘制）、CLS（布局偏移）、INP（交互延迟）。电商首屏卡 1 秒，转化率掉得比想象中快。</li>
+</ol>
+<h2 id="十二、把整条链路算成一笔时间账"><a href="#十二、把整条链路算成一笔时间账" class="headerlink" title="十二、把整条链路算成一笔时间账"></a>十二、把整条链路算成一笔时间账</h2><table>
+<thead>
+<tr>
+<th align="left">阶段</th>
+<th align="left">典型耗时</th>
+<th align="left">主要影响因素</th>
+<th align="left">优化手段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">DNS</td>
+<td align="left">20~120 ms</td>
+<td align="left">递归层级、缓存是否命中、CDN 调度</td>
+<td align="left">dns-prefetch、HTTPDNS、增大 TTL</td>
+</tr>
+<tr>
+<td align="left">TCP 握手</td>
+<td align="left">1 RTT（同省 5<del>15 ms，跨国 150</del>250 ms）</td>
+<td align="left">物理距离、丢包</td>
+<td align="left">就近接入、连接复用、TFO</td>
+</tr>
+<tr>
+<td align="left">TLS 握手</td>
+<td align="left">1 RTT（TLS 1.3）</td>
+<td align="left">证书链大小、会话复用</td>
+<td align="left">会话复用、OCSP Stapling、裁剪证书链</td>
+</tr>
+<tr>
+<td align="left">服务端处理</td>
+<td align="left">30~200 ms</td>
+<td align="left">依赖调用、锁竞争、慢 SQL</td>
+<td align="left">缓存、异步化、减少串行依赖</td>
+</tr>
+<tr>
+<td align="left">内容传输</td>
+<td align="left">取决于体积与 BDP</td>
+<td align="left">压缩、分片、CDN</td>
+<td align="left">brotli、图片 WebP/AVIF、边缘缓存</td>
+</tr>
+<tr>
+<td align="left">渲染</td>
+<td align="left">100~500 ms</td>
+<td align="left">首屏资源数量、JS 执行</td>
+<td align="left">SSR、懒加载、资源内联</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>一次「点一下」在本地看起来是瞬时的，实际是几十个 RTT、上百次系统调用、几层代理、若干次数据库事务叠出来的。理解这张账本，排查「慢」时才知道先看哪一层。</p>
+</blockquote>
+<h2 id="十三、失败路径：不生效时坏在哪一层"><a href="#十三、失败路径：不生效时坏在哪一层" class="headerlink" title="十三、失败路径：不生效时坏在哪一层"></a>十三、失败路径：不生效时坏在哪一层</h2><table>
+<thead>
+<tr>
+<th align="left">现象</th>
+<th align="left">可能出问题的层</th>
+<th align="left">快速定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">域名打不开、报 DNS 错误</td>
+<td align="left">DNS</td>
+<td align="left"><code>dig</code> / <code>nslookup</code>，换递归 DNS 对比</td>
+</tr>
+<tr>
+<td align="left">一直转圈、连接超时</td>
+<td align="left">TCP/网络</td>
+<td align="left"><code>curl -v</code> 卡在 <code>time_connect</code>，抓包看 SYN</td>
+</tr>
+<tr>
+<td align="left">证书错误、<code>ERR_CERT_*</code></td>
+<td align="left">TLS</td>
+<td align="left"><code>openssl s_client</code>，看证书链与域名</td>
+</tr>
+<tr>
+<td align="left">502</td>
+<td align="left">网关到后端</td>
+<td align="left">Nginx error_log，后端进程是否存活</td>
+</tr>
+<tr>
+<td align="left">504</td>
+<td align="left">后端处理超时</td>
+<td align="left">上游超时配置、慢 SQL、依赖接口</td>
+</tr>
+<tr>
+<td align="left">提交订单报 409 / 重复下单</td>
+<td align="left">幂等或库存</td>
+<td align="left">幂等键、去重表、唯一索引冲突日志</td>
+</tr>
+<tr>
+<td align="left">付了钱订单还是待支付</td>
+<td align="left">支付通知</td>
+<td align="left">渠道通知日志、验签、定时查询兜底</td>
+</tr>
+<tr>
+<td align="left">页面白屏、样式错乱</td>
+<td align="left">前端资源/缓存</td>
+<td align="left">看 CDN 版本号、强刷、<code>immutable</code> 缓存策略</td>
+</tr>
+</tbody></table>
+<p>排查顺序建议固定下来：解析 → 连通 → 证书 → 响应码 → 服务端日志（按 TraceID 串）→ 依赖与存储。顺序一乱就容易在错误的层里耗时间。</p>
+<h2 id="十四、一页命令速查"><a href="#十四、一页命令速查" class="headerlink" title="十四、一页命令速查"></a>十四、一页命令速查</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 解析</span></span><br><span class="line">dig +trace item.xxx.com</span><br><span class="line">dig item.xxx.com @223.5.5.5 +short</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连通性</span></span><br><span class="line">curl -v -o /dev/null -s -w <span class="string">"dns=%{time_namelookup} tcp=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total}\n"</span> https://item.xxx.com/</span><br><span class="line">mtr -rw item.xxx.com            <span class="comment"># 逐跳丢包</span></span><br><span class="line">nc -vz item.xxx.com 443         <span class="comment"># 端口是否通</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TLS / 证书</span></span><br><span class="line">openssl s_client -connect item.xxx.com:443 -servername item.xxx.com -alpn h2 &lt;/dev/null</span><br><span class="line">openssl x509 -<span class="keyword">in</span> cert.pem -text -noout | grep -A1 <span class="string">"Subject Alternative Name"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 抓包与连接状态</span></span><br><span class="line">tcpdump -i any -n <span class="string">'tcp port 443'</span> -w shop.pcap</span><br><span class="line">ss -ti | head -20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务端</span></span><br><span class="line">tail -f /var/<span class="built_in">log</span>/nginx/error.log</span><br><span class="line">grep <span class="string">"6f1d9a2c"</span> /var/<span class="built_in">log</span>/app/*.<span class="built_in">log</span>     <span class="comment"># 按 TraceID 串全链路</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="十五、一句话"><a href="#十五、一句话" class="headerlink" title="十五、一句话"></a>十五、一句话</h2><ol>
+<li><strong>缓存判断</strong>：点下去之前浏览器先看本地有没有缓存副本，有就直接用，没有才真正把请求发出去。</li>
+<li><strong>DNS</strong>：域名解析就是一层层问到权威服务器，把域名换成 IP，CDN 顺便挑一台离你最近的机器。</li>
+<li><strong>路由与 NAT</strong>：拿到 IP 后本机按路由表把包交给网关，家用路由器再把内网地址换成公网地址送出去。</li>
+<li><strong>TCP</strong>：三次握手先确认双方都能收发，之后靠重传、滑动窗口和拥塞控制保证数据不丢、不乱、不把网络压垮。</li>
+<li><strong>TLS</strong>：握手一次就协商出密钥、验完证书，明文 HTTP 从此变成加密通道。</li>
+<li><strong>HTTP</strong>：浏览器把 “买什么、买几个、我是谁” 写成请求报文发过去，价格和库存一律由服务端重新算，不信客户端。</li>
+<li><strong>接入层</strong>：请求先撞 CDN、负载均衡和 WAF，能缓存挡住的挡在边缘，挡不住的按策略分到后端某台机器，超量直接限流。</li>
+<li><strong>服务端</strong>：一串 “鉴权 → 校验价格 → 扣库存 → 生成订单号 → 事务落库 → 发消息”，前六步同步做完才给用户回成功。</li>
+<li><strong>存储</strong>：数据库靠事务和日志保证不丢不重，Redis 挡热点读，MQ 削峰异步，一致性靠幂等键和对账兜底。</li>
+<li><strong>支付</strong>：跳到第三方付款，成不成功以渠道的异步回调为准，服务端验签、幂等改状态，回调没来就主动查、对账补。</li>
+<li><strong>响应回程</strong>：响应压缩后按 TCP 传回来，浏览器边解析边渲染，首屏快慢主要卡在脚本和 CSS。</li>
+<li><strong>时间账本</strong>：一次点击就等于 DNS + TCP + TLS + 服务端 + 传输 + 渲染六段耗时之和，哪段慢就量哪段。</li>
+<li><strong>失败路径</strong>：打不开查 DNS、连不上查 TCP、证书报错查 TLS、502/504 查后端，按层往下排，别跳层猜。</li>
+<li><strong>命令速查</strong>：<code>dig</code> 看解析、<code>curl -w</code> 看分段耗时、<code>openssl s_client</code> 看证书、<code>tcpdump</code> 抓包，四个工具就能定位到层。</li>
+<li><strong>参考</strong>：拿不准的细节回 RFC 原文，别只信二手博客。</li>
+</ol>
+<h2 id="十六、参考"><a href="#十六、参考" class="headerlink" title="十六、参考"></a>十六、参考</h2><ol>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9293">RFC 9293 TCP</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc8446">RFC 8446 TLS 1.3</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110 HTTP Semantics</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9114">RFC 9114 HTTP/3</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc1034">RFC 1034 / 1035 DNS</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching">MDN: HTTP 缓存</a></li>
+</ol>
+<hr>
+<h1 id="一网打尽"><a href="#一网打尽" class="headerlink" title="一网打尽"></a><center><font color="red">一网打尽</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;广域网(WAN)，就是我们通常所说的Internet，它是一个遍及全世界的网络，也称为公网、外网。公有地址，也称公有IP、公网ID，是由Inter NIC负责，这些IP地址分配给注册并向Inter NIC提出申请的组织机构，公有IP全球唯一。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局域网(LAN)是相对于广域网(WAN)而言，主要是指在小范围内的计算机互联网络，也称为私网、内网。局域网内每台计算机的IP地址在本局域网内是不可重复的，但两个局域网内的内网IP可以有相同的。</p>
+<blockquote>
+<p>广域网上的每一台电脑(或其他网络设备)都有一个或多个广域网IP地址(公网IP、外网IP地址)，广域网IP地址一般要到ISP处交费之后才能申请到，广域网IP地址不能重复；局域网(LAN)上的每一台电脑(或其他网络设备)都有一个或多个局域网IP地址(私网IP、内网IP地址)，局域网IP地址是局域网内部分配的，不同局域网的IP地址可以重复，不会相互影响。</p>
+</blockquote>
+<blockquote>
+<p>广域网与局域网之间如果要进行数据通信，必须经过中间的网关或路由器进行NAT(网络地址转换)。通常情况下，网关或路由器对内部向外发出的信息不会进行拦截，但对来自外部想进入内部网络的信息则会进行识别、筛选，认为是安全的、有效的，才会转发给内网电脑。</p>
+</blockquote>
+<h2 id="二、IP地址"><a href="#二、IP地址" class="headerlink" title="二、IP地址"></a>二、IP地址</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网协议地址(Internet Protocol Address)，也称IP地址、网际协议地址，它是IP协议提供的一种统一的地址格式，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，以此来屏蔽物理地址的差异。通俗的说，IP地址就是给每个连接在因特网上的主机(或路由器)分配一个在全世界范围是唯一的32位的标识符，它一种分等级的地址结构，由因特网名字与号码指派公司ICANN (Internet Corporation for Assigned Names and Numbers)进行分配。而MAC地址则是每台机器出厂时规定的唯一物理地址，共48位。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址是有固定格式的，长度为32位(4字节)，每个地址都由网络号和主机号构成。为了便于人们读取，通常会把IP地址换算成十进制来标志，每8位(1字节)中间用<code>.</code>隔开。根据网络号和主机号的不同，可以分为A，B，C，D，E类地址。</p>
+<blockquote>
+<p>简单理解：<code>IP地址 = 网络号 + 主机号</code>。</p>
+</blockquote>
+<p><img src="ip.png" alt="ip"></p>
+<ol>
+<li><p>A类地址<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在IP地址的固定格式中，前8位是网络号，后24位是主机号，且网络号的最高位必须是<code>0</code>。用二进制表示其范围为<code>00000000 00000000 00000000 00000000</code>到<code>01111111 11111111 11111111 11111111</code>，转换到十进制即<code>0.0.0.0</code>到<code>127.255.255.255</code>，其中<code>00001010 00000000 00000000 00000000</code>到<code>00001010 11111111 11111111 11111111</code>(即十进制的<code>10.0.0.0</code>到<code>10.255.255.255</code>)为私有地址。</p>
+</li>
+<li><p>B类地址</p>
+</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在IP地址的固定格式中，前16位是网络号，后16位是主机号，且网络号的最高位必须是<code>10</code>。用二进制表示其范围为<code>10000000 00000000 00000000 00000000</code>到<code>10111111 11111111 11111111 11111111</code>，转换到十进制即<code>128.0.0.0</code>到<code>191.255.255.255</code>，其中<code>10001100 00010000 00000000 00000000</code>到<code>10101100 00011111 11111111 11111111</code>(即十进制的<code>172.16.0.0</code>到<code>172.31.255.255</code>)为私有地址。</p>
+<ol start="3">
+<li>C类地址</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在IP地址的固定格式中，前24位是网络号，后8位是主机号，且网络号的最高位必须是<code>110</code>。用二进制表示其范围为<code>11000000 00000000 00000000 00000000</code>到<code>11011111 11111111 11111111 11111111</code>，转换到十进制即<code>192.0.0.0</code>到<code>223.255.255</code>，其中<code>11000000 10101000 00000000 00000000</code>到<code>11000000 10101000 11111111 11111111</code>(即十进制的<code>192.168.0.0</code>到<code>192.168.255.255</code>)为私有地址。</p>
+<ol start="4">
+<li>D类地址</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D类IP地址在历史上被叫做多播地址(multicast address)，也称组播地址。在以太网中多播地址命名了一组应该在这个网络中应用接收到一个分组的站点。多播地址的最高位必须是<code>1110</code>，范围从<code>224.0.0.0</code>到<code>239.255.255.255</code>。</p>
+<ol start="5">
+<li>E类地址</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址中凡是以<code>11110</code>开头的E类IP地址都保留用于将来和实验使用，即十进制的<code>240.0.0.0</code>到<code>247.255.255.255</code></p>
+<blockquote>
+<p><font color="red">网络号和主机号全0和全1的地址用于特殊目的，不允许使用；D类地址不标识网络；E类地址用于某些实验和将来使用，暂时保留。</font></p>
+</blockquote>
+<h2 id="三、子网与子网掩码"><a href="#三、子网与子网掩码" class="headerlink" title="三、子网与子网掩码"></a>三、子网与子网掩码</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址是以网络号和主机号来表示网络上的主机的，<font color="red">只有在一个网络号下的计算机之间才能直接互通</font>，即网络号必须相同，不同网络号的计算机要通过网关(Gateway)才能互通。但这样的划分在某些情况下显得并不十分灵活，如一个A类地址可容纳的主机数是<code>2^24 - 2</code>个，如果网络的每次通信都将消息广播到这么多主机是多么可怕的事情。为此IP网络还允许划分成更小的网络，称为子网(Subnet)，与此同时也就产生了子网掩码。<font color="red">子网掩码的作用就是用来判断任意两个IP地址是否属于同一子网络(网络号是否相同)</font>。</p>
+<blockquote>
+<p>通俗的说，就是把IP地址的主机号拿出来一部分当做子网号，主机号剩余的部分当做子网主机号，即<code>包含子网的IP地址 = 网络号 + 子网号 + 子网主机号</code>。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过前文我们知道，IP地址分网络号和主机号，共32位。如果要将一个网络划分为多个子网，则网络号需要占用原有的主机号位。如对于一个C类地址，它用24位来标识网络号，要将其划分为2个子网则需要占用1位原来的主机标识位，此时网络号变为25位，主机号变为7位，此时子网掩码为<code>11111111 11111111 11111111 10000000</code>，即十进制的<code>255.255.255.128</code>。A/B/C类地址的默认子网掩码分别为<code>255.0.0.0/255.255.0.0/255.255.255.0</code>。</p>
+<h2 id="四、超网"><a href="#四、超网" class="headerlink" title="四、超网"></a>四、超网</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超网(supernetting)，也称无类别域间路由选择(Classless Inter-Domain Routing，简写CIDR)，它消除了传统的A类、B类和C类地址以及划分子网的概念。CIDR使用各种长度的“网络前缀”来代替IP分类地址中的网络号和子网号，CIDR不再使用“子网”的概念而使用网络前缀，使IP地址从三级编址又回到了两级编址，即无分类的两级编址。</p>
+<blockquote>
+<p>简单理解：<code>超网IP=网络前缀+主机号</code>。</p>
+</blockquote>
+<blockquote>
+<p>CIDR也使用“斜线记法”，即在IP地址后写上斜线“/”，然后写上网络前缀所占的位数。</p>
+</blockquote>
+<h2 id="五、扩展"><a href="#五、扩展" class="headerlink" title="五、扩展"></a>五、扩展</h2><ol>
+<li><p>查看公网IP地址</p>
+<ul>
+<li><code>curl ifconfig.me</code></li>
+<li><code>curl ipinfo.io</code></li>
+<li><code>curl ipecho.net/plain</code></li>
+<li><code>wget http://ifconfig.me/ip</code></li>
+</ul>
+</li>
+<li><p>私有地址</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="left">范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A类</td>
+<td align="left">10.0.0.0–10.255.255.255</td>
+</tr>
+<tr>
+<td align="center">B类</td>
+<td align="left">172.16.0.0–172.31.255.255</td>
+</tr>
+<tr>
+<td align="center">C类</td>
+<td align="left">192.168.0.0–192.168.255.255</td>
+</tr>
+</tbody></table>
+<h2 id="六、参考"><a href="#六、参考" class="headerlink" title="六、参考"></a>六、参考</h2><ol>
+<li><a href="https://blog.csdn.net/qq_39414668/article/details/79594012">参考一</a></li>
+</ol>
+<h1 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a><center><font color="red">索引基础</font></center></h1><span id="more"></span>
 
 <h2 id="一、连接"><a href="#一、连接" class="headerlink" title="一、连接"></a>一、连接</h2><ol>
 <li><a href="https://www.cnblogs.com/cxuanBlog/p/12177976.html">认识HTTP</a></li>
@@ -44392,7 +44827,8 @@ read_xlsx(name, sheet)
 <ul>
 <li>curl ifconfig.me</li>
 <li>curl ipinfo.io</li>
-<li>ip138.com</li>
+<li><a href="https://ip138.com/">https://ip138.com/</a></li>
+<li><a href="https://ippure.com/">https://ippure.com/</a></li>
 </ul>
 </li>
 <li><p>ifconfig：ifconfig命令被用于配置和显示Linux内核中网络接口的网络参数。用ifconfig命令配置的网卡信息，在网卡重启后机器重启后，配置就不存在。要想将上述的配置信息永远的存的电脑里，那就要修改网卡的配置文件了。</p>
@@ -44408,18 +44844,129 @@ read_xlsx(name, sheet)
 <li><p>网络带宽充裕，但通信速度上不来</p>
 </li>
 </ol>
+<hr>
+<h1 id="四层模型、七层模型"><a href="#四层模型、七层模型" class="headerlink" title="四层模型、七层模型"></a><center><font color="red">四层模型、七层模型</font></center></h1><h2 id="一、TCP-IP四层模型"><a href="#一、TCP-IP四层模型" class="headerlink" title="一、TCP/IP四层模型"></a>一、TCP/IP四层模型</h2><ol>
+<li>TCP/IP把网络通信分为4层，分别是网络接口层、网络层、传输层、应用层。</li>
+<li>TCP/IP则是实际运行的网络协议。</li>
+<li>层次功能与协议</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">层次</th>
+<th align="center">功能</th>
+<th align="center">协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用层</td>
+<td align="center">负责实现一切与应用程序相关的功能，对应OSI的上三层</td>
+<td align="center">HTTP/FTP/DNS/SMTP/NFS</td>
+</tr>
+<tr>
+<td align="center">传输层</td>
+<td align="center">负责提供可靠的传输服务，对应OSI第四层</td>
+<td align="center">TCP/UDP</td>
+</tr>
+<tr>
+<td align="center">网络层</td>
+<td align="center">负责网络间的寻址，对应OSI的第三层</td>
+<td align="center">IP/ICMP/ARP/RARP</td>
+</tr>
+<tr>
+<td align="center">网络接口层</td>
+<td align="center">负责实际数据的传输，对应OSI下两层</td>
+<td align="center">HDLC/PPP/SLIP</td>
+</tr>
+</tbody></table>
+<h2 id="二、TCP-IP五层模型"><a href="#二、TCP-IP五层模型" class="headerlink" title="二、TCP/IP五层模型"></a>二、TCP/IP五层模型</h2><ol>
+<li>五层模型结构包括：物理层、数据链路层、网络层、运输层、应用层。</li>
+<li>五层模型只是OSI和TCP/IP的综合，实际应用还是TCP/IP的四层结构。</li>
+</ol>
+<h2 id="三、OSI七层模型"><a href="#三、OSI七层模型" class="headerlink" title="三、OSI七层模型"></a>三、OSI七层模型</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OSI模型是一个理论上的网络通信模型，把网络通信分为7层，分别是物理层(physical)、数据链路层(data link)、网络层(network)、传输层(transport)、会话层(session)、表示层(presentation)、应用层(application)。开放式系统互联模型(Open System Interconnection Model，缩写OSI，简称为OSI模型)是一种概念模型，由国际标准化组织提出，一个试图使各种计算机在世界范围内互连为网络的标准框架。定义于ISO/IEC 7498-1，共分为7层，由下而上分别为物理层、数据链路层、网络层、传输层、会话层、表达层、应用层。二层负载均衡会通过一个虚拟MAC地址接收请求，然后再分配到真实的MAC地址；三层负载均衡会通过一个虚拟IP地址接收请求，然后再分配到真实的IP地址；四层通过虚拟IP+端口接收请求，然后再分配到真实的服务器；七层通过虚拟的URL或主机名接收请求，然后再分配到真实的服务器。</p>
+<ol>
+<li><blockquote>
+<p>第7层 应用层</p>
+<blockquote>
+<p>应用层（Application Layer）提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如: HTTP，HTTPS，FTP，TELNET，SSH，SMTP，POP3.HTML.等。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<p>第6层 表达层</p>
+<blockquote>
+<p>表达层（Presentation Layer）把数据转换为能与接收者的系统格式兼容并适合传输的格式。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<p>第5层 会话层</p>
+<blockquote>
+<p>会话层（Session Layer）负责在数据传输中设置和维护电脑网络中两台电脑之间的通信连接。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>第4层 传输层</p>
+<blockquote>
+<blockquote>
+<p>传输层（Transport Layer）把传输表头（TH）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如:传输控制协议（TCP）等。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>第3层 网络层</p>
+<blockquote>
+<blockquote>
+<p>网络层（Network Layer）决定数据的路径选择和转寄，将网络表头（NH）加至数据包，以形成报文。网络表头包含了网络数据。例如:互联网协议（IP）等。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>第2层 数据链路层</p>
+<blockquote>
+<blockquote>
+<p>数据链路层（Data Link Layer）负责网络寻址、错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误侦测及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如以太网、无线局域网（Wi-Fi）和通用分组无线服务（GPRS）等。</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>分为两个子层：逻辑链路控制（logical link control，LLC）子层和介质访问控制（Media access control，MAC）子层。</p>
+</blockquote>
+</blockquote>
+<ol start="7">
+<li><blockquote>
+<p>第1层 物理层</p>
+<blockquote>
+<p>物理层（Physical Layer）在局部局域网上传送数据帧（data frame），它负责管理电脑通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机接口卡等。</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F">参考一</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B">参考二</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Network</category>
       </categories>
       <tags>
+        <tag>OSI</tag>
         <tag>计算机网络</tag>
+        <tag>外网</tag>
+        <tag>内网</tag>
+        <tag>公网</tag>
+        <tag>私网</tag>
         <tag>TCP</tag>
+        <tag>IP</tag>
+        <tag>四层模型</tag>
+        <tag>五层模型</tag>
+        <tag>七层模型</tag>
         <tag>HTTP</tag>
         <tag>POST</tag>
         <tag>GET</tag>
         <tag>UDP</tag>
-        <tag>websocket</tag>
+        <tag>websocket，TCP</tag>
       </tags>
   </entry>
   <entry>
@@ -45306,109 +45853,6 @@ read_xlsx(name, sheet)
         <tag>组件传值</tag>
         <tag>生命周期</tag>
         <tag>前端框架</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一网打尽</title>
-    <url>/2017/02/12/Network-%E4%B8%80%E7%BD%91%E6%89%93%E5%B0%BD/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>互联网(Internet)是指20世纪末期兴起电脑网络与电脑网络之间所串连成的庞大网络系统，这些网络以一些标准的网络协议相连。万维网(World Wide Web)亦称WWW、Web，是一个透过互联网访问的，由许多互相链接的超文本组成的系统。英国科学家蒂姆·伯纳斯-李于1989年发明了万维网。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;广域网(WAN)，就是我们通常所说的Internet，它是一个遍及全世界的网络，也称为公网、外网。公有地址，也称公有IP、公网ID，是由Inter NIC负责，这些IP地址分配给注册并向Inter NIC提出申请的组织机构，公有IP全球唯一。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局域网(LAN)是相对于广域网(WAN)而言，主要是指在小范围内的计算机互联网络，也称为私网、内网。局域网内每台计算机的IP地址在本局域网内是不可重复的，但两个局域网内的内网IP可以有相同的。</p>
-<blockquote>
-<p>广域网上的每一台电脑(或其他网络设备)都有一个或多个广域网IP地址(公网IP、外网IP地址)，广域网IP地址一般要到ISP处交费之后才能申请到，广域网IP地址不能重复；局域网(LAN)上的每一台电脑(或其他网络设备)都有一个或多个局域网IP地址(私网IP、内网IP地址)，局域网IP地址是局域网内部分配的，不同局域网的IP地址可以重复，不会相互影响。</p>
-</blockquote>
-<blockquote>
-<p>广域网与局域网之间如果要进行数据通信，必须经过中间的网关或路由器进行NAT(网络地址转换)。通常情况下，网关或路由器对内部向外发出的信息不会进行拦截，但对来自外部想进入内部网络的信息则会进行识别、筛选，认为是安全的、有效的，才会转发给内网电脑。</p>
-</blockquote>
-<h2 id="二、IP地址"><a href="#二、IP地址" class="headerlink" title="二、IP地址"></a>二、IP地址</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网协议地址(Internet Protocol Address)，也称IP地址、网际协议地址，它是IP协议提供的一种统一的地址格式，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，以此来屏蔽物理地址的差异。通俗的说，IP地址就是给每个连接在因特网上的主机(或路由器)分配一个在全世界范围是唯一的32位的标识符，它一种分等级的地址结构，由因特网名字与号码指派公司ICANN (Internet Corporation for Assigned Names and Numbers)进行分配。而MAC地址则是每台机器出厂时规定的唯一物理地址，共48位。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址是有固定格式的，长度为32位(4字节)，每个地址都由网络号和主机号构成。为了便于人们读取，通常会把IP地址换算成十进制来标志，每8位(1字节)中间用<code>.</code>隔开。根据网络号和主机号的不同，可以分为A，B，C，D，E类地址。</p>
-<blockquote>
-<p>简单理解：<code>IP地址 = 网络号 + 主机号</code>。</p>
-</blockquote>
-<p><img src="ip.png" alt="ip"></p>
-<ol>
-<li><p>A类地址<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在IP地址的固定格式中，前8位是网络号，后24位是主机号，且网络号的最高位必须是<code>0</code>。用二进制表示其范围为<code>00000000 00000000 00000000 00000000</code>到<code>01111111 11111111 11111111 11111111</code>，转换到十进制即<code>0.0.0.0</code>到<code>127.255.255.255</code>，其中<code>00001010 00000000 00000000 00000000</code>到<code>00001010 11111111 11111111 11111111</code>(即十进制的<code>10.0.0.0</code>到<code>10.255.255.255</code>)为私有地址。</p>
-</li>
-<li><p>B类地址</p>
-</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在IP地址的固定格式中，前16位是网络号，后16位是主机号，且网络号的最高位必须是<code>10</code>。用二进制表示其范围为<code>10000000 00000000 00000000 00000000</code>到<code>10111111 11111111 11111111 11111111</code>，转换到十进制即<code>128.0.0.0</code>到<code>191.255.255.255</code>，其中<code>10001100 00010000 00000000 00000000</code>到<code>10101100 00011111 11111111 11111111</code>(即十进制的<code>172.16.0.0</code>到<code>172.31.255.255</code>)为私有地址。</p>
-<ol start="3">
-<li>C类地址</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在IP地址的固定格式中，前24位是网络号，后8位是主机号，且网络号的最高位必须是<code>110</code>。用二进制表示其范围为<code>11000000 00000000 00000000 00000000</code>到<code>11011111 11111111 11111111 11111111</code>，转换到十进制即<code>192.0.0.0</code>到<code>223.255.255</code>，其中<code>11000000 10101000 00000000 00000000</code>到<code>11000000 10101000 11111111 11111111</code>(即十进制的<code>192.168.0.0</code>到<code>192.168.255.255</code>)为私有地址。</p>
-<ol start="4">
-<li>D类地址</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D类IP地址在历史上被叫做多播地址(multicast address)，也称组播地址。在以太网中多播地址命名了一组应该在这个网络中应用接收到一个分组的站点。多播地址的最高位必须是<code>1110</code>，范围从<code>224.0.0.0</code>到<code>239.255.255.255</code>。</p>
-<ol start="5">
-<li>E类地址</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址中凡是以<code>11110</code>开头的E类IP地址都保留用于将来和实验使用，即十进制的<code>240.0.0.0</code>到<code>247.255.255.255</code></p>
-<blockquote>
-<p><font color="red">网络号和主机号全0和全1的地址用于特殊目的，不允许使用；D类地址不标识网络；E类地址用于某些实验和将来使用，暂时保留。</font></p>
-</blockquote>
-<h2 id="三、子网与子网掩码"><a href="#三、子网与子网掩码" class="headerlink" title="三、子网与子网掩码"></a>三、子网与子网掩码</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址是以网络号和主机号来表示网络上的主机的，<font color="red">只有在一个网络号下的计算机之间才能直接互通</font>，即网络号必须相同，不同网络号的计算机要通过网关(Gateway)才能互通。但这样的划分在某些情况下显得并不十分灵活，如一个A类地址可容纳的主机数是<code>2^24 - 2</code>个，如果网络的每次通信都将消息广播到这么多主机是多么可怕的事情。为此IP网络还允许划分成更小的网络，称为子网(Subnet)，与此同时也就产生了子网掩码。<font color="red">子网掩码的作用就是用来判断任意两个IP地址是否属于同一子网络(网络号是否相同)</font>。</p>
-<blockquote>
-<p>通俗的说，就是把IP地址的主机号拿出来一部分当做子网号，主机号剩余的部分当做子网主机号，即<code>包含子网的IP地址 = 网络号 + 子网号 + 子网主机号</code>。</p>
-</blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过前文我们知道，IP地址分网络号和主机号，共32位。如果要将一个网络划分为多个子网，则网络号需要占用原有的主机号位。如对于一个C类地址，它用24位来标识网络号，要将其划分为2个子网则需要占用1位原来的主机标识位，此时网络号变为25位，主机号变为7位，此时子网掩码为<code>11111111 11111111 11111111 10000000</code>，即十进制的<code>255.255.255.128</code>。A/B/C类地址的默认子网掩码分别为<code>255.0.0.0/255.255.0.0/255.255.255.0</code>。</p>
-<h2 id="四、超网"><a href="#四、超网" class="headerlink" title="四、超网"></a>四、超网</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超网(supernetting)，也称无类别域间路由选择(Classless Inter-Domain Routing，简写CIDR)，它消除了传统的A类、B类和C类地址以及划分子网的概念。CIDR使用各种长度的“网络前缀”来代替IP分类地址中的网络号和子网号，CIDR不再使用“子网”的概念而使用网络前缀，使IP地址从三级编址又回到了两级编址，即无分类的两级编址。</p>
-<blockquote>
-<p>简单理解：<code>超网IP=网络前缀+主机号</code>。</p>
-</blockquote>
-<blockquote>
-<p>CIDR也使用“斜线记法”，即在IP地址后写上斜线“/”，然后写上网络前缀所占的位数。</p>
-</blockquote>
-<h2 id="五、扩展"><a href="#五、扩展" class="headerlink" title="五、扩展"></a>五、扩展</h2><ol>
-<li><p>查看公网IP地址</p>
-<ul>
-<li><code>curl ifconfig.me</code></li>
-<li><code>curl ipinfo.io</code></li>
-<li><code>curl ipecho.net/plain</code></li>
-<li><code>wget http://ifconfig.me/ip</code></li>
-</ul>
-</li>
-<li><p>私有地址</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">类型</th>
-<th align="left">范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">A类</td>
-<td align="left">10.0.0.0–10.255.255.255</td>
-</tr>
-<tr>
-<td align="center">B类</td>
-<td align="left">172.16.0.0–172.31.255.255</td>
-</tr>
-<tr>
-<td align="center">C类</td>
-<td align="left">192.168.0.0–192.168.255.255</td>
-</tr>
-</tbody></table>
-<h2 id="六、参考"><a href="#六、参考" class="headerlink" title="六、参考"></a>六、参考</h2><ol>
-<li><a href="https://blog.csdn.net/qq_39414668/article/details/79594012">参考一</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>外网</tag>
-        <tag>内网</tag>
-        <tag>公网</tag>
-        <tag>私网</tag>
       </tags>
   </entry>
   <entry>
