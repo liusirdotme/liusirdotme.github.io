@@ -149,7 +149,7 @@
 <meta property="og:description" content="你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-15T01:37:21.000Z">
-<meta property="article:modified_time" content="2026-11-25T08:32:04.970Z">
+<meta property="article:modified_time" content="2026-11-25T09:21:13.536Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Cloud">
 <meta property="article:tag" content="腾讯云">
@@ -374,13 +374,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>59</span>
+              <span>9.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -397,7 +397,1242 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a><center><font color="red">列表</font></center></h1>
+<h1 id="Tencent-Cloud-Practitioner"><a href="#Tencent-Cloud-Practitioner" class="headerlink" title="Tencent Cloud Practitioner"></a><center><font color="red">Tencent Cloud Practitioner</font></center></h1><blockquote>
+<p>腾讯云从业者认证（TCP，Tencent Cloud Practitioner）是<strong>入门级</strong>认证，考的是”产品矩阵 + 选型判断”，不是运维细节。题干几乎都是场景题：给一个业务需求，问该用哪个产品、为什么。</p>
+</blockquote>
+<h2 id="一、考试概览"><a href="#一、考试概览" class="headerlink" title="一、考试概览"></a>一、考试概览</h2><table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">认证名称</td>
+<td align="left">腾讯云从业者认证（TCP）</td>
+</tr>
+<tr>
+<td align="left">考试形式</td>
+<td align="left"><strong>线上</strong>理论考试，简体中文</td>
+</tr>
+<tr>
+<td align="left">题型题量</td>
+<td align="left"><strong>单选 40 题 + 多选 20 题 = 60 题</strong></td>
+</tr>
+<tr>
+<td align="left">时长/分数</td>
+<td align="left">90 分钟，满分 100，<strong>70 分通过</strong></td>
+</tr>
+<tr>
+<td align="left">计分规则</td>
+<td align="left">多选题<strong>错选、漏选均不得分</strong>（没有部分分，不确定就少选保守）</td>
+</tr>
+<tr>
+<td align="left">出成绩</td>
+<td align="left">考后 3 天内，个人中心-认证考试可查</td>
+</tr>
+</tbody></table>
+<p><strong>知识点权重（官方口径，复习时间就按这个比例分）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">知识域</th>
+<th align="left">占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">云计算服务</td>
+<td align="left">14%</td>
+</tr>
+<tr>
+<td align="left">网络服务</td>
+<td align="left">13%</td>
+</tr>
+<tr>
+<td align="left">存储服务</td>
+<td align="left">13%</td>
+</tr>
+<tr>
+<td align="left">AI 服务</td>
+<td align="left">12%</td>
+</tr>
+<tr>
+<td align="left">数据库服务</td>
+<td align="left">10%</td>
+</tr>
+<tr>
+<td align="left">大数据服务</td>
+<td align="left">10%</td>
+</tr>
+<tr>
+<td align="left">企业应用服务</td>
+<td align="left">10%</td>
+</tr>
+<tr>
+<td align="left">中间件服务</td>
+<td align="left">5%</td>
+</tr>
+<tr>
+<td align="left">安全服务</td>
+<td align="left">5%</td>
+</tr>
+<tr>
+<td align="left">音视频与通信服务</td>
+<td align="left">5%</td>
+</tr>
+<tr>
+<td align="left">腾讯与腾讯云概述</td>
+<td align="left">3%</td>
+</tr>
+</tbody></table>
+<p>一句话读法：<strong>四大基础设施（云服务器 14 + 网络 13 + 存储 13 + 数据库 10 = 50%）是半壁江山</strong>，加上 AI 12% 与大数据 10%，剩下的都是”知道有什么、能选对”。</p>
+<h2 id="二、腾讯与腾讯云概述（3-）"><a href="#二、腾讯与腾讯云概述（3-）" class="headerlink" title="二、腾讯与腾讯云概述（3%）"></a>二、腾讯与腾讯云概述（3%）</h2><h3 id="2-1-腾讯云是什么"><a href="#2-1-腾讯云是什么" class="headerlink" title="2.1 腾讯云是什么"></a>2.1 腾讯云是什么</h3><ul>
+<li>腾讯 1998 年成立于深圳，核心产品 QQ、微信、腾讯游戏；腾讯云是其对外输出的云计算品牌，2010 年起对外开放服务。</li>
+<li>定位：不只卖 IaaS，而是”<strong>基础设施 + 平台产品 + 行业解决方案</strong>“三层输出，覆盖游戏、音视频、社交、金融、政务、教育、电商等行业。</li>
+<li>底层优势：腾讯内部海量业务（微信、QQ、游戏）多年沉淀的<strong>分布式架构与音视频技术</strong>，直接产品化。</li>
+</ul>
+<h3 id="2-2-现代网站的工作原理（常作为背景题）"><a href="#2-2-现代网站的工作原理（常作为背景题）" class="headerlink" title="2.2 现代网站的工作原理（常作为背景题）"></a>2.2 现代网站的工作原理（常作为背景题）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用户浏览器 → DNS 解析（DNSPod）→ CDN 就近返回静态资源</span><br><span class="line">           → CLB 负载均衡 → Web 服务器（CVM）</span><br><span class="line">           → 应用层 → 数据库（TencentDB）/ 缓存（Redis）</span><br><span class="line">           → 存储（COS / CBS）</span><br></pre></td></tr></tbody></table></figure>
+
+<p>链条上每一环都对应一个腾讯云产品，考题会问”这一层用什么”。</p>
+<h3 id="2-3-本地自建-vs-云上"><a href="#2-3-本地自建-vs-云上" class="headerlink" title="2.3 本地自建 vs 云上"></a>2.3 本地自建 vs 云上</h3><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">本地机房</th>
+<th align="left">云上</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">成本形态</td>
+<td align="left">资本支出 CapEx，一次性买硬件</td>
+<td align="left">运营支出 OpEx，按量付费</td>
+</tr>
+<tr>
+<td align="left">交付周期</td>
+<td align="left">采购+上架，周级到月级</td>
+<td align="left">分钟级开通</td>
+</tr>
+<tr>
+<td align="left">容量规划</td>
+<td align="left">按峰值买，平时闲置</td>
+<td align="left">弹性伸缩，按需扩容</td>
+</tr>
+<tr>
+<td align="left">运维</td>
+<td align="left">自建机房、电力、网络、硬件保修</td>
+<td align="left">云厂商负责物理层，你只管配置</td>
+</tr>
+<tr>
+<td align="left">容灾</td>
+<td align="left">需自建双机房，成本高</td>
+<td align="left">多可用区/多地域开箱可用</td>
+</tr>
+<tr>
+<td align="left">合规</td>
+<td align="left">自己承担等保测评</td>
+<td align="left">可继承云平台合规资质</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-四种部署模型-三种服务模型"><a href="#2-4-四种部署模型-三种服务模型" class="headerlink" title="2.4 四种部署模型 + 三种服务模型"></a>2.4 四种部署模型 + 三种服务模型</h3><table>
+<thead>
+<tr>
+<th align="left">部署模型</th>
+<th align="left">说明</th>
+<th align="left">典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">公有云</td>
+<td align="left">资源多租户共享，按需购买</td>
+<td align="left">互联网业务、创业团队</td>
+</tr>
+<tr>
+<td align="left">私有云</td>
+<td align="left">专属资源，部署在企业机房或专属云</td>
+<td align="left">金融、政务、强合规</td>
+</tr>
+<tr>
+<td align="left">混合云</td>
+<td align="left">核心在本地、弹性部分在云，通过专线/VPN 打通</td>
+<td align="left">渐进上云、潮汐业务</td>
+</tr>
+<tr>
+<td align="left">社区云</td>
+<td align="left">特定群体（同行业/同区域）共同使用</td>
+<td align="left">行业联盟、园区云</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">服务模型</th>
+<th align="left">你负责</th>
+<th align="left">腾讯云对应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">IaaS</td>
+<td align="left">OS 及以上全部</td>
+<td align="left">CVM、CBS、VPC</td>
+</tr>
+<tr>
+<td align="left">PaaS</td>
+<td align="left">只负责应用与数据</td>
+<td align="left">TencentDB、TKE、SCF、CKafka</td>
+</tr>
+<tr>
+<td align="left">SaaS</td>
+<td align="left">只使用</td>
+<td align="left">企业邮箱、腾讯会议、CODING（SaaS 版）</td>
+</tr>
+</tbody></table>
+<h3 id="2-5-云计算的六大优势"><a href="#2-5-云计算的六大优势" class="headerlink" title="2.5 云计算的六大优势"></a>2.5 云计算的六大优势</h3><ol>
+<li><strong>按需自助</strong>：控制台/API 自助开通，不用提工单等审批。</li>
+<li><strong>广泛网络接入</strong>：任何地点、任何终端可用。</li>
+<li><strong>资源池化</strong>：多租户共享资源池，利用率高、单价低。</li>
+<li><strong>快速弹性</strong>：分钟级扩容/缩容，应对突发流量。</li>
+<li><strong>可计量服务</strong>：按使用量计费，成本可核算、可优化。</li>
+<li><strong>成本与敏捷优势</strong>：免去机房与硬件投入，试错成本极低。</li>
+</ol>
+<h2 id="三、云计算服务（14-）"><a href="#三、云计算服务（14-）" class="headerlink" title="三、云计算服务（14%）"></a>三、云计算服务（14%）</h2><h3 id="3-1-产品全景（先记住”谁是谁”）"><a href="#3-1-产品全景（先记住”谁是谁”）" class="headerlink" title="3.1 产品全景（先记住”谁是谁”）"></a>3.1 产品全景（先记住”谁是谁”）</h3><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">定位</th>
+<th align="left">一句话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CVM 云服务器</td>
+<td align="left">主力 IaaS 虚拟机</td>
+<td align="left">弹性可扩展的计算实例</td>
+</tr>
+<tr>
+<td align="left">Lighthouse 轻量应用服务器</td>
+<td align="left">简化版 VPS</td>
+<td align="left">固定套餐、含流量包、开箱建站</td>
+</tr>
+<tr>
+<td align="left">裸金属服务器 BM</td>
+<td align="left">无虚拟化开销的物理机</td>
+<td align="left">高性能、强隔离、适合数据库/高性能计算</td>
+</tr>
+<tr>
+<td align="left">专用宿主机 CDH</td>
+<td align="left">独享整台物理机</td>
+<td align="left">自己划分虚拟机，资源独享、可控超分</td>
+</tr>
+<tr>
+<td align="left">GPU 云服务器</td>
+<td align="left">加速计算</td>
+<td align="left">AI 训练/推理、渲染、视频编码</td>
+</tr>
+<tr>
+<td align="left">AS 弹性伸缩</td>
+<td align="left">自动增减 CVM</td>
+<td align="left">按告警/定时策略扩缩容</td>
+</tr>
+<tr>
+<td align="left">TKE 容器服务</td>
+<td align="left">托管 Kubernetes</td>
+<td align="left">集群/节点池、TKE Serverless</td>
+</tr>
+<tr>
+<td align="left">SCF 云函数</td>
+<td align="left">Serverless</td>
+<td align="left">事件驱动、免运维、按调用计费</td>
+</tr>
+<tr>
+<td align="left">批量计算</td>
+<td align="left">批处理作业调度</td>
+<td align="left">大规模离线计算</td>
+</tr>
+<tr>
+<td align="left">主机迁移 CMS / 云数据迁移 CDM</td>
+<td align="left">迁移工具</td>
+<td align="left">服务器与数据搬迁上云</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-CVM-关键考点"><a href="#3-2-CVM-关键考点" class="headerlink" title="3.2 CVM 关键考点"></a>3.2 CVM 关键考点</h3><p><strong>规格族命名</strong>（题干给”内存密集型数据库”就该选 M 族）：</p>
+<table>
+<thead>
+<tr>
+<th align="left">族</th>
+<th align="left">特点</th>
+<th align="left">典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">S 标准型</td>
+<td align="left">CPU/内存均衡</td>
+<td align="left">Web 服务、中小型应用</td>
+</tr>
+<tr>
+<td align="left">C 计算型</td>
+<td align="left">高主频/高核数比</td>
+<td align="left">批处理、游戏服务端、高性能计算</td>
+</tr>
+<tr>
+<td align="left">M 内存型</td>
+<td align="left">大内存</td>
+<td align="left">数据库、缓存、大数据分析</td>
+</tr>
+<tr>
+<td align="left">I 高 IO 型</td>
+<td align="left">本地 NVMe SSD</td>
+<td align="left">高 IOPS 数据库、NoSQL</td>
+</tr>
+<tr>
+<td align="left">D 大数据型</td>
+<td align="left">大容量本地盘</td>
+<td align="left">Hadoop、日志处理</td>
+</tr>
+<tr>
+<td align="left">GN/GPU 型</td>
+<td align="left">GPU 加速</td>
+<td align="left">深度学习、图形渲染</td>
+</tr>
+</tbody></table>
+<p><strong>三种计费模式（必考对比）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th align="left">付费方式</th>
+<th align="left">价格</th>
+<th align="left">适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">包年包月</td>
+<td align="left">预付费，一次性买 1 个月–3 年</td>
+<td align="left">最便宜（长期）</td>
+<td align="left">长期稳定业务、生产环境</td>
+</tr>
+<tr>
+<td align="left">按量计费</td>
+<td align="left">后付费，按小时/秒结算</td>
+<td align="left">单价高，随时释放</td>
+<td align="left">临时测试、流量波动</td>
+</tr>
+<tr>
+<td align="left">竞价实例</td>
+<td align="left">后付费，价格随供需浮动</td>
+<td align="left">最低（可低至按量的一折以下）</td>
+<td align="left"><strong>可中断</strong>任务：渲染、CI、离线计算</td>
+</tr>
+</tbody></table>
+<p><strong>竞价实例的考点就一句</strong>：便宜但<strong>可能被系统回收</strong>，所以只能跑”挂了能重跑”的任务；数据库、核心业务绝对不能用。</p>
+<p><strong>其他必记点</strong>：</p>
+<ul>
+<li><strong>镜像</strong>四类：公共镜像（官方 OS）、自定义镜像（自己制作）、共享镜像（跨账号共享）、服务市场镜像（带应用的预装镜像）。</li>
+<li><strong>快照</strong>：基于 CBS，<strong>增量</strong>存储、可用于回滚与制作镜像；跨地域复制做灾备。</li>
+<li><strong>弹性网卡 ENI</strong>：一机多网卡、多 IP，用于高可用与流量分离。</li>
+<li><strong>置放群组</strong>：把实例分散到不同物理机（低关联）或集中（高网络性能），做高可用或高性能。</li>
+<li><strong>User Data / 初始化脚本</strong>：开机自动执行，用于批量配置。</li>
+</ul>
+<h3 id="3-3-弹性伸缩-AS"><a href="#3-3-弹性伸缩-AS" class="headerlink" title="3.3 弹性伸缩 AS"></a>3.3 弹性伸缩 AS</h3><ul>
+<li>组成：<strong>伸缩组 + 启动配置 + 伸缩策略 + 关联 CLB</strong>。</li>
+<li>触发方式：<strong>定时策略</strong>（每天 9 点扩容）、<strong>告警触发</strong>（CPU&gt;70% 扩）、<strong>手动</strong>。</li>
+<li>关键概念：最小/最大实例数、冷却时间（避免反复抖动）、移出策略（先删最老/最新实例）。</li>
+<li>前提：应用必须<strong>无状态</strong>，会话与文件不能存在本机（否则扩出来的机器接不住流量）——这是常考的判断点。</li>
+</ul>
+<h3 id="3-4-容器与-Serverless"><a href="#3-4-容器与-Serverless" class="headerlink" title="3.4 容器与 Serverless"></a>3.4 容器与 Serverless</h3><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">特点</th>
+<th align="left">适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TKE</td>
+<td align="left">托管 K8s，自管节点池，可控性高</td>
+<td align="left">已有容器化体系、微服务</td>
+</tr>
+<tr>
+<td align="left">TKE Serverless</td>
+<td align="left">无需管节点，按 Pod 资源计费</td>
+<td align="left">不想维护集群</td>
+</tr>
+<tr>
+<td align="left">SCF 云函数</td>
+<td align="left">事件触发、自动扩缩、按调用与资源用量计费</td>
+<td align="left">定时任务、文件处理、Webhook、轻量 API</td>
+</tr>
+<tr>
+<td align="left">容器镜像服务 TCR</td>
+<td align="left">镜像仓库</td>
+<td align="left">存镜像、跨环境分发</td>
+</tr>
+</tbody></table>
+<p><strong>Serverless 的判断关键词</strong>：no server to manage、按需付费到零、事件驱动、短时任务。</p>
+<h2 id="四、网络服务（13-）"><a href="#四、网络服务（13-）" class="headerlink" title="四、网络服务（13%）"></a>四、网络服务（13%）</h2><h3 id="4-1-VPC-基础（最高频）"><a href="#4-1-VPC-基础（最高频）" class="headerlink" title="4.1 VPC 基础（最高频）"></a>4.1 VPC 基础（最高频）</h3><ul>
+<li><strong>VPC 私有网络</strong>：逻辑隔离的虚拟网络，自定义 CIDR（如 <code>10.0.0.0/16</code>）。</li>
+<li><strong>子网 Subnet</strong>：VPC 内按可用区划分，<strong>同一 VPC 内子网网段不能重叠</strong>；子网跨可用区部署即天然高可用。</li>
+<li><strong>路由表</strong>：控制子网出流量走向（默认走 NAT 网关或公网网关）。</li>
+<li><strong>公网访问三件套</strong>：公网 IP / EIP 弹性公网 IP（可解绑复用）、NAT 网关（私有子网统一出网）、公网网关。</li>
+</ul>
+<p><strong>CIDR 规划考点</strong>：VPC 网段要给未来留余量；子网划分按可用区；<strong>跨 VPC 互通要求网段不重叠</strong>（否则只能靠 CCN 转换或重新规划）。</p>
+<h3 id="4-2-安全组-vs-网络-ACL（最经典的对比题）"><a href="#4-2-安全组-vs-网络-ACL（最经典的对比题）" class="headerlink" title="4.2 安全组 vs 网络 ACL（最经典的对比题）"></a>4.2 安全组 vs 网络 ACL（最经典的对比题）</h3><table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="left">安全组</th>
+<th align="left">网络 ACL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">作用层级</td>
+<td align="left"><strong>实例级</strong>（绑定 CVM/CLB 等）</td>
+<td align="left"><strong>子网级</strong></td>
+</tr>
+<tr>
+<td align="left">状态</td>
+<td align="left"><strong>有状态</strong>（去程放行则回程自动放行）</td>
+<td align="left"><strong>无状态</strong>（出入方向都要单独配）</td>
+</tr>
+<tr>
+<td align="left">规则动作</td>
+<td align="left">支持<strong>允许 + 拒绝</strong></td>
+<td align="left">支持<strong>允许 + 拒绝</strong></td>
+</tr>
+<tr>
+<td align="left">匹配方式</td>
+<td align="left">规则匹配后生效</td>
+<td align="left">按优先级顺序匹配</td>
+</tr>
+<tr>
+<td align="left">典型用途</td>
+<td align="left">精细控制某台机器开哪些端口</td>
+<td align="left">整段子网的粗粒度隔离</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>和 AWS 的差别记一下：AWS 安全组只支持 Allow，腾讯云安全组<strong>允许配置拒绝规则</strong>，这是容易被”经验”带错的地方。</p>
+</blockquote>
+<h3 id="4-3-负载均衡-CLB-家族"><a href="#4-3-负载均衡-CLB-家族" class="headerlink" title="4.3 负载均衡 CLB 家族"></a>4.3 负载均衡 CLB 家族</h3><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">层级</th>
+<th align="left">特点</th>
+<th align="left">场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CLB 传统型</td>
+<td align="left">四层/七层</td>
+<td align="left">公网/内网，支持 TCP/UDP/HTTP/HTTPS</td>
+<td align="left">通用 Web 服务</td>
+</tr>
+<tr>
+<td align="left">ALB 应用型</td>
+<td align="left">七层</td>
+<td align="left">基于转发规则、支持更复杂的路由与弹性能力</td>
+<td align="left">微服务、容器入口</td>
+</tr>
+<tr>
+<td align="left">GWLB 网关型</td>
+<td align="left">三层</td>
+<td align="left">把流量透明送给安全设备集群</td>
+<td align="left">串接防火墙/入侵检测</td>
+</tr>
+</tbody></table>
+<p>必记概念：<strong>监听器</strong>（前端端口协议）、<strong>后端服务器组</strong>（CVM/容器/ENI）、<strong>健康检查</strong>（自动摘除故障节点）、<strong>会话保持</strong>（同一用户落到同一后端）、<strong>跨可用区容灾</strong>。</p>
+<h3 id="4-4-混合云与互联"><a href="#4-4-混合云与互联" class="headerlink" title="4.4 混合云与互联"></a>4.4 混合云与互联</h3><table>
+<thead>
+<tr>
+<th align="left">方案</th>
+<th align="left">特点</th>
+<th align="left">适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">专线 DC（Direct Connect）</td>
+<td align="left">物理专线，稳定低延迟、带宽独享</td>
+<td align="left">核心业务上云、数据同步</td>
+</tr>
+<tr>
+<td align="left">VPN 网关（IPSec）</td>
+<td align="left">走公网加密隧道，开通快、便宜</td>
+<td align="left">临时/中小流量互联</td>
+</tr>
+<tr>
+<td align="left">CCN 云联网</td>
+<td align="left">多 VPC、多地域、多账号一张网互通</td>
+<td align="left">多地域组网、企业多账号</td>
+</tr>
+<tr>
+<td align="left">对等连接 Peering</td>
+<td align="left">两个 VPC 点对点互通</td>
+<td align="left">少量 VPC 互联，不传递</td>
+</tr>
+<tr>
+<td align="left">私有连接 PrivateLink</td>
+<td align="left">跨 VPC 访问服务，不用打通全网</td>
+<td align="left">SaaS 服务方与客户 VPC 对接</td>
+</tr>
+</tbody></table>
+<p><strong>专线 + VPN 的关系</strong>：专线稳定但<strong>本身不加密</strong>，要求加密就在专线上叠加 VPN 隧道。</p>
+<h3 id="4-5-典型三层-Web-参考架构（画得出来就能答一半题）"><a href="#4-5-典型三层-Web-参考架构（画得出来就能答一半题）" class="headerlink" title="4.5 典型三层 Web 参考架构（画得出来就能答一半题）"></a>4.5 典型三层 Web 参考架构（画得出来就能答一半题）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户 → CDN（静态资源就近）</span><br><span class="line">     → CLB（公网，多可用区）</span><br><span class="line">     → Web 层 CVM（无状态，AS 弹性伸缩）</span><br><span class="line">     → 应用/中间件层（CKafka 解耦、TKE 部署）</span><br><span class="line">     → 数据层（TencentDB 主备 + Redis 缓存 + COS 存文件）</span><br></pre></td></tr></tbody></table></figure>
+
+<p>每一层的设计理由：CDN 降回源带宽、CLB 做流量分发与故障摘除、Web 层无状态才能弹性、中间件解耦削峰、数据层主备+缓存保证可用与性能。</p>
+<h2 id="五、存储服务（13-）"><a href="#五、存储服务（13-）" class="headerlink" title="五、存储服务（13%）"></a>五、存储服务（13%）</h2><h3 id="5-1-三类存储的分工（必考选型）"><a href="#5-1-三类存储的分工（必考选型）" class="headerlink" title="5.1 三类存储的分工（必考选型）"></a>5.1 三类存储的分工（必考选型）</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">产品</th>
+<th align="left">访问方式</th>
+<th align="left">可挂几台</th>
+<th align="left">场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">块存储</td>
+<td align="left">CBS 云硬盘</td>
+<td align="left">挂载为系统盘/数据盘</td>
+<td align="left">单台（共享盘需集群软件）</td>
+<td align="left">数据库、系统盘、高 IOPS 应用</td>
+</tr>
+<tr>
+<td align="left">文件存储</td>
+<td align="left">CFS</td>
+<td align="left">NFS / SMB 协议</td>
+<td align="left">多台同时挂载</td>
+<td align="left">共享目录、媒体处理、大数据、容器持久化</td>
+</tr>
+<tr>
+<td align="left">对象存储</td>
+<td align="left">COS</td>
+<td align="left">HTTP API / SDK</td>
+<td align="left">无限客户端</td>
+<td align="left">图片视频、备份、静态网站、数据湖</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-CBS-云硬盘"><a href="#5-2-CBS-云硬盘" class="headerlink" title="5.2 CBS 云硬盘"></a>5.2 CBS 云硬盘</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">特点</th>
+<th align="left">适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">高性能云硬盘</td>
+<td align="left">均衡，性价比高</td>
+<td align="left">一般业务、Web 服务器</td>
+</tr>
+<tr>
+<td align="left">SSD 云硬盘</td>
+<td align="left">高 IOPS、低延迟</td>
+<td align="left">数据库、高并发</td>
+</tr>
+<tr>
+<td align="left">增强型 SSD</td>
+<td align="left">更高性能上限、可调</td>
+<td align="left">核心数据库、大型应用</td>
+</tr>
+</tbody></table>
+<p>必记能力：</p>
+<ul>
+<li><strong>在线扩容</strong>：不停机扩容量，但<strong>扩容后还要在系统内扩展分区/文件系统</strong>（考题常问”扩了容量为什么磁盘没变大”）。</li>
+<li><strong>快照</strong>：增量、可回滚、可跨地域复制。</li>
+<li><strong>多副本</strong>：数据多副本存储，保障单点故障不丢数据。</li>
+<li>与实例<strong>同可用区</strong>才能挂载；跨区迁移靠”快照 → 新盘”。</li>
+</ul>
+<h3 id="5-3-CFS-文件存储"><a href="#5-3-CFS-文件存储" class="headerlink" title="5.3 CFS 文件存储"></a>5.3 CFS 文件存储</h3><ul>
+<li>协议：<strong>NFS（Linux）+ SMB/CIFS（Windows）</strong>，多客户端并发挂载同一目录。</li>
+<li>类型：标准型、性能型、吞吐型（按场景选 IOPS 与吞吐）。</li>
+<li>典型场景：多台 Web 服务器共享上传目录、视频转码共享素材、容器共享持久卷、大数据中间结果。</li>
+</ul>
+<h3 id="5-4-COS-对象存储（考得最细）"><a href="#5-4-COS-对象存储（考得最细）" class="headerlink" title="5.4 COS 对象存储（考得最细）"></a>5.4 COS 对象存储（考得最细）</h3><ul>
+<li>基本单位：<strong>存储桶 Bucket（地域级）+ 对象 Object（Key-Value）</strong>，无目录层级（用 <code>/</code> 模拟）。</li>
+<li>存储类（按访问频率从热到冷）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">存储类</th>
+<th align="left">特点</th>
+<th align="left">典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">标准存储</td>
+<td align="left">高频访问、低延迟</td>
+<td align="left">网站图片、音视频源、热数据</td>
+</tr>
+<tr>
+<td align="left">低频存储</td>
+<td align="left">存储便宜、取回有费用</td>
+<td align="left">备份、每月几次访问</td>
+</tr>
+<tr>
+<td align="left">归档存储</td>
+<td align="left">需<strong>解冻（恢复）</strong>后读取，分钟级</td>
+<td align="left">长期归档、合规留存</td>
+</tr>
+<tr>
+<td align="left">深度归档</td>
+<td align="left">最便宜、解冻最慢（小时级）</td>
+<td align="left">冷备、极少访问的历史数据</td>
+</tr>
+</tbody></table>
+<ul>
+<li>关键能力：<strong>生命周期规则</strong>（自动转低频/归档/删除）、<strong>版本控制</strong>（防误删覆盖）、<strong>跨地域复制</strong>、<strong>静态网站托管</strong>、<strong>防盗链</strong>、<strong>CDN 加速</strong>、<strong>数据万象 CI</strong>（图片裁剪/水印/审核）。</li>
+<li>权限模型：存储桶 ACL + 策略 + <strong>临时密钥（STS）</strong>，前端直传用临时密钥，别把永久密钥写进客户端。</li>
+<li>一致性：上传成功后立即可读（强一致），不必担心”刚传完读不到”。</li>
+</ul>
+<h3 id="5-5-选型决策口诀"><a href="#5-5-选型决策口诀" class="headerlink" title="5.5 选型决策口诀"></a>5.5 选型决策口诀</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">要挂成一块盘跑数据库        → CBS</span><br><span class="line">要多台机器共享一个目录        → CFS</span><br><span class="line">要存海量图片/视频/备份、走HTTP → COS</span><br><span class="line">本地存储要接云上             → 存储网关 CSG</span><br><span class="line">TB~PB 级离线搬迁             → 云数据迁移 CDM / 离线寄送</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="六、数据库服务（10-）"><a href="#六、数据库服务（10-）" class="headerlink" title="六、数据库服务（10%）"></a>六、数据库服务（10%）</h2><h3 id="6-1-产品全景"><a href="#6-1-产品全景" class="headerlink" title="6.1 产品全景"></a>6.1 产品全景</h3><table>
+<thead>
+<tr>
+<th align="left">类别</th>
+<th align="left">产品</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">关系型托管</td>
+<td align="left">TencentDB for MySQL / PostgreSQL / SQL Server / MariaDB</td>
+<td align="left">开箱即用、自动备份、主备高可用</td>
+</tr>
+<tr>
+<td align="left">分布式</td>
+<td align="left"><strong>TDSQL</strong>（MySQL 版 / PostgreSQL 版）</td>
+<td align="left">水平分片、分布式事务、金融级强一致</td>
+</tr>
+<tr>
+<td align="left">缓存</td>
+<td align="left">云数据库 Redis（标准版/集群版）</td>
+<td align="left">高并发读写、会话/热点缓存</td>
+</tr>
+<tr>
+<td align="left">文档</td>
+<td align="left">云数据库 MongoDB</td>
+<td align="left">灵活 schema、海量文档</td>
+</tr>
+<tr>
+<td align="left">时序</td>
+<td align="left">CTSDB</td>
+<td align="left">监控指标、IoT 数据</td>
+</tr>
+<tr>
+<td align="left">分析型</td>
+<td align="left">CDW 数据仓库</td>
+<td align="left">大规模 OLAP（见大数据章）</td>
+</tr>
+<tr>
+<td align="left">迁移同步</td>
+<td align="left">DTS 数据传输服务</td>
+<td align="left">迁移、实时同步、订阅</td>
+</tr>
+</tbody></table>
+<h3 id="6-2-必考概念"><a href="#6-2-必考概念" class="headerlink" title="6.2 必考概念"></a>6.2 必考概念</h3><ul>
+<li><strong>高可用形态</strong>：MySQL 双节点（一主一备，故障自动切换）；金融版/强同步（三节点，强一致但写入延迟略高）。</li>
+<li><strong>只读实例</strong>：分担读流量，<strong>不是高可用</strong>（主库故障仍需切换，不靠只读实例顶上）。</li>
+<li><strong>备份与 PITR</strong>：自动全量+增量备份，支持<strong>按时间点回档</strong>（误删数据恢复到删除前一刻），备份保留期可配。</li>
+<li><strong>跨地域灾备</strong>：跨区备份 + DTS 同步 + 跨区只读实例，构成异地容灾。</li>
+<li><strong>TDSQL 的核心</strong>：<strong>SET 分片（水平拆分）+ 全局事务管理器</strong>，解决单机容量与分布式事务；适合订单、账务等金融场景。</li>
+</ul>
+<h3 id="6-3-托管-vs-自建"><a href="#6-3-托管-vs-自建" class="headerlink" title="6.3 托管 vs 自建"></a>6.3 托管 vs 自建</h3><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">云数据库托管</th>
+<th align="left">自建在 CVM 上</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">运维</td>
+<td align="left">自动备份、监控、故障切换</td>
+<td align="left">全部自己管</td>
+</tr>
+<tr>
+<td align="left">高可用</td>
+<td align="left">主备自动切换</td>
+<td align="left">自己做主从+Keepalived</td>
+</tr>
+<tr>
+<td align="left">弹性</td>
+<td align="left">在线升配、扩只读</td>
+<td align="left">停机或手工迁移</td>
+</tr>
+<tr>
+<td align="left">成本</td>
+<td align="left">单价高但省人力</td>
+<td align="left">便宜但隐性成本高</td>
+</tr>
+<tr>
+<td align="left">适用</td>
+<td align="left">生产环境、绝大多数业务</td>
+<td align="left">特殊版本、强定制、学习测试</td>
+</tr>
+</tbody></table>
+<p><strong>选型关键词</strong>：题干出现”减少运维负担””自动备份””高可用” → 选托管；出现”需要 root 权限、特定插件、特殊版本” → 自建 CVM。</p>
+<h2 id="七、中间件服务（5-）"><a href="#七、中间件服务（5-）" class="headerlink" title="七、中间件服务（5%）"></a>七、中间件服务（5%）</h2><h3 id="7-1-TDMQ-消息队列家族"><a href="#7-1-TDMQ-消息队列家族" class="headerlink" title="7.1 TDMQ 消息队列家族"></a>7.1 TDMQ 消息队列家族</h3><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">协议/生态</th>
+<th align="left">特点</th>
+<th align="left">场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CKafka</td>
+<td align="left">Kafka 兼容</td>
+<td align="left">超高吞吐、分区顺序、日志/埋点首选</td>
+<td align="left">日志采集、流式数据管道</td>
+</tr>
+<tr>
+<td align="left">TDMQ for RabbitMQ</td>
+<td align="left">AMQP</td>
+<td align="left">路由灵活、队列模型丰富</td>
+<td align="left">业务解耦、任务分发</td>
+</tr>
+<tr>
+<td align="left">TDMQ for RocketMQ</td>
+<td align="left">RocketMQ</td>
+<td align="left">事务消息、顺序消息、堆积能力强</td>
+<td align="left">电商订单、支付、金融</td>
+</tr>
+<tr>
+<td align="left">TDMQ for Pulsar</td>
+<td align="left">Pulsar</td>
+<td align="left">多租户、存算分离、队列+流一体</td>
+<td align="left">大规模多业务共享</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-三个必考场景"><a href="#7-2-三个必考场景" class="headerlink" title="7.2 三个必考场景"></a>7.2 三个必考场景</h3><ul>
+<li><strong>异步解耦</strong>：下单后发消息，积分/短信/物流各自消费，主链路不被拖慢。</li>
+<li><strong>削峰填谷</strong>：秒杀流量先入队，后端按能力匀速消费。</li>
+<li><strong>顺序与事务</strong>：订单状态变更必须保序（RocketMQ 顺序消息）；”扣库存+发消息”要原子（事务消息）。</li>
+</ul>
+<p><strong>选型判据</strong>：吞吐最大 → CKafka；路由灵活 → RabbitMQ；事务/顺序/金融 → RocketMQ；多租户大规模 → Pulsar。</p>
+<h2 id="八、安全服务（5-）"><a href="#八、安全服务（5-）" class="headerlink" title="八、安全服务（5%）"></a>八、安全服务（5%）</h2><h3 id="8-1-云原生安全体系（按层记）"><a href="#8-1-云原生安全体系（按层记）" class="headerlink" title="8.1 云原生安全体系（按层记）"></a>8.1 云原生安全体系（按层记）</h3><table>
+<thead>
+<tr>
+<th align="left">层次</th>
+<th align="left">防护对象</th>
+<th align="left">腾讯云产品</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">网络边界</td>
+<td align="left">DDoS 攻击</td>
+<td align="left"><strong>DDoS 基础防护</strong>（免费）/ <strong>DDoS 高防</strong>（高防 IP、高防包）</td>
+</tr>
+<tr>
+<td align="left">应用层</td>
+<td align="left">SQL 注入、XSS、CC 攻击、爬虫</td>
+<td align="left"><strong>WAF  Web 应用防火墙</strong></td>
+</tr>
+<tr>
+<td align="left">网络流量</td>
+<td align="left">VPC 南北向/东西向访问控制</td>
+<td align="left"><strong>云防火墙</strong></td>
+</tr>
+<tr>
+<td align="left">主机/工作负载</td>
+<td align="left">木马、漏洞、基线、入侵</td>
+<td align="left"><strong>CWPP 主机安全（云镜）</strong>、容器安全</td>
+</tr>
+<tr>
+<td align="left">数据</td>
+<td align="left">密钥、敏感数据</td>
+<td align="left"><strong>KMS 密钥管理</strong>、数据安全审计、数据安全治理中心</td>
+</tr>
+<tr>
+<td align="left">身份与权限</td>
+<td align="left">账号、授权、临时凭证</td>
+<td align="left"><strong>CAM 访问管理</strong></td>
+</tr>
+<tr>
+<td align="left">审计与合规</td>
+<td align="left">操作记录、等保</td>
+<td align="left"><strong>云审计 CloudAudit</strong>、合规中心</td>
+</tr>
+</tbody></table>
+<h3 id="8-2-逐个必记点"><a href="#8-2-逐个必记点" class="headerlink" title="8.2 逐个必记点"></a>8.2 逐个必记点</h3><p><strong>DDoS</strong>：</p>
+<ul>
+<li>基础防护：默认免费提供，攻击超过免费防护能力会触发<strong>封堵（黑洞）</strong>，业务短时不可用。</li>
+<li>高防：BGP 高防 IP / 高防包，提供 T 级清洗能力、弹性防护、隐藏源站 IP。游戏、金融、政企是主要买家。</li>
+</ul>
+<p><strong>WAF</strong>：防护 <strong>OWASP Top 10</strong>（SQL 注入、XSS、命令注入等）、CC 攻击、恶意 BOT、自定义规则、防篡改；部署方式为 DNS 解析接入或 CLB 旁路接入。</p>
+<p><strong>CWPP 主机安全</strong>：木马查杀、漏洞检测与修复建议、基线合规（等保）、入侵检测、资产指纹。</p>
+<p><strong>云防火墙</strong>：VPC 边界的统一访问控制与流量审计，能管<strong>跨 VPC、跨子网的东西向流量</strong>（安全组管不到全局）。</p>
+<p><strong>KMS</strong>：托管主密钥、信封加密（数据密钥加密数据、主密钥加密数据密钥）、支持对称/非对称、可审计；与 COS/CBS/TencentDB 原生集成实现静态加密。</p>
+<p><strong>CAM 访问管理</strong>：</p>
+<ul>
+<li><strong>根账号</strong>只做登录与 billing，日常用<strong>子账号</strong>；给子账号授权用<strong>策略（Policy）</strong>。</li>
+<li><strong>角色（Role）</strong>用于跨账号访问、给云服务授权（如 COS 读 CVM）、联合身份（SSO），发的是<strong>临时密钥</strong>。</li>
+<li>原则：<strong>最小权限</strong>、按需授权、开启 MFA、密钥定期轮换。</li>
+<li>与 STS：临时访问凭证有有效期，前端直传 COS 必须用它，不能把永久密钥打到客户端。</li>
+</ul>
+<h2 id="九、大数据服务（10-）"><a href="#九、大数据服务（10-）" class="headerlink" title="九、大数据服务（10%）"></a>九、大数据服务（10%）</h2><h3 id="9-1-上云的价值"><a href="#9-1-上云的价值" class="headerlink" title="9.1 上云的价值"></a>9.1 上云的价值</h3><p>弹性算力（跑完就释放）、<strong>存算分离</strong>（数据放 COS，计算按需拉起）、免运维（集群由平台管）、按量计费（离线任务成本可控）。</p>
+<h3 id="9-2-四个核心产品（分工必须分清）"><a href="#9-2-四个核心产品（分工必须分清）" class="headerlink" title="9.2 四个核心产品（分工必须分清）"></a>9.2 四个核心产品（分工必须分清）</h3><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">定位</th>
+<th align="left">关键特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>EMR</strong></td>
+<td align="left">托管 Hadoop / Spark / Hive / Presto / Flink / HBase 集群</td>
+<td align="left">需要自己建集群、可控性强、适合复杂离线计算与数据湖</td>
+</tr>
+<tr>
+<td align="left"><strong>CDW 数据仓库</strong></td>
+<td align="left">分析型数据库（ClickHouse 等引擎）</td>
+<td align="left">高性能 OLAP、固定集群、适合报表与即席查询</td>
+</tr>
+<tr>
+<td align="left"><strong>DLC 数据湖计算</strong></td>
+<td align="left"><strong>Serverless SQL on COS</strong></td>
+<td align="left">不建集群、直接查对象存储、按扫描量计费</td>
+</tr>
+<tr>
+<td align="left"><strong>WeData</strong></td>
+<td align="left">一体化数据开发治理平台</td>
+<td align="left">数据集成、开发调度、ETL/ELT、数据质量、血缘、资产管理</td>
+</tr>
+</tbody></table>
+<h3 id="9-3-其他常考点"><a href="#9-3-其他常考点" class="headerlink" title="9.3 其他常考点"></a>9.3 其他常考点</h3><ul>
+<li><strong>流计算 Oceanus</strong>：Flink 全托管，实时计算（实时大屏、实时风控）。</li>
+<li><strong>Elasticsearch Service</strong>：日志检索与分析（ELK 的托管版）。</li>
+<li><strong>TBDS</strong>：腾讯大数据处理套件，私有化部署版本（政务/金融本地化场景）。</li>
+<li><strong>数据迁移</strong>：CDM 云数据迁移（本地/他云 → COS/EMR）、DTS（数据库）。</li>
+</ul>
+<h3 id="9-4-数据链路怎么串"><a href="#9-4-数据链路怎么串" class="headerlink" title="9.4 数据链路怎么串"></a>9.4 数据链路怎么串</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">采集（日志/埋点/CDM/DTS）</span><br><span class="line">   → 存储（COS 数据湖 / EMR HDFS / CDW）</span><br><span class="line">   → 计算（EMR 离线 / Oceanus 实时 / DLC 交互查询）</span><br><span class="line">   → 治理（WeData 调度+质量+血缘）</span><br><span class="line">   → 应用（BI 报表 / 数据服务 API）</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>选型判据</strong>：要”最省事、偶发查询对象存储” → DLC；要”高性能报表” → CDW；要”完整 Hadoop 生态、复杂作业” → EMR；要”全链路开发治理” → WeData。</p>
+<h2 id="十、AI-服务（12-）"><a href="#十、AI-服务（12-）" class="headerlink" title="十、AI 服务（12%）"></a>十、AI 服务（12%）</h2><h3 id="10-1-AI-能力三层（先分层，再选产品）"><a href="#10-1-AI-能力三层（先分层，再选产品）" class="headerlink" title="10.1 AI 能力三层（先分层，再选产品）"></a>10.1 AI 能力三层（先分层，再选产品）</h3><table>
+<thead>
+<tr>
+<th align="left">层</th>
+<th align="left">内容</th>
+<th align="left">代表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">基础设施层</td>
+<td align="left">GPU 算力、高速网络、存储</td>
+<td align="left">GPU 云服务器、高性能计算集群</td>
+</tr>
+<tr>
+<td align="left">平台层</td>
+<td align="left">训练/推理平台、AutoML</td>
+<td align="left"><strong>TI 平台（TI-ONE）</strong>、TI-AutoML、TI 加速</td>
+</tr>
+<tr>
+<td align="left">应用层</td>
+<td align="left">开箱即用的 API/SaaS</td>
+<td align="left">人脸、OCR、语音、NLP、混元</td>
+</tr>
+</tbody></table>
+<p><strong>判断口诀</strong>：有标注数据、要自己训模型 → 平台层（TI）；只要一个能力马上用 → 应用层 API。</p>
+<h3 id="10-2-平台层"><a href="#10-2-平台层" class="headerlink" title="10.2 平台层"></a>10.2 平台层</h3><ul>
+<li><strong>TI 平台</strong>：可视化建模、Notebook、训练任务、模型仓库、在线推理服务；底层可对接 CVM/GPU/TKE。</li>
+<li><strong>TI-AutoML</strong>：自动特征工程 + 超参搜索 + 模型选择，低代码建模。</li>
+<li><strong>TI 加速</strong>：推理加速（量化、编译优化），降延迟降成本。</li>
+<li><strong>Angel</strong>：腾讯自研的分布式训练框架（大规模稀疏模型）。</li>
+<li><strong>混元大模型 + 知识引擎 LKE</strong>：LKE 提供文档解析、切分、向量化、RAG 检索与问答编排，做企业知识库问答的标准路径。</li>
+</ul>
+<h3 id="10-3-应用层能力（题干关键词-→-产品）"><a href="#10-3-应用层能力（题干关键词-→-产品）" class="headerlink" title="10.3 应用层能力（题干关键词 → 产品）"></a>10.3 应用层能力（题干关键词 → 产品）</h3><table>
+<thead>
+<tr>
+<th align="left">需求关键词</th>
+<th align="left">产品/能力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">图片里有什么、以图搜图</td>
+<td align="left">图像识别、图像标签、图像搜索</td>
+</tr>
+<tr>
+<td align="left">身份证/发票/名片识别</td>
+<td align="left"><strong>OCR 文字识别</strong>（通用/卡证/票据）</td>
+</tr>
+<tr>
+<td align="left">人脸比对、活体检测、实名核身</td>
+<td align="left">人脸识别、<strong>人脸核身</strong></td>
+</tr>
+<tr>
+<td align="left">情感分析、分词、关键词、文本分类</td>
+<td align="left">自然语言处理 NLP</td>
+</tr>
+<tr>
+<td align="left">中英互译</td>
+<td align="left">机器翻译 TMT</td>
+</tr>
+<tr>
+<td align="left">语音转文字（实时/录音文件）</td>
+<td align="left">语音识别 ASR</td>
+</tr>
+<tr>
+<td align="left">文字转语音、配音</td>
+<td align="left">语音合成 TTS</td>
+</tr>
+<tr>
+<td align="left">声纹、语音唤醒</td>
+<td align="left">声纹识别、语音唤醒</td>
+</tr>
+<tr>
+<td align="left">文档问答、企业知识库</td>
+<td align="left"><strong>大模型知识引擎 LKE</strong></td>
+</tr>
+<tr>
+<td align="left">生成文案/图片/对话</td>
+<td align="left">混元大模型 API</td>
+</tr>
+</tbody></table>
+<p><strong>AI 服务的考试特点</strong>：几乎不考算法细节，只考”这个需求对应哪个产品能力”，以及”用 API 还是用平台自训”。</p>
+<h2 id="十一、企业应用服务（10-）"><a href="#十一、企业应用服务（10-）" class="headerlink" title="十一、企业应用服务（10%）"></a>十一、企业应用服务（10%）</h2><h3 id="11-1-CDN-三兄弟（最易混）"><a href="#11-1-CDN-三兄弟（最易混）" class="headerlink" title="11.1 CDN 三兄弟（最易混）"></a>11.1 CDN 三兄弟（最易混）</h3><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">全称</th>
+<th align="left">加速对象</th>
+<th align="left">场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>CDN</strong></td>
+<td align="left">内容分发网络</td>
+<td align="left">静态资源（图片、视频、JS/CSS、安装包）</td>
+<td align="left">网站加速、下载分发</td>
+</tr>
+<tr>
+<td align="left"><strong>ECDN</strong></td>
+<td align="left">全站加速</td>
+<td align="left">动态请求 + 静态资源统一加速</td>
+<td align="left">动态接口多、跨运营商访问慢的站点</td>
+</tr>
+<tr>
+<td align="left"><strong>SCDN</strong></td>
+<td align="left">安全加速</td>
+<td align="left">CDN + 安全防护（WAF/DDoS/防爬）</td>
+<td align="left">既要加速又要防攻击</td>
+</tr>
+</tbody></table>
+<p>CDN 必记：<strong>边缘节点缓存 + 回源</strong>、缓存刷新/预预热、防盗链（Referer/时间戳鉴权）、HTTPS 证书托管、按流量或带宽计费。</p>
+<h3 id="11-2-域名与解析"><a href="#11-2-域名与解析" class="headerlink" title="11.2 域名与解析"></a>11.2 域名与解析</h3><ul>
+<li><strong>DNSPod</strong>：域名注册、DNS 解析、<strong>智能解析</strong>（按运营商/地域返回不同 IP）、负载均衡解析、宕机切换。</li>
+<li><strong>私有域解析 Private DNS</strong>：内网域名解析，VPC 内自定义域名。</li>
+<li>域名必须<strong>实名认证</strong>并完成备案（境内服务器）才能对外提供 HTTP 服务。</li>
+</ul>
+<h3 id="11-3-SSL-证书"><a href="#11-3-SSL-证书" class="headerlink" title="11.3 SSL 证书"></a>11.3 SSL 证书</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">校验内容</th>
+<th align="left">适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">DV 域名型</td>
+<td align="left">只验证域名所有权</td>
+<td align="left">个人站、测试环境</td>
+</tr>
+<tr>
+<td align="left">OV 组织型</td>
+<td align="left">验证企业真实身份</td>
+<td align="left">企业官网、电商</td>
+</tr>
+<tr>
+<td align="left">EV 增强型</td>
+<td align="left">最严格审核，浏览器显示企业名</td>
+<td align="left">金融、支付、品牌站</td>
+</tr>
+</tbody></table>
+<p>证书可<strong>一键部署</strong>到 CLB、CDN、COS 自定义域名，支持自动续期与托管。</p>
+<h3 id="11-4-其他企业服务"><a href="#11-4-其他企业服务" class="headerlink" title="11.4 其他企业服务"></a>11.4 其他企业服务</h3><ul>
+<li><strong>建站</strong>：轻量应用服务器 + 建站模板/云市场镜像，快速上线小型站点。</li>
+<li><strong>企业邮箱</strong>：域名邮箱、与微信/企业微信联动。</li>
+<li><strong>云市场</strong>：第三方 SaaS/镜像/服务市场，按需订阅。</li>
+<li><strong>CODING DevOps</strong>：代码托管、CI/CD、制品库（SaaS + 私有化）。</li>
+</ul>
+<h2 id="十二、音视频与通信服务（5-）"><a href="#十二、音视频与通信服务（5-）" class="headerlink" title="十二、音视频与通信服务（5%）"></a>十二、音视频与通信服务（5%）</h2><table>
+<thead>
+<tr>
+<th align="left">产品</th>
+<th align="left">定位</th>
+<th align="left">关键能力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>TRTC 实时音视频</strong></td>
+<td align="left">低延迟互动</td>
+<td align="left">多人通话、互动直播、屏幕共享、终端 SDK（iOS/Android/Web/小程序），延迟在百毫秒级</td>
+</tr>
+<tr>
+<td align="left"><strong>TCCC 云联络中心</strong></td>
+<td align="left">云呼叫中心</td>
+<td align="left">号码接入、IVR、坐席管理、通话录音、质检</td>
+</tr>
+<tr>
+<td align="left"><strong>VOD 视频点播</strong></td>
+<td align="left">上传-转码-播放全链路</td>
+<td align="left">上传 SDK、转码模板、截图、水印、加密、防盗链、播放器</td>
+</tr>
+<tr>
+<td align="left"><strong>CSS 云直播</strong></td>
+<td align="left">直播推拉流</td>
+<td align="left">推流、实时转码、录制、时移、鉴黄、直播水印</td>
+</tr>
+<tr>
+<td align="left"><strong>LEB 快直播</strong></td>
+<td align="left">超低延迟直播</td>
+<td align="left">基于 WebRTC 的直播分发，延迟秒级降到百毫秒</td>
+</tr>
+<tr>
+<td align="left"><strong>音视频终端 SDK</strong></td>
+<td align="left">端侧能力</td>
+<td align="left">美颜、变声、AI 特效</td>
+</tr>
+</tbody></table>
+<p><strong>场景配对题</strong>：在线教育互动课堂 → TRTC；客服呼叫 → TCCC；课程回看 → VOD；大型公开课直播 → CSS/LEB。</p>
+<h2 id="十三、高频易混点（考前速览）"><a href="#十三、高频易混点（考前速览）" class="headerlink" title="十三、高频易混点（考前速览）"></a>十三、高频易混点（考前速览）</h2><table>
+<thead>
+<tr>
+<th align="left">易混对</th>
+<th align="left">区分点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CVM vs Lighthouse</td>
+<td align="left">完整 IaaS 灵活 vs 固定套餐省心</td>
+</tr>
+<tr>
+<td align="left">裸金属 vs CDH</td>
+<td align="left">一台物理机给你用 vs 一台物理机上自己建多台虚机</td>
+</tr>
+<tr>
+<td align="left">包年包月 vs 按量 vs 竞价</td>
+<td align="left">长期省 vs 灵活贵 vs 最便宜但会被回收</td>
+</tr>
+<tr>
+<td align="left">安全组 vs 网络 ACL</td>
+<td align="left">实例级有状态 vs 子网级无状态</td>
+</tr>
+<tr>
+<td align="left">CLB vs ALB vs GWLB</td>
+<td align="left">通用四/七层 vs 七层规则路由 vs 引流给安全设备</td>
+</tr>
+<tr>
+<td align="left">专线 vs VPN vs CCN</td>
+<td align="left">物理专线 vs 公网加密隧道 vs 多 VPC 一张网</td>
+</tr>
+<tr>
+<td align="left">CBS vs CFS vs COS</td>
+<td align="left">块单机 vs 文件多机 vs 对象海量</td>
+</tr>
+<tr>
+<td align="left">COS 标准 vs 低频 vs 归档 vs 深度归档</td>
+<td align="left">越冷越便宜、取回越慢、可能要解冻</td>
+</tr>
+<tr>
+<td align="left">MySQL 主备 vs 只读实例</td>
+<td align="left">高可用切换 vs 读扩展</td>
+</tr>
+<tr>
+<td align="left">TDSQL vs TencentDB MySQL</td>
+<td align="left">分布式分片 vs 单机托管</td>
+</tr>
+<tr>
+<td align="left">EMR vs CDW vs DLC</td>
+<td align="left">自建集群 vs 分析型数仓 vs Serverless 查 COS</td>
+</tr>
+<tr>
+<td align="left">TI 平台 vs AI 应用 API</td>
+<td align="left">自己训练 vs 直接调用</td>
+</tr>
+<tr>
+<td align="left">CDN vs ECDN vs SCDN</td>
+<td align="left">静态 vs 动静一体 vs 加安全</td>
+</tr>
+<tr>
+<td align="left">DV vs OV vs EV</td>
+<td align="left">验域名 vs 验企业 vs 最强审核</td>
+</tr>
+<tr>
+<td align="left">DDoS 基础 vs 高防</td>
+<td align="left">免费有限、超了就封 vs 付费大流量清洗</td>
+</tr>
+<tr>
+<td align="left">WAF vs 云防火墙 vs CWPP</td>
+<td align="left">七层应用攻击 vs VPC 流量管控 vs 主机安全</td>
+</tr>
+<tr>
+<td align="left">CAM 子账号 vs 角色</td>
+<td align="left">长期身份 vs 临时凭证/跨账号/服务授权</td>
+</tr>
+<tr>
+<td align="left">TRTC vs CSS vs VOD</td>
+<td align="left">互动通话 vs 直播分发 vs 点播回看</td>
+</tr>
+</tbody></table>
+<h2 id="十四、关键词-→-答案（应试套路）"><a href="#十四、关键词-→-答案（应试套路）" class="headerlink" title="十四、关键词 → 答案（应试套路）"></a>十四、关键词 → 答案（应试套路）</h2><table>
+<thead>
+<tr>
+<th align="left">题干关键词</th>
+<th align="left">优先选</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">免运维 / 不用管服务器</td>
+<td align="left">SCF、TKE Serverless、DLC、托管数据库</td>
+</tr>
+<tr>
+<td align="left">成本最低 / 可中断</td>
+<td align="left">竞价实例、COS 归档、DLC</td>
+</tr>
+<tr>
+<td align="left">弹性和高可用</td>
+<td align="left">AS + CLB 多可用区、主备数据库</td>
+</tr>
+<tr>
+<td align="left">多台机器共享文件</td>
+<td align="left">CFS</td>
+</tr>
+<tr>
+<td align="left">海量图片视频存储</td>
+<td align="left">COS + CDN</td>
+</tr>
+<tr>
+<td align="left">数据库读写压力大</td>
+<td align="left">加只读实例 + Redis 缓存</td>
+</tr>
+<tr>
+<td align="left">订单/支付强一致</td>
+<td align="left">TDSQL、RocketMQ 事务消息</td>
+</tr>
+<tr>
+<td align="left">日志采集与流式管道</td>
+<td align="left">CKafka</td>
+</tr>
+<tr>
+<td align="left">秒杀削峰</td>
+<td align="left">消息队列 + AS</td>
+</tr>
+<tr>
+<td align="left">静态资源加速</td>
+<td align="left">CDN</td>
+</tr>
+<tr>
+<td align="left">动态接口慢</td>
+<td align="left">ECDN</td>
+</tr>
+<tr>
+<td align="left">既要加速又要防攻击</td>
+<td align="left">SCDN</td>
+</tr>
+<tr>
+<td align="left">被 DDoS 打挂了</td>
+<td align="left">DDoS 高防</td>
+</tr>
+<tr>
+<td align="left">SQL 注入 / XSS / CC</td>
+<td align="left">WAF</td>
+</tr>
+<tr>
+<td align="left">主机木马、漏洞</td>
+<td align="left">CWPP 主机安全</td>
+</tr>
+<tr>
+<td align="left">权限最小化、临时凭证</td>
+<td align="left">CAM + STS</td>
+</tr>
+<tr>
+<td align="left">查对象存储上的数据、不建集群</td>
+<td align="left">DLC</td>
+</tr>
+<tr>
+<td align="left">托管 Hadoop 生态</td>
+<td align="left">EMR</td>
+</tr>
+<tr>
+<td align="left">数据开发调度血缘</td>
+<td align="left">WeData</td>
+</tr>
+<tr>
+<td align="left">自己训练模型</td>
+<td align="left">TI 平台</td>
+</tr>
+<tr>
+<td align="left">直接用人脸/OCR/语音能力</td>
+<td align="left">对应 AI 应用 API</td>
+</tr>
+<tr>
+<td align="left">企业知识库问答</td>
+<td align="left">混元 + 知识引擎 LKE</td>
+</tr>
+<tr>
+<td align="left">互动课堂、视频通话</td>
+<td align="left">TRTC</td>
+</tr>
+<tr>
+<td align="left">课程回看、视频上传转码</td>
+<td align="left">VOD</td>
+</tr>
+<tr>
+<td align="left">大班直播</td>
+<td align="left">CSS / LEB</td>
+</tr>
+</tbody></table>
+<h2 id="十五、备考建议"><a href="#十五、备考建议" class="headerlink" title="十五、备考建议"></a>十五、备考建议</h2><p><strong>三周节奏</strong>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">周</th>
+<th align="left">重点</th>
+<th align="left">目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">第 1 周</td>
+<td align="left">云服务器 + 网络 + 存储（占 40%）</td>
+<td align="left">能画出三层 Web 架构并说出每层产品</td>
+</tr>
+<tr>
+<td align="left">第 2 周</td>
+<td align="left">数据库 + 中间件 + 大数据 + AI（占 37%）</td>
+<td align="left">每个产品一句话定位、能选型</td>
+</tr>
+<tr>
+<td align="left">第 3 周</td>
+<td align="left">安全 + 企业应用 + 音视频（占 20%）+ 刷题</td>
+<td align="left">易混对照表能默写，模拟题稳定 80 分以上</td>
+</tr>
+</tbody></table>
+<p><strong>方法</strong>：</p>
+<ul>
+<li>官方考点文档里的”考核重点”逐条对照本文，能说出”这个知识点对应哪个产品”就算过。</li>
+<li>免费模拟考试在开考前 5–7 天发给当期考生，<strong>一定要做</strong>，用来校准题型手感。</li>
+<li>多选题<strong>只选确定的</strong>：错选漏选都 0 分，宁少不多。</li>
+</ul>
+<p><strong>答题技巧</strong>：</p>
+<ul>
+<li>带 always / 只能 / 全部 的选项基本错。</li>
+<li>“最省钱”和”最省运维”经常冲突，看清题干问的是哪个。</li>
+<li>看到”长期稳定”→ 包年包月；”临时/波动”→ 按量；”可中断”→ 竞价。</li>
+<li>不确定时选<strong>托管服务</strong>、选<strong>多可用区</strong>，这两个方向命中率最高。</li>
+</ul>
+<p><strong>一页速记</strong>：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">考试：60题(40单选+20多选)/90分钟/70分过/多选无部分分</span><br><span class="line">权重：云服务器14 网络13 存储13 AI12 数据库10 大数据10 企业应用10 中间件5 安全5 音视频5 概述3</span><br><span class="line">计费：包年包月(稳定最省) 按量(灵活) 竞价(最便宜可回收)</span><br><span class="line">网络：安全组=实例级有状态  网络ACL=子网级无状态</span><br><span class="line">存储：CBS块单机 / CFS文件多机 / COS对象海量(标准-低频-归档-深度归档)</span><br><span class="line">数据库：MySQL托管主备 / TDSQL分片分布式 / Redis缓存 / DTS迁移</span><br><span class="line">大数据：EMR建集群 / CDW数仓 / DLC查COS按量 / WeData开发治理</span><br><span class="line">AI：三层=算力-TI平台-应用API；混元+LKE做知识库</span><br><span class="line">安全：DDoS基础免费高防付费 / WAF挡七层 / CWPP管主机 / CAM管权限用STS临时密钥</span><br><span class="line">企业：CDN静态 / ECDN动静 / SCDN加安全；证书DV&lt;OV&lt;EV</span><br><span class="line">音视频：TRTC互动 / CSS直播 / VOD点播 / TCCC呼叫中心</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="十六、参考"><a href="#十六、参考" class="headerlink" title="十六、参考"></a>十六、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/658/134091">腾讯云从业者认证考试指南（官方，含知识点占比）</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/edu/training">腾讯云培训认证官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/product">腾讯云产品总览</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product">腾讯云文档中心</a></li>
+</ol>
+
     </div>
 
     
@@ -424,7 +1659,7 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2024/07/18/Cloud-AWS/" rel="prev" title="AWS">
+                <a href="/2024/07/18/Cloud-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF/" rel="prev" title="AWS">
                   AWS <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -465,7 +1700,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">列表</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tencent-Cloud-Practitioner"><span class="nav-number">1.</span> <span class="nav-text">Tencent Cloud Practitioner</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%80%83%E8%AF%95%E6%A6%82%E8%A7%88"><span class="nav-number">1.1.</span> <span class="nav-text">一、考试概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%85%BE%E8%AE%AF%E4%B8%8E%E8%85%BE%E8%AE%AF%E4%BA%91%E6%A6%82%E8%BF%B0%EF%BC%883-%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">二、腾讯与腾讯云概述（3%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%85%BE%E8%AE%AF%E4%BA%91%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 腾讯云是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%8E%B0%E4%BB%A3%E7%BD%91%E7%AB%99%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%B8%B8%E4%BD%9C%E4%B8%BA%E8%83%8C%E6%99%AF%E9%A2%98%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 现代网站的工作原理（常作为背景题）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%9C%AC%E5%9C%B0%E8%87%AA%E5%BB%BA-vs-%E4%BA%91%E4%B8%8A"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 本地自建 vs 云上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%9B%9B%E7%A7%8D%E9%83%A8%E7%BD%B2%E6%A8%A1%E5%9E%8B-%E4%B8%89%E7%A7%8D%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 四种部署模型 + 三种服务模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E4%BA%91%E8%AE%A1%E7%AE%97%E7%9A%84%E5%85%AD%E5%A4%A7%E4%BC%98%E5%8A%BF"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 云计算的六大优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BA%91%E8%AE%A1%E7%AE%97%E6%9C%8D%E5%8A%A1%EF%BC%8814-%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">三、云计算服务（14%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%BA%A7%E5%93%81%E5%85%A8%E6%99%AF%EF%BC%88%E5%85%88%E8%AE%B0%E4%BD%8F%E2%80%9D%E8%B0%81%E6%98%AF%E8%B0%81%E2%80%9D%EF%BC%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 产品全景（先记住”谁是谁”）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-CVM-%E5%85%B3%E9%94%AE%E8%80%83%E7%82%B9"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 CVM 关键考点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9-AS"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 弹性伸缩 AS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%AE%B9%E5%99%A8%E4%B8%8E-Serverless"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 容器与 Serverless</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%EF%BC%8813-%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">四、网络服务（13%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-VPC-%E5%9F%BA%E7%A1%80%EF%BC%88%E6%9C%80%E9%AB%98%E9%A2%91%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 VPC 基础（最高频）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%AE%89%E5%85%A8%E7%BB%84-vs-%E7%BD%91%E7%BB%9C-ACL%EF%BC%88%E6%9C%80%E7%BB%8F%E5%85%B8%E7%9A%84%E5%AF%B9%E6%AF%94%E9%A2%98%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 安全组 vs 网络 ACL（最经典的对比题）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-CLB-%E5%AE%B6%E6%97%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 负载均衡 CLB 家族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%B7%B7%E5%90%88%E4%BA%91%E4%B8%8E%E4%BA%92%E8%81%94"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 混合云与互联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E5%85%B8%E5%9E%8B%E4%B8%89%E5%B1%82-Web-%E5%8F%82%E8%80%83%E6%9E%B6%E6%9E%84%EF%BC%88%E7%94%BB%E5%BE%97%E5%87%BA%E6%9D%A5%E5%B0%B1%E8%83%BD%E7%AD%94%E4%B8%80%E5%8D%8A%E9%A2%98%EF%BC%89"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 典型三层 Web 参考架构（画得出来就能答一半题）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%EF%BC%8813-%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">五、存储服务（13%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%B8%89%E7%B1%BB%E5%AD%98%E5%82%A8%E7%9A%84%E5%88%86%E5%B7%A5%EF%BC%88%E5%BF%85%E8%80%83%E9%80%89%E5%9E%8B%EF%BC%89"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 三类存储的分工（必考选型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-CBS-%E4%BA%91%E7%A1%AC%E7%9B%98"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 CBS 云硬盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-CFS-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 CFS 文件存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-COS-%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%EF%BC%88%E8%80%83%E5%BE%97%E6%9C%80%E7%BB%86%EF%BC%89"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 COS 对象存储（考得最细）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E9%80%89%E5%9E%8B%E5%86%B3%E7%AD%96%E5%8F%A3%E8%AF%80"><span class="nav-number">1.5.5.</span> <span class="nav-text">5.5 选型决策口诀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%8D%E5%8A%A1%EF%BC%8810-%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">六、数据库服务（10%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E4%BA%A7%E5%93%81%E5%85%A8%E6%99%AF"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 产品全景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%BF%85%E8%80%83%E6%A6%82%E5%BF%B5"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 必考概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E6%89%98%E7%AE%A1-vs-%E8%87%AA%E5%BB%BA"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 托管 vs 自建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%9C%8D%E5%8A%A1%EF%BC%885-%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">七、中间件服务（5%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-TDMQ-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%AE%B6%E6%97%8F"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 TDMQ 消息队列家族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E4%B8%89%E4%B8%AA%E5%BF%85%E8%80%83%E5%9C%BA%E6%99%AF"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 三个必考场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%EF%BC%885-%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">八、安全服务（5%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB%EF%BC%88%E6%8C%89%E5%B1%82%E8%AE%B0%EF%BC%89"><span class="nav-number">1.8.1.</span> <span class="nav-text">8.1 云原生安全体系（按层记）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E9%80%90%E4%B8%AA%E5%BF%85%E8%AE%B0%E7%82%B9"><span class="nav-number">1.8.2.</span> <span class="nav-text">8.2 逐个必记点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%8D%E5%8A%A1%EF%BC%8810-%EF%BC%89"><span class="nav-number">1.9.</span> <span class="nav-text">九、大数据服务（10%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E4%B8%8A%E4%BA%91%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="nav-number">1.9.1.</span> <span class="nav-text">9.1 上云的价值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E5%9B%9B%E4%B8%AA%E6%A0%B8%E5%BF%83%E4%BA%A7%E5%93%81%EF%BC%88%E5%88%86%E5%B7%A5%E5%BF%85%E9%A1%BB%E5%88%86%E6%B8%85%EF%BC%89"><span class="nav-number">1.9.2.</span> <span class="nav-text">9.2 四个核心产品（分工必须分清）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-%E5%85%B6%E4%BB%96%E5%B8%B8%E8%80%83%E7%82%B9"><span class="nav-number">1.9.3.</span> <span class="nav-text">9.3 其他常考点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E6%80%8E%E4%B9%88%E4%B8%B2"><span class="nav-number">1.9.4.</span> <span class="nav-text">9.4 数据链路怎么串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81AI-%E6%9C%8D%E5%8A%A1%EF%BC%8812-%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">十、AI 服务（12%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-AI-%E8%83%BD%E5%8A%9B%E4%B8%89%E5%B1%82%EF%BC%88%E5%85%88%E5%88%86%E5%B1%82%EF%BC%8C%E5%86%8D%E9%80%89%E4%BA%A7%E5%93%81%EF%BC%89"><span class="nav-number">1.10.1.</span> <span class="nav-text">10.1 AI 能力三层（先分层，再选产品）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-%E5%B9%B3%E5%8F%B0%E5%B1%82"><span class="nav-number">1.10.2.</span> <span class="nav-text">10.2 平台层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-%E5%BA%94%E7%94%A8%E5%B1%82%E8%83%BD%E5%8A%9B%EF%BC%88%E9%A2%98%E5%B9%B2%E5%85%B3%E9%94%AE%E8%AF%8D-%E2%86%92-%E4%BA%A7%E5%93%81%EF%BC%89"><span class="nav-number">1.10.3.</span> <span class="nav-text">10.3 应用层能力（题干关键词 → 产品）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%EF%BC%8810-%EF%BC%89"><span class="nav-number">1.11.</span> <span class="nav-text">十一、企业应用服务（10%）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-CDN-%E4%B8%89%E5%85%84%E5%BC%9F%EF%BC%88%E6%9C%80%E6%98%93%E6%B7%B7%EF%BC%89"><span class="nav-number">1.11.1.</span> <span class="nav-text">11.1 CDN 三兄弟（最易混）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-%E5%9F%9F%E5%90%8D%E4%B8%8E%E8%A7%A3%E6%9E%90"><span class="nav-number">1.11.2.</span> <span class="nav-text">11.2 域名与解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-3-SSL-%E8%AF%81%E4%B9%A6"><span class="nav-number">1.11.3.</span> <span class="nav-text">11.3 SSL 证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-4-%E5%85%B6%E4%BB%96%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.11.4.</span> <span class="nav-text">11.4 其他企业服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E9%9F%B3%E8%A7%86%E9%A2%91%E4%B8%8E%E9%80%9A%E4%BF%A1%E6%9C%8D%E5%8A%A1%EF%BC%885-%EF%BC%89"><span class="nav-number">1.12.</span> <span class="nav-text">十二、音视频与通信服务（5%）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E9%AB%98%E9%A2%91%E6%98%93%E6%B7%B7%E7%82%B9%EF%BC%88%E8%80%83%E5%89%8D%E9%80%9F%E8%A7%88%EF%BC%89"><span class="nav-number">1.13.</span> <span class="nav-text">十三、高频易混点（考前速览）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%85%B3%E9%94%AE%E8%AF%8D-%E2%86%92-%E7%AD%94%E6%A1%88%EF%BC%88%E5%BA%94%E8%AF%95%E5%A5%97%E8%B7%AF%EF%BC%89"><span class="nav-number">1.14.</span> <span class="nav-text">十四、关键词 → 答案（应试套路）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%A4%87%E8%80%83%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.15.</span> <span class="nav-text">十五、备考建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.16.</span> <span class="nav-text">十六、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -481,7 +1716,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">260</span>
+          <span class="site-state-item-count">261</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -521,7 +1756,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -587,12 +1822,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">1.2m</span>
+    <span title="站点总字数">1.3m</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:47</span>
+    <span title="站点阅读时长">19:18</span>
 </div>
 
         

@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/kid.jpg?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/kid.jpg?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: 'CEML8BS4YV',
+      apiKey: '3ebedf719e70c7f3923acf70ba444a53',
+      indexName: 'blog',
+      hits: {"per_page":20},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS">
+<meta property="og:url" content="https://liusir.net/2024/07/18/Cloud-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF/index.html">
+<meta property="og:site_name" content="liusir.net">
+<meta property="og:description" content="你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-18T01:37:21.000Z">
+<meta property="article:modified_time" content="2026-11-25T09:20:47.926Z">
+<meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="阿里云">
+<meta property="article:tag" content="Cloud">
+<meta property="article:tag" content="ECS">
+<meta property="article:tag" content="腾讯云">
+<meta property="article:tag" content="AWS">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://liusir.net/2024/07/18/Cloud-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>AWS | liusir.net</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/liusirdotnet" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liusir.net</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">平平淡淡从从容容</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-world">
+
+    <a href="/world/" rel="section"><i class="fa fa-fw fa-globe"></i>世界</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-fw fa-book"></i>手册</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-hand-o-up"></i>
+  </span>
+  <div class="search-input" id="search-input"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2024/07/18/Cloud-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/kid.jpg">
+      <meta itemprop="name" content="刘三儿">
+      <meta itemprop="description" content="天道酬勤 自强不息">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liusir.net">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS
+        </h1>
+
+        <div class="post-meta">
+
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-07-18 09:37:21" itemprop="dateCreated datePublished" datetime="2024-07-18T09:37:21+08:00">2024-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cloud/" itemprop="url" rel="index">
+                    <span itemprop="name">Cloud</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="AWS-Cloud-Practitioner-阿里云ACA云计算-腾讯云从业者-对比-amp-备考路线"><a href="#AWS-Cloud-Practitioner-阿里云ACA云计算-腾讯云从业者-对比-amp-备考路线" class="headerlink" title="AWS Cloud Practitioner / 阿里云ACA云计算 / 腾讯云从业者 对比&amp;备考路线"></a><center><font color="red">AWS Cloud Practitioner / 阿里云ACA云计算 / 腾讯云从业者 对比&amp;备考路线</font></center></h1><blockquote>
+<p>版本说明：AWS CLF-C02、阿里云云计算ACA、腾讯云从业者认证（Tencent Cloud Practitioner）</p>
+</blockquote>
+<h2 id="一、基础信息对比表"><a href="#一、基础信息对比表" class="headerlink" title="一、基础信息对比表"></a>一、基础信息对比表</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>AWS Cloud Practitioner（CLF-C02）</th>
+<th>阿里云云计算工程师 ACA</th>
+<th>腾讯云从业者认证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>入门从业者，通用云认知，不绑定岗位</td>
+<td>阿里云入门基础认证，产品识别+基础选型</td>
+<td>对标AWS Practitioner，腾讯云全景入门</td>
+</tr>
+<tr>
+<td>考试时长</td>
+<td>90分钟</td>
+<td>90分钟</td>
+<td>90分钟</td>
+</tr>
+<tr>
+<td>题量</td>
+<td>65题（含15道不计分）</td>
+<td>50题（单选+多选+判断）</td>
+<td>60题：单选40、多选20</td>
+</tr>
+<tr>
+<td>合格线</td>
+<td>700/1000</td>
+<td>70/100</td>
+<td>70/100</td>
+</tr>
+<tr>
+<td>考试形式</td>
+<td>线上/线下考点</td>
+<td>线上机考</td>
+<td>线上理论考试</td>
+</tr>
+<tr>
+<td>费用</td>
+<td>约100USD</td>
+<td>600元（订单含2次机会，1年内）</td>
+<td>官网可查，价格更低</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>中英可选</td>
+<td>中文</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>进阶路线</td>
+<td>SAA→DVA→SysOps等</td>
+<td>ACP→ACE</td>
+<td>TCCA→TCCP</td>
+</tr>
+</tbody></table>
+<h2 id="二、考试大纲-amp-分值权重对比"><a href="#二、考试大纲-amp-分值权重对比" class="headerlink" title="二、考试大纲&amp;分值权重对比"></a>二、考试大纲&amp;分值权重对比</h2><h3 id="AWS-Cloud-Practitioner（CLF-C02）"><a href="#AWS-Cloud-Practitioner（CLF-C02）" class="headerlink" title="AWS Cloud Practitioner（CLF-C02）"></a>AWS Cloud Practitioner（CLF-C02）</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>权重</th>
+<th>核心考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>云概念 Cloud Concepts</td>
+<td>24%</td>
+<td>云计算价值、云优势、架构设计原则、迁移策略、CAP、弹性/可扩展性</td>
+</tr>
+<tr>
+<td>安全与合规 Security and Compliance</td>
+<td>30%</td>
+<td><strong>共享责任模型</strong>、IAM、加密、合规体系、安全最佳实践、日志审计</td>
+</tr>
+<tr>
+<td>云技术与服务 Technology &amp; Services</td>
+<td>34%</td>
+<td>EC2、S3、RDS、VPC、Lambda、SQS/SNS、DynamoDB、基础AI/大数据服务，区分产品适用场景</td>
+</tr>
+<tr>
+<td>账单定价与支持 Billing &amp; Support</td>
+<td>12%</td>
+<td>计费模式、预留实例、Savings Plans、预算、Cost Explorer、Support计划</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特点：<strong>非常看重共享责任模型、安全合规、云理念</strong>；不考复杂配置，重在“识别服务、选场景”</p>
+</blockquote>
+<h3 id="阿里云-云计算ACA"><a href="#阿里云-云计算ACA" class="headerlink" title="阿里云 云计算ACA"></a>阿里云 云计算ACA</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>权重</th>
+<th>核心考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>云计算基础</td>
+<td>10%</td>
+<td>IaaS/PaaS/SaaS、虚拟化、云优势、上云价值</td>
+</tr>
+<tr>
+<td>弹性计算（ECS）</td>
+<td>25%</td>
+<td>ECS实例、镜像、快照、弹性伸缩ESS、停机/计费模式</td>
+</tr>
+<tr>
+<td>云网络（VPC/SLB）</td>
+<td>20%</td>
+<td>VPC、安全组、NAT、SLB负载均衡、路由、网络隔离</td>
+</tr>
+<tr>
+<td>云存储（OSS/块存储）</td>
+<td>15%</td>
+<td>OSS、块存储、文件存储、冷热分层、访问权限</td>
+</tr>
+<tr>
+<td>云数据库RDS</td>
+<td>10%</td>
+<td>RDS主从、备份、只读实例、DTS、数据库选型</td>
+</tr>
+<tr>
+<td>云容器</td>
+<td>10%</td>
+<td>ACK基础概念、容器基础</td>
+</tr>
+<tr>
+<td>云安全 &amp; 监控</td>
+<td>10%</td>
+<td>RAM、DDoS、WAF、云监控、安全职责划分</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特点：<strong>偏国内阿里云产品细节</strong>，ECS、VPC、SLB占比很高；国内业务、等保相关内容</p>
+</blockquote>
+<h3 id="腾讯云从业者认证"><a href="#腾讯云从业者认证" class="headerlink" title="腾讯云从业者认证"></a>腾讯云从业者认证</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>权重</th>
+<th>核心考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>腾讯云概览</td>
+<td>3%</td>
+<td>腾讯云生态、产品线全景</td>
+</tr>
+<tr>
+<td>云计算基础</td>
+<td>13%</td>
+<td>云计算基础概念、交付模式、上云价值</td>
+</tr>
+<tr>
+<td>基础设施（计算/网络/存储）</td>
+<td>27%</td>
+<td>CVM、CLB、VPC、COS、CBS、CFS、CDN</td>
+</tr>
+<tr>
+<td>云数据库</td>
+<td>10%</td>
+<td>MySQL、PostgreSQL、TDSQL、DBbrain、迁移</td>
+</tr>
+<tr>
+<td>中间件</td>
+<td>5%</td>
+<td>Redis、消息队列等基础认知</td>
+</tr>
+<tr>
+<td>安全产品</td>
+<td>12%</td>
+<td>CAM、WAF、DDoS、密钥、审计</td>
+</tr>
+<tr>
+<td>大数据/AI/企业应用</td>
+<td>15%</td>
+<td>混元、大数据、音视频、企业应用</td>
+</tr>
+<tr>
+<td>计费与成本</td>
+<td>5%</td>
+<td>计费方式、包年包月/按量、成本优化</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特点：<strong>结构最贴近AWS Practitioner</strong>，产品广度大，音视频、混元AI是特色考点</p>
+</blockquote>
+<h2 id="三、三者核心差异一句话总结"><a href="#三、三者核心差异一句话总结" class="headerlink" title="三、三者核心差异一句话总结"></a>三、三者核心差异一句话总结</h2><ol>
+<li><strong>AWS CLF-C02</strong>：重<strong>云理念、安全合规、共享责任模型</strong>，产品是案例，适合外企、海外业务、云原生通用认知；</li>
+<li><strong>腾讯云从业者</strong>：结构对齐AWS，广度最大，音视频、AI是特色，国内互联网、微信生态业务优先；</li>
+<li><strong>阿里云ACA</strong>：国内普及度最高，<strong>ECS/VPC/SLB权重极高</strong>，传统政企、阿里云生态项目优先。</li>
+</ol>
+<h2 id="四、备考路线（3套方案，按需选择）"><a href="#四、备考路线（3套方案，按需选择）" class="headerlink" title="四、备考路线（3套方案，按需选择）"></a>四、备考路线（3套方案，按需选择）</h2><blockquote>
+<p>前提：零基础建议先统一理解云计算通用概念（IaaS/PaaS/SaaS、弹性、高可用、共享安全模型），这部分是互通的</p>
+</blockquote>
+<h3 id="路线A：只考AWS-Cloud-Practitioner（CLF-C02，推荐想建立通用云思维）"><a href="#路线A：只考AWS-Cloud-Practitioner（CLF-C02，推荐想建立通用云思维）" class="headerlink" title="路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）"></a>路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）</h3><ol>
+<li>第1周：云概念 + 共享责任模型（重中之重，30%分值）</li>
+<li>第2周：核心服务识别（EC2/S3/RDS/VPC/Lambda/SQS/SNS），区分适用场景</li>
+<li>第3周：计费、成本工具、Support计划、合规（SOC、GDPR等）</li>
+<li>第4周：刷题 + 错题复盘，重点练“场景选型题”<blockquote>
+<p>资料：AWS官方Exam Guide、官方免费课程、A Cloud Guru/Stephane Maarek课程、题库</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）"><a href="#路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）" class="headerlink" title="路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）"></a>路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）</h3><ol>
+<li>第1周：云计算基础 + ECS（分值最高25%），吃透实例、快照、伸缩</li>
+<li>第2周：VPC、SLB、安全组、NAT（网络模块20%，高频坑点）</li>
+<li>第3周：OSS、RDS、RAM、云安全、云监控</li>
+<li>第4周：刷题，区分阿里云各存储、数据库产品差异<blockquote>
+<p>资料：阿里云培训中心官方课程、产品文档、ACA题库</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="路线C：国内路线，腾讯云从业者（对标AWS-Practitioner，想一套思维迁移）"><a href="#路线C：国内路线，腾讯云从业者（对标AWS-Practitioner，想一套思维迁移）" class="headerlink" title="路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）"></a>路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）</h3><ol>
+<li>第1周：云计算基础 + CVM、VPC、CLB、COS（基础设施）</li>
+<li>第2周：数据库、安全CAM/WAF/DDoS</li>
+<li>第3周：CDN、音视频、AI/混元、中间件</li>
+<li>第4周：刷题，重点区分腾讯云全家桶产品定位<blockquote>
+<p>资料：腾讯云培训认证免费课、产品文档</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="五、同时备考（先通用，再差异化）最优顺序"><a href="#五、同时备考（先通用，再差异化）最优顺序" class="headerlink" title="五、同时备考（先通用，再差异化）最优顺序"></a>五、同时备考（先通用，再差异化）最优顺序</h2><p>如果你想<strong>三个都学</strong>，推荐顺序：</p>
+<ol>
+<li>先学 AWS Cloud Practitioner：建立标准云思维、安全模型、架构原则（底层思想通用）</li>
+<li>再学腾讯云从业者：框架对齐AWS，上手最快，对比理解国内云差异</li>
+<li>最后阿里云ACA：产品细节多，国内项目场景多，单独记忆ECS/VPC/SLB体系</li>
+</ol>
+<blockquote>
+<p>避坑提醒：</p>
+<ul>
+<li>AWS的IAM ≈ 阿里云RAM ≈ 腾讯云CAM，是同一个东西，名字不同；</li>
+<li>共享责任模型三家都考，AWS考得最深；</li>
+<li>国内云证书考题大量是<strong>产品功能对比、国内合规（等保）</strong>，AWS是海外合规。</li>
+</ul>
+</blockquote>
+<h2 id="六、选择建议"><a href="#六、选择建议" class="headerlink" title="六、选择建议"></a>六、选择建议</h2><ul>
+<li>外企、海外业务、想通用云原生基础：<strong>AWS CLF-C02</strong></li>
+<li>国内政企、阿里云项目、国内求职运维/售前：<strong>阿里云ACA</strong></li>
+<li>腾讯生态、音视频、互联网业务、想对标AWS体系：<strong>腾讯云从业者</strong></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"><i class="fa fa-tag"></i> 阿里云</a>
+              <a href="/tags/Cloud/" rel="tag"><i class="fa fa-tag"></i> Cloud</a>
+              <a href="/tags/ECS/" rel="tag"><i class="fa fa-tag"></i> ECS</a>
+              <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="tag"><i class="fa fa-tag"></i> 腾讯云</a>
+              <a href="/tags/AWS/" rel="tag"><i class="fa fa-tag"></i> AWS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2024/07/15/Cloud-%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="next" title="腾讯云">
+                  <i class="fa fa-chevron-left"></i> 腾讯云
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2024/07/18/Cloud-AWS/" rel="prev" title="AWS">
+                  AWS <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AWS-Cloud-Practitioner-%E9%98%BF%E9%87%8C%E4%BA%91ACA%E4%BA%91%E8%AE%A1%E7%AE%97-%E8%85%BE%E8%AE%AF%E4%BA%91%E4%BB%8E%E4%B8%9A%E8%80%85-%E5%AF%B9%E6%AF%94-amp-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF"><span class="nav-number">1.</span> <span class="nav-text">AWS Cloud Practitioner &#x2F; 阿里云ACA云计算 &#x2F; 腾讯云从业者 对比&amp;备考路线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础信息对比表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B2-amp-%E5%88%86%E5%80%BC%E6%9D%83%E9%87%8D%E5%AF%B9%E6%AF%94"><span class="nav-number">1.2.</span> <span class="nav-text">二、考试大纲&amp;分值权重对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Cloud-Practitioner%EF%BC%88CLF-C02%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">AWS Cloud Practitioner（CLF-C02）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91-%E4%BA%91%E8%AE%A1%E7%AE%97ACA"><span class="nav-number">1.2.2.</span> <span class="nav-text">阿里云 云计算ACA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%85%BE%E8%AE%AF%E4%BA%91%E4%BB%8E%E4%B8%9A%E8%80%85%E8%AE%A4%E8%AF%81"><span class="nav-number">1.2.3.</span> <span class="nav-text">腾讯云从业者认证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%89%E8%80%85%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">三、三者核心差异一句话总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF%EF%BC%883%E5%A5%97%E6%96%B9%E6%A1%88%EF%BC%8C%E6%8C%89%E9%9C%80%E9%80%89%E6%8B%A9%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">四、备考路线（3套方案，按需选择）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BFA%EF%BC%9A%E5%8F%AA%E8%80%83AWS-Cloud-Practitioner%EF%BC%88CLF-C02%EF%BC%8C%E6%8E%A8%E8%8D%90%E6%83%B3%E5%BB%BA%E7%AB%8B%E9%80%9A%E7%94%A8%E4%BA%91%E6%80%9D%E7%BB%B4%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BFB%EF%BC%9A%E5%9B%BD%E5%86%85%E8%B7%AF%E7%BA%BF%EF%BC%8C%E9%98%BF%E9%87%8C%E4%BA%91ACA%EF%BC%88%E9%80%82%E5%90%88%E5%9B%BD%E5%86%85%E6%94%BF%E4%BC%81%E3%80%81%E9%98%BF%E9%87%8C%E4%BA%91%E9%A1%B9%E7%9B%AE%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%BA%BFC%EF%BC%9A%E5%9B%BD%E5%86%85%E8%B7%AF%E7%BA%BF%EF%BC%8C%E8%85%BE%E8%AE%AF%E4%BA%91%E4%BB%8E%E4%B8%9A%E8%80%85%EF%BC%88%E5%AF%B9%E6%A0%87AWS-Practitioner%EF%BC%8C%E6%83%B3%E4%B8%80%E5%A5%97%E6%80%9D%E7%BB%B4%E8%BF%81%E7%A7%BB%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%90%8C%E6%97%B6%E5%A4%87%E8%80%83%EF%BC%88%E5%85%88%E9%80%9A%E7%94%A8%EF%BC%8C%E5%86%8D%E5%B7%AE%E5%BC%82%E5%8C%96%EF%BC%89%E6%9C%80%E4%BC%98%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.5.</span> <span class="nav-text">五、同时备考（先通用，再差异化）最优顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.6.</span> <span class="nav-text">六、选择建议</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="刘三儿"
+    src="/images/kid.jpg">
+  <p class="site-author-name" itemprop="name">刘三儿</p>
+  <div class="site-description" itemprop="description">天道酬勤 自强不息</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+        
+          <span class="site-state-item-count">261</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
+          
+        <span class="site-state-item-count">1068</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a target="_blank" href="https://github.com/liusirdotnet" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener noopener"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <!--<a href="https://github.com/liusirdotnet" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;liusirdotnet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>-->
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:416668235@qq.com" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'" rel="noopener"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <!--<a href="mailto:416668235@qq.com" title="E-Mail &amp;rarr; mailto:416668235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>-->
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title"></h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="200" height="200" id="resCanvas">
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+      
+
+      
+      <!--
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+      -->
+
+    <!--
+      <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.css">
+      <script src="https://cdn.bootcdn.net/ajax/libs/aplayer/1.9.0/APlayer.min.js"></script>
+    -->
+    
+      <!-- require MetingJS -->
+      <!--<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>-->
+      <script src="https://cdn.bootcdn.net/ajax/libs/meting/2.0.1/Meting.min.js"></script>
+      <!-- <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script> -->
+
+      <!--
+      <meting-js
+        id="8085912287"
+      	server="tencent" 
+        auto="https://y.qq.com/n/yqq/playlist/8085912287.html" 
+        autoplay="false" 
+        loop="all" 
+        width="100"
+        mini="false" 
+        type="playlist"
+        list-max-height="200px"
+        theme="#2980b9"
+        order="list"
+        >
+
+      </meting-js>
+      -->
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘三儿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">1.3m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">19:18</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.4.1.js"></script>
+
+<script src="/js/motion.js?v=7.4.1.js"></script>
+
+
+<script src="/js/schemes/pisces.js?v=7.4.1.js"></script>
+
+
+<script src="/js/next-boot.js?v=7.4.1.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.css">
+<script src="https://cdn.bootcdn.net/ajax/libs/instantsearch.js/2.3.1/instantsearch.min.js"></script>
+<script src="/js/algolia-search.js?v=7.4.1.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script src="/js/hexo_resize_image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+</body>
+</html>
