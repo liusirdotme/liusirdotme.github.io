@@ -159,7 +159,7 @@
 <meta property="og:image" content="https://liusir.net/2013/01/02/Hexo-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/g3.jpeg">
 <meta property="og:image" content="https://liusir.net/2013/01/02/Hexo-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/error.png">
 <meta property="article:published_time" content="2013-01-02T10:18:21.000Z">
-<meta property="article:modified_time" content="2026-11-25T02:55:09.377Z">
+<meta property="article:modified_time" content="2026-11-25T02:56:46.215Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="GitHub">
@@ -1486,6 +1486,12 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
 <li><p>永久方案(所有用户)：Set-ExecutionPolicy RemoteSigned -Scope LocalMachine</p>
 </li>
 </ul>
+<ol start="3">
+<li><p>验证是否成功：Get-ExecutionPolicy -List</p>
+</li>
+<li><p>恢复默认策略：Set-ExecutionPolicy Restricted -Scope CurrentUser</p>
+</li>
+</ol>
 
     </div>
 

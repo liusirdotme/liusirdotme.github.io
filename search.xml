@@ -46387,25 +46387,7 @@ read_xlsx(name, sheet)
 </blockquote>
 <span id="more"></span>
 
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
-<li>运维工具全景</li>
-<li>系统与硬件信息</li>
-<li>Linux 目录结构与文件类型</li>
-<li>用户、SSH 与主机标识</li>
-<li>Shell 基础与流程控制</li>
-<li>端口、进程与网络</li>
-<li>丢包、队列与防火墙</li>
-<li>磁盘空间、挂载与大文件</li>
-<li>文件与文本处理</li>
-<li>日志排查实战</li>
-<li>性能分析</li>
-<li>磁盘健康检测</li>
-<li>软件包管理</li>
-<li>系统配置、权限与安全</li>
-<li>常用命令速查表</li>
-<li>参考资料</li>
-</ol>
-<hr>
+
 <h2 id="一、运维工具全景"><a href="#一、运维工具全景" class="headerlink" title="一、运维工具全景"></a>一、运维工具全景</h2><p>按「遇到问题该找哪类工具」记，比背单个命令有用：</p>
 <table>
 <thead>
@@ -84591,6 +84573,12 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
 <li><p>永久方案(所有用户)：Set-ExecutionPolicy RemoteSigned -Scope LocalMachine</p>
 </li>
 </ul>
+<ol start="3">
+<li><p>验证是否成功：Get-ExecutionPolicy -List</p>
+</li>
+<li><p>恢复默认策略：Set-ExecutionPolicy Restricted -Scope CurrentUser</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Hexo</category>
