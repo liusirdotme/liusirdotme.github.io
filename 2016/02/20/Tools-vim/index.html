@@ -141,16 +141,16 @@
   };
 </script>
 
-  <meta name="description" content="vim分为几种模式，如命令模式(Command mode)，输入模式(Insert mode)，底线命令模式(Last line mode)，可视化模式(Visval mode)，每种模式下都有对应的快捷键操作。">
+  <meta name="description" content="Vim 分为命令模式（普通模式）、输入模式、底线命令模式、可视化模式，每种模式都有对应的操作。下文如无特别说明，命令都在普通模式下执行；以 : 开头的命令在底线命令模式下执行。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim收集">
 <meta property="og:url" content="https://liusir.net/2016/02/20/Tools-vim/index.html">
 <meta property="og:site_name" content="liusir.net">
-<meta property="og:description" content="vim分为几种模式，如命令模式(Command mode)，输入模式(Insert mode)，底线命令模式(Last line mode)，可视化模式(Visval mode)，每种模式下都有对应的快捷键操作。">
+<meta property="og:description" content="Vim 分为命令模式（普通模式）、输入模式、底线命令模式、可视化模式，每种模式都有对应的操作。下文如无特别说明，命令都在普通模式下执行；以 : 开头的命令在底线命令模式下执行。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.net/2016/02/20/Tools-vim/vim-key.png">
 <meta property="article:published_time" content="2016-02-20T15:13:48.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.473Z">
+<meta property="article:modified_time" content="2026-11-25T02:50:30.975Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="快捷键">
 <meta property="article:tag" content="Vim">
@@ -394,315 +394,363 @@
 
       
         <script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>vim分为几种模式，如命令模式(Command mode)，输入模式(Insert mode)，底线命令模式(Last line mode)，可视化模式(Visval mode)，每种模式下都有对应的快捷键操作。</p>
+<p>Vim 分为命令模式（普通模式）、输入模式、底线命令模式、可视化模式，每种模式都有对应的操作。下文如无特别说明，命令都在<strong>普通模式</strong>下执行；以 <code>:</code> 开头的命令在<strong>底线命令模式</strong>下执行。</p>
 </blockquote>
 <span id="more"></span>
 
 <p><img src="vim-key.png" alt="vim"></p>
-<h2 id="一、几种模式"><a href="#一、几种模式" class="headerlink" title="一、几种模式"></a>一、几种模式</h2><ol>
-<li><p>命令模式，也叫普通模式</p>
+<h2 id="一、几种模式"><a href="#一、几种模式" class="headerlink" title="一、几种模式"></a>一、几种模式</h2><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>进入方式</th>
+<th>退出方式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>命令模式（普通模式）</td>
+<td>打开文件后默认进入</td>
+<td>按 <code>i</code>/<code>a</code>/<code>v</code>/<code>:</code> 切到其他模式</td>
+<td>移动光标、删除、复制、执行普通命令</td>
+</tr>
+<tr>
+<td>输入模式（插入模式）</td>
+<td><code>i</code> 光标前插入、<code>a</code> 光标后插入、<code>o</code> 下一行插入</td>
+<td><code>Esc</code></td>
+<td>输入文本</td>
+</tr>
+<tr>
+<td>底线命令模式（末行模式）</td>
+<td>普通模式下按 <code>:</code>（<code>/</code>、<code>?</code> 也可）</td>
+<td><code>Esc</code> 或命令执行完自动返回</td>
+<td>保存、退出、替换、设置选项</td>
+</tr>
+<tr>
+<td>可视化模式</td>
+<td><code>v</code> 字符、<code>V</code> 行、<code>Ctrl+v</code> 块</td>
+<td><code>Esc</code></td>
+<td>选中区域后统一操作</td>
+</tr>
+</tbody></table>
+<p>普通模式下最常用的几个：</p>
 <ul>
-<li><code>dw</code>:删除当前光标后一个单词</li>
-<li><code>bdw</code>:复合命令，b将光标移动到单词首，再执行dw</li>
-<li><code>x</code>:删除光标所在的字符</li>
-<li><code>u</code>:撤销命令</li>
-<li><code>r</code>:替换光标所在字符，先按<code>r</code>，然后输入替换字符</li>
-<li><code>10,100&gt;</code>:第10行至第100行缩进，与之对应的有反缩进<code>&lt;</code></li>
+<li><code>dw</code>：删除光标后的一个单词；<code>bdw</code> 是复合命令，先把光标移到单词首，再执行 <code>dw</code></li>
+<li><code>x</code>：删除光标所在字符</li>
+<li><code>u</code>：撤销</li>
+<li><code>r</code>：替换光标所在字符，按 <code>r</code> 后再输入替换字符</li>
+<li><code>10,100&gt;</code>：第 10 行到第 100 行整体缩进，反向缩进是 <code>&lt;</code></li>
 </ul>
-</li>
-<li><p>输入模式：在命令模式下按下i就进入了输入模式</p>
+<p>可视化模式下：</p>
 <ul>
-<li><code>esc</code>:退出输入模式</li>
+<li><code>v</code> 进入字符可视化：<code>w</code> 选中到下一个单词开头，<code>$</code> 选中该行其余部分，<code>u</code>/<code>U</code> 大小写转换</li>
+<li><code>V</code> 进入行可视化</li>
+<li><code>Ctrl+v</code> 进入块可视化</li>
 </ul>
-</li>
-<li><p>底线命令模式：在命令模式下按下英文冒号<code>:</code>就进入了底线命令模式。</p>
-<ul>
-<li><code>q</code>:退出程序</li>
-<li><code>w</code>:保存文件</li>
+<h2 id="二、光标移动"><a href="#二、光标移动" class="headerlink" title="二、光标移动"></a>二、光标移动</h2><h3 id="1-单词间移动"><a href="#1-单词间移动" class="headerlink" title="1. 单词间移动"></a>1. 单词间移动</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>w</code></td>
+<td>移到下一个单词的词首（连续标点算一个单词）</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>同上，但只以空格作为分隔</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>移到当前/下一个单词的词尾（含标点）</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>同上，但只以空格作为分隔</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>移到上一个单词的词首</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>同上，但只以空格作为分隔</td>
+</tr>
+<tr>
+<td><code>4w</code>、<code>4b</code>、<code>4e</code></td>
+<td>一次移动 4 个单词</td>
+</tr>
+</tbody></table>
+<p><code>w</code> 与 <code>W</code> 的区别（用 <code>8w</code> 和 <code>8W</code> 对比可见差异）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello everyone, My name is panda, I'm from China, I love Bamboo.</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-行内移动"><a href="#2-行内移动" class="headerlink" title="2. 行内移动"></a>2. 行内移动</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0</code></td>
+<td>移到行首第一列（包含空格）</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>移到行首第一个非空字符，即非空格行首</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>移到行尾</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>移到下一行行首（非空格处）</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>移到上一行行首（非空格处）</td>
+</tr>
+<tr>
+<td><code>10j</code>、<code>10l</code></td>
+<td>一次移动多个字符，如向左移动 10 个字符</td>
+</tr>
+</tbody></table>
+<p>上下左右是 <code>j</code>/<code>k</code>/<code>h</code>/<code>l</code>，也可以用键盘方向键。</p>
+<h3 id="3-行与文件级跳转"><a href="#3-行与文件级跳转" class="headerlink" title="3. 行与文件级跳转"></a>3. 行与文件级跳转</h3><ul>
+<li><code>gg</code>：文件首行（页首）</li>
+<li><code>G</code>：文件尾行（页尾）</li>
+<li><code>:10</code>：跳到第 10 行</li>
+<li><code>9G</code>：跳到第 9 行</li>
 </ul>
-</li>
-<li><p>可视化模式</p>
-<ul>
-<li><code>v</code>:进入字符可视化模式<ul>
-<li><code>w</code>:选中至下一个单词的开头</li>
-<li><code>$</code>:选中该行的其余部分</li>
-<li><code>u/U</code>:大小写转换</li>
+<h3 id="4-屏幕范围移动"><a href="#4-屏幕范围移动" class="headerlink" title="4. 屏幕范围移动"></a>4. 屏幕范围移动</h3><ul>
+<li><code>Ctrl+f</code>：向下翻页；<code>Ctrl+b</code>：向上翻页</li>
+<li><code>Ctrl+e</code>：逐行下滚；<code>Ctrl+y</code>：逐行上滚</li>
+<li><code>H</code>：屏幕首行；<code>M</code>：屏幕中间；<code>L</code>：屏幕尾行</li>
+<li><code>zt</code>：当前行置顶；<code>zz</code>：当前行居中；<code>zb</code>：当前行置底</li>
+<li><code>:set nu</code>（或 <code>:set number</code>）：显示行号</li>
 </ul>
-</li>
-<li><code>V</code>:进入行可视化模式</li>
-<li><code>ctrl+v</code>:进入块可视化模式</li>
+<h3 id="5-查找与配对跳转"><a href="#5-查找与配对跳转" class="headerlink" title="5. 查找与配对跳转"></a>5. 查找与配对跳转</h3><ul>
+<li><code>/test</code>：向下查找 test 并跳转到所在行；<code>?test</code> 则是向上查找</li>
+<li><code>n</code>：跳到下一个匹配；<code>N</code>：跳到上一个匹配</li>
+<li><code>q/</code>、<code>q?</code>：查看查找历史</li>
+<li><code>*</code>：向下查找光标所在单词；<code>#</code>：向上查找光标所在单词</li>
+<li><code>%</code>：跳转到配对的括号 <code>()</code> <code>[]</code> <code>{}</code></li>
+<li><code>[[</code>：向前（向上）跳到代码块开头；<code>]]</code>：向后（向下）跳到代码块结尾</li>
 </ul>
-</li>
-</ol>
-<h2 id="二、常用快捷键"><a href="#二、常用快捷键" class="headerlink" title="二、常用快捷键"></a>二、常用快捷键</h2><ol>
-<li><p>大小写转换<code>~</code></p>
-</li>
-<li><p>将光标移动到词尾<code>e</code>或<code>E</code></p>
-</li>
-<li><p>将光标移动到行尾<code>$</code></p>
-<ul>
-<li>将光标移动到行首<code>^</code>或数字<code>0</code><ul>
-<li><code>^</code>是行首的第一个字符位置，不包含空格</li>
-<li><code>0</code>则是真正的行首，可以是空格</li>
+<h3 id="6-多文件切换（底线命令模式）"><a href="#6-多文件切换（底线命令模式）" class="headerlink" title="6. 多文件切换（底线命令模式）"></a>6. 多文件切换（底线命令模式）</h3><ul>
+<li><code>:f</code>：查看当前编辑的文件</li>
+<li><code>:ls</code>、<code>:files</code>、<code>:buffers</code>：查看已打开的文件列表</li>
+<li><code>:b 文件序号</code>：切换到指定文件</li>
+<li><code>:n</code>：下一个文件（<code>:2n</code> 下下个，以此类推）</li>
+<li><code>:N</code>：上一个文件（<code>:2N</code> 上上个，以此类推）</li>
+<li><code>:e#</code> 或 <code>Ctrl+^</code>：回到上一个编辑过的文档</li>
 </ul>
-</li>
+<h2 id="三、删除与替换"><a href="#三、删除与替换" class="headerlink" title="三、删除与替换"></a>三、删除与替换</h2><h3 id="1-删除字符"><a href="#1-删除字符" class="headerlink" title="1. 删除字符"></a>1. 删除字符</h3><ul>
+<li><code>x</code>：删除光标所在字符</li>
+<li><code>X</code>：删除光标前一个字符（大写的 x）</li>
 </ul>
-</li>
-<li><p>将光标移动到下一行行首<code>+</code>(不包含空格)</p>
-<ul>
-<li>将光标移动到上一行行首<code>-</code>(不包含空格)</li>
+<h3 id="2-删除单词"><a href="#2-删除单词" class="headerlink" title="2. 删除单词"></a>2. 删除单词</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dw</code></td>
+<td>删除到下一个单词开头；光标在单词中间时，只删到下一个单词开头</td>
+</tr>
+<tr>
+<td><code>bdw</code></td>
+<td>先把光标移到单词首，再删除整个单词</td>
+</tr>
+<tr>
+<td><code>de</code></td>
+<td>删到本单词末尾，不含标点</td>
+</tr>
+<tr>
+<td><code>dE</code></td>
+<td>删到本单词末尾，含标点</td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td>删到上一个单词开头，不含标点</td>
+</tr>
+<tr>
+<td><code>dB</code></td>
+<td>删到上一个单词开头，含标点</td>
+</tr>
+</tbody></table>
+<p>光标停在单词中间时，上述命令都是“从光标处删到对应位置”。</p>
+<h3 id="3-删除行"><a href="#3-删除行" class="headerlink" title="3. 删除行"></a>3. 删除行</h3><ul>
+<li><code>dd</code>：删除整行</li>
+<li><code>D</code>：删除光标处到行尾（光标位置前移）</li>
+<li><code>d0</code>：删除光标处到行首</li>
 </ul>
-</li>
-<li><p>向前查找光标所在单词<code>#</code></p>
-<ul>
-<li>向后查找光标所在单词<code>*</code></li>
+<h3 id="4-删除范围"><a href="#4-删除范围" class="headerlink" title="4. 删除范围"></a>4. 删除范围</h3><ul>
+<li>删除全文：普通模式 <code>ggdG</code></li>
+<li>删除全文（底线命令模式）：<code>G</code> 先把光标移到末尾，再 <code>:1,.d</code></li>
+<li>删除 1~9 行：<code>9G</code> 把光标移到第 9 行，再 <code>:1,.d</code>（<code>.</code> 表示当前行）</li>
+<li>删除 9 行到末尾：<code>9G</code> 或 <code>G</code>，再 <code>:9,.d</code></li>
+<li>也可以直接写行号区间，如 <code>:1,9d</code></li>
 </ul>
-</li>
-<li><p>将光标移到下一个单词<code>w</code>或<code>W</code></p>
-<ul>
-<li>将光标移到上一个单词<code>b</code>或<code>B</code></li>
+<h3 id="5-替换与撤销"><a href="#5-替换与撤销" class="headerlink" title="5. 替换与撤销"></a>5. 替换与撤销</h3><ul>
+<li><code>r</code> + 替换字符：替换光标所在字符</li>
+<li><code>u</code>：撤销上一次操作</li>
 </ul>
-</li>
-<li><p>跳转到配对的括号()<code>%</code></p>
-</li>
-<li><p>向前跳转到代码块的开头处<code>[[</code></p>
-<ul>
-<li>向后跳转到代码块的结尾处<code>]]</code></li>
+<h2 id="四、大小写转换"><a href="#四、大小写转换" class="headerlink" title="四、大小写转换"></a>四、大小写转换</h2><ul>
+<li><code>~</code>：切换光标所在字符的大小写</li>
+<li>可视化模式选中后 <code>u</code> 转小写、<code>U</code> 转大写</li>
+<li>普通模式下也可以配合动作符使用，如 <code>gUiw</code> 把光标所在单词全部转成大写</li>
 </ul>
-</li>
-<li><p>将光标移动到文件开头<code>gg</code></p>
-<ul>
-<li>将光标移动到文件末尾<code>G</code></li>
-</ul>
-</li>
-<li><p>多文件切换(底角命令模式下)</p>
-<ul>
-<li>查看当前编辑的文件<code>:f</code></li>
-<li>查看打开的文件列表<code>:ls</code>或<code>:files</code>或<code>:buffers</code></li>
-<li>切换指定的文件<code>:b 文件序号</code></li>
-<li>切换下一个文件<code>:n</code>(<code>:2n</code>下下个，以此类推)</li>
-<li>切换上一个文件<code>:N</code>(<code>:2N</code>上上个，以此类推)</li>
-<li>编辑上一个文档<code>:e#</code>或<code>ctrl+ˆ</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="三、各种删除"><a href="#三、各种删除" class="headerlink" title="三、各种删除"></a>三、各种删除</h2><ol>
-<li><p>删除全文</p>
-<ul>
-<li>普通命令模式:<code>ggdG</code></li>
-<li>底角命令模式：先<code>G</code>将光标移至文件末尾，<code>shift + :</code>进入底角命令模式，输入<code>1,.d</code></li>
-</ul>
-</li>
-<li><p>删除到指定行</p>
-<ul>
-<li>删除1至9行<ul>
-<li>普通命令模式下将光标移至第9行<code>9G</code></li>
-<li>进入底角命令模式<code>shift + :</code>，输入<code>1,.d</code>删除至当前行(即第九行)</li>
-</ul>
-</li>
-<li>删除9行至末尾<ul>
-<li>将光标移至末尾</li>
-<li>进入底角命令模式<code>shift + :</code>，输入<code>9,.d</code>删除至当前行(即末尾)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>删除字符</p>
-<ul>
-<li>删除光标所在字符：普通命令模式下<code>x</code></li>
-<li>删除光标前一个字符：普通命令模式下<code>X</code>，即大写的<code>x</code></li>
-</ul>
-</li>
-<li><p>删除单词</p>
-<ul>
-<li>删除到下一个单词开头：普通命令模式下<code>dw</code><ul>
-<li>光标在单词中间部分时则删除当前光标到下一个单词开头</li>
-</ul>
-</li>
-<li>删除到本单词的末尾不包括标点：普通命令模式下<code>de</code>，光标在单词中间部分时则删除当前光标到当前单词词尾不包括标点<ul>
-<li>删除到本单词的末尾并包括标点：普通命令模式下<code>dE</code>，光标在单词中间部分时则删除当前光标到当前单词词尾并包括标点</li>
-</ul>
-</li>
-<li>删除到前一个单词开头不包括标点：普通命令模式下<code>db</code>，光标在单词中间部分时则删除当前光标到当前单词开头不包括标点<ul>
-<li>删除到前一个单词开头并包括标点：普通命令模式下<code>dB</code>，光标在单词中间部分时则删除当前光标到当前单词开头并包括标点</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>删除行</p>
-<ul>
-<li>删除一行：普通命令模式下<code>dd</code></li>
-<li>删除光标所在处至末尾并将光标向前移：普通命令模式下<code>D</code></li>
-<li>删除光标到行首：普通命令模式下<code>d0</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="四、光标移动"><a href="#四、光标移动" class="headerlink" title="四、光标移动"></a>四、光标移动</h2><blockquote>
-<p>以下命令不做特殊说明都是在普通模式下进行，普通模式也叫做命令行模式，另外还有一个底线命令行模式，注意区分。</p>
-</blockquote>
-<ol>
-<li><p>字符移动：上下左右<code>jkhl</code>，也可用键盘上的方向键</p>
-<ul>
-<li>移动多个字符，如向左移动10个字符<code>10j</code></li>
-</ul>
-</li>
-<li><p>单词移动</p>
-<ul>
-<li><p>下一个单词词首<code>w</code></p>
-<ul>
-<li>多个单词如<code>4w</code>向后移动4个单词</li>
-<li>连续多个标点算一个单词</li>
-<li><code>dw</code>则是从光标处向后删除一个单词(不包含光标处)，同理<code>4dw</code>从光标处向后删除4个单词</li>
-<li><code>W</code>同样可以实现向后移动，不同的是分隔符是空格，如以下文本，分别用<code>8w</code>和<code>8W</code>可看出区别    <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello everyone, My name is panda, I'm from China, I love Bamboo.</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-</li>
-<li><p>上一个单词词首<code>b</code></p>
-<ul>
-<li>多个单词如<code>4b</code>向前移动4个单词</li>
-<li>连续多个标点算一个单词</li>
-<li><code>B</code>同样可以实现，同<code>W</code>一样以空格为分隔符</li>
-</ul>
-</li>
-<li><p>下一个单词词尾<code>e</code></p>
-<ul>
-<li>多个单词如<code>4e</code>向前移动4个单词并处于词尾</li>
-<li>连续多个标点算一个单词</li>
-<li><code>db</code>则是从光标处向前删除一个单词(不包含光标处)</li>
-<li><code>E</code>同样可以实现，同<code>W</code>一样以空格为分隔符</li>
-</ul>
-</li>
-<li><p>快速移动到行首行尾</p>
-<ul>
-<li><code>^</code>移动到行首</li>
-<li><code>$</code>移动到行尾</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>相对屏幕移动</p>
-<ul>
-<li><code>control + f</code>:向下翻页</li>
-<li><code>control + b</code>:向上翻页</li>
-<li><code>control + e</code>:逐行下滚</li>
-<li><code>control + y</code>:逐行上滚</li>
-<li><code>H</code>:移动到屏幕首行</li>
-<li><code>L</code>:移动到屏幕尾行</li>
-<li><code>M</code>:移动到屏幕中间</li>
-<li><code>zt</code>:将当前行置顶，即把当前行移动到屏幕首行</li>
-<li><code>zz</code>:将当前行移到屏幕中部</li>
-<li><code>zb</code>:将当前行移到屏幕底部</li>
-<li><code>:数字</code>如<code>:10</code>:将光标到第10行</li>
-<li><code>set nu或set number</code>可以显示行号</li>
-<li><code>gg</code>:移动到文件首行</li>
-<li><code>G</code>:移动到文件尾行</li>
-<li><code>/字符</code>如<code>/test</code>:查找test并移动到test所在行</li>
-<li><code>?字符</code>则是反向查找，即向上查找</li>
-<li><code>n</code>:下一个</li>
-<li><code>N</code>:上一个</li>
-<li><code>q/</code>或<code>q?</code>可以查看查找历史</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、设置缩进"><a href="#五、设置缩进" class="headerlink" title="五、设置缩进"></a>五、设置缩进</h2><ol>
-<li><p>普通模式(命令模式)</p>
-<ul>
-<li>单行操作<ul>
+<h2 id="五、缩进"><a href="#五、缩进" class="headerlink" title="五、缩进"></a>五、缩进</h2><h3 id="1-普通模式（命令模式）"><a href="#1-普通模式（命令模式）" class="headerlink" title="1. 普通模式（命令模式）"></a>1. 普通模式（命令模式）</h3><ul>
 <li><code>&gt;&gt;</code>：当前行增加缩进</li>
 <li><code>&lt;&lt;</code>：当前行减少缩进</li>
 </ul>
-</li>
+<h3 id="2-块可视化"><a href="#2-块可视化" class="headerlink" title="2. 块可视化"></a>2. 块可视化</h3><ul>
+<li><code>v</code>/<code>V</code>/<code>Ctrl+v</code> 进入可视化模式</li>
+<li>用 <code>j</code>、<code>k</code> 或上下方向键选择代码块</li>
+<li>输入 <code>&gt;</code> 或 <code>&lt;</code> 缩进或回退</li>
 </ul>
-</li>
-<li><p>块可视化</p>
-<ul>
-<li>进入块可视化模式<code>v/V/control+v</code></li>
-<li>使用<code>j</code>或<code>k</code>或上下箭头选择代码块</li>
-<li>键入<code>&gt;</code>或<code>&lt;</code>进行缩进或回退</li>
+<h3 id="3-底线命令模式（多行）"><a href="#3-底线命令模式（多行）" class="headerlink" title="3. 底线命令模式（多行）"></a>3. 底线命令模式（多行）</h3><ul>
+<li><code>:1,n&gt;</code>：第 1~n 行增加一个缩进</li>
+<li><code>:1,n&gt;&gt;</code>：第 1~n 行增加两个缩进</li>
+<li><code>:1,n&lt;</code>：第 1~n 行减少一个缩进</li>
+<li><code>:1,n&lt;&lt;</code>：第 1~n 行减少两个缩进</li>
 </ul>
-</li>
-<li><p>底线命令行模式</p>
-<ul>
-<li>多行操作：<code>shift + :</code>进入底线命令模式</li>
-<li><code>1,n&gt;</code>：1~n增加一个缩进<ul>
-<li><code>1,n&gt;&gt;</code>：1~n增加两个个缩进</li>
+<h3 id="4-插入模式"><a href="#4-插入模式" class="headerlink" title="4. 插入模式"></a>4. 插入模式</h3><ul>
+<li><code>Ctrl+t</code>：增加缩进</li>
+<li><code>Ctrl+d</code>：减少缩进（macOS 下组合键有冲突）</li>
 </ul>
-</li>
-<li><code>1,n&lt;</code>：1~n减少一个缩进<ul>
-<li><code>1,n&lt;</code>：1~n减少两个缩进</li>
+<h3 id="5-相关设置"><a href="#5-相关设置" class="headerlink" title="5. 相关设置"></a>5. 相关设置</h3><ul>
+<li><code>shiftwidth</code>：普通模式下 <code>&lt;&lt;</code>、<code>&gt;&gt;</code> 时缩进的列数</li>
+<li><code>tabstop</code>：一个 tab 键所占的列数（Linux 内核代码建议 8 列）</li>
+<li><code>softtabstop</code>：敲入 tab 键时实际占有的列数</li>
+<li><code>expandtab</code>：输入 tab 时自动转为空格；<code>noexpandtab</code> 取消该行为</li>
+<li><code>autoindent</code>：回车后自动缩进</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>插入模式</p>
-<ul>
-<li>进入插入模式</li>
-<li><code>shift + control + t</code>增加缩进</li>
-<li><code>shift + control + d</code>减少缩进(mac下组合键有冲突)</li>
-</ul>
-</li>
-<li><p>相关设置</p>
-<ul>
-<li>shiftwidth：普通模式下<code>&lt;&lt;</code>和<code>&gt;&gt;</code>时缩进的列数</li>
-<li>tabstop：一个tab键所占的列数，linux内核代码建议每个tab占用8列</li>
-<li>softtabstop：敲入tab键时实际占有的列数。</li>
-<li>expandtab：输入tab时自动将其转化为空格</li>
-<li>noexpandtab：取消输入tab自动转化为空格</li>
-<li>autoindent：回车后自动缩进</li>
-</ul>
-</li>
-</ol>
 <h2 id="六、选项设置"><a href="#六、选项设置" class="headerlink" title="六、选项设置"></a>六、选项设置</h2><blockquote>
-<p>以下所有操作都是在<code>shift + :</code>进入底角命令模式后进行的</p>
+<p>以下操作都在 <code>Esc</code> 后按 <code>:</code> 进入底线命令模式进行。</p>
 </blockquote>
 <ol>
-<li><p>查看选项</p>
-<ul>
-<li>查看所有选项<code>set all</code></li>
-<li>查看某个选项<code>set 选项</code>或<code>set 选项?</code></li>
-<li>查看非默认值的选项<code>set</code></li>
-<li>查看某个选项的帮助信息<code>help 选项</code></li>
-</ul>
-</li>
-<li><p>设置选项</p>
-<ul>
-<li>布尔值<ul>
-<li>设置布尔值<code>set 布尔选项</code></li>
-<li>关闭布尔值<code>set no布尔选项</code></li>
-<li>反向布尔值<code>set 布尔选项!</code>或<code>set inv布尔选项</code></li>
-<li>设为默认值<code>set 布尔选项&amp;</code><ul>
-<li>重置所有选项<code>set all&amp;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数值<ul>
-<li>设置数值<code>set 数值选项 =数值</code></li>
-<li>增加数值<code>set 数值选项 +=val</code></li>
-<li>减少数值<code>set 数值选项 -=val</code></li>
-<li>乘以数值<code>set 数值选项 ^=val</code></li>
-<li>恢复数值<code>set 数值选项&amp;</code></li>
-</ul>
-</li>
-<li>字符串<ul>
-<li>设置字符串<code>set 字符串选项 =字符串</code></li>
-<li>在末尾追加<code>set 字符串选项 +=字符串</code></li>
-<li>选项中移除<code>set 字符串选项 -=字符串</code><ul>
-<li>如果要移除的字符串有多个则默认移除第一个</li>
-</ul>
-</li>
-<li>在开头追加<code>set 字符串选项 ^=字符串</code></li>
-<li>设为默认值<code>set 字符串选项&amp;</code></li>
-</ul>
-</li>
-<li>设置多个<code>set 选项1 选项2 ...</code>，以空格隔开</li>
-</ul>
-</li>
+<li>查看选项</li>
 </ol>
-<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="http://vimdoc.sourceforge.net/htmldoc/options.html">参考一</a></li>
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021133524?utm_source=tag-newest">参考二</a></li>
-<li><a target="_blank" rel="noopener" href="https://harttle.land/2015/11/07/vim-cursor.html">参考三</a></li>
+<ul>
+<li><code>:set all</code>：查看所有选项</li>
+<li><code>:set 选项</code> 或 <code>:set 选项?</code>：查看某个选项</li>
+<li><code>:set</code>：查看非默认值的选项</li>
+<li><code>:help 选项</code>：查看某个选项的帮助信息</li>
+</ul>
+<ol start="2">
+<li>设置选项</li>
+</ol>
+<ul>
+<li>布尔值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:set 布尔选项</code></td>
+<td>打开</td>
+</tr>
+<tr>
+<td><code>:set no布尔选项</code></td>
+<td>关闭</td>
+</tr>
+<tr>
+<td><code>:set 布尔选项!</code> 或 <code>:set inv布尔选项</code></td>
+<td>取反</td>
+</tr>
+<tr>
+<td><code>:set 布尔选项&amp;</code></td>
+<td>恢复默认值（<code>:set all&amp;</code> 重置所有选项）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>数值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:set 数值选项=值</code></td>
+<td>设置</td>
+</tr>
+<tr>
+<td><code>:set 数值选项+=val</code></td>
+<td>增加</td>
+</tr>
+<tr>
+<td><code>:set 数值选项-=val</code></td>
+<td>减少</td>
+</tr>
+<tr>
+<td><code>:set 数值选项^=val</code></td>
+<td>乘以</td>
+</tr>
+<tr>
+<td><code>:set 数值选项&amp;</code></td>
+<td>恢复默认</td>
+</tr>
+</tbody></table>
+<ul>
+<li>字符串</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:set 字符串选项=字符串</code></td>
+<td>设置</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项+=字符串</code></td>
+<td>在末尾追加</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项^=字符串</code></td>
+<td>在开头追加</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项-=字符串</code></td>
+<td>移除（有多个时默认只移除第一个）</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项&amp;</code></td>
+<td>恢复默认</td>
+</tr>
+</tbody></table>
+<ul>
+<li>一次设置多个用空格隔开，如 <code>:set 选项1 选项2</code></li>
+</ul>
+<h2 id="七、整篇文件不换行（-M）的处理"><a href="#七、整篇文件不换行（-M）的处理" class="headerlink" title="七、整篇文件不换行（^M）的处理"></a>七、整篇文件不换行（^M）的处理</h2><p>现象：打开 <code>.env</code>、<code>train.log</code> 这类由程序生成的文件时，所有内容挤在一行，行尾能看到 <code>^M</code>（有的帖子里叫“文件不换行”）。</p>
+<p>原因：文件的换行符只有 <code>\r</code>（CR），Vim 不把它当作换行来渲染，于是整篇显示成一行。</p>
+<p>解决：在底线命令模式执行</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\r/\r/g</span><br></pre></td></tr></tbody></table></figure>
+
+<p>搜索侧 <code>\r</code> 匹配 CR，替换侧的 <code>\r</code> 会写入真正的换行，整篇就会被切成正常的行；确认无误后 <code>:w</code> 保存。如果想顺手统一成 Unix 换行，再执行 <code>:set ff=unix</code>。</p>
+<p>如果只是不想让长行在屏幕上折行显示，那是另一回事，用 <code>:set nowrap</code> 即可。</p>
+<h2 id="八、参考"><a href="#八、参考" class="headerlink" title="八、参考"></a>八、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://vimdoc.sourceforge.net/htmldoc/options.html">Vim 选项文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021133524">Vim 常用操作整理</a></li>
+<li><a target="_blank" rel="noopener" href="https://harttle.land/2015/11/07/vim-cursor.html">Vim 光标移动</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42111770/article/details/134373005">vim 文件在 linux 不换行、只显示 ^M 的解决办法</a></li>
 </ol>
 
     </div>
@@ -771,7 +819,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%A0%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">一、几种模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.</span> <span class="nav-text">二、常用快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%90%84%E7%A7%8D%E5%88%A0%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">三、各种删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="nav-number">4.</span> <span class="nav-text">四、光标移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%AE%BE%E7%BD%AE%E7%BC%A9%E8%BF%9B"><span class="nav-number">5.</span> <span class="nav-text">五、设置缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%80%89%E9%A1%B9%E8%AE%BE%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">六、选项设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">七、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%A0%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">一、几种模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.</span> <span class="nav-text">二、光标移动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8D%95%E8%AF%8D%E9%97%B4%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.1.</span> <span class="nav-text">1. 单词间移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%A1%8C%E5%86%85%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2. 行内移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%8C%E4%B8%8E%E6%96%87%E4%BB%B6%E7%BA%A7%E8%B7%B3%E8%BD%AC"><span class="nav-number">2.3.</span> <span class="nav-text">3. 行与文件级跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%B1%8F%E5%B9%95%E8%8C%83%E5%9B%B4%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.4.</span> <span class="nav-text">4. 屏幕范围移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9F%A5%E6%89%BE%E4%B8%8E%E9%85%8D%E5%AF%B9%E8%B7%B3%E8%BD%AC"><span class="nav-number">2.5.</span> <span class="nav-text">5. 查找与配对跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%A4%9A%E6%96%87%E4%BB%B6%E5%88%87%E6%8D%A2%EF%BC%88%E5%BA%95%E7%BA%BF%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">6. 多文件切换（底线命令模式）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%A0%E9%99%A4%E4%B8%8E%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">三、删除与替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6"><span class="nav-number">3.1.</span> <span class="nav-text">1. 删除字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%A0%E9%99%A4%E5%8D%95%E8%AF%8D"><span class="nav-number">3.2.</span> <span class="nav-text">2. 删除单词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%A0%E9%99%A4%E8%A1%8C"><span class="nav-number">3.3.</span> <span class="nav-text">3. 删除行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E8%8C%83%E5%9B%B4"><span class="nav-number">3.4.</span> <span class="nav-text">4. 删除范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%9B%BF%E6%8D%A2%E4%B8%8E%E6%92%A4%E9%94%80"><span class="nav-number">3.5.</span> <span class="nav-text">5. 替换与撤销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">四、大小写转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BC%A9%E8%BF%9B"><span class="nav-number">5.</span> <span class="nav-text">五、缩进</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">1. 普通模式（命令模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%9D%97%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">5.2.</span> <span class="nav-text">2. 块可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BA%95%E7%BA%BF%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%A4%9A%E8%A1%8C%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">3. 底线命令模式（多行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.4.</span> <span class="nav-text">4. 插入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.5.</span> <span class="nav-text">5. 相关设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%80%89%E9%A1%B9%E8%AE%BE%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">六、选项设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%95%B4%E7%AF%87%E6%96%87%E4%BB%B6%E4%B8%8D%E6%8D%A2%E8%A1%8C%EF%BC%88-M%EF%BC%89%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">七、整篇文件不换行（^M）的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">八、参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -800,7 +848,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1058</span>
+        <span class="site-state-item-count">1054</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -898,7 +946,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:13</span>
+    <span title="站点阅读时长">18:18</span>
 </div>
 
         

@@ -6029,9 +6029,22 @@
 <li>SSR(Shadowsocks)</li>
 <li>V2Ray</li>
 <li>Trojan</li>
-<li><a href="https://github.com/Dreamacro/clash">Clash</a></li>
+<li>Clash</li>
 <li>Surge</li>
 <li>买VPS自建</li>
+</ol>
+<h2 id="二、链接"><a href="#二、链接" class="headerlink" title="二、链接"></a>二、链接</h2><ol>
+<li><a href="https://m-zhoujie2.gitbooks.io/-linux-devops-2/content/chapter4-6.html">https://m-zhoujie2.gitbooks.io/-linux-devops-2/content/chapter4-6.html</a></li>
+<li><a href="https://www.tizidajian.com/">https://www.tizidajian.com/</a></li>
+<li><a href="https://github.com/v2fly/v2ray-core/releases">https://github.com/v2fly/v2ray-core/releases</a></li>
+<li><a href="https://github.com/sucong426/build_personal_v2ray">https://github.com/sucong426/build_personal_v2ray</a></li>
+<li><a href="https://v2rayn.org/">https://v2rayn.org/</a></li>
+<li><a href="https://v2rayu.org/">https://v2rayu.org/</a></li>
+<li><a href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a></li>
+<li><a href="https://github.com/yanue/V2rayU/releases">https://github.com/yanue/V2rayU/releases</a></li>
+<li><a href="https://www.clashverge.dev/install.html">https://www.clashverge.dev/install.html</a></li>
+<li><a href="https://clashverge.net/en/">https://clashverge.net/en/</a></li>
+<li><a href="https://github.com/clash-verge-rev/clash-verge-rev">https://github.com/clash-verge-rev/clash-verge-rev</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -46367,6 +46380,1016 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
+    <title>Linux收集</title>
+    <url>/2016/11/24/Linux-%E6%94%B6%E9%9B%86/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>把散落的命令按「看什么 → 用什么 → 怎么读结果」归类，下次出事直接翻到对应章节。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>运维工具全景</li>
+<li>系统与硬件信息</li>
+<li>Linux 目录结构与文件类型</li>
+<li>用户、SSH 与主机标识</li>
+<li>Shell 基础与流程控制</li>
+<li>端口、进程与网络</li>
+<li>丢包、队列与防火墙</li>
+<li>磁盘空间、挂载与大文件</li>
+<li>文件与文本处理</li>
+<li>日志排查实战</li>
+<li>性能分析</li>
+<li>磁盘健康检测</li>
+<li>软件包管理</li>
+<li>系统配置、权限与安全</li>
+<li>常用命令速查表</li>
+<li>参考资料</li>
+</ol>
+<hr>
+<h2 id="一、运维工具全景"><a href="#一、运维工具全景" class="headerlink" title="一、运维工具全景"></a>一、运维工具全景</h2><p>按「遇到问题该找哪类工具」记，比背单个命令有用：</p>
+<table>
+<thead>
+<tr>
+<th align="left">领域</th>
+<th align="left">典型工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">文本处理</td>
+<td align="left">grep、sed、awk</td>
+</tr>
+<tr>
+<td align="left">数据传输</td>
+<td align="left">rsync、scp、inotify/sersync</td>
+</tr>
+<tr>
+<td align="left">进程管理</td>
+<td align="left">systemd、supervisor</td>
+</tr>
+<tr>
+<td align="left">性能分析</td>
+<td align="left">top、free、df、iostat、vmstat、dstat、sar、sysdig</td>
+</tr>
+<tr>
+<td align="left">网络服务</td>
+<td align="left">vsftpd、nfs、samba、bind、dhcp、postfix</td>
+</tr>
+<tr>
+<td align="left">Web 服务</td>
+<td align="left">Nginx、Tomcat、PHP</td>
+</tr>
+<tr>
+<td align="left">关系型数据库</td>
+<td align="left">MySQL、MariaDB、PostgreSQL</td>
+</tr>
+<tr>
+<td align="left">非关系型数据库</td>
+<td align="left">Redis、MongoDB</td>
+</tr>
+<tr>
+<td align="left">消息中间件</td>
+<td align="left">RabbitMQ、ActiveMQ</td>
+</tr>
+<tr>
+<td align="left">代码版本控制</td>
+<td align="left">SVN、Git、GitLab</td>
+</tr>
+<tr>
+<td align="left">静态缓存</td>
+<td align="left">Squid、Varnish、Nginx</td>
+</tr>
+<tr>
+<td align="left">负载均衡</td>
+<td align="left">LVS、Nginx、HAProxy</td>
+</tr>
+<tr>
+<td align="left">高可用软件</td>
+<td align="left">Keepalived、Heartbeat、DRBD、corosync + pacemaker</td>
+</tr>
+<tr>
+<td align="left">集中管理</td>
+<td align="left">Ansible、SaltStack</td>
+</tr>
+<tr>
+<td align="left">虚拟化</td>
+<td align="left">KVM、OpenStack、Proxmox</td>
+</tr>
+<tr>
+<td align="left">容器化</td>
+<td align="left">Docker、Kubernetes、Istio</td>
+</tr>
+<tr>
+<td align="left">自动装机</td>
+<td align="left">Kickstart、Cobbler</td>
+</tr>
+<tr>
+<td align="left">抓包分析</td>
+<td align="left">tcpdump、Wireshark</td>
+</tr>
+<tr>
+<td align="left">持续集成</td>
+<td align="left">Jenkins、GitLab CI</td>
+</tr>
+<tr>
+<td align="left">压测</td>
+<td align="left">ab、fio、sysbench、mysqlslap、JMeter</td>
+</tr>
+<tr>
+<td align="left">日志系统</td>
+<td align="left">ELK Stack、Graylog、Loki</td>
+</tr>
+<tr>
+<td align="left">监控</td>
+<td align="left">Zabbix、Prometheus + Grafana、Open-Falcon</td>
+</tr>
+<tr>
+<td align="left">分布式文件系统</td>
+<td align="left">Ceph、GlusterFS、FastDFS</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、系统与硬件信息"><a href="#二、系统与硬件信息" class="headerlink" title="二、系统与硬件信息"></a>二、系统与硬件信息</h2><h3 id="2-1-发行版与内核"><a href="#2-1-发行版与内核" class="headerlink" title="2.1 发行版与内核"></a>2.1 发行版与内核</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">cat /etc/redhat-release        <span class="comment"># RHEL/CentOS 系</span></span><br><span class="line">cat /etc/opencloudos-release   <span class="comment"># OpenCloudOS</span></span><br><span class="line">cat /etc/lsb-release           <span class="comment"># Ubuntu 系</span></span><br><span class="line">cat /etc/issue                 <span class="comment"># 通用登录提示信息</span></span><br><span class="line">cat /etc/os-release            <span class="comment"># 通用标准（脚本里建议用这个）</span></span><br><span class="line">uname -a                       <span class="comment"># 内核版本 + 架构 + 主机名</span></span><br><span class="line">cat /proc/version              <span class="comment"># 内核编译信息（别拿它当"丢包"排查的入口）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>判断发行版优先用 <code>/etc/os-release</code>：字段固定（<code>ID</code>、<code>VERSION_ID</code>），其他文件各家各写各的。</p>
+<h3 id="2-2-时区"><a href="#2-2-时区" class="headerlink" title="2.2 时区"></a>2.2 时区</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">date +%Z                       <span class="comment"># 时区缩写，如 CST</span></span><br><span class="line">date +%z                       <span class="comment"># 时区偏移，如 +0800</span></span><br><span class="line">cat /etc/timezone              <span class="comment"># Debian 系</span></span><br><span class="line">timedatectl status             <span class="comment"># systemd 环境，最直观</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-3-CPU"><a href="#2-3-CPU" class="headerlink" title="2.3 CPU"></a>2.3 CPU</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo</span><br><span class="line"></span><br><span class="line">cat /proc/cpuinfo | grep <span class="string">"physical id"</span> | sort -n | uniq | wc -l       <span class="comment"># 物理 CPU 个数</span></span><br><span class="line">cat /proc/cpuinfo | grep <span class="string">"processor"</span> | wc -l                          <span class="comment"># 逻辑 CPU 个数</span></span><br><span class="line">cat /proc/cpuinfo | grep <span class="string">"cpu cores"</span> | uniq                           <span class="comment"># 每颗物理 CPU 的核心数</span></span><br><span class="line">cat /proc/cpuinfo | grep -e <span class="string">"cpu cores"</span> -e <span class="string">"siblings"</span> | sort | uniq   <span class="comment"># 是否开超线程</span></span><br><span class="line">cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c                 <span class="comment"># CPU 型号</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>换算关系：</p>
+<ul>
+<li>总核数 = 物理 CPU 个数 × 每颗物理 CPU 的核数</li>
+<li>总逻辑 CPU 数 = 物理 CPU 个数 × 每颗的核数 × 超线程数（通常 ×2）</li>
+</ul>
+<h3 id="2-4-内存"><a href="#2-4-内存" class="headerlink" title="2.4 内存"></a>2.4 内存</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">cat /proc/meminfo              <span class="comment"># 全部内存明细</span></span><br><span class="line">cat /proc/meminfo | grep MemTotal</span><br><span class="line">free -h                        <span class="comment"># 人类可读；-m 兆、-g 吉</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>读 <code>free</code> 要盯 <code>available</code> 而不是 <code>free</code>：<code>buff/cache</code> 大部分可回收，Linux 会主动把空闲内存拿去做缓存，<code>free</code> 小不代表内存不够。</p>
+<h3 id="2-5-磁盘容量"><a href="#2-5-磁盘容量" class="headerlink" title="2.5 磁盘容量"></a>2.5 磁盘容量</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">df -h            <span class="comment"># 按文件系统看已用/可用</span></span><br><span class="line">df -Th           <span class="comment"># 带上文件系统类型（xfs / ext4 / tmpfs）</span></span><br><span class="line">df -h /home      <span class="comment"># 只看某个挂载点</span></span><br><span class="line">df -m            <span class="comment"># 以 MB 为单位</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="三、Linux-目录结构与文件类型"><a href="#三、Linux-目录结构与文件类型" class="headerlink" title="三、Linux 目录结构与文件类型"></a>三、Linux 目录结构与文件类型</h2><h3 id="3-1-主要目录"><a href="#3-1-主要目录" class="headerlink" title="3.1 主要目录"></a>3.1 主要目录</h3><table>
+<thead>
+<tr>
+<th align="left">目录</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>/bin</code></td>
+<td align="left">二进制可执行文件（ls、cat、mkdir 等），基础命令都在这里</td>
+</tr>
+<tr>
+<td align="left"><code>/sbin</code></td>
+<td align="left">系统管理类命令，多为 root 使用（ifconfig、reboot）</td>
+</tr>
+<tr>
+<td align="left"><code>/etc</code></td>
+<td align="left">系统管理与配置文件</td>
+</tr>
+<tr>
+<td align="left"><code>/home</code></td>
+<td align="left">普通用户主目录的基点，<code>/home/user</code> 可用 <code>~user</code> 表示</td>
+</tr>
+<tr>
+<td align="left"><code>/root</code></td>
+<td align="left">root 的主目录（不在 /home 下）</td>
+</tr>
+<tr>
+<td align="left"><code>/usr</code></td>
+<td align="left">系统应用程序与文件，体积最大（<code>Unix System Resource</code>，不是 User）</td>
+</tr>
+<tr>
+<td align="left"><code>/usr/local</code></td>
+<td align="left">管理员自行安装软件的目录，推荐把自编译程序装这里</td>
+</tr>
+<tr>
+<td align="left"><code>/opt</code></td>
+<td align="left">额外安装的可选应用包（Tomcat、第三方商业软件常放这）</td>
+</tr>
+<tr>
+<td align="left"><code>/proc</code></td>
+<td align="left">虚拟文件系统，内存映射，读它等于读内核状态（<code>/proc/cpuinfo</code>、<code>/proc/net/netstat</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>/sys</code></td>
+<td align="left">同上，内核对象与设备树的映射（调参数、看 cgroup）</td>
+</tr>
+<tr>
+<td align="left"><code>/dev</code></td>
+<td align="left">设备文件（<code>/dev/vdb</code>、<code>/dev/null</code>、<code>/dev/urandom</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>/mnt</code></td>
+<td align="left">临时挂载点</td>
+</tr>
+<tr>
+<td align="left"><code>/media</code></td>
+<td align="left">可移动设备自动挂载点（U 盘）</td>
+</tr>
+<tr>
+<td align="left"><code>/boot</code></td>
+<td align="left">引导文件（内核、grub）</td>
+</tr>
+<tr>
+<td align="left"><code>/lib</code>、<code>/lib64</code></td>
+<td align="left">共享库与内核模块，作用类似 Windows 的 .dll</td>
+</tr>
+<tr>
+<td align="left"><code>/tmp</code></td>
+<td align="left">公共临时目录，可能被清理，别放重要数据</td>
+</tr>
+<tr>
+<td align="left"><code>/var</code></td>
+<td align="left">运行时变化的数据：日志（<code>/var/log</code>）、数据库、缓存、邮件队列</td>
+</tr>
+<tr>
+<td align="left"><code>/lost+found</code></td>
+<td align="left">非正常关机后 fsck 找回的”无家可归”文件所在处（类似 Windows 的 .chk）</td>
+</tr>
+</tbody></table>
+<p><code>/usr</code> 下的细分：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/usr/bin        普通用户可执行的应用程序</span><br><span class="line">/usr/sbin       root 使用的管理程序</span><br><span class="line">/usr/lib        动态链接库与软件包配置</span><br><span class="line">/usr/include    开发编译所需的头文件</span><br><span class="line">/usr/src        源码，内核源码在 /usr/src/linux</span><br><span class="line">/usr/local/bin  本地安装的命令（推荐，不会被系统升级覆盖）</span><br><span class="line">/usr/local/lib  本地安装的库</span><br><span class="line">/usr/local/etc  本地程序的配置文件</span><br></pre></td></tr></tbody></table></figure>
+
+<p>两个容易记错的点：</p>
+<ul>
+<li><code>/usr/bin</code> 是系统预装的程序，<strong>升级会覆盖</strong>同名文件；</li>
+<li><code>/usr/local/bin</code> 是给管理员放自装程序的，<strong>升级不覆盖</strong>，所以自编译的软件优先装这里。</li>
+</ul>
+<h3 id="3-2-七种文件类型"><a href="#3-2-七种文件类型" class="headerlink" title="3.2 七种文件类型"></a>3.2 七种文件类型</h3><p>用 <code>ls -l</code>（首字符）、<code>file filename</code> 或 <code>stat filename</code> 判断：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标识</th>
+<th align="left">类型</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>-</code></td>
+<td align="left">普通文件</td>
+<td align="left">文本、二进制、压缩包</td>
+</tr>
+<tr>
+<td align="left"><code>d</code></td>
+<td align="left">目录</td>
+<td align="left"><code>/etc</code></td>
+</tr>
+<tr>
+<td align="left"><code>l</code></td>
+<td align="left">符号链接</td>
+<td align="left"><code>ln -s</code> 创建的软链</td>
+</tr>
+<tr>
+<td align="left"><code>s</code></td>
+<td align="left">套接字</td>
+<td align="left"><code>/run/mysqld/mysqld.sock</code></td>
+</tr>
+<tr>
+<td align="left"><code>b</code></td>
+<td align="left">块设备</td>
+<td align="left"><code>/dev/vdb</code></td>
+</tr>
+<tr>
+<td align="left"><code>c</code></td>
+<td align="left">字符设备</td>
+<td align="left"><code>/dev/tty</code>、<code>/dev/null</code></td>
+</tr>
+<tr>
+<td align="left"><code>p</code></td>
+<td align="left">管道</td>
+<td align="left">命名管道 <code>mkfifo</code></td>
+</tr>
+</tbody></table>
+<p><code>s</code>/<code>b</code>/<code>c</code>/<code>p</code> 都是伪文件，不占磁盘空间，<code>du</code> 也统计不到它们。</p>
+<h3 id="3-3-软链接踩坑：Too-many-levels-of-symbolic-links"><a href="#3-3-软链接踩坑：Too-many-levels-of-symbolic-links" class="headerlink" title="3.3 软链接踩坑：Too many levels of symbolic links"></a>3.3 软链接踩坑：Too many levels of symbolic links</h3><p>报这个错，通常是<strong>软链接指向了自己</strong>（相对路径套了一层层）。创建时用绝对路径最稳：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ln -s /data/app/releases/v1.2.3 /data/app/current     <span class="comment"># 推荐：目标用绝对路径</span></span><br><span class="line">readlink -f /data/app/current                          <span class="comment"># 顺链解析出真实路径，排查用</span></span><br><span class="line">ls -l /data/app/current                                <span class="comment"># 看链接指向对不对</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="四、用户、SSH-与主机标识"><a href="#四、用户、SSH-与主机标识" class="headerlink" title="四、用户、SSH 与主机标识"></a>四、用户、SSH 与主机标识</h2><h3 id="4-1-添加用户与用户组"><a href="#4-1-添加用户与用户组" class="headerlink" title="4.1 添加用户与用户组"></a>4.1 添加用户与用户组</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">cat /etc/group                 <span class="comment"># 现有组</span></span><br><span class="line">groupadd legendx               <span class="comment"># 建组</span></span><br><span class="line"></span><br><span class="line">useradd legendx                <span class="comment"># 建用户（默认会建同名组）</span></span><br><span class="line">usermod legendx -g legendx     <span class="comment"># 把用户归到指定组</span></span><br><span class="line">cat /etc/passwd                <span class="comment"># 用户信息（uid/gid/home/shell）</span></span><br><span class="line">cat /etc/shadow                <span class="comment"># 密码哈希（仅 root 可读，别外传）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-2-配置-SSH-密钥登录"><a href="#4-2-配置-SSH-密钥登录" class="headerlink" title="4.2 配置 SSH 密钥登录"></a>4.2 配置 SSH 密钥登录</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo su legendx                                  <span class="comment"># 切到目标用户再生成，密钥属主才对</span></span><br><span class="line">ssh-keygen -t ed25519                            <span class="comment"># 比 RSA 更短更快；老系统不支持时用 -t rsa -b 4096</span></span><br><span class="line">cat 密钥.pub &gt; ~/.ssh/authorized_keys</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br><span class="line">chmod 700 ~/.ssh</span><br></pre></td></tr></tbody></table></figure>
+
+<p>要点：</p>
+<ul>
+<li><code>authorized_keys</code> 权限过宽（644/777）会被 sshd 直接拒绝，必须 600，<code>.ssh</code> 目录 700。</li>
+<li><code>ssh-copy-id user@host</code> 更省事；多台机器就配 <code>~/.ssh/config</code> 的 Host 段。</li>
+<li>从已有 <strong>PEM 私钥</strong>反推公钥（云主机换密钥、贴到面板时常用）：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -y -f yueguang-game-hk.pem            <span class="comment"># 输出 openSSH 格式公钥</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-3-sshd-服务与登录"><a href="#4-3-sshd-服务与登录" class="headerlink" title="4.3 sshd 服务与登录"></a>4.3 sshd 服务与登录</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">apt install openssh-server</span><br><span class="line">service ssh status &amp;&amp; service ssh start</span><br><span class="line">ufw allow ssh                     <span class="comment"># 开了防火墙记得放行</span></span><br><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>sshd_config</code> 常改的三项：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">PasswordAuthentication yes        # 允许密码登录（内网方便，公网建议 no，只留密钥）</span><br><span class="line">ListenAddress 0.0.0.0             # 监听所有网卡</span><br><span class="line">PermitRootLogin yes               # 允许 root 直连（公网强烈不建议 yes）</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">service ssh restart</span><br><span class="line">ssh root@127.0.0.1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>新装系统 root 可能没有密码，需要先设置：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">passwd root                       <span class="comment"># 交互式输入两次，密码不要明文写进笔记</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-4-报「找不到匹配的-key-exchange-算法」"><a href="#4-4-报「找不到匹配的-key-exchange-算法」" class="headerlink" title="4.4 报「找不到匹配的 key exchange 算法」"></a>4.4 报「找不到匹配的 key exchange 算法」</h3><p>老客户端连新服务器（或新客户端连老服务器）时常见，原因是两边没有交集算法。服务端放开一批兼容算法：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,diffie-hellman-group14-sha256</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>别为了迁就老设备加 <code>diffie-hellman-group1-sha1</code>、<code>ssh-rsa</code> 这类已被判定不安全的算法；宁可升级客户端，或限定在隔离网段临时开。</p>
+</blockquote>
+<h3 id="4-5-更改主机名"><a href="#4-5-更改主机名" class="headerlink" title="4.5 更改主机名"></a>4.5 更改主机名</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">hostname                                   <span class="comment"># 查看当前</span></span><br><span class="line">sudo hostname newhostname                  <span class="comment"># 临时生效，重启后还原（别只改这个）</span></span><br><span class="line">sudo hostnamectl set-hostname newhostname  <span class="comment"># 永久，systemd 环境推荐</span></span><br><span class="line">vim /etc/hostname                          <span class="comment"># 手动改文件（等价于上一条）</span></span><br><span class="line">sudo reboot                                <span class="comment"># 需要彻底生效时重启</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>只改主机名还不够：<code>/etc/hosts</code> 里把 <code>127.0.0.1</code> 那行补上新主机名，否则 <code>sudo</code>、<code>hostname -f</code> 会变慢或报错。</p>
+<h3 id="4-6-计划任务"><a href="#4-6-计划任务" class="headerlink" title="4.6 计划任务"></a>4.6 计划任务</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">crontab -l                 <span class="comment"># 当前用户的任务</span></span><br><span class="line">crontab -u www -l          <span class="comment"># 指定用户（root 才能看别人的）</span></span><br><span class="line">crontab -e                 <span class="comment"># 编辑</span></span><br><span class="line">crontab -u www -e</span><br></pre></td></tr></tbody></table></figure>
+
+<p>五个时间位含义：<code>分 时 日 月 周</code>，<code>*/5 * * * *</code> 表示每 5 分钟。脚本里务必用绝对路径：cron 环境极度精简，<code>PATH</code> 只有 <code>/usr/bin:/bin</code>。</p>
+<h3 id="4-7-HTTPS-证书"><a href="#4-7-HTTPS-证书" class="headerlink" title="4.7 HTTPS 证书"></a>4.7 HTTPS 证书</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo certbot --nginx -d example.com -d www.example.com   <span class="comment"># 一键签发并改配置</span></span><br><span class="line">sudo certbot certonly --webroot -w /var/www/html -d example.com</span><br><span class="line">sudo certbot renew --dry-run                              <span class="comment"># 续期演练，先跑通再交给定时任务</span></span><br><span class="line">sudo certbot certificates                                 <span class="comment"># 查看已签证书与到期时间</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Let’s Encrypt 证书 90 天有效，靠 systemd timer 或 <code>crontab</code> 自动续期；不演练，到期当天才发现续不上是最常见的事故。</p>
+<hr>
+<h2 id="五、Shell-基础与流程控制"><a href="#五、Shell-基础与流程控制" class="headerlink" title="五、Shell 基础与流程控制"></a>五、Shell 基础与流程控制</h2><h3 id="5-1-declare-声明变量"><a href="#5-1-declare-声明变量" class="headerlink" title="5.1 declare 声明变量"></a>5.1 declare 声明变量</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">declare</span> -i n=10            <span class="comment"># 声明为整数，赋值时自动做算术</span></span><br><span class="line"><span class="built_in">declare</span> -a arr=(a b c)     <span class="comment"># 数组</span></span><br><span class="line"><span class="built_in">declare</span> -p n arr           <span class="comment"># 查看变量类型与值（排查"为什么赋值后不是我想的类型"）</span></span><br><span class="line"><span class="built_in">declare</span> -x FOO=bar         <span class="comment"># 导出为环境变量（等价 export）</span></span><br><span class="line"><span class="built_in">declare</span> -r PI=3.14         <span class="comment"># 只读，再赋值会报错</span></span><br><span class="line"><span class="built_in">declare</span> -A m               <span class="comment"># 关联数组（key 是字符串）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-2-while-循环"><a href="#5-2-while-循环" class="headerlink" title="5.2 while 循环"></a>5.2 while 循环</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 计数循环</span></span><br><span class="line">i=0</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$i</span> -lt 5 ]; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line">  i=$((i + <span class="number">1</span>))</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 按行读文件（最稳的写法，避免 for 按空格切分）</span></span><br><span class="line"><span class="keyword">while</span> IFS= <span class="built_in">read</span> -r line; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$line</span>"</span></span><br><span class="line"><span class="keyword">done</span> &lt; list.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直到条件成立才退出</span></span><br><span class="line">until ping -c1 -W1 10.0.0.1 &gt;/dev/null 2&gt;&amp;1; <span class="keyword">do</span></span><br><span class="line">  sleep 2</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"主机起来了"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>while read</code> 搭配管道时，循环体在子 shell 里执行，循环内改的变量出了循环就丢——要么用 <code>&lt; file</code> 重定向，要么改成 <code>done &lt; &lt;(cmd)</code>。</p>
+<h3 id="5-3-shell-里的自增写法"><a href="#5-3-shell-里的自增写法" class="headerlink" title="5.3 shell 里的自增写法"></a>5.3 shell 里的自增写法</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">i=1</span><br><span class="line"></span><br><span class="line">i=`expr <span class="variable">$i</span> + 1`        <span class="comment"># 老写法，起子进程，最慢</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> i+=1               <span class="comment"># 内建命令</span></span><br><span class="line"><span class="built_in">let</span> <span class="string">"i++"</span>              <span class="comment"># 同上</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line">((i++))                <span class="comment"># 最常用，算术上下文</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line">i=$[<span class="variable">$i</span>+1]              <span class="comment"># 老式算术展开，不推荐</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line">i=$((i+<span class="number">1</span>))             <span class="comment"># 推荐的算术展开</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 5); <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>速度排序：<code>(( ))</code> / <code>let</code> 是 bash 内建，<code>expr</code> 每次 fork 一个进程，循环里用 <code>expr</code> 慢几十倍。</p>
+<h3 id="5-4-if-分支"><a href="#5-4-if-分支" class="headerlink" title="5.4 if 分支"></a>5.4 if 分支</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 单分支</span></span><br><span class="line"><span class="keyword">if</span> condition; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">command</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 双分支</span></span><br><span class="line"><span class="keyword">if</span> condition; <span class="keyword">then</span></span><br><span class="line">  command1</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  command2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多分支</span></span><br><span class="line"><span class="keyword">if</span> condition1; <span class="keyword">then</span></span><br><span class="line">  command1</span><br><span class="line"><span class="keyword">elif</span> condition2; <span class="keyword">then</span></span><br><span class="line">  command2</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  commandN</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>condition</code> 本质是一条命令的退出码：<code>[ -f file ]</code>、<code>[ "$x" = "y" ]</code>、<code>grep -q x file</code>。数字比较用 <code>-eq/-ne/-gt/-lt</code>，字符串比较用 <code>=</code>、<code>!=</code>，<code>[[ ]]</code> 才支持 <code>&amp;&amp;</code> 和正则。</p>
+<h3 id="5-5-case-分支"><a href="#5-5-case-分支" class="headerlink" title="5.5 case 分支"></a>5.5 case 分支</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> 值 <span class="keyword">in</span></span><br><span class="line">  模式1)</span><br><span class="line">    command1</span><br><span class="line">    ;;</span><br><span class="line">  模式2)</span><br><span class="line">    command2</span><br><span class="line">    ;;</span><br><span class="line">  *)</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> 请输入数字</span><br><span class="line"><span class="built_in">read</span> num</span><br><span class="line"><span class="keyword">case</span> <span class="variable">$num</span> <span class="keyword">in</span></span><br><span class="line">  1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"你输入了1"</span></span><br><span class="line">    ;;</span><br><span class="line">  2)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"你输入了2"</span></span><br><span class="line">    ;;</span><br><span class="line">  *)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"无法识别的数字<span class="variable">$num</span>"</span></span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>模式支持通配：<code>*.tar.gz)</code>、<code>[0-9])</code>、<code>yes|y|Y)</code>。<code>;;</code> 少了会一路贯穿到下一个分支（类似 C 的 fallthrough），排查”怎么执行了两个分支”就往这看。</p>
+<h3 id="5-6-chsh-换默认-shell"><a href="#5-6-chsh-换默认-shell" class="headerlink" title="5.6 chsh 换默认 shell"></a>5.6 chsh 换默认 shell</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">chsh -l                  <span class="comment"># 系统支持的 shell 列表（= cat /etc/shells）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span>              <span class="comment"># 当前登录用的 shell</span></span><br><span class="line">chsh -s /bin/zsh         <span class="comment"># 改默认 shell，重新登录才生效</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>echo $SHELL</code> 是登录 shell，不等于”当前正在执行的解释器”。脚本里要拿真实解释器路径，用 <code>$0</code> 或 <code>BASH_SOURCE</code>。</p>
+<h3 id="5-7-BASH-SOURCE-与-dirname：脚本定位自己所在目录"><a href="#5-7-BASH-SOURCE-与-dirname：脚本定位自己所在目录" class="headerlink" title="5.7 BASH_SOURCE 与 dirname：脚本定位自己所在目录"></a>5.7 BASH_SOURCE 与 dirname：脚本定位自己所在目录</h3><p><code>BASH_SOURCE[0]</code>（等价于 <code>BASH_SOURCE</code>）是当前执行的脚本文件路径，<code>dirname</code> 去掉文件名只留目录。单用 <code>dirname $0</code> 在 <code>source</code>、软链接、被别的脚本调用时会拿到错路径，标准写法：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">SCRIPT_DIR=$(<span class="built_in">cd</span> <span class="string">"<span class="subst">$(dirname <span class="string">"<span class="variable">${BASH_SOURCE[0]}</span>"</span>)</span>"</span> &amp;&amp; <span class="built_in">pwd</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"脚本所在目录: <span class="variable">$SCRIPT_DIR</span>"</span></span><br><span class="line"><span class="built_in">source</span> <span class="string">"<span class="variable">$SCRIPT_DIR</span>/common.sh"</span>          <span class="comment"># 引用同目录下的其他脚本</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>三层含义：<code>${BASH_SOURCE[0]}</code> 拿原始路径（可能是相对路径或软链），<code>dirname</code> 取目录部分，<code>cd ... &amp;&amp; pwd</code> 转成绝对路径——这样无论从哪里调用都不会错。</p>
+<hr>
+<h2 id="六、端口、进程与网络"><a href="#六、端口、进程与网络" class="headerlink" title="六、端口、进程与网络"></a>六、端口、进程与网络</h2><h3 id="6-1-端口占用"><a href="#6-1-端口占用" class="headerlink" title="6.1 端口占用"></a>6.1 端口占用</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">lsof -i:80                                <span class="comment"># 谁占着 80</span></span><br><span class="line">sudo netstat -tunpl | grep 端口号          <span class="comment"># 老牌写法，带 PID</span></span><br><span class="line">sudo ss -tulnp | grep :80                 <span class="comment"># 推荐，速度快</span></span><br><span class="line">ss -tuln                                  <span class="comment"># 全部监听端口</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Windows 侧：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="code"><pre><span class="line">netstat <span class="literal">-ano</span> | findstr :端口号</span><br><span class="line">taskkill /PID 进程ID /F</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-2-统计某个端口的连接数"><a href="#6-2-统计某个端口的连接数" class="headerlink" title="6.2 统计某个端口的连接数"></a>6.2 统计某个端口的连接数</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">netstat -nat | grep -i <span class="string">"6379"</span> | wc -l      <span class="comment"># 含监听与所有连接</span></span><br><span class="line">lsof -i:6379 | wc -l                       <span class="comment"># 枚举持有该端口的进程与连接</span></span><br><span class="line">ps -ef | grep redis | grep -v grep         <span class="comment"># 只能按进程名看，不是按端口</span></span><br><span class="line">ss -tn state established <span class="string">'( sport = :6379 )'</span> | wc -l   <span class="comment"># 只数已建立的连接，最准</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>数连接不要用 <code>ps</code>：它按进程名匹配，一个进程多个端口、多个进程同端口都会漏。</p>
+<h3 id="6-3-连通性测试"><a href="#6-3-连通性测试" class="headerlink" title="6.3 连通性测试"></a>6.3 连通性测试</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">telnet 127.0.0.1 9501      <span class="comment"># 通 → 出现 Connected；退出：Ctrl + ] 再输入 quit</span></span><br><span class="line">nc -u 127.0.0.1 80         <span class="comment"># UDP 端口；CentOS 装 nc，Debian 装 netcat-openbsd 或 ncat</span></span><br><span class="line">nc -vz host 端口            <span class="comment"># 只探测连通，v 显示过程，z 不真正发数据</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-4-进程与流量"><a href="#6-4-进程与流量" class="headerlink" title="6.4 进程与流量"></a>6.4 进程与流量</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ps -ef                <span class="comment"># 全量进程，看父子关系</span></span><br><span class="line">ps aux                <span class="comment"># 带 CPU/内存占比</span></span><br><span class="line">top / htop            <span class="comment"># 实时排序（htop 需单独安装）</span></span><br><span class="line">iftop                 <span class="comment"># 按连接看实时带宽</span></span><br><span class="line">iptraf                <span class="comment"># 交互式流量统计</span></span><br><span class="line">ss -s                 <span class="comment"># 连接数汇总，TIME_WAIT 过多时先看这里</span></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="七、丢包、队列与防火墙"><a href="#七、丢包、队列与防火墙" class="headerlink" title="七、丢包、队列与防火墙"></a>七、丢包、队列与防火墙</h2><h3 id="7-1-丢包先分层"><a href="#7-1-丢包先分层" class="headerlink" title="7.1 丢包先分层"></a>7.1 丢包先分层</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 协议栈溢出计数：ListenOverflows、ListenDrops、TCPTimeouts</span></span><br><span class="line">netstat -s | grep overflowed</span><br><span class="line">cat /proc/net/netstat            <span class="comment"># 双行输出，第二行才是值</span></span><br><span class="line">nstat -az | grep -i -e drop -e overflow   <span class="comment"># 更好读（iproute2 自带）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 网卡收发统计与错误</span></span><br><span class="line">ifconfig eth0                    <span class="comment"># RX/TX dropped、errors、overruns</span></span><br><span class="line">ip -s link show eth0             <span class="comment"># ifconfig 的现代替代，同样有 dropped/errors</span></span><br><span class="line">ethtool -S eth0 | grep -i drop   <span class="comment"># 队列级丢包，最细</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 调整发送队列长度（队列过短导致 drops 时）</span></span><br><span class="line">ifconfig eth0 txqueuelen 1500</span><br><span class="line">ip link <span class="built_in">set</span> eth0 txqueuelen 1500 <span class="comment"># 推荐用 ip</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>读法：</p>
+<ul>
+<li><code>overruns</code> / <code>RX dropped</code> 涨：内核来不及取包，调 ring buffer（<code>ethtool -G eth0 rx 4096</code>）或看中断绑定。</li>
+<li><code>TX dropped</code> 涨且 <code>txqueuelen</code> 很小：队列太短，调大队列。</li>
+<li><code>netstat -s</code> 里 listening sockets overflowed 涨：应用 <code>accept</code> 太慢，全连接队列满，看应用 backlog 与 <code>somaxconn</code>。</li>
+<li>以上都干净但仍丢：<code>mtr</code> 看链路、<code>tcpdump</code> 对比进出包。</li>
+</ul>
+<h3 id="7-2-DROP-与-REJECT-的差别（一个可复现的实验）"><a href="#7-2-DROP-与-REJECT-的差别（一个可复现的实验）" class="headerlink" title="7.2 DROP 与 REJECT 的差别（一个可复现的实验）"></a>7.2 DROP 与 REJECT 的差别（一个可复现的实验）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 屏蔽 80 端口，DROP：包被静默丢弃，客户端只能等到超时</span></span><br><span class="line">iptables -I INPUT -p tcp --dport 80 -j DROP</span><br><span class="line">sudo tcpdump -i any -w telnet-80.pcap port 80</span><br><span class="line">telnet 服务端IP 80</span><br><span class="line"><span class="comment"># 现象：telnet 一直卡着，SYN 反复重传，默认 tcp_syn_retries=6（约 127 秒才放弃）</span></span><br><span class="line">sudo sysctl net.ipv4.tcp_syn_retries</span><br><span class="line"></span><br><span class="line"><span class="comment"># 换成 REJECT：直接回 RST，客户端立刻报 Connection refused</span></span><br><span class="line">iptables -I INPUT -p tcp --dport 80 -j REJECT</span><br><span class="line">sudo tcpdump -i any -w telnet-80-reject.pcap host 47.94.129.219 and port 80</span><br><span class="line">telnet 47.94.129.219 80</span><br></pre></td></tr></tbody></table></figure>
+
+<p>价值在于排查时能区分两类”连不上”：</p>
+<table>
+<thead>
+<tr>
+<th align="left">现象</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">卡住超时、抓包只有 SYN 没回包</td>
+<td align="left">被 DROP / 丢包 / 安全组未放行</td>
+</tr>
+<tr>
+<td align="left">立刻 Connection refused</td>
+<td align="left">端口没监听，或被 REJECT</td>
+</tr>
+<tr>
+<td align="left">Connection reset by peer</td>
+<td align="left">建立后被 RST（服务崩了或超时断开）</td>
+</tr>
+</tbody></table>
+<p>清理实验规则：<code>iptables -D INPUT -p tcp --dport 80 -j DROP</code>（按 <code>iptables -L --line-numbers</code> 里的序号删更稳）。</p>
+<p>参考：<a href="https://cloud.tencent.com/developer/article/1850766">Linux 网络丢包排查</a>、<a href="https://www.cnblogs.com/xiefengdaxia123/p/17398455.html">网卡队列 backlog</a></p>
+<hr>
+<h2 id="八、磁盘空间、挂载与大文件"><a href="#八、磁盘空间、挂载与大文件" class="headerlink" title="八、磁盘空间、挂载与大文件"></a>八、磁盘空间、挂载与大文件</h2><h3 id="8-1-找空间去哪了"><a href="#8-1-找空间去哪了" class="headerlink" title="8.1 找空间去哪了"></a>8.1 找空间去哪了</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">du -sh                        <span class="comment"># 当前目录总大小</span></span><br><span class="line">du -sh *                      <span class="comment"># 每个子项大小</span></span><br><span class="line">du -lh --max-depth=5          <span class="comment"># 只看 5 层以内，避免刷屏</span></span><br><span class="line">ls -al --block-size=M         <span class="comment"># 以 MB 显示文件大小</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>逐层往下钻的固定套路：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo du -h --max-depth=1 / | sort -hr | head -10                  <span class="comment"># 根目录 Top10</span></span><br><span class="line">sudo du -h --max-depth=1 /data | sort -hr | head -10               <span class="comment"># 继续下钻</span></span><br><span class="line">sudo du -ah / | sort -hr | head -10                                <span class="comment"># 连单文件一起排</span></span><br><span class="line">du -hm --max-depth=2 | sort -nr | head -10                          <span class="comment"># 只看最大的 10 个目录</span></span><br><span class="line">sudo lsof | grep deleted                                            <span class="comment"># 被删但仍占用</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="8-2-找大文件"><a href="#8-2-找大文件" class="headerlink" title="8.2 找大文件"></a>8.2 找大文件</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -size +800M                                        <span class="comment"># 只列文件名</span></span><br><span class="line">find . -<span class="built_in">type</span> f -size +800M -print0 | xargs -0 ls -l               <span class="comment"># 带权限、时间、大小</span></span><br><span class="line">find . -<span class="built_in">type</span> f -size +800M -print0 | xargs -0 du -h               <span class="comment"># 带人类可读大小</span></span><br><span class="line">find . -<span class="built_in">type</span> f -size +800M -print0 | xargs -0 du -h | sort -nr    <span class="comment"># 排序</span></span><br><span class="line">find / -<span class="built_in">type</span> f -size +100M 2&gt;/dev/null | head -50                 <span class="comment"># 全盘扫，屏蔽权限报错</span></span><br><span class="line">ls -lhS / | grep -v <span class="string">'^d'</span> | head -n 10                             <span class="comment"># 只看文件，按大小降序</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>-print0</code> + <code>xargs -0</code> 是为了文件名带空格、中文、换行时不被拆错；少了这两个，一个 <code>my file.log</code> 会被当成两个文件。</p>
+<h3 id="8-3-经典案例：rm-rf-删了大文件，df-却不释放"><a href="#8-3-经典案例：rm-rf-删了大文件，df-却不释放" class="headerlink" title="8.3 经典案例：rm -rf 删了大文件，df 却不释放"></a>8.3 经典案例：<code>rm -rf</code> 删了大文件，<code>df</code> 却不释放</h3><p>现象与排查顺序（真实事故复盘）：</p>
+<ol>
+<li>同事更新 SVN 一直失败 → 登录服务器手动 <code>svn up</code> 提示空间满；</li>
+<li><code>df -h</code> 看到 <code>/dev/vda1 197G 41G 197G 100% /data</code>；</li>
+<li>用 <code>find . -type f -size +800M -print0 | xargs -0 ls -l | sort -nr</code> 找到那个 300G 的大家伙；</li>
+<li><code>df path</code> 确认它挂在哪个分区，<code>rm -rf somefile</code> 删掉；</li>
+<li>再 <code>df -h</code> —— 空间没回来；</li>
+<li><code>lsof | grep deleted</code> 看到还有进程（如 pid 9999）持有这个已删除的句柄；</li>
+<li><code>kill 9999</code> 终止进程（服务重启），句柄释放，空间立刻回来。</li>
+</ol>
+<p>原理：Linux 文件是「目录项 + inode + 数据块」，<code>rm</code> 只删目录项，进程开着 fd 时数据块不释放。三种解法：重启进程、<code>&gt; /proc/&lt;pid&gt;/fd/&lt;n&gt;</code> 清空、或先 <code>truncate -s 0</code> 清内容再删。</p>
+<h3 id="8-4-看盘、挂载与扩容"><a href="#8-4-看盘、挂载与扩容" class="headerlink" title="8.4 看盘、挂载与扩容"></a>8.4 看盘、挂载与扩容</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">lsblk            <span class="comment"># 块设备树，含挂载点与大小</span></span><br><span class="line">fdisk -l         <span class="comment"># 分区表；-lu 以扇区为单位；也是"看未挂载硬盘"的入口</span></span><br><span class="line">blkid            <span class="comment"># UUID 与文件系统类型（写 fstab 必用）</span></span><br><span class="line">df path          <span class="comment"># 这个文件/目录在哪个分区（扩容前先确认挂的是哪块盘）</span></span><br><span class="line">df -lh / df -l   <span class="comment"># 文件系统与挂载点使用情况</span></span><br><span class="line">mount            <span class="comment"># 当前已挂载；数据来源见 /etc/fstab、/etc/mtab、/proc/mounts</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>新盘挂载（无分区、无 UUID 的情况）：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">lsblk                              <span class="comment"># 1. 确认新盘，例如 /dev/vdb</span></span><br><span class="line">sudo mkfs.ext4 /dev/vdb            <span class="comment"># 2. 格式化（会清空数据，先确认盘没认错）</span></span><br><span class="line">sudo mkdir -p /data                <span class="comment"># 3. 建挂载点</span></span><br><span class="line">sudo mount /dev/vdb /data          <span class="comment"># 4. 临时挂载，先验证可用</span></span><br><span class="line">blkid                              <span class="comment"># 5. 拿到 UUID</span></span><br><span class="line">vim /etc/fstab                     <span class="comment"># 6. 写入 UUID=&lt;uuid&gt; /data ext4 defaults 0 0</span></span><br><span class="line">sudo mount -a                      <span class="comment"># 7. 校验 fstab，无报错才算成功</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p><code>mount -a</code> 一定要跑：fstab 写错会导致下次开机进不了系统。用 <code>UUID=</code> 而不是 <code>/dev/vdb</code>，设备名在换盘、加盘后会变。</p>
+</blockquote>
+<p>扩容（分区已存在，只是容量变大）与卸载：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">growpart /dev/vda 1                  <span class="comment"># 先把分区扩大</span></span><br><span class="line">resize2fs /dev/vda1                  <span class="comment"># ext4 在线扩文件系统；xfs 用 xfs_growfs /data</span></span><br><span class="line">sudo umount /data                     <span class="comment"># 卸载</span></span><br><span class="line">sudo fuser -mv /data                  <span class="comment"># 卸不掉时，先查谁在用</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>参考：<a href="https://segmentfault.com/a/1190000017213655">挂载分区扩容</a></p>
+<hr>
+<h2 id="九、文件与文本处理"><a href="#九、文件与文本处理" class="headerlink" title="九、文件与文本处理"></a>九、文件与文本处理</h2><h3 id="9-1-查看文件内容"><a href="#9-1-查看文件内容" class="headerlink" title="9.1 查看文件内容"></a>9.1 查看文件内容</h3><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>cat</code></td>
+<td align="left">从头显示全文</td>
+</tr>
+<tr>
+<td align="left"><code>tac</code></td>
+<td align="left">从最后一行开始倒着显示</td>
+</tr>
+<tr>
+<td align="left"><code>more</code></td>
+<td align="left">分页显示，只能往下翻</td>
+</tr>
+<tr>
+<td align="left"><code>less</code></td>
+<td align="left">分页显示，可前后翻，推荐</td>
+</tr>
+<tr>
+<td align="left"><code>head</code></td>
+<td align="left">只看前几行（<code>head -n 20</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>tail</code></td>
+<td align="left">只看末尾（<code>tail -n 20</code>）；<code>tail -f</code> 实时跟踪</td>
+</tr>
+<tr>
+<td align="left"><code>nl</code></td>
+<td align="left">显示内容并带行号（等价 <code>cat -n</code>，但可控空行）</td>
+</tr>
+<tr>
+<td align="left"><code>od</code></td>
+<td align="left">以二进制/八进制查看，排查乱码、BOM、换行符时用</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">tail -f 1.txt          <span class="comment"># 一个终端里 echo a &gt;&gt; 1.txt，这里能实时看到</span></span><br><span class="line">tail -n +x file        <span class="comment"># 从第 x 行打印到结尾</span></span><br><span class="line">nl file                <span class="comment"># 带行号，对报错行号时好用</span></span><br><span class="line">od -c file | head      <span class="comment"># 看不可见字符（\r\n、\0）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="9-2-清空文件内容的几种方式"><a href="#9-2-清空文件内容的几种方式" class="headerlink" title="9.2 清空文件内容的几种方式"></a>9.2 清空文件内容的几种方式</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">: &gt; filename            <span class="comment"># 推荐：不开子进程，不产生输出</span></span><br><span class="line">cat /dev/null &gt; filename</span><br><span class="line">cp /dev/null filename</span><br><span class="line">&gt; filename              <span class="comment"># 最简写法，Linux 可，Mac 的 zsh 不支持（空命令重定向）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">""</span> &gt; filename      <span class="comment"># 会多一个空行</span></span><br><span class="line"><span class="built_in">echo</span> &gt; filename         <span class="comment"># 同样多一个空行</span></span><br><span class="line">truncate -s 0 filename  <span class="comment"># 大日志文件首选，不占 IO</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>清空<strong>正在被写的日志</strong>要用 <code>truncate</code> 或 <code>: &gt;</code>，直接 <code>rm</code> 会让写日志的进程继续往已删除的 inode 里写，空间不释放（见 8.3）。</p>
+<h3 id="9-3-查找包含指定字符串的文件"><a href="#9-3-查找包含指定字符串的文件" class="headerlink" title="9.3 查找包含指定字符串的文件"></a>9.3 查找包含指定字符串的文件</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">grep -rn <span class="string">"Hello"</span> ./                        <span class="comment"># -r 递归、-n 显示行号</span></span><br><span class="line">grep -rn --include=<span class="string">"*.log"</span> <span class="string">"Hello"</span> ./      <span class="comment"># 限定文件类型</span></span><br><span class="line">grep -rl <span class="string">"Hello"</span> ./                        <span class="comment"># 只列文件名</span></span><br><span class="line">find ./ -<span class="built_in">type</span> f -name <span class="string">"*.txt"</span> | xargs grep <span class="string">"Hello"</span></span><br><span class="line">find . | xargs grep -ri <span class="string">"Hello"</span>            <span class="comment"># -i 忽略大小写</span></span><br><span class="line">find . | xargs grep -ri <span class="string">"Hello"</span> -l         <span class="comment"># 只显示文件名</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>优先用 <code>grep -r</code>，它自己递归且处理二进制文件更聪明；<code>find | xargs</code> 在文件名带空格时会断，要么加 <code>-print0 | xargs -0</code>。</p>
+<h3 id="9-4-批量解压到固定目录"><a href="#9-4-批量解压到固定目录" class="headerlink" title="9.4 批量解压到固定目录"></a>9.4 批量解压到固定目录</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> *.tgz; <span class="keyword">do</span></span><br><span class="line">  tar -zxvf <span class="string">"<span class="variable">$i</span>"</span> -C ../tar/</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>要点：<code>for i in *.tgz</code> 比 <code>ls *.tgz</code> 稳（后者遇到文件名带空格会被拆开）；<code>-C</code> 的目标目录<strong>必须已存在</strong>，否则 <code>tar</code> 报错。要保留每个包自己的目录结构，就按包名建子目录：<code>mkdir -p ../tar/${i%.tgz} &amp;&amp; tar -zxvf "$i" -C ../tar/${i%.tgz}</code>。</p>
+<h3 id="9-5-批量替换与-sed"><a href="#9-5-批量替换与-sed" class="headerlink" title="9.5 批量替换与 sed"></a>9.5 批量替换与 sed</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sed <span class="string">'s/root/ubuntu/g'</span> config        <span class="comment"># 只输出到终端，不改文件</span></span><br><span class="line">sed -i <span class="string">'s/root/ubuntu/g'</span> config     <span class="comment"># 直接改写</span></span><br><span class="line">sed -i.bak <span class="string">'s/root/ubuntu/g'</span> config <span class="comment"># 改写并留 config.bak</span></span><br><span class="line">sed -n <span class="string">'10,20p'</span> config              <span class="comment"># 只看第 10~20 行</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>-i</code> 不可撤销：先用 <code>grep -c</code> 确认匹配数量，或带 <code>.bak</code> 备份。</p>
+<h3 id="9-6-打包、解包、7z"><a href="#9-6-打包、解包、7z" class="headerlink" title="9.6 打包、解包、7z"></a>9.6 打包、解包、7z</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 排除多个目录</span></span><br><span class="line">tar -zcvf 打包后.tar.gz --exclude=dir1 --exclude=dir2 --exclude=dir3 待打包目录</span><br><span class="line">tar --exclude=/home/www/altius/public/upload/ --exclude=/home/www/altius/public_bak/ \</span><br><span class="line">  -zcvf altius_20240813.tar.gz altius/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只解出包内某个文件，并去掉前 6 层路径</span></span><br><span class="line">tar -xf 646_GameServer1_20240618.tar.gz \</span><br><span class="line">  data2/.../SNK.GameServer1_item_20240618.log --strip-components 6</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7z（CentOS）</span></span><br><span class="line">sudo yum install epel-release p7zip p7zip-plugins</span><br><span class="line">7za x 文件名.7z                              <span class="comment"># 解到当前目录</span></span><br><span class="line">7za x rasalas-sdk.7z -o/www/wwwroot/mydir/   <span class="comment"># 指定输出目录，-o 必须连写</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>老版本 tar（&lt; 1.30）要求 <code>--exclude</code> 写在文件名<strong>之前</strong>，写在后面会被静默忽略；1.30 之后顺序不敏感。打完包用 <code>tar -tvf 包名 | head</code> 确认排除项没进去——这个坑不报错。</p>
+</blockquote>
+<h3 id="9-7-tar-zxvf-xxx-gz-报-“This-does-not-look-like-a-tar-archive”"><a href="#9-7-tar-zxvf-xxx-gz-报-“This-does-not-look-like-a-tar-archive”" class="headerlink" title="9.7 tar -zxvf xxx.gz 报 “This does not look like a tar archive”"></a>9.7 <code>tar -zxvf xxx.gz</code> 报 “This does not look like a tar archive”</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">file access.log.10.gz</span><br><span class="line"><span class="comment"># access.log.10.gz: gzip compressed data, last modified: ..., original size 3703485</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>是 <code>gzip compressed data</code> → 纯 gzip，不是 tar.gz（日志轮转的 <code>.gz</code> 就是这种）：<code>gunzip access.log.10.gz</code> 或 <code>zcat access.log.10.gz | less</code>。</li>
+<li>是 gzip 仍报错 → 文件损坏，或压缩时只用了 <code>gzip</code> 没用 <code>tar</code>；先 <code>gzip -t</code> 校验，再从备份重取。</li>
+</ul>
+<h3 id="9-8-压缩包格式区别"><a href="#9-8-压缩包格式区别" class="headerlink" title="9.8 压缩包格式区别"></a>9.8 压缩包格式区别</h3><table>
+<thead>
+<tr>
+<th align="left">格式</th>
+<th align="left">典型后缀</th>
+<th align="left">是什么</th>
+<th align="left">安装/解包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Compressed Archive</td>
+<td align="left"><code>.tar.gz</code> / <code>.tgz</code> / <code>.tar.xz</code></td>
+<td align="left">打包 + 压缩，只是文件集合</td>
+<td align="left"><code>tar -xf</code></td>
+</tr>
+<tr>
+<td align="left">Debian Package</td>
+<td align="left"><code>.deb</code></td>
+<td align="left">Debian/Ubuntu 软件包，含依赖与脚本</td>
+<td align="left"><code>dpkg -i</code> / <code>apt install ./x.deb</code></td>
+</tr>
+<tr>
+<td align="left">RPM Package</td>
+<td align="left"><code>.rpm</code></td>
+<td align="left">RHEL/CentOS 系软件包</td>
+<td align="left"><code>rpm -ivh</code> / <code>yum localinstall</code></td>
+</tr>
+</tbody></table>
+<h3 id="9-9-curl-与-wget"><a href="#9-9-curl-与-wget" class="headerlink" title="9.9 curl 与 wget"></a>9.9 curl 与 wget</h3><p>共同点：都是命令行 HTTP 客户端，都支持断点续传（<code>curl -C -</code>、<code>wget -c</code>）、都能设头、都能走代理。</p>
+<table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">curl</th>
+<th align="left">wget</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">本质</td>
+<td align="left">libcurl 库的命令行前端</td>
+<td align="left">独立命令行下载器</td>
+</tr>
+<tr>
+<td align="left">协议</td>
+<td align="left">支持 HTTP/HTTPS/FTP/SCP/SFTP/SMTP 等几十种</td>
+<td align="left">只支持 HTTP、HTTPS、FTP</td>
+</tr>
+<tr>
+<td align="left">HTTP 版本</td>
+<td align="left">默认 1.1，也支持 1.0、2、3</td>
+<td align="left">长期以 1.0/1.1 为主（新版支持 2）</td>
+</tr>
+<tr>
+<td align="left">URL 集合</td>
+<td align="left">支持序列与批量（<code>{a,b}</code>、<code>[1-10]</code>）</td>
+<td align="left">不支持这种写法</td>
+</tr>
+<tr>
+<td align="left">递归下载</td>
+<td align="left">不支持</td>
+<td align="left">支持整站抓取</td>
+</tr>
+<tr>
+<td align="left">典型用途</td>
+<td align="left">调接口、看报文、上传（<code>-F</code>）</td>
+<td align="left">下载文件、镜像站点</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">curl -v -X POST -H <span class="string">"Content-Type: application/json"</span> -d <span class="string">'{"a":1}'</span> https://api/x</span><br><span class="line">curl -o out.html -w <span class="string">"ttfb=%{time_starttransfer} total=%{time_total}\n"</span> https://x/</span><br><span class="line">wget -c https://x/big.iso</span><br><span class="line">wget --mirror --convert-links https://docs.x/</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="9-10-ls-grep-wc-统计数量"><a href="#9-10-ls-grep-wc-统计数量" class="headerlink" title="9.10 ls + grep + wc 统计数量"></a>9.10 ls + grep + wc 统计数量</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ls -l | grep <span class="string">"^-"</span> | wc -l          <span class="comment"># 当前目录文件个数（不含目录）</span></span><br><span class="line">ls -lR | grep <span class="string">"^-"</span> | wc -l         <span class="comment"># 含子目录的文件总数</span></span><br><span class="line">ls -lR | grep <span class="string">"^d"</span> | wc -l         <span class="comment"># 目录总数（含子目录）</span></span><br><span class="line">find . -maxdepth 1 -<span class="built_in">type</span> f | wc -l <span class="comment"># 更稳，文件多时不受参数长度限制</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>文件特别多时报 <code>argument list too long: ls</code>，是 shell 展开参数超了上限（不是权限问题）：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">find /data -maxdepth 1 -<span class="built_in">type</span> f | wc -l          <span class="comment"># 用 find 绕开</span></span><br><span class="line">ls -U | head                                    <span class="comment"># 分批读目录</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="9-11-大文件传输"><a href="#9-11-大文件传输" class="headerlink" title="9.11 大文件传输"></a>9.11 大文件传输</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">scp -P 22 /path/to/<span class="built_in">local</span>/file.txt user@remote_host:/path/on/remote/   <span class="comment"># 本地 → 远程</span></span><br><span class="line">scp user@remote_host:/path/on/remote/file.txt /path/to/<span class="built_in">local</span>/         <span class="comment"># 远程 → 本地</span></span><br><span class="line">rsync -avzP --partial file user@host:/path/                            <span class="comment"># 断点续传，大文件首选</span></span><br><span class="line">sftp user@host                                                          <span class="comment"># 交互式 put/get</span></span><br><span class="line">wget -c https://...                                                     <span class="comment"># 断点续传下载</span></span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">工具</th>
+<th align="left">场景</th>
+<th align="left">特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scp</td>
+<td align="left">临时单文件</td>
+<td align="left">简单，走 SSH，不能续传</td>
+</tr>
+<tr>
+<td align="left">rsync</td>
+<td align="left">目录同步、大文件</td>
+<td align="left">差量传输、断点续传、可限速</td>
+</tr>
+<tr>
+<td align="left">sftp</td>
+<td align="left">交互式上传下载</td>
+<td align="left">走 SSH，可浏览目录</td>
+</tr>
+<tr>
+<td align="left">wget</td>
+<td align="left">从 HTTP 拉取</td>
+<td align="left"><code>-c</code> 续传，可递归</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十、日志排查实战"><a href="#十、日志排查实战" class="headerlink" title="十、日志排查实战"></a>十、日志排查实战</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 多个条件连续过滤</span></span><br><span class="line">cat SNK.GameServer1_item_20240611.log | grep 5323031131 | grep 450011 &gt;&gt; 11.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 批量文件里找同一个用户</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `ls SNK.GameServer101*.<span class="built_in">log</span>`; <span class="keyword">do</span></span><br><span class="line">  cat <span class="variable">$i</span> | grep 4730651225 | grep <span class="string">'login'</span> &gt;&gt; 4730651225.log</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 按时间段截取（首字段是时间，字符串比较即可，格式必须一致）</span></span><br><span class="line">awk -F <span class="string">'|'</span> <span class="string">'$1&gt;="2024-06-13 14:47:20.000" &amp;&amp; $1&lt;="2024-06-13 15:20:00.000"'</span> ./4730651225.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 时间段 + 用户 + 排序，多文件合并用 &gt;&gt; 追加</span></span><br><span class="line">awk -F <span class="string">'|'</span> <span class="string">'$1&gt;="2024-06-05 09:30:00.000" &amp;&amp; $1&lt;="2024-06-05 11:01:00.000"'</span> \</span><br><span class="line">  SNK.GameServer1_item_20240605.log | grep <span class="string">'5213520483'</span> | sort &gt;&gt; s11.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 按字段做条件统计（多分隔符 -F "[ |=]"）</span></span><br><span class="line">awk -F <span class="string">"[ |=]"</span> <span class="string">'{if($9==2 &amp;&amp; $11==5010003 &amp;&amp; $5=="doadd" &amp;&amp; ($17-$15==100)) {print $0}}'</span> \</span><br><span class="line">  SNK.GameServer1_item_20240520.log</span><br></pre></td></tr></tbody></table></figure>
+
+<p>要点：</p>
+<ul>
+<li><code>awk -F</code> 里 <code>$1</code> 当时间用时，字符串比较要求格式完全一致（都带毫秒、都补零）。</li>
+<li><code>&gt;&gt;</code> 追加、<code>&gt;</code> 覆盖，循环里写错一次结果就没了。</li>
+<li>大文件先 <code>grep</code> 缩小范围再 <code>awk</code>，反过来慢一个数量级。</li>
+</ul>
+<p>日志系统本身（轮转与集中）：<code>journald</code> 管 systemd 服务日志（<code>journalctl -u xxx --since 10m</code>），<code>rsyslog</code> 落 <code>/var/log/*</code>，<code>logrotate</code> 负责切割压缩，配 <code>/etc/logrotate.d/</code> 下的规则。</p>
+<hr>
+<h2 id="十一、性能分析"><a href="#十一、性能分析" class="headerlink" title="十一、性能分析"></a>十一、性能分析</h2><p>按「先看哪个资源到顶」的顺序排查，别一上来就盯 CPU：</p>
+<table>
+<thead>
+<tr>
+<th align="left">资源</th>
+<th align="left">首选命令</th>
+<th align="left">看什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CPU</td>
+<td align="left"><code>top</code> / <code>htop</code> / <code>vmstat 1</code></td>
+<td align="left"><code>%us</code> 高是业务计算，<code>%sy</code> 高是系统调用/上下文切换，<code>%wa</code> 高其实是 IO 卡住</td>
+</tr>
+<tr>
+<td align="left">内存</td>
+<td align="left"><code>free -h</code> / <code>vmstat</code> / <code>top</code></td>
+<td align="left"><code>available</code> 是否够；swap 是否被频繁换入换出</td>
+</tr>
+<tr>
+<td align="left">磁盘容量</td>
+<td align="left"><code>df -h</code> / <code>du</code></td>
+<td align="left">是否写满，写满后很多服务直接起不来</td>
+</tr>
+<tr>
+<td align="left">磁盘 IO</td>
+<td align="left"><code>iotop</code> / <code>vmstat</code> / <code>iostat</code></td>
+<td align="left"><code>iowait</code>、单盘吞吐与延迟</td>
+</tr>
+<tr>
+<td align="left">网络</td>
+<td align="left"><code>iftop</code> / <code>iptraf</code> / <code>ss</code> / <code>nstat</code></td>
+<td align="left">带宽是否打满、连接数、丢包与队列溢出</td>
+</tr>
+<tr>
+<td align="left">进程</td>
+<td align="left"><code>ps -ef</code> / <code>ps aux</code> / <code>top</code></td>
+<td align="left">谁吃资源、线程数、僵尸进程</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">vmstat 1 5            <span class="comment"># r 队列、si/so 换页、us/sy/id/wa</span></span><br><span class="line">iostat -x 1           <span class="comment"># 每块盘的 %util 与 await</span></span><br><span class="line">pidstat -d 1          <span class="comment"># 按进程看 IO</span></span><br><span class="line">dstat -tcmnd          <span class="comment"># 综合视图；sar 有历史视角</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="负载多少算正常"><a href="#负载多少算正常" class="headerlink" title="负载多少算正常"></a>负载多少算正常</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">cat /proc/loadavg      <span class="comment"># 1/5/15 分钟平均负载</span></span><br><span class="line">uptime                 <span class="comment"># 同上，顺带运行时长</span></span><br><span class="line">sar -q                 <span class="comment"># 历史负载</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>经验口径：<strong>负载低于 CPU 核心数的 70% 算合理</strong>。例如 4 核，负载低于 2.8（4 × 0.7）视为正常；持续高于核数说明任务在排队，高于核数 2 倍基本就是过载。</p>
+<p>负载统计的是「运行 + 不可中断等待」的进程数：<code>%wa</code> 高的机器负载会很高但 CPU 很闲——这种该查磁盘，不是换 CPU。</p>
+<hr>
+<h2 id="十二、磁盘健康检测"><a href="#十二、磁盘健康检测" class="headerlink" title="十二、磁盘健康检测"></a>十二、磁盘健康检测</h2><h3 id="12-1-smartctl"><a href="#12-1-smartctl" class="headerlink" title="12.1 smartctl"></a>12.1 smartctl</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt-get install -y smartmontools   <span class="comment"># Debian/Ubuntu；CentOS: yum install smartmontools</span></span><br><span class="line">fdisk -l                                <span class="comment"># 先确认设备名</span></span><br><span class="line">sudo smartctl -a /dev/vdb               <span class="comment"># 全部 SMART 信息</span></span><br><span class="line">sudo smartctl -H /dev/vdb               <span class="comment"># 只看健康结论</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>报 <code>Unable to detect device type. Please specify device type with the -d option</code> 时，手动指定类型：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo smartctl -d sat -a /dev/vdb         <span class="comment"># SATA</span></span><br><span class="line">sudo smartctl -d nvme -a /dev/nvme0n1    <span class="comment"># NVMe</span></span><br><span class="line">sudo smartctl -d megaraid,0 -a /dev/sda  <span class="comment"># RAID 卡后的盘，编号按卡上位置</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>关键指标：<code>Reallocated_Sector_Ct</code>、<code>Current_Pending_Sector</code>、SSD 的 <code>Media_Wearout</code>/<code>Percentage Used</code>。任一项在涨就准备换盘。</p>
+<h3 id="12-2-fsck"><a href="#12-2-fsck" class="headerlink" title="12.2 fsck"></a>12.2 fsck</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo umount /dev/vdb            <span class="comment"># 必须先卸载，或以只读方式挂载</span></span><br><span class="line">sudo fsck -n /dev/vdb           <span class="comment"># -n 只检查不修复</span></span><br><span class="line">sudo mount /dev/vdb /mnt        <span class="comment"># 修完重新挂载验证</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>对<strong>已挂载</strong>的 ext4 跑修复型 fsck 有丢数据风险，先用 <code>-n</code> 只读看结论。</p>
+</blockquote>
+<h3 id="12-3-badblocks-与-hdparm"><a href="#12-3-badblocks-与-hdparm" class="headerlink" title="12.3 badblocks 与 hdparm"></a>12.3 badblocks 与 hdparm</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo badblocks -v /dev/vdb          <span class="comment"># 只读扫描，安全但慢</span></span><br><span class="line">sudo badblocks -svw /dev/vdb        <span class="comment"># 写入测试，会清空数据，别在用的盘上跑</span></span><br><span class="line"></span><br><span class="line">sudo hdparm -C /dev/vdb             <span class="comment"># 电源状态：active/idle/standby</span></span><br><span class="line">sudo hdparm -I /dev/vdb             <span class="comment"># 支持的特性与型号</span></span><br><span class="line">sudo hdparm -Tt /dev/vdb            <span class="comment"># 缓存与直接读的粗略测速</span></span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">工具</th>
+<th align="left">查什么</th>
+<th align="left">风险</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">smartctl</td>
+<td align="left">SMART 健康度、扇区重映射、SSD 寿命</td>
+<td align="left">只读，无风险</td>
+</tr>
+<tr>
+<td align="left">fsck</td>
+<td align="left">文件系统结构一致性与修复</td>
+<td align="left">挂载中运行有风险</td>
+</tr>
+<tr>
+<td align="left">badblocks</td>
+<td align="left">物理坏块</td>
+<td align="left">写入模式会清数据</td>
+</tr>
+<tr>
+<td align="left">hdparm</td>
+<td align="left">电源状态、盘参数、粗略速度</td>
+<td align="left">只读安全</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十三、软件包管理"><a href="#十三、软件包管理" class="headerlink" title="十三、软件包管理"></a>十三、软件包管理</h2><h3 id="13-1-RPM-常用"><a href="#13-1-RPM-常用" class="headerlink" title="13.1 RPM 常用"></a>13.1 RPM 常用</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">rpm -qa                            <span class="comment"># 列出所有已安装包</span></span><br><span class="line">rpm -q packagename                 <span class="comment"># 查某个包是否安装</span></span><br><span class="line">rpm -ivh packagename               <span class="comment"># 安装并显示进度（i 安装、v 详细、h 进度）</span></span><br><span class="line">rpm -Uvh packagename               <span class="comment"># 升级（包不存在时等同安装）</span></span><br><span class="line">rpm -e packagename                 <span class="comment"># 卸载</span></span><br><span class="line">rpm -e --nodeps packagename        <span class="comment"># 强制卸载，忽略依赖（慎用，容易把系统拆了）</span></span><br><span class="line">rpm -qf /usr/bin/ls                <span class="comment"># 反查某个文件属于哪个包</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="13-2-用-RPM-装-MySQL（含踩坑）"><a href="#13-2-用-RPM-装-MySQL（含踩坑）" class="headerlink" title="13.2 用 RPM 装 MySQL（含踩坑）"></a>13.2 用 RPM 装 MySQL（含踩坑）</h3><ol>
+<li>检查是否已装 mariadb：<code>rpm -qa | grep mysql</code>，有就先 <code>rpm -e</code> 卸干净；</li>
+<li>官网下载包，三种形态选一种：<ul>
+<li><code>rpm package</code>：单个包（server、client、shared lib 等），可单独装；</li>
+<li><code>rpm bundle</code>：该版本全套集合，通常把服务端要用的都装上，不带开发包；</li>
+<li><code>Compressed TAR Archive</code>：源码/二进制 tar 包，走源码方式安装。</li>
+</ul>
+</li>
+<li>按依赖顺序装：<code>common</code> → <code>libs</code>/<code>libs-compat</code> → <code>client</code> → <code>server</code>（顺序错会有依赖提示）；</li>
+<li>取初始密码：<code>sudo grep 'temporary password' /var/log/mysqld.log</code>；</li>
+<li>登录：<code>mysql -u root -p</code>；</li>
+<li>改密码与远程访问：</li>
+</ol>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">-- 5.7 的写法（密码复杂度策略）</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password_length<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> validate_password_policy<span class="operator">=</span><span class="number">0</span>;      <span class="comment">-- 0/LOW、1/MEDIUM、2/STRONG</span></span><br><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="operator">=</span> password(<span class="string">'root123'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 8.0 已移除 password() 函数，改用：</span></span><br><span class="line"><span class="comment">-- ALTER USER 'root'@'localhost' IDENTIFIED BY 'Root@123';</span></span><br><span class="line"><span class="comment">-- 密码策略组件：INSTALL COMPONENT 'file://component_validate_password';</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'root'</span>@<span class="string">'%'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'密码'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>8.0 里 <code>GRANT ... IDENTIFIED BY</code> 已被废弃：必须先 <code>CREATE USER 'root'@'%' IDENTIFIED BY 'pwd'</code>，再 <code>GRANT ... TO 'root'@'%'</code>。两条语句分开写才不会报语法错。</p>
+</blockquote>
+<p>常见报错 <code>Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock'</code>：多半是数据目录权限不对，<code>sudo chown -R mysql:mysql /var/lib/mysql</code> 后重启。</p>
+<h3 id="13-3-apt-yum-侧"><a href="#13-3-apt-yum-侧" class="headerlink" title="13.3 apt / yum 侧"></a>13.3 apt / yum 侧</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">apt update &amp;&amp; apt upgrade -y                 <span class="comment"># Debian 系更新</span></span><br><span class="line">yum install -y pkg / yum localinstall ./x.rpm</span><br><span class="line">yum-config-manager --<span class="built_in">enable</span> repo名            <span class="comment"># 启停仓库</span></span><br><span class="line">sudo yum install epel-release                 <span class="comment"># 装 EPEL，很多第三方包从这来</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>换源与依赖冲突（vim-common 版本不匹配）见第十四章。</p>
+<hr>
+<h2 id="十四、系统配置、权限与安全"><a href="#十四、系统配置、权限与安全" class="headerlink" title="十四、系统配置、权限与安全"></a>十四、系统配置、权限与安全</h2><h3 id="14-1-换软件源（Debian-示例）"><a href="#14-1-换软件源（Debian-示例）" class="headerlink" title="14.1 换软件源（Debian 示例）"></a>14.1 换软件源（Debian 示例）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt/</span><br><span class="line">cp sources.list sources.list.bak</span><br><span class="line">vim sources.list</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/debian bullseye main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/debian bullseye main non-free contrib</span><br><span class="line">deb http://mirrors.aliyun.com/debian bullseye-updates main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/debian bullseye-updates main non-free contrib</span><br><span class="line">deb http://mirrors.aliyun.com/debian-security bullseye-security main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/debian-security bullseye-security main non-free contrib</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>原笔记里的 <code>buster</code> 已于 2024 年停止常规支持，新机器别再用；按实际版本换 <code>bullseye</code> / <code>bookworm</code>，源路径跟着改。</p>
+</blockquote>
+<h3 id="14-2-apt-依赖冲突（vim-common-版本不匹配）"><a href="#14-2-apt-依赖冲突（vim-common-版本不匹配）" class="headerlink" title="14.2 apt 依赖冲突（vim-common 版本不匹配）"></a>14.2 apt 依赖冲突（vim-common 版本不匹配）</h3><p>现象：<code>vim : Depends: vim-common (= 2:8.1.0875-5+deb10u6) but 2:9.0.1378-2 is to be installed</code></p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt-get purge vim-common</span><br><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br><span class="line">sudo apt-get install aptitude</span><br><span class="line">sudo aptitude install vim      <span class="comment"># 交互式给降级/保留方案</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>aptitude</code> 的方案（降级 / 不装某些包 / 保持现状）比 <code>apt</code> 的硬报错好用；看清它给的 <code>y/n</code>，选错会连带卸掉一堆东西。</p>
+<h3 id="14-3-alias-与提示符"><a href="#14-3-alias-与提示符" class="headerlink" title="14.3 alias 与提示符"></a>14.3 alias 与提示符</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> cdc=<span class="string">'cd /mnt/c/'</span></span><br><span class="line"><span class="built_in">alias</span> cdd=<span class="string">'cd /mnt/d/'</span></span><br><span class="line"><span class="built_in">alias</span> cde=<span class="string">'cd /mnt/e/'</span></span><br><span class="line"><span class="built_in">alias</span> tailf=<span class="string">'tail -f'</span></span><br><span class="line"></span><br><span class="line">PS1=<span class="string">'\[\033[0;32m\]\u@\[\033[0;34m\]\h:\[\033[0;33m\]\w\[\033[0m\]\$ '</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc      <span class="comment"># 立即生效；新开终端自动加载</span></span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">码</th>
+<th align="left">颜色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>\033[0;30m</code></td>
+<td align="left">黑</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;31m</code></td>
+<td align="left">红</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;32m</code></td>
+<td align="left">绿</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;33m</code></td>
+<td align="left">黄</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;34m</code></td>
+<td align="left">蓝</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;35m</code></td>
+<td align="left">紫</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;36m</code></td>
+<td align="left">青</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0;37m</code></td>
+<td align="left">白</td>
+</tr>
+<tr>
+<td align="left"><code>\033[0m</code></td>
+<td align="left">重置（关闭颜色）</td>
+</tr>
+</tbody></table>
+<p><code>\[ \]</code> 包住转义序列，告诉 bash「这串不占可见宽度」，否则长命令换行会错位。</p>
+<h3 id="14-4-历史命令与登录审计"><a href="#14-4-历史命令与登录审计" class="headerlink" title="14.4 历史命令与登录审计"></a>14.4 历史命令与登录审计</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">history</span>                    <span class="comment"># 当前会话历史</span></span><br><span class="line"><span class="built_in">history</span> -c                 <span class="comment"># 清空当前会话（要连文件一起干净：history -c &amp;&amp; exit）</span></span><br><span class="line"><span class="built_in">history</span> -d N               <span class="comment"># 删掉第 N 条</span></span><br><span class="line">rm ~/.bash_history         <span class="comment"># 删历史文件（退出时可能被重写，先确认）</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> HISTFILE=/dev/null     <span class="comment"># 追加到 ~/.bashrc，之后不再记录</span></span><br><span class="line"><span class="built_in">export</span> HISTSIZE=0</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>清历史只对「自己机器上的隐私」有意义；生产服务器上这是破坏审计线索的行为，合规环境里不要做，出问题时要靠这些记录还原操作。</p>
+</blockquote>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo less /var/<span class="built_in">log</span>/secure      <span class="comment"># RHEL/CentOS：登录、sudo 记录</span></span><br><span class="line">sudo less /var/<span class="built_in">log</span>/auth.log    <span class="comment"># Debian/Ubuntu</span></span><br><span class="line">last                           <span class="comment"># 谁在什么时候登录过、来源 IP</span></span><br><span class="line">lastlog                        <span class="comment"># 每个用户最后一次登录</span></span><br><span class="line">who                            <span class="comment"># 当前在线用户</span></span><br><span class="line">w                              <span class="comment"># 当前在线用户 + 正在执行的命令</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="14-5-文件被锁住删不掉（-user-ini）"><a href="#14-5-文件被锁住删不掉（-user-ini）" class="headerlink" title="14.5 文件被锁住删不掉（.user.ini）"></a>14.5 文件被锁住删不掉（<code>.user.ini</code>）</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">lsattr /path/to/.user.ini            <span class="comment"># 看属性，i 表示不可修改</span></span><br><span class="line">sudo chattr -i /path/to/.user.ini    <span class="comment"># 移除 i 属性后就能删</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>.user.ini</code> 常被 PHP 目录保护机制加上 <code>i</code>（immutable）属性，<code>rm</code> 报 <code>Operation not permitted</code>；有些面板/安全插件会把它加回去，删完记得复查。</p>
+<h3 id="14-6-安全组与防火墙"><a href="#14-6-安全组与防火墙" class="headerlink" title="14.6 安全组与防火墙"></a>14.6 安全组与防火墙</h3><p>云主机访问不通时，先分清「机器内防火墙」还是「云平台安全组」：安全组在控制台配入方向规则，<code>ufw</code>/<code>firewalld</code>/<code>iptables</code> 管机器内部。两边都放行才算通。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">iptables -L -n --line-numbers        <span class="comment"># 看现有规则与序号</span></span><br><span class="line">iptables -I INPUT -p tcp --dport 80 -j DROP    <span class="comment"># 插入到最前</span></span><br><span class="line">iptables -D INPUT 1                  <span class="comment"># 按序号删除</span></span><br><span class="line">ufw status &amp;&amp; ufw allow 80/tcp</span><br><span class="line">firewall-cmd --list-all &amp;&amp; firewall-cmd --add-port=80/tcp --permanent &amp;&amp; firewall-cmd --reload</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="十五、常用命令速查表"><a href="#十五、常用命令速查表" class="headerlink" title="十五、常用命令速查表"></a>十五、常用命令速查表</h2><table>
+<thead>
+<tr>
+<th align="left">目的</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">发行版</td>
+<td align="left"><code>cat /etc/os-release</code>、<code>cat /etc/redhat-release</code>、<code>cat /etc/lsb-release</code></td>
+</tr>
+<tr>
+<td align="left">内核</td>
+<td align="left"><code>uname -a</code>、<code>cat /proc/version</code></td>
+</tr>
+<tr>
+<td align="left">时区</td>
+<td align="left"><code>timedatectl status</code>、<code>date +%z</code></td>
+</tr>
+<tr>
+<td align="left">CPU 型号/核数</td>
+<td align="left"><code>cat /proc/cpuinfo</code>、<code>nproc</code></td>
+</tr>
+<tr>
+<td align="left">内存</td>
+<td align="left"><code>free -h</code>、<code>cat /proc/meminfo</code></td>
+</tr>
+<tr>
+<td align="left">磁盘容量</td>
+<td align="left"><code>df -h</code>、<code>df -Th</code></td>
+</tr>
+<tr>
+<td align="left">目录大小</td>
+<td align="left"><code>du -h --max-depth=1 / | sort -hr | head -10</code></td>
+</tr>
+<tr>
+<td align="left">大文件</td>
+<td align="left"><code>find . -type f -size +800M -print0 | xargs -0 ls -l</code></td>
+</tr>
+<tr>
+<td align="left">被删但仍占用</td>
+<td align="left"><code>sudo lsof | grep deleted</code></td>
+</tr>
+<tr>
+<td align="left">块设备</td>
+<td align="left"><code>lsblk</code>、<code>fdisk -l</code>、<code>blkid</code></td>
+</tr>
+<tr>
+<td align="left">端口占用</td>
+<td align="left"><code>ss -tulnp | grep :80</code>、<code>lsof -i:80</code></td>
+</tr>
+<tr>
+<td align="left">端口连接数</td>
+<td align="left"><code>ss -tn state established '( sport = :6379 )' | wc -l</code></td>
+</tr>
+<tr>
+<td align="left">端口连通</td>
+<td align="left"><code>telnet IP 端口</code>、<code>nc -vz IP 端口</code></td>
+</tr>
+<tr>
+<td align="left">丢包/队列</td>
+<td align="left"><code>netstat -s | grep overflowed</code>、<code>ifconfig eth0</code>、<code>ethtool -S eth0</code></td>
+</tr>
+<tr>
+<td align="left">负载</td>
+<td align="left"><code>uptime</code>、<code>cat /proc/loadavg</code>、<code>sar -q</code></td>
+</tr>
+<tr>
+<td align="left">实时资源</td>
+<td align="left"><code>top</code>、<code>htop</code>、<code>vmstat 1</code></td>
+</tr>
+<tr>
+<td align="left">用户/组</td>
+<td align="left"><code>useradd</code>、<code>groupadd</code>、<code>usermod -g</code>、<code>cat /etc/passwd</code></td>
+</tr>
+<tr>
+<td align="left">SSH 密钥</td>
+<td align="left"><code>ssh-keygen -t ed25519</code>、<code>ssh-keygen -y -f x.pem</code></td>
+</tr>
+<tr>
+<td align="left">主机名</td>
+<td align="left"><code>hostnamectl set-hostname X</code></td>
+</tr>
+<tr>
+<td align="left">计划任务</td>
+<td align="left"><code>crontab -u www -l</code></td>
+</tr>
+<tr>
+<td align="left">证书</td>
+<td align="left"><code>certbot --nginx -d X</code>、<code>certbot renew --dry-run</code></td>
+</tr>
+<tr>
+<td align="left">清空文件</td>
+<td align="left"><code>: &gt; file</code>、<code>truncate -s 0 file</code></td>
+</tr>
+<tr>
+<td align="left">看文件</td>
+<td align="left"><code>less file</code>、<code>nl file</code>、<code>tail -f file</code>、<code>od -c file</code></td>
+</tr>
+<tr>
+<td align="left">批量替换</td>
+<td align="left"><code>sed -i.bak 's/a/b/g' file</code></td>
+</tr>
+<tr>
+<td align="left">找字符串</td>
+<td align="left"><code>grep -rn "Hello" ./</code>、<code>grep -rl ...</code></td>
+</tr>
+<tr>
+<td align="left">文件个数</td>
+<td align="left"><code>ls -l | grep "^-" | wc -l</code>、<code>find . -maxdepth 1 -type f | wc -l</code></td>
+</tr>
+<tr>
+<td align="left">打包排除目录</td>
+<td align="left"><code>tar -zcvf out.tar.gz --exclude=dir1 --exclude=dir2 dir</code></td>
+</tr>
+<tr>
+<td align="left">单文件解包</td>
+<td align="left"><code>tar -xf ... --strip-components N</code></td>
+</tr>
+<tr>
+<td align="left">批量解压</td>
+<td align="left"><code>for i in *.tgz; do tar -zxvf "$i" -C ../tar/; done</code></td>
+</tr>
+<tr>
+<td align="left">7z</td>
+<td align="left"><code>7za x file.7z -o/out/</code></td>
+</tr>
+<tr>
+<td align="left">大文件传输</td>
+<td align="left"><code>rsync -avzP</code>、<code>scp -P</code></td>
+</tr>
+<tr>
+<td align="left">软件包</td>
+<td align="left"><code>rpm -qa | grep mysql</code>、<code>rpm -ivh x.rpm</code>、<code>yum install x</code></td>
+</tr>
+<tr>
+<td align="left">包归属</td>
+<td align="left"><code>rpm -qf /usr/bin/ls</code></td>
+</tr>
+<tr>
+<td align="left">盘健康</td>
+<td align="left"><code>smartctl -a /dev/vdb</code></td>
+</tr>
+<tr>
+<td align="left">文件锁</td>
+<td align="left"><code>lsattr file</code>、<code>chattr -i file</code></td>
+</tr>
+<tr>
+<td align="left">登录审计</td>
+<td align="left"><code>last</code>、<code>lastlog</code>、<code>who</code>、<code>w</code></td>
+</tr>
+<tr>
+<td align="left">清历史</td>
+<td align="left"><code>history -c &amp;&amp; exit</code>、<code>export HISTSIZE=0</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十六、参考资料"><a href="#十六、参考资料" class="headerlink" title="十六、参考资料"></a>十六、参考资料</h2><h3 id="16-1-命令与原理"><a href="#16-1-命令与原理" class="headerlink" title="16.1 命令与原理"></a>16.1 命令与原理</h3><ol>
+<li><a href="https://www.cnblogs.com/bakari/p/10898604.html">nc localhost 80（netcat 用法）</a></li>
+<li><a href="https://www.runoob.com/w3cnote/linux-check-port-usage.html">netstat -natp | grep 端口</a></li>
+<li><a href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316692.html">strace -ff -o ~/test.out php index.php（进程跟踪）</a></li>
+<li><a href="https://blog.csdn.net/wujiafei_njgcxy/article/details/77116175">Linux 下创建进程的三种方式及特点</a></li>
+<li><a href="https://blog.csdn.net/Post_Yuan/article/details/78830042">rm -rf 删除文件不释放空间的解决办法</a></li>
+<li><a href="https://ieevee.com/tech/2017/08/24/journald.html">centos7 的日志系统：journald、rsyslog、logrotate</a></li>
+<li><a href="https://blog.csdn.net/hnlgzb/article/details/108828201">Netlink 机制</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_773d9b670101agib.html">Audit 审计</a></li>
+<li><a href="https://blog.51cto.com/9528du/1420086">killproc</a></li>
+<li><a href="https://segmentfault.com/a/1190000017213655">挂载分区扩容</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/663413294">apt-get 详解</a></li>
+<li><a href="https://blog.51cto.com/u_16213439/7068710">Compressed Archive / Debian Package / RPM Package 的区别</a></li>
+</ol>
+<h3 id="16-2-运维与体系"><a href="#16-2-运维与体系" class="headerlink" title="16.2 运维与体系"></a>16.2 运维与体系</h3><ol>
+<li><a href="https://www.huaweicloud.com/zhishi/Zabbix.html">zabbix 监控</a></li>
+<li><a href="https://juejin.cn/post/6881755746216706062">对 Linux 知识的系统梳理</a></li>
+<li><a href="https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md">系统设计入门</a></li>
+<li><a href="https://github.com/xiaolincoder/CS-Base">小林 x 图解计算机基础</a></li>
+<li><a href="https://www.zhihu.com/question/66637669/answer/2493438571">如何有效地阅读 Linux 内核源码</a></li>
+<li><a href="https://github.com/kkos/oniguruma">oniguruma（正则库，ripgrep/php 等都依赖）</a></li>
+</ol>
+<h3 id="16-3-网络与证书"><a href="#16-3-网络与证书" class="headerlink" title="16.3 网络与证书"></a>16.3 网络与证书</h3><ol>
+<li><a href="https://cloud.tencent.com/developer/article/1850766">Linux 网络丢包排查</a></li>
+<li><a href="https://www.cnblogs.com/xiefengdaxia123/p/17398455.html">网卡队列 backlog 与丢包</a></li>
+<li><a href="https://cloud.baidu.com/article/3360664">hostname 与 PS1 配置参考</a></li>
+<li><a href="https://letsencrypt.org/">Let’s Encrypt 免费证书</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>Linux</tag>
+        <tag>SSH</tag>
+        <tag>命令</tag>
+        <tag>磁盘</tag>
+        <tag>性能分析</tag>
+        <tag>日志排查</tag>
+        <tag>Shell</tag>
+        <tag>RPM</tag>
+        <tag>iptables</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis五种基本数据类型底层实现</title>
     <url>/2016/10/08/Redis-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -49452,419 +50475,6 @@ read_xlsx(name, sheet)
       </tags>
   </entry>
   <entry>
-    <title>Linux收集</title>
-    <url>/2016/04/22/Linux-%E6%94%B6%E9%9B%86/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>nc全名叫netcat，它可以用来完成很多的网络功能，譬如端口扫描、建立TCP/UDP连接，数据传输、网络调试等等，因此，它也常被称为网络工具的瑞士军刀。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、资料"><a href="#一、资料" class="headerlink" title="一、资料"></a>一、资料</h2><ol>
-<li><a href="https://www.cnblogs.com/bakari/p/10898604.html">nc localhost 80</a></li>
-<li><a href="https://www.runoob.com/w3cnote/linux-check-port-usage.html">netstat -natp | grep 端口</a></li>
-<li><a href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316692.html">strace -ff -o ~/test.out php index.php</a></li>
-<li><a href="https://www.huaweicloud.com/zhishi/Zabbix.html">zabbix</a></li>
-<li>清除history记录：<code>history -c &amp;&amp; exit</code></li>
-<li><a href="http://blog.sina.com.cn/s/blog_773d9b670101agib.html">Audit</a></li>
-<li><a href="https://blog.csdn.net/hnlgzb/article/details/108828201">Netlink</a></li>
-<li><a href="https://blog.51cto.com/9528du/1420086">killproc</a></li>
-<li><a href="https://blog.csdn.net/wujiafei_njgcxy/article/details/77116175">Linux下创建进程的三种方式及特点</a></li>
-<li><a href="https://juejin.cn/post/6881755746216706062">对不起，学会这些 Linux 知识后，我有点飘</a></li>
-<li><a href="https://blog.csdn.net/Post_Yuan/article/details/78830042">rm -rf删除文件不释放空间的解决办法</a></li>
-<li><a href="https://ieevee.com/tech/2017/08/24/journald.html">centos7的日志系统：journald, rsyslog, logrotate</a></li>
-<li><a href="https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md">系统设计入门</a></li>
-<li><a href="https://github.com/xiaolincoder/CS-Base">小林 x 图解计算机基础</a></li>
-<li><a href="https://www.zhihu.com/question/66637669/answer/2493438571">如何有效的阅读linux内核源码？</a></li>
-</ol>
-<h2 id="二、常用"><a href="#二、常用" class="headerlink" title="二、常用"></a>二、常用</h2><ol>
-<li>declare</li>
-<li>while</li>
-<li>shell中自增实现</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">i=1</span><br><span class="line"></span><br><span class="line">i=`expr $i + 1`</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">let i+=1 或 let "i++"</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">((i++))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i=$[$i+1]</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">i=$(($i+1))</span><br><span class="line">echo $i</span><br><span class="line"></span><br><span class="line">还有一种写法：</span><br><span class="line">for i in $(seq 1 5)</span><br><span class="line">do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="4">
-<li><p>if分支结构</p>
-<ul>
-<li>单if结构</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>if else结构</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">else</span><br><span class="line">    command2</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>if else-if else结构</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">if condition1</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">elif condition2 </span><br><span class="line">then </span><br><span class="line">    command2</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">elif #可多个elif</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">else</span><br><span class="line">    commandN</span><br><span class="line">fi</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>case分支结构</p>
-<ul>
-<li>语法</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">case 值 in</span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"> ...)</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li><p>demo</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo 请输入数字</span><br><span class="line">read num</span><br><span class="line">case $num in</span><br><span class="line">    1)</span><br><span class="line">    echo "你输入了1"</span><br><span class="line">    ;;</span><br><span class="line">    2)</span><br><span class="line">    echo "你输入了2"</span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">    echo "无法识别的数字$num"</span><br><span class="line">    ;;</span><br><span class="line">esac</span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<ol start="6">
-<li><p>chsh命令</p>
-<ul>
-<li>查看系统支持的shell<code>chsh -l</code>或<code>cat /etc/shells</code></li>
-<li>查看当前使用的shell<code>echo $SHELL</code></li>
-<li>修改默认shell<code>chsh -s /bin/zsh</code><ul>
-<li>需要重新登录才生效</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>BASH_SOURCE[0]</code>等价于<code>BASH_SOURCE</code> ，用于取得当前执行的shell文件所在的路径及文件名。<code>dirname</code>去除文件名中的非目录部分，仅显示与目录有关的部分。</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">TODO</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="8">
-<li><p>curl和wget的对比</p>
-<ul>
-<li>共同点</li>
-<li>不同点<ul>
-<li>curl是libcurl这个库支持的，wget是一个纯粹的命令行命令</li>
-<li>curl支持更多的协议 ,Wget只支持 HTTP, HTTPS and FTP </li>
-<li>curl默认支持HTTP1.1(也支持1.0)，而wget仅仅支持HTTP1.0规范</li>
-<li>curl在指定要下载的链接时能够支持URL的序列或集合，而wget则不能这样E.wget支持递归下载，而curl则没有这个功能</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>查看某个端口的服务</p>
-<ul>
-<li>sudo netstat -tunpl | grep 端口号</li>
-<li>lsof -i:端口号</li>
-</ul>
-</li>
-<li><p>清空文件内容的几种方式</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">: &gt; filename # 其中的 : 是一个占位符, 不产生任何输出.</span><br><span class="line">cat /dev/null &gt; filename</span><br><span class="line">cp /dev/null filename&nbsp;</span><br><span class="line">&gt; filename # Linux可以，Mac不可以</span><br><span class="line">echo "" &gt; filename # 多一个空行</span><br><span class="line">echo &gt; filename    # 多一个空行</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="11">
-<li><p>查看文件的几种方式</p>
-<ul>
-<li><code>cat</code>：由第一行开始显示档案内容。</li>
-<li><code>tac</code>：从最后一行开始显示，和<code>cat</code>刚好相反。</li>
-<li><code>more</code>：一页一页的显示档案内容。</li>
-<li><code>less</code>：与<code>more</code>类似，比<code>more</code>更好的是可以往前翻页。</li>
-<li><code>head</code>：只看头几行。</li>
-<li><code>tail</code>：只看尾巴几行。</li>
-<li><code>tail -f file</code>，实时输出内容<ul>
-<li>在一个终端中执行<code>echo a &gt;&gt; 1.txt</code></li>
-<li>在另一个终端执行<code>tail -f 1.txt</code></li>
-</ul>
-</li>
-<li><code>nl</code>：输出内容同时输出行号，和<code>cat -n</code>类似。</li>
-<li><code>od</code>：以二进制的方式读取档案内容。</li>
-</ul>
-</li>
-<li><p>查找包含指定字符串的文件</p>
-<ul>
-<li><code>grep -rn "Hello" ./</code></li>
-<li>r表示递归</li>
-<li>n表示查询结果显示行号</li>
-<li><code>find ./ -name "*.*" | xargs grep  "Hello"</code></li>
-<li><code>find . | xargs grep -ri "Hello"</code>或<code>find . | xargs grep -ri "Hello" -l</code></li>
-<li>-l 表示只显示文件名</li>
-<li><code>find / -type f -name "*.txt" | xargs grep "Hello"</code></li>
-</ul>
-</li>
-<li><p>rm -rf删除文件后不释放空间</p>
-<ul>
-<li>测试小伙伴更新SVN一直不成功</li>
-<li>登录服务器手动<code>svn up</code>，提示空间满了</li>
-<li>查看空间使用情况<code>df -h</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">/dev/vda1       197G   41G  197G  100% /data</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>查找大于800M的大文件</li>
-<li><code>find . -type f -size +800M  -print0 | xargs -0 ls -l | sort -nr</code></li>
-<li>查看某个文件挂载目录<code>df path</code></li>
-<li>删除某个大文件如300G<code>rm -rf somefile</code></li>
-<li><code>df -h</code>发现空间并未释放</li>
-<li><code>lsof | grep deleted</code>查看删除文件的进程是否结束(如pid为9999)</li>
-<li>终止此进程<code>kill 9999</code></li>
-<li><code>df -h</code>重新查看空间使用情况</li>
-</ul>
-</li>
-<li><p>查找大文件的几种方法</p>
-<ul>
-<li>查找大于800M的文件<code>find . -type f -size +800M</code></li>
-<li>查找大于800M的文件并显示文件相关信息<code>find . -type f -size +800M  -print0 | xargs -0 ls -l</code></li>
-<li>查找大于800M的文件并显示文件具体大小<code>find . -type f -size +800M  -print0 | xargs -0 du -h</code></li>
-<li>查找大于800M的文件并显示文件具体大小排序<code>find . -type f -size +800M  -print0 | xargs -0 du -h | sort -nr</code></li>
-</ul>
-</li>
-<li><p>查找大目录的几种方法</p>
-<ul>
-<li>查看目录相关信息<code>du -h --max-depth=1</code></li>
-<li>查看最大的10个文件夹<code>du -hm --max-depth=2 | sort -nr | head -10</code></li>
-</ul>
-</li>
-<li><p>Linux目录介绍</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">目录</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">/bin</td>
-<td align="left">存放二进制可执行文件(ls,cat,mkdir等)，常用命令一般都在这里</td>
-</tr>
-<tr>
-<td align="center">/etc</td>
-<td align="left">存放系统管理和配置文件</td>
-</tr>
-<tr>
-<td align="center">/home</td>
-<td align="left">存放所有用户文件的根目录，是用户主目录的基点，比如用户user的主目录就是/home/user，可以用~user表示</td>
-</tr>
-<tr>
-<td align="center">/usr</td>
-<td align="left">用于存放系统应用程序，比较重要的目录/usr/local 本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录,具体如下: <br>/usr/x11r6 存放x window的目录 <br>/usr/bin 众多的应用程序  <br>/usr/sbin 超级用户的一些管理程序  <br>/usr/doc linux文档  <br>/usr/include linux下开发和编译应用程序所需要的头文件  <br>/usr/lib 常用的动态链接库和软件包的配置文件  <br>/usr/man 帮助文档  <br>/usr/src 源代码，linux内核的源代码就放在/usr/src/linux里  <br>/usr/local/bin 本地增加的命令  <br>/usr/local/lib 本地增加的库 <br>/usr/locat/etc  目录里面是程序的配置文件</td>
-</tr>
-<tr>
-<td align="center">/opt</td>
-<td align="left">额外安装的可选应用程序包所放置的位置。一般情况下，我们可以把tomcat等都安装到这里</td>
-</tr>
-<tr>
-<td align="center">/proc</td>
-<td align="left">虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息</td>
-</tr>
-<tr>
-<td align="center">/root</td>
-<td align="left">超级用户（系统管理员）的主目录</td>
-</tr>
-<tr>
-<td align="center">/sbin</td>
-<td align="left">存放二进制可执行文件，只有root才能访问。这里存放的是系统管理员使用的系统级别的管理命令和程序。如ifconfig等</td>
-</tr>
-<tr>
-<td align="center">/dev</td>
-<td align="left">用于存放设备文件</td>
-</tr>
-<tr>
-<td align="center">/mnt</td>
-<td align="left">系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统</td>
-</tr>
-<tr>
-<td align="center">/boot</td>
-<td align="left">存放用于系统引导时使用的各种文件</td>
-</tr>
-<tr>
-<td align="center">/lib</td>
-<td align="left">存放跟文件系统中的程序运行所需要的共享库及内核模块。共享库又叫动态链接共享库，作用类似windows里的.dll文件，存放了根文件系统程序运行所需的共享文件</td>
-</tr>
-<tr>
-<td align="center">/tmp</td>
-<td align="left">用于存放各种临时文件，是公用的临时文件存储点</td>
-</tr>
-<tr>
-<td align="center">/var</td>
-<td align="left">用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的日志文件（系统启动日志等。）等</td>
-</tr>
-<tr>
-<td align="center">/lost+found</td>
-<td align="left">这个目录平时是空的，系统非正常关机而留下“无家可归”的文件（windows下叫什么.chk）就在这里</td>
-</tr>
-</tbody></table>
-<p><em>注</em>：</p>
-<ul>
-<li><code>usr</code> 指 <code>Unix System Resource</code>，而不是<code>User</code></li>
-<li><code>/usr/bin</code>目录下都是系统预装的可执行程序，会随着系统升级而改变</li>
-<li><code>/usr/local/bin</code>目录是给用户放置自己的可执行程序的地方(推荐放在这里)，不会被系统升级而覆盖同名文件</li>
-</ul>
-<ol start="17">
-<li>RPM使用：RPM，Red-Hat Package Manager(RPM软件包管理器)的缩写，是RPM软件包的管理工具。它原本是Red Hat Linux发行版专门用来管理Linux各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM套件管理方式的出现，让Linux易于安装，升级，间接提升了Linux的适用度。<ul>
-<li>常用</li>
-<li><code>rpm -qa</code> 列出所有已安装软件包</li>
-<li><code>rpm -e packagename</code>  删除软件包</li>
-<li><code>rpm -e --nodeps packagename</code>  强制删除软件和依赖包</li>
-<li><code>rpm -q packagename</code>    查询包是否安装</li>
-<li><code>rpm -ivh packagename</code>  安装并显示安装进度</li>
-<li><code>rpm －Uvh packagename</code> 升级软件包</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>通过RPM安装mysql</p>
-<ul>
-<li><p>检测是否已安装mariadb <code>rpm -qa|grep mysql</code></p>
-</li>
-<li><p>删除已安装的mariadb   <code>rpm -e packagename</code></p>
-</li>
-<li><p>从<a href="mysql.com">mysql官网</a>下载bundle包</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">rpm package:某个特定的包，比如server,client,shared lib等,可以单独安装</span><br><span class="line">rpm bundle:该版本所有包的集合,是把服务器端要用的都安装上，其他的不带，尤其是开发包</span><br><span class="line">Compressed TAR Archive:源码，必须用源码方式安装</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>依次安装各个rpm(common/libs/libs/server)，顺序错了会有提示 <code>rpm -ivh packagename</code></p>
-</li>
-<li><p>查看临时密码 <code>sudo grep 'temporary password' /var/log/mysqld.log</code></p>
-</li>
-<li><p>登入mysql <code>mysql -u root -p</code> 回车 输入刚获取的密码</p>
-</li>
-<li><p>修改密码</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#修改密码最小长度策略</span><br><span class="line">set global validate_password_length=0;</span><br><span class="line"></span><br><span class="line">#密码强度检查等级策略，0/LOW、1/MEDIUM、2/STRONG</span><br><span class="line">set global validate_password_policy=0;</span><br><span class="line">   </span><br><span class="line">#修改密码</span><br><span class="line">set password for 'root'@'localhost' = password('root123')；</span><br><span class="line"></span><br><span class="line">#开启mysql的root用户远程连接服务(%号即远程连接，IDENTIFIED BY后面跟的密码)</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '密码' WITH GRANT OPTION;</span><br><span class="line">   </span><br><span class="line">#刷新以生效</span><br><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>报错<code>Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘</code>,权限问题，修改 <code>sudo chown -R mysql用户组:mysql用户 /var/lib/mysql</code></p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="18">
-<li>Linux文件类型<ul>
-<li>Linux下7种文件类型，可通过<code>ls -l</code>或<code>file filename</code>或<code>stat filename</code>来查看</li>
-</ul>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="center">文件类型标识</th>
-<th align="center">文件类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-</td>
-<td align="center">普通文件</td>
-</tr>
-<tr>
-<td align="center">d</td>
-<td align="center">目录</td>
-</tr>
-<tr>
-<td align="center">l</td>
-<td align="center">符号链接</td>
-</tr>
-<tr>
-<td align="center">s</td>
-<td align="center">套接字(伪文件)</td>
-</tr>
-<tr>
-<td align="center">b</td>
-<td align="center">块设备(伪文件)</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">字符设备(伪文件)</td>
-</tr>
-<tr>
-<td align="center">p</td>
-<td align="center">管道(伪文件)</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>伪文件不占用磁盘空间</p>
-</blockquote>
-<ol start="19">
-<li><p>ls-grep-wc使用</p>
-<ul>
-<li>统计当前目录下文件的个数(不包括目录)：<code>ls -l | grep "^-" | wc -l</code></li>
-<li><code>argument list too long: ls</code></li>
-<li>统计当前目录下文件的个数(包括子目录)：<code>ls -lR | grep "^-" | wc -l</code></li>
-<li>查看某目录下文件夹(目录)的个数(包括子目录)：<code>ls -lR | grep "^d" | wc -l</code></li>
-</ul>
-</li>
-<li><p><a href="https://segmentfault.com/a/1190000017213655">挂载分区扩容</a></p>
-<ul>
-<li>常用命令</li>
-<li>lsblk：查看当前磁盘情况</li>
-<li>df path：查看文件(夹)所在分区(挂载点)</li>
-<li>df -lh：查看文件系统情况</li>
-<li>df -l：查看挂载点使用情况</li>
-<li>mount：查看已挂载的文件系统<ul>
-<li>/etc/fstab</li>
-<li>/etc/mtab</li>
-<li>/proc/mounts</li>
-</ul>
-</li>
-<li>fdisk -l：查看当前未挂载硬盘</li>
-</ul>
-</li>
-<li><p>批量解压到某个固定目录</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">for i in `ls *.tgz`</span><br><span class="line">do</span><br><span class="line">tar -zxvf $i -C ../tar/</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="23">
-<li>iptables<ul>
-<li>iptables -I INPUT -p tcp –dport 80 -j DROP</li>
-<li>sudo tcpdump -i any -w telnet-80.pcap port 80</li>
-<li>telnet 服务端IP 80</li>
-<li>sudo sysctl net.ipv4.tcp_syn_retries</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>net.ipv4.tcp_syn_retries = 6</li>
-<li>iptables -I INPUT -p tcp –dport 80 -j REJECT</li>
-<li>telnet 47.94.129.219 80</li>
-<li>sudo tcpdump -i any -w telnet-80-reject.pcap host 47.94.129.219 and port 80</li>
-<li>sudo tcpdump -i any -w telnet-80-reject.pcap host 47.94.129.219</li>
-</ul>
-<ol start="24">
-<li><p>统计某个端口连接数量，如redis默认端口6379(Mac环境)</p>
-<ul>
-<li>netstat -nat | grep -i “6379” | wc -l</li>
-<li>lsof -i:6379 | wc -l</li>
-<li>ps -ef | grep redis | grep -v grep，这种方式只能按进程名NAME进行查看</li>
-</ul>
-</li>
-<li><p>Too many levels of symbolic links，创建软连接时使用全路径</p>
-</li>
-<li><p>找不到匹配的key exchange算法</p>
-<ul>
-<li>vim /etc/ssh/sshd_config，增加</li>
-</ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp256,diffie-hellman-group14-sha256</span><br></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>重启：systemctl restart sshd</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>收集</tag>
-        <tag>Linux</tag>
-        <tag>shell</tag>
-        <tag>declare</tag>
-        <tag>zabbix</tag>
-        <tag>Audit</tag>
-        <tag>Netlink</tag>
-        <tag>strace</tag>
-        <tag>while</tag>
-        <tag>if</tag>
-        <tag>case</tag>
-        <tag>chsh</tag>
-        <tag>BASH_SOURCE</tag>
-        <tag>dirname</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux命令分类</title>
     <url>/2016/03/18/Linux-%E5%91%BD%E4%BB%A4%E5%88%86%E7%B1%BB/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -52507,315 +53117,363 @@ read_xlsx(name, sheet)
     <title>vim收集</title>
     <url>/2016/02/20/Tools-vim/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>vim分为几种模式，如命令模式(Command mode)，输入模式(Insert mode)，底线命令模式(Last line mode)，可视化模式(Visval mode)，每种模式下都有对应的快捷键操作。</p>
+<p>Vim 分为命令模式（普通模式）、输入模式、底线命令模式、可视化模式，每种模式都有对应的操作。下文如无特别说明，命令都在<strong>普通模式</strong>下执行；以 <code>:</code> 开头的命令在<strong>底线命令模式</strong>下执行。</p>
 </blockquote>
 <span id="more"></span>
 
 <p><img src="vim-key.png" alt="vim"></p>
-<h2 id="一、几种模式"><a href="#一、几种模式" class="headerlink" title="一、几种模式"></a>一、几种模式</h2><ol>
-<li><p>命令模式，也叫普通模式</p>
+<h2 id="一、几种模式"><a href="#一、几种模式" class="headerlink" title="一、几种模式"></a>一、几种模式</h2><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>进入方式</th>
+<th>退出方式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>命令模式（普通模式）</td>
+<td>打开文件后默认进入</td>
+<td>按 <code>i</code>/<code>a</code>/<code>v</code>/<code>:</code> 切到其他模式</td>
+<td>移动光标、删除、复制、执行普通命令</td>
+</tr>
+<tr>
+<td>输入模式（插入模式）</td>
+<td><code>i</code> 光标前插入、<code>a</code> 光标后插入、<code>o</code> 下一行插入</td>
+<td><code>Esc</code></td>
+<td>输入文本</td>
+</tr>
+<tr>
+<td>底线命令模式（末行模式）</td>
+<td>普通模式下按 <code>:</code>（<code>/</code>、<code>?</code> 也可）</td>
+<td><code>Esc</code> 或命令执行完自动返回</td>
+<td>保存、退出、替换、设置选项</td>
+</tr>
+<tr>
+<td>可视化模式</td>
+<td><code>v</code> 字符、<code>V</code> 行、<code>Ctrl+v</code> 块</td>
+<td><code>Esc</code></td>
+<td>选中区域后统一操作</td>
+</tr>
+</tbody></table>
+<p>普通模式下最常用的几个：</p>
 <ul>
-<li><code>dw</code>:删除当前光标后一个单词</li>
-<li><code>bdw</code>:复合命令，b将光标移动到单词首，再执行dw</li>
-<li><code>x</code>:删除光标所在的字符</li>
-<li><code>u</code>:撤销命令</li>
-<li><code>r</code>:替换光标所在字符，先按<code>r</code>，然后输入替换字符</li>
-<li><code>10,100&gt;</code>:第10行至第100行缩进，与之对应的有反缩进<code>&lt;</code></li>
+<li><code>dw</code>：删除光标后的一个单词；<code>bdw</code> 是复合命令，先把光标移到单词首，再执行 <code>dw</code></li>
+<li><code>x</code>：删除光标所在字符</li>
+<li><code>u</code>：撤销</li>
+<li><code>r</code>：替换光标所在字符，按 <code>r</code> 后再输入替换字符</li>
+<li><code>10,100&gt;</code>：第 10 行到第 100 行整体缩进，反向缩进是 <code>&lt;</code></li>
 </ul>
-</li>
-<li><p>输入模式：在命令模式下按下i就进入了输入模式</p>
+<p>可视化模式下：</p>
 <ul>
-<li><code>esc</code>:退出输入模式</li>
+<li><code>v</code> 进入字符可视化：<code>w</code> 选中到下一个单词开头，<code>$</code> 选中该行其余部分，<code>u</code>/<code>U</code> 大小写转换</li>
+<li><code>V</code> 进入行可视化</li>
+<li><code>Ctrl+v</code> 进入块可视化</li>
 </ul>
-</li>
-<li><p>底线命令模式：在命令模式下按下英文冒号<code>:</code>就进入了底线命令模式。</p>
-<ul>
-<li><code>q</code>:退出程序</li>
-<li><code>w</code>:保存文件</li>
+<h2 id="二、光标移动"><a href="#二、光标移动" class="headerlink" title="二、光标移动"></a>二、光标移动</h2><h3 id="1-单词间移动"><a href="#1-单词间移动" class="headerlink" title="1. 单词间移动"></a>1. 单词间移动</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>w</code></td>
+<td>移到下一个单词的词首（连续标点算一个单词）</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>同上，但只以空格作为分隔</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>移到当前/下一个单词的词尾（含标点）</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>同上，但只以空格作为分隔</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>移到上一个单词的词首</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>同上，但只以空格作为分隔</td>
+</tr>
+<tr>
+<td><code>4w</code>、<code>4b</code>、<code>4e</code></td>
+<td>一次移动 4 个单词</td>
+</tr>
+</tbody></table>
+<p><code>w</code> 与 <code>W</code> 的区别（用 <code>8w</code> 和 <code>8W</code> 对比可见差异）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Hello everyone, My name is panda, I'm from China, I love Bamboo.</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-行内移动"><a href="#2-行内移动" class="headerlink" title="2. 行内移动"></a>2. 行内移动</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0</code></td>
+<td>移到行首第一列（包含空格）</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>移到行首第一个非空字符，即非空格行首</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>移到行尾</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>移到下一行行首（非空格处）</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>移到上一行行首（非空格处）</td>
+</tr>
+<tr>
+<td><code>10j</code>、<code>10l</code></td>
+<td>一次移动多个字符，如向左移动 10 个字符</td>
+</tr>
+</tbody></table>
+<p>上下左右是 <code>j</code>/<code>k</code>/<code>h</code>/<code>l</code>，也可以用键盘方向键。</p>
+<h3 id="3-行与文件级跳转"><a href="#3-行与文件级跳转" class="headerlink" title="3. 行与文件级跳转"></a>3. 行与文件级跳转</h3><ul>
+<li><code>gg</code>：文件首行（页首）</li>
+<li><code>G</code>：文件尾行（页尾）</li>
+<li><code>:10</code>：跳到第 10 行</li>
+<li><code>9G</code>：跳到第 9 行</li>
 </ul>
-</li>
-<li><p>可视化模式</p>
-<ul>
-<li><code>v</code>:进入字符可视化模式<ul>
-<li><code>w</code>:选中至下一个单词的开头</li>
-<li><code>$</code>:选中该行的其余部分</li>
-<li><code>u/U</code>:大小写转换</li>
+<h3 id="4-屏幕范围移动"><a href="#4-屏幕范围移动" class="headerlink" title="4. 屏幕范围移动"></a>4. 屏幕范围移动</h3><ul>
+<li><code>Ctrl+f</code>：向下翻页；<code>Ctrl+b</code>：向上翻页</li>
+<li><code>Ctrl+e</code>：逐行下滚；<code>Ctrl+y</code>：逐行上滚</li>
+<li><code>H</code>：屏幕首行；<code>M</code>：屏幕中间；<code>L</code>：屏幕尾行</li>
+<li><code>zt</code>：当前行置顶；<code>zz</code>：当前行居中；<code>zb</code>：当前行置底</li>
+<li><code>:set nu</code>（或 <code>:set number</code>）：显示行号</li>
 </ul>
-</li>
-<li><code>V</code>:进入行可视化模式</li>
-<li><code>ctrl+v</code>:进入块可视化模式</li>
+<h3 id="5-查找与配对跳转"><a href="#5-查找与配对跳转" class="headerlink" title="5. 查找与配对跳转"></a>5. 查找与配对跳转</h3><ul>
+<li><code>/test</code>：向下查找 test 并跳转到所在行；<code>?test</code> 则是向上查找</li>
+<li><code>n</code>：跳到下一个匹配；<code>N</code>：跳到上一个匹配</li>
+<li><code>q/</code>、<code>q?</code>：查看查找历史</li>
+<li><code>*</code>：向下查找光标所在单词；<code>#</code>：向上查找光标所在单词</li>
+<li><code>%</code>：跳转到配对的括号 <code>()</code> <code>[]</code> <code>{}</code></li>
+<li><code>[[</code>：向前（向上）跳到代码块开头；<code>]]</code>：向后（向下）跳到代码块结尾</li>
 </ul>
-</li>
-</ol>
-<h2 id="二、常用快捷键"><a href="#二、常用快捷键" class="headerlink" title="二、常用快捷键"></a>二、常用快捷键</h2><ol>
-<li><p>大小写转换<code>~</code></p>
-</li>
-<li><p>将光标移动到词尾<code>e</code>或<code>E</code></p>
-</li>
-<li><p>将光标移动到行尾<code>$</code></p>
-<ul>
-<li>将光标移动到行首<code>^</code>或数字<code>0</code><ul>
-<li><code>^</code>是行首的第一个字符位置，不包含空格</li>
-<li><code>0</code>则是真正的行首，可以是空格</li>
+<h3 id="6-多文件切换（底线命令模式）"><a href="#6-多文件切换（底线命令模式）" class="headerlink" title="6. 多文件切换（底线命令模式）"></a>6. 多文件切换（底线命令模式）</h3><ul>
+<li><code>:f</code>：查看当前编辑的文件</li>
+<li><code>:ls</code>、<code>:files</code>、<code>:buffers</code>：查看已打开的文件列表</li>
+<li><code>:b 文件序号</code>：切换到指定文件</li>
+<li><code>:n</code>：下一个文件（<code>:2n</code> 下下个，以此类推）</li>
+<li><code>:N</code>：上一个文件（<code>:2N</code> 上上个，以此类推）</li>
+<li><code>:e#</code> 或 <code>Ctrl+^</code>：回到上一个编辑过的文档</li>
 </ul>
-</li>
+<h2 id="三、删除与替换"><a href="#三、删除与替换" class="headerlink" title="三、删除与替换"></a>三、删除与替换</h2><h3 id="1-删除字符"><a href="#1-删除字符" class="headerlink" title="1. 删除字符"></a>1. 删除字符</h3><ul>
+<li><code>x</code>：删除光标所在字符</li>
+<li><code>X</code>：删除光标前一个字符（大写的 x）</li>
 </ul>
-</li>
-<li><p>将光标移动到下一行行首<code>+</code>(不包含空格)</p>
-<ul>
-<li>将光标移动到上一行行首<code>-</code>(不包含空格)</li>
+<h3 id="2-删除单词"><a href="#2-删除单词" class="headerlink" title="2. 删除单词"></a>2. 删除单词</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dw</code></td>
+<td>删除到下一个单词开头；光标在单词中间时，只删到下一个单词开头</td>
+</tr>
+<tr>
+<td><code>bdw</code></td>
+<td>先把光标移到单词首，再删除整个单词</td>
+</tr>
+<tr>
+<td><code>de</code></td>
+<td>删到本单词末尾，不含标点</td>
+</tr>
+<tr>
+<td><code>dE</code></td>
+<td>删到本单词末尾，含标点</td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td>删到上一个单词开头，不含标点</td>
+</tr>
+<tr>
+<td><code>dB</code></td>
+<td>删到上一个单词开头，含标点</td>
+</tr>
+</tbody></table>
+<p>光标停在单词中间时，上述命令都是“从光标处删到对应位置”。</p>
+<h3 id="3-删除行"><a href="#3-删除行" class="headerlink" title="3. 删除行"></a>3. 删除行</h3><ul>
+<li><code>dd</code>：删除整行</li>
+<li><code>D</code>：删除光标处到行尾（光标位置前移）</li>
+<li><code>d0</code>：删除光标处到行首</li>
 </ul>
-</li>
-<li><p>向前查找光标所在单词<code>#</code></p>
-<ul>
-<li>向后查找光标所在单词<code>*</code></li>
+<h3 id="4-删除范围"><a href="#4-删除范围" class="headerlink" title="4. 删除范围"></a>4. 删除范围</h3><ul>
+<li>删除全文：普通模式 <code>ggdG</code></li>
+<li>删除全文（底线命令模式）：<code>G</code> 先把光标移到末尾，再 <code>:1,.d</code></li>
+<li>删除 1~9 行：<code>9G</code> 把光标移到第 9 行，再 <code>:1,.d</code>（<code>.</code> 表示当前行）</li>
+<li>删除 9 行到末尾：<code>9G</code> 或 <code>G</code>，再 <code>:9,.d</code></li>
+<li>也可以直接写行号区间，如 <code>:1,9d</code></li>
 </ul>
-</li>
-<li><p>将光标移到下一个单词<code>w</code>或<code>W</code></p>
-<ul>
-<li>将光标移到上一个单词<code>b</code>或<code>B</code></li>
+<h3 id="5-替换与撤销"><a href="#5-替换与撤销" class="headerlink" title="5. 替换与撤销"></a>5. 替换与撤销</h3><ul>
+<li><code>r</code> + 替换字符：替换光标所在字符</li>
+<li><code>u</code>：撤销上一次操作</li>
 </ul>
-</li>
-<li><p>跳转到配对的括号()<code>%</code></p>
-</li>
-<li><p>向前跳转到代码块的开头处<code>[[</code></p>
-<ul>
-<li>向后跳转到代码块的结尾处<code>]]</code></li>
+<h2 id="四、大小写转换"><a href="#四、大小写转换" class="headerlink" title="四、大小写转换"></a>四、大小写转换</h2><ul>
+<li><code>~</code>：切换光标所在字符的大小写</li>
+<li>可视化模式选中后 <code>u</code> 转小写、<code>U</code> 转大写</li>
+<li>普通模式下也可以配合动作符使用，如 <code>gUiw</code> 把光标所在单词全部转成大写</li>
 </ul>
-</li>
-<li><p>将光标移动到文件开头<code>gg</code></p>
-<ul>
-<li>将光标移动到文件末尾<code>G</code></li>
-</ul>
-</li>
-<li><p>多文件切换(底角命令模式下)</p>
-<ul>
-<li>查看当前编辑的文件<code>:f</code></li>
-<li>查看打开的文件列表<code>:ls</code>或<code>:files</code>或<code>:buffers</code></li>
-<li>切换指定的文件<code>:b 文件序号</code></li>
-<li>切换下一个文件<code>:n</code>(<code>:2n</code>下下个，以此类推)</li>
-<li>切换上一个文件<code>:N</code>(<code>:2N</code>上上个，以此类推)</li>
-<li>编辑上一个文档<code>:e#</code>或<code>ctrl+ˆ</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="三、各种删除"><a href="#三、各种删除" class="headerlink" title="三、各种删除"></a>三、各种删除</h2><ol>
-<li><p>删除全文</p>
-<ul>
-<li>普通命令模式:<code>ggdG</code></li>
-<li>底角命令模式：先<code>G</code>将光标移至文件末尾，<code>shift + :</code>进入底角命令模式，输入<code>1,.d</code></li>
-</ul>
-</li>
-<li><p>删除到指定行</p>
-<ul>
-<li>删除1至9行<ul>
-<li>普通命令模式下将光标移至第9行<code>9G</code></li>
-<li>进入底角命令模式<code>shift + :</code>，输入<code>1,.d</code>删除至当前行(即第九行)</li>
-</ul>
-</li>
-<li>删除9行至末尾<ul>
-<li>将光标移至末尾</li>
-<li>进入底角命令模式<code>shift + :</code>，输入<code>9,.d</code>删除至当前行(即末尾)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>删除字符</p>
-<ul>
-<li>删除光标所在字符：普通命令模式下<code>x</code></li>
-<li>删除光标前一个字符：普通命令模式下<code>X</code>，即大写的<code>x</code></li>
-</ul>
-</li>
-<li><p>删除单词</p>
-<ul>
-<li>删除到下一个单词开头：普通命令模式下<code>dw</code><ul>
-<li>光标在单词中间部分时则删除当前光标到下一个单词开头</li>
-</ul>
-</li>
-<li>删除到本单词的末尾不包括标点：普通命令模式下<code>de</code>，光标在单词中间部分时则删除当前光标到当前单词词尾不包括标点<ul>
-<li>删除到本单词的末尾并包括标点：普通命令模式下<code>dE</code>，光标在单词中间部分时则删除当前光标到当前单词词尾并包括标点</li>
-</ul>
-</li>
-<li>删除到前一个单词开头不包括标点：普通命令模式下<code>db</code>，光标在单词中间部分时则删除当前光标到当前单词开头不包括标点<ul>
-<li>删除到前一个单词开头并包括标点：普通命令模式下<code>dB</code>，光标在单词中间部分时则删除当前光标到当前单词开头并包括标点</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>删除行</p>
-<ul>
-<li>删除一行：普通命令模式下<code>dd</code></li>
-<li>删除光标所在处至末尾并将光标向前移：普通命令模式下<code>D</code></li>
-<li>删除光标到行首：普通命令模式下<code>d0</code></li>
-</ul>
-</li>
-</ol>
-<h2 id="四、光标移动"><a href="#四、光标移动" class="headerlink" title="四、光标移动"></a>四、光标移动</h2><blockquote>
-<p>以下命令不做特殊说明都是在普通模式下进行，普通模式也叫做命令行模式，另外还有一个底线命令行模式，注意区分。</p>
-</blockquote>
-<ol>
-<li><p>字符移动：上下左右<code>jkhl</code>，也可用键盘上的方向键</p>
-<ul>
-<li>移动多个字符，如向左移动10个字符<code>10j</code></li>
-</ul>
-</li>
-<li><p>单词移动</p>
-<ul>
-<li><p>下一个单词词首<code>w</code></p>
-<ul>
-<li>多个单词如<code>4w</code>向后移动4个单词</li>
-<li>连续多个标点算一个单词</li>
-<li><code>dw</code>则是从光标处向后删除一个单词(不包含光标处)，同理<code>4dw</code>从光标处向后删除4个单词</li>
-<li><code>W</code>同样可以实现向后移动，不同的是分隔符是空格，如以下文本，分别用<code>8w</code>和<code>8W</code>可看出区别    <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Hello everyone, My name is panda, I'm from China, I love Bamboo.</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-</li>
-<li><p>上一个单词词首<code>b</code></p>
-<ul>
-<li>多个单词如<code>4b</code>向前移动4个单词</li>
-<li>连续多个标点算一个单词</li>
-<li><code>B</code>同样可以实现，同<code>W</code>一样以空格为分隔符</li>
-</ul>
-</li>
-<li><p>下一个单词词尾<code>e</code></p>
-<ul>
-<li>多个单词如<code>4e</code>向前移动4个单词并处于词尾</li>
-<li>连续多个标点算一个单词</li>
-<li><code>db</code>则是从光标处向前删除一个单词(不包含光标处)</li>
-<li><code>E</code>同样可以实现，同<code>W</code>一样以空格为分隔符</li>
-</ul>
-</li>
-<li><p>快速移动到行首行尾</p>
-<ul>
-<li><code>^</code>移动到行首</li>
-<li><code>$</code>移动到行尾</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>相对屏幕移动</p>
-<ul>
-<li><code>control + f</code>:向下翻页</li>
-<li><code>control + b</code>:向上翻页</li>
-<li><code>control + e</code>:逐行下滚</li>
-<li><code>control + y</code>:逐行上滚</li>
-<li><code>H</code>:移动到屏幕首行</li>
-<li><code>L</code>:移动到屏幕尾行</li>
-<li><code>M</code>:移动到屏幕中间</li>
-<li><code>zt</code>:将当前行置顶，即把当前行移动到屏幕首行</li>
-<li><code>zz</code>:将当前行移到屏幕中部</li>
-<li><code>zb</code>:将当前行移到屏幕底部</li>
-<li><code>:数字</code>如<code>:10</code>:将光标到第10行</li>
-<li><code>set nu或set number</code>可以显示行号</li>
-<li><code>gg</code>:移动到文件首行</li>
-<li><code>G</code>:移动到文件尾行</li>
-<li><code>/字符</code>如<code>/test</code>:查找test并移动到test所在行</li>
-<li><code>?字符</code>则是反向查找，即向上查找</li>
-<li><code>n</code>:下一个</li>
-<li><code>N</code>:上一个</li>
-<li><code>q/</code>或<code>q?</code>可以查看查找历史</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、设置缩进"><a href="#五、设置缩进" class="headerlink" title="五、设置缩进"></a>五、设置缩进</h2><ol>
-<li><p>普通模式(命令模式)</p>
-<ul>
-<li>单行操作<ul>
+<h2 id="五、缩进"><a href="#五、缩进" class="headerlink" title="五、缩进"></a>五、缩进</h2><h3 id="1-普通模式（命令模式）"><a href="#1-普通模式（命令模式）" class="headerlink" title="1. 普通模式（命令模式）"></a>1. 普通模式（命令模式）</h3><ul>
 <li><code>&gt;&gt;</code>：当前行增加缩进</li>
 <li><code>&lt;&lt;</code>：当前行减少缩进</li>
 </ul>
-</li>
+<h3 id="2-块可视化"><a href="#2-块可视化" class="headerlink" title="2. 块可视化"></a>2. 块可视化</h3><ul>
+<li><code>v</code>/<code>V</code>/<code>Ctrl+v</code> 进入可视化模式</li>
+<li>用 <code>j</code>、<code>k</code> 或上下方向键选择代码块</li>
+<li>输入 <code>&gt;</code> 或 <code>&lt;</code> 缩进或回退</li>
 </ul>
-</li>
-<li><p>块可视化</p>
-<ul>
-<li>进入块可视化模式<code>v/V/control+v</code></li>
-<li>使用<code>j</code>或<code>k</code>或上下箭头选择代码块</li>
-<li>键入<code>&gt;</code>或<code>&lt;</code>进行缩进或回退</li>
+<h3 id="3-底线命令模式（多行）"><a href="#3-底线命令模式（多行）" class="headerlink" title="3. 底线命令模式（多行）"></a>3. 底线命令模式（多行）</h3><ul>
+<li><code>:1,n&gt;</code>：第 1~n 行增加一个缩进</li>
+<li><code>:1,n&gt;&gt;</code>：第 1~n 行增加两个缩进</li>
+<li><code>:1,n&lt;</code>：第 1~n 行减少一个缩进</li>
+<li><code>:1,n&lt;&lt;</code>：第 1~n 行减少两个缩进</li>
 </ul>
-</li>
-<li><p>底线命令行模式</p>
-<ul>
-<li>多行操作：<code>shift + :</code>进入底线命令模式</li>
-<li><code>1,n&gt;</code>：1~n增加一个缩进<ul>
-<li><code>1,n&gt;&gt;</code>：1~n增加两个个缩进</li>
+<h3 id="4-插入模式"><a href="#4-插入模式" class="headerlink" title="4. 插入模式"></a>4. 插入模式</h3><ul>
+<li><code>Ctrl+t</code>：增加缩进</li>
+<li><code>Ctrl+d</code>：减少缩进（macOS 下组合键有冲突）</li>
 </ul>
-</li>
-<li><code>1,n&lt;</code>：1~n减少一个缩进<ul>
-<li><code>1,n&lt;</code>：1~n减少两个缩进</li>
+<h3 id="5-相关设置"><a href="#5-相关设置" class="headerlink" title="5. 相关设置"></a>5. 相关设置</h3><ul>
+<li><code>shiftwidth</code>：普通模式下 <code>&lt;&lt;</code>、<code>&gt;&gt;</code> 时缩进的列数</li>
+<li><code>tabstop</code>：一个 tab 键所占的列数（Linux 内核代码建议 8 列）</li>
+<li><code>softtabstop</code>：敲入 tab 键时实际占有的列数</li>
+<li><code>expandtab</code>：输入 tab 时自动转为空格；<code>noexpandtab</code> 取消该行为</li>
+<li><code>autoindent</code>：回车后自动缩进</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>插入模式</p>
-<ul>
-<li>进入插入模式</li>
-<li><code>shift + control + t</code>增加缩进</li>
-<li><code>shift + control + d</code>减少缩进(mac下组合键有冲突)</li>
-</ul>
-</li>
-<li><p>相关设置</p>
-<ul>
-<li>shiftwidth：普通模式下<code>&lt;&lt;</code>和<code>&gt;&gt;</code>时缩进的列数</li>
-<li>tabstop：一个tab键所占的列数，linux内核代码建议每个tab占用8列</li>
-<li>softtabstop：敲入tab键时实际占有的列数。</li>
-<li>expandtab：输入tab时自动将其转化为空格</li>
-<li>noexpandtab：取消输入tab自动转化为空格</li>
-<li>autoindent：回车后自动缩进</li>
-</ul>
-</li>
-</ol>
 <h2 id="六、选项设置"><a href="#六、选项设置" class="headerlink" title="六、选项设置"></a>六、选项设置</h2><blockquote>
-<p>以下所有操作都是在<code>shift + :</code>进入底角命令模式后进行的</p>
+<p>以下操作都在 <code>Esc</code> 后按 <code>:</code> 进入底线命令模式进行。</p>
 </blockquote>
 <ol>
-<li><p>查看选项</p>
-<ul>
-<li>查看所有选项<code>set all</code></li>
-<li>查看某个选项<code>set 选项</code>或<code>set 选项?</code></li>
-<li>查看非默认值的选项<code>set</code></li>
-<li>查看某个选项的帮助信息<code>help 选项</code></li>
-</ul>
-</li>
-<li><p>设置选项</p>
-<ul>
-<li>布尔值<ul>
-<li>设置布尔值<code>set 布尔选项</code></li>
-<li>关闭布尔值<code>set no布尔选项</code></li>
-<li>反向布尔值<code>set 布尔选项!</code>或<code>set inv布尔选项</code></li>
-<li>设为默认值<code>set 布尔选项&amp;</code><ul>
-<li>重置所有选项<code>set all&amp;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数值<ul>
-<li>设置数值<code>set 数值选项 =数值</code></li>
-<li>增加数值<code>set 数值选项 +=val</code></li>
-<li>减少数值<code>set 数值选项 -=val</code></li>
-<li>乘以数值<code>set 数值选项 ^=val</code></li>
-<li>恢复数值<code>set 数值选项&amp;</code></li>
-</ul>
-</li>
-<li>字符串<ul>
-<li>设置字符串<code>set 字符串选项 =字符串</code></li>
-<li>在末尾追加<code>set 字符串选项 +=字符串</code></li>
-<li>选项中移除<code>set 字符串选项 -=字符串</code><ul>
-<li>如果要移除的字符串有多个则默认移除第一个</li>
-</ul>
-</li>
-<li>在开头追加<code>set 字符串选项 ^=字符串</code></li>
-<li>设为默认值<code>set 字符串选项&amp;</code></li>
-</ul>
-</li>
-<li>设置多个<code>set 选项1 选项2 ...</code>，以空格隔开</li>
-</ul>
-</li>
+<li>查看选项</li>
 </ol>
-<h2 id="七、参考"><a href="#七、参考" class="headerlink" title="七、参考"></a>七、参考</h2><ol>
-<li><a href="http://vimdoc.sourceforge.net/htmldoc/options.html">参考一</a></li>
-<li><a href="https://segmentfault.com/a/1190000021133524?utm_source=tag-newest">参考二</a></li>
-<li><a href="https://harttle.land/2015/11/07/vim-cursor.html">参考三</a></li>
+<ul>
+<li><code>:set all</code>：查看所有选项</li>
+<li><code>:set 选项</code> 或 <code>:set 选项?</code>：查看某个选项</li>
+<li><code>:set</code>：查看非默认值的选项</li>
+<li><code>:help 选项</code>：查看某个选项的帮助信息</li>
+</ul>
+<ol start="2">
+<li>设置选项</li>
+</ol>
+<ul>
+<li>布尔值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:set 布尔选项</code></td>
+<td>打开</td>
+</tr>
+<tr>
+<td><code>:set no布尔选项</code></td>
+<td>关闭</td>
+</tr>
+<tr>
+<td><code>:set 布尔选项!</code> 或 <code>:set inv布尔选项</code></td>
+<td>取反</td>
+</tr>
+<tr>
+<td><code>:set 布尔选项&amp;</code></td>
+<td>恢复默认值（<code>:set all&amp;</code> 重置所有选项）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>数值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:set 数值选项=值</code></td>
+<td>设置</td>
+</tr>
+<tr>
+<td><code>:set 数值选项+=val</code></td>
+<td>增加</td>
+</tr>
+<tr>
+<td><code>:set 数值选项-=val</code></td>
+<td>减少</td>
+</tr>
+<tr>
+<td><code>:set 数值选项^=val</code></td>
+<td>乘以</td>
+</tr>
+<tr>
+<td><code>:set 数值选项&amp;</code></td>
+<td>恢复默认</td>
+</tr>
+</tbody></table>
+<ul>
+<li>字符串</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>:set 字符串选项=字符串</code></td>
+<td>设置</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项+=字符串</code></td>
+<td>在末尾追加</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项^=字符串</code></td>
+<td>在开头追加</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项-=字符串</code></td>
+<td>移除（有多个时默认只移除第一个）</td>
+</tr>
+<tr>
+<td><code>:set 字符串选项&amp;</code></td>
+<td>恢复默认</td>
+</tr>
+</tbody></table>
+<ul>
+<li>一次设置多个用空格隔开，如 <code>:set 选项1 选项2</code></li>
+</ul>
+<h2 id="七、整篇文件不换行（-M）的处理"><a href="#七、整篇文件不换行（-M）的处理" class="headerlink" title="七、整篇文件不换行（^M）的处理"></a>七、整篇文件不换行（^M）的处理</h2><p>现象：打开 <code>.env</code>、<code>train.log</code> 这类由程序生成的文件时，所有内容挤在一行，行尾能看到 <code>^M</code>（有的帖子里叫“文件不换行”）。</p>
+<p>原因：文件的换行符只有 <code>\r</code>（CR），Vim 不把它当作换行来渲染，于是整篇显示成一行。</p>
+<p>解决：在底线命令模式执行</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">:%s/\r/\r/g</span><br></pre></td></tr></tbody></table></figure>
+
+<p>搜索侧 <code>\r</code> 匹配 CR，替换侧的 <code>\r</code> 会写入真正的换行，整篇就会被切成正常的行；确认无误后 <code>:w</code> 保存。如果想顺手统一成 Unix 换行，再执行 <code>:set ff=unix</code>。</p>
+<p>如果只是不想让长行在屏幕上折行显示，那是另一回事，用 <code>:set nowrap</code> 即可。</p>
+<h2 id="八、参考"><a href="#八、参考" class="headerlink" title="八、参考"></a>八、参考</h2><ol>
+<li><a href="http://vimdoc.sourceforge.net/htmldoc/options.html">Vim 选项文档</a></li>
+<li><a href="https://segmentfault.com/a/1190000021133524">Vim 常用操作整理</a></li>
+<li><a href="https://harttle.land/2015/11/07/vim-cursor.html">Vim 光标移动</a></li>
+<li><a href="https://blog.csdn.net/weixin_42111770/article/details/134373005">vim 文件在 linux 不换行、只显示 ^M 的解决办法</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -83916,6 +84574,23 @@ amount: theme.tagcloud.amount, color: true, start_color: theme.tagcloud.start, e
 <ol start="5">
 <li>确定问题，修改为：<code>{{$row['rebate_record']|raw}}</code></li>
 </ol>
+<hr>
+<h1 id="hexo-g-d报错-1"><a href="#hexo-g-d报错-1" class="headerlink" title="hexo g -d报错"></a><center><font color="red">hexo g -d报错</font></center></h1><ol>
+<li>hexo g -d，报错：</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 C:\Users\Administrator\AppData\Roaming\npm\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。</span><br><span class="line">所在位置 行:1 字符: 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hexo g -d</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  + CategoryInfo          : SecurityError: (:) []，PSSecurityException</span><br><span class="line">  + FullyQualifiedErrorId : UnauthorizedAccess</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>解决：运行PowerShell</li>
+</ol>
+<ul>
+<li><p>临时方案：Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</p>
+</li>
+<li><p>永久方案(当前用户)：Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</p>
+</li>
+<li><p>永久方案(所有用户)：Set-ExecutionPolicy RemoteSigned -Scope LocalMachine</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Hexo</category>
