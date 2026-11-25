@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://liusir.net/2023/09/11/Windows-%E6%94%B6%E9%9B%86/e1.png">
 <meta property="og:image" content="https://liusir.net/2023/09/11/Windows-%E6%94%B6%E9%9B%86/e2.png">
 <meta property="article:published_time" content="2023-09-11T11:47:48.000Z">
-<meta property="article:modified_time" content="2026-10-26T15:11:12.167Z">
+<meta property="article:modified_time" content="2026-11-25T06:59:56.473Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="SSH">
 <meta property="article:tag" content="Laragon">
@@ -163,6 +163,7 @@
 <meta property="article:tag" content="TortoiseSVN">
 <meta property="article:tag" content="NSSM">
 <meta property="article:tag" content="powershell">
+<meta property="article:tag" content="SQLite">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liusir.net/2023/09/11/Windows-%E6%94%B6%E9%9B%86/e1.png">
   <link rel="canonical" href="https://liusir.net/2023/09/11/Windows-%E6%94%B6%E9%9B%86/">
@@ -384,13 +385,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>23k</span>
+              <span>19k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>21 分钟</span>
+              <span>18 分钟</span>
             </span>
 
         </div>
@@ -407,44 +408,45 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="SSH工具"><a href="#SSH工具" class="headerlink" title="SSH工具"></a><center><font color="red">SSH工具</font></center></h1><h2 id="一、常用-SSH-客户端（远程登录）"><a href="#一、常用-SSH-客户端（远程登录）" class="headerlink" title="一、常用 SSH 客户端（远程登录）"></a><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">一、常用 SSH 客户端（远程登录）</font></h2><ol>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Xshell</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows）功能强、支持多标签、脚本、SFTP，个人 / 学生有免费版，是服务器运维最常用之一。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">SecureCRT</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows/macOS）老牌专业 SSH 客户端，稳定、支持批量操作、脚本自动化，适合长期运维。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">FinalShell</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows/macOS）国产免费，自带文件管理、服务器性能监控，对新手友好，功能很全。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Termius</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows/macOS/Linux/Android/iOS）跨平台、云同步配置，界面现代，支持多设备同步，适合多平台切换。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">MobaXterm</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows）免费版够用，集成 SSH、SFTP、X11、多标签、命令历史，一站式工具。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">iTerm2 + ssh</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（macOS）macOS 终端神器，原生支持 </font><code>&lt;font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);"&gt;ssh user@host&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">，配合 zsh、插件体验很好。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Windows Terminal + OpenSSH</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows 10/11）系统自带，直接在终端里用 </font><code>&lt;font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);"&gt;ssh user@host&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">，轻量无广告，适合极简党。</font></li>
+<h1 id="SSH工具"><a href="#SSH工具" class="headerlink" title="SSH工具"></a><center><font color="red">SSH工具</font></center></h1><h2 id="一、常用-SSH-客户端（远程登录）"><a href="#一、常用-SSH-客户端（远程登录）" class="headerlink" title="一、常用 SSH 客户端（远程登录）"></a>一、常用 SSH 客户端（远程登录）</h2><ol>
+<li><strong>Xshell</strong>（Windows）功能强、支持多标签、脚本、SFTP，个人 / 学生有免费版，是服务器运维最常用之一。</li>
+<li><strong>SecureCRT</strong>（Windows/macOS）老牌专业 SSH 客户端，稳定、支持批量操作、脚本自动化，适合长期运维。</li>
+<li><strong>FinalShell</strong>（Windows/macOS）国产免费，自带文件管理、服务器性能监控，对新手友好，功能很全。</li>
+<li><strong>Termius</strong>（Windows/macOS/Linux/Android/iOS）跨平台、云同步配置，界面现代，支持多设备同步，适合多平台切换。</li>
+<li><strong>MobaXterm</strong>（Windows）免费版够用，集成 SSH、SFTP、X11、多标签、命令历史，一站式工具。</li>
+<li><strong>iTerm2 + ssh</strong>（macOS）macOS 终端神器，原生支持 <code>ssh user@host&lt;/font&gt;</code>，配合 zsh、插件体验很好。</li>
+<li><strong>Windows Terminal + OpenSSH</strong>（Windows 10/11）系统自带，直接在终端里用 <code>ssh user@host&lt;/font&gt;</code>，轻量无广告，适合极简党。</li>
 </ol>
-<h2 id="二、常用-SFTP-SCP-文件传输工具"><a href="#二、常用-SFTP-SCP-文件传输工具" class="headerlink" title="二、常用 SFTP/SCP 文件传输工具"></a><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">二、常用 SFTP/SCP 文件传输工具</font></h2><ol>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">WinSCP</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（Windows）图形化 SFTP/SCP，拖拽传文件，支持同步、对比，和 SSH 登录配合很方便。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">FileZilla</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（跨平台）支持 FTP/SFTP，免费开源，界面简单，适合日常传文件。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Transmit</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">（macOS）付费但体验极佳，SFTP/FTP/WebDAV 都支持，速度和稳定性都很好。</font></li>
+<h2 id="二、常用-SFTP-SCP-文件传输工具"><a href="#二、常用-SFTP-SCP-文件传输工具" class="headerlink" title="二、常用 SFTP/SCP 文件传输工具"></a>二、常用 SFTP/SCP 文件传输工具</h2><ol>
+<li><strong>WinSCP</strong>（Windows）图形化 SFTP/SCP，拖拽传文件，支持同步、对比，和 SSH 登录配合很方便。</li>
+<li><strong>FileZilla</strong>（跨平台）支持 FTP/SFTP，免费开源，界面简单，适合日常传文件。</li>
+<li><strong>Transmit</strong>（macOS）付费但体验极佳，SFTP/FTP/WebDAV 都支持，速度和稳定性都很好。</li>
 </ol>
-<h2 id="三、命令行原生-SSH（所有系统都能用）"><a href="#三、命令行原生-SSH（所有系统都能用）" class="headerlink" title="三、命令行原生 SSH（所有系统都能用）"></a><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">三、命令行原生 SSH（所有系统都能用）</font></h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 登录</span><br><span class="line">ssh username@服务器IP或域名</span><br><span class="line"></span><br><span class="line"># 指定端口</span><br><span class="line">ssh -p 端口号 username@服务器IP</span><br><span class="line"></span><br><span class="line"># 密钥登录</span><br><span class="line">ssh -i 私钥路径 username@服务器IP</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="三、命令行原生-SSH（所有系统都能用）"><a href="#三、命令行原生-SSH（所有系统都能用）" class="headerlink" title="三、命令行原生 SSH（所有系统都能用）"></a>三、命令行原生 SSH（所有系统都能用）</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 登录</span><br><span class="line">ssh username@服务器IP或域名</span><br><span class="line"></span><br><span class="line"># 指定端口</span><br><span class="line">ssh -p 端口号 username@服务器IP</span><br><span class="line"></span><br><span class="line"># 密钥登录</span><br><span class="line">ssh -i 私钥路径 username@服务器IP</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="四、简单推荐"><a href="#四、简单推荐" class="headerlink" title="四、简单推荐"></a><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">四、简单推荐</font></h2><ol>
-<li><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">新手 / Windows：</font><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">FinalShell / MobaXterm</font></strong></li>
-<li><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">专业运维 / Windows：</font><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Xshell / SecureCRT</font></strong></li>
-<li><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">macOS：</font><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">iTerm2 + 原生 ssh</font></strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);"> 或 </font><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Termius</font></strong></li>
-<li><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">跨平台 / 多设备：</font><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">Termius</font></strong></li>
-<li><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">只传文件：</font><strong><font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">WinSCP / FileZilla</font></strong></li>
+<h2 id="四、简单推荐"><a href="#四、简单推荐" class="headerlink" title="四、简单推荐"></a>四、简单推荐</h2><ol>
+<li>新手 / Windows：<strong>FinalShell / MobaXterm</strong></li>
+<li>专业运维 / Windows：<strong>Xshell / SecureCRT</strong></li>
+<li>macOS：<strong>iTerm2 + 原生 ssh</strong> 或 <strong>Termius</strong></li>
+<li>跨平台 / 多设备：<strong>Termius</strong></li>
+<li>只传文件：<strong>WinSCP / FileZilla</strong></li>
 </ol>
-<h1 id="TortoiseSVN安装"><a href="#TortoiseSVN安装" class="headerlink" title="TortoiseSVN安装"></a><center><font color="red">TortoiseSVN安装</font></center></h1><h2 id="一、安装-TortoiseSVN（含服务器组件）"><a href="#一、安装-TortoiseSVN（含服务器组件）" class="headerlink" title="一、安装 TortoiseSVN（含服务器组件）"></a><font style="color:rgb(0, 0, 0);">一、安装 TortoiseSVN（含服务器组件）</font></h2><ol>
-<li><font style="color:rgb(0, 0, 0);">下载安装包：访问</font><font style="color:rgb(0, 0, 0);"> </font><a target="_blank" rel="noopener" href="https://tortoisesvn.net/downloads.html"><font style="color:rgb(9, 105, 218);">TortoiseSVN 官网</font></a><font style="color:rgb(0, 0, 0);">，下载对应系统位数的安装包（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;TortoiseSVN-1.14.6.36806-x64-svn-1.14.2.msi&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">安装选项：</font></li>
+<hr>
+<h1 id="TortoiseSVN安装"><a href="#TortoiseSVN安装" class="headerlink" title="TortoiseSVN安装"></a><center><font color="red">TortoiseSVN安装</font></center></h1><h2 id="一、安装-TortoiseSVN（含服务器组件）"><a href="#一、安装-TortoiseSVN（含服务器组件）" class="headerlink" title="一、安装 TortoiseSVN（含服务器组件）"></a>一、安装 TortoiseSVN（含服务器组件）</h2><ol>
+<li>下载安装包：访问 <a target="_blank" rel="noopener" href="https://tortoisesvn.net/downloads.html"><font style="color:rgb(9, 105, 218);">TortoiseSVN 官网</font></a>，下载对应系统位数的安装包（如 <code>TortoiseSVN-1.14.6.36806-x64-svn-1.14.2.msi&lt;/font&gt;</code>）。</li>
+<li>安装选项：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">安装时确保勾选 “Command Line Tools”（含 svnserve.exe 等服务器工具）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">安装路径默认或自定义（如 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\Program Files\TortoiseSVN&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），完成后按提示重启电脑。</font></li>
+<li>安装时确保勾选 “Command Line Tools”（含 svnserve.exe 等服务器工具）。</li>
+<li>安装路径默认或自定义（如 <code>D:\Program Files\TortoiseSVN&lt;/font&gt;</code>），完成后按提示重启电脑。</li>
 </ul>
-<h2 id="二、快速搭建：创建仓库与临时启动（适合测试）"><a href="#二、快速搭建：创建仓库与临时启动（适合测试）" class="headerlink" title="二、快速搭建：创建仓库与临时启动（适合测试）"></a><font style="color:rgb(0, 0, 0);">二、快速搭建：创建仓库与临时启动（适合测试）</font></h2><h4 id="1-创建-SVN-仓库"><a href="#1-创建-SVN-仓库" class="headerlink" title="1. 创建 SVN 仓库"></a><font style="color:rgb(0, 0, 0);">1. 创建 SVN 仓库</font></h4><ul>
-<li><font style="color:rgb(0, 0, 0);">新建仓库根目录（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\SVN\Repos&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），在该目录下右键 → TortoiseSVN → Create Repository here。</font></li>
-<li><font style="color:rgb(0, 0, 0);">选择仓库类型：默认 “FSFS”，可勾选 “Create folder structure” 自动生成</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;trunk/branches/tags&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">规范结构。</font></li>
-<li><font style="color:rgb(0, 0, 0);">仓库创建成功后，路径为</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;file:///D:/SVN/Repos&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，本地测试可用；网络访问需用</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">协议。</font></li>
+<h2 id="二、快速搭建：创建仓库与临时启动（适合测试）"><a href="#二、快速搭建：创建仓库与临时启动（适合测试）" class="headerlink" title="二、快速搭建：创建仓库与临时启动（适合测试）"></a>二、快速搭建：创建仓库与临时启动（适合测试）</h2><h4 id="1-创建-SVN-仓库"><a href="#1-创建-SVN-仓库" class="headerlink" title="1. 创建 SVN 仓库"></a>1. 创建 SVN 仓库</h4><ul>
+<li>新建仓库根目录（如 <code>D:\SVN\Repos&lt;/font&gt;</code>），在该目录下右键 → TortoiseSVN → Create Repository here。</li>
+<li>选择仓库类型：默认 “FSFS”，可勾选 “Create folder structure” 自动生成 <code>trunk/branches/tags&lt;/font&gt;</code> 规范结构。</li>
+<li>仓库创建成功后，路径为 <code>file:///D:/SVN/Repos&lt;/font&gt;</code>，本地测试可用；网络访问需用 <code>svn://&lt;/font&gt;</code> 协议。</li>
 </ul>
-<h4 id="2-配置用户与权限"><a href="#2-配置用户与权限" class="headerlink" title="2. 配置用户与权限"></a><font style="color:rgb(0, 0, 0);">2. 配置用户与权限</font></h4><ul>
-<li><font style="color:rgb(0, 0, 0);">进入仓库的 </font><code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;conf&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> 目录，修改以下 3 个文件（去掉行首 </font><code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;#&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> 与空格，保持格式正确）：</font></li>
+<h4 id="2-配置用户与权限"><a href="#2-配置用户与权限" class="headerlink" title="2. 配置用户与权限"></a>2. 配置用户与权限</h4><ul>
+<li>进入仓库的 <code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;conf&lt;/font&gt;</code> 目录，修改以下 3 个文件（去掉行首 <code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;#&lt;/font&gt;</code> 与空格，保持格式正确）：</li>
 </ul>
 <table>
 <thead>
@@ -456,73 +458,73 @@
 </thead>
 <tbody><tr>
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">svnserve.conf</font></td>
-<td align="left"><code>&lt;font style="color:rgb(0, 0, 0);"&gt;anon-access = none&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;auth-access = write&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;password-db = passwd&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;authz-db = authz&lt;/font&gt;</code></td>
+<td align="left"><code>anon-access = none&lt;/font&gt;</code><br><code>auth-access = write&lt;/font&gt;</code><br><code>password-db = passwd&lt;/font&gt;</code><br><code>authz-db = authz&lt;/font&gt;</code></td>
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">禁用匿名访问，启用认证；指定用户 / 权限文件</font></td>
 </tr>
 <tr>
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">passwd</font></td>
-<td align="left"><code>&lt;font style="color:rgb(0, 0, 0);"&gt;[users]&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;dev01 = 123456&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;test01 = 654321&lt;/font&gt;</code></td>
+<td align="left"><code>[users]&lt;/font&gt;</code><br><code>dev01 = 123456&lt;/font&gt;</code><br><code>test01 = 654321&lt;/font&gt;</code></td>
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">添加用户（格式：用户名 = 密码）</font></td>
 </tr>
 <tr>
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">authz</font></td>
-<td align="left"><code>&lt;font style="color:rgb(0, 0, 0);"&gt;[groups]&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;developers = dev01&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;testers = test01&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;[/]&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;@developers = rw&lt;/font&gt;</code><br><code>&lt;font style="color:rgb(0, 0, 0);"&gt;@testers = r&lt;/font&gt;</code></td>
+<td align="left"><code>[groups]&lt;/font&gt;</code><br><code>developers = dev01&lt;/font&gt;</code><br><code>testers = test01&lt;/font&gt;</code><br><code>[/]&lt;/font&gt;</code><br><code>@developers = rw&lt;/font&gt;</code><br><code>@testers = r&lt;/font&gt;</code></td>
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">创建用户组，配置根目录权限（rw = 读写，r = 只读）</font></td>
 </tr>
 </tbody></table>
-<h4 id="3-临时启动服务器"><a href="#3-临时启动服务器" class="headerlink" title="3. 临时启动服务器"></a><font style="color:rgb(0, 0, 0);">3. 临时启动服务器</font></h4><ul>
-<li><font style="color:rgb(0, 0, 0);">打开命令提示符（管理员），执行：</font><strong><font style="color:rgba(0, 0, 0, 0.85);">bash</font></strong><font style="color:rgba(0, 0, 0, 0.5);">运行</font></li>
+<h4 id="3-临时启动服务器"><a href="#3-临时启动服务器" class="headerlink" title="3. 临时启动服务器"></a>3. 临时启动服务器</h4><ul>
+<li>打开命令提示符（管理员），执行：<strong><font style="color:rgba(0, 0, 0, 0.85);">bash</font></strong><font style="color:rgba(0, 0, 0, 0.5);">运行</font></li>
 </ul>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"D:\Program Files\TortoiseSVN\bin\svnserve.exe"</span> -d -r D:\SVN\Repos</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;-d&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：后台守护进程模式；</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;-r&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：指定仓库根目录，客户端访问路径简化为 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://服务器IP/仓库名&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">。</font></li>
-<li><font style="color:rgb(0, 0, 0);">测试访问：本地输入 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://localhost/&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，或局域网 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://192.168.1.100/&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，用配置的用户登录。</font></li>
+<li><code>-d&lt;/font&gt;</code>：后台守护进程模式；<code>-r&lt;/font&gt;</code>：指定仓库根目录，客户端访问路径简化为 <code>svn://服务器IP/仓库名&lt;/font&gt;</code>。</li>
+<li>测试访问：本地输入 <code>svn://localhost/&lt;/font&gt;</code>，或局域网 <code>svn://192.168.1.100/&lt;/font&gt;</code>，用配置的用户登录。</li>
 </ul>
-<h2 id="三、生产环境：注册为-Windows-系统服务（开机自启）"><a href="#三、生产环境：注册为-Windows-系统服务（开机自启）" class="headerlink" title="三、生产环境：注册为 Windows 系统服务（开机自启）"></a><font style="color:rgb(0, 0, 0);">三、生产环境：注册为 Windows 系统服务（开机自启）</font></h2><h4 id="1-注册服务（管理员-CMD）"><a href="#1-注册服务（管理员-CMD）" class="headerlink" title="1. 注册服务（管理员 CMD）"></a><font style="color:rgb(0, 0, 0);">1. 注册服务（管理员 CMD）</font></h4><ul>
-<li><font style="color:rgb(0, 0, 0);">执行以下命令（路径需与实际安装一致）：</font></li>
+<h2 id="三、生产环境：注册为-Windows-系统服务（开机自启）"><a href="#三、生产环境：注册为-Windows-系统服务（开机自启）" class="headerlink" title="三、生产环境：注册为 Windows 系统服务（开机自启）"></a>三、生产环境：注册为 Windows 系统服务（开机自启）</h2><h4 id="1-注册服务（管理员-CMD）"><a href="#1-注册服务（管理员-CMD）" class="headerlink" title="1. 注册服务（管理员 CMD）"></a>1. 注册服务（管理员 CMD）</h4><ul>
+<li>执行以下命令（路径需与实际安装一致）：</li>
 </ul>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc create TortoiseSVN-Server binPath= <span class="string">"\"D:\Program Files\TortoiseSVN\bin\svnserve.exe\" --service -r D:\SVN\Repos"</span> displayname= <span class="string">"TortoiseSVN Server"</span> depend= TCPIP start= auto</span><br></pre></td></tr></tbody></table></figure>
 
 <ul>
-<li><font style="color:rgb(0, 0, 0);">参数说明：</font><ul>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;binPath&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：服务执行路径（含</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;--service&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">以服务模式运行）；</font></li>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;displayname&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：服务显示名称；</font></li>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;depend=TCPIP&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：依赖 TCP/IP 服务；</font></li>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;start=auto&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：开机自动启动。</font></li>
+<li>参数说明：<ul>
+<li><code>binPath&lt;/font&gt;</code>：服务执行路径（含 <code>--service&lt;/font&gt;</code> 以服务模式运行）；</li>
+<li><code>displayname&lt;/font&gt;</code>：服务显示名称；</li>
+<li><code>depend=TCPIP&lt;/font&gt;</code>：依赖 TCP/IP 服务；</li>
+<li><code>start=auto&lt;/font&gt;</code>：开机自动启动。</li>
 </ul>
 </li>
 </ul>
-<h4 id="2-管理服务"><a href="#2-管理服务" class="headerlink" title="2. 管理服务"></a><font style="color:rgb(0, 0, 0);">2. 管理服务</font></h4><ul>
-<li><font style="color:rgb(0, 0, 0);">启动服务：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;net start TortoiseSVN-Server&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">；</font></li>
-<li><font style="color:rgb(0, 0, 0);">停止服务：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;net stop TortoiseSVN-Server&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">；</font></li>
-<li><font style="color:rgb(0, 0, 0);">查看 / 修改：运行 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;services.msc&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，找到 “TortoiseSVN Server”，可调整启动类型或手动启停。</font></li>
+<h4 id="2-管理服务"><a href="#2-管理服务" class="headerlink" title="2. 管理服务"></a>2. 管理服务</h4><ul>
+<li>启动服务：<code>net start TortoiseSVN-Server&lt;/font&gt;</code>；</li>
+<li>停止服务：<code>net stop TortoiseSVN-Server&lt;/font&gt;</code>；</li>
+<li>查看 / 修改：运行 <code>services.msc&lt;/font&gt;</code>，找到 “TortoiseSVN Server”，可调整启动类型或手动启停。</li>
 </ul>
-<h2 id="四、客户端操作（检出-提交-更新）"><a href="#四、客户端操作（检出-提交-更新）" class="headerlink" title="四、客户端操作（检出 / 提交 / 更新）"></a><font style="color:rgb(0, 0, 0);">四、客户端操作（检出 / 提交 / 更新）</font></h2><ol>
-<li><font style="color:rgb(0, 0, 0);">检出仓库：</font></li>
+<h2 id="四、客户端操作（检出-提交-更新）"><a href="#四、客户端操作（检出-提交-更新）" class="headerlink" title="四、客户端操作（检出 / 提交 / 更新）"></a>四、客户端操作（检出 / 提交 / 更新）</h2><ol>
+<li>检出仓库：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">新建空文件夹（如 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\Work\MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），右键 → SVN Checkout；</font></li>
-<li><font style="color:rgb(0, 0, 0);">URL 输入 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://服务器IP/仓库名&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（如 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://192.168.1.100/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），点击 “OK” 并输入用户名密码。</font></li>
+<li>新建空文件夹（如 <code>D:\Work\MyProject&lt;/font&gt;</code>），右键 → SVN Checkout；</li>
+<li>URL 输入 <code>svn://服务器IP/仓库名&lt;/font&gt;</code>（如 <code>svn://192.168.1.100/MyProject&lt;/font&gt;</code>），点击 “OK” 并输入用户名密码。</li>
 </ul>
 <ol start="2">
-<li><font style="color:rgb(0, 0, 0);">提交修改：</font></li>
+<li>提交修改：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">修改文件后，右键 → SVN Commit，填写提交备注，点击 “OK” 完成提交。</font></li>
+<li>修改文件后，右键 → SVN Commit，填写提交备注，点击 “OK” 完成提交。</li>
 </ul>
 <ol start="3">
-<li><font style="color:rgb(0, 0, 0);">更新代码：</font></li>
+<li>更新代码：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">右键工作副本 → SVN Update，获取服务器最新版本。</font></li>
+<li>右键工作副本 → SVN Update，获取服务器最新版本。</li>
 </ul>
-<h2 id="五、常见问题与排查"><a href="#五、常见问题与排查" class="headerlink" title="五、常见问题与排查"></a><font style="color:rgb(0, 0, 0);">五、常见问题与排查</font></h2><ol>
-<li><font style="color:rgb(0, 0, 0);">端口占用：svnserve 默认监听 3690 端口，若冲突可在启动时指定端口（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;-d -r D:\SVN\Repos --listen-port 3691&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），客户端访问需加端口（</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://IP:3691/仓库名&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">权限报错：检查</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;authz&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">文件中用户 / 组权限配置是否正确，路径是否匹配（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;[/]&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">为根目录权限）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">防火墙拦截：开放 3690 端口（入站规则），确保客户端与服务器网络互通。</font></li>
+<h2 id="五、常见问题与排查"><a href="#五、常见问题与排查" class="headerlink" title="五、常见问题与排查"></a>五、常见问题与排查</h2><ol>
+<li>端口占用：svnserve 默认监听 3690 端口，若冲突可在启动时指定端口（如 <code>-d -r D:\SVN\Repos --listen-port 3691&lt;/font&gt;</code>），客户端访问需加端口（<code>svn://IP:3691/仓库名&lt;/font&gt;</code>）。</li>
+<li>权限报错：检查 <code>authz&lt;/font&gt;</code> 文件中用户 / 组权限配置是否正确，路径是否匹配（如 <code>[/]&lt;/font&gt;</code> 为根目录权限）。</li>
+<li>防火墙拦截：开放 3690 端口（入站规则），确保客户端与服务器网络互通。</li>
 </ol>
-<h2 id="六、对比与建议"><a href="#六、对比与建议" class="headerlink" title="六、对比与建议"></a><font style="color:rgb(0, 0, 0);">六、对比与建议</font></h2><table>
+<h2 id="六、对比与建议"><a href="#六、对比与建议" class="headerlink" title="六、对比与建议"></a>六、对比与建议</h2><table>
 <thead>
 <tr>
 <th align="left"><strong><font style="color:rgb(0, 0, 0) !important;">方案</font></strong></th>
@@ -544,120 +546,120 @@
 <td align="left"><font style="color:rgba(0, 0, 0, 0.85) !important;">企业 / 长期使用、安全性要求高</font></td>
 </tr>
 </tbody></table>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a><font style="color:rgb(0, 0, 0);">七、总结</font></h2><p><font style="color:rgb(0, 0, 0);">通过 TortoiseSVN 的 svnserve 可快速搭建轻量 SVN 服务器，临时测试用命令行启动，生产环境建议注册为系统服务。若需更完善的管理功能，可搭配 VisualSVN Server 使用。</font></p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>通过 TortoiseSVN 的 svnserve 可快速搭建轻量 SVN 服务器，临时测试用命令行启动，生产环境建议注册为系统服务。若需更完善的管理功能，可搭配 VisualSVN Server 使用。</p>
 <hr>
 <h1 id="VisualSVN"><a href="#VisualSVN" class="headerlink" title="VisualSVN"></a><center><font color="red">VisualSVN</font></center></h1><blockquote>
 <p><font style="color:rgba(0, 0, 0, 0.85);">在 Windows 系统中安装 SVN Server（Subversion 服务器），推荐使用 </font><strong><font style="color:rgb(0, 0, 0) !important;">VisualSVN Server</font></strong><font style="color:rgba(0, 0, 0, 0.85);">（官方维护的 Windows 专用版本，集成了 Apache 服务，配置简单、稳定易用）。</font></p>
 </blockquote>
-<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a><font style="color:rgb(0, 0, 0);">一、准备工作</font></h2><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">系统要求</font></strong><font style="color:rgb(0, 0, 0);">：Windows 7/8/10/11 或 Windows Server 2008+（32/64 位均可）。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">下载安装包</font></strong><font style="color:rgb(0, 0, 0);">：</font><font style="color:rgb(0, 0, 0);">访问 VisualSVN Server 官方下载页：</font><a target="_blank" rel="noopener" href="https://www.visualsvn.com/server/download/"><font style="color:rgb(9, 105, 218);">https://www.visualsvn.com/server/download/</font></a><font style="color:rgb(0, 0, 0);">选择对应系统位数的安装包（默认推荐 64 位，如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;VisualSVN-Server-5.1.9-x64.msi&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，版本号可能更新）。</font></li>
+<h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">系统要求</font></strong>：Windows 7/8/10/11 或 Windows Server 2008+（32/64 位均可）。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">下载安装包</font></strong>：访问 VisualSVN Server 官方下载页：<a target="_blank" rel="noopener" href="https://www.visualsvn.com/server/download/"><font style="color:rgb(9, 105, 218);">https://www.visualsvn.com/server/download/</font></a>选择对应系统位数的安装包（默认推荐 64 位，如 <code>VisualSVN-Server-5.1.9-x64.msi&lt;/font&gt;</code>，版本号可能更新）。</li>
 </ol>
-<h2 id="二、安装-VisualSVN-Server"><a href="#二、安装-VisualSVN-Server" class="headerlink" title="二、安装 VisualSVN Server"></a><font style="color:rgb(0, 0, 0);">二、安装 VisualSVN Server</font></h2><ol>
-<li><font style="color:rgb(0, 0, 0);">双击下载的</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;.msi&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">安装包，启动安装向导，点击「Next」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">勾选「I accept the terms in the license agreement」，点击「Next」。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">选择安装类型</font></strong><font style="color:rgb(0, 0, 0);">：</font></li>
+<h2 id="二、安装-VisualSVN-Server"><a href="#二、安装-VisualSVN-Server" class="headerlink" title="二、安装 VisualSVN Server"></a>二、安装 VisualSVN Server</h2><ol>
+<li>双击下载的 <code>.msi&lt;/font&gt;</code> 安装包，启动安装向导，点击「Next」。</li>
+<li>勾选「I accept the terms in the license agreement」，点击「Next」。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">选择安装类型</font></strong>：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">推荐「Standard Edition」（免费版，满足个人 / 小型团队需求）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">企业级需求可选择「Enterprise Edition」（需付费），此处选免费版，点击「Next」。</font></li>
+<li>推荐「Standard Edition」（免费版，满足个人 / 小型团队需求）；</li>
+<li>企业级需求可选择「Enterprise Edition」（需付费），此处选免费版，点击「Next」。</li>
 </ul>
 <ol start="4">
-<li><strong><font style="color:rgb(0, 0, 0) !important;">配置安装路径和仓库路径</font></strong><font style="color:rgb(0, 0, 0);">：</font></li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">配置安装路径和仓库路径</font></strong>：</li>
 </ol>
 <ul>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;VisualSVN Server installation directory&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：SVN 服务程序安装路径（默认即可，如 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;C:\Program Files\VisualSVN Server&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）；</font></li>
-<li><code>&lt;font style="color:rgb(0, 0, 0);"&gt;Repositories directory&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">：SVN 仓库存储路径（建议自定义到非系统盘，如 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\SVN\Repositories&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，避免系统盘空间不足）；点击「Next」。</font></li>
+<li><code>VisualSVN Server installation directory&lt;/font&gt;</code>：SVN 服务程序安装路径（默认即可，如 <code>C:\Program Files\VisualSVN Server&lt;/font&gt;</code>）；</li>
+<li><code>Repositories directory&lt;/font&gt;</code>：SVN 仓库存储路径（建议自定义到非系统盘，如 <code>D:\SVN\Repositories&lt;/font&gt;</code>，避免系统盘空间不足）；点击「Next」。</li>
 </ul>
 <ol start="5">
-<li><strong><font style="color:rgb(0, 0, 0) !important;">配置服务和端口</font></strong><font style="color:rgb(0, 0, 0);">：</font></li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">配置服务和端口</font></strong>：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">勾选「Run VisualSVN Server as a service」（以系统服务运行，开机自启）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">端口选择：默认 </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;HTTPS 443&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（推荐，加密传输），若 443 端口被占用（如 IIS、微信等），可修改为其他端口（如 8443）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">可选勾选「Allow anonymous read access」（允许匿名只读访问，根据需求选择，默认不勾选）；点击「Next」。</font></li>
+<li>勾选「Run VisualSVN Server as a service」（以系统服务运行，开机自启）；</li>
+<li>端口选择：默认 <code>HTTPS 443&lt;/font&gt;</code>（推荐，加密传输），若 443 端口被占用（如 IIS、微信等），可修改为其他端口（如 8443）；</li>
+<li>可选勾选「Allow anonymous read access」（允许匿名只读访问，根据需求选择，默认不勾选）；点击「Next」。</li>
 </ul>
 <ol start="6">
-<li><font style="color:rgb(0, 0, 0);">点击「Install」开始安装，等待进度完成后点击「Finish」，安装完成。</font></li>
+<li>点击「Install」开始安装，等待进度完成后点击「Finish」，安装完成。</li>
 </ol>
-<h2 id="三、初始化配置（创建仓库、用户、权限）"><a href="#三、初始化配置（创建仓库、用户、权限）" class="headerlink" title="三、初始化配置（创建仓库、用户、权限）"></a><font style="color:rgb(0, 0, 0);">三、初始化配置（创建仓库、用户、权限）</font></h2><blockquote>
-<p><font style="color:rgb(0, 0, 0);">安装完成后，会自动启动「VisualSVN Server Manager」（可视化管理工具），后续配置均通过该工具操作。</font></p>
+<h2 id="三、初始化配置（创建仓库、用户、权限）"><a href="#三、初始化配置（创建仓库、用户、权限）" class="headerlink" title="三、初始化配置（创建仓库、用户、权限）"></a>三、初始化配置（创建仓库、用户、权限）</h2><blockquote>
+<p>安装完成后，会自动启动「VisualSVN Server Manager」（可视化管理工具），后续配置均通过该工具操作。</p>
 </blockquote>
 <ol>
-<li><font style="color:rgb(0, 0, 0);">创建 SVN 仓库（核心步骤）：仓库是存储项目代码的核心目录，每个项目建议创建独立仓库。</font></li>
+<li>创建 SVN 仓库（核心步骤）：仓库是存储项目代码的核心目录，每个项目建议创建独立仓库。</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">右键点击左侧「Repositories」→「Create New Repository」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">选择仓库类型：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">「Empty repository」：空仓库（推荐，自行上传项目）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">「Import existing repository」：导入已有的 SVN 仓库（迁移场景用）；</font></li>
+<li>右键点击左侧「Repositories」→「Create New Repository」；</li>
+<li>选择仓库类型：<ul>
+<li>「Empty repository」：空仓库（推荐，自行上传项目）；</li>
+<li>「Import existing repository」：导入已有的 SVN 仓库（迁移场景用）；</li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">输入仓库名称（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），点击「Next」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">权限设置：默认「No access」（后续手动配置），点击「Finish」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">仓库创建成功后，路径格式为</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;svn://localhost/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（HTTP 协议）或</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;https://localhost/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（HTTPS 协议）。</font></li>
+<li>输入仓库名称（如 <code>MyProject&lt;/font&gt;</code>），点击「Next」；</li>
+<li>权限设置：默认「No access」（后续手动配置），点击「Finish」；</li>
+<li>仓库创建成功后，路径格式为 <code>svn://localhost/MyProject&lt;/font&gt;</code>（HTTP 协议）或 <code>https://localhost/MyProject&lt;/font&gt;</code>（HTTPS 协议）。</li>
 </ul>
 <ol start="2">
-<li><font style="color:rgb(0, 0, 0);">创建用户（用于访问仓库）</font></li>
+<li>创建用户（用于访问仓库）</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">右键点击左侧「Users」→「Create User」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">输入「Username」（用户名，如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;dev01&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）、「Password」（密码）、「Confirm password」（确认密码），点击「OK」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">可批量创建多个用户（如开发、测试账号）。</font></li>
+<li>右键点击左侧「Users」→「Create User」；</li>
+<li>输入「Username」（用户名，如 <code>dev01&lt;/font&gt;</code>）、「Password」（密码）、「Confirm password」（确认密码），点击「OK」；</li>
+<li>可批量创建多个用户（如开发、测试账号）。</li>
 </ul>
 <ol start="3">
-<li><font style="color:rgb(0, 0, 0);">创建用户组（可选，方便权限管理）：若用户较多，可按角色创建组（如「Developers」开发组、「Testers」测试组）：</font></li>
+<li>创建用户组（可选，方便权限管理）：若用户较多，可按角色创建组（如「Developers」开发组、「Testers」测试组）：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">右键点击左侧「Groups」→「Create Group」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">输入组名称（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;Developers&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），点击「OK」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">右键刚创建的组→「Properties」→「Members」→「Add」，选择需要加入组的用户，点击「OK」。</font></li>
+<li>右键点击左侧「Groups」→「Create Group」；</li>
+<li>输入组名称（如 <code>Developers&lt;/font&gt;</code>），点击「OK」；</li>
+<li>右键刚创建的组→「Properties」→「Members」→「Add」，选择需要加入组的用户，点击「OK」。</li>
 </ul>
 <ol start="4">
-<li><font style="color:rgb(0, 0, 0);">配置仓库权限（关键）：控制用户 / 组对仓库的读写权限：</font></li>
+<li>配置仓库权限（关键）：控制用户 / 组对仓库的读写权限：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">右键目标仓库（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）→「Properties」→「Security」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">点击「Add」，选择需要授权的用户或组（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;Developers&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">组、</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;dev01&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">用户），点击「OK」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">为选中的用户 / 组设置权限：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">「Read」：只读（只能拉取代码，不能提交）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">「Write」：读写（可拉取、提交代码）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">「No Access」：无权限；</font></li>
+<li>右键目标仓库（如 <code>MyProject&lt;/font&gt;</code>）→「Properties」→「Security」；</li>
+<li>点击「Add」，选择需要授权的用户或组（如 <code>Developers&lt;/font&gt;</code> 组、<code>dev01&lt;/font&gt;</code> 用户），点击「OK」；</li>
+<li>为选中的用户 / 组设置权限：<ul>
+<li>「Read」：只读（只能拉取代码，不能提交）；</li>
+<li>「Write」：读写（可拉取、提交代码）；</li>
+<li>「No Access」：无权限；</li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">建议给普通开发设置「Write」，给测试设置「Read」，点击「Apply」→「OK」。</font></li>
+<li>建议给普通开发设置「Write」，给测试设置「Read」，点击「Apply」→「OK」。</li>
 </ul>
-<h2 id="四、验证-SVN-Server-可用性"><a href="#四、验证-SVN-Server-可用性" class="headerlink" title="四、验证 SVN Server 可用性"></a><font style="color:rgb(0, 0, 0);">四、验证 SVN Server 可用性</font></h2><ol>
-<li><font style="color:rgb(0, 0, 0);">本地验证（服务器本机测试）：安装 SVN 客户端（如 TortoiseSVN，下载地址：</font><a target="_blank" rel="noopener" href="https://tortoisesvn.net/downloads.html"><font style="color:rgb(9, 105, 218);">https://tortoisesvn.net/downloads.html</font></a><font style="color:rgb(0, 0, 0);">），然后：</font></li>
+<h2 id="四、验证-SVN-Server-可用性"><a href="#四、验证-SVN-Server-可用性" class="headerlink" title="四、验证 SVN Server 可用性"></a>四、验证 SVN Server 可用性</h2><ol>
+<li>本地验证（服务器本机测试）：安装 SVN 客户端（如 TortoiseSVN，下载地址：<a target="_blank" rel="noopener" href="https://tortoisesvn.net/downloads.html"><font style="color:rgb(9, 105, 218);">https://tortoisesvn.net/downloads.html</font></a>），然后：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">新建一个空文件夹（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;TestSVN&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），右键该文件夹→「SVN Checkout」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">输入仓库地址：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;https://localhost/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（或</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;https://服务器IP/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），点击「OK」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">若弹出登录框，输入已创建的用户名（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;dev01&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）和密码，点击「OK」；</font></li>
-<li><font style="color:rgb(0, 0, 0);">若 checkout 成功（文件夹中生成</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;.svn&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">隐藏目录），说明服务器配置正常。</font></li>
+<li>新建一个空文件夹（如 <code>TestSVN&lt;/font&gt;</code>），右键该文件夹→「SVN Checkout」；</li>
+<li>输入仓库地址：<code>https://localhost/MyProject&lt;/font&gt;</code>（或 <code>https://服务器IP/MyProject&lt;/font&gt;</code>），点击「OK」；</li>
+<li>若弹出登录框，输入已创建的用户名（如 <code>dev01&lt;/font&gt;</code>）和密码，点击「OK」；</li>
+<li>若 checkout 成功（文件夹中生成 <code>.svn&lt;/font&gt;</code> 隐藏目录），说明服务器配置正常。</li>
 </ul>
 <ol start="2">
-<li><font style="color:rgb(0, 0, 0);">局域网验证（其他电脑测试）：确保客户端电脑与 SVN 服务器在同一局域网，且服务器防火墙开放了 SVN 端口（默认 443 或自定义端口）：</font></li>
+<li>局域网验证（其他电脑测试）：确保客户端电脑与 SVN 服务器在同一局域网，且服务器防火墙开放了 SVN 端口（默认 443 或自定义端口）：</li>
 </ol>
 <ul>
-<li><font style="color:rgb(0, 0, 0);">在客户端电脑上，按上述「本地验证」步骤，将仓库地址改为</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;https://SVN服务器IP/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;https://192.168.1.100/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">输入用户名密码，若能正常 checkout/commit，说明局域网访问正常。</font></li>
+<li>在客户端电脑上，按上述「本地验证」步骤，将仓库地址改为 <code>https://SVN服务器IP/MyProject&lt;/font&gt;</code>（如 <code>https://192.168.1.100/MyProject&lt;/font&gt;</code>）；</li>
+<li>输入用户名密码，若能正常 checkout/commit，说明局域网访问正常。</li>
 </ul>
-<h2 id="五、常见问题解决"><a href="#五、常见问题解决" class="headerlink" title="五、常见问题解决"></a><font style="color:rgb(0, 0, 0);">五、常见问题解决</font></h2><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">端口被占用</font></strong><font style="color:rgb(0, 0, 0);">：安装时若提示 443 端口被占用，可在安装步骤 5 中修改为其他端口（如 8443），后续访问地址需加上端口（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;https://localhost:8443/MyProject&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">防火墙拦截</font></strong><font style="color:rgb(0, 0, 0);">：客户端无法连接时，检查服务器防火墙是否开放了 SVN 端口（如 443）：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">控制面板→系统和安全→Windows Defender 防火墙→高级设置→入站规则→新建规则→端口→TCP→特定本地端口（如 443）→允许连接→下一步完成。</font></li>
+<h2 id="五、常见问题解决"><a href="#五、常见问题解决" class="headerlink" title="五、常见问题解决"></a>五、常见问题解决</h2><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">端口被占用</font></strong>：安装时若提示 443 端口被占用，可在安装步骤 5 中修改为其他端口（如 8443），后续访问地址需加上端口（如 <code>https://localhost:8443/MyProject&lt;/font&gt;</code>）。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">防火墙拦截</font></strong>：客户端无法连接时，检查服务器防火墙是否开放了 SVN 端口（如 443）：<ul>
+<li>控制面板→系统和安全→Windows Defender 防火墙→高级设置→入站规则→新建规则→端口→TCP→特定本地端口（如 443）→允许连接→下一步完成。</li>
 </ul>
 </li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">权限不足</font></strong><font style="color:rgb(0, 0, 0);">：提交代码时提示「Access denied」，检查仓库的「Security」配置，确保用户 / 组有「Write」权限。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">HTTPS 证书警告</font></strong><font style="color:rgb(0, 0, 0);">：首次访问时可能弹出证书警告，选择「永久接受」即可（免费版证书为自签名，不影响使用）。</font></li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">权限不足</font></strong>：提交代码时提示「Access denied」，检查仓库的「Security」配置，确保用户 / 组有「Write」权限。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">HTTPS 证书警告</font></strong>：首次访问时可能弹出证书警告，选择「永久接受」即可（免费版证书为自签名，不影响使用）。</li>
 </ol>
-<h2 id="六、进阶操作（可选）"><a href="#六、进阶操作（可选）" class="headerlink" title="六、进阶操作（可选）"></a><font style="color:rgb(0, 0, 0);">六、进阶操作（可选）</font></h2><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">创建仓库结构</font></strong><font style="color:rgb(0, 0, 0);">：checkout 仓库后，可在本地创建</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;trunk&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（主干）、</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;branches&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（分支）、</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;tags&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（标签）目录，提交到服务器，规范项目结构。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">备份仓库</font></strong><font style="color:rgb(0, 0, 0);">：右键仓库→「Backup Repository」，选择备份路径，定期备份避免数据丢失。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">查看日志</font></strong><font style="color:rgb(0, 0, 0);">：在 VisualSVN Server Manager 中，选中仓库→「Show Log」，可查看所有提交记录（作者、时间、备注等）。</font></li>
+<h2 id="六、进阶操作（可选）"><a href="#六、进阶操作（可选）" class="headerlink" title="六、进阶操作（可选）"></a>六、进阶操作（可选）</h2><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">创建仓库结构</font></strong>：checkout 仓库后，可在本地创建 <code>trunk&lt;/font&gt;</code>（主干）、<code>branches&lt;/font&gt;</code>（分支）、<code>tags&lt;/font&gt;</code>（标签）目录，提交到服务器，规范项目结构。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">备份仓库</font></strong>：右键仓库→「Backup Repository」，选择备份路径，定期备份避免数据丢失。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">查看日志</font></strong>：在 VisualSVN Server Manager 中，选中仓库→「Show Log」，可查看所有提交记录（作者、时间、备注等）。</li>
 </ol>
-<h2 id="七、对比与建议"><a href="#七、对比与建议" class="headerlink" title="七、对比与建议"></a><font style="color:rgb(0, 0, 0);">七、对比与建议</font></h2><table>
+<h2 id="七、对比与建议"><a href="#七、对比与建议" class="headerlink" title="七、对比与建议"></a>七、对比与建议</h2><table>
 <thead>
 <tr>
 <th align="left"><strong><font style="color:rgb(0, 0, 0) !important;">方案</font></strong></th>
@@ -767,114 +769,114 @@
 <li>设置-&gt;电子邮件和账户，删除</li>
 </ol>
 <hr>
-<h1 id="IIS部署PHP"><a href="#IIS部署PHP" class="headerlink" title="IIS部署PHP"></a><center><font color="red">IIS部署PHP</font></center></h1><h3 id="一、前期准备：安装-IIS-服务（若未安装）"><a href="#一、前期准备：安装-IIS-服务（若未安装）" class="headerlink" title="一、前期准备：安装 IIS 服务（若未安装）"></a><font style="color:rgb(0, 0, 0);">一、前期准备：安装 IIS 服务（若未安装）</font></h3><ol>
-<li><font style="color:rgb(0, 0, 0);">打开服务器的「控制面板」→「程序」→「程序和功能」→ 左侧点击「启用或关闭 Windows 功能」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">在弹出的窗口中，展开「Internet Information Services」，至少勾选以下核心组件：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">Web 管理工具：IIS 管理控制台</font></li>
-<li><font style="color:rgb(0, 0, 0);">World Wide Web 服务：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">应用程序开发功能：CGI（关键，用于 PHP 解析）</font></li>
-<li><font style="color:rgb(0, 0, 0);">常见 HTTP 功能：默认文档、目录浏览、静态内容</font></li>
-<li><font style="color:rgb(0, 0, 0);">安全性：请求筛选</font></li>
+<h1 id="IIS部署PHP"><a href="#IIS部署PHP" class="headerlink" title="IIS部署PHP"></a><center><font color="red">IIS部署PHP</font></center></h1><h3 id="一、前期准备：安装-IIS-服务（若未安装）"><a href="#一、前期准备：安装-IIS-服务（若未安装）" class="headerlink" title="一、前期准备：安装 IIS 服务（若未安装）"></a>一、前期准备：安装 IIS 服务（若未安装）</h3><ol>
+<li>打开服务器的「控制面板」→「程序」→「程序和功能」→ 左侧点击「启用或关闭 Windows 功能」。</li>
+<li>在弹出的窗口中，展开「Internet Information Services」，至少勾选以下核心组件：<ul>
+<li>Web 管理工具：IIS 管理控制台</li>
+<li>World Wide Web 服务：<ul>
+<li>应用程序开发功能：CGI（关键，用于 PHP 解析）</li>
+<li>常见 HTTP 功能：默认文档、目录浏览、静态内容</li>
+<li>安全性：请求筛选</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">点击「确定」，等待系统安装并启用 IIS 服务，完成后可通过访问</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;http://localhost&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">验证 IIS 默认页面是否正常显示。</font></li>
+<li>点击「确定」，等待系统安装并启用 IIS 服务，完成后可通过访问 <code>http://localhost&lt;/font&gt;</code> 验证 IIS 默认页面是否正常显示。</li>
 </ol>
-<h3 id="二、安装-PHP-运行环境"><a href="#二、安装-PHP-运行环境" class="headerlink" title="二、安装 PHP 运行环境"></a><font style="color:rgb(0, 0, 0);">二、安装 PHP 运行环境</font></h3><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">下载 PHP 安装包</font></strong><font style="color:rgb(0, 0, 0);">访问 PHP 官方下载地址（</font><a target="_blank" rel="noopener" href="https://windows.php.net/download/"><font style="color:rgb(0, 87, 255) !important;">https://windows.php.net/download/</font></a><font style="color:rgb(0, 0, 0);">），选择对应版本（推荐稳定版，如 PHP 7.4/8.1/8.2），注意：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">必须选择「Non Thread Safe (NTS)」版本（IIS 搭配 FastCGI 运行，优先 NTS 版，性能更优）</font></li>
-<li><font style="color:rgb(0, 0, 0);">根据服务器系统位数选择 x64（主流服务器均为 64 位）</font></li>
-<li><font style="color:rgb(0, 0, 0);">下载「Zip」压缩包（便携版，便于配置）。</font></li>
+<h3 id="二、安装-PHP-运行环境"><a href="#二、安装-PHP-运行环境" class="headerlink" title="二、安装 PHP 运行环境"></a>二、安装 PHP 运行环境</h3><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">下载 PHP 安装包</font></strong>访问 PHP 官方下载地址（<a target="_blank" rel="noopener" href="https://windows.php.net/download/"><font style="color:rgb(0, 87, 255) !important;">https://windows.php.net/download/</font></a>），选择对应版本（推荐稳定版，如 PHP 7.4/8.1/8.2），注意：<ul>
+<li>必须选择「Non Thread Safe (NTS)」版本（IIS 搭配 FastCGI 运行，优先 NTS 版，性能更优）</li>
+<li>根据服务器系统位数选择 x64（主流服务器均为 64 位）</li>
+<li>下载「Zip」压缩包（便携版，便于配置）。</li>
 </ul>
 </li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">解压并配置 PHP</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">将下载的 PHP 压缩包解压到指定目录（建议无中文、无空格路径，如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\PHP&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">进入 PHP 解压目录，找到</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php.ini-development&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（开发环境）或</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php.ini-production&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（生产环境），复制一份并重命名为</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php.ini&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（核心配置文件）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">编辑</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php.ini&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">文件，修改以下关键配置（按需调整）：</font><strong><font style="color:rgba(0, 0, 0, 0.85);">ini</font></strong></li>
+<li>将下载的 PHP 压缩包解压到指定目录（建议无中文、无空格路径，如 <code>D:\PHP&lt;/font&gt;</code>）。</li>
+<li>进入 PHP 解压目录，找到 <code>php.ini-development&lt;/font&gt;</code>（开发环境）或 <code>php.ini-production&lt;/font&gt;</code>（生产环境），复制一份并重命名为 <code>php.ini&lt;/font&gt;</code>（核心配置文件）。</li>
+<li>编辑 <code>php.ini&lt;/font&gt;</code> 文件，修改以下关键配置（按需调整）：<strong><font style="color:rgba(0, 0, 0, 0.85);">ini</font></strong></li>
 </ul>
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">; 开启扩展目录（去掉前面的分号）</span><br><span class="line">extension_dir = "ext"</span><br><span class="line">; 启用常用扩展（根据项目需求开启，去掉分号即可）</span><br><span class="line">extension=mysqli</span><br><span class="line">extension=pdo_mysql</span><br><span class="line">extension=gd</span><br><span class="line">extension=openssl</span><br><span class="line">extension=curl</span><br><span class="line">; 设置PHP的时区</span><br><span class="line">date.timezone = Asia/Shanghai</span><br><span class="line">; 设置上传文件大小限制（按需调整）</span><br><span class="line">upload_max_filesize = 20M</span><br><span class="line">post_max_size = 25M</span><br><span class="line">; FastCGI相关配置（优化IIS适配）</span><br><span class="line">fastcgi.impersonate = 1</span><br><span class="line">cgi.fix_pathinfo = 0</span><br><span class="line">cgi.force_redirect = 0</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="三、配置-IIS-与-PHP-的关联（FastCGI-映射）"><a href="#三、配置-IIS-与-PHP-的关联（FastCGI-映射）" class="headerlink" title="三、配置 IIS 与 PHP 的关联（FastCGI 映射）"></a><font style="color:rgb(0, 0, 0);">三、配置 IIS 与 PHP 的关联（FastCGI 映射）</font></h3><p><font style="color:rgb(0, 0, 0);">这是实现 IIS 解析 PHP 文件的核心步骤，有两种配置方式，推荐图形界面操作（更直观）：</font></p>
-<h4 id="方式-1：图形界面配置（IIS-管理器）"><a href="#方式-1：图形界面配置（IIS-管理器）" class="headerlink" title="方式 1：图形界面配置（IIS 管理器）"></a><font style="color:rgb(0, 0, 0);">方式 1：图形界面配置（IIS 管理器）</font></h4><ol>
-<li><font style="color:rgb(0, 0, 0);">打开「IIS 管理器」（可通过服务器管理器→工具→IIS 管理器，或运行</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;inetmgr&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">命令快速打开）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">在左侧连接面板中，选中</font><strong><font style="color:rgb(0, 0, 0) !important;">服务器名称</font></strong><font style="color:rgb(0, 0, 0);">（全局生效，所有网站均可使用 PHP 解析），或单独选中某个网站（仅该网站生效）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">在中间功能视图中，找到并双击「处理程序映射」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">在处理程序映射右侧「操作」面板中，点击「添加模块映射」，填写以下信息：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">请求路径：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;*.php&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（表示所有 php 后缀文件均通过该映射解析）</font></li>
-<li><font style="color:rgb(0, 0, 0);">模块：下拉选择「FastCgiModule」（核心模块，实现 PHP 快速解析）</font></li>
-<li><font style="color:rgb(0, 0, 0);">可执行文件：点击「浏览」，选择 PHP 解压目录下的</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php-cgi.exe&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\PHP\php-cgi.exe&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）</font></li>
-<li><font style="color:rgb(0, 0, 0);">名称：自定义命名（如「PHP-v8.1 FastCGI」）</font></li>
+<h3 id="三、配置-IIS-与-PHP-的关联（FastCGI-映射）"><a href="#三、配置-IIS-与-PHP-的关联（FastCGI-映射）" class="headerlink" title="三、配置 IIS 与 PHP 的关联（FastCGI 映射）"></a>三、配置 IIS 与 PHP 的关联（FastCGI 映射）</h3><p>这是实现 IIS 解析 PHP 文件的核心步骤，有两种配置方式，推荐图形界面操作（更直观）：</p>
+<h4 id="方式-1：图形界面配置（IIS-管理器）"><a href="#方式-1：图形界面配置（IIS-管理器）" class="headerlink" title="方式 1：图形界面配置（IIS 管理器）"></a>方式 1：图形界面配置（IIS 管理器）</h4><ol>
+<li>打开「IIS 管理器」（可通过服务器管理器→工具→IIS 管理器，或运行 <code>inetmgr&lt;/font&gt;</code> 命令快速打开）。</li>
+<li>在左侧连接面板中，选中<strong><font style="color:rgb(0, 0, 0) !important;">服务器名称</font></strong>（全局生效，所有网站均可使用 PHP 解析），或单独选中某个网站（仅该网站生效）。</li>
+<li>在中间功能视图中，找到并双击「处理程序映射」。</li>
+<li>在处理程序映射右侧「操作」面板中，点击「添加模块映射」，填写以下信息：<ul>
+<li>请求路径：<code>*.php&lt;/font&gt;</code>（表示所有 php 后缀文件均通过该映射解析）</li>
+<li>模块：下拉选择「FastCgiModule」（核心模块，实现 PHP 快速解析）</li>
+<li>可执行文件：点击「浏览」，选择 PHP 解压目录下的 <code>php-cgi.exe&lt;/font&gt;</code>（如 <code>D:\PHP\php-cgi.exe&lt;/font&gt;</code>）</li>
+<li>名称：自定义命名（如「PHP-v8.1 FastCGI」）</li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">点击「确定」，弹出「是否添加对应的 FastCGI 应用程序」提示，选择「是」，完成映射配置。</font></li>
+<li>点击「确定」，弹出「是否添加对应的 FastCGI 应用程序」提示，选择「是」，完成映射配置。</li>
 </ol>
-<h4 id="方式-2：命令行配置（可选，适合批量部署）"><a href="#方式-2：命令行配置（可选，适合批量部署）" class="headerlink" title="方式 2：命令行配置（可选，适合批量部署）"></a><font style="color:rgb(0, 0, 0);">方式 2：命令行配置（可选，适合批量部署）</font></h4><p><font style="color:rgb(0, 0, 0);">以管理员身份打开「命令提示符（CMD）」，执行以下命令（替换对应路径）：</font></p>
+<h4 id="方式-2：命令行配置（可选，适合批量部署）"><a href="#方式-2：命令行配置（可选，适合批量部署）" class="headerlink" title="方式 2：命令行配置（可选，适合批量部署）"></a>方式 2：命令行配置（可选，适合批量部署）</h4><p>以管理员身份打开「命令提示符（CMD）」，执行以下命令（替换对应路径）：</p>
 <p><strong><font style="color:rgba(0, 0, 0, 0.85);">bash</font></strong></p>
 <p><font style="color:rgba(0, 0, 0, 0.5);">运行</font></p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%windir%\system32\inetsrv\appcmd <span class="built_in">set</span> config /section:system.webServer/fastCgi /+[fullPath=<span class="string">'D:\PHP\php-cgi.exe'</span>,monitorChangesTo=<span class="string">'php.ini'</span>,idleTimeout=<span class="string">'300'</span>,activityTimeout=<span class="string">'300'</span>,requestTimeout=<span class="string">'300'</span>]</span><br><span class="line">%windir%\system32\inetsrv\appcmd <span class="built_in">set</span> config /section:system.webServer/handlers /+[name=<span class="string">'PHP-FastCGI'</span>,path=<span class="string">'*.php'</span>,verb=<span class="string">'*'</span>,modules=<span class="string">'FastCgiModule'</span>,scriptProcessor=<span class="string">'D:\PHP\php-cgi.exe'</span>,resourceType=<span class="string">'Either'</span>]</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="四、配置-IIS-网站（发布-PHP-项目）"><a href="#四、配置-IIS-网站（发布-PHP-项目）" class="headerlink" title="四、配置 IIS 网站（发布 PHP 项目）"></a><font style="color:rgb(0, 0, 0);">四、配置 IIS 网站（发布 PHP 项目）</font></h3><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">准备项目文件</font></strong><font style="color:rgb(0, 0, 0);">将 PHP 项目的所有文件（如 ThinkPHP、Laravel、WordPress 等项目目录）复制到服务器指定目录（建议无中文、无空格，如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;D:\PHP_Projects\my_project&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）。</font></li>
+<h3 id="四、配置-IIS-网站（发布-PHP-项目）"><a href="#四、配置-IIS-网站（发布-PHP-项目）" class="headerlink" title="四、配置 IIS 网站（发布 PHP 项目）"></a>四、配置 IIS 网站（发布 PHP 项目）</h3><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">准备项目文件</font></strong>将 PHP 项目的所有文件（如 ThinkPHP、Laravel、WordPress 等项目目录）复制到服务器指定目录（建议无中文、无空格，如 <code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;D:\PHP_Projects\my_project&lt;/font&gt;</code>）。</li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">创建 / 配置 IIS 网站</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">打开 IIS 管理器，左侧选中「网站」，右侧点击「添加网站」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">填写网站配置信息：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">网站名称：自定义（如「MyPHPProject」）</font></li>
-<li><font style="color:rgb(0, 0, 0);">物理路径：选择步骤 1 中项目文件所在目录（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\PHP_Projects\my_project&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）</font></li>
-<li><font style="color:rgb(0, 0, 0);">绑定信息：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">类型：http（默认，若需 HTTPS 需配置 SSL 证书）</font></li>
-<li><font style="color:rgb(0, 0, 0);">IP 地址：选择「全部未分配」或指定服务器 IP</font></li>
-<li><font style="color:rgb(0, 0, 0);">端口：默认 80（若占用可修改为其他端口，如 8080）</font></li>
-<li><font style="color:rgb(0, 0, 0);">主机名：若需域名访问，填写对应域名（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;www.myphp.com&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，需提前配置 DNS 解析）</font></li>
+<li>打开 IIS 管理器，左侧选中「网站」，右侧点击「添加网站」。</li>
+<li>填写网站配置信息：<ul>
+<li>网站名称：自定义（如「MyPHPProject」）</li>
+<li>物理路径：选择步骤 1 中项目文件所在目录（如 <code>D:\PHP_Projects\my_project&lt;/font&gt;</code>）</li>
+<li>绑定信息：<ul>
+<li>类型：http（默认，若需 HTTPS 需配置 SSL 证书）</li>
+<li>IP 地址：选择「全部未分配」或指定服务器 IP</li>
+<li>端口：默认 80（若占用可修改为其他端口，如 8080）</li>
+<li>主机名：若需域名访问，填写对应域名（如 <code>www.myphp.com&lt;/font&gt;</code>，需提前配置 DNS 解析）</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">点击「确定」，完成网站创建。</font></li>
+<li>点击「确定」，完成网站创建。</li>
 </ul>
 </li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">配置网站权限（关键，避免权限不足报错）</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">找到项目物理路径目录（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\PHP_Projects\my_project&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），右键→「属性」→「安全」选项卡。</font></li>
-<li><font style="color:rgb(0, 0, 0);">点击「编辑」→「添加」，在弹出的窗口中输入</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;IIS_IUSRS&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（IIS 内置访问用户组），点击「检查名称」→「确定」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">选中添加的「IIS_IUSRS」用户组，在下方权限列表中，勾选「读取」、「写入」（若项目需要上传文件、生成日志等操作，必须勾选写入权限）、「列出文件夹目录」，点击「确定」保存。</font></li>
-<li><font style="color:rgb(0, 0, 0);">（可选）若权限仍不足，可添加「Everyone」用户组并分配对应权限（生产环境不推荐，优先使用 IIS_IUSRS）。</font></li>
+<li>找到项目物理路径目录（如 <code>D:\PHP_Projects\my_project&lt;/font&gt;</code>），右键→「属性」→「安全」选项卡。</li>
+<li>点击「编辑」→「添加」，在弹出的窗口中输入 <code>IIS_IUSRS&lt;/font&gt;</code>（IIS 内置访问用户组），点击「检查名称」→「确定」。</li>
+<li>选中添加的「IIS_IUSRS」用户组，在下方权限列表中，勾选「读取」、「写入」（若项目需要上传文件、生成日志等操作，必须勾选写入权限）、「列出文件夹目录」，点击「确定」保存。</li>
+<li>（可选）若权限仍不足，可添加「Everyone」用户组并分配对应权限（生产环境不推荐，优先使用 IIS_IUSRS）。</li>
 </ul>
 </li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">配置默认文档（实现访问域名直接打开首页）</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">在 IIS 管理器中，选中创建的 PHP 网站，中间功能视图双击「默认文档」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">右侧点击「添加」，输入 PHP 项目的首页文件名（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;index.php&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">、</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;index.html&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">、</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;default.php&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">等），并可通过「上移」按钮将其调整为优先匹配项。</font></li>
-<li><font style="color:rgb(0, 0, 0);">按需删除不需要的默认文档（如</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;Default.htm&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">、</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;Default.asp&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">等），点击「确定」。</font></li>
+<li>在 IIS 管理器中，选中创建的 PHP 网站，中间功能视图双击「默认文档」。</li>
+<li>右侧点击「添加」，输入 PHP 项目的首页文件名（如 <code>index.php&lt;/font&gt;</code>、<code>index.html&lt;/font&gt;</code>、<code>default.php&lt;/font&gt;</code> 等），并可通过「上移」按钮将其调整为优先匹配项。</li>
+<li>按需删除不需要的默认文档（如 <code>Default.htm&lt;/font&gt;</code>、<code>Default.asp&lt;/font&gt;</code> 等），点击「确定」。</li>
 </ul>
 </li>
 </ol>
-<h3 id="五、验证部署是否成功"><a href="#五、验证部署是否成功" class="headerlink" title="五、验证部署是否成功"></a><font style="color:rgb(0, 0, 0);">五、验证部署是否成功</font></h3><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">快速验证 PHP 解析</font></strong><font style="color:rgb(0, 0, 0);">在项目物理路径目录下，新建一个</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;phpinfo.php&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">文件，内容如下：</font><strong><font style="color:rgba(0, 0, 0, 0.85);">php</font></strong><font style="color:rgba(0, 0, 0, 0.5);">运行</font></li>
+<h3 id="五、验证部署是否成功"><a href="#五、验证部署是否成功" class="headerlink" title="五、验证部署是否成功"></a>五、验证部署是否成功</h3><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">快速验证 PHP 解析</font></strong>在项目物理路径目录下，新建一个 <code>phpinfo.php&lt;/font&gt;</code> 文件，内容如下：<strong><font style="color:rgba(0, 0, 0, 0.85);">php</font></strong><font style="color:rgba(0, 0, 0, 0.5);">运行</font></li>
 </ol>
 <figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 输出PHP环境信息，验证解析是否正常</span></span><br><span class="line">phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 <ol start="2">
-<li><strong><font style="color:rgb(0, 0, 0) !important;">访问测试</font></strong><font style="color:rgb(0, 0, 0);">打开浏览器，访问对应地址（根据网站绑定配置）：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">若端口 80、无主机名：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;http://服务器IP/phpinfo.php&lt;/font&gt;</code></li>
-<li><font style="color:rgb(0, 0, 0);">若端口 8080：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;http://服务器IP:8080/phpinfo.php&lt;/font&gt;</code></li>
-<li><font style="color:rgb(0, 0, 0);">若配置域名：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;http://www.myphp.com/phpinfo.php&lt;/font&gt;</code><ul>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">访问测试</font></strong>打开浏览器，访问对应地址（根据网站绑定配置）：<ul>
+<li>若端口 80、无主机名：<code>http://服务器IP/phpinfo.php&lt;/font&gt;</code></li>
+<li>若端口 8080：<code>http://服务器IP:8080/phpinfo.php&lt;/font&gt;</code></li>
+<li>若配置域名：<code>http://www.myphp.com/phpinfo.php&lt;/font&gt;</code><ul>
 <li><a target="_blank" rel="noopener" href="http://8.141.30.210:88/info.php">http://8.141.30.210:88/info.php</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">若页面正常显示 PHP 的版本、配置、扩展等信息，说明 PHP 解析配置成功；随后可删除</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;phpinfo.php&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">文件（避免泄露服务器环境信息），直接访问网站域名 / IP，验证项目是否正常运行。</font></li>
+<li>若页面正常显示 PHP 的版本、配置、扩展等信息，说明 PHP 解析配置成功；随后可删除 <code>phpinfo.php&lt;/font&gt;</code> 文件（避免泄露服务器环境信息），直接访问网站域名 / IP，验证项目是否正常运行。</li>
 </ol>
-<h3 id="六、常见问题排查"><a href="#六、常见问题排查" class="headerlink" title="六、常见问题排查"></a><font style="color:rgb(0, 0, 0);">六、常见问题排查</font></h3><ol>
-<li><font style="color:rgb(0, 0, 0);">访问 PHP 文件提示「404 未找到」：检查网站物理路径是否正确、文件是否存在、处理程序映射是否配置</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;*.php&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">。</font></li>
-<li><font style="color:rgb(0, 0, 0);">访问 PHP 文件提示「500 内部服务器错误」：检查</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php.ini&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">配置是否有误（如扩展开启失败）、项目文件权限是否不足、PHP 版本与项目是否兼容。</font></li>
-<li><font style="color:rgb(0, 0, 0);">无法上传文件：检查</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;php.ini&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">中上传相关配置（</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;upload_max_filesize&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）、项目目录写入权限是否开启、IIS 请求筛选是否限制了文件大小。</font></li>
+<h3 id="六、常见问题排查"><a href="#六、常见问题排查" class="headerlink" title="六、常见问题排查"></a>六、常见问题排查</h3><ol>
+<li>访问 PHP 文件提示「404 未找到」：检查网站物理路径是否正确、文件是否存在、处理程序映射是否配置 <code>*.php&lt;/font&gt;</code>。</li>
+<li>访问 PHP 文件提示「500 内部服务器错误」：检查 <code>php.ini&lt;/font&gt;</code> 配置是否有误（如扩展开启失败）、项目文件权限是否不足、PHP 版本与项目是否兼容。</li>
+<li>无法上传文件：检查 <code>php.ini&lt;/font&gt;</code> 中上传相关配置（<code>upload_max_filesize&lt;/font&gt;</code>）、项目目录写入权限是否开启、IIS 请求筛选是否限制了文件大小。</li>
 </ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><font style="color:rgb(0, 0, 0);">总结</font></h3><ol>
-<li><font style="color:rgb(0, 0, 0);">核心流程：安装 IIS（勾选 CGI 组件）→ 安装配置 PHP（NTS 版 + php.ini）→ 配置 IIS FastCGI 映射（关联 php-cgi.exe）→ 部署 PHP 项目（配置网站 + 权限 + 默认文档）→ 验证测试。</font></li>
-<li><font style="color:rgb(0, 0, 0);">关键要点：PHP 需选 NTS 版、必须配置 FastCGI 映射、项目目录需给 IIS_IUSRS 写入权限、默认文档需添加 index.php。</font></li>
-<li><font style="color:rgb(0, 0, 0);">验证标准：phpinfo.php 正常显示环境信息，项目可正常访问无报错。</font></li>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>核心流程：安装 IIS（勾选 CGI 组件）→ 安装配置 PHP（NTS 版 + php.ini）→ 配置 IIS FastCGI 映射（关联 php-cgi.exe）→ 部署 PHP 项目（配置网站 + 权限 + 默认文档）→ 验证测试。</li>
+<li>关键要点：PHP 需选 NTS 版、必须配置 FastCGI 映射、项目目录需给 IIS_IUSRS 写入权限、默认文档需添加 index.php。</li>
+<li>验证标准：phpinfo.php 正常显示环境信息，项目可正常访问无报错。</li>
 </ol>
 <hr>
 <h1 id="IIS开机启动"><a href="#IIS开机启动" class="headerlink" title="IIS开机启动"></a><center><font color="red">IIS开机启动</font></center></h1><h2 id="一、设置"><a href="#一、设置" class="headerlink" title="一、设置"></a>一、设置</h2><ol>
@@ -885,7 +887,7 @@
 <li>net stop was</li>
 <li>sc config w3svc start= disabled</li>
 <li>sc config was start= disabled<ul>
-<li><font style="color:rgb(0, 0, 0);">net stop w3svc &amp;&amp; sc config w3svc start=disabled &amp;&amp; net stop was &amp;&amp; sc config was start=disabled</font></li>
+<li>net stop w3svc &amp;&amp; sc config w3svc start=disabled &amp;&amp; net stop was &amp;&amp; sc config was start=disabled</li>
 </ul>
 </li>
 </ul>
@@ -902,95 +904,95 @@
 <li>图形界面形式</li>
 </ol>
 <hr>
-<h1 id="IIS伪静态"><a href="#IIS伪静态" class="headerlink" title="IIS伪静态"></a><center><font color="red">IIS伪静态</font></center></h1><h3 id="一、前提准备：安装-URL-重写模块（URL-Rewrite）"><a href="#一、前提准备：安装-URL-重写模块（URL-Rewrite）" class="headerlink" title="一、前提准备：安装 URL 重写模块（URL Rewrite）"></a><font style="color:rgb(0, 0, 0);">一、前提准备：安装 URL 重写模块（URL Rewrite）</font></h3><p><font style="color:rgb(0, 0, 0);">IIS 默认未自带 URL 重写功能，需先手动安装该模块，推荐两种安装方式：</font></p>
+<h1 id="IIS伪静态"><a href="#IIS伪静态" class="headerlink" title="IIS伪静态"></a><center><font color="red">IIS伪静态</font></center></h1><h3 id="一、前提准备：安装-URL-重写模块（URL-Rewrite）"><a href="#一、前提准备：安装-URL-重写模块（URL-Rewrite）" class="headerlink" title="一、前提准备：安装 URL 重写模块（URL Rewrite）"></a>一、前提准备：安装 URL 重写模块（URL Rewrite）</h3><p>IIS 默认未自带 URL 重写功能，需先手动安装该模块，推荐两种安装方式：</p>
 <ol>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">方式 1：通过 Web 平台安装程序（Web PI，推荐）</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">下载 Web 平台安装程序：访问微软官网下载</font><font style="color:rgb(0, 0, 0);"> </font><a target="_blank" rel="noopener" href="https://www.microsoft.com/web/downloads/platform.aspx"><font style="color:rgb(0, 87, 255) !important;">Microsoft Web Platform Installer</font></a></li>
-<li><font style="color:rgb(0, 0, 0);">安装后打开 Web PI，在搜索框中输入「URL Rewrite」，找到「URL Rewrite 2.0」（稳定版），点击「添加」→「安装」，按照提示完成部署（自动适配 IIS 10.0）。</font></li>
+<li>下载 Web 平台安装程序：访问微软官网下载 <a target="_blank" rel="noopener" href="https://www.microsoft.com/web/downloads/platform.aspx"><font style="color:rgb(0, 87, 255) !important;">Microsoft Web Platform Installer</font></a></li>
+<li>安装后打开 Web PI，在搜索框中输入「URL Rewrite」，找到「URL Rewrite 2.0」（稳定版），点击「添加」→「安装」，按照提示完成部署（自动适配 IIS 10.0）。</li>
 </ul>
 </li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">方式 2：手动下载安装包</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">访问微软官网下载对应版本：</font><a target="_blank" rel="noopener" href="https://www.iis.net/downloads/microsoft/url-rewrite"><font style="color:rgb(0, 87, 255) !important;">URL Rewrite 模块下载页</font></a><font style="color:rgb(0, 87, 255) !important;">-</font><strong><font style="color:#DF2A3F;">亲测有效</font></strong></li>
-<li><font style="color:rgb(0, 0, 0);">选择与服务器系统位数（x64）匹配的安装包，双击运行，按照向导下一步完成安装（安装后需重启 IIS 生效，可通过</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;inetmgr&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">重新打开 IIS 管理器验证）。</font></li>
+<li>访问微软官网下载对应版本：<a target="_blank" rel="noopener" href="https://www.iis.net/downloads/microsoft/url-rewrite"><font style="color:rgb(0, 87, 255) !important;">URL Rewrite 模块下载页</font></a><font style="color:rgb(0, 87, 255) !important;">-</font><strong><font style="color:#DF2A3F;">亲测有效</font></strong></li>
+<li>选择与服务器系统位数（x64）匹配的安装包，双击运行，按照向导下一步完成安装（安装后需重启 IIS 生效，可通过<code>inetmgr&lt;/font&gt;</code>重新打开 IIS 管理器验证）。</li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">验证模块是否安装成功：打开 IIS 管理器，选中对应网站，在中间功能视图中若能找到「URL 重写」（图标为齿轮 + 箭头样式），说明安装成功。</font></li>
+<li>验证模块是否安装成功：打开 IIS 管理器，选中对应网站，在中间功能视图中若能找到「URL 重写」（图标为齿轮 + 箭头样式），说明安装成功。</li>
 </ol>
-<h3 id="二、配置伪静态的两种核心方式"><a href="#二、配置伪静态的两种核心方式" class="headerlink" title="二、配置伪静态的两种核心方式"></a><font style="color:rgb(0, 0, 0);">二、配置伪静态的两种核心方式</font></h3><h4 id="方式-1：图形界面配置（IIS-管理器可视化操作，直观易懂，推荐新手）"><a href="#方式-1：图形界面配置（IIS-管理器可视化操作，直观易懂，推荐新手）" class="headerlink" title="方式 1：图形界面配置（IIS 管理器可视化操作，直观易懂，推荐新手）"></a><font style="color:rgb(0, 0, 0);">方式 1：图形界面配置（IIS 管理器可视化操作，直观易懂，推荐新手）</font></h4><ol>
-<li><font style="color:rgb(0, 0, 0);">打开 IIS 管理器，左侧连接面板中选中需要配置伪静态的</font><strong><font style="color:rgb(0, 0, 0) !important;">目标 PHP 网站</font></strong><font style="color:rgb(0, 0, 0);">（如之前创建的 MyPHPProject）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">在中间功能视图中，双击「URL 重写」，进入 URL 重写配置界面。</font></li>
+<h3 id="二、配置伪静态的两种核心方式"><a href="#二、配置伪静态的两种核心方式" class="headerlink" title="二、配置伪静态的两种核心方式"></a>二、配置伪静态的两种核心方式</h3><h4 id="方式-1：图形界面配置（IIS-管理器可视化操作，直观易懂，推荐新手）"><a href="#方式-1：图形界面配置（IIS-管理器可视化操作，直观易懂，推荐新手）" class="headerlink" title="方式 1：图形界面配置（IIS 管理器可视化操作，直观易懂，推荐新手）"></a>方式 1：图形界面配置（IIS 管理器可视化操作，直观易懂，推荐新手）</h4><ol>
+<li>打开 IIS 管理器，左侧连接面板中选中需要配置伪静态的<strong><font style="color:rgb(0, 0, 0) !important;">目标 PHP 网站</font></strong>（如之前创建的 MyPHPProject）。</li>
+<li>在中间功能视图中，双击「URL 重写」，进入 URL 重写配置界面。</li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">创建空白规则（自定义伪静态规则）</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">在右侧「操作」面板中，点击「添加规则 (S)…」。</font></li>
-<li><font style="color:rgb(0, 0, 0);">在弹出的「添加规则」窗口中，选择「空白规则」（位于「入站规则」分类下），点击「确定」。</font></li>
+<li>在右侧「操作」面板中，点击「添加规则 (S)…」。</li>
+<li>在弹出的「添加规则」窗口中，选择「空白规则」（位于「入站规则」分类下），点击「确定」。</li>
 </ul>
 </li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">配置规则核心参数（以 ThinkPHP 项目隐藏 index.php 为例，关键配置）</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">「名称」：自定义规则名称（如「ThinkPHP_Pseudo_Static」）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">「匹配 URL」区域：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">请求的 URL：选择「与模式匹配」</font></li>
-<li><font style="color:rgb(0, 0, 0);">使用：选择「正则表达式」（伪静态规则常用匹配方式）</font></li>
-<li><font style="color:rgb(0, 0, 0);">模式：输入伪静态匹配规则（示例：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;^(.*)$&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，表示匹配所有 URL 请求）</font></li>
-<li><font style="color:rgb(0, 0, 0);">忽略大小写：勾选（推荐，避免 URL 大小写敏感问题）</font></li>
+<li>「名称」：自定义规则名称（如「ThinkPHP_Pseudo_Static」）。</li>
+<li>「匹配 URL」区域：<ul>
+<li>请求的 URL：选择「与模式匹配」</li>
+<li>使用：选择「正则表达式」（伪静态规则常用匹配方式）</li>
+<li>模式：输入伪静态匹配规则（示例：<code>^(.*)$&lt;/font&gt;</code>，表示匹配所有 URL 请求）</li>
+<li>忽略大小写：勾选（推荐，避免 URL 大小写敏感问题）</li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">「条件」区域：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">点击「添加条件 (C)…」，配置条件规则（排除真实文件和目录，避免静态资源被重写）：</font><ol>
-<li><font style="color:rgb(0, 0, 0);">条件输入：选择「{REQUEST_FILENAME}」</font></li>
-<li><font style="color:rgb(0, 0, 0);">检查输入是否：选择「不是一个文件」</font></li>
-<li><font style="color:rgb(0, 0, 0);">点击「确定」</font></li>
-<li><font style="color:rgb(0, 0, 0);">再次点击「添加条件 (C)…」，添加第二个条件：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">条件输入：选择「{REQUEST_FILENAME}」</font></li>
-<li><font style="color:rgb(0, 0, 0);">检查输入是否：选择「不是一个目录」</font></li>
-<li><font style="color:rgb(0, 0, 0);">点击「确定」</font></li>
+<li>「条件」区域：<ul>
+<li>点击「添加条件 (C)…」，配置条件规则（排除真实文件和目录，避免静态资源被重写）：<ol>
+<li>条件输入：选择「{REQUEST_FILENAME}」</li>
+<li>检查输入是否：选择「不是一个文件」</li>
+<li>点击「确定」</li>
+<li>再次点击「添加条件 (C)…」，添加第二个条件：<ul>
+<li>条件输入：选择「{REQUEST_FILENAME}」</li>
+<li>检查输入是否：选择「不是一个目录」</li>
+<li>点击「确定」</li>
 </ul>
 </li>
 </ol>
 </li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">「操作」区域：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">操作类型：选择「重写」（核心操作，实现 URL 重写）</font></li>
-<li><font style="color:rgb(0, 0, 0);">重写 URL：输入真实的访问路径（示例：</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;index.php/{R:1}&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，{R:1} 表示匹配到的 URL 分组内容，对应 ThinkPHP 的 URL 重写需求）</font></li>
-<li><font style="color:rgb(0, 0, 0);">追加查询字符串：勾选（保留 URL 中的查询参数，如</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;?id=1&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）</font></li>
-<li><font style="color:rgb(0, 0, 0);">停止处理后续规则：勾选（避免当前规则执行后触发其他无关规则）</font></li>
+<li>「操作」区域：<ul>
+<li>操作类型：选择「重写」（核心操作，实现 URL 重写）</li>
+<li>重写 URL：输入真实的访问路径（示例：<code>index.php/{R:1}&lt;/font&gt;</code>，{R:1} 表示匹配到的 URL 分组内容，对应 ThinkPHP 的 URL 重写需求）</li>
+<li>追加查询字符串：勾选（保留 URL 中的查询参数，如<code>?id=1&lt;/font&gt;</code>）</li>
+<li>停止处理后续规则：勾选（避免当前规则执行后触发其他无关规则）</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><font style="color:rgb(0, 0, 0);">点击右侧「操作」面板中的「应用」，完成单个伪静态规则配置。</font></li>
-<li><font style="color:rgb(0, 0, 0);">若需多个伪静态规则，重复步骤 3-5 即可，规则按配置顺序优先级执行。</font></li>
+<li>点击右侧「操作」面板中的「应用」，完成单个伪静态规则配置。</li>
+<li>若需多个伪静态规则，重复步骤 3-5 即可，规则按配置顺序优先级执行。</li>
 </ol>
-<h4 id="方式-2：配置-web-config-文件（推荐生产环境-批量部署，高效便捷）"><a href="#方式-2：配置-web-config-文件（推荐生产环境-批量部署，高效便捷）" class="headerlink" title="方式 2：配置 web.config 文件（推荐生产环境 / 批量部署，高效便捷）"></a><font style="color:rgb(0, 0, 0);">方式 2：配置 web.config 文件（推荐生产环境 / 批量部署，高效便捷）</font></h4><p><font style="color:rgb(0, 0, 0);">IIS 的伪静态规则最终会保存到网站根目录的</font><code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;web.config&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">文件中（XML 格式），可直接创建 / 编辑该文件实现伪静态配置，无需图形界面操作。</font></p>
+<h4 id="方式-2：配置-web-config-文件（推荐生产环境-批量部署，高效便捷）"><a href="#方式-2：配置-web-config-文件（推荐生产环境-批量部署，高效便捷）" class="headerlink" title="方式 2：配置 web.config 文件（推荐生产环境 / 批量部署，高效便捷）"></a>方式 2：配置 web.config 文件（推荐生产环境 / 批量部署，高效便捷）</h4><p>IIS 的伪静态规则最终会保存到网站根目录的<code>&lt;font style="color:rgba(0, 0, 0, 0.85) !important;"&gt;web.config&lt;/font&gt;</code>文件中（XML 格式），可直接创建 / 编辑该文件实现伪静态配置，无需图形界面操作。</p>
 <ol>
-<li><font style="color:rgb(0, 0, 0);">进入 PHP 项目的</font><strong><font style="color:rgb(0, 0, 0) !important;">根目录</font></strong><font style="color:rgb(0, 0, 0);">（即 IIS 网站配置的物理路径，如</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;D:\PHP_Projects\my_project&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">）。</font></li>
+<li>进入 PHP 项目的<strong><font style="color:rgb(0, 0, 0) !important;">根目录</font></strong>（即 IIS 网站配置的物理路径，如<code>D:\PHP_Projects\my_project&lt;/font&gt;</code>）。</li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">创建 / 编辑 web.config 文件</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">若目录中无 web.config 文件，右键→「新建」→「文本文档」，重命名为</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;web.config&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">（注意：后缀名必须是.config，删除.txt 后缀）。</font></li>
-<li><font style="color:rgb(0, 0, 0);">用记事本或编辑器打开 web.config，写入对应伪静态规则（XML 格式），保存即可（IIS 会自动识别生效，无需额外配置）。</font></li>
+<li>若目录中无 web.config 文件，右键→「新建」→「文本文档」，重命名为<code>web.config&lt;/font&gt;</code>（注意：后缀名必须是.config，删除.txt 后缀）。</li>
+<li>用记事本或编辑器打开 web.config，写入对应伪静态规则（XML 格式），保存即可（IIS 会自动识别生效，无需额外配置）。</li>
 </ul>
 </li>
 <li><strong><font style="color:rgb(0, 0, 0) !important;">常见 PHP 项目伪静态规则示例</font></strong><ul>
-<li><font style="color:rgb(0, 0, 0);">示例 1：ThinkPHP 5/6 伪静态（隐藏 index.php）</font><strong><font style="color:rgba(0, 0, 0, 0.85);">xml</font></strong></li>
+<li>示例 1：ThinkPHP 5/6 伪静态（隐藏 index.php）<strong><font style="color:rgba(0, 0, 0, 0.85);">xml</font></strong></li>
 </ul>
 </li>
 </ol>
 <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- URL重写配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 单个伪静态规则：ThinkPHP隐藏index.php --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"ThinkPHP_Rewrite"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 匹配规则 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^(.*)$"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 条件：排除真实文件和目录 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsDirectory"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 重写操作 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"index.php/{R:1}"</span> <span class="attr">appendQueryString</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可选：关闭目录浏览，提升安全性 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">directoryBrowse</span> <span class="attr">enabled</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
-<pre><code>- &lt;font style="color:rgb(0, 0, 0);"&gt;示例 2：Laravel 项目伪静态（隐藏 public/index.php，推荐将项目根目录指向 public，或使用以下规则）&lt;/font&gt;**&lt;font style="color:rgba(0, 0, 0, 0.85);"&gt;xml&lt;/font&gt;**</code></pre><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"Laravel_Rewrite"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^(.*)$"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsDirectory"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"public/index.php/{R:1}"</span> <span class="attr">appendQueryString</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code>- 示例 2：Laravel 项目伪静态（隐藏 public/index.php，推荐将项目根目录指向 public，或使用以下规则）&lt;/font&gt;**&lt;font style="color:rgba(0, 0, 0, 0.85);"&gt;xml&lt;/font&gt;**</code></pre><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"Laravel_Rewrite"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^(.*)$"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsDirectory"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"public/index.php/{R:1}"</span> <span class="attr">appendQueryString</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
-<pre><code>- &lt;font style="color:rgb(0, 0, 0);"&gt;示例 3：WordPress 伪静态（固定链接美化）&lt;/font&gt;**&lt;font style="color:rgba(0, 0, 0, 0.85);"&gt;xml&lt;/font&gt;**</code></pre><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"WordPress_Rewrite"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^index\.php$"</span> <span class="attr">ignoreCase</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"None"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"WordPress_Rewrite_2"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^(.*)$"</span> <span class="attr">ignoreCase</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsDirectory"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"index.php"</span> <span class="attr">appendQueryString</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code>- 示例 3：WordPress 伪静态（固定链接美化）&lt;/font&gt;**&lt;font style="color:rgba(0, 0, 0, 0.85);"&gt;xml&lt;/font&gt;**</code></pre><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"WordPress_Rewrite"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^index\.php$"</span> <span class="attr">ignoreCase</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"None"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"WordPress_Rewrite_2"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"^(.*)$"</span> <span class="attr">ignoreCase</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"{REQUEST_FILENAME}"</span> <span class="attr">matchType</span>=<span class="string">"IsDirectory"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"index.php"</span> <span class="attr">appendQueryString</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="三、关键注意事项"><a href="#三、关键注意事项" class="headerlink" title="三、关键注意事项"></a><font style="color:rgb(0, 0, 0);">三、关键注意事项</font></h3><ol>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">规则优先级</font></strong><font style="color:rgb(0, 0, 0);">：web.config 中的规则按从上到下的顺序执行，</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;stopProcessing="true"&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">表示当前规则匹配成功后，不再执行后续规则。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">条件配置</font></strong><font style="color:rgb(0, 0, 0);">：务必添加「排除真实文件 / 目录」的条件（</font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;negate="true"&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">表示 “否”），否则图片、CSS、JS 等静态资源会被错误重写，导致项目样式 / 资源加载失败。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">权限问题</font></strong><font style="color:rgb(0, 0, 0);">：web.config 文件需要给「IIS_IUSRS」用户组分配读取权限（与 PHP 项目目录权限配置一致），否则 IIS 无法读取伪静态规则。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">生效验证</font></strong><font style="color:rgb(0, 0, 0);">：配置完成后，直接访问美化后的 URL（如 ThinkPHP 项目中，原本需访问</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;http://服务器IP/index.php/index/index&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">，配置后可直接访问</font><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style="color:rgb(0, 0, 0);"&gt;http://服务器IP/index/index&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">），若能正常访问，说明伪静态配置成功。</font></li>
-<li><strong><font style="color:rgb(0, 0, 0) !important;">规则调试</font></strong><font style="color:rgb(0, 0, 0);">：若伪静态不生效，可在 IIS 管理器的「URL 重写」界面中，点击右侧「查看重写日志」，通过日志排查规则匹配失败的原因。</font></li>
+<h3 id="三、关键注意事项"><a href="#三、关键注意事项" class="headerlink" title="三、关键注意事项"></a>三、关键注意事项</h3><ol>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">规则优先级</font></strong>：web.config 中的规则按从上到下的顺序执行，<code>stopProcessing="true"&lt;/font&gt;</code> 表示当前规则匹配成功后，不再执行后续规则。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">条件配置</font></strong>：务必添加「排除真实文件 / 目录」的条件（<code>negate="true"&lt;/font&gt;</code> 表示 “否”），否则图片、CSS、JS 等静态资源会被错误重写，导致项目样式 / 资源加载失败。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">权限问题</font></strong>：web.config 文件需要给「IIS_IUSRS」用户组分配读取权限（与 PHP 项目目录权限配置一致），否则 IIS 无法读取伪静态规则。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">生效验证</font></strong>：配置完成后，直接访问美化后的 URL（如 ThinkPHP 项目中，原本需访问 <code>http://服务器IP/index.php/index/index&lt;/font&gt;</code>，配置后可直接访问 <code>http://服务器IP/index/index&lt;/font&gt;</code>），若能正常访问，说明伪静态配置成功。</li>
+<li><strong><font style="color:rgb(0, 0, 0) !important;">规则调试</font></strong>：若伪静态不生效，可在 IIS 管理器的「URL 重写」界面中，点击右侧「查看重写日志」，通过日志排查规则匹配失败的原因。</li>
 </ol>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><font style="color:rgb(0, 0, 0);">总结</font></h3><ol>
-<li><font style="color:rgb(0, 0, 0);">IIS 伪静态的核心是「URL Rewrite 2.0」模块，必须先安装该模块才能实现重写功能；</font></li>
-<li><font style="color:rgb(0, 0, 0);">两种配置方式：图形界面（新手友好，可视化操作）、web.config 文件（高效便捷，适合生产环境 / 批量部署）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">关键配置：匹配规则（正则表达式）、排除真实文件 / 目录的条件、重写操作（指向真实入口文件）；</font></li>
-<li><font style="color:rgb(0, 0, 0);">常见 PHP 框架（ThinkPHP/Laravel/WordPress）均有成熟的 web.config 伪静态规则，可直接复用并按需微调。</font></li>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>IIS 伪静态的核心是「URL Rewrite 2.0」模块，必须先安装该模块才能实现重写功能；</li>
+<li>两种配置方式：图形界面（新手友好，可视化操作）、web.config 文件（高效便捷，适合生产环境 / 批量部署）；</li>
+<li>关键配置：匹配规则（正则表达式）、排除真实文件 / 目录的条件、重写操作（指向真实入口文件）；</li>
+<li>常见 PHP 框架（ThinkPHP/Laravel/WordPress）均有成熟的 web.config 伪静态规则，可直接复用并按需微调。</li>
 </ol>
 <hr>
 <h1 id="Laragon"><a href="#Laragon" class="headerlink" title="Laragon"></a><center><font color="red">Laragon</font></center></h1><h2 id="一、Laragon-下载（推荐Full完整版，内置Apache-Nginx-MySQL-Redis）"><a href="#一、Laragon-下载（推荐Full完整版，内置Apache-Nginx-MySQL-Redis）" class="headerlink" title="一、Laragon 下载（推荐Full完整版，内置Apache/Nginx/MySQL/Redis）"></a>一、Laragon 下载（推荐Full完整版，内置Apache/Nginx/MySQL/Redis）</h2><ol>
@@ -1254,6 +1256,103 @@
 <ol start="23">
 <li>jetbrains全家桶：<a target="_blank" rel="noopener" href="https://blog.idejihuo.com/topics/jetbrains">https://blog.idejihuo.com/topics/jetbrains</a></li>
 </ol>
+<hr>
+<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a><center><font color="red">SQLite</font></center></h1><h2 id="一、下载与安装-SQLite（Windows-版）"><a href="#一、下载与安装-SQLite（Windows-版）" class="headerlink" title="一、下载与安装 SQLite（Windows 版）"></a>一、下载与安装 SQLite（Windows 版）</h2><ol>
+<li>下载 SQLite 工具包</li>
+</ol>
+<ul>
+<li>打开 SQLite 官方下载页：<a target="_blank" rel="noopener" href="https://www.sqlite.org/download.html"><font style="color:rgb(0, 87, 255);background-color:rgba(0, 0, 0, 0);">https://www.sqlite.org/download.html</font></a></li>
+<li>找到 <strong>Windows (x86) - DLL (x86)</strong> 区域，下载两个文件：<ul>
+<li><code>sqlite-dll-win32-x86-xxxxxxx.zip&lt;/font&gt;</code>（核心动态库）</li>
+<li><code>sqlite-tools-win32-x86-xxxxxxx.zip&lt;/font&gt;</code>（命令行工具，包含 <code>sqlite3.exe&lt;/font&gt;</code>）（<code>xxxxxxx&lt;/font&gt;</code> 是版本号，选最新版即可）</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>解压并配置环境变量</li>
+</ol>
+<ul>
+<li>新建文件夹（推荐路径：<code>C:\sqlite&lt;/font&gt;</code>），将两个压缩包的所有文件解压到该文件夹中；</li>
+<li>配置环境变量（让任意目录都能调用 <code>sqlite3.exe&lt;/font&gt;</code>）：<ul>
+<li>右键「此电脑」→「属性」→「高级系统设置」→「环境变量」；</li>
+<li>在「系统变量」中找到 <code>Path&lt;/font&gt;</code>，点击「编辑」→「新建」；</li>
+<li>粘贴 SQLite 文件夹路径（如 <code>C:\sqlite&lt;/font&gt;</code>），点击「确定」保存。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>验证安装是否成功</li>
+</ol>
+<ul>
+<li>按下 <code>Win + R&lt;/font&gt;</code>，输入 <code>cmd&lt;/font&gt;</code> 打开命令提示符；</li>
+<li>输入 <code>sqlite3&lt;/font&gt;</code> 并回车，若出现如下提示，说明安装成功：plaintext</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQLite version 3.45.0 2025-01-20 18:46:41</span><br><span class="line">Enter ".help" for usage hints.</span><br><span class="line">Connected to a transient in-memory database.</span><br><span class="line">Use ".open FILENAME" to reopen on a persistent database.</span><br><span class="line">sqlite&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="二、SQLite-基本使用（命令行）"><a href="#二、SQLite-基本使用（命令行）" class="headerlink" title="二、SQLite 基本使用（命令行）"></a>二、SQLite 基本使用（命令行）</h2><ol>
+<li>创建 / 打开数据库</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 打开（若不存在则创建）名为 test.db 的数据库</span><br><span class="line">sqlite3 test.db</span><br></pre></td></tr></tbody></table></figure>
+
+<p>执行后会进入 SQLite 交互界面，所有操作都会持久化到 <code>test.db&lt;/font&gt;</code> 文件中。</p>
+<ol start="2">
+<li>核心操作示例（创建表、增删改查）</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-- 1. 创建表（以用户表为例）</span><br><span class="line">CREATE TABLE IF NOT EXISTS users (</span><br><span class="line">    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- 自增主键</span><br><span class="line">    name TEXT NOT NULL,                   -- 姓名（非空）</span><br><span class="line">    age INTEGER,                          -- 年龄</span><br><span class="line">    email TEXT UNIQUE                     -- 邮箱（唯一）</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 2. 插入数据</span><br><span class="line">INSERT INTO users (name, age, email) VALUES </span><br><span class="line">('张三', 25, 'zhangsan@test.com'),</span><br><span class="line">('李四', 30, 'lisi@test.com');</span><br><span class="line"></span><br><span class="line">-- 3. 查询数据</span><br><span class="line">SELECT * FROM users;  -- 查询所有用户</span><br><span class="line">SELECT name, age FROM users WHERE age &gt; 25;  -- 条件查询</span><br><span class="line"></span><br><span class="line">-- 4. 更新数据</span><br><span class="line">UPDATE users SET age = 26 WHERE name = '张三';</span><br><span class="line"></span><br><span class="line">-- 5. 删除数据</span><br><span class="line">DELETE FROM users WHERE name = '李四';</span><br><span class="line"></span><br><span class="line">-- 6. 查看表结构</span><br><span class="line">PRAGMA table_info(users);</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>常用命令</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.tables&lt;/font&gt;</code></td>
+<td>查看当前数据库所有表</td>
+</tr>
+<tr>
+<td><code>.schema 表名&lt;/font&gt;</code></td>
+<td>查看指定表的创建语句</td>
+</tr>
+<tr>
+<td><code>.exit&lt;/font&gt;</code><br> 或 <code>.quit&lt;/font&gt;</code></td>
+<td>退出 SQLite 交互界面</td>
+</tr>
+<tr>
+<td><code>.help&lt;/font&gt;</code></td>
+<td>查看所有 SQLite 命令帮助</td>
+</tr>
+<tr>
+<td><code>.mode table&lt;/font&gt;</code></td>
+<td>设置查询结果以表格形式显示</td>
+</tr>
+</tbody></table>
+<h2 id="三、可视化工具（可选，更友好）"><a href="#三、可视化工具（可选，更友好）" class="headerlink" title="三、可视化工具（可选，更友好）"></a>三、可视化工具（可选，更友好）</h2><ol>
+<li>DB Browser for SQLite（免费开源）</li>
+</ol>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://sqlitebrowser.org/"><font style="color:rgb(0, 87, 255);background-color:rgba(0, 0, 0, 0);">https://sqlitebrowser.org/</font></a></li>
+<li>特点：图形化界面，支持建表、查询、导出数据，新手友好。</li>
+</ul>
+<ol start="2">
+<li>使用方法：</li>
+</ol>
+<ul>
+<li>安装后打开，点击「Open Database」选择 <code>.db&lt;/font&gt;</code> 文件；</li>
+<li>可通过界面直接操作表和数据，无需手写 SQL 命令。</li>
+</ul>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><ol>
+<li><strong>安装核心</strong>：SQLite 无需安装，下载工具包解压后配置环境变量即可使用；</li>
+<li><strong>基础操作</strong>：通过 <code>sqlite3 数据库名.db&lt;/font&gt;</code> 打开数据库，用标准 SQL 语句完成增删改查；</li>
+<li><strong>效率提升</strong>：新手推荐使用 DB Browser for SQLite 可视化工具，降低操作门槛。</li>
+</ol>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.sqlite.org/">https://www.sqlite.org/</a></li>
+</ol>
 
     </div>
 
@@ -1274,6 +1373,7 @@
               <a href="/tags/TortoiseSVN/" rel="tag"><i class="fa fa-tag"></i> TortoiseSVN</a>
               <a href="/tags/NSSM/" rel="tag"><i class="fa fa-tag"></i> NSSM</a>
               <a href="/tags/powershell/" rel="tag"><i class="fa fa-tag"></i> powershell</a>
+              <a href="/tags/SQLite/" rel="tag"><i class="fa fa-tag"></i> SQLite</a>
           </div>
 
         
@@ -1329,7 +1429,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">SSH工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B8%B8%E7%94%A8-SSH-%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、常用 SSH 客户端（远程登录）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8-SFTP-SCP-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">二、常用 SFTP&#x2F;SCP 文件传输工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8E%9F%E7%94%9F-SSH%EF%BC%88%E6%89%80%E6%9C%89%E7%B3%BB%E7%BB%9F%E9%83%BD%E8%83%BD%E7%94%A8%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">三、命令行原生 SSH（所有系统都能用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%AE%80%E5%8D%95%E6%8E%A8%E8%8D%90"><span class="nav-number">1.4.</span> <span class="nav-text">四、简单推荐</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TortoiseSVN%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">TortoiseSVN安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85-TortoiseSVN%EF%BC%88%E5%90%AB%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%84%E4%BB%B6%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">一、安装 TortoiseSVN（含服务器组件）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%EF%BC%9A%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E4%B8%8E%E4%B8%B4%E6%97%B6%E5%90%AF%E5%8A%A8%EF%BC%88%E9%80%82%E5%90%88%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">二、快速搭建：创建仓库与临时启动（适合测试）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA-SVN-%E4%BB%93%E5%BA%93"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">1. 创建 SVN 仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">2. 配置用户与权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%B4%E6%97%B6%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">3. 临时启动服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%EF%BC%9A%E6%B3%A8%E5%86%8C%E4%B8%BA-Windows-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%EF%BC%88%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">三、生产环境：注册为 Windows 系统服务（开机自启）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1%EF%BC%88%E7%AE%A1%E7%90%86%E5%91%98-CMD%EF%BC%89"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">1. 注册服务（管理员 CMD）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">2. 管理服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C%EF%BC%88%E6%A3%80%E5%87%BA-%E6%8F%90%E4%BA%A4-%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">四、客户端操作（检出 &#x2F; 提交 &#x2F; 更新）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8E%92%E6%9F%A5"><span class="nav-number">2.5.</span> <span class="nav-text">五、常见问题与排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="nav-number">2.6.</span> <span class="nav-text">六、对比与建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">2.7.</span> <span class="nav-text">七、总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VisualSVN"><span class="nav-number">3.</span> <span class="nav-text">VisualSVN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">一、准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-VisualSVN-Server"><span class="nav-number">3.2.</span> <span class="nav-text">二、安装 VisualSVN Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE%EF%BC%88%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E3%80%81%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">三、初始化配置（创建仓库、用户、权限）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AA%8C%E8%AF%81-SVN-Server-%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="nav-number">3.4.</span> <span class="nav-text">四、验证 SVN Server 可用性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="nav-number">3.5.</span> <span class="nav-text">五、常见问题解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">3.6.</span> <span class="nav-text">六、进阶操作（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="nav-number">3.7.</span> <span class="nav-text">七、对比与建议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C%E7%9B%98%E6%B8%85%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">C盘清理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">一、方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%B4%A6%E6%88%B7"><span class="nav-number">5.</span> <span class="nav-text">更改账户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IIS%E9%83%A8%E7%BD%B2PHP"><span class="nav-number">6.</span> <span class="nav-text">IIS部署PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%EF%BC%9A%E5%AE%89%E8%A3%85-IIS-%E6%9C%8D%E5%8A%A1%EF%BC%88%E8%8B%A5%E6%9C%AA%E5%AE%89%E8%A3%85%EF%BC%89"><span class="nav-number">6.0.1.</span> <span class="nav-text">一、前期准备：安装 IIS 服务（若未安装）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-PHP-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">6.0.2.</span> <span class="nav-text">二、安装 PHP 运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE-IIS-%E4%B8%8E-PHP-%E7%9A%84%E5%85%B3%E8%81%94%EF%BC%88FastCGI-%E6%98%A0%E5%B0%84%EF%BC%89"><span class="nav-number">6.0.3.</span> <span class="nav-text">三、配置 IIS 与 PHP 的关联（FastCGI 映射）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-1%EF%BC%9A%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AE%EF%BC%88IIS-%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="nav-number">6.0.3.1.</span> <span class="nav-text">方式 1：图形界面配置（IIS 管理器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-2%EF%BC%9A%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%8C%E9%80%82%E5%90%88%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="nav-number">6.0.3.2.</span> <span class="nav-text">方式 2：命令行配置（可选，适合批量部署）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%85%8D%E7%BD%AE-IIS-%E7%BD%91%E7%AB%99%EF%BC%88%E5%8F%91%E5%B8%83-PHP-%E9%A1%B9%E7%9B%AE%EF%BC%89"><span class="nav-number">6.0.4.</span> <span class="nav-text">四、配置 IIS 网站（发布 PHP 项目）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AA%8C%E8%AF%81%E9%83%A8%E7%BD%B2%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="nav-number">6.0.5.</span> <span class="nav-text">五、验证部署是否成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">6.0.6.</span> <span class="nav-text">六、常见问题排查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.0.7.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IIS%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="nav-number">7.</span> <span class="nav-text">IIS开机启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%BE%E7%BD%AE"><span class="nav-number">7.1.</span> <span class="nav-text">一、设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IIS%E4%BC%AA%E9%9D%99%E6%80%81"><span class="nav-number">8.</span> <span class="nav-text">IIS伪静态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E6%8F%90%E5%87%86%E5%A4%87%EF%BC%9A%E5%AE%89%E8%A3%85-URL-%E9%87%8D%E5%86%99%E6%A8%A1%E5%9D%97%EF%BC%88URL-Rewrite%EF%BC%89"><span class="nav-number">8.0.1.</span> <span class="nav-text">一、前提准备：安装 URL 重写模块（URL Rewrite）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE%E4%BC%AA%E9%9D%99%E6%80%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%96%B9%E5%BC%8F"><span class="nav-number">8.0.2.</span> <span class="nav-text">二、配置伪静态的两种核心方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-1%EF%BC%9A%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AE%EF%BC%88IIS-%E7%AE%A1%E7%90%86%E5%99%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%9B%B4%E8%A7%82%E6%98%93%E6%87%82%EF%BC%8C%E6%8E%A8%E8%8D%90%E6%96%B0%E6%89%8B%EF%BC%89"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">方式 1：图形界面配置（IIS 管理器可视化操作，直观易懂，推荐新手）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-2%EF%BC%9A%E9%85%8D%E7%BD%AE-web-config-%E6%96%87%E4%BB%B6%EF%BC%88%E6%8E%A8%E8%8D%90%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83-%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2%EF%BC%8C%E9%AB%98%E6%95%88%E4%BE%BF%E6%8D%B7%EF%BC%89"><span class="nav-number">8.0.2.2.</span> <span class="nav-text">方式 2：配置 web.config 文件（推荐生产环境 &#x2F; 批量部署，高效便捷）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B3%E9%94%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">8.0.3.</span> <span class="nav-text">三、关键注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">8.0.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laragon"><span class="nav-number">9.</span> <span class="nav-text">Laragon</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Laragon-%E4%B8%8B%E8%BD%BD%EF%BC%88%E6%8E%A8%E8%8D%90Full%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E5%86%85%E7%BD%AEApache-Nginx-MySQL-Redis%EF%BC%89"><span class="nav-number">9.1.</span> <span class="nav-text">一、Laragon 下载（推荐Full完整版，内置Apache&#x2F;Nginx&#x2F;MySQL&#x2F;Redis）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%EF%BC%88Win11%E9%81%BF%E5%9D%91%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">9.2.</span> <span class="nav-text">二、安装步骤（Win11避坑重点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%81%9C%E4%B8%8E%E8%AE%BF%E9%97%AE"><span class="nav-number">9.3.</span> <span class="nav-text">三、基础服务启停与访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B7%BB%E5%8A%A0-%E5%88%87%E6%8D%A2%E5%A4%9APHP%E7%89%88%E6%9C%AC%EF%BC%88%E8%A7%A3%E5%86%B3%E4%BD%A0%E5%A4%9A%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E4%B8%8D%E4%B8%80%E8%87%B4%E9%9C%80%E6%B1%82%EF%BC%89"><span class="nav-number">9.4.</span> <span class="nav-text">四、核心功能：添加&#x2F;切换多PHP版本（解决你多项目版本不一致需求）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F1%EF%BC%9A%E4%B8%80%E9%94%AE%E5%BF%AB%E9%80%9F%E6%B7%BB%E5%8A%A0%EF%BC%88%E6%8E%A8%E8%8D%90%E6%96%B0%E7%89%88Laragon%EF%BC%89"><span class="nav-number">9.4.1.</span> <span class="nav-text">方式1：一键快速添加（推荐新版Laragon）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F2%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0%E7%A6%BB%E7%BA%BFPHP%E5%8C%85%EF%BC%88%E8%80%81%E7%89%88%E6%9C%AC-%E7%89%B9%E6%AE%8A%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">9.4.2.</span> <span class="nav-text">方式2：手动添加离线PHP包（老版本&#x2F;特殊版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94PHP%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%9A%E5%BF%85%E9%A1%BB%E9%80%89TS-x64%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">9.4.2.1.</span> <span class="nav-text">1. 下载对应PHP（关键：必须选TS x64版本）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%94%BE%E7%BD%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">9.4.2.2.</span> <span class="nav-text">2. 放置目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%80%E9%94%AE%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="nav-number">9.4.2.3.</span> <span class="nav-text">3. 一键切换版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%87%AA%E5%8A%A8%E8%99%9A%E6%8B%9F%E5%9F%9F%E5%90%8D%EF%BC%88%E4%B8%8D%E7%94%A8%E6%94%B9hosts%EF%BC%8C%E5%BC%80%E5%8F%91%E7%A5%9E%E5%99%A8%EF%BC%89"><span class="nav-number">9.5.</span> <span class="nav-text">五、自动虚拟域名（不用改hosts，开发神器）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-number">9.5.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%90%8E%E7%BC%80"><span class="nav-number">9.5.2.</span> <span class="nav-text">自定义域名后缀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%80%82%E9%85%8DThinkPHP6-FastAdmin-%E5%BF%85%E5%A4%87%E9%85%8D%E7%BD%AE"><span class="nav-number">9.6.</span> <span class="nav-text">六、适配ThinkPHP6 &#x2F; FastAdmin 必备配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Nginx%E4%BC%AA%E9%9D%99%E6%80%81%EF%BC%88%E8%A7%A3%E5%86%B3404%E8%B7%AF%E7%94%B1%E5%A4%B1%E6%95%88%EF%BC%89"><span class="nav-number">9.6.1.</span> <span class="nav-text">1. Nginx伪静态（解决404路由失效）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Apache%E4%BC%AA%E9%9D%99%E6%80%81"><span class="nav-number">9.6.2.</span> <span class="nav-text">2. Apache伪静态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B3%E9%97%ADopen-basedir%E9%99%90%E5%88%B6%EF%BC%88%E4%B8%8A%E4%BC%A0-%E6%96%87%E4%BB%B6%E7%BC%93%E5%AD%98%E6%8A%A5%E9%94%99%EF%BC%89"><span class="nav-number">9.6.3.</span> <span class="nav-text">3. 关闭open_basedir限制（上传&#x2F;文件缓存报错）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AF%EF%BC%88Redis%E3%80%81Fileinfo%E3%80%81GD%E7%AD%89%EF%BC%89"><span class="nav-number">9.7.</span> <span class="nav-text">七、常用扩展一键开启（Redis、Fileinfo、GD等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Composer-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%EF%BC%88Laragon%E8%87%AA%E5%B8%A6%EF%BC%89"><span class="nav-number">9.8.</span> <span class="nav-text">八、Composer 全局配置（Laragon自带）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81Win11%E5%B8%B8%E8%A7%81%E8%B8%A9%E5%9D%91%E8%A7%A3%E5%86%B3"><span class="nav-number">9.9.</span> <span class="nav-text">九、Win11常见踩坑解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%AF%B9%E6%AF%94phpStudy%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF"><span class="nav-number">9.10.</span> <span class="nav-text">十、对比phpStudy核心优势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VGA-DVI-HDMI-DP"><span class="nav-number">10.</span> <span class="nav-text">VGA&#x2F;DVI&#x2F;HDMI&#x2F;DP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSD-HDD%E7%A1%AC%E7%9B%98"><span class="nav-number">11.</span> <span class="nav-text">SSD&#x2F;HDD硬盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arm64%E5%92%8Camd64"><span class="nav-number">12.</span> <span class="nav-text">arm64和amd64</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AF%B9%E6%AF%94"><span class="nav-number">12.1.</span> <span class="nav-text">一、对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E7%9C%8B"><span class="nav-number">12.2.</span> <span class="nav-text">二、查看</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%9Aext4-FAT32-NTFS-exFAT-APFS"><span class="nav-number">13.</span> <span class="nav-text">文件系统：ext4&#x2F;FAT32&#x2F;NTFS&#x2F;exFAT&#x2F;APFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="nav-number">14.</span> <span class="nav-text">权限问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSSM"><span class="nav-number">15.</span> <span class="nav-text">NSSM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">16.</span> <span class="nav-text">常用操作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">SSH工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%B8%B8%E7%94%A8-SSH-%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、常用 SSH 客户端（远程登录）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8-SFTP-SCP-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">二、常用 SFTP&#x2F;SCP 文件传输工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8E%9F%E7%94%9F-SSH%EF%BC%88%E6%89%80%E6%9C%89%E7%B3%BB%E7%BB%9F%E9%83%BD%E8%83%BD%E7%94%A8%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">三、命令行原生 SSH（所有系统都能用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%AE%80%E5%8D%95%E6%8E%A8%E8%8D%90"><span class="nav-number">1.4.</span> <span class="nav-text">四、简单推荐</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TortoiseSVN%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">TortoiseSVN安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85-TortoiseSVN%EF%BC%88%E5%90%AB%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%84%E4%BB%B6%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">一、安装 TortoiseSVN（含服务器组件）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%EF%BC%9A%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E4%B8%8E%E4%B8%B4%E6%97%B6%E5%90%AF%E5%8A%A8%EF%BC%88%E9%80%82%E5%90%88%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">二、快速搭建：创建仓库与临时启动（适合测试）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA-SVN-%E4%BB%93%E5%BA%93"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">1. 创建 SVN 仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">2. 配置用户与权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%B4%E6%97%B6%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">3. 临时启动服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%EF%BC%9A%E6%B3%A8%E5%86%8C%E4%B8%BA-Windows-%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%EF%BC%88%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">三、生产环境：注册为 Windows 系统服务（开机自启）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1%EF%BC%88%E7%AE%A1%E7%90%86%E5%91%98-CMD%EF%BC%89"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">1. 注册服务（管理员 CMD）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">2. 管理服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C%EF%BC%88%E6%A3%80%E5%87%BA-%E6%8F%90%E4%BA%A4-%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">四、客户端操作（检出 &#x2F; 提交 &#x2F; 更新）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8E%92%E6%9F%A5"><span class="nav-number">2.5.</span> <span class="nav-text">五、常见问题与排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="nav-number">2.6.</span> <span class="nav-text">六、对比与建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">2.7.</span> <span class="nav-text">七、总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VisualSVN"><span class="nav-number">3.</span> <span class="nav-text">VisualSVN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">一、准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-VisualSVN-Server"><span class="nav-number">3.2.</span> <span class="nav-text">二、安装 VisualSVN Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE%EF%BC%88%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93%E3%80%81%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">三、初始化配置（创建仓库、用户、权限）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AA%8C%E8%AF%81-SVN-Server-%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="nav-number">3.4.</span> <span class="nav-text">四、验证 SVN Server 可用性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="nav-number">3.5.</span> <span class="nav-text">五、常见问题解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">3.6.</span> <span class="nav-text">六、进阶操作（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="nav-number">3.7.</span> <span class="nav-text">七、对比与建议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C%E7%9B%98%E6%B8%85%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">C盘清理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">一、方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%B4%A6%E6%88%B7"><span class="nav-number">5.</span> <span class="nav-text">更改账户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IIS%E9%83%A8%E7%BD%B2PHP"><span class="nav-number">6.</span> <span class="nav-text">IIS部署PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%EF%BC%9A%E5%AE%89%E8%A3%85-IIS-%E6%9C%8D%E5%8A%A1%EF%BC%88%E8%8B%A5%E6%9C%AA%E5%AE%89%E8%A3%85%EF%BC%89"><span class="nav-number">6.0.1.</span> <span class="nav-text">一、前期准备：安装 IIS 服务（若未安装）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-PHP-%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">6.0.2.</span> <span class="nav-text">二、安装 PHP 运行环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE-IIS-%E4%B8%8E-PHP-%E7%9A%84%E5%85%B3%E8%81%94%EF%BC%88FastCGI-%E6%98%A0%E5%B0%84%EF%BC%89"><span class="nav-number">6.0.3.</span> <span class="nav-text">三、配置 IIS 与 PHP 的关联（FastCGI 映射）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-1%EF%BC%9A%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AE%EF%BC%88IIS-%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="nav-number">6.0.3.1.</span> <span class="nav-text">方式 1：图形界面配置（IIS 管理器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-2%EF%BC%9A%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%8C%E9%80%82%E5%90%88%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="nav-number">6.0.3.2.</span> <span class="nav-text">方式 2：命令行配置（可选，适合批量部署）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%85%8D%E7%BD%AE-IIS-%E7%BD%91%E7%AB%99%EF%BC%88%E5%8F%91%E5%B8%83-PHP-%E9%A1%B9%E7%9B%AE%EF%BC%89"><span class="nav-number">6.0.4.</span> <span class="nav-text">四、配置 IIS 网站（发布 PHP 项目）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AA%8C%E8%AF%81%E9%83%A8%E7%BD%B2%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="nav-number">6.0.5.</span> <span class="nav-text">五、验证部署是否成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">6.0.6.</span> <span class="nav-text">六、常见问题排查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.0.7.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IIS%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="nav-number">7.</span> <span class="nav-text">IIS开机启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%BE%E7%BD%AE"><span class="nav-number">7.1.</span> <span class="nav-text">一、设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IIS%E4%BC%AA%E9%9D%99%E6%80%81"><span class="nav-number">8.</span> <span class="nav-text">IIS伪静态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E6%8F%90%E5%87%86%E5%A4%87%EF%BC%9A%E5%AE%89%E8%A3%85-URL-%E9%87%8D%E5%86%99%E6%A8%A1%E5%9D%97%EF%BC%88URL-Rewrite%EF%BC%89"><span class="nav-number">8.0.1.</span> <span class="nav-text">一、前提准备：安装 URL 重写模块（URL Rewrite）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE%E4%BC%AA%E9%9D%99%E6%80%81%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%96%B9%E5%BC%8F"><span class="nav-number">8.0.2.</span> <span class="nav-text">二、配置伪静态的两种核心方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-1%EF%BC%9A%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AE%EF%BC%88IIS-%E7%AE%A1%E7%90%86%E5%99%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%9B%B4%E8%A7%82%E6%98%93%E6%87%82%EF%BC%8C%E6%8E%A8%E8%8D%90%E6%96%B0%E6%89%8B%EF%BC%89"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">方式 1：图形界面配置（IIS 管理器可视化操作，直观易懂，推荐新手）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F-2%EF%BC%9A%E9%85%8D%E7%BD%AE-web-config-%E6%96%87%E4%BB%B6%EF%BC%88%E6%8E%A8%E8%8D%90%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83-%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2%EF%BC%8C%E9%AB%98%E6%95%88%E4%BE%BF%E6%8D%B7%EF%BC%89"><span class="nav-number">8.0.2.2.</span> <span class="nav-text">方式 2：配置 web.config 文件（推荐生产环境 &#x2F; 批量部署，高效便捷）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B3%E9%94%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">8.0.3.</span> <span class="nav-text">三、关键注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">8.0.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Laragon"><span class="nav-number">9.</span> <span class="nav-text">Laragon</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Laragon-%E4%B8%8B%E8%BD%BD%EF%BC%88%E6%8E%A8%E8%8D%90Full%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E5%86%85%E7%BD%AEApache-Nginx-MySQL-Redis%EF%BC%89"><span class="nav-number">9.1.</span> <span class="nav-text">一、Laragon 下载（推荐Full完整版，内置Apache&#x2F;Nginx&#x2F;MySQL&#x2F;Redis）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%EF%BC%88Win11%E9%81%BF%E5%9D%91%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">9.2.</span> <span class="nav-text">二、安装步骤（Win11避坑重点）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%81%9C%E4%B8%8E%E8%AE%BF%E9%97%AE"><span class="nav-number">9.3.</span> <span class="nav-text">三、基础服务启停与访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%EF%BC%9A%E6%B7%BB%E5%8A%A0-%E5%88%87%E6%8D%A2%E5%A4%9APHP%E7%89%88%E6%9C%AC%EF%BC%88%E8%A7%A3%E5%86%B3%E4%BD%A0%E5%A4%9A%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E4%B8%8D%E4%B8%80%E8%87%B4%E9%9C%80%E6%B1%82%EF%BC%89"><span class="nav-number">9.4.</span> <span class="nav-text">四、核心功能：添加&#x2F;切换多PHP版本（解决你多项目版本不一致需求）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F1%EF%BC%9A%E4%B8%80%E9%94%AE%E5%BF%AB%E9%80%9F%E6%B7%BB%E5%8A%A0%EF%BC%88%E6%8E%A8%E8%8D%90%E6%96%B0%E7%89%88Laragon%EF%BC%89"><span class="nav-number">9.4.1.</span> <span class="nav-text">方式1：一键快速添加（推荐新版Laragon）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F2%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0%E7%A6%BB%E7%BA%BFPHP%E5%8C%85%EF%BC%88%E8%80%81%E7%89%88%E6%9C%AC-%E7%89%B9%E6%AE%8A%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">9.4.2.</span> <span class="nav-text">方式2：手动添加离线PHP包（老版本&#x2F;特殊版本）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94PHP%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%9A%E5%BF%85%E9%A1%BB%E9%80%89TS-x64%E7%89%88%E6%9C%AC%EF%BC%89"><span class="nav-number">9.4.2.1.</span> <span class="nav-text">1. 下载对应PHP（关键：必须选TS x64版本）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%94%BE%E7%BD%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">9.4.2.2.</span> <span class="nav-text">2. 放置目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%80%E9%94%AE%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC"><span class="nav-number">9.4.2.3.</span> <span class="nav-text">3. 一键切换版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%87%AA%E5%8A%A8%E8%99%9A%E6%8B%9F%E5%9F%9F%E5%90%8D%EF%BC%88%E4%B8%8D%E7%94%A8%E6%94%B9hosts%EF%BC%8C%E5%BC%80%E5%8F%91%E7%A5%9E%E5%99%A8%EF%BC%89"><span class="nav-number">9.5.</span> <span class="nav-text">五、自动虚拟域名（不用改hosts，开发神器）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-number">9.5.1.</span> <span class="nav-text">使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%90%8E%E7%BC%80"><span class="nav-number">9.5.2.</span> <span class="nav-text">自定义域名后缀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E9%80%82%E9%85%8DThinkPHP6-FastAdmin-%E5%BF%85%E5%A4%87%E9%85%8D%E7%BD%AE"><span class="nav-number">9.6.</span> <span class="nav-text">六、适配ThinkPHP6 &#x2F; FastAdmin 必备配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Nginx%E4%BC%AA%E9%9D%99%E6%80%81%EF%BC%88%E8%A7%A3%E5%86%B3404%E8%B7%AF%E7%94%B1%E5%A4%B1%E6%95%88%EF%BC%89"><span class="nav-number">9.6.1.</span> <span class="nav-text">1. Nginx伪静态（解决404路由失效）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Apache%E4%BC%AA%E9%9D%99%E6%80%81"><span class="nav-number">9.6.2.</span> <span class="nav-text">2. Apache伪静态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B3%E9%97%ADopen-basedir%E9%99%90%E5%88%B6%EF%BC%88%E4%B8%8A%E4%BC%A0-%E6%96%87%E4%BB%B6%E7%BC%93%E5%AD%98%E6%8A%A5%E9%94%99%EF%BC%89"><span class="nav-number">9.6.3.</span> <span class="nav-text">3. 关闭open_basedir限制（上传&#x2F;文件缓存报错）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AF%EF%BC%88Redis%E3%80%81Fileinfo%E3%80%81GD%E7%AD%89%EF%BC%89"><span class="nav-number">9.7.</span> <span class="nav-text">七、常用扩展一键开启（Redis、Fileinfo、GD等）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Composer-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%EF%BC%88Laragon%E8%87%AA%E5%B8%A6%EF%BC%89"><span class="nav-number">9.8.</span> <span class="nav-text">八、Composer 全局配置（Laragon自带）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81Win11%E5%B8%B8%E8%A7%81%E8%B8%A9%E5%9D%91%E8%A7%A3%E5%86%B3"><span class="nav-number">9.9.</span> <span class="nav-text">九、Win11常见踩坑解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%AF%B9%E6%AF%94phpStudy%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF"><span class="nav-number">9.10.</span> <span class="nav-text">十、对比phpStudy核心优势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VGA-DVI-HDMI-DP"><span class="nav-number">10.</span> <span class="nav-text">VGA&#x2F;DVI&#x2F;HDMI&#x2F;DP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSD-HDD%E7%A1%AC%E7%9B%98"><span class="nav-number">11.</span> <span class="nav-text">SSD&#x2F;HDD硬盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arm64%E5%92%8Camd64"><span class="nav-number">12.</span> <span class="nav-text">arm64和amd64</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AF%B9%E6%AF%94"><span class="nav-number">12.1.</span> <span class="nav-text">一、对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E7%9C%8B"><span class="nav-number">12.2.</span> <span class="nav-text">二、查看</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%9Aext4-FAT32-NTFS-exFAT-APFS"><span class="nav-number">13.</span> <span class="nav-text">文件系统：ext4&#x2F;FAT32&#x2F;NTFS&#x2F;exFAT&#x2F;APFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="nav-number">14.</span> <span class="nav-text">权限问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSSM"><span class="nav-number">15.</span> <span class="nav-text">NSSM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">16.</span> <span class="nav-text">常用操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQLite"><span class="nav-number">17.</span> <span class="nav-text">SQLite</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85-SQLite%EF%BC%88Windows-%E7%89%88%EF%BC%89"><span class="nav-number">17.1.</span> <span class="nav-text">一、下载与安装 SQLite（Windows 版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81SQLite-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%89"><span class="nav-number">17.2.</span> <span class="nav-text">二、SQLite 基本使用（命令行）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%8C%E6%9B%B4%E5%8F%8B%E5%A5%BD%EF%BC%89"><span class="nav-number">17.3.</span> <span class="nav-text">三、可视化工具（可选，更友好）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">17.4.</span> <span class="nav-text">四、总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">17.5.</span> <span class="nav-text">五、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1345,7 +1445,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1358,7 +1458,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1054</span>
+        <span class="site-state-item-count">1046</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1385,7 +1485,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -1456,7 +1556,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:20</span>
+    <span title="站点阅读时长">18:22</span>
 </div>
 
         

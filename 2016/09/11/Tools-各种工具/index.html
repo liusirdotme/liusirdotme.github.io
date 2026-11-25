@@ -148,10 +148,22 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="他强由他强，清风拂山岗；他横由他横，明月照大江。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/super.png">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/install.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/bind.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/use.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/ssh.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step1.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step2.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step3.png?608x">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step4.png?608x">
 <meta property="article:published_time" content="2016-09-11T11:47:48.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.475Z">
+<meta property="article:modified_time" content="2026-11-25T07:07:16.215Z">
 <meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="ansible">
+<meta property="article:tag" content="rsync">
 <meta property="article:tag" content="supervisor">
+<meta property="article:tag" content="宝塔">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="sketchbook">
 <meta property="article:tag" content="gimp">
@@ -164,7 +176,9 @@
 <meta property="article:tag" content="gitmind">
 <meta property="article:tag" content="飞书">
 <meta property="article:tag" content="网站">
+<meta property="article:tag" content="Selenium">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/super.png">
   <link rel="canonical" href="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/">
 
 
@@ -384,13 +398,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.6k</span>
+              <span>8.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>3 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -407,7 +421,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="个人开发工具-amp-资源笔记"><a href="#个人开发工具-amp-资源笔记" class="headerlink" title="个人开发工具&amp;资源笔记"></a>个人开发工具&amp;资源笔记</h1><h2 id="一、图像-绘图-设计工具"><a href="#一、图像-绘图-设计工具" class="headerlink" title="一、图像/绘图/设计工具"></a>一、图像/绘图/设计工具</h2><table>
+<h1 id="工具收集"><a href="#工具收集" class="headerlink" title="工具收集"></a><center><font color="red">工具收集</font></center></h1><h2 id="一、图像-绘图-设计工具"><a href="#一、图像-绘图-设计工具" class="headerlink" title="一、图像/绘图/设计工具"></a>一、图像/绘图/设计工具</h2><table>
 <thead>
 <tr>
 <th>工具</th>
@@ -852,6 +866,312 @@
 <td><a target="_blank" rel="noopener" href="https://www.feishu.cn/">https://www.feishu.cn/</a></td>
 </tr>
 </tbody></table>
+<hr>
+<h1 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a><center><font color="red">ansible</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ansible是一种自动化运维工具，基于Python开发，集合了众多运维工具(puppet、chef、func、fabric)的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。</p>
+<h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>Mac</p>
+<ul>
+<li><p>安装</p>
+<ul>
+<li>brew安装<code>brew install ansible</code>，本文使用brew安装</li>
+<li>pip安装<code>pip install ansible</code></li>
+<li>源码安装<ul>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/ansible/ansible.git">https://github.com/ansible/ansible.git</a></li>
+<li>cd ansible</li>
+<li>sudo python setup.py install</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>验证<code>ansible --version</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ansible [core 2.11.6]</span><br><span class="line">config file = None</span><br><span class="line">configured module search path = ['/Users/xxxx/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']</span><br><span class="line">ansible python module location = /usr/local/Cellar/ansible/4.8.0/libexec/lib/python3.10/site-packages/ansible</span><br><span class="line">ansible collection location = /Users/xxxx/.ansible/collections:/usr/share/ansible/collections</span><br><span class="line">executable location = /usr/local/bin/ansible</span><br><span class="line">python version = 3.10.0 (default, Oct 13 2021, 06:44:31) [Clang 12.0.0 (clang-1200.0.32.29)]</span><br><span class="line">jinja version = 3.0.2</span><br><span class="line">libyaml = True</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>配置</p>
+<ul>
+<li><p><code>cd /etc</code></p>
+</li>
+<li><p><code>sudo mkdir ansible</code></p>
+</li>
+<li><p><code>git clone https://github.com/ansible/ansible.git &amp;&amp; cd ansible</code></p>
+</li>
+<li><p><code>sudo cp -R * /etc/ansible</code></p>
+</li>
+<li><p>生成秘钥：<code>ssh-keygen</code></p>
+</li>
+<li><p>将秘钥推送到指定服务器：</p>
+<ul>
+<li><p>机器1：<code>ssh-copy-id username@ip1</code></p>
+</li>
+<li><p>机器2：<code>ssh-copy-id username@ip2</code></p>
+</li>
+<li><p>机器3：<code>ssh-copy-id username@ip3</code></p>
+<ul>
+<li><p>公司本地开发服务器，一般会有多个人一起协作，按此方式推送的话有可能会覆盖别人的秘钥，按如下方式处理：</p>
+<ul>
+<li><p>ssh-keygen时输入自定义的名字</p>
+<ul>
+<li>Enter file in which to save the key (/Users/xxxx/.ssh/id_rsa):id_rsa_play</li>
+</ul>
+</li>
+<li><p>此时会在.ssh目录下生成一对儿<code>id_rsa_play</code>和<code>id_rsa_play.pub</code></p>
+</li>
+<li><p>vim config</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Host server1     #填写别名(自定义)</span><br><span class="line">HostName ip1 #填写真实的服务地址</span><br><span class="line">User user1</span><br><span class="line">IdentityFile /Users/xxxx/.ssh/id_rsa_play #填写证书所在位置</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line"></span><br><span class="line">Host server2</span><br><span class="line">HostName ip2</span><br><span class="line">User user2</span><br><span class="line">IdentityFile /Users/xxxx/.ssh/id_rsa_play</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line"></span><br><span class="line">Host server3</span><br><span class="line">HostName ip3</span><br><span class="line">User user3</span><br><span class="line">IdentityFile /Users/xxxx/.ssh/id_rsa_play</span><br><span class="line">PreferredAuthentications publickey</span><br></pre></td></tr></tbody></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>   <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/username/.ssh/id_rsa.pub"</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed</span><br><span class="line">/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys</span><br><span class="line">username@ip's password:</span><br><span class="line"></span><br><span class="line">Number of key(s) added:        1</span><br><span class="line"></span><br><span class="line">Now try logging into the machine, with:   "ssh 'username@ip'"</span><br><span class="line">and check to make sure that only the key(s) you wanted were added.</span><br></pre></td></tr></tbody></table></figure>
+
+* 测试免密登录`ssh username@ip`，登录成功则说明配置成功
+* 修改配置文件`vim /etc/ansible/hosts`
+
+   <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[host1]</span><br><span class="line">10.2.24.180</span><br><span class="line">10.2.24.179</span><br><span class="line">    </span><br><span class="line">[host2]</span><br><span class="line">10.2.24.141</span><br></pre></td></tr></tbody></table></figure></code></pre><ul>
+<li><p>使用</p>
+<ul>
+<li><p>测试能否ping通<code>ansible all -m ping</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ip1 | SUCCESS =&gt; {</span><br><span class="line">    "ansible_facts": {</span><br><span class="line">        "discovered_interpreter_python": "/usr/bin/python"</span><br><span class="line">    },</span><br><span class="line">    "changed": false,</span><br><span class="line">    "ping": "pong"</span><br><span class="line">}</span><br><span class="line">ip2 | SUCCESS =&gt; {</span><br><span class="line">    "ansible_facts": {</span><br><span class="line">        "discovered_interpreter_python": "/usr/bin/python"</span><br><span class="line">    },</span><br><span class="line">    "changed": false,</span><br><span class="line">    "ping": "pong"</span><br><span class="line">}</span><br><span class="line">ip3 | SUCCESS =&gt; {</span><br><span class="line">    "ansible_facts": {</span><br><span class="line">        "discovered_interpreter_python": "/usr/bin/python"</span><br><span class="line">    },</span><br><span class="line">    "changed": false,</span><br><span class="line">    "ping": "pong"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p><code>ansible host1  -a ". .bash_profile;ps -fe |grep php" -m shell</code></p>
+<ul>
+<li>查看具体执行过程<code>ansible host1  -a ". .bash_profile;ps -fe |grep php" -m shell -vvv</code></li>
+<li>指定hosts文件位置<code>ansible -i /path/hosts host1  -a ". .bash_profile;ps -fe |grep php" -m shell -vvv</code></li>
+<li>ansible -i ~/tools/hosts host1 -m fetch -a “src=/home/xxx/*.txt dest=./ force=yes”</li>
+</ul>
+</li>
+<li><p>执行scripts``</p>
+</li>
+<li><p>playbook</p>
+</li>
+<li><p>$a =  exec(“/path/Python-2.7.8/bin/ansible -i /path/hosts -m copy -a "src=/path/test.php dest=/path/"  global”, $out, $status);</p>
+</li>
+<li><p>$a =  exec(“/paty/Python-2.7.8/bin/ansible -i /path/hosts -m synchronize -a "src=/path/test.php dest=/path/"  global”, $out, $status);</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Linux<ul>
+<li>安装(Ubuntu22.04)<ul>
+<li>sudo apt update</li>
+<li>sudo apt install software-properties-common</li>
+<li>sudo add-apt-repository –yes –update ppa:ansible/ansible</li>
+<li>sudo apt install ansible</li>
+<li>ansible –version</li>
+</ul>
+</li>
+<li>配置<ul>
+<li>/etc/ansible/hosts，节点信息</li>
+<li>/etc/ansible/ansible.cfg，配置信息，如秘钥文件</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>集群假设有1台admin节点3台服务节点，直接在admin节点修改3台服务节点的时间</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
+<li>rsync</li>
+</ol>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.ansible.com/">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/74e69dea64e5">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/873975e0abb8">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/blob/stable-2.9/examples/ansible.cfg">参考四</a></li>
+</ol>
+<hr>
+<h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a><center><font color="red">rsync</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rsync是类unix系统下的数据镜像备份工具，从软件的命名上就可以看出来了——remote sync。它不仅可以远程同步数据(类似于scp命令)，还可以本地同步数据(类似于cp命令)。不同于cp或scp的一点是，使用rsync命令备份数据时，不会直接覆盖以前的数据(如果数据已经存在)，而是先判断已经存在的数据和新数据的差异，只有数据不同时才会把不相同的部分覆盖。</p>
+<h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>本地同步</p>
+<ul>
+<li>本地之间备份同步<code>rsync -avz /home/www/rsync_test /www</code></li>
+</ul>
+</li>
+<li><p>远程同步</p>
+<ul>
+<li>本地文件上传到远程服务器：<code>rsync -avz -e "ssh -i /root/xxx.pem" /home/www/rsync_test root@ip:/home/www/</code></li>
+<li>远程服务器文件下载到本地：<code>rsync -avz -e "ssh -i /root/xxx.pem" root@ip:/home/www/test /root</code></li>
+<li>跨服务器同步(无需本地中转)：<code>rsync -avz -e "ssh -i /root/xxx.pem -p 22" root@ip1:/home/source/ root@ip2:/home/dest</code></li>
+</ul>
+</li>
+<li><p>高级使用</p>
+<ul>
+<li>指定秘钥</li>
+<li>增量备份</li>
+<li>排除文件</li>
+<li>包含特定</li>
+<li>限速传输</li>
+<li>校验模式</li>
+<li>保留符号链接</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、扩展-1"><a href="#三、扩展-1" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
+<li>sync</li>
+<li>ansible</li>
+</ol>
+<h2 id="四、参考-1"><a href="#四、参考-1" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://rsync.samba.org/">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/wanwentao/579008">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://linux.cn/article-9477-1.html">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Jimc/p/18830333">参考四</a></li>
+</ol>
+<hr>
+<h1 id="supervisor"><a href="#supervisor" class="headerlink" title="supervisor"></a><center><font color="red">supervisor</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;supervisor是一个客户/服务器系统，它可以在类Unix系统中管理控制大量进程。它使用python开发，有多年历史，目前很多生产环境下的服务器都在使用supervisor。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;supervisor的服务器端称为supervisord，主要负责在启动自身时启动管理的子进程，响应客户端的命令，重启崩溃或退出的子进程，记录子进程stdout和stderr输出，生成和处理子进程生命周期中的事件。可以在一个配置文件中配置相关参数，包括supervisord自身的状态，其管理的各个子进程的相关属性。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;supervisor的客户端称为supervisorctl，它提供了一个类shell的接口来使用supervisord服务端提供的功能。通过supervisorctl，用户可以连接到supervisord服务器进程，获得服务器进程控制的子进程的状态，启动和停止子进程，获得正在运行的进程列表。客户端通过Unix域套接字或者TCP套接字与服务端进行通信，服务器端具有身份凭证认证机制，可以有效提升安全性。当客户端和服务器位于同一台机器上时，客户端与服务器共用同一个配置文s件/etc/supervisord.conf，通过不同标签来区分两者的配置。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;另外，supervisor也提供了一个web页面来查看和管理进程状态。</p>
+<blockquote>
+<p>常用命令：</p>
+</blockquote>
+<ol>
+<li>supervisorctl status </li>
+<li>supervisorctl start laravel-queue-worker #启动laravel-queue-worker</li>
+<li>supervisorctl stop laravel-queue-worker #停止laravel-queue-worker</li>
+<li>supervisorctl restart laravel-queue-worker # 重启laravel-queue-worker</li>
+<li>supervisorctl update   # 配置文件修改后可以使用该命令加载新的配置</li>
+<li>supervisorctl reload # 重新启动配置中的所有程序</li>
+<li>supervisorctl -u user -p 123 status</li>
+</ol>
+<h2 id="二、使用-Mac"><a href="#二、使用-Mac" class="headerlink" title="二、使用(Mac)"></a>二、使用(Mac)</h2><ol>
+<li>使用brew安装：brew install supervisor<ul>
+<li>默认配置文件：/usr/local/etc/supervisord.conf</li>
+</ul>
+</li>
+<li>查看安装是否成功：echo_supervisord_conf</li>
+<li>切换到配置目录：cd /usr/local/etc/</li>
+<li>tail supervisord.conf，可看到：files = /usr/local/etc/supervisor.d/*.ini</li>
+<li>创建文件夹：mkdir supervisor.d，可以放多个配置</li>
+<li>编辑supervisord.conf文件，打开[inet_http_server]的注释(即删掉前面的分号)</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[inet_http_server]         ; inet (TCP) server disabled by default</span><br><span class="line">port=127.0.0.1:9001        ; ip_address:port specifier, *:port for all iface</span><br><span class="line">username=user              ; default is no username (open server)</span><br><span class="line">password=123               ; default is no password (open server)</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="7">
+<li>cd supervisor.d</li>
+<li>vim laravel.ini</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[program:laravel-queue-worker] ;唯一标识，不能重复 </span><br><span class="line"> </span><br><span class="line">process_name=%(program_name)s_%(process_num)02d ;指定进程的命名规则：foo_00，foo_01... </span><br><span class="line"> </span><br><span class="line">command=php /your_path/artisan queue:work --sleep=3 --tries=3 ;必填参数，程序启动后执行的命令(绝对/相对)，受控的程序本身不应该是守护程序</span><br><span class="line"> </span><br><span class="line">autostart=true ;Supervisor启动时自动启动该程序 </span><br><span class="line"> </span><br><span class="line">autorestart=true ;指定进程挂掉时supervisor自动重启进程 </span><br><span class="line"> </span><br><span class="line">user=wangkaikai ;指定运行进程使用的用户，需要Supervisor以root用户运行。使用setuid切换用户，不会启动shell程序和改变环境变量 </span><br><span class="line"> </span><br><span class="line">numprocs=8 ;运行和监控的进程数量，进程位于laravel-worker组内，指定该值需同时设置process_name包含%(process_num)s</span><br><span class="line"> </span><br><span class="line">redirect_stderr=true ;将标准错误输出stderr重定向到stdout标准输出 </span><br><span class="line"></span><br><span class="line">stdout_logfile=/your_path/queue-worker.log ;将进程的stdout标准输出写入文件中，设为NONE不会创建任何日志文件。</span><br></pre></td></tr></tbody></table></figure>
+<ol start="9">
+<li><p>ps -ef|grep supervisord</p>
+<ul>
+<li>/www/server/panel/pyenv/bin/python /www/server/panel/pyenv/bin/supervisord -c /etc/supervisor/supervisord.conf</li>
+</ul>
+</li>
+<li><p>常见错误</p>
+<ul>
+<li>unix:///usr/local/var/run/supervisor.sock no such file</li>
+<li>supervisor: couldn’t setuid to 0: Can’t drop privilege as nonroot user</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、使用-Linux-宝塔"><a href="#三、使用-Linux-宝塔" class="headerlink" title="三、使用(Linux+宝塔)"></a>三、使用(Linux+宝塔)</h2><ol>
+<li>安装<ul>
+<li>登录宝塔</li>
+<li>软件商店</li>
+<li>搜索supervisor，找到后点击安装</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>点击设置</li>
+<li>添加守护进程</li>
+<li><img src="super.png" alt="添加守护进程"></li>
+</ul>
+</li>
+<li>主配置文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">; Sample supervisor config file.</span><br><span class="line">;</span><br><span class="line">; For more information on the config file, please see:</span><br><span class="line">; http://supervisord.org/configuration.html</span><br><span class="line">;</span><br><span class="line">; Notes:</span><br><span class="line">;  - Shell expansion ("~" or "$HOME") is not supported.  Environment</span><br><span class="line">;    variables can be expanded using this syntax: "%(ENV_HOME)s".</span><br><span class="line">;  - Quotes around values are not supported, except in the case of</span><br><span class="line">;    the environment= options as shown below.</span><br><span class="line">;  - Comments must have a leading space: "a=b ;comment" not "a=b;comment".</span><br><span class="line">;  - Command will be truncated if it looks like a config file comment, e.g.</span><br><span class="line">;    "command=bash -c 'foo ; bar'" will truncate to "command=bash -c 'foo ".</span><br><span class="line">;</span><br><span class="line">; Warning:</span><br><span class="line">;  Paths throughout this example file use /tmp because it is available on most</span><br><span class="line">;  systems.  You will likely need to change these to locations more appropriate</span><br><span class="line">;  for your system.  Some systems periodically delete older files in /tmp.</span><br><span class="line">;  Notably, if the socket file defined in the [unix_http_server] section below</span><br><span class="line">;  is deleted, supervisorctl will be unable to connect to supervisord.</span><br><span class="line"></span><br><span class="line">[unix_http_server]</span><br><span class="line">file=/var/run/supervisor.sock   ; the path to the socket file</span><br><span class="line">;chmod=0700                 ; socket file mode (default 0700)</span><br><span class="line">;chown=nobody:nogroup       ; socket file uid:gid owner</span><br><span class="line">;username=user              ; default is no username (open server)</span><br><span class="line">;password=123               ; default is no password (open server)</span><br><span class="line"></span><br><span class="line">; Security Warning:</span><br><span class="line">;  The inet HTTP server is not enabled by default.  The inet HTTP server is</span><br><span class="line">;  enabled by uncommenting the [inet_http_server] section below.  The inet</span><br><span class="line">;  HTTP server is intended for use within a trusted environment only.  It</span><br><span class="line">;  should only be bound to localhost or only accessible from within an</span><br><span class="line">;  isolated, trusted network.  The inet HTTP server does not support any</span><br><span class="line">;  form of encryption.  The inet HTTP server does not use authentication</span><br><span class="line">;  by default (see the username= and password= options to add authentication).</span><br><span class="line">;  Never expose the inet HTTP server to the public internet.</span><br><span class="line"></span><br><span class="line">;[inet_http_server]         ; inet (TCP) server disabled by default</span><br><span class="line">;port=127.0.0.1:9001        ; ip_address:port specifier, *:port for all iface</span><br><span class="line">;username=user              ; default is no username (open server)</span><br><span class="line">;password=123               ; default is no password (open server)</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/var/log/supervisord.log ; main log file; default $CWD/supervisord.log</span><br><span class="line">logfile_maxbytes=50MB        ; max main logfile bytes b4 rotation; default 50MB</span><br><span class="line">logfile_backups=10           ; # of main logfile backups; 0 means none, default 10</span><br><span class="line">loglevel=info                ; log level; default info; others: debug,warn,trace</span><br><span class="line">pidfile=/var/run/supervisord.pid ; supervisord pidfile; default supervisord.pid</span><br><span class="line">nodaemon=false               ; start in foreground if true; default false</span><br><span class="line">silent=false                 ; no logs to stdout if true; default false</span><br><span class="line">minfds=1024                  ; min. avail startup file descriptors; default 1024</span><br><span class="line">minprocs=200                 ; min. avail process descriptors;default 200</span><br><span class="line">;umask=022                   ; process file creation umask; default 022</span><br><span class="line">;user=supervisord            ; setuid to this UNIX account at startup; recommended if root</span><br><span class="line">;identifier=supervisor       ; supervisord identifier, default is 'supervisor'</span><br><span class="line">;directory=/tmp              ; default is not to cd during start</span><br><span class="line">;nocleanup=true              ; don't clean up tempfiles at start; default false</span><br><span class="line">;childlogdir=/tmp            ; 'AUTO' child log dir, default $TEMP</span><br><span class="line">;environment=KEY="value"     ; key value pairs to add to environment</span><br><span class="line">;strip_ansi=false            ; strip ansi escape codes in logs; def. false</span><br><span class="line"></span><br><span class="line">; The rpcinterface:supervisor section must remain in the config file for</span><br><span class="line">; RPC (supervisorctl/web interface) to work.  Additional interfaces may be</span><br><span class="line">; added by defining them in separate [rpcinterface:x] sections.</span><br><span class="line"></span><br><span class="line">[rpcinterface:supervisor]</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line">; The supervisorctl section configures how supervisorctl will connect to</span><br><span class="line">; supervisord.  configure it match the settings in either the unix_http_server</span><br><span class="line">; or inet_http_server section.</span><br><span class="line"></span><br><span class="line">[supervisorctl]</span><br><span class="line">serverurl=unix:///var/run/supervisor.sock ; use a unix:// URL  for a unix socket</span><br><span class="line">;serverurl=http://127.0.0.1:9001 ; use an http:// url to specify an inet socket</span><br><span class="line">;username=chris              ; should be same as in [*_http_server] if set</span><br><span class="line">;password=123                ; should be same as in [*_http_server] if set</span><br><span class="line">;prompt=mysupervisor         ; cmd line prompt (default "supervisor")</span><br><span class="line">;history_file=~/.sc_history  ; use readline history if available</span><br><span class="line"></span><br><span class="line">; The sample program section below shows all possible program subsection values.</span><br><span class="line">; Create one or more 'real' program: sections to be able to control them under</span><br><span class="line">; supervisor.</span><br><span class="line"></span><br><span class="line">;[program:theprogramname]</span><br><span class="line">;command=/bin/cat              ; the program (relative uses PATH, can take args)</span><br><span class="line">;process_name=%(program_name)s ; process_name expr (default %(program_name)s)</span><br><span class="line">;numprocs=1                    ; number of processes copies to start (def 1)</span><br><span class="line">;directory=/tmp                ; directory to cwd to before exec (def no cwd)</span><br><span class="line">;umask=022                     ; umask for process (default None)</span><br><span class="line">;priority=999                  ; the relative start priority (default 999)</span><br><span class="line">;autostart=true                ; start at supervisord start (default: true)</span><br><span class="line">;startsecs=1                   ; # of secs prog must stay up to be running (def. 1)</span><br><span class="line">;startretries=3                ; max # of serial start failures when starting (default 3)</span><br><span class="line">;autorestart=unexpected        ; when to restart if exited after running (def: unexpected)</span><br><span class="line">;exitcodes=0                   ; 'expected' exit codes used with autorestart (default 0)</span><br><span class="line">;stopsignal=QUIT               ; signal used to kill process (default TERM)</span><br><span class="line">;stopwaitsecs=10               ; max num secs to wait b4 SIGKILL (default 10)</span><br><span class="line">;stopasgroup=false             ; send stop signal to the UNIX process group (default false)</span><br><span class="line">;killasgroup=false             ; SIGKILL the UNIX process group (def false)</span><br><span class="line">;user=chrism                   ; setuid to this UNIX account to run the program</span><br><span class="line">;redirect_stderr=true          ; redirect proc stderr to stdout (default false)</span><br><span class="line">;stdout_logfile=/a/path        ; stdout log path, NONE for none; default AUTO</span><br><span class="line">;stdout_logfile_maxbytes=1MB   ; max # logfile bytes b4 rotation (default 50MB)</span><br><span class="line">;stdout_logfile_backups=10     ; # of stdout logfile backups (0 means none, default 10)</span><br><span class="line">;stdout_capture_maxbytes=1MB   ; number of bytes in 'capturemode' (default 0)</span><br><span class="line">;stdout_events_enabled=false   ; emit events on stdout writes (default false)</span><br><span class="line">;stdout_syslog=false           ; send stdout to syslog with process name (default false)</span><br><span class="line">;stderr_logfile=/a/path        ; stderr log path, NONE for none; default AUTO</span><br><span class="line">;stderr_logfile_maxbytes=1MB   ; max # logfile bytes b4 rotation (default 50MB)</span><br><span class="line">;stderr_logfile_backups=10     ; # of stderr logfile backups (0 means none, default 10)</span><br><span class="line">;stderr_capture_maxbytes=1MB   ; number of bytes in 'capturemode' (default 0)</span><br><span class="line">;stderr_events_enabled=false   ; emit events on stderr writes (default false)</span><br><span class="line">;stderr_syslog=false           ; send stderr to syslog with process name (default false)</span><br><span class="line">;environment=A="1",B="2"       ; process environment additions (def no adds)</span><br><span class="line">;serverurl=AUTO                ; override serverurl computation (childutils)</span><br><span class="line"></span><br><span class="line">; The sample eventlistener section below shows all possible eventlistener</span><br><span class="line">; subsection values.  Create one or more 'real' eventlistener: sections to be</span><br><span class="line">; able to handle event notifications sent by supervisord.</span><br><span class="line"></span><br><span class="line">;[eventlistener:theeventlistenername]</span><br><span class="line">;command=/bin/eventlistener    ; the program (relative uses PATH, can take args)</span><br><span class="line">;process_name=%(program_name)s ; process_name expr (default %(program_name)s)</span><br><span class="line">;numprocs=1                    ; number of processes copies to start (def 1)</span><br><span class="line">;events=EVENT                  ; event notif. types to subscribe to (req'd)</span><br><span class="line">;buffer_size=10                ; event buffer queue size (default 10)</span><br><span class="line">;directory=/tmp                ; directory to cwd to before exec (def no cwd)</span><br><span class="line">;umask=022                     ; umask for process (default None)</span><br><span class="line">;priority=-1                   ; the relative start priority (default -1)</span><br><span class="line">;autostart=true                ; start at supervisord start (default: true)</span><br><span class="line">;startsecs=1                   ; # of secs prog must stay up to be running (def. 1)</span><br><span class="line">;startretries=3                ; max # of serial start failures when starting (default 3)</span><br><span class="line">;autorestart=unexpected        ; autorestart if exited after running (def: unexpected)</span><br><span class="line">;exitcodes=0                   ; 'expected' exit codes used with autorestart (default 0)</span><br><span class="line">;stopsignal=QUIT               ; signal used to kill process (default TERM)</span><br><span class="line">;stopwaitsecs=10               ; max num secs to wait b4 SIGKILL (default 10)</span><br><span class="line">;stopasgroup=false             ; send stop signal to the UNIX process group (default false)</span><br><span class="line">;killasgroup=false             ; SIGKILL the UNIX process group (def false)</span><br><span class="line">;user=chrism                   ; setuid to this UNIX account to run the program</span><br><span class="line">;redirect_stderr=false         ; redirect_stderr=true is not allowed for eventlisteners</span><br><span class="line">;stdout_logfile=/a/path        ; stdout log path, NONE for none; default AUTO</span><br><span class="line">;stdout_logfile_maxbytes=1MB   ; max # logfile bytes b4 rotation (default 50MB)</span><br><span class="line">;stdout_logfile_backups=10     ; # of stdout logfile backups (0 means none, default 10)</span><br><span class="line">;stdout_events_enabled=false   ; emit events on stdout writes (default false)</span><br><span class="line">;stdout_syslog=false           ; send stdout to syslog with process name (default false)</span><br><span class="line">;stderr_logfile=/a/path        ; stderr log path, NONE for none; default AUTO</span><br><span class="line">;stderr_logfile_maxbytes=1MB   ; max # logfile bytes b4 rotation (default 50MB)</span><br><span class="line">;stderr_logfile_backups=10     ; # of stderr logfile backups (0 means none, default 10)</span><br><span class="line">;stderr_events_enabled=false   ; emit events on stderr writes (default false)</span><br><span class="line">;stderr_syslog=false           ; send stderr to syslog with process name (default false)</span><br><span class="line">;environment=A="1",B="2"       ; process environment additions</span><br><span class="line">;serverurl=AUTO                ; override serverurl computation (childutils)</span><br><span class="line"></span><br><span class="line">; The sample group section below shows all possible group values.  Create one</span><br><span class="line">; or more 'real' group: sections to create "heterogeneous" process groups.</span><br><span class="line"></span><br><span class="line">;[group:thegroupname]</span><br><span class="line">;programs=progname1,progname2  ; each refers to 'x' in [program:x] definitions</span><br><span class="line">;priority=999                  ; the relative start priority (default 999)</span><br><span class="line"></span><br><span class="line">; The [include] section can just contain the "files" setting.  This</span><br><span class="line">; setting can list multiple files (separated by whitespace or</span><br><span class="line">; newlines).  It can also contain wildcards.  The filenames are</span><br><span class="line">; interpreted as relative to this file.  Included files *cannot*</span><br><span class="line">; include files themselves.</span><br><span class="line"></span><br><span class="line">[include]</span><br><span class="line">files = /www/server/panel/plugin/supervisor/profile/*.ini</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>守护进程配置文件:cd /www/server/panel/plugin/supervisor/profile/</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[program:2]</span><br><span class="line">command=php think queue:work --daemon  --tries  3</span><br><span class="line">directory=/www/wwwroot/xxx/public</span><br><span class="line">autorestart=true</span><br><span class="line">startsecs=3</span><br><span class="line">startretries=3</span><br><span class="line">stdout_logfile=/www/server/panel/plugin/supervisor/log/2.out.log</span><br><span class="line">stderr_logfile=/www/server/panel/plugin/supervisor/log/2.err.log</span><br><span class="line">stdout_logfile_maxbytes=2MB</span><br><span class="line">stderr_logfile_maxbytes=2MB</span><br><span class="line">user=root</span><br><span class="line">priority=999</span><br><span class="line">numprocs=1</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="5">
+<li>启动服务</li>
+</ol>
+<h2 id="四、参考-2"><a href="#四、参考-2" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://supervisord.org/">参考一</a></li>
+</ol>
+<hr>
+<h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a><center><font color="red">Selenium</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><ol>
+<li>Selenium，浏览器自动化测试框架，是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。支持的浏览器包括IE(7,8,9,10,11)，Mozilla Firefox，Safari，Google Chrome，Opera等。</li>
+<li>这个工具的主要功能包括：<ul>
+<li>测试与浏览器的兼容性——测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。</li>
+<li>测试系统功能——创建回归测试检验软件功能和用户需求。</li>
+<li>支持自动录制动作和自动生成.Net、Java、Perl等不同语言的测试脚本。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、mac下安装"><a href="#二、mac下安装" class="headerlink" title="二、mac下安装"></a>二、mac下安装</h2><ol>
+<li>sudo easy_install selenium</li>
+</ol>
+<h2 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h2><ol>
+<li>待补充</li>
+</ol>
+<hr>
+<h1 id="宝塔"><a href="#宝塔" class="headerlink" title="宝塔"></a><center><font color="red">宝塔</font></center></h1><h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.bt.cn/new/download.html">安装</a><ul>
+<li>通用安装脚本</li>
+<li>CentOS/OpenCloudOS/AlibabaCloudOS脚本</li>
+<li>Ubuntu/Deepin脚本</li>
+</ul>
+</li>
+</ol>
+<p><img src="install.png?608x" alt="安装成功"></p>
+<p><img src="bind.png?608x" alt="绑定账号"></p>
+<ol start="2">
+<li>使用<ul>
+<li>通过管理后台</li>
+<li>通过命令行</li>
+</ul>
+</li>
+</ol>
+<p><img src="use.png?608x" alt="后台管理"></p>
+<p><img src="ssh.png?608x" alt="SSH使用"></p>
+<ol start="3">
+<li>部署服务，以php为例</li>
+</ol>
+<p><img src="step1.png?608x" alt="步骤1"></p>
+<p><img src="step2.png?608x" alt="步骤2"></p>
+<p><img src="step3.png?608x" alt="步骤3"></p>
+<p><img src="step4.png?608x" alt="步骤4"></p>
+<ol start="4">
+<li>卸载<ul>
+<li>手动卸载 </li>
+<li>/etc/init.d/bt stop &amp;&amp; rm -f /etc/init.d/bt &amp;&amp; rm -rf /www/server/panel</li>
+<li>使用脚本<ul>
+<li>wget <a target="_blank" rel="noopener" href="http://download.bt.cn/install/bt-uninstall.sh">http://download.bt.cn/install/bt-uninstall.sh</a></li>
+<li>sh bt-uninstall.sh</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://1panel.cn/">1Panel</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bt.cn/new/index.html">宝塔</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/alinux/product-overview/alibaba-cloud-linux-overview">AlibabaCloudOS</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/213/70717">OpenCloudOS</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.centos.org/">CentOS</a></li>
+<li><a target="_blank" rel="noopener" href="https://ubuntu.com/">Ubuntu</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.debian.org/">Debian</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.redhat.com/en">RedHat</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebsd.org/">FreeBSD</a></li>
+<li><a target="_blank" rel="noopener" href="https://fedoraproject.org/">Fedora</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.deepin.org/index/zh">Deepin</a></li>
+</ol>
 
     </div>
 
@@ -862,7 +1182,10 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/ansible/" rel="tag"><i class="fa fa-tag"></i> ansible</a>
+              <a href="/tags/rsync/" rel="tag"><i class="fa fa-tag"></i> rsync</a>
               <a href="/tags/supervisor/" rel="tag"><i class="fa fa-tag"></i> supervisor</a>
+              <a href="/tags/%E5%AE%9D%E5%A1%94/" rel="tag"><i class="fa fa-tag"></i> 宝塔</a>
               <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
               <a href="/tags/sketchbook/" rel="tag"><i class="fa fa-tag"></i> sketchbook</a>
               <a href="/tags/gimp/" rel="tag"><i class="fa fa-tag"></i> gimp</a>
@@ -875,6 +1198,7 @@
               <a href="/tags/gitmind/" rel="tag"><i class="fa fa-tag"></i> gitmind</a>
               <a href="/tags/%E9%A3%9E%E4%B9%A6/" rel="tag"><i class="fa fa-tag"></i> 飞书</a>
               <a href="/tags/%E7%BD%91%E7%AB%99/" rel="tag"><i class="fa fa-tag"></i> 网站</a>
+              <a href="/tags/Selenium/" rel="tag"><i class="fa fa-tag"></i> Selenium</a>
           </div>
 
         
@@ -930,7 +1254,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-amp-%E8%B5%84%E6%BA%90%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">个人开发工具&amp;资源笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E5%83%8F-%E7%BB%98%E5%9B%BE-%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.</span> <span class="nav-text">一、图像&#x2F;绘图&#x2F;设计工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3-amp-HTTP%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">二、接口&amp;HTTP调试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-amp-Git-SVN"><span class="nav-number">1.3.</span> <span class="nav-text">三、版本控制 &amp; Git&#x2F;SVN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.4.</span> <span class="nav-text">四、数据库客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%88%E7%AB%AF-SSH-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">五、终端 &#x2F; SSH &#x2F; 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB-amp-Vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%B3%BB%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">六、代码阅读 &amp; Vim编辑器系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94-amp-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">七、文件对比 &amp; 进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Mac-%E4%B8%93%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.8.</span> <span class="nav-text">八、Mac 专用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95-amp-VPN%E5%B7%A5%E5%85%B7"><span class="nav-number">1.9.</span> <span class="nav-text">九、网络测试 &amp; VPN工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%BC%80%E5%8F%91%E7%B1%BB%E5%BA%93"><span class="nav-number">1.10.</span> <span class="nav-text">十、开发类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%9C%A8%E7%BA%BF%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.11.</span> <span class="nav-text">十一、在线小工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90"><span class="nav-number">1.12.</span> <span class="nav-text">十二、前端资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.13.</span> <span class="nav-text">十三、爬虫项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3-amp-%E8%B5%84%E6%96%99"><span class="nav-number">1.14.</span> <span class="nav-text">十四、开发文档 &amp; 资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">1.15.</span> <span class="nav-text">十五、其他</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">工具收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E5%83%8F-%E7%BB%98%E5%9B%BE-%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.</span> <span class="nav-text">一、图像&#x2F;绘图&#x2F;设计工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3-amp-HTTP%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">二、接口&amp;HTTP调试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-amp-Git-SVN"><span class="nav-number">1.3.</span> <span class="nav-text">三、版本控制 &amp; Git&#x2F;SVN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.4.</span> <span class="nav-text">四、数据库客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%88%E7%AB%AF-SSH-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">五、终端 &#x2F; SSH &#x2F; 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB-amp-Vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%B3%BB%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">六、代码阅读 &amp; Vim编辑器系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94-amp-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">七、文件对比 &amp; 进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Mac-%E4%B8%93%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.8.</span> <span class="nav-text">八、Mac 专用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95-amp-VPN%E5%B7%A5%E5%85%B7"><span class="nav-number">1.9.</span> <span class="nav-text">九、网络测试 &amp; VPN工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%BC%80%E5%8F%91%E7%B1%BB%E5%BA%93"><span class="nav-number">1.10.</span> <span class="nav-text">十、开发类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%9C%A8%E7%BA%BF%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.11.</span> <span class="nav-text">十一、在线小工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90"><span class="nav-number">1.12.</span> <span class="nav-text">十二、前端资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.13.</span> <span class="nav-text">十三、爬虫项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3-amp-%E8%B5%84%E6%96%99"><span class="nav-number">1.14.</span> <span class="nav-text">十四、开发文档 &amp; 资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">1.15.</span> <span class="nav-text">十五、其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ansible"><span class="nav-number">2.</span> <span class="nav-text">ansible</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">2.3.</span> <span class="nav-text">三、扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync"><span class="nav-number">3.</span> <span class="nav-text">rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95-1"><span class="nav-number">3.3.</span> <span class="nav-text">三、扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supervisor"><span class="nav-number">4.</span> <span class="nav-text">supervisor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Mac"><span class="nav-number">4.2.</span> <span class="nav-text">二、使用(Mac)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8-Linux-%E5%AE%9D%E5%A1%94"><span class="nav-number">4.3.</span> <span class="nav-text">三、使用(Linux+宝塔)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selenium"><span class="nav-number">5.</span> <span class="nav-text">Selenium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81mac%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">二、mac下安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">5.3.</span> <span class="nav-text">三、使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9D%E5%A1%94"><span class="nav-number">6.</span> <span class="nav-text">宝塔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="nav-number">6.1.</span> <span class="nav-text">一、介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">6.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -946,7 +1270,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -959,7 +1283,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1054</span>
+        <span class="site-state-item-count">1046</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -986,7 +1310,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -1057,7 +1381,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:20</span>
+    <span title="站点阅读时长">18:22</span>
 </div>
 
         

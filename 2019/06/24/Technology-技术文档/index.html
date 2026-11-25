@@ -141,21 +141,20 @@
   };
 </script>
 
-  <meta name="description" content="朝闻道，夕死可矣。 ————《论语·里仁》">
+  <meta name="description" content="WAL(Write Ahead Log)，即预写日志，是数据库系统中常见的一种手段，用于保证数据操作的原子性和持久性。在使用WAL的应用系统中(如MySQL)，所有的修改在提交之前都要先写入log文件中，log文件中通常包括redo和undo信息。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="技术文档">
-<meta property="og:url" content="https://liusir.net/2023/06/23/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:url" content="https://liusir.net/2019/06/24/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/index.html">
 <meta property="og:site_name" content="liusir.net">
-<meta property="og:description" content="朝闻道，夕死可矣。 ————《论语·里仁》">
+<meta property="og:description" content="WAL(Write Ahead Log)，即预写日志，是数据库系统中常见的一种手段，用于保证数据操作的原子性和持久性。在使用WAL的应用系统中(如MySQL)，所有的修改在提交之前都要先写入log文件中，log文件中通常包括redo和undo信息。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-06-23T01:37:21.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.458Z">
+<meta property="article:published_time" content="2019-06-23T18:29:06.000Z">
+<meta property="article:modified_time" content="2026-11-25T06:53:42.342Z">
 <meta property="article:author" content="刘三儿">
-<meta property="article:tag" content="技术文档">
-<meta property="article:tag" content="开发文档">
-<meta property="article:tag" content="调研报告">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="Code Review - API - 接口 - 规范 - Restful - 技术文档 - 开发文档 - 调研报告">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://liusir.net/2023/06/23/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+  <link rel="canonical" href="https://liusir.net/2019/06/24/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
 
 
 <script id="page-configurations">
@@ -330,7 +329,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liusir.net/2023/06/23/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
+    <link itemprop="mainEntityOfPage" href="https://liusir.net/2019/06/24/Technology-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/kid.jpg">
@@ -355,7 +354,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-06-23 09:37:21" itemprop="dateCreated datePublished" datetime="2023-06-23T09:37:21+08:00">2023-06-23</time>
+              <time title="创建时间：2019-06-24 02:29:06" itemprop="dateCreated datePublished" datetime="2019-06-24T02:29:06+08:00">2019-06-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -374,13 +373,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.3k</span>
+              <span>5.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>3 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -393,12 +392,188 @@
 
       
         <script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>朝闻道，夕死可矣。 ————《论语·里仁》</p>
+<p>WAL(Write Ahead Log)，即预写日志，是数据库系统中常见的一种手段，用于保证数据操作的原子性和持久性。在使用WAL的应用系统中(如MySQL)，所有的修改在提交之前都要先写入log文件中，log文件中通常包括redo和undo信息。</p>
 </blockquote>
 <span id="more"></span>
 
 
-<h1 id="技术文档"><a href="#技术文档" class="headerlink" title="技术文档"></a><center><font color="red">技术文档</font></center></h1><h2 id="一、技术文档"><a href="#一、技术文档" class="headerlink" title="一、技术文档"></a>一、技术文档</h2><ol>
+<h1 id="代码审查"><a href="#代码审查" class="headerlink" title="代码审查"></a><center><font color="red">代码审查</font></center></h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代码审查(英语：Code review)是指对计算机源代码系统化地审查，常用软件同行评审的方式进行，其目的是在找出及修正在软件开发初期未发现的错误，提升软件质量及开发者的技术。代码审查常以不同的形式进行，例如结对编程、非正式的看过整个代码，或是正式的软件检查，一般在合并主分支前进行。</p>
+<h2 id="二、方法"><a href="#二、方法" class="headerlink" title="二、方法"></a>二、方法</h2><ol>
+<li><p>目的：总结经验，提高自己，避免错误</p>
+</li>
+<li><p>参与人员</p>
+<ul>
+<li>主持人——主持控制流程</li>
+<li>功能负责人——答疑/讲解</li>
+<li>记录人——记录问题</li>
+<li>组员——reviewer</li>
+</ul>
+<blockquote>
+<p>主持人/功能负责人/记录人可以是同一个人，方便记录整合</p>
+</blockquote>
+</li>
+<li><p>基本流程</p>
+<ul>
+<li>主持人带电脑投影对比代码。开场</li>
+<li>讲解人分享业务逻辑和设计思路，技术经验。并且对代码功能进行介绍</li>
+<li>review代码可读性，风格格式</li>
+<li>review数据结构</li>
+<li>review代码逻辑</li>
+<li>结束后整理问题及可优化点 形成wiki或者 issuse</li>
+</ul>
+</li>
+<li><p>基本原则</p>
+<ul>
+<li>不要刻意的去寻找代码bug</li>
+<li>不要按照自己的编程风格去评论别人的代码</li>
+<li>不要带着抨击和质疑别人能力的心态去进行代码评审</li>
+<li>不要在不确定的问题上长时间争论</li>
+<li>不要听不进别人的意见</li>
+</ul>
+</li>
+<li><p>review项</p>
+<ul>
+<li><p>基本</p>
+<ul>
+<li>代码能够工作么？(有没有实现预期的功能，逻辑是否正确等)</li>
+<li>所有的代码是否简单易懂？</li>
+<li>代码符合遵循的编程规范么？(包括大括号的位置，变量名和函数名及其可读性，行的长度，缩进，格式和注释，单双引号等)</li>
+<li>是否存在多余的或是重复的代码？</li>
+<li>代码是否尽可能的模块化了？</li>
+<li>是否有可以被替换的全局变量？</li>
+<li>是否有被注释掉的代码？</li>
+<li>循环是否设置了长度和正确的终止条件？</li>
+<li>是否有可以被库函数替代的代码？</li>
+<li>是否有可以删除的日志或调试代码？</li>
+</ul>
+</li>
+<li><p>安全</p>
+<ul>
+<li>所有的数据输入是否都进行了检查并且进行了编码？(非空，类型，长度，格式和范围)</li>
+<li>在哪里使用了第三方工具，返回的错误是否被捕获？</li>
+<li>输出的值是否进行了检查并且编码？</li>
+<li>无效的参数值是否能够处理？</li>
+</ul>
+</li>
+<li><p>文档</p>
+<ul>
+<li>是否有注释，并且描述了代码的意图？</li>
+<li>所有的函数都有注释吗？(包含参数、返回、作者、时间)</li>
+<li>对非常规行为和边界情况处理是否有描述？</li>
+<li>第三方库的使用和函数是否有文档？</li>
+<li>数据结构和计量单位是否进行了解释？</li>
+<li>是否有未完成的代码？(TO DO项)</li>
+</ul>
+</li>
+<li><p>核心</p>
+<ul>
+<li>检查设计的合理性和业务逻辑的正确性 重点关注资源消耗 发奖操作</li>
+<li>数据库字段设计是否满足需求，实体类设计是否合理</li>
+<li>是否有异常处理机制</li>
+<li>是否影响后续业务的扩展</li>
+<li>关注数据结构</li>
+<li>是否有影响性能的代码：数据库批量操作，资源是否关闭</li>
+</ul>
+</li>
+<li><p>可读性和可维护性</p>
+<ul>
+<li>必要的注释： 类，方法，复杂代码段，命名规范</li>
+<li>重复代码抽取成方法 </li>
+<li>繁琐代码，能简单实现的地方是否需要优化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>总结</p>
+<ul>
+<li>设计思想</li>
+<li>技术方法</li>
+<li>业务知识</li>
+<li>编程规范</li>
+<li>代码风格如何避坑</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://google.github.io/eng-practices/review/reviewer/">参考一</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f79c4e948954">参考二</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/07ebb86a446b">参考三</a></li>
+<li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1632957610045444789&amp;wfr=spider&amp;for=pc">参考四</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-names">参考五</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/y4CkU9v483Bb5K8H9g-_mQ">参考六</a> </li>
+</ol>
+<hr>
+<h1 id="API接口设计规范"><a href="#API接口设计规范" class="headerlink" title="API接口设计规范"></a><center><font color="red">API接口设计规范</font></center></h1><h2 id="一、概念-1"><a href="#一、概念-1" class="headerlink" title="一、概念"></a>一、概念</h2><h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li><p>接口地址 <code>https://liusir.me/v1/products</code></p>
+<ul>
+<li><p>协议</p>
+<ul>
+<li>http </li>
+<li>https</li>
+</ul>
+</li>
+<li><p>域名</p>
+<ul>
+<li>测试环境<code>liusir.me</code></li>
+<li>生产环境<code>test.liusir.me</code></li>
+</ul>
+</li>
+<li><p>版本</p>
+<ul>
+<li>整数：大版本号，如：v1,v2，具有当前版本下的所有API接口</li>
+<li>浮点数：小版本号，只具备补充API的功能，其他API都默认调用对应大版本号，如：v1.1,v2.2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>地址</p>
+<ul>
+<li>RESTful格式：地址代表一种资源(resource)，所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的集合(collection，所以API中的名词也应该使用复数。</li>
+<li>非RESTful格式：本着见文知意的原则，可getDataList，get-data-list，data:list等形式</li>
+</ul>
+</li>
+<li><p>请求</p>
+<ul>
+<li><p>请求方式</p>
+<ul>
+<li>GET(SELECT)：从服务器取出资源，可一项或多项。</li>
+<li>POST(CREATE)：在服务器新建一个资源。</li>
+<li>PUT(UPDATE)：在服务器更新资源(客户端提供改变后的完整资源)。</li>
+<li>DELETE(DELETE)：从服务器删除资源。</li>
+</ul>
+</li>
+<li><p>请求参数</p>
+<ul>
+<li>通过地址栏传参</li>
+<li>通过请求体传参</li>
+<li>通过请求header传参</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>响应</p>
+<ul>
+<li><p>响应结果</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    "status": true,</span><br><span class="line">    "type": "json",</span><br><span class="line">    "code": "001",</span><br><span class="line">    "result": {</span><br><span class="line">        "total": 2,</span><br><span class="line">        "total_page": 1,</span><br><span class="line">        "data": [</span><br><span class="line">            {</span><br><span class="line">                "id": "12345",</span><br><span class="line">                "student_no": "12345",//学员学号</span><br><span class="line">                "student_name": "测试",//学员姓名</span><br><span class="line">            },</span><br><span class="line">            {</span><br><span class="line">                "id": "12345",</span><br><span class="line">                "student_no": "12345",//学员学号</span><br><span class="line">                "student_name": "测试",//学员姓名</span><br><span class="line">            },</span><br><span class="line">        ]</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+</li>
+<li><p>错误码说明</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">错误码</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">001</td>
+<td align="center">请求成功</td>
+</tr>
+</tbody></table>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><h1 id="技术文档"><a href="#技术文档" class="headerlink" title="技术文档"></a><center><font color="red">技术文档</font></center></h1><h2 id="一、技术文档"><a href="#一、技术文档" class="headerlink" title="一、技术文档"></a>一、技术文档</h2><ol>
 <li>项目文档：用于开启新项目的整体概要文档，说明项目背景、成员、依赖关系、项目整体排期、里程碑、 模块概述、系统交互、</li>
 <li>部署文档：介绍网站或系统如何进行部署，搭建运行环境，通常需要说明代码的Git仓库位置、数据库结构、Nginx/Apache配置、计划任务配置、其他配置，是否需要CDN或HTTPS等，以及注意事项。</li>
 <li>接口文档：针对每个API接口提供的文档，说明接口地址，调用方式，接口参数，返回结构，异常情况等。</li>
@@ -417,7 +592,7 @@
 <h2 id="二、如何书写"><a href="#二、如何书写" class="headerlink" title="二、如何书写"></a>二、如何书写</h2><blockquote>
 <p>TODO</p>
 </blockquote>
-<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29786741">https://www.zhihu.com/question/29786741</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137279920">https://zhuanlan.zhihu.com/p/137279920</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/427404344/answer/1709304008">https://www.zhihu.com/question/427404344/answer/1709304008</a></li>
@@ -531,25 +706,24 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 技术文档</a>
-              <a href="/tags/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 开发文档</a>
-              <a href="/tags/%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/" rel="tag"><i class="fa fa-tag"></i> 调研报告</a>
+              <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
+              <a href="/tags/Code-Review-API-%E6%8E%A5%E5%8F%A3-%E8%A7%84%E8%8C%83-Restful-%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3-%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3-%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/" rel="tag"><i class="fa fa-tag"></i> Code Review - API - 接口 - 规范 - Restful - 技术文档 - 开发文档 - 调研报告</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2023/05/01/Book-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" rel="next" title="如何解决问题">
-                  <i class="fa fa-chevron-left"></i> 如何解决问题
+                <a href="/2019/06/18/ELK-ElasticSearch%E6%9F%A5%E8%AF%A2/" rel="next" title="Elasticsearch查询">
+                  <i class="fa fa-chevron-left"></i> Elasticsearch查询
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2023/07/18/Book-%E8%87%AA%E7%9C%81/" rel="prev" title="自省">
-                  自省 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/07/15/OOP-%E6%94%B6%E9%9B%86/" rel="prev" title="面向对象收集">
+                  面向对象收集 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -589,7 +763,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">技术文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">1.1.</span> <span class="nav-text">一、技术文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E4%B9%A6%E5%86%99"><span class="nav-number">1.2.</span> <span class="nav-text">二、如何书写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3"><span class="nav-number">2.</span> <span class="nav-text">开发文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95"><span class="nav-number">2.2.</span> <span class="nav-text">二、如何</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A"><span class="nav-number">3.</span> <span class="nav-text">调研报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">3.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.</span> <span class="nav-text">二、步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ChatGPT%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A"><span class="nav-number">4.</span> <span class="nav-text">ChatGPT调研报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8A%80%E6%9C%AF%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">一、技术概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">二、发展历程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%AB%9E%E4%BA%89%E5%88%86%E6%9E%90"><span class="nav-number">4.3.</span> <span class="nav-text">三、竞争分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-number">4.4.</span> <span class="nav-text">四、应用案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">4.5.</span> <span class="nav-text">五、优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%BB%93%E8%AE%BA"><span class="nav-number">4.6.</span> <span class="nav-text">六、结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">4.7.</span> <span class="nav-text">七、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">代码审查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">二、方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">API接口设计规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text">技术文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3"><span class="nav-number">3.1.</span> <span class="nav-text">一、技术文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95%E4%B9%A6%E5%86%99"><span class="nav-number">3.2.</span> <span class="nav-text">二、如何书写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3"><span class="nav-number">4.</span> <span class="nav-text">开发文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A6%82%E4%BD%95"><span class="nav-number">4.2.</span> <span class="nav-text">二、如何</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A"><span class="nav-number">5.</span> <span class="nav-text">调研报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">5.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.2.</span> <span class="nav-text">二、步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ChatGPT%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A"><span class="nav-number">6.</span> <span class="nav-text">ChatGPT调研报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%8A%80%E6%9C%AF%E6%A6%82%E8%BF%B0"><span class="nav-number">6.1.</span> <span class="nav-text">一、技术概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="nav-number">6.2.</span> <span class="nav-text">二、发展历程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%AB%9E%E4%BA%89%E5%88%86%E6%9E%90"><span class="nav-number">6.3.</span> <span class="nav-text">三、竞争分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="nav-number">6.4.</span> <span class="nav-text">四、应用案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">6.5.</span> <span class="nav-text">五、优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%BB%93%E8%AE%BA"><span class="nav-number">6.6.</span> <span class="nav-text">六、结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.7.</span> <span class="nav-text">七、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -605,7 +779,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
         
-          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -618,7 +792,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1054</span>
+        <span class="site-state-item-count">1046</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -645,7 +819,7 @@
             <h3 class="widget-title"></h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="200" height="200" id="resCanvas">
-                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li></ul>
+                    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DevOps/">DevOps</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HAProxy/">HAProxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hobby/">Hobby</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/K8S/">K8S</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MQ/">MQ</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mac/">Mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOP/">OOP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PL/">PL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rust/">Rust</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -716,7 +890,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:20</span>
+    <span title="站点阅读时长">18:22</span>
 </div>
 
         
