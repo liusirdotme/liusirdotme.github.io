@@ -2890,6 +2890,272 @@
       </tags>
   </entry>
   <entry>
+    <title>备考路线</title>
+    <url>/2024/07/25/Cloud-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="AWS-Cloud-Practitioner-阿里云ACA云计算-腾讯云从业者-对比-amp-备考路线"><a href="#AWS-Cloud-Practitioner-阿里云ACA云计算-腾讯云从业者-对比-amp-备考路线" class="headerlink" title="AWS Cloud Practitioner / 阿里云ACA云计算 / 腾讯云从业者 对比&amp;备考路线"></a><center><font color="red">AWS Cloud Practitioner / 阿里云ACA云计算 / 腾讯云从业者 对比&amp;备考路线</font></center></h1><blockquote>
+<p>版本说明：AWS CLF-C02、阿里云云计算ACA、腾讯云从业者认证（Tencent Cloud Practitioner）</p>
+</blockquote>
+<h2 id="一、基础信息对比表"><a href="#一、基础信息对比表" class="headerlink" title="一、基础信息对比表"></a>一、基础信息对比表</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>AWS Cloud Practitioner（CLF-C02）</th>
+<th>阿里云云计算工程师 ACA</th>
+<th>腾讯云从业者认证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>入门从业者，通用云认知，不绑定岗位</td>
+<td>阿里云入门基础认证，产品识别+基础选型</td>
+<td>对标AWS Practitioner，腾讯云全景入门</td>
+</tr>
+<tr>
+<td>考试时长</td>
+<td>90分钟</td>
+<td>90分钟</td>
+<td>90分钟</td>
+</tr>
+<tr>
+<td>题量</td>
+<td>65题（含15道不计分）</td>
+<td>50题（单选+多选+判断）</td>
+<td>60题：单选40、多选20</td>
+</tr>
+<tr>
+<td>合格线</td>
+<td>700/1000</td>
+<td>70/100</td>
+<td>70/100</td>
+</tr>
+<tr>
+<td>考试形式</td>
+<td>线上/线下考点</td>
+<td>线上机考</td>
+<td>线上理论考试</td>
+</tr>
+<tr>
+<td>费用</td>
+<td>约100USD</td>
+<td>600元（订单含2次机会，1年内）</td>
+<td>官网可查，价格更低</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>中英可选</td>
+<td>中文</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>进阶路线</td>
+<td>SAA→DVA→SysOps等</td>
+<td>ACP→ACE</td>
+<td>TCCA→TCCP</td>
+</tr>
+</tbody></table>
+<h2 id="二、考试大纲-amp-分值权重对比"><a href="#二、考试大纲-amp-分值权重对比" class="headerlink" title="二、考试大纲&amp;分值权重对比"></a>二、考试大纲&amp;分值权重对比</h2><h3 id="AWS-Cloud-Practitioner（CLF-C02）"><a href="#AWS-Cloud-Practitioner（CLF-C02）" class="headerlink" title="AWS Cloud Practitioner（CLF-C02）"></a>AWS Cloud Practitioner（CLF-C02）</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>权重</th>
+<th>核心考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>云概念 Cloud Concepts</td>
+<td>24%</td>
+<td>云计算价值、云优势、架构设计原则、迁移策略、CAP、弹性/可扩展性</td>
+</tr>
+<tr>
+<td>安全与合规 Security and Compliance</td>
+<td>30%</td>
+<td><strong>共享责任模型</strong>、IAM、加密、合规体系、安全最佳实践、日志审计</td>
+</tr>
+<tr>
+<td>云技术与服务 Technology &amp; Services</td>
+<td>34%</td>
+<td>EC2、S3、RDS、VPC、Lambda、SQS/SNS、DynamoDB、基础AI/大数据服务，区分产品适用场景</td>
+</tr>
+<tr>
+<td>账单定价与支持 Billing &amp; Support</td>
+<td>12%</td>
+<td>计费模式、预留实例、Savings Plans、预算、Cost Explorer、Support计划</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特点：<strong>非常看重共享责任模型、安全合规、云理念</strong>；不考复杂配置，重在“识别服务、选场景”</p>
+</blockquote>
+<h3 id="阿里云-云计算ACA"><a href="#阿里云-云计算ACA" class="headerlink" title="阿里云 云计算ACA"></a>阿里云 云计算ACA</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>权重</th>
+<th>核心考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>云计算基础</td>
+<td>10%</td>
+<td>IaaS/PaaS/SaaS、虚拟化、云优势、上云价值</td>
+</tr>
+<tr>
+<td>弹性计算（ECS）</td>
+<td>25%</td>
+<td>ECS实例、镜像、快照、弹性伸缩ESS、停机/计费模式</td>
+</tr>
+<tr>
+<td>云网络（VPC/SLB）</td>
+<td>20%</td>
+<td>VPC、安全组、NAT、SLB负载均衡、路由、网络隔离</td>
+</tr>
+<tr>
+<td>云存储（OSS/块存储）</td>
+<td>15%</td>
+<td>OSS、块存储、文件存储、冷热分层、访问权限</td>
+</tr>
+<tr>
+<td>云数据库RDS</td>
+<td>10%</td>
+<td>RDS主从、备份、只读实例、DTS、数据库选型</td>
+</tr>
+<tr>
+<td>云容器</td>
+<td>10%</td>
+<td>ACK基础概念、容器基础</td>
+</tr>
+<tr>
+<td>云安全 &amp; 监控</td>
+<td>10%</td>
+<td>RAM、DDoS、WAF、云监控、安全职责划分</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特点：<strong>偏国内阿里云产品细节</strong>，ECS、VPC、SLB占比很高；国内业务、等保相关内容</p>
+</blockquote>
+<h3 id="腾讯云从业者认证"><a href="#腾讯云从业者认证" class="headerlink" title="腾讯云从业者认证"></a>腾讯云从业者认证</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>权重</th>
+<th>核心考点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>腾讯云概览</td>
+<td>3%</td>
+<td>腾讯云生态、产品线全景</td>
+</tr>
+<tr>
+<td>云计算基础</td>
+<td>13%</td>
+<td>云计算基础概念、交付模式、上云价值</td>
+</tr>
+<tr>
+<td>基础设施（计算/网络/存储）</td>
+<td>27%</td>
+<td>CVM、CLB、VPC、COS、CBS、CFS、CDN</td>
+</tr>
+<tr>
+<td>云数据库</td>
+<td>10%</td>
+<td>MySQL、PostgreSQL、TDSQL、DBbrain、迁移</td>
+</tr>
+<tr>
+<td>中间件</td>
+<td>5%</td>
+<td>Redis、消息队列等基础认知</td>
+</tr>
+<tr>
+<td>安全产品</td>
+<td>12%</td>
+<td>CAM、WAF、DDoS、密钥、审计</td>
+</tr>
+<tr>
+<td>大数据/AI/企业应用</td>
+<td>15%</td>
+<td>混元、大数据、音视频、企业应用</td>
+</tr>
+<tr>
+<td>计费与成本</td>
+<td>5%</td>
+<td>计费方式、包年包月/按量、成本优化</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>特点：<strong>结构最贴近AWS Practitioner</strong>，产品广度大，音视频、混元AI是特色考点</p>
+</blockquote>
+<h2 id="三、三者核心差异一句话总结"><a href="#三、三者核心差异一句话总结" class="headerlink" title="三、三者核心差异一句话总结"></a>三、三者核心差异一句话总结</h2><ol>
+<li><strong>AWS CLF-C02</strong>：重<strong>云理念、安全合规、共享责任模型</strong>，产品是案例，适合外企、海外业务、云原生通用认知；</li>
+<li><strong>腾讯云从业者</strong>：结构对齐AWS，广度最大，音视频、AI是特色，国内互联网、微信生态业务优先；</li>
+<li><strong>阿里云ACA</strong>：国内普及度最高，<strong>ECS/VPC/SLB权重极高</strong>，传统政企、阿里云生态项目优先。</li>
+</ol>
+<h2 id="四、备考路线（3套方案，按需选择）"><a href="#四、备考路线（3套方案，按需选择）" class="headerlink" title="四、备考路线（3套方案，按需选择）"></a>四、备考路线（3套方案，按需选择）</h2><blockquote>
+<p>前提：零基础建议先统一理解云计算通用概念（IaaS/PaaS/SaaS、弹性、高可用、共享安全模型），这部分是互通的</p>
+</blockquote>
+<h3 id="路线A：只考AWS-Cloud-Practitioner（CLF-C02，推荐想建立通用云思维）"><a href="#路线A：只考AWS-Cloud-Practitioner（CLF-C02，推荐想建立通用云思维）" class="headerlink" title="路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）"></a>路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）</h3><ol>
+<li>第1周：云概念 + 共享责任模型（重中之重，30%分值）</li>
+<li>第2周：核心服务识别（EC2/S3/RDS/VPC/Lambda/SQS/SNS），区分适用场景</li>
+<li>第3周：计费、成本工具、Support计划、合规（SOC、GDPR等）</li>
+<li>第4周：刷题 + 错题复盘，重点练“场景选型题”<blockquote>
+<p>资料：AWS官方Exam Guide、官方免费课程、A Cloud Guru/Stephane Maarek课程、题库</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）"><a href="#路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）" class="headerlink" title="路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）"></a>路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）</h3><ol>
+<li>第1周：云计算基础 + ECS（分值最高25%），吃透实例、快照、伸缩</li>
+<li>第2周：VPC、SLB、安全组、NAT（网络模块20%，高频坑点）</li>
+<li>第3周：OSS、RDS、RAM、云安全、云监控</li>
+<li>第4周：刷题，区分阿里云各存储、数据库产品差异<blockquote>
+<p>资料：阿里云培训中心官方课程、产品文档、ACA题库</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="路线C：国内路线，腾讯云从业者（对标AWS-Practitioner，想一套思维迁移）"><a href="#路线C：国内路线，腾讯云从业者（对标AWS-Practitioner，想一套思维迁移）" class="headerlink" title="路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）"></a>路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）</h3><ol>
+<li>第1周：云计算基础 + CVM、VPC、CLB、COS（基础设施）</li>
+<li>第2周：数据库、安全CAM/WAF/DDoS</li>
+<li>第3周：CDN、音视频、AI/混元、中间件</li>
+<li>第4周：刷题，重点区分腾讯云全家桶产品定位<blockquote>
+<p>资料：腾讯云培训认证免费课、产品文档</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="五、同时备考（先通用，再差异化）最优顺序"><a href="#五、同时备考（先通用，再差异化）最优顺序" class="headerlink" title="五、同时备考（先通用，再差异化）最优顺序"></a>五、同时备考（先通用，再差异化）最优顺序</h2><p>如果你想<strong>三个都学</strong>，推荐顺序：</p>
+<ol>
+<li>先学 AWS Cloud Practitioner：建立标准云思维、安全模型、架构原则（底层思想通用）</li>
+<li>再学腾讯云从业者：框架对齐AWS，上手最快，对比理解国内云差异</li>
+<li>最后阿里云ACA：产品细节多，国内项目场景多，单独记忆ECS/VPC/SLB体系</li>
+</ol>
+<blockquote>
+<p>避坑提醒：</p>
+<ul>
+<li>AWS的IAM ≈ 阿里云RAM ≈ 腾讯云CAM，是同一个东西，名字不同；</li>
+<li>共享责任模型三家都考，AWS考得最深；</li>
+<li>国内云证书考题大量是<strong>产品功能对比、国内合规（等保）</strong>，AWS是海外合规。</li>
+</ul>
+</blockquote>
+<h2 id="六、选择建议"><a href="#六、选择建议" class="headerlink" title="六、选择建议"></a>六、选择建议</h2><ul>
+<li>外企、海外业务、想通用云原生基础：<strong>AWS CLF-C02</strong></li>
+<li>国内政企、阿里云项目、国内求职运维/售前：<strong>阿里云ACA</strong></li>
+<li>腾讯生态、音视频、互联网业务、想对标AWS体系：<strong>腾讯云从业者</strong></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+      <tags>
+        <tag>阿里云</tag>
+        <tag>Cloud</tag>
+        <tag>ECS</tag>
+        <tag>腾讯云</tag>
+        <tag>AWS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AWS</title>
     <url>/2024/07/18/Cloud-AWS/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -4512,272 +4778,6 @@
       <tags>
         <tag>Cloud</tag>
         <tag>ECS</tag>
-        <tag>AWS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AWS</title>
-    <url>/2024/07/18/Cloud-%E5%A4%87%E8%80%83%E8%B7%AF%E7%BA%BF/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
-<p>你永远赚不到超出你认知范围之外的钱，除非靠着运气；但是运气赚到的钱，最后往往又会靠着实力亏掉，这是一种必然的趋势。</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="AWS-Cloud-Practitioner-阿里云ACA云计算-腾讯云从业者-对比-amp-备考路线"><a href="#AWS-Cloud-Practitioner-阿里云ACA云计算-腾讯云从业者-对比-amp-备考路线" class="headerlink" title="AWS Cloud Practitioner / 阿里云ACA云计算 / 腾讯云从业者 对比&amp;备考路线"></a><center><font color="red">AWS Cloud Practitioner / 阿里云ACA云计算 / 腾讯云从业者 对比&amp;备考路线</font></center></h1><blockquote>
-<p>版本说明：AWS CLF-C02、阿里云云计算ACA、腾讯云从业者认证（Tencent Cloud Practitioner）</p>
-</blockquote>
-<h2 id="一、基础信息对比表"><a href="#一、基础信息对比表" class="headerlink" title="一、基础信息对比表"></a>一、基础信息对比表</h2><table>
-<thead>
-<tr>
-<th>项目</th>
-<th>AWS Cloud Practitioner（CLF-C02）</th>
-<th>阿里云云计算工程师 ACA</th>
-<th>腾讯云从业者认证</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>定位</td>
-<td>入门从业者，通用云认知，不绑定岗位</td>
-<td>阿里云入门基础认证，产品识别+基础选型</td>
-<td>对标AWS Practitioner，腾讯云全景入门</td>
-</tr>
-<tr>
-<td>考试时长</td>
-<td>90分钟</td>
-<td>90分钟</td>
-<td>90分钟</td>
-</tr>
-<tr>
-<td>题量</td>
-<td>65题（含15道不计分）</td>
-<td>50题（单选+多选+判断）</td>
-<td>60题：单选40、多选20</td>
-</tr>
-<tr>
-<td>合格线</td>
-<td>700/1000</td>
-<td>70/100</td>
-<td>70/100</td>
-</tr>
-<tr>
-<td>考试形式</td>
-<td>线上/线下考点</td>
-<td>线上机考</td>
-<td>线上理论考试</td>
-</tr>
-<tr>
-<td>费用</td>
-<td>约100USD</td>
-<td>600元（订单含2次机会，1年内）</td>
-<td>官网可查，价格更低</td>
-</tr>
-<tr>
-<td>语言</td>
-<td>中英可选</td>
-<td>中文</td>
-<td>中文</td>
-</tr>
-<tr>
-<td>进阶路线</td>
-<td>SAA→DVA→SysOps等</td>
-<td>ACP→ACE</td>
-<td>TCCA→TCCP</td>
-</tr>
-</tbody></table>
-<h2 id="二、考试大纲-amp-分值权重对比"><a href="#二、考试大纲-amp-分值权重对比" class="headerlink" title="二、考试大纲&amp;分值权重对比"></a>二、考试大纲&amp;分值权重对比</h2><h3 id="AWS-Cloud-Practitioner（CLF-C02）"><a href="#AWS-Cloud-Practitioner（CLF-C02）" class="headerlink" title="AWS Cloud Practitioner（CLF-C02）"></a>AWS Cloud Practitioner（CLF-C02）</h3><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>权重</th>
-<th>核心考点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>云概念 Cloud Concepts</td>
-<td>24%</td>
-<td>云计算价值、云优势、架构设计原则、迁移策略、CAP、弹性/可扩展性</td>
-</tr>
-<tr>
-<td>安全与合规 Security and Compliance</td>
-<td>30%</td>
-<td><strong>共享责任模型</strong>、IAM、加密、合规体系、安全最佳实践、日志审计</td>
-</tr>
-<tr>
-<td>云技术与服务 Technology &amp; Services</td>
-<td>34%</td>
-<td>EC2、S3、RDS、VPC、Lambda、SQS/SNS、DynamoDB、基础AI/大数据服务，区分产品适用场景</td>
-</tr>
-<tr>
-<td>账单定价与支持 Billing &amp; Support</td>
-<td>12%</td>
-<td>计费模式、预留实例、Savings Plans、预算、Cost Explorer、Support计划</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>特点：<strong>非常看重共享责任模型、安全合规、云理念</strong>；不考复杂配置，重在“识别服务、选场景”</p>
-</blockquote>
-<h3 id="阿里云-云计算ACA"><a href="#阿里云-云计算ACA" class="headerlink" title="阿里云 云计算ACA"></a>阿里云 云计算ACA</h3><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>权重</th>
-<th>核心考点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>云计算基础</td>
-<td>10%</td>
-<td>IaaS/PaaS/SaaS、虚拟化、云优势、上云价值</td>
-</tr>
-<tr>
-<td>弹性计算（ECS）</td>
-<td>25%</td>
-<td>ECS实例、镜像、快照、弹性伸缩ESS、停机/计费模式</td>
-</tr>
-<tr>
-<td>云网络（VPC/SLB）</td>
-<td>20%</td>
-<td>VPC、安全组、NAT、SLB负载均衡、路由、网络隔离</td>
-</tr>
-<tr>
-<td>云存储（OSS/块存储）</td>
-<td>15%</td>
-<td>OSS、块存储、文件存储、冷热分层、访问权限</td>
-</tr>
-<tr>
-<td>云数据库RDS</td>
-<td>10%</td>
-<td>RDS主从、备份、只读实例、DTS、数据库选型</td>
-</tr>
-<tr>
-<td>云容器</td>
-<td>10%</td>
-<td>ACK基础概念、容器基础</td>
-</tr>
-<tr>
-<td>云安全 &amp; 监控</td>
-<td>10%</td>
-<td>RAM、DDoS、WAF、云监控、安全职责划分</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>特点：<strong>偏国内阿里云产品细节</strong>，ECS、VPC、SLB占比很高；国内业务、等保相关内容</p>
-</blockquote>
-<h3 id="腾讯云从业者认证"><a href="#腾讯云从业者认证" class="headerlink" title="腾讯云从业者认证"></a>腾讯云从业者认证</h3><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>权重</th>
-<th>核心考点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>腾讯云概览</td>
-<td>3%</td>
-<td>腾讯云生态、产品线全景</td>
-</tr>
-<tr>
-<td>云计算基础</td>
-<td>13%</td>
-<td>云计算基础概念、交付模式、上云价值</td>
-</tr>
-<tr>
-<td>基础设施（计算/网络/存储）</td>
-<td>27%</td>
-<td>CVM、CLB、VPC、COS、CBS、CFS、CDN</td>
-</tr>
-<tr>
-<td>云数据库</td>
-<td>10%</td>
-<td>MySQL、PostgreSQL、TDSQL、DBbrain、迁移</td>
-</tr>
-<tr>
-<td>中间件</td>
-<td>5%</td>
-<td>Redis、消息队列等基础认知</td>
-</tr>
-<tr>
-<td>安全产品</td>
-<td>12%</td>
-<td>CAM、WAF、DDoS、密钥、审计</td>
-</tr>
-<tr>
-<td>大数据/AI/企业应用</td>
-<td>15%</td>
-<td>混元、大数据、音视频、企业应用</td>
-</tr>
-<tr>
-<td>计费与成本</td>
-<td>5%</td>
-<td>计费方式、包年包月/按量、成本优化</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>特点：<strong>结构最贴近AWS Practitioner</strong>，产品广度大，音视频、混元AI是特色考点</p>
-</blockquote>
-<h2 id="三、三者核心差异一句话总结"><a href="#三、三者核心差异一句话总结" class="headerlink" title="三、三者核心差异一句话总结"></a>三、三者核心差异一句话总结</h2><ol>
-<li><strong>AWS CLF-C02</strong>：重<strong>云理念、安全合规、共享责任模型</strong>，产品是案例，适合外企、海外业务、云原生通用认知；</li>
-<li><strong>腾讯云从业者</strong>：结构对齐AWS，广度最大，音视频、AI是特色，国内互联网、微信生态业务优先；</li>
-<li><strong>阿里云ACA</strong>：国内普及度最高，<strong>ECS/VPC/SLB权重极高</strong>，传统政企、阿里云生态项目优先。</li>
-</ol>
-<h2 id="四、备考路线（3套方案，按需选择）"><a href="#四、备考路线（3套方案，按需选择）" class="headerlink" title="四、备考路线（3套方案，按需选择）"></a>四、备考路线（3套方案，按需选择）</h2><blockquote>
-<p>前提：零基础建议先统一理解云计算通用概念（IaaS/PaaS/SaaS、弹性、高可用、共享安全模型），这部分是互通的</p>
-</blockquote>
-<h3 id="路线A：只考AWS-Cloud-Practitioner（CLF-C02，推荐想建立通用云思维）"><a href="#路线A：只考AWS-Cloud-Practitioner（CLF-C02，推荐想建立通用云思维）" class="headerlink" title="路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）"></a>路线A：只考AWS Cloud Practitioner（CLF-C02，推荐想建立通用云思维）</h3><ol>
-<li>第1周：云概念 + 共享责任模型（重中之重，30%分值）</li>
-<li>第2周：核心服务识别（EC2/S3/RDS/VPC/Lambda/SQS/SNS），区分适用场景</li>
-<li>第3周：计费、成本工具、Support计划、合规（SOC、GDPR等）</li>
-<li>第4周：刷题 + 错题复盘，重点练“场景选型题”<blockquote>
-<p>资料：AWS官方Exam Guide、官方免费课程、A Cloud Guru/Stephane Maarek课程、题库</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）"><a href="#路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）" class="headerlink" title="路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）"></a>路线B：国内路线，阿里云ACA（适合国内政企、阿里云项目）</h3><ol>
-<li>第1周：云计算基础 + ECS（分值最高25%），吃透实例、快照、伸缩</li>
-<li>第2周：VPC、SLB、安全组、NAT（网络模块20%，高频坑点）</li>
-<li>第3周：OSS、RDS、RAM、云安全、云监控</li>
-<li>第4周：刷题，区分阿里云各存储、数据库产品差异<blockquote>
-<p>资料：阿里云培训中心官方课程、产品文档、ACA题库</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="路线C：国内路线，腾讯云从业者（对标AWS-Practitioner，想一套思维迁移）"><a href="#路线C：国内路线，腾讯云从业者（对标AWS-Practitioner，想一套思维迁移）" class="headerlink" title="路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）"></a>路线C：国内路线，腾讯云从业者（对标AWS Practitioner，想一套思维迁移）</h3><ol>
-<li>第1周：云计算基础 + CVM、VPC、CLB、COS（基础设施）</li>
-<li>第2周：数据库、安全CAM/WAF/DDoS</li>
-<li>第3周：CDN、音视频、AI/混元、中间件</li>
-<li>第4周：刷题，重点区分腾讯云全家桶产品定位<blockquote>
-<p>资料：腾讯云培训认证免费课、产品文档</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="五、同时备考（先通用，再差异化）最优顺序"><a href="#五、同时备考（先通用，再差异化）最优顺序" class="headerlink" title="五、同时备考（先通用，再差异化）最优顺序"></a>五、同时备考（先通用，再差异化）最优顺序</h2><p>如果你想<strong>三个都学</strong>，推荐顺序：</p>
-<ol>
-<li>先学 AWS Cloud Practitioner：建立标准云思维、安全模型、架构原则（底层思想通用）</li>
-<li>再学腾讯云从业者：框架对齐AWS，上手最快，对比理解国内云差异</li>
-<li>最后阿里云ACA：产品细节多，国内项目场景多，单独记忆ECS/VPC/SLB体系</li>
-</ol>
-<blockquote>
-<p>避坑提醒：</p>
-<ul>
-<li>AWS的IAM ≈ 阿里云RAM ≈ 腾讯云CAM，是同一个东西，名字不同；</li>
-<li>共享责任模型三家都考，AWS考得最深；</li>
-<li>国内云证书考题大量是<strong>产品功能对比、国内合规（等保）</strong>，AWS是海外合规。</li>
-</ul>
-</blockquote>
-<h2 id="六、选择建议"><a href="#六、选择建议" class="headerlink" title="六、选择建议"></a>六、选择建议</h2><ul>
-<li>外企、海外业务、想通用云原生基础：<strong>AWS CLF-C02</strong></li>
-<li>国内政企、阿里云项目、国内求职运维/售前：<strong>阿里云ACA</strong></li>
-<li>腾讯生态、音视频、互联网业务、想对标AWS体系：<strong>腾讯云从业者</strong></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-      <tags>
-        <tag>阿里云</tag>
-        <tag>Cloud</tag>
-        <tag>ECS</tag>
-        <tag>腾讯云</tag>
         <tag>AWS</tag>
       </tags>
   </entry>
