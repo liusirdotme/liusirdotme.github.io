@@ -148,6 +148,8 @@
 <meta property="og:site_name" content="liusir.net">
 <meta property="og:description" content="他强由他强，清风拂山岗；他横由他横，明月照大江。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/a1.png">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/a2.png">
 <meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/super.png">
 <meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/install.png?608x">
 <meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/bind.png?608x">
@@ -157,9 +159,13 @@
 <meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step2.png?608x">
 <meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step3.png?608x">
 <meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/step4.png?608x">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2025/png/29293738/1755333250633-fe53866c-7944-492d-bc31-ef08473a075a.png">
+<meta property="og:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/prometheus.png">
 <meta property="article:published_time" content="2016-09-11T11:47:48.000Z">
-<meta property="article:modified_time" content="2026-11-25T07:07:16.215Z">
+<meta property="article:modified_time" content="2026-11-25T07:42:33.239Z">
 <meta property="article:author" content="刘三儿">
+<meta property="article:tag" content="JumpServer">
+<meta property="article:tag" content="Prometheus">
 <meta property="article:tag" content="ansible">
 <meta property="article:tag" content="rsync">
 <meta property="article:tag" content="supervisor">
@@ -177,8 +183,9 @@
 <meta property="article:tag" content="飞书">
 <meta property="article:tag" content="网站">
 <meta property="article:tag" content="Selenium">
+<meta property="article:tag" content="Jenkins">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/super.png">
+<meta name="twitter:image" content="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/a1.png">
   <link rel="canonical" href="https://liusir.net/2016/09/11/Tools-%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7/">
 
 
@@ -398,13 +405,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>8.2k</span>
+              <span>17k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>7 分钟</span>
+              <span>15 分钟</span>
             </span>
 
         </div>
@@ -868,6 +875,8 @@
 </tbody></table>
 <hr>
 <h1 id="ansible"><a href="#ansible" class="headerlink" title="ansible"></a><center><font color="red">ansible</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ansible是一种自动化运维工具，基于Python开发，集合了众多运维工具(puppet、chef、func、fabric)的优点，实现了批量系统配置、批量程序部署、批量运行命令等功能。</p>
+<p><img src="a1.png" alt="A1"></p>
+<p><img src="a2.png" alt="A2"></p>
 <h2 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
 <li><p>Mac</p>
 <ul>
@@ -961,7 +970,8 @@
 </li>
 </ul>
 <ol start="2">
-<li>Linux<ul>
+<li><p>Linux</p>
+<ul>
 <li>安装(Ubuntu22.04)<ul>
 <li>sudo apt update</li>
 <li>sudo apt install software-properties-common</li>
@@ -981,10 +991,69 @@
 </li>
 </ul>
 </li>
+<li><p>/etc/ansible/hosts</p>
+</li>
 </ol>
-<h2 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
-<li>rsync</li>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">[all]</span><br><span class="line">10.87.10.100</span><br><span class="line">10.87.100.11</span><br><span class="line">10.87.100.6</span><br><span class="line">10.87.100.7</span><br><span class="line">10.87.102.1</span><br><span class="line">10.87.102.2</span><br><span class="line">10.87.102.3</span><br><span class="line">10.87.102.4</span><br><span class="line">10.87.102.5</span><br><span class="line">10.87.200.13</span><br><span class="line">10.87.200.33</span><br><span class="line">10.87.200.10</span><br><span class="line">10.87.200.1</span><br><span class="line">10.87.200.2</span><br><span class="line">10.87.200.11</span><br><span class="line">10.87.200.21</span><br><span class="line">10.87.200.12</span><br><span class="line">10.87.200.22</span><br><span class="line">10.87.100.9</span><br><span class="line">10.87.101.1</span><br><span class="line">10.87.101.2</span><br><span class="line">10.87.100.10</span><br><span class="line">10.87.10.101</span><br><span class="line">10.87.103.100</span><br><span class="line">10.87.102.100</span><br><span class="line">10.87.100.1</span><br><span class="line">10.87.100.2</span><br><span class="line">10.87.100.4</span><br><span class="line">10.87.100.5</span><br><span class="line">10.87.100.3</span><br><span class="line">10.87.104.1</span><br><span class="line">10.87.104.2</span><br><span class="line">10.87.104.3</span><br><span class="line">10.87.104.4</span><br><span class="line">10.87.104.5</span><br><span class="line">10.87.103.1</span><br><span class="line">10.87.103.2</span><br><span class="line">10.87.103.3</span><br><span class="line">10.87.103.4</span><br><span class="line">10.87.103.5</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li><p>使用：ansible all -m ping -u root</p>
+</li>
+<li><p>其他用法</p>
+</li>
 </ol>
+<ul>
+<li>ansible all -m shell -a’ps -ef|grep zabbix’ -u root</li>
+<li>ansible all -m shell -a’systemctl stop zabbix-agent’ -u root</li>
+<li>ansible all -m shell -a’systemctl start zabbix-agent’ -u root</li>
+<li>ansible all -m shell -a’systemctl status zabbix-agent’ -u root</li>
+<li>ansible all -m shell -a’apt-get remove –purge zabbix-agent’ -u root</li>
+<li>ansible all -m shell -a’rm -rf /etc/zabbix/zabbix_agentd.conf’ -u root</li>
+<li>ansible all -m shell -a’rm -rf /etc/zabbix/zabbix_agentd.d/‘ -u root</li>
+<li>ansible all -m shell -a’zabbix_agentd -V’ -u root</li>
+<li>ansible all -m shell -a’apt-cache madison zabbix-agent’ -u root</li>
+<li>ansible all -m shell -a’ cat /etc/zabbix/zabbix_agentd.conf |grep Server’ -u root</li>
+<li>ansible all -m lineinfile -a “dest=/etc/zabbix/zabbix_agentd.conf regexp=’Server=127.0.0.1’ line=’Server=10.87.100.88’ state=present”</li>
+</ul>
+<h2 id="三、playbook"><a href="#三、playbook" class="headerlink" title="三、playbook"></a>三、playbook</h2><ol>
+<li>模块</li>
+</ol>
+<ul>
+<li>hosts：运行执行任务（task）的目标主机</li>
+<li>remote_user：在远程主机上执行任务的用户</li>
+<li>tasks：任务，调用模块完成的操作<ul>
+<li>原理和事务一样，要么一起执行，要么一起不执行。</li>
+</ul>
+</li>
+<li>handlers：处理器，当某条件满足时，触发执行的操作<ul>
+<li>与tasks不同的是只有在接受到通知时才会被触发</li>
+</ul>
+</li>
+<li>templates：模板<ul>
+<li>定义模板同一格式，解决每个服务可能因格式不一样而不兼容的问题。</li>
+</ul>
+</li>
+<li>variables：变量<ul>
+<li>声明变量的三个场景：hosts文件中定义、剧本中定义、在命令中加上-e定义</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>测试</li>
+</ol>
+<ul>
+<li>touch playbook.yml</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- name: test ping</span><br><span class="line">  hosts: all</span><br><span class="line">  tasks:</span><br><span class="line">    - name: ping all</span><br><span class="line">      ping:</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>执行：ansible-playbook playbook.yml</li>
+</ul>
+<ol start="3">
+<li>正式(多个实例安装node_exporter)</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- name: my first playbook script</span><br><span class="line">  become: yes</span><br><span class="line">  hosts: all</span><br><span class="line">  #vars:</span><br><span class="line">  #  http_port: 80</span><br><span class="line">  #  max_clients: 200</span><br><span class="line">  remote_user: root</span><br><span class="line">  tasks:</span><br><span class="line">  - name: ping all</span><br><span class="line">    ping:</span><br><span class="line">  - name: copy node_exporter</span><br><span class="line">    copy: src=/root/node_exporter-1.9.1.linux-amd64.tar.gz dest=/root/node_exporter-1.9.1.linux-amd64.tar.gz</span><br><span class="line">  - name: check node_exporter</span><br><span class="line">    shell: ls /root</span><br><span class="line">  - name: unzip</span><br><span class="line">    shell: tar -zxvf /root/node_exporter-1.9.1.linux-amd64.tar.gz &amp;&amp; mv node_exporter-1.9.1.linux-amd64 node_exporter-1.9.1</span><br><span class="line">  - name: exec</span><br><span class="line">    shell: /root/node_exporter-1.9.1 --log.level=debug</span><br><span class="line">  - name: copy node_exporter_service</span><br><span class="line">    copy: src=/root/node_exporter.service dest=/usr/lib/systemd/system/node_exporter.service</span><br><span class="line">  - name: mv node_exporter</span><br><span class="line">    shell: mv /root/node_exporter-1.9.1 /usr/local/</span><br><span class="line">  - name: exec</span><br><span class="line">    shell: /usr/local/node_exporter-1.9.1 --log.level=debug</span><br><span class="line">  - name: exec</span><br><span class="line">    shell: chown root:root /usr/local/node_exporter-1.9.1</span><br><span class="line">  - name: exec</span><br><span class="line">    shell: systemctl start node_exporter</span><br><span class="line">  - name: exec</span><br><span class="line">    shell: systemctl stop node_exporter</span><br></pre></td></tr></tbody></table></figure>
+
 <h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.ansible.com/">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/74e69dea64e5">参考二</a></li>
@@ -1018,7 +1087,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="三、扩展-1"><a href="#三、扩展-1" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
+<h2 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h2><ol>
 <li>sync</li>
 <li>ansible</li>
 </ol>
@@ -1172,6 +1241,358 @@
 <li><a target="_blank" rel="noopener" href="https://fedoraproject.org/">Fedora</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.deepin.org/index/zh">Deepin</a></li>
 </ol>
+<hr>
+<h1 id="JumpServer"><a href="#JumpServer" class="headerlink" title="JumpServer"></a><center><font color="red">JumpServer</font></center></h1><h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><ol>
+<li>离线安装</li>
+<li>一键安装：curl -sSL <a target="_blank" rel="noopener" href="https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh">https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh</a> | bash</li>
+<li>在线安装</li>
+</ol>
+<ul>
+<li>环境要求<ul>
+<li>最小内存4G</li>
+<li>安装依赖：yum install -y wget curl tar gettext iptables</li>
+<li>数据库：create database jumpserver default charset ‘utf8’;</li>
+</ul>
+</li>
+<li>开始安装<ul>
+<li>cd /opt</li>
+<li>wget <a target="_blank" rel="noopener" href="https://resource.fit2cloud.com/jumpserver/installer/releases/download/None/jumpserver-installer-None.tar.gz">https://resource.fit2cloud.com/jumpserver/installer/releases/download/None/jumpserver-installer-None.tar.gz</a><ul>
+<li><font style="color:#DF2A3F;">报404</font></li>
+</ul>
+</li>
+<li>tar -xf jumpserver-installer-None.tar.gz</li>
+<li>cd jumpserver-installer-None</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>卸载</li>
+</ol>
+<ul>
+<li>jmsctl uninstall<ul>
+<li>cd /opt/jumpserver-installer-v4.9.0</li>
+<li>./jmsctl.sh uninstall</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>一键安装报错</li>
+</ol>
+<ul>
+<li>重试就好了</li>
+</ul>
+<ol start="2">
+<li>一键安装报错</li>
+</ol>
+<ul>
+<li>服务器部署了其他服务占用了80端口，换成在线安装，修改服务端口或本次虚拟机</li>
+</ul>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.jumpserver.org/zh/v4/">https://docs.jumpserver.org/zh/v4/</a></li>
+</ol>
+<hr>
+<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a><center><font color="red">Jenkins</font></center></h1><h2 id="一、流程"><a href="#一、流程" class="headerlink" title="一、流程"></a>一、流程</h2><ol>
+<li>安装命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \</span><br><span class="line">  https://pkg.jenkins.io/debian/jenkins.io-2023.key</span><br><span class="line">echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \</span><br><span class="line">  https://pkg.jenkins.io/debian binary/ | sudo tee \</span><br><span class="line">  /etc/apt/sources.list.d/jenkins.list &gt; /dev/null</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>systemctl enable jenkins</li>
+<li>systemctl start jenkins，报错，缺少Java运行环境</li>
+<li>apt update</li>
+<li>apt install fontconfig openjdk-21-jre</li>
+<li>systemctl start jenkins</li>
+<li>systemctl status jenkins</li>
+<li>安全组放行8080端口</li>
+<li>访问：<a target="_blank" rel="noopener" href="http://47.96.236.22:8080/">http://47.96.236.22:8080/</a></li>
+</ol>
+<ul>
+<li>cat /var/lib/jenkins/secrets/initialAdminPassword，得到密码</li>
+</ul>
+<ol start="10">
+<li>登录后继续后面的安装</li>
+<li>创建管理员用户</li>
+</ol>
+<ul>
+<li>xxx/xxxJenkins123!@#</li>
+<li>xxxy/xxx@qq.com</li>
+</ul>
+<h2 id="二、问题-1"><a href="#二、问题-1" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>systemctl start jenkins，报错</li>
+</ol>
+<ul>
+<li>Job for jenkins.service failed because the control process exited with error code.See “systemctl status jenkins.service” and “journalctl -xeu jenkins.service” for details.</li>
+<li>journalctl -xeu jenkins.service，发现：jenkins: failed to find a valid Java installation报错</li>
+<li>安装Java运行环境</li>
+</ul>
+<ol start="2">
+<li>修改端口号为8081，再次启动报错</li>
+</ol>
+<ul>
+<li>vim /etc/default/jenkins，不管用</li>
+<li>vim /etc/init.d/jenkins，不管用</li>
+<li>vim /lib/systemd/system/jenkins.service<ul>
+<li>systemctl daemon-reload</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/">https://www.jenkins.io/doc/book/installing/linux/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/doc/">https://www.jenkins.io/zh/doc/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/doc/pipeline/tour/hello-world/">https://www.jenkins.io/zh/doc/pipeline/tour/hello-world/</a></li>
+<li><a target="_blank" rel="noopener" href="https://plugins.jenkins.io/gitlab-plugin/">https://plugins.jenkins.io/gitlab-plugin/</a></li>
+</ol>
+<hr>
+<h1 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a><center><font color="red">Prometheus</font></center></h1><h2 id="一、基础介绍"><a href="#一、基础介绍" class="headerlink" title="一、基础介绍"></a>一、基础介绍</h2><ol>
+<li>Prometheus是一个用 Golang 编写的开源的系统监控和警报工具包，能够收集和处理来自各种目标的指标，还可以查询、查看、分析指标并根据阈值收到警报。自2012年启动以来，许多公司和组织都采用了Prometheus，该项目拥有非常活跃的开发人员和用户社区。它现在是一个独立的开源项目，独立于任何公司进行维护。Prometheus于2016年加入云原生计算基金会，成为继Kubernetes之后的第二个托管项目。</li>
+</ol>
+<ul>
+<li>在Prometheus的架构设计中，Prometheus Server并不直接服务监控特定的目标，其主要任务负责数据的收集，存储并且对外提供数据查询支持。因此为了能够监控到某些东西，如主机的CPU使用率，我们需要使用到Exporter。Prometheus周期性的从Exporter暴露的HTTP服务地址（通常是/metrics）拉取监控样本数据。</li>
+</ul>
+<ol start="2">
+<li>Exporter是Prometheus的指标数据收集组件。它负责从目标Jobs收集数据，并把收集到的数据转换为Prometheus支持的时序数据格式。和传统的指标数据收集组件不同的是，他只负责收集，并不向Server端发送数据，而是等待Prometheus Server 主动抓取，node-exporter 默认的抓取url地址：<a target="_blank" rel="noopener" href="http://ip:9100/metrics">http://ip:9100/metrics</a>。</li>
+</ol>
+<ul>
+<li>Prometheus可以使用Pushgateway这个组件推送node-exporter的指标数据到远端Prometheus，node-exporter用于采集node的运行指标，包括node的cpu、load、filesystem、meminfo、network等基础监控指标，类似于zabbix监控系统的的zabbix-agent。node-exporter由Prometheus官方提供、维护，属于监控指标收集类UNIX内核操作系统的必备的exporter。</li>
+</ul>
+<ol start="3">
+<li>‌‌Grafana是一个开源的‌数据可视化工具，它提供了强大的数据可视化功能、灵活的告警系统、用户和角色管理、插件系统等核心功能。‌</li>
+</ol>
+<ul>
+<li>Grafana的架构由前端、后端和数据源组成。前端是基于‌React的单页应用，后端是基于‌Go语言的服务器，数据源通过插件与Grafana集成。这种架构设计使得Grafana能够灵活地适应不同的数据源和用户需求。</li>
+<li>Grafana支持与多种数据源（如Elasticsearch、InfluxDB、Prometheus等）集成，使得它能够展示来自这些数据源的数据。</li>
+</ul>
+<h2 id="二、安装使用"><a href="#二、安装使用" class="headerlink" title="二、安装使用"></a>二、安装使用</h2><ol>
+<li>安装prometheus</li>
+</ol>
+<ul>
+<li>cd /usr/local/src</li>
+<li>wget <a target="_blank" rel="noopener" href="https://github.com/prometheus/prometheus/releases/download/v2.54.1/prometheus-2.54.1.linux-amd64.tar.gz">https://github.com/prometheus/prometheus/releases/download/v2.54.1/prometheus-2.54.1.linux-amd64.tar.gz</a></li>
+<li>tar -zxvf prometheus-2.54.1.linux-amd64.tar.gz</li>
+<li>mv prometheus-2.54.1.linux-amd64 /usr/local/</li>
+<li>mv prometheus-2.54.1.linux-amd64 prometheus-2.54.1</li>
+<li>cd prometheus-2.54.1</li>
+<li>./prometheus –config.file=prometheus.yml</li>
+<li>添加到系统服务：vim /usr/lib/systemd/system/prometheus.service</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=https://prometheus.io</span><br><span class="line">[Service]</span><br><span class="line">Restart=on-failure</span><br><span class="line">ExecStart=/usr/local/prometheus-2.54.1/prometheus --storage.tsdb.path=/usr/local/prometheus-2.54.1/data --config.file=/usr/local/prometheus-2.54.1/prometheus.yml</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl start prometheus</li>
+<li>ps -ef|grep prometheus</li>
+<li>lsof -i:9090</li>
+<li>netstat -nltp|grep 9090</li>
+<li>systemctl status prometheus</li>
+<li>systemctl restart prometheus</li>
+<li>systemctl stop prometheus</li>
+</ul>
+<ol start="2">
+<li>安装go环境</li>
+</ol>
+<ul>
+<li>cd /usr/local/src</li>
+<li>wget <a target="_blank" rel="noopener" href="https://go.dev/dl/go1.23.0.linux-386.tar.gz">https://go.dev/dl/go1.23.0.linux-386.tar.gz</a></li>
+<li>tar -zxvf go1.23.0.linux-386.tar.gz </li>
+<li>mv go /usr/local</li>
+<li>export GOROOT=/usr/local/go</li>
+<li>export GOPATH=/home/gopath</li>
+<li>export PATH=$PATH:$GOROOT/bin:$GOPATH/bin <ul>
+<li>GOROOT 是 go 的安装目录</li>
+<li>GOPATH 是 go 的工作目录</li>
+<li>PATH 是环境变量 </li>
+</ul>
+</li>
+<li>go version</li>
+</ul>
+<ol start="3">
+<li>安装node_exporter</li>
+</ol>
+<ul>
+<li>源码安装<ul>
+<li>git clone <a target="_blank" rel="noopener" href="https://github.com/prometheus/node_exporter.git">https://github.com/prometheus/node_exporter.git</a></li>
+<li>cd node_exporter</li>
+<li>go build<ul>
+<li>下载慢设置代理：export GOPROXY=<a target="_blank" rel="noopener" href="https://goproxy.cn">https://goproxy.cn</a></li>
+</ul>
+</li>
+<li>./node_exporter –version</li>
+</ul>
+</li>
+<li>使用编译好的包<ul>
+<li>wget <a target="_blank" rel="noopener" href="https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz">https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz</a></li>
+<li>tar -zxvf node_exporter-1.8.2.linux-amd64.tar.gz </li>
+<li>mv node_exporter-1.8.2.linux-amd64 /usr/local/</li>
+<li>cd /usr/local</li>
+<li>mv node_exporter-1.8.2.linux-amd64 node_exporter-1.8.2</li>
+<li>cd /usr/local/node_exporter-1.8.2/</li>
+<li>./node_exporter –log.level=debug <ul>
+<li>./node_exporter –help</li>
+</ul>
+</li>
+<li>curl -s <a target="_blank" rel="noopener" href="http://localhost:9100/metrics">http://localhost:9100/metrics</a><ul>
+<li>设置安全组：9100</li>
+<li>浏览器访问：<a target="_blank" rel="noopener" href="http://101.200.15.11:9100/metrics">http://101.200.15.11:9100/metrics</a></li>
+<li>curl -s <a target="_blank" rel="noopener" href="http://localhost:9100/metrics">http://8.141.94.234:9100/metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>修改prometheus配置文件prometheus.yml</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># my global config</span><br><span class="line">global:</span><br><span class="line">  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.</span><br><span class="line">  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.</span><br><span class="line">  # scrape_timeout is set to the global default (10s).</span><br><span class="line"></span><br><span class="line"># Alertmanager configuration</span><br><span class="line">alerting:</span><br><span class="line">  alertmanagers:</span><br><span class="line">    - static_configs:</span><br><span class="line">        - targets:</span><br><span class="line">          # - alertmanager:9093</span><br><span class="line"></span><br><span class="line"># Load rules once and periodically evaluate them according to the global 'evaluation_interval'.</span><br><span class="line">rule_files:</span><br><span class="line">  # - "first_rules.yml"</span><br><span class="line">  # - "second_rules.yml"</span><br><span class="line"></span><br><span class="line"># A scrape configuration containing exactly one endpoint to scrape:</span><br><span class="line"># Here it's Prometheus itself.</span><br><span class="line">scrape_configs:</span><br><span class="line">  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span><br><span class="line">  - job_name: "prometheus"</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: ["localhost:9090"]</span><br><span class="line">  - job_name: "node-exporter"</span><br><span class="line">    metrics_path: /metrics</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: ["localhost:9100"]</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>./prometheus –config.file=prometheus.yml</li>
+<li>浏览器访问：<a target="_blank" rel="noopener" href="http://ip:9090/targets">http://ip:9090/targets</a></li>
+<li>添加到系统服务：vi /usr/lib/systemd/system/node_exporter.service</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus node_exporter</span><br><span class="line">[Service]</span><br><span class="line">User=nobody</span><br><span class="line">ExecStart=/usr/local/node_exporter-1.8.2/node_exporter --log.level=error</span><br><span class="line">ExecStop=/usr/bin/killall node_exporter</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl start node_exporter</li>
+<li>systemctl stop node_exporter</li>
+<li>systemctl restart node_exporter</li>
+<li>systemctl status node_exporter</li>
+</ul>
+<ol start="4">
+<li><a target="_blank" rel="noopener" href="https://grafana.com/grafana/download?pg=get&amp;plcmt=selfmanaged-box1-cta1">安装grafana</a></li>
+</ol>
+<ul>
+<li>sudo yum install -y <a target="_blank" rel="noopener" href="https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0-1.x86_64.rpm">https://dl.grafana.com/enterprise/release/grafana-enterprise-11.2.0-1.x86_64.rpm</a></li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Install  1 Package</span><br><span class="line"></span><br><span class="line">Total size: 122 M</span><br><span class="line">Installed size: 460 M</span><br><span class="line">Downloading Packages:</span><br><span class="line">Running transaction check</span><br><span class="line">Transaction check succeeded.</span><br><span class="line">Running transaction test</span><br><span class="line">Transaction test succeeded.</span><br><span class="line">Running transaction</span><br><span class="line">  Preparing        :                                                                                                                                                                                                        1/1 </span><br><span class="line">  Installing       : grafana-enterprise-11.2.0-1.x86_64                                                                                                                                                                     1/1 </span><br><span class="line">  Running scriptlet: grafana-enterprise-11.2.0-1.x86_64                                                                                                                                                                     1/1 </span><br><span class="line">### NOT starting on installation, please execute the following statements to configure grafana to start automatically using systemd</span><br><span class="line"> sudo /bin/systemctl daemon-reload</span><br><span class="line"> sudo /bin/systemctl enable grafana-server.service</span><br><span class="line">### You can start grafana-server by executing</span><br><span class="line"> sudo /bin/systemctl start grafana-server.service</span><br><span class="line"></span><br><span class="line">POSTTRANS: Running script</span><br><span class="line"></span><br><span class="line">  Verifying        : grafana-enterprise-11.2.0-1.x86_64                                                                                                                                                                     1/1 </span><br><span class="line"></span><br><span class="line">Installed:</span><br><span class="line">  grafana-enterprise-11.2.0-1.x86_64                                                                                                                                                                                            </span><br><span class="line"></span><br><span class="line">Complete!</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>systemctl enable grafana-server</li>
+<li>systemctl start grafana-server</li>
+<li>systemctl restart grafana-server</li>
+<li>systemctl stop grafana-server</li>
+<li>systemctl status grafana-server<img src="https://cdn.nlark.com/yuque/0/2025/png/29293738/1755333250633-fe53866c-7944-492d-bc31-ef08473a075a.png" width="1360" height="186" title="" crop="0,0,1,1" id="u1848bf89" class="ne-image"><ul>
+<li>权限问题，修改/usr/lib/systemd/system/grafana.service</li>
+</ul>
+</li>
+<li>访问：<a target="_blank" rel="noopener" href="http://101.200.15.11:3000/login">http://101.200.15.11:3000</a><ul>
+<li>默认：admin/admin，登录成功后会提示修改密码</li>
+<li>修改：admin/youshu123!@#</li>
+</ul>
+</li>
+<li>配置prometheus数据源<ul>
+<li>add your first data source</li>
+<li>prometheus</li>
+<li>输入链接</li>
+<li>save &amp; test</li>
+</ul>
+</li>
+<li>配置显示面板<ul>
+<li>New</li>
+<li>New dashboard</li>
+<li>Import a dashboard</li>
+<li>输入：8919，<a target="_blank" rel="noopener" href="https://grafana.com/grafana/dashboards/">详见</a></li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>监听其他服务器</li>
+</ol>
+<h2 id="三、参考-3"><a href="#三、参考-3" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.prometheus.io/">https://www.prometheus.io/</a></li>
+<li><a target="_blank" rel="noopener" href="https://prometheus.io/download/">https://prometheus.io/download/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/prometheus/prometheus">https://github.com/prometheus/prometheus</a></li>
+<li><a target="_blank" rel="noopener" href="https://grafana.com/">https://grafana.com/</a></li>
+</ol>
+<hr>
+<h1 id="Prometheus工作原理"><a href="#Prometheus工作原理" class="headerlink" title="Prometheus工作原理"></a><center><font color="red">Prometheus工作原理</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<li>特点</li>
+</ol>
+<ul>
+<li>多维数据模型：通过时间序列数据和任意的键值对（标签）来组织和存储数据。</li>
+<li>强大的查询语言（PromQL）：允许用户灵活地查询、聚合和过滤时间序列数据。</li>
+<li>拉模型数据采集：Prometheus 通过 HTTP 协议周期性地拉取目标资源的指标数据。</li>
+<li>无主集群模式：Prometheus 服务器是独立运行的，不依赖于分布式存储或其他集群管理工具。</li>
+<li>内置时序数据库：Prometheus 自带一个高效的时序数据库，用于存储采集到的指标数据。</li>
+<li>可视化和报警：通过 PromQL 查询结果，可以生成图表或触发报警。</li>
+</ul>
+<ol start="2">
+<li>原理</li>
+</ol>
+<ul>
+<li>数据采集（Exporters）：Prometheus 定期通过HTTP请求从目标资源中拉取数据。目标资源可以是应用程序、系统、服务或其他资源。<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/prometheus/node_exporter">node_exporter</a></li>
+</ul>
+</li>
+<li>数据存储（Storage）：Prometheus 将采集到的数据存储在本地存储引擎中。存储引擎以时间序列方式存储数据，其中每个时间序列都由指标名称和一组键值对组成。</li>
+<li>数据聚合（PromQL）：Prometheus 通过查询表达式聚合数据。PromQL 是 Prometheus 的查询语言，它允许用户通过查询表达式从存储引擎中检索指标的特定信息。</li>
+<li>告警处理（Alertmanager）：Prometheus 可以根据用户指定的规则对数据进行警报。当指标的值超出特定阈值时，Prometheus 向 Alertmanager 发送警报。Alertmanager 可以帮助用户对警报进行分组、消除和路由，并将警报发送到相应的接收器，例如邮件、企微、钉钉等。</li>
+<li>数据大盘（Grafana）：帮助用户通过可视化方式展示 Prometheus 的数据，包括仪表盘、图表、日志和警报等。</li>
+</ul>
+<h2 id="二、Prometheus组成"><a href="#二、Prometheus组成" class="headerlink" title="二、Prometheus组成"></a>二、Prometheus组成</h2><p><img src="prometheus.png" alt="prometheus"></p>
+<ol>
+<li>Prometheus Server：基于指标的监控系统的大脑，主要工作是使用拉模型从各个目标收集指标，目标只不过是服务器、pod、端点等。</li>
+<li>Service Discovery：Prometheus使用两种方法从目标中获取指标：</li>
+</ol>
+<ul>
+<li>静态配置：当目标具有静态IP或DNS端点时，我们可以使用这些端点作为目标。</li>
+<li>服务发现：在大多数自动伸缩系统和Kubernetes等分布式系统中，目标不会有静态端点。在这种情况下，使用 prometheus 服务发现来发现目标端点，并且目标会自动添加到 prometheus 配置中。</li>
+</ul>
+<ol start="3">
+<li>Time-Series Database(TSDB)：prometheus接收到的指标数据随着时间的推移而变化(CPU、内存、网络 IO等)，它被称为时间序列数据，因此Prometheus使用时间序列数据库(TSDB)来存储其所有数据。默认情况下，Prometheus 以高效的格式(块)将其所有数据存储在本地磁盘中。随着时间的推移，它会压缩所有旧数据以节省空间。它还具有删除旧数据的保留策略。TSDB 具有内置的机制来管理长期保存的数据。您可以选择以下任意数据保留策略。</li>
+</ol>
+<ul>
+<li>基于时间的保留：数据将保留指定的天数，默认保留期为15天。</li>
+<li>基于大小的保留：您可以指定 TSDB 可以容纳的最大数据量，一旦达到这个限制，prometheus将释放空间来容纳新数据。</li>
+</ul>
+<blockquote>
+<p>Prometheus还提供远程存储选项，这主要是存储可扩展性、长期存储、备份和灾难恢复等所需要的。</p>
+</blockquote>
+<ol start="4">
+<li>Targets：Target是Prometheus抓取指标的来源，目标可以是服务器、服务、Kubernetes Pod、应用程序端点等。</li>
+</ol>
+<ul>
+<li>默认情况下，prometheus会在目标的/metrics路径下查找指标。可以在目标配置中更改默认路径。这意味着，如果您不指定自定义指标路径，Prometheus会在/metrics下查找指标。</li>
+<li>目标配置位于prometheus配置文件中的scrape_configs下。</li>
+<li>prometheus需要来自目标端点的特定文本格式的数据，每个指标都必须换行。</li>
+</ul>
+<ol start="5">
+<li>Exporters：Exporter就像在目标上运行的代理，它将指标从特定系统转换为普罗米修斯可以理解的格式。它可以是系统指标，如CPU、内存等，也可以是Java JMX指标、MySQL指标等。</li>
+</ol>
+<ul>
+<li>默认情况下这些转换后的指标由 Exporter 在目标的/metrics路径(HTTP端点)上公开。<ul>
+<li>例如，如果要监控服务器的 CPU 和内存，则需要在该服务器上安装 Node Exporter，并且Node Exporter以prometheus 指标格式在/metrics 上公开CPU和内存指标。</li>
+</ul>
+</li>
+<li>一旦prometheus 提取指标，它将结合指标名称、标签、值和时间戳生成结构化数据。</li>
+<li>在prometheus配置文件中，所有Exporter 的详细信息将在scrape_configs下给出。</li>
+</ul>
+<ol start="6">
+<li>Push Gateway：prometheus默认使用pull方式来抓取指标。然而有些场景需要将指标推送到prometheus。为了推送指标，prometheus提供了一个名为Pushgateway的解决方案，它是一种中间网关。</li>
+</ol>
+<ul>
+<li>Pushgateway需要作为独立组件运行。如批处理作业可以使用 HTTP API 将指标推送到 Pushgateway，然后Pushgateway在/metrics端点上公开这些指标，最后Prometheus从Pushgateway中抓取这些指标。</li>
+<li>Pushgateway将指标数据临时存储在内存中，它更像是一个临时缓存。</li>
+<li>Pushgateway配置也将在Prometheus配置中的scrape_configs部分下进行配置。</li>
+<li>要将指标发送到Pushgateway，您需要使用prometheus客户端库对应用程序插桩，或使用脚本暴露指标。</li>
+</ul>
+<ol start="7">
+<li>AlertManager：Alertmanager是Prometheus监控系统的关键部分，它的主要工作是根据Prometheus警报配置中设置的指标阈值发送警报。警报由 Prometheus触发(注意，是由Prometheus进程触发原始告警)并发送到Alertmanager。Alertmanager对告警去重、抑制、静默、分组，最后使用各类通知媒介(电子邮件、slack 等)发出告警事件。其具体功能：</li>
+</ol>
+<ul>
+<li>Alert Deduplicating：消除重复警报</li>
+<li>Grouping：将相关警报分组在一起</li>
+<li>Silencing：静默维护</li>
+<li>Routing：路由，根据严重性将警报路由到适当的接收者</li>
+<li>Inhibition：抑制，当存在中高严重性警报时停止低严重性警报的过程</li>
+</ul>
+<blockquote>
+<p>Alertmanager 支持大多数消息和通知系统，例如 Discord、电子邮件、Slack等，以将警报作为通知发送给接收者。</p>
+</blockquote>
+<ol start="8">
+<li>Client Libraries：Prometheus客户端库是可用于检测应用程序代码的软件库，以Prometheus理解的方式公开指标。如果您需要自行埋点插桩或想要创建自己的Exporter，则可以使用客户端库。</li>
+<li>PromQL：PromQL是一种灵活的查询语言，可用于从prometheus查询时间序列指标。</li>
+</ol>
+<h2 id="三、参考-4"><a href="#三、参考-4" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2190976">https://cloud.tencent.com/developer/article/2190976</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liugp/p/16459922.html">https://www.cnblogs.com/liugp/p/16459922.html</a></li>
+</ol>
 
     </div>
 
@@ -1182,6 +1603,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/JumpServer/" rel="tag"><i class="fa fa-tag"></i> JumpServer</a>
+              <a href="/tags/Prometheus/" rel="tag"><i class="fa fa-tag"></i> Prometheus</a>
               <a href="/tags/ansible/" rel="tag"><i class="fa fa-tag"></i> ansible</a>
               <a href="/tags/rsync/" rel="tag"><i class="fa fa-tag"></i> rsync</a>
               <a href="/tags/supervisor/" rel="tag"><i class="fa fa-tag"></i> supervisor</a>
@@ -1199,6 +1622,7 @@
               <a href="/tags/%E9%A3%9E%E4%B9%A6/" rel="tag"><i class="fa fa-tag"></i> 飞书</a>
               <a href="/tags/%E7%BD%91%E7%AB%99/" rel="tag"><i class="fa fa-tag"></i> 网站</a>
               <a href="/tags/Selenium/" rel="tag"><i class="fa fa-tag"></i> Selenium</a>
+              <a href="/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
           </div>
 
         
@@ -1254,7 +1678,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">工具收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E5%83%8F-%E7%BB%98%E5%9B%BE-%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.</span> <span class="nav-text">一、图像&#x2F;绘图&#x2F;设计工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3-amp-HTTP%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">二、接口&amp;HTTP调试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-amp-Git-SVN"><span class="nav-number">1.3.</span> <span class="nav-text">三、版本控制 &amp; Git&#x2F;SVN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.4.</span> <span class="nav-text">四、数据库客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%88%E7%AB%AF-SSH-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">五、终端 &#x2F; SSH &#x2F; 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB-amp-Vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%B3%BB%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">六、代码阅读 &amp; Vim编辑器系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94-amp-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">七、文件对比 &amp; 进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Mac-%E4%B8%93%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.8.</span> <span class="nav-text">八、Mac 专用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95-amp-VPN%E5%B7%A5%E5%85%B7"><span class="nav-number">1.9.</span> <span class="nav-text">九、网络测试 &amp; VPN工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%BC%80%E5%8F%91%E7%B1%BB%E5%BA%93"><span class="nav-number">1.10.</span> <span class="nav-text">十、开发类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%9C%A8%E7%BA%BF%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.11.</span> <span class="nav-text">十一、在线小工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90"><span class="nav-number">1.12.</span> <span class="nav-text">十二、前端资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.13.</span> <span class="nav-text">十三、爬虫项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3-amp-%E8%B5%84%E6%96%99"><span class="nav-number">1.14.</span> <span class="nav-text">十四、开发文档 &amp; 资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">1.15.</span> <span class="nav-text">十五、其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ansible"><span class="nav-number">2.</span> <span class="nav-text">ansible</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">2.3.</span> <span class="nav-text">三、扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync"><span class="nav-number">3.</span> <span class="nav-text">rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95-1"><span class="nav-number">3.3.</span> <span class="nav-text">三、扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supervisor"><span class="nav-number">4.</span> <span class="nav-text">supervisor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Mac"><span class="nav-number">4.2.</span> <span class="nav-text">二、使用(Mac)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8-Linux-%E5%AE%9D%E5%A1%94"><span class="nav-number">4.3.</span> <span class="nav-text">三、使用(Linux+宝塔)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selenium"><span class="nav-number">5.</span> <span class="nav-text">Selenium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81mac%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">二、mac下安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">5.3.</span> <span class="nav-text">三、使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9D%E5%A1%94"><span class="nav-number">6.</span> <span class="nav-text">宝塔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="nav-number">6.1.</span> <span class="nav-text">一、介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">6.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86"><span class="nav-number">1.</span> <span class="nav-text">工具收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E5%83%8F-%E7%BB%98%E5%9B%BE-%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.</span> <span class="nav-text">一、图像&#x2F;绘图&#x2F;设计工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8E%A5%E5%8F%A3-amp-HTTP%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">二、接口&amp;HTTP调试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-amp-Git-SVN"><span class="nav-number">1.3.</span> <span class="nav-text">三、版本控制 &amp; Git&#x2F;SVN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.4.</span> <span class="nav-text">四、数据库客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%88%E7%AB%AF-SSH-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">五、终端 &#x2F; SSH &#x2F; 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB-amp-Vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%B3%BB%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">六、代码阅读 &amp; Vim编辑器系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94-amp-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">七、文件对比 &amp; 进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Mac-%E4%B8%93%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.8.</span> <span class="nav-text">八、Mac 专用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95-amp-VPN%E5%B7%A5%E5%85%B7"><span class="nav-number">1.9.</span> <span class="nav-text">九、网络测试 &amp; VPN工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%BC%80%E5%8F%91%E7%B1%BB%E5%BA%93"><span class="nav-number">1.10.</span> <span class="nav-text">十、开发类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%9C%A8%E7%BA%BF%E5%B0%8F%E5%B7%A5%E5%85%B7"><span class="nav-number">1.11.</span> <span class="nav-text">十一、在线小工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90"><span class="nav-number">1.12.</span> <span class="nav-text">十二、前端资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.13.</span> <span class="nav-text">十三、爬虫项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3-amp-%E8%B5%84%E6%96%99"><span class="nav-number">1.14.</span> <span class="nav-text">十四、开发文档 &amp; 资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">1.15.</span> <span class="nav-text">十五、其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ansible"><span class="nav-number">2.</span> <span class="nav-text">ansible</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81playbook"><span class="nav-number">2.3.</span> <span class="nav-text">三、playbook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync"><span class="nav-number">3.</span> <span class="nav-text">rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%89%A9%E5%B1%95"><span class="nav-number">3.3.</span> <span class="nav-text">三、扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#supervisor"><span class="nav-number">4.</span> <span class="nav-text">supervisor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">4.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Mac"><span class="nav-number">4.2.</span> <span class="nav-text">二、使用(Mac)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8-Linux-%E5%AE%9D%E5%A1%94"><span class="nav-number">4.3.</span> <span class="nav-text">三、使用(Linux+宝塔)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">4.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selenium"><span class="nav-number">5.</span> <span class="nav-text">Selenium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5-1"><span class="nav-number">5.1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81mac%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">二、mac下安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">5.3.</span> <span class="nav-text">三、使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9D%E5%A1%94"><span class="nav-number">6.</span> <span class="nav-text">宝塔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="nav-number">6.1.</span> <span class="nav-text">一、介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">6.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">6.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JumpServer"><span class="nav-number">7.</span> <span class="nav-text">JumpServer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">7.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">7.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">7.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">8.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B5%81%E7%A8%8B"><span class="nav-number">8.1.</span> <span class="nav-text">一、流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98-1"><span class="nav-number">8.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">8.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prometheus"><span class="nav-number">9.</span> <span class="nav-text">Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D"><span class="nav-number">9.1.</span> <span class="nav-text">一、基础介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">9.2.</span> <span class="nav-text">二、安装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">9.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prometheus%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">10.</span> <span class="nav-text">Prometheus工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">10.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Prometheus%E7%BB%84%E6%88%90"><span class="nav-number">10.2.</span> <span class="nav-text">二、Prometheus组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">10.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1283,7 +1707,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1046</span>
+        <span class="site-state-item-count">1047</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1381,7 +1805,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:22</span>
+    <span title="站点阅读时长">18:39</span>
 </div>
 
         

@@ -150,7 +150,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://liusir.net/2018/06/09/Docker-%E5%85%A5%E9%97%A8/docker.png">
 <meta property="article:published_time" content="2018-06-09T09:32:53.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.077Z">
+<meta property="article:modified_time" content="2026-11-25T07:34:31.008Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="镜像">
@@ -377,13 +377,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>4.8k</span>
+              <span>6.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>4 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -409,7 +409,82 @@
 </ul>
 </li>
 </ol>
-<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<blockquote>
+<p>Ubuntu下安装</p>
+</blockquote>
+<ol>
+<li>apt update</li>
+<li>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</li>
+</ol>
+<ul>
+<li>cd /etc</li>
+<li>mkdir docker</li>
+<li>vim daemon.json</li>
+</ul>
+<ol start="3">
+<li>sudo docker run hello-world</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@waiting1:~# sudo docker run hello-world</span><br><span class="line">Unable to find image 'hello-world:latest' locally</span><br><span class="line">docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</span><br><span class="line"></span><br><span class="line">Run 'docker run --help' for more information</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>使用国内的镜像源 </li>
+</ul>
+<ol start="4">
+<li>docker –version</li>
+</ol>
+<ul>
+<li>Docker version 28.3.3, build 980b856</li>
+</ul>
+<ol start="5">
+<li>docker run –name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@waiting1:~# docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx</span><br><span class="line">Unable to find image 'nginx:latest' locally</span><br><span class="line">docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": context deadline exceeded (Client.Timeout exceeded while awaiting headers)</span><br><span class="line"></span><br><span class="line">Run 'docker run --help' for more information</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>使用国内的镜像源 </li>
+<li>-v 宿主机目录：容器目录</li>
+<li>-d 后台运行</li>
+<li>–name：指定容器名称</li>
+</ul>
+<ol start="6">
+<li>docker stop some-nginx</li>
+<li>sudo curl -L “<a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname">https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname</a> -s)-$(uname -m)” -o /usr/local/bin/docker-compose</li>
+</ol>
+<ul>
+<li>apt  install docker-compose</li>
+</ul>
+<h2 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h2><ol>
+<li>安装报错</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">root@waiting1:~# # Add Docker's official GPG key:</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install ca-certificates curl</span><br><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc</span><br><span class="line">sudo chmod a+r /etc/apt/keyrings/docker.asc</span><br><span class="line"></span><br><span class="line"># Add the repository to Apt sources:</span><br><span class="line">echo \</span><br><span class="line">  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \</span><br><span class="line">  $(. /etc/os-release &amp;&amp; echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \</span><br><span class="line">  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br><span class="line">sudo apt-get update</span><br><span class="line">Hit:1 http://mirrors.cloud.aliyuncs.com/ubuntu jammy InRelease</span><br><span class="line">Hit:2 http://mirrors.cloud.aliyuncs.com/ubuntu jammy-updates InRelease</span><br><span class="line">Hit:3 http://mirrors.cloud.aliyuncs.com/ubuntu jammy-backports InRelease</span><br><span class="line">Hit:4 http://mirrors.cloud.aliyuncs.com/ubuntu jammy-security InRelease</span><br><span class="line">Get:5 https://download.docker.com/linux/ubuntu jammy InRelease [48.8 kB]</span><br><span class="line">Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [54.4 kB]</span><br><span class="line">Fetched 103 kB in 1s (91.7 kB/s)    </span><br><span class="line">Reading package lists... Done</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree... Done</span><br><span class="line">Reading state information... Done</span><br><span class="line">ca-certificates is already the newest version (20240203~22.04.1).</span><br><span class="line">curl is already the newest version (7.81.0-1ubuntu1.20).</span><br><span class="line">0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.</span><br><span class="line">Hit:1 http://mirrors.cloud.aliyuncs.com/ubuntu jammy InRelease</span><br><span class="line">Hit:2 http://mirrors.cloud.aliyuncs.com/ubuntu jammy-updates InRelease</span><br><span class="line">Hit:3 http://mirrors.cloud.aliyuncs.com/ubuntu jammy-backports InRelease</span><br><span class="line">Hit:4 http://mirrors.cloud.aliyuncs.com/ubuntu jammy-security InRelease</span><br><span class="line">Ign:5 https://download.docker.com/linux/ubuntu jammy InRelease</span><br><span class="line">Ign:5 https://download.docker.com/linux/ubuntu jammy InRelease</span><br><span class="line">Ign:5 https://download.docker.com/linux/ubuntu jammy InRelease</span><br><span class="line">Err:5 https://download.docker.com/linux/ubuntu jammy InRelease</span><br><span class="line">  Could not handshake: Error in the pull function. [IP: 3.168.86.21 443]</span><br><span class="line">Reading package lists... Done</span><br><span class="line">W: Failed to fetch https://download.docker.com/linux/ubuntu/dists/jammy/InRelease  Could not handshake: Error in the pull function. [IP: 3.168.86.21 443]</span><br><span class="line">W: Some index files failed to download. They have been ignored, or old ones used instead.</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>验证报错</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@waiting1:~# sudo docker run hello-world</span><br><span class="line">Unable to find image 'hello-world:latest' locally</span><br><span class="line">docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": context deadline exceeded</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>再次报错</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@waiting1:~#  sudo docker run hello-world</span><br><span class="line">Unable to find image 'hello-world:latest' locally</span><br><span class="line">docker: Error response from daemon: Get "https://registry-1.docker.io/v2/": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>vim /etc/docker/daemon.json</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">"registry-mirrors":</span><br><span class="line">[</span><br><span class="line">"https://docker.registry.cyou",</span><br><span class="line">"https://docker-cf.registry.cyou",</span><br><span class="line">"https://dockercf.jsdelivr.fyi",</span><br><span class="line">"https://docker.jsdelivr.fyi",</span><br><span class="line">"https://dockertest.jsdelivr.fyi",</span><br><span class="line">"https://mirror.aliyuncs.com",</span><br><span class="line">"https://dockerproxy.com",</span><br><span class="line">"https://mirror.baidubce.com",</span><br><span class="line">"https://docker.m.daocloud.io",</span><br><span class="line">"https://docker.nju.edu.cn",</span><br><span class="line">"https://docker.mirrors.sjtug.sjtu.edu.cn",</span><br><span class="line">"https://docker.mirrors.ustc.edu.cn",</span><br><span class="line">"https://mirror.iscas.ac.cn",</span><br><span class="line">"https://docker.rainbond.cc"</span><br><span class="line">]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>重启：systemctl restart docker.service</li>
+<li>重试：docker run hello-world</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/#installation-methods">https://docs.docker.com/engine/install/ubuntu/#installation-methods</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script">https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/">https://docs.docker.com/engine/</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/build/">https://docs.docker.com/build/</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></li>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></li>
 </ol>
 <hr>
@@ -659,7 +734,49 @@
 <li><a target="_blank" rel="noopener" href="https://docs.docker.com/reference/cli/docker/">官方命令文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://hub.docker.com/">官网镜像仓库</a></li>
 </ol>
+<hr>
+<h1 id="部署LNMP"><a href="#部署LNMP" class="headerlink" title="部署LNMP"></a><center><font color="red">部署LNMP</font></center></h1><h2 id="一、使用docker-compose"><a href="#一、使用docker-compose" class="headerlink" title="一、使用docker-compose"></a>一、使用docker-compose</h2><ol>
+<li>安装docker，省略</li>
+<li>安装docker-compose，省略</li>
+<li>mkdir lnmp</li>
+<li>cd lnmp</li>
+<li>创建docker-compose.yml文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">version: '3'</span><br><span class="line">services:</span><br><span class="line">  nginx:</span><br><span class="line">    image: nginx:latest</span><br><span class="line">    ports:</span><br><span class="line">      - "80:80"</span><br><span class="line">    volumes:</span><br><span class="line">      - ./nginx/conf.d:/etc/nginx/conf.d</span><br><span class="line">      - ./nginx/logs:/var/log/nginx</span><br><span class="line">      - ./www:/var/www/html</span><br><span class="line">    depends_on:</span><br><span class="line">      - php</span><br><span class="line">      - mysql</span><br><span class="line">    networks:</span><br><span class="line">      - lnmp-net</span><br><span class="line">  php:</span><br><span class="line">    image: php:7.4-fpm</span><br><span class="line">     ports:</span><br><span class="line">      - "9000:9000"</span><br><span class="line">    volumes:</span><br><span class="line">      - ./www:/var/www/html</span><br><span class="line">    networks:</span><br><span class="line">      - lnmp-net</span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root_password</span><br><span class="line">      MYSQL_DATABASE: mydatabase</span><br><span class="line">      MYSQL_USER: myuser</span><br><span class="line">      MYSQL_PASSWORD: mypassword</span><br><span class="line">    volumes:</span><br><span class="line">      - ./mysql:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - lnmp-net</span><br><span class="line">networks:</span><br><span class="line">  lnmp-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></tbody></table></figure>
 
+<ol start="6">
+<li>docker compose up -d –build</li>
+<li>在nginx/conf.d目录下创建default.conf</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">    listen 80;</span><br><span class="line">    index index.php index.html index.htm;</span><br><span class="line">    server_name localhost;  </span><br><span class="line">    error_log  /var/log/nginx/error.log;</span><br><span class="line">    access_log /var/log/nginx/access.log;</span><br><span class="line">    root /var/www/html;  </span><br><span class="line">    location ~ \.php$ { </span><br><span class="line">        fastcgi_pass php:9000;  # 指向PHP容器的9000端口，这是默认的PHP-FPM端口。</span><br><span class="line">        fastcgi_index index.php;  # 使用index.php作为默认文件。</span><br><span class="line">        include fastcgi_params;  # 包含一些默认的fastcgi参数。</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;  # 设置SCRIPT_FILENAME参数。</span><br><span class="line">        fastcgi_param PATH_INFO $fastcgi_path_info;  # 设置PATH_INFO参数。        }   </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="8">
+<li>docker-compose restart</li>
+<li>访问：<a target="_blank" rel="noopener" href="http://47.96.236.22/">http://47.96.236.22/</a>，页面报错</li>
+</ol>
+<ul>
+<li>docker ps，发现nginx容器未启动<ul>
+<li>cat /root/lnmp/nginx/logs/error.log，发现报错</li>
+<li>修改配置文件，再次重启：docker-compose restart</li>
+</ul>
+</li>
+</ul>
+<ol start="10">
+<li>访问：<a target="_blank" rel="noopener" href="http://47.96.236.22/">http://47.96.236.22/</a>，报404错误</li>
+</ol>
+<ul>
+<li>将www目录挂载到nginx容器目录下： - ./www:/var/www/html，再次访问恢复正常</li>
+</ul>
+<ol start="11">
+<li>docker-compose ps</li>
+<li>docker ps</li>
+<li>进入容器</li>
+</ol>
+<ul>
+<li>docker exec -it 20f9d6546d84 bash</li>
+<li>docker exec -it lnmp_mysql_1 bash </li>
+</ul>
+<h2 id="二、使用composer"><a href="#二、使用composer" class="headerlink" title="二、使用composer"></a>二、使用composer</h2><h2 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h2><h2 id="四、参考-1"><a href="#四、参考-1" class="headerlink" title="四、参考"></a>四、参考</h2>
     </div>
 
     
@@ -728,7 +845,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Docker基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">二、常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.3.</span> <span class="nav-text">三、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">Docker基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">二、常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">2.3.</span> <span class="nav-text">三、实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2LNMP"><span class="nav-number">3.</span> <span class="nav-text">部署LNMP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8docker-compose"><span class="nav-number">3.1.</span> <span class="nav-text">一、使用docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8composer"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用composer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.3.</span> <span class="nav-text">三、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">3.4.</span> <span class="nav-text">四、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -757,7 +874,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1046</span>
+        <span class="site-state-item-count">1047</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -855,7 +972,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:22</span>
+    <span title="站点阅读时长">18:39</span>
 </div>
 
         

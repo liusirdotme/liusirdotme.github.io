@@ -149,7 +149,7 @@
 <meta property="og:description" content="宁欺白须公，莫欺少年穷。终须有日龙穿凤，唔信一世裤穿窿。—— 清·吴敬梓《儒林外史》">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-12T13:08:06.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.098Z">
+<meta property="article:modified_time" content="2026-11-25T08:02:33.606Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Go">
 <meta property="article:tag" content="Gin">
@@ -379,7 +379,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>604</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -432,11 +432,94 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin">参考一</a></li>
 </ol>
 <hr>
-<h1 id="Beego框架"><a href="#Beego框架" class="headerlink" title="Beego框架"></a><center><font color="red">Beego框架</font></center></h1><h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Beego框架"><a href="#Beego框架" class="headerlink" title="Beego框架"></a><center><font color="red">Beego框架</font></center></h1><h2 id="一、基础-1"><a href="#一、基础-1" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用-1"><a href="#二、使用-1" class="headerlink" title="二、使用"></a>二、使用</h2><blockquote>
+<p><strong><font style="color:rgba(243,7,33,1);">官网demo，不生效</font></strong></p>
+</blockquote>
+<ol>
+<li>mkdir beego</li>
+<li>cd beego</li>
+<li>go mod init beego</li>
+<li>go get github.com/beego/beego/v2@latest</li>
+</ol>
+<ul>
+<li><font style="color:#DF2A3F;">go get github.com/astaxie/beego</font></li>
+</ul>
+<ol start="5">
+<li>创建main.go</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import "github.com/beego/beego/v2/server/web"</span><br><span class="line"></span><br><span class="line">func main() {</span><br><span class="line">	web.Run(":8089")</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="6">
+<li>go mod tidy，下载依赖包</li>
+<li>go run main.go</li>
+<li>访问：<a target="_blank" rel="noopener" href="http://localhost:8089/">http://localhost:8089/</a>，报404错误</li>
+</ol>
+<blockquote>
+<p><strong><font style="color:rgba(243,7,33,1);">使用bee工具</font></strong></p>
+</blockquote>
+<ol>
+<li>安装工具：go get github.com/beego/bee</li>
+</ol>
+<ul>
+<li><font style="color:#117CEE;">安装完之后bee可执行文件默认存放在 $GOPATH/bin 里面，所以您需要把 $GOPATH/bin 添加到您的环境变量中才可以进行下一步。</font></li>
+<li><font style="color:#117CEE;">实际并未产生bee可执行文件</font></li>
+<li><font style="color:#117CEE;">重新执行：go get -u github.com/beego/bee，不起作用</font></li>
+<li><font style="color:#74B602;">重新执行：go install  github.com/beego/bee/v2@master，执行成功</font></li>
+</ul>
+<ol start="2">
+<li>bee version</li>
+<li>bee new beego_hello</li>
+<li>cd  beego_hello</li>
+<li>目录结构：tree</li>
+</ol>
+<ol start="6">
+<li>bee run</li>
+</ol>
+<ul>
+<li><p>2024/11/27 14:17:20 ERROR    ▶ 0003 Failed to build the application: controllers\default.go:4:2: missing go.sum entry for module providing package github.com/beego/beego/v2/server/web (imported by beego_hello); to add:</p>
+<pre><code>go get beego_hello</code></pre></li>
+<li><p>运行：go mod tidy</p>
+</li>
+</ul>
+<ol start="7">
+<li>修改conf/app.conf，端口号改为8088</li>
+<li>bee run</li>
+<li>浏览器访问：<a target="_blank" rel="noopener" href="http://localhost:8088">http://localhost:8088</a></li>
+</ol>
+<blockquote>
+<p><strong><font style="color:rgba(243,7,33,1);">路由</font></strong></p>
+</blockquote>
+<ol>
+<li>修改routers/router.go</li>
+</ol>
+<ul>
+<li>增加：beego.Router(“/test”, &amp;controllers.MainController{}, “get:Test”)</li>
+</ul>
+<ol start="2">
+<li>浏览器访问：<a target="_blank" rel="noopener" href="http://localhost:8088/test">http://localhost:8088/test</a></li>
+<li>原理</li>
+</ol>
+<h2 id="三、参考-1"><a href="#三、参考-1" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/astaxie/beego">https://github.com/astaxie/beego</a></li>
+<li><a target="_blank" rel="noopener" href="https://studygolang.com/articles/32046">https://studygolang.com/articles/32046</a></li>
+<li><a target="_blank" rel="noopener" href="https://beego.me/">https://beego.me/</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/beego/beego">https://github.com/beego/beego</a></li>
 </ol>
 <hr>
-<h1 id="Echo框架"><a href="#Echo框架" class="headerlink" title="Echo框架"></a><center><font color="red">Echo框架</font></center></h1><h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
+<h1 id="Echo框架"><a href="#Echo框架" class="headerlink" title="Echo框架"></a><center><font color="red">Echo框架</font></center></h1><h2 id="一、基础-2"><a href="#一、基础-2" class="headerlink" title="一、基础"></a>一、基础</h2><h2 id="二、使用-2"><a href="#二、使用-2" class="headerlink" title="二、使用"></a>二、使用</h2><ol>
+<li>mkdir echo </li>
+<li>cd echo</li>
+<li>go mod init echo</li>
+<li>go get github.com/labstack/echo/v4</li>
+<li>创建main.go</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	"net/http"</span><br><span class="line"></span><br><span class="line">	"github.com/labstack/echo/v4"</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() {</span><br><span class="line">	e := echo.New()</span><br><span class="line">	e.GET("/", func(c echo.Context) error {</span><br><span class="line">		return c.String(http.StatusOK, "Hello, Echo Framework!")</span><br><span class="line">	})</span><br><span class="line">	e.Logger.Fatal(e.Start(":1323"))</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="6">
+<li>运行：go run main.go</li>
+<li>访问：<a target="_blank" rel="noopener" href="http://localhost:1323">http://localhost:1323</a></li>
+</ol>
+<h2 id="三、参考-2"><a href="#三、参考-2" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://echo.labstack.com/">https://echo.labstack.com/</a></li>
 </ol>
 <hr>
@@ -528,7 +611,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gin%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">Gin框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Beego%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">Beego框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Echo%E6%A1%86%E6%9E%B6"><span class="nav-number">3.</span> <span class="nav-text">Echo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Buffalo%E6%A1%86%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">Buffalo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GORM%E6%A1%86%E6%9E%B6"><span class="nav-number">5.</span> <span class="nav-text">GORM框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">5.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iris%E6%A1%86%E6%9E%B6"><span class="nav-number">6.</span> <span class="nav-text">Iris框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">6.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Martini%E6%A1%86%E6%9E%B6"><span class="nav-number">7.</span> <span class="nav-text">Martini框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-6"><span class="nav-number">7.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gin%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">Gin框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Beego%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">Beego框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-1"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-1"><span class="nav-number">2.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Echo%E6%A1%86%E6%9E%B6"><span class="nav-number">3.</span> <span class="nav-text">Echo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80-2"><span class="nav-number">3.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-2"><span class="nav-number">3.2.</span> <span class="nav-text">二、使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-2"><span class="nav-number">3.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Buffalo%E6%A1%86%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">Buffalo框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-3"><span class="nav-number">4.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GORM%E6%A1%86%E6%9E%B6"><span class="nav-number">5.</span> <span class="nav-text">GORM框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-4"><span class="nav-number">5.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Iris%E6%A1%86%E6%9E%B6"><span class="nav-number">6.</span> <span class="nav-text">Iris框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-5"><span class="nav-number">6.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Martini%E6%A1%86%E6%9E%B6"><span class="nav-number">7.</span> <span class="nav-text">Martini框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83-6"><span class="nav-number">7.1.</span> <span class="nav-text">三、参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -557,7 +640,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1046</span>
+        <span class="site-state-item-count">1047</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -655,7 +738,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:22</span>
+    <span title="站点阅读时长">18:39</span>
 </div>
 
         

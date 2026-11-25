@@ -153,7 +153,7 @@
 <meta property="og:image" content="https://liusir.net/2020/07/18/Network-%E5%B9%B6%E5%8F%91%E9%87%8F%E8%AE%A1%E7%AE%97/2.png">
 <meta property="og:image" content="https://liusir.net/2020/07/18/Network-%E5%B9%B6%E5%8F%91%E9%87%8F%E8%AE%A1%E7%AE%97/3.png">
 <meta property="article:published_time" content="2020-07-18T07:52:30.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.265Z">
+<meta property="article:modified_time" content="2026-11-25T07:48:46.514Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="并发">
@@ -378,13 +378,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.6k</span>
+              <span>6.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -401,7 +401,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
+<h1 id="并发量"><a href="#并发量" class="headerlink" title="并发量"></a><center><font color="red">并发量</font></center></h1><h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><ol>
 <li><p>TPS(Transactions Per Second)：每秒事务数</p>
 </li>
 <li><p>QPS(Query Per Second)：每秒请求数，QPS其实是衡量吞吐量的一个常用指标，就是说服务器在一秒的时间内处理了多少个请求。</p>
@@ -505,6 +505,324 @@
 <li><a target="_blank" rel="noopener" href="https://wetest.qq.com/lab/view/177.html">参考一</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.golang.org/waza-talk">参考二</a></li>
 </ol>
+<hr>
+<h1 id="QPS计算"><a href="#QPS计算" class="headerlink" title="QPS计算"></a><center><font color="red">QPS计算</font></center></h1><p>上面「并发量」讲的是概念与推导，这一节讲<strong>工程上怎么把 QPS 真的算出来</strong>：先对齐口径，再分五条路取数——公式估算、监控工具、流式框架、网关日志、压测实测，最后交叉验证。</p>
+<h2 id="1-先对齐口径"><a href="#1-先对齐口径" class="headerlink" title="1. 先对齐口径"></a>1. 先对齐口径</h2><p>QPS 本身没有歧义，有歧义的是”谁的 QPS、在哪一层算、含不含内部调用”。</p>
+<table>
+<thead>
+<tr>
+<th align="left">指标</th>
+<th align="left">定义</th>
+<th align="left">单位</th>
+<th align="left">取数位置</th>
+<th align="left">常见误用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">QPS</td>
+<td align="left">每秒查询/请求数</td>
+<td align="left">次/秒</td>
+<td align="left">网关、接入层、服务入口</td>
+<td align="left">拿单次采样当峰值</td>
+</tr>
+<tr>
+<td align="left">TPS</td>
+<td align="left">每秒完整事务数（一个事务可能含多次查询）</td>
+<td align="left">笔/秒</td>
+<td align="left">业务埋点、压测报告</td>
+<td align="left">与 QPS 混用当同一指标</td>
+</tr>
+<tr>
+<td align="left">并发数</td>
+<td align="left">同一时刻正在处理中的请求数</td>
+<td align="left">个</td>
+<td align="left"><code>ss</code>/<code>netstat</code>、Active connections、线程池活跃数</td>
+<td align="left">把”线程数”当并发数</td>
+</tr>
+<tr>
+<td align="left">RT</td>
+<td align="left">单次请求耗时，通常看均值 + P95/P99</td>
+<td align="left">秒（算 QPS 时必须用秒）</td>
+<td align="left">应用、网关 <code>$request_time</code></td>
+<td align="left">用毫秒直接除，结果差 1000 倍</td>
+</tr>
+<tr>
+<td align="left">吞吐量</td>
+<td align="left">单位时间处理量（请求或字节）</td>
+<td align="left">次/秒、MB/s</td>
+<td align="left">同上</td>
+<td align="left">与 QPS 完全等价（不含字节维度时）</td>
+</tr>
+</tbody></table>
+<p>三条必须先立住的规矩：</p>
+<ol>
+<li><strong>QPS 是速率，必须有时间窗口</strong>。<code>rate(x[1m])</code>、<code>请求数/60</code>、按秒聚合日志，都行；单点计数不叫 QPS。</li>
+<li><strong>分母统一到秒</strong>。平均 RT 是 120ms，就要写成 0.12s，否则算出来放大 1000 倍。</li>
+<li><strong>分清入口 QPS 与后端 QPS</strong>。入口一层请求进来，后面可能 fan-out 成 N 次 RPC/缓存/DB 访问——这就是”放大倍数”（也叫扇出系数），压容量时按后端最热的那条链路算。</li>
+</ol>
+<h2 id="2-公式法（估算，做容量规划最快）"><a href="#2-公式法（估算，做容量规划最快）" class="headerlink" title="2. 公式法（估算，做容量规划最快）"></a>2. 公式法（估算，做容量规划最快）</h2><h3 id="2-1-QPS-总查询数-总时间"><a href="#2-1-QPS-总查询数-总时间" class="headerlink" title="2.1 QPS = 总查询数 / 总时间"></a>2.1 QPS = 总查询数 / 总时间</h3><p>窗口法，最朴素也最可靠，只要有计数就能算：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QPS = Δcount / Δt</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>采集点：网关请求数、应用埋点计数器、DB <code>Questions</code>、Redis <code>total_commands_processed</code>。</li>
+<li>时间窗按用途选：<strong>秒级看瞬时峰值，分钟级看常态，小时级看出趋势</strong>。窗口越短越敏感但越抖。</li>
+<li>坑：跨越窗口重启/重置会算出负数，取两次采样差值时先判断计数器是否归零。</li>
+</ul>
+<h3 id="2-2-QPS-并发数-平均响应时间"><a href="#2-2-QPS-并发数-平均响应时间" class="headerlink" title="2.2 QPS = 并发数 / 平均响应时间"></a>2.2 QPS = 并发数 / 平均响应时间</h3><p>即 Little 定律的工程形式：<code>吞吐 = 并发 / RT</code>。它把”有多少人在同时等”换算成”每秒能出多少结果”。</p>
+<ul>
+<li>并发数（C）与 RT（L，单位秒）、QPS 三者互为约束：<code>C = QPS × L</code>。</li>
+<li>反过来最有用的形式：<strong>已知 QPS 和 RT，就能反推需要多少并发</strong>，直接决定线程池、连接池、Tomcat <code>maxThreads</code>、PHP-FPM <code>pm.max_children</code> 的大小。</li>
+<li>坑：这里的 RT 要用<strong>加权平均</strong>且包含排队时间；只用”业务代码执行时间”会算高。P95 与均值差得越远，说明尾延迟越拖容量。</li>
+</ul>
+<p>例：入口 QPS 2000，平均 RT 0.05s（50ms），则需要支撑的并发 ≈ 2000 × 0.05 = 100；若 RT 抖动到 0.3s，同样的 QPS 就要 600 并发，线程池按 100 配就必然排队。</p>
+<h3 id="2-3-QPS-总PV-×-80-总时间-×-20-（二八定律峰值估算）"><a href="#2-3-QPS-总PV-×-80-总时间-×-20-（二八定律峰值估算）" class="headerlink" title="2.3 QPS = (总PV × 80%) / (总时间 × 20%)（二八定律峰值估算）"></a>2.3 QPS = (总PV × 80%) / (总时间 × 20%)（二八定律峰值估算）</h3><p>没有监控数据时用它拍峰值：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">峰值QPS = 总PV × 0.8 / (86400 × 0.2) = 总PV / 21600</span><br><span class="line">需要的机器数 = 峰值QPS / 单机可承载QPS</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（86400 = 一天的秒数；<code>总PV / 21600</code> 是它的简化式，可以心算。）</p>
+<ul>
+<li>适用：日常流量、有明显早晚高峰的站点。</li>
+<li>不适用：大促/秒杀/直播开场——那种流量不是”二八”，是”尖峰脉冲”，必须用压测或历史峰值实测。</li>
+<li>修正：把 80%/20% 换成你业务的真实分位。有监控就用 2.1 直接从历史数据取 <code>max(秒级QPS)</code>，比二八定律准得多。</li>
+</ul>
+<h3 id="2-4-三个公式的适用边界"><a href="#2-4-三个公式的适用边界" class="headerlink" title="2.4 三个公式的适用边界"></a>2.4 三个公式的适用边界</h3><table>
+<thead>
+<tr>
+<th align="left">公式</th>
+<th align="left">本质</th>
+<th align="left">什么时候用</th>
+<th align="left">精度</th>
+<th align="left">主要误差来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">总查询数/总时间</td>
+<td align="left">计数差分</td>
+<td align="left">有计数、有监控</td>
+<td align="left">高</td>
+<td align="left">窗口选择、计数器重置</td>
+</tr>
+<tr>
+<td align="left">并发数/平均RT</td>
+<td align="left">Little 定律</td>
+<td align="left">有 RT 与并发数据、反推容量</td>
+<td align="left">中</td>
+<td align="left">均值掩盖长尾、RT 口径不一致</td>
+</tr>
+<tr>
+<td align="left">PV × 80% / (时间 × 20%)</td>
+<td align="left">峰值假设</td>
+<td align="left">无数据、早期规划</td>
+<td align="left">低</td>
+<td align="left">业务分布不符合二八</td>
+</tr>
+</tbody></table>
+<h2 id="3-工具法：Prometheus-Grafana"><a href="#3-工具法：Prometheus-Grafana" class="headerlink" title="3. 工具法：Prometheus + Grafana"></a>3. 工具法：Prometheus + Grafana</h2><p>监控体系是拿 QPS 最标准的方式，关键是<strong>埋对指标</strong>再加一层 <code>rate()</code>。</p>
+<h3 id="3-1-指标与-PromQL"><a href="#3-1-指标与-PromQL" class="headerlink" title="3.1 指标与 PromQL"></a>3.1 指标与 PromQL</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 入口总 QPS（1 分钟滑动窗口）</span><br><span class="line">sum(rate(nginx_http_requests_total[1m]))</span><br><span class="line"></span><br><span class="line"># 按接口拆分的 QPS</span><br><span class="line">sum by (uri) (rate(http_requests_total[1m]))</span><br><span class="line"></span><br><span class="line"># 按状态码拆分，看错误占比是否随流量上涨</span><br><span class="line">sum by (status) (rate(http_requests_total[1m]))</span><br><span class="line"></span><br><span class="line"># 最近 30 天的秒级峰值（容量规划就取这个数）</span><br><span class="line">max_over_time(sum(rate(http_requests_total[1m]))[30d:1m])</span><br><span class="line"></span><br><span class="line"># P95 / P99 延迟，配 QPS 一起看才知道余量</span><br><span class="line">histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))</span><br><span class="line"></span><br><span class="line"># 用 Little 定律把 QPS 与延迟换算成"同时在处理的请求数"</span><br><span class="line">sum(rate(http_requests_total[1m])) * histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[1m])))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>要点：</p>
+<ul>
+<li>用 <code>rate()</code> 而不是 <code>increase()</code> 画 QPS 曲线；<code>rate</code> 自动按窗口秒数归一，跨抓取间隔也稳。</li>
+<li><strong>counter 必须单调递增</strong>，重启归零会导致 <code>rate()</code> 出现负值跳变，用 <code>resets()</code> 或换 <code>increase</code> 兜一下。</li>
+<li>采集间隔（<code>scrape_interval</code>）决定能看多细的峰值：15s 间隔看不出 1s 的尖刺，真要抓峰值就在网关侧做秒级聚合后再暴露。</li>
+<li><strong>Grafana 只负责展示</strong>，别在 Grafana 里做聚合计算——面板刷新粒度与告警口径会打架。告警阈值用 <code>record rule</code> 预先算好。</li>
+</ul>
+<h3 id="3-2-常配的-exporter-指标源"><a href="#3-2-常配的-exporter-指标源" class="headerlink" title="3.2 常配的 exporter / 指标源"></a>3.2 常配的 exporter / 指标源</h3><table>
+<thead>
+<tr>
+<th align="left">层面</th>
+<th align="left">指标源</th>
+<th align="left">关键指标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Nginx</td>
+<td align="left"><code>nginx-prometheus-exporter</code> + 自建日志指标</td>
+<td align="left"><code>nginx_http_requests_total</code>、Active connections</td>
+</tr>
+<tr>
+<td align="left">应用</td>
+<td align="left">埋点 counter / histogram</td>
+<td align="left">请求总数、RT 分位、线程池活跃数</td>
+</tr>
+<tr>
+<td align="left">JVM</td>
+<td align="left"><code>jmx_exporter</code></td>
+<td align="left"><code>tomcat_threads_busy</code>、GC 时间</td>
+</tr>
+<tr>
+<td align="left">MySQL</td>
+<td align="left"><code>mysqld_exporter</code></td>
+<td align="left"><code>Questions</code>、<code>Threads_connected</code>、慢查询</td>
+</tr>
+<tr>
+<td align="left">Redis</td>
+<td align="left"><code>redis_exporter</code></td>
+<td align="left"><code>commands_processed_total</code>、<code>connected_clients</code></td>
+</tr>
+</tbody></table>
+<h2 id="4-工具法：ELK-Stack（日志聚合算-QPS-与-UV）"><a href="#4-工具法：ELK-Stack（日志聚合算-QPS-与-UV）" class="headerlink" title="4. 工具法：ELK Stack（日志聚合算 QPS 与 UV）"></a>4. 工具法：ELK Stack（日志聚合算 QPS 与 UV）</h2><p>适合<strong>事后统计</strong>：已知日志、要出报表、要按 URL/UA/地区多维下钻，或者补历史数据。</p>
+<ul>
+<li>链路：Filebeat 采集 → Logstash 解析（<code>grok</code> 切 access.log 或 JSON 埋点）→ Elasticsearch 存储 → Kibana 展示。</li>
+<li>在 Kibana 里用 <code>date_histogram</code>，<code>interval: 1s</code> 就是秒级 QPS 曲线；<code>interval: 1m</code> 看常态。</li>
+<li>UV 用 <code>cardinality</code> 聚合（近似去重），量大时按天分桶再合并。</li>
+<li>坑：ELK 是<strong>写多读慢</strong>的存储，秒级长周期查询很吃资源；实时大屏别直接压在 ES 上，用预聚合索引（按分钟 rollup）或走第 5 节的流式框架。</li>
+</ul>
+<h2 id="5-工具法：Service-Mesh（Istio-侧观测）"><a href="#5-工具法：Service-Mesh（Istio-侧观测）" class="headerlink" title="5. 工具法：Service Mesh（Istio 侧观测）"></a>5. 工具法：Service Mesh（Istio 侧观测）</h2><p>在服务网格里，所有东西向流量都过 sidecar，天然是”最贴近服务粒度的 QPS 观测点”，比网关更细、比应用埋点更统一。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 网格内每个服务的 QPS</span><br><span class="line">sum by (destination_service) (rate(istio_requests_total[1m]))</span><br><span class="line"></span><br><span class="line"># 只看被拒绝的请求（限流/熔断是否触发）</span><br><span class="line">sum(rate(istio_requests_total{response_code="503"}[1m]))</span><br></pre></td></tr></tbody></table></figure>
+
+<p>价值：</p>
+<ul>
+<li><strong>不用改代码就能拿到全链路指标</strong>，新服务接入即被观测。</li>
+<li>能同时看到<strong>入口 QPS 与被调用 QPS</strong>，扇出倍数一目了然（同一个入口请求在下游被拆成几次调用）。</li>
+<li>代价是 sidecar 自身的资源开销与延迟，指标延迟通常在秒级，适合做容量面板而非秒杀级实时决策。</li>
+</ul>
+<h2 id="6-框架法：Flink-Spark-Streaming（流式实时统计）"><a href="#6-框架法：Flink-Spark-Streaming（流式实时统计）" class="headerlink" title="6. 框架法：Flink / Spark Streaming（流式实时统计）"></a>6. 框架法：Flink / Spark Streaming（流式实时统计）</h2><p>日志/埋点是一条流时，用流式计算做秒级、分钟级聚合，比”存下来再查”快得多，也扛得住高吞吐。</p>
+<p><strong>Apache Flink</strong>（事件时间窗口 + 精确一次）：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 秒级 QPS：按接口分组、1 秒滚动窗口</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  window_start,</span><br><span class="line">  window_end,</span><br><span class="line">  api,</span><br><span class="line">  <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> qps</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">TABLE</span>(</span><br><span class="line">  TUMBLE(<span class="keyword">TABLE</span> access_log, DESCRIPTOR(event_time), <span class="type">INTERVAL</span> <span class="string">'1'</span> <span class="keyword">SECOND</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> window_start, window_end, api;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>水位线（watermark）决定延迟与乱序容忍，日志有延迟就别用太紧的窗口。</li>
+<li>UV 用 <code>HLL</code>（HyperLogLog）或 <code>BITMAP</code> 去重，别 <code>COUNT(DISTINCT)</code>——状态会爆。</li>
+<li>结果写回 Redis/PG/ClickHouse，Grafana 直接读，形成”日志 → 实时 QPS 面板”闭环。</li>
+</ul>
+<p><strong>Spark Streaming / Structured Streaming</strong>（微批，秒级延迟够用）：</p>
+<figure class="highlight scala"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> qps = logs</span><br><span class="line">  .withWatermark(<span class="string">"event_time"</span>, <span class="string">"10 seconds"</span>)</span><br><span class="line">  .groupBy(window($<span class="string">"event_time"</span>, <span class="string">"1 second"</span>), $<span class="string">"api"</span>)</span><br><span class="line">  .count()</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>微批间隔（<code>trigger</code>）就是最小观测粒度，5s 批就别指望看到 1s 尖刺。</li>
+<li>与 Flink 的取舍：<strong>要亚秒级与状态复杂选 Flink；已有 Spark 体系、批流一体选 Structured Streaming</strong>。</li>
+</ul>
+<h2 id="7-网关法：Nginx（零成本的第一手数据）"><a href="#7-网关法：Nginx（零成本的第一手数据）" class="headerlink" title="7. 网关法：Nginx（零成本的第一手数据）"></a>7. 网关法：Nginx（零成本的第一手数据）</h2><p>线上一定有 Nginx，它是最便宜的 QPS 数据源。</p>
+<h3 id="7-1-stub-status-两次采样"><a href="#7-1-stub-status-两次采样" class="headerlink" title="7.1 stub_status 两次采样"></a>7.1 <code>stub_status</code> 两次采样</h3><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> /nginx_status {</span><br><span class="line">    stub_status;</span><br><span class="line">    <span class="attribute">allow</span> <span class="number">127.0.0.1</span>;</span><br><span class="line">    <span class="attribute">deny</span> all;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出：Active connections / accepts / handled / requests</span></span><br><span class="line">curl -s http://127.0.0.1/nginx_status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 两次采样求 QPS（间隔 60s）</span></span><br><span class="line">qps=$(( ($(curl -s <span class="number">127.0</span>.<span class="number">0.1</span>/nginx_status | awk '/requests/{print <span class="variable">$3</span>}') - <span class="variable">$prev</span>) / <span class="number">60</span> ))</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><code>Active connections</code> 就是<strong>当前并发连接数</strong>，与 <code>QPS × RT</code> 互为印证。</li>
+<li><code>requests</code> 是累计值，只增不减，适合做 2.1 的窗口法。</li>
+</ul>
+<h3 id="7-2-access-log-聚合（历史回放与峰值定位）"><a href="#7-2-access-log-聚合（历史回放与峰值定位）" class="headerlink" title="7.2 access.log 聚合（历史回放与峰值定位）"></a>7.2 access.log 聚合（历史回放与峰值定位）</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 秒级 QPS 峰值 Top10（$4 是 [08/May/2017:10:03:30 形式的本地时间）</span></span><br><span class="line">awk <span class="string">'{print substr($4,2)}'</span> access.log | sort | uniq -c | sort -rn | head -10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分钟级 QPS（截到分钟）</span></span><br><span class="line">awk <span class="string">'{print substr($4,2,16)}'</span> access.log | sort | uniq -c | sort -rn | head -10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 平均 RT（需 log_format 里记了 $request_time，取最后一个字段）</span></span><br><span class="line">awk <span class="string">'{s+=$NF; n++} END {printf "avg_rt=%.3fs  qps=%.1f\n", s/n, n/86400}'</span> access.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只看接口流量、排除静态资源</span></span><br><span class="line">awk <span class="string">'$7 !~ /\.(css|js|png|jpg|gif|ico|woff2?)$/ {print substr($4,2,16)}'</span> access.log | sort | uniq -c | sort -rn | head</span><br></pre></td></tr></tbody></table></figure>
+
+<p>配套的 <code>log_format</code>（关键字段别漏，否则事后无法算 RT 与上游耗时）：</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">log_format</span> main <span class="string">'$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">                <span class="string">'$status $body_bytes_sent "$http_referer" "$http_user_agent" '</span></span><br><span class="line">                <span class="string">'rt=$request_time urt=$upstream_response_time '</span></span><br><span class="line">                <span class="string">'us=$upstream_status req_id=$request_id'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><code>$request_time</code> 是 Nginx 视角的完整耗时（含排队与上游），<code>$upstream_response_time</code> 只看上游——两者差值大，说明卡在 Nginx 自身或客户端慢。</li>
+<li><strong>限流参数要和 QPS 口径对齐</strong>：<code>limit_req zone=x rate=100r/s</code> 限制的是单 IP 速率，别误读成全站 QPS；<code>limit_conn</code> 限的是并发连接，对应第 1 节的并发数。</li>
+</ul>
+<h2 id="8-压测法：JMeter-LoadRunner（唯一能拿到”上限”的方式）"><a href="#8-压测法：JMeter-LoadRunner（唯一能拿到”上限”的方式）" class="headerlink" title="8. 压测法：JMeter / LoadRunner（唯一能拿到”上限”的方式）"></a>8. 压测法：JMeter / LoadRunner（唯一能拿到”上限”的方式）</h2><p>公式与监控只能告诉你”现在多少”，压测才能告诉你”最多多少”以及”从哪开始崩”。</p>
+<p><strong>读哪个数</strong>：</p>
+<ul>
+<li>JMeter 看 <strong>Aggregate Report 里的 <code>Throughput</code></strong>（单位 请求/秒，含所有采样器）；要看事务粒度就加 <strong>Transaction Controller</strong>，再用 <code>TPS</code> 口径。</li>
+<li>LoadRunner 看 <strong>Average Transaction Response Time 与 TPS 曲线</strong>，重点看 TPS 拐点与错误率上升的时点。</li>
+<li>无论如何，<strong>压测 QPS = 成功请求数 / 有效压测时长</strong>，失败请求不能算进吞吐。</li>
+</ul>
+<p><strong>参数怎么配</strong>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">建议</th>
+<th align="left">原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">线程数（并发）</td>
+<td align="left">从目标 QPS × RT 起步，再阶梯加压</td>
+<td align="left">并发不够压不出上限</td>
+</tr>
+<tr>
+<td align="left">ramp-up</td>
+<td align="left">30–60s 渐进，别 1s 起满</td>
+<td align="left">避免瞬间冲击造成假拐点</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">至少 10–15 分钟稳态</td>
+<td align="left">短测掩盖 GC、连接回收、缓存失效</td>
+</tr>
+<tr>
+<td align="left">思考时间</td>
+<td align="left">模拟真实用户时保留；找容量上限时去掉</td>
+<td align="left">两者测的不是同一个数</td>
+</tr>
+<tr>
+<td align="left">keep-alive</td>
+<td align="left">与线上一致</td>
+<td align="left">长连接与否差一个数量级的握手开销</td>
+</tr>
+</tbody></table>
+<p><strong>找拐点</strong>：用 <code>Stepping Thread Group</code> / <code>Concurrency Thread Group</code> 阶梯加压，观察 <strong>TPS 停止上升而 RT 开始线性上涨</strong>的那个点，就是容量上限（Knee Point）；再乘以安全系数（一般取 0.6–0.8）作为规划值。</p>
+<p><strong>常用补充工具</strong>：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wrk：高并发 HTTP 压测，直接给 Requests/sec</span></span><br><span class="line">wrk -t8 -c200 -d60s --latency http://127.0.0.1/api/list</span><br><span class="line"></span><br><span class="line"><span class="comment"># ab：快速验证单接口</span></span><br><span class="line">ab -n 10000 -c 200 http://127.0.0.1/api/list</span><br><span class="line"></span><br><span class="line"><span class="comment"># k6：脚本化压测，能断言 P95</span></span><br><span class="line">k6 run --vus 200 --duration 60s script.js</span><br></pre></td></tr></tbody></table></figure>
+
+<p>坑：压测机的网卡、端口耗尽（<code>TIME_WAIT</code> 堆积）、JVM 预热、压测数据量级与线上不一致，都会让结果偏低或偏高；<strong>压测 QPS 与线上 QPS 不能直接等同</strong>，要按”入口请求数 × 扇出倍数 × 缓存命中率差异”折算。</p>
+<h2 id="9-五条路交叉验证（实例走一遍）"><a href="#9-五条路交叉验证（实例走一遍）" class="headerlink" title="9. 五条路交叉验证（实例走一遍）"></a>9. 五条路交叉验证（实例走一遍）</h2><p>假设：日 PV 300 万，Nginx 日志可查，入口 QPS 想知道。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">取数</th>
+<th align="left">结果</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">公式（二八）</td>
+<td align="left">300w × 0.8 / (86400 × 0.2)</td>
+<td align="left">≈ 139 QPS</td>
+<td align="left">无监控时的初估值</td>
+</tr>
+<tr>
+<td align="left">日志聚合</td>
+<td align="left"><code>substr($4,2)</code> 按秒 Top1</td>
+<td align="left">实测峰值（可能 300–500）</td>
+<td align="left">真实峰值，通常高于二八估算</td>
+</tr>
+<tr>
+<td align="left">Prometheus</td>
+<td align="left"><code>max_over_time(rate(...)[30d:1m])</code></td>
+<td align="left">与日志一致即可互证</td>
+<td align="left">一致性检查最有效</td>
+</tr>
+<tr>
+<td align="left">Little 定律</td>
+<td align="left">峰值 QPS × P95 RT</td>
+<td align="left">需要的并发/线程数</td>
+<td align="left">用于配线程池、连接池</td>
+</tr>
+<tr>
+<td align="left">压测</td>
+<td align="left">wrk/JMeter 阶梯加压</td>
+<td align="left">单机容量上限</td>
+<td align="left">与峰值比，得出余量与机器数</td>
+</tr>
+</tbody></table>
+<p><strong>一致性判据</strong>（任一不吻合就去查口径）：</p>
+<ul>
+<li>入口 QPS ≈ 各后端服务 QPS × 扇出倍数；</li>
+<li><code>并发数 ≈ QPS × RT</code>，与 <code>Active connections</code>、线程池活跃数对得上；</li>
+<li><code>QPS × 平均响应体大小</code> ≈ 出口带宽（对不上说明压缩/缓存或日志统计漏了静态资源）。</li>
+</ul>
+<h2 id="10-常见坑清单"><a href="#10-常见坑清单" class="headerlink" title="10. 常见坑清单"></a>10. 常见坑清单</h2><ol>
+<li><strong>毫秒当秒</strong>：RT 120ms 直接除，结果放大 1000 倍。</li>
+<li><strong>线程数当并发</strong>：线程数上限只是天花板，真正在处理的才是并发。</li>
+<li><strong>均值掩盖长尾</strong>：平均 RT 50ms、P99 800ms，按均值算容量会在高峰期崩。</li>
+<li><strong>窗口选错</strong>：1 秒窗口抖得没法看，1 小时窗口把秒杀尖峰抹平。</li>
+<li><strong>含静态资源</strong>：CDN 回源的图片请求会把 QPS 抬高一个量级，统计前先过滤。</li>
+<li><strong>内部调用重复计入</strong>：同一请求在 Nginx、网关、服务、DB 都被记一次，跨层相加就是重复计算。</li>
+<li><strong>计数器重置</strong>：凌晨重启、日志切割后 <code>rate()</code> 出现负跳变。</li>
+<li><strong>压测环境缺东西</strong>：单机压测没有缓存、没有真实数据分布，压出来的 QPS 往往偏乐观。</li>
+<li><strong>只算均值不算成本</strong>：QPS 达标但 CPU 打满、连接数耗尽，实际上限比数字低。</li>
+</ol>
+<h2 id="11-参考"><a href="#11-参考" class="headerlink" title="11. 参考"></a>11. 参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html">Nginx stub_status 模块</a></li>
+<li><a target="_blank" rel="noopener" href="https://prometheus.io/docs/prometheus/latest/querying/functions/">Prometheus 查询函数 rate/increase</a></li>
+<li><a target="_blank" rel="noopener" href="https://istio.io/latest/docs/reference/config/metrics/">Istio 标准指标 istio_requests_total</a></li>
+<li><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-stable/docs/dev/table/sql/queries/window-tumble/">Apache Flink 窗口聚合</a></li>
+<li><a target="_blank" rel="noopener" href="https://jmeter.apache.org/usermanual/index.html">Apache JMeter 用户手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wg/wrk">wrk 压测工具</a></li>
+</ol>
 
     </div>
 
@@ -572,7 +890,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">二、计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">并发量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A1%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">二、计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QPS%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">QPS计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%85%88%E5%AF%B9%E9%BD%90%E5%8F%A3%E5%BE%84"><span class="nav-number">2.1.</span> <span class="nav-text">1. 先对齐口径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%AC%E5%BC%8F%E6%B3%95%EF%BC%88%E4%BC%B0%E7%AE%97%EF%BC%8C%E5%81%9A%E5%AE%B9%E9%87%8F%E8%A7%84%E5%88%92%E6%9C%80%E5%BF%AB%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">2. 公式法（估算，做容量规划最快）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-QPS-%E6%80%BB%E6%9F%A5%E8%AF%A2%E6%95%B0-%E6%80%BB%E6%97%B6%E9%97%B4"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 QPS &#x3D; 总查询数 &#x2F; 总时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-QPS-%E5%B9%B6%E5%8F%91%E6%95%B0-%E5%B9%B3%E5%9D%87%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 QPS &#x3D; 并发数 &#x2F; 平均响应时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-QPS-%E6%80%BBPV-%C3%97-80-%E6%80%BB%E6%97%B6%E9%97%B4-%C3%97-20-%EF%BC%88%E4%BA%8C%E5%85%AB%E5%AE%9A%E5%BE%8B%E5%B3%B0%E5%80%BC%E4%BC%B0%E7%AE%97%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 QPS &#x3D; (总PV × 80%) &#x2F; (总时间 × 20%)（二八定律峰值估算）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%B8%89%E4%B8%AA%E5%85%AC%E5%BC%8F%E7%9A%84%E9%80%82%E7%94%A8%E8%BE%B9%E7%95%8C"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 三个公式的适用边界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B7%A5%E5%85%B7%E6%B3%95%EF%BC%9APrometheus-Grafana"><span class="nav-number">2.3.</span> <span class="nav-text">3. 工具法：Prometheus + Grafana</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%8C%87%E6%A0%87%E4%B8%8E-PromQL"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 指标与 PromQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%B8%B8%E9%85%8D%E7%9A%84-exporter-%E6%8C%87%E6%A0%87%E6%BA%90"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 常配的 exporter &#x2F; 指标源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B7%A5%E5%85%B7%E6%B3%95%EF%BC%9AELK-Stack%EF%BC%88%E6%97%A5%E5%BF%97%E8%81%9A%E5%90%88%E7%AE%97-QPS-%E4%B8%8E-UV%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">4. 工具法：ELK Stack（日志聚合算 QPS 与 UV）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%B7%A5%E5%85%B7%E6%B3%95%EF%BC%9AService-Mesh%EF%BC%88Istio-%E4%BE%A7%E8%A7%82%E6%B5%8B%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">5. 工具法：Service Mesh（Istio 侧观测）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%A1%86%E6%9E%B6%E6%B3%95%EF%BC%9AFlink-Spark-Streaming%EF%BC%88%E6%B5%81%E5%BC%8F%E5%AE%9E%E6%97%B6%E7%BB%9F%E8%AE%A1%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">6. 框架法：Flink &#x2F; Spark Streaming（流式实时统计）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%BD%91%E5%85%B3%E6%B3%95%EF%BC%9ANginx%EF%BC%88%E9%9B%B6%E6%88%90%E6%9C%AC%E7%9A%84%E7%AC%AC%E4%B8%80%E6%89%8B%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">7. 网关法：Nginx（零成本的第一手数据）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-stub-status-%E4%B8%A4%E6%AC%A1%E9%87%87%E6%A0%B7"><span class="nav-number">2.7.1.</span> <span class="nav-text">7.1 stub_status 两次采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-access-log-%E8%81%9A%E5%90%88%EF%BC%88%E5%8E%86%E5%8F%B2%E5%9B%9E%E6%94%BE%E4%B8%8E%E5%B3%B0%E5%80%BC%E5%AE%9A%E4%BD%8D%EF%BC%89"><span class="nav-number">2.7.2.</span> <span class="nav-text">7.2 access.log 聚合（历史回放与峰值定位）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%8E%8B%E6%B5%8B%E6%B3%95%EF%BC%9AJMeter-LoadRunner%EF%BC%88%E5%94%AF%E4%B8%80%E8%83%BD%E6%8B%BF%E5%88%B0%E2%80%9D%E4%B8%8A%E9%99%90%E2%80%9D%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">2.8.</span> <span class="nav-text">8. 压测法：JMeter &#x2F; LoadRunner（唯一能拿到”上限”的方式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E4%BA%94%E6%9D%A1%E8%B7%AF%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%EF%BC%88%E5%AE%9E%E4%BE%8B%E8%B5%B0%E4%B8%80%E9%81%8D%EF%BC%89"><span class="nav-number">2.9.</span> <span class="nav-text">9. 五条路交叉验证（实例走一遍）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E5%B8%B8%E8%A7%81%E5%9D%91%E6%B8%85%E5%8D%95"><span class="nav-number">2.10.</span> <span class="nav-text">10. 常见坑清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%8F%82%E8%80%83"><span class="nav-number">2.11.</span> <span class="nav-text">11. 参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -601,7 +919,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/" onMouseOver="this.style.color='#56ea26'" onMouseOut="this.style.color='#555'">
           
-        <span class="site-state-item-count">1046</span>
+        <span class="site-state-item-count">1047</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -699,7 +1017,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">18:22</span>
+    <span title="站点阅读时长">18:39</span>
 </div>
 
         
