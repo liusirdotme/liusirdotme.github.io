@@ -149,7 +149,7 @@
 <meta property="og:description" content="好久没打开博客了，某天已看搜索不能用了，重新按照上面的步骤操作，发现流程不太一样了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-11T10:43:12.000Z">
-<meta property="article:modified_time" content="2026-10-25T03:37:35.102Z">
+<meta property="article:modified_time" content="2026-11-25T03:07:40.202Z">
 <meta property="article:author" content="刘三儿">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="algolia">
@@ -472,8 +472,20 @@
 <li>hexo algolia</li>
 </ul>
 </li>
+<li><p>报错：</p>
+</li>
 </ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FATAL {</span><br><span class="line">  err: {</span><br><span class="line">    name: 'ApiError',</span><br><span class="line">    message: 'Record at the position 58 objectID=cmwu47m6w00f82ceabeczgtvf is too big size=29859/10000 bytes. Please have a look at https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/in-depth/index-and-records-size-and-usage-limitations/#record-size-limits',</span><br><span class="line">    status: 400,</span><br><span class="line">    transporterStackTrace: [ [Object] ]</span><br><span class="line">  }</span><br><span class="line">} Something's wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>文章超限，检测脚本</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const hexo = require('hexo')();</span><br><span class="line"></span><br><span class="line">hexo.init().then(async () =&gt; {</span><br><span class="line">  const posts = hexo.locals.get('posts').sort('-date');</span><br><span class="line">  console.log(`共 ${posts.length} 篇文章，开始统计 Algolia 记录大小\n`);</span><br><span class="line">  console.log(`序号\t大小(bytes)\t来源文件source\t标题\n`);</span><br><span class="line"></span><br><span class="line">  for (const post of posts) {</span><br><span class="line">    // 模拟 hexo-algoliasearch 默认打包的字段（和插件上传给algolia的结构一致）</span><br><span class="line">    const record = {</span><br><span class="line">      title: post.title,</span><br><span class="line">      path: post.path,</span><br><span class="line">      content: post.content,</span><br><span class="line">      tags: post.tags?.map(t =&gt; t.name) || [],</span><br><span class="line">      categories: post.categories?.map(c =&gt; c.name) || []</span><br><span class="line">    };</span><br><span class="line">    const str = JSON.stringify(record);</span><br><span class="line">    const size = Buffer.byteLength(str, 'utf8');</span><br><span class="line"></span><br><span class="line">    // 大于10000字节标红警告（Algolia限制）</span><br><span class="line">    if (size &gt; 10000) {</span><br><span class="line">      console.log(`⚠️超限 ${size}\t${post.source}\t${post.title}`);</span><br><span class="line">    } else {</span><br><span class="line">      console.log(`✅正常 ${size}\t${post.source}\t${post.title}`);</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  console.log("\n✅扫描结束！⚠️开头的就是超限md文件");</span><br><span class="line">  process.exit(0);</span><br><span class="line">}).catch(e =&gt; {</span><br><span class="line">  console.error(e);</span><br><span class="line">  process.exit(1);</span><br><span class="line">});</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>运行脚本：node check-size.js</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://gitcode.com/gh_mirrors/he/hexo-algoliasearch">参考1</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.mebi.me/hexo-with-algolia">参考2</a></li>
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2024117">参考3</a></li>
@@ -550,7 +562,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">一、处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">二、参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">一、处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三、参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

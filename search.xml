@@ -2366,8 +2366,20 @@
 <li>hexo algolia</li>
 </ul>
 </li>
+<li><p>报错：</p>
+</li>
 </ol>
-<h2 id="二、参考"><a href="#二、参考" class="headerlink" title="二、参考"></a>二、参考</h2><ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">FATAL {</span><br><span class="line">  err: {</span><br><span class="line">    name: 'ApiError',</span><br><span class="line">    message: 'Record at the position 58 objectID=cmwu47m6w00f82ceabeczgtvf is too big size=29859/10000 bytes. Please have a look at https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/in-depth/index-and-records-size-and-usage-limitations/#record-size-limits',</span><br><span class="line">    status: 400,</span><br><span class="line">    transporterStackTrace: [ [Object] ]</span><br><span class="line">  }</span><br><span class="line">} Something's wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>文章超限，检测脚本</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">const hexo = require('hexo')();</span><br><span class="line"></span><br><span class="line">hexo.init().then(async () =&gt; {</span><br><span class="line">  const posts = hexo.locals.get('posts').sort('-date');</span><br><span class="line">  console.log(`共 ${posts.length} 篇文章，开始统计 Algolia 记录大小\n`);</span><br><span class="line">  console.log(`序号\t大小(bytes)\t来源文件source\t标题\n`);</span><br><span class="line"></span><br><span class="line">  for (const post of posts) {</span><br><span class="line">    // 模拟 hexo-algoliasearch 默认打包的字段（和插件上传给algolia的结构一致）</span><br><span class="line">    const record = {</span><br><span class="line">      title: post.title,</span><br><span class="line">      path: post.path,</span><br><span class="line">      content: post.content,</span><br><span class="line">      tags: post.tags?.map(t =&gt; t.name) || [],</span><br><span class="line">      categories: post.categories?.map(c =&gt; c.name) || []</span><br><span class="line">    };</span><br><span class="line">    const str = JSON.stringify(record);</span><br><span class="line">    const size = Buffer.byteLength(str, 'utf8');</span><br><span class="line"></span><br><span class="line">    // 大于10000字节标红警告（Algolia限制）</span><br><span class="line">    if (size &gt; 10000) {</span><br><span class="line">      console.log(`⚠️超限 ${size}\t${post.source}\t${post.title}`);</span><br><span class="line">    } else {</span><br><span class="line">      console.log(`✅正常 ${size}\t${post.source}\t${post.title}`);</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  console.log("\n✅扫描结束！⚠️开头的就是超限md文件");</span><br><span class="line">  process.exit(0);</span><br><span class="line">}).catch(e =&gt; {</span><br><span class="line">  console.error(e);</span><br><span class="line">  process.exit(1);</span><br><span class="line">});</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>运行脚本：node check-size.js</li>
+</ul>
+<h2 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h2><ol>
 <li><a href="https://gitcode.com/gh_mirrors/he/hexo-algoliasearch">参考1</a></li>
 <li><a href="https://www.mebi.me/hexo-with-algolia">参考2</a></li>
 <li><a href="https://cloud.tencent.com/developer/article/2024117">参考3</a></li>
@@ -44139,6 +44151,9 @@ read_xlsx(name, sheet)
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
 <p>别再说什么大学都一样，上大学就是一个体验过程之类的话了，更不要相信这样的话，这都是没考上好大学的人一种自我安慰罢了。野鸡大学跟名牌大学是没有可比性的，无论校园氛围还是师资水平等等都远远不在一个等级，能考上这样大学的学生素质也不一样，毕业之后发展也就千差万别了。</p>
 </blockquote>
+<span id="more"></span>
+
+
 <h1 id="一次网上购物发生了什么"><a href="#一次网上购物发生了什么" class="headerlink" title="一次网上购物发生了什么"></a><center><font color="red">一次网上购物发生了什么</font></center></h1><blockquote>
 <p>我在浏览器下单，先走DNS把域名解析成IP，TCP三次握手建连接，TLS握手把链路加密；HTTP请求经CDN、负载均衡到达后端，后端鉴权、重算价格、扣库存、落订单库，再发消息把发券和履约异步化；支付交给第三方，以异步回调验签改状态；最后响应压缩传回浏览器渲成页面。整条链路的耗时就是这六段相加，所以排查慢、排查挂，都是按层定位。</p>
 </blockquote>
@@ -44713,9 +44728,7 @@ read_xlsx(name, sheet)
 <h2 id="六、参考"><a href="#六、参考" class="headerlink" title="六、参考"></a>六、参考</h2><ol>
 <li><a href="https://blog.csdn.net/qq_39414668/article/details/79594012">参考一</a></li>
 </ol>
-<h1 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a><center><font color="red">索引基础</font></center></h1><span id="more"></span>
-
-<h2 id="一、连接"><a href="#一、连接" class="headerlink" title="一、连接"></a>一、连接</h2><ol>
+<h1 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a><center><font color="red">索引基础</font></center></h1><h2 id="一、连接"><a href="#一、连接" class="headerlink" title="一、连接"></a>一、连接</h2><ol>
 <li><a href="https://www.cnblogs.com/cxuanBlog/p/12177976.html">认识HTTP</a></li>
 <li><a href="https://blog.csdn.net/majinggogogo/article/details/87890142">分片上传及断点续传原理</a></li>
 <li><a href="https://juejin.cn/post/6844904046436843527">大文件上传和断点续传实现</a></li>
